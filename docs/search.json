@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "SURE 2024",
+    "section": "",
+    "text": "Welcome to the Summer Undergraduate Research Experience in Statistics (SURE) 2024, hosted by the Department of Statistics & Data Science at Carnegie Mellon University. The purpose of this program is to explore cutting-edge statistics and data science methodology with applications in healthcare and sports analytics."
+  },
+  {
+    "objectID": "git-setup.html",
+    "href": "git-setup.html",
+    "title": "Git and GitHub Setup",
+    "section": "",
+    "text": "Register for a GitHub account at https://github.com if you do not have one. It is completely free to use. You may use any username you prefer; we will later ask for your username so we can keep track."
+  },
+  {
+    "objectID": "git-setup.html#step-1-make-a-github-account",
+    "href": "git-setup.html#step-1-make-a-github-account",
+    "title": "Git and GitHub Setup",
+    "section": "",
+    "text": "Register for a GitHub account at https://github.com if you do not have one. It is completely free to use. You may use any username you prefer; we will later ask for your username so we can keep track."
+  },
+  {
+    "objectID": "git-setup.html#step-2-install-and-configure-git",
+    "href": "git-setup.html#step-2-install-and-configure-git",
+    "title": "Git and GitHub Setup",
+    "section": "Step 2: Install and configure Git",
+    "text": "Step 2: Install and configure Git\nIf you do not have Git installed, install it from here: https://git-scm.com/downloads.\nYou may already have Git installed without knowing it, please read the directions available from the definitive guide on R and Git / GitHub: https://happygitwithr.com/install-git.html. You may have to access your shell (aka terminal, command prompt, etc). DO NOT PANIC. You can read more about the shell here: https://happygitwithr.com/shell.html#shell, with instructions depending on your operating system.\nAfter installation, you will need to configure Git (read more about it here: https://happygitwithr.com/hello-git.html). You can use the shell for this, or you can do this directly in R:\n\n# Uncomment and run the following line to install the usethis package:\n# install.packages(\"usethis\")\nusethis::use_git_config(user.name = \"Your Name\", user.email = \"your-github@email.address\")\n\nUse your full name for the user.name field and then use the same email as your GitHub account for user.email.\nYou then need to create a personal access token for authentication, following the steps outlined here and described below.\nFirst, create a personal access token with the following command:\n\nusethis::create_github_token()\n# in case usethis version &lt; 2.0.0: usethis::browse_github_token() (or even better: update usethis!)\n\nRecommended scopes will be pre-selected if you used create_github_token(). Click “Generate token”. Copy the generated token to your clipboard. Or leave that browser window open and available for a little while, so you can come back to copy the token\nNow, in R, after making sure the gitcreds package is installed, run gitcreds::gitcreds_set() to get a prompt where you can paste your token:\n\n# Uncomment and run the following line to install the gitcreds package:\n# install.packages(\"gitcreds\")\ngitcreds::gitcreds_set()\n\n# It should display the following info - \n# ? Enter password or token: ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n# -&gt; Adding new credentials...\n# -&gt; Removing credentials from cache...\n# -&gt; Done.\n\nIt should display the following where you will paste in your token:\n? Enter password or token: ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nThen present the following messages:\n-&gt; Adding new credentials...\n-&gt; Removing credentials from cache...\n-&gt; Done.\nYou should then be ready to use GitHub!"
+  },
+  {
+    "objectID": "git-setup.html#step-3-create-repository-with-github",
+    "href": "git-setup.html#step-3-create-repository-with-github",
+    "title": "Git and GitHub Setup",
+    "section": "Step 3: Create repository with GitHub",
+    "text": "Step 3: Create repository with GitHub\nWe will follow the paradigm of “GitHub first”. What this means is that when we create a repository, we will create it on GitHub first, then link a local repository to it from inside RStudio.\nIn GitHub, do the following:\n\ngo to the top-level directory (i.e., github.com/&lt;your user name here&gt;)\nclick on “+” at top right, and select “New repository”\nname the repository (e.g., “summer-eda-project”)\nprovide a short description of the repository (don’t leave completely blank!)\nkeep the repository public\nclick on “Initialize this repository with a README”…there is no need to “Add .gitignore” or “Add a license”\nclick on “Create Repository”"
+  },
+  {
+    "objectID": "git-setup.html#step-4-..then-in-rstudio",
+    "href": "git-setup.html#step-4-..then-in-rstudio",
+    "title": "Git and GitHub Setup",
+    "section": "Step 4: ..then in RStudio",
+    "text": "Step 4: ..then in RStudio\nIn RStudio, do the following:\n\nclick on File &gt; New Project...\nclick on “Version Control”, then on “Git”\nprovide the full address for the “Repository URL” (including the https, etc.; by default, this will provide the name of your local repository)\nmake sure “Create project as subdirectory of:” points to where you want to point it\nclick on “Create Project”\n\nAt this point, you should find that your Files pane is listing the files in your local repository, including one ending in .Rproj and the README.md file that was created on GitHub."
+  },
+  {
+    "objectID": "git-setup.html#step-5-updating-your-repository",
+    "href": "git-setup.html#step-5-updating-your-repository",
+    "title": "Git and GitHub Setup",
+    "section": "Step 5: Updating your repository",
+    "text": "Step 5: Updating your repository\nTo, e.g., add a new file to your local repository, do the following:\n\nopen the new file as you always would (as an R Script, an R Markdown file, etc.)\nfill the file with “stuff”\nsave the file…at this point, the file name should show up in the Git pane next to an “M” symbol (for modified)\ncontinue to modify the file, or…stage the file for a commit (think of it as: pose it for its snapshot) by clicking on “Staged” in the Git pane\nclick on “Commit” in the Git pane\nin the new window that opens, add a “Commit message”, then click on the “Commit” button\nclick on “Push” to push your changes from your local repo to your GitHub repo\n\nIf you encountered no errors then you’re done! While working on a single project you will repeatedly use Step 5, update file, commit changes, then push changes. We will cover pulling at a later time.\nEvery time you want to create a new repository, you can just start with Step 3, use GitHub, copy the repository into RStudio, then repeatedly update, commit, and push.\nAsk us for help if you have any questions."
+  },
+  {
+    "objectID": "lectures.html",
+    "href": "lectures.html",
+    "title": "Lectures",
+    "section": "",
+    "text": "Lecture 1\nTopic\nHTML\n\n\nLecture 1\n\n\n\n\nLecture 1\n\n\n\n\nLecture 1\n\n\n\n\nLecture 1"
+  },
+  {
+    "objectID": "r-setup.html#step-1-install-r",
+    "href": "r-setup.html#step-1-install-r",
+    "title": "R and RStudio Setup",
+    "section": "Step 1: Install R",
+    "text": "Step 1: Install R\n(Note that the following instructions apply to the latest R version (4.3.0) as of May 31, 2023)\nClick on DOWNLOAD AND INSTALL R. This will direct you to the CRAN (Comprehensive R Archive Network) website.\nmacOS\n\nClick on Download R for macOS.\nChoose the .pkg file suitable for your Mac (Apple silicon (M1/M2) Macs or older Intel Macs.)\nOpen the .pkg file after the download is complete.\nFollow the installation instructions.\n\nWindows\n\nClick on Download R for Windows.\nClick on install R for the first time (on the same line as the base subdirectory.)\nChoose Download R 4.3.0 for Windows.\nOpen the .exe file after the download is complete.\nFollow the installation instructions."
+  },
+  {
+    "objectID": "r-setup.html#step-2-install-rstudio",
+    "href": "r-setup.html#step-2-install-rstudio",
+    "title": "R and RStudio Setup",
+    "section": "Step 2: Install RStudio",
+    "text": "Step 2: Install RStudio\n\n\n\n\n\n\nImportant\n\n\n\nR must be installed before RStudio.\n\n\nClick on DOWNLOAD RSTUDIO DESKTOP… Your operating system is automatically detected. (If your OS is not correctly detected, scroll down and choose the right version for your system.)\nmacOS\n\nOpen the .dmg file after the download is complete.\nDrag and drop it to your Applications folder.\n\nWindows\n\nOpen the .exe file after the download is complete.\nFollow the installation instructions.\n\nOpen RStudio once the installation is finished. You should get something similar to the image below. We will run a few commands later in the Console pane, which is located on the bottom left corner and highlighted in red."
+  },
+  {
+    "objectID": "r-setup.html#step3",
+    "href": "r-setup.html#step3",
+    "title": "R and RStudio Setup",
+    "section": "Step 3: Check R and RStudio installations",
+    "text": "Step 3: Check R and RStudio installations\nNext, we run a quick check to verify that everything looks right after installations,\n\n\n\n\n\n\nPost-installation check\n\n\n\n\n\nOpen RStudio and type in the following command in the Console pane on the bottom left.\n\nversion\n\nThis will print out the current version of R on your machine. The output should look similar to what shown below (the first 4 lines might be different, depending on your operating system.)\n\n\n               _                           \nplatform       aarch64-apple-darwin20      \narch           aarch64                     \nos             darwin20                    \nsystem         aarch64, darwin20           \nstatus                                     \nmajor          4                           \nminor          3.3                         \nyear           2024                        \nmonth          02                          \nday            29                          \nsvn rev        86002                       \nlanguage       R                           \nversion.string R version 4.3.3 (2024-02-29)\nnickname       Angel Food Cake             \n\n\nThe following gif shows what it looks like in action."
+  },
+  {
+    "objectID": "r-setup.html#step-4-install-required-packages",
+    "href": "r-setup.html#step-4-install-required-packages",
+    "title": "R and RStudio Setup",
+    "section": "Step 4: Install required packages",
+    "text": "Step 4: Install required packages\nWe suggest that you install the following minimal set of R packages which are needed to get started with SURE 2023. We will recommend more packages for you to install as we progress through the program.\n\n\n\n\n\n\nPackage installation\n\n\n\n\n\nIn R, a package is a collection of functions, data and compiled code. In addition to a set of built-in base packages, there are numerous external R packages written by the community to add specific functionality.\nTo get started with SURE 2023, you will need to install a minimal set of packages. Again, open RStudio and type in the following command in the Console pane on the bottom left (refer to the gif in Step 3 for how to access the RStudio Console pane).\n\nrec_packages &lt;- c(\"tidyverse\", \"styler\", \"xaringan\", \"xaringanthemer\", \n                  \"xaringanExtra\", \"tidymodels\")\ninstall.packages(rec_packages)\n\nWe can verify successful package installation, e.g., for the tidyverse, which is arguably the most popular R package for data science. To do this, run the following command in the RStudio Console pane.\n\nlibrary(tidyverse)\n\nYou should get a message similar to the output below.\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.2     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
+  }
+]
