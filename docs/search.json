@@ -53,7 +53,28 @@
     "href": "lectures.html",
     "title": "Lectures",
     "section": "",
-    "text": "Lecture 1\nTopic\nHTML\n\n\nLecture 1\n\n\n\n\nLecture 1\n\n\n\n\nLecture 1\n\n\n\n\nLecture 1"
+    "text": "Lecture 1\nJune 3\nIntro\nslides\n\n\nLecture 1\n\n\n\n\n\nLecture 1\n\n\n\n\n\nLecture 1\n\n\n\n\n\nLecture 1"
+  },
+  {
+    "objectID": "lectures/template.html#introduction",
+    "href": "lectures/template.html#introduction",
+    "title": "Put your title here",
+    "section": "introduction",
+    "text": "introduction\n\nlibrary(tidyverse)\nlibrary(scales)\nlibrary(knitr)\nlibrary(kableExtra)\noptions(dplyr.print_min = 6, dplyr.print_max = 6)\ntheme_set(theme_gray(base_size = 18))"
+  },
+  {
+    "objectID": "lectures/template.html#collaborators",
+    "href": "lectures/template.html#collaborators",
+    "title": "Put your title here",
+    "section": "collaborators",
+    "text": "collaborators\nsteve"
+  },
+  {
+    "objectID": "lectures/template.html#yo",
+    "href": "lectures/template.html#yo",
+    "title": "Put your title here",
+    "section": "yo",
+    "text": "yo\n\n\ncol 1\na\n\ncol 2\na"
   },
   {
     "objectID": "r-setup.html#step-1-install-r",
