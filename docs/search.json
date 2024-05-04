@@ -25,14 +25,14 @@
     "href": "git-setup.html#step-2-install-and-configure-git",
     "title": "Git and GitHub Setup",
     "section": "Step 2: Install and configure Git",
-    "text": "Step 2: Install and configure Git\nIf you do not have Git installed, install it from here: https://git-scm.com/downloads.\nYou may already have Git installed without knowing it, please read the directions available from the definitive guide on R and Git / GitHub: https://happygitwithr.com/install-git.html. You may have to access your shell (aka terminal, command prompt, etc). DO NOT PANIC. You can read more about the shell here: https://happygitwithr.com/shell.html#shell, with instructions depending on your operating system.\nAfter installation, you will need to configure Git (read more about it here: https://happygitwithr.com/hello-git.html). You can use the shell for this, or you can do this directly in R:\n\n# Uncomment and run the following line to install the usethis package:\n# install.packages(\"usethis\")\nusethis::use_git_config(user.name = \"Your Name\", user.email = \"your-github@email.address\")\n\nUse your full name for the user.name field and then use the same email as your GitHub account for user.email.\nYou then need to create a personal access token for authentication, following the steps outlined here and described below.\nFirst, create a personal access token with the following command:\n\nusethis::create_github_token()\n# in case usethis version &lt; 2.0.0: usethis::browse_github_token() (or even better: update usethis!)\n\nRecommended scopes will be pre-selected if you used create_github_token(). Click “Generate token”. Copy the generated token to your clipboard. Or leave that browser window open and available for a little while, so you can come back to copy the token\nNow, in R, after making sure the gitcreds package is installed, run gitcreds::gitcreds_set() to get a prompt where you can paste your token:\n\n# Uncomment and run the following line to install the gitcreds package:\n# install.packages(\"gitcreds\")\ngitcreds::gitcreds_set()\n\n# It should display the following info - \n# ? Enter password or token: ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n# -&gt; Adding new credentials...\n# -&gt; Removing credentials from cache...\n# -&gt; Done.\n\nIt should display the following where you will paste in your token:\n? Enter password or token: ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nThen present the following messages:\n-&gt; Adding new credentials...\n-&gt; Removing credentials from cache...\n-&gt; Done.\nYou should then be ready to use GitHub!"
+    "text": "Step 2: Install and configure Git\nIf you do not have Git installed, install it from here: https://git-scm.com/downloads.\n\nYou may already have Git installed without knowing it, please read the directions available from the definitive guide on R and Git / GitHub: https://happygitwithr.com/install-git.html. You may have to access your shell (aka terminal, command prompt, etc). DO NOT PANIC. You can read more about the shell here: https://happygitwithr.com/shell.html#shell, with instructions depending on your operating system.\nAfter installation, you will need to configure Git (read more about it here: https://happygitwithr.com/hello-git.html). You can use the shell for this, or you can do this directly in R:\n\n# Uncomment and run the following line to install the usethis package\n# install.packages(\"usethis\")\nusethis::use_git_config(user.name = \"Your Name\", user.email = \"your-github@email.address\")\n\nUse your full name for the user.name field and then use the same email as your GitHub account for user.email.\nYou then need to create a personal access token for authentication, following the steps outlined here and described below.\nFirst, create a personal access token with the following command:\n\nusethis::create_github_token()\n\nRecommended scopes will be pre-selected if you used create_github_token(). Click “Generate token”. Copy the generated token to your clipboard. Or leave that browser window open and available for a little while, so you can come back to copy the token\nNow, in R, after making sure the gitcreds package is installed, run gitcreds::gitcreds_set() to get a prompt where you can paste your token:\n\n# Uncomment and run the following line to install the gitcreds package\n# install.packages(\"gitcreds\")\ngitcreds::gitcreds_set()\n\n# It should display the following info - \n# ? Enter password or token: ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n# -&gt; Adding new credentials...\n# -&gt; Removing credentials from cache...\n# -&gt; Done.\n\nYou should then be ready to use GitHub!"
   },
   {
     "objectID": "git-setup.html#step-3-create-repository-with-github",
     "href": "git-setup.html#step-3-create-repository-with-github",
     "title": "Git and GitHub Setup",
     "section": "Step 3: Create repository with GitHub",
-    "text": "Step 3: Create repository with GitHub\nWe will follow the paradigm of “GitHub first”. What this means is that when we create a repository, we will create it on GitHub first, then link a local repository to it from inside RStudio.\nIn GitHub, do the following:\n\ngo to the top-level directory (i.e., github.com/&lt;your user name here&gt;)\nclick on “+” at top right, and select “New repository”\nname the repository (e.g., “summer-eda-project”)\nprovide a short description of the repository (don’t leave completely blank!)\nkeep the repository public\nclick on “Initialize this repository with a README”…there is no need to “Add .gitignore” or “Add a license”\nclick on “Create Repository”"
+    "text": "Step 3: Create repository with GitHub\nWe will follow the paradigm of “GitHub first”. What this means is that when we create a repository, we will create it on GitHub first, then link a local repository to it from inside RStudio.\nAfter you’ve logged in, to create a GitHub repository\n\nVisit https://github.com/new\nName the repository (give it a meaningful name)\nGive the repository a description (don’t leave this blank even though this is optional)\nDecide whether to keep the repository public or private (for now, let’s just keep it public)\nClick on “Initialize this repository with a README”. For now, there’s no need to “Add .gitignore” or “Choose a license”\nClick on “Create Repository”"
   },
   {
     "objectID": "git-setup.html#step-4-..then-in-rstudio",
@@ -53,7 +53,7 @@
     "href": "lectures.html",
     "title": "Lectures",
     "section": "",
-    "text": "Lecture 1\nJune 3\nIntro\nslides\n\n\nLecture 1\n\n\n\n\n\nLecture 1\n\n\n\n\n\nLecture 1\n\n\n\n\n\nLecture 1"
+    "text": "Lecture 1\nJune 3\na\nslides\n\n\nLecture 1\n\n\n\n\n\nLecture 1\n\n\n\n\n\nLecture 1\n\n\n\n\n\nLecture 1"
   },
   {
     "objectID": "lectures/template.html#introduction",
@@ -81,21 +81,21 @@
     "href": "r-setup.html#step-1-install-r",
     "title": "R and RStudio Setup",
     "section": "Step 1: Install R",
-    "text": "Step 1: Install R\n(Note that the following instructions apply to the latest R version (4.3.0) as of May 31, 2023)\nClick on DOWNLOAD AND INSTALL R. This will direct you to the CRAN (Comprehensive R Archive Network) website.\nmacOS\n\nClick on Download R for macOS.\nChoose the .pkg file suitable for your Mac (Apple silicon (M1/M2) Macs or older Intel Macs.)\nOpen the .pkg file after the download is complete.\nFollow the installation instructions.\n\nWindows\n\nClick on Download R for Windows.\nClick on install R for the first time (on the same line as the base subdirectory.)\nChoose Download R 4.3.0 for Windows.\nOpen the .exe file after the download is complete.\nFollow the installation instructions."
+    "text": "Step 1: Install R\n(Note that the following instructions apply to the latest R version (4.4.0) as of May 1, 2024)\nClick on DOWNLOAD AND INSTALL R. This will direct you to the CRAN (Comprehensive R Archive Network) website.\nmacOS\n\nClick on Download R for macOS.\nChoose the .pkg file suitable for your Mac (Apple silicon (M1-3) Macs or older Intel Macs.)\nOpen the .pkg file after the download is complete.\nFollow the installation instructions.\n\nWindows\n\nClick on Download R for Windows.\nClick on install R for the first time (on the same line as the base subdirectory.)\nChoose Download R 4.4.0 for Windows.\nOpen the .exe file after the download is complete.\nFollow the installation instructions."
   },
   {
     "objectID": "r-setup.html#step-2-install-rstudio",
     "href": "r-setup.html#step-2-install-rstudio",
     "title": "R and RStudio Setup",
     "section": "Step 2: Install RStudio",
-    "text": "Step 2: Install RStudio\n\n\n\n\n\n\nImportant\n\n\n\nR must be installed before RStudio.\n\n\nClick on DOWNLOAD RSTUDIO DESKTOP… Your operating system is automatically detected. (If your OS is not correctly detected, scroll down and choose the right version for your system.)\nmacOS\n\nOpen the .dmg file after the download is complete.\nDrag and drop it to your Applications folder.\n\nWindows\n\nOpen the .exe file after the download is complete.\nFollow the installation instructions.\n\nOpen RStudio once the installation is finished. You should get something similar to the image below. We will run a few commands later in the Console pane, which is located on the bottom left corner and highlighted in red."
+    "text": "Step 2: Install RStudio\n\n\n\n\n\n\nImportant\n\n\n\nR must be installed before RStudio.\n\n\nClick on DOWNLOAD RSTUDIO DESKTOP… Your operating system is automatically detected. (If your OS is not correctly detected, scroll down and choose the right version for your system.)\nmacOS\n\nOpen the .dmg file after the download is complete.\nDrag and drop it to your Applications folder.\n\nWindows\n\nOpen the .exe file after the download is complete.\nFollow the installation instructions."
   },
   {
     "objectID": "r-setup.html#step3",
     "href": "r-setup.html#step3",
     "title": "R and RStudio Setup",
     "section": "Step 3: Check R and RStudio installations",
-    "text": "Step 3: Check R and RStudio installations\nNext, we run a quick check to verify that everything looks right after installations,\n\n\n\n\n\n\nPost-installation check\n\n\n\n\n\nOpen RStudio and type in the following command in the Console pane on the bottom left.\n\nversion\n\nThis will print out the current version of R on your machine. The output should look similar to what shown below (the first 4 lines might be different, depending on your operating system.)\n\n\n               _                           \nplatform       aarch64-apple-darwin20      \narch           aarch64                     \nos             darwin20                    \nsystem         aarch64, darwin20           \nstatus                                     \nmajor          4                           \nminor          3.3                         \nyear           2024                        \nmonth          02                          \nday            29                          \nsvn rev        86002                       \nlanguage       R                           \nversion.string R version 4.3.3 (2024-02-29)\nnickname       Angel Food Cake             \n\n\nThe following gif shows what it looks like in action."
+    "text": "Step 3: Check R and RStudio installations\nOpen RStudio and type in the following command in the Console pane.\n\nversion\n\nThis will print out the current version of R on your machine. The output should look similar to what shown below (the first 4 lines might be different, depending on your operating system.)\n\n\n               _                           \nplatform       aarch64-apple-darwin20      \narch           aarch64                     \nos             darwin20                    \nsystem         aarch64, darwin20           \nstatus                                     \nmajor          4                           \nminor          3.3                         \nyear           2024                        \nmonth          02                          \nday            29                          \nsvn rev        86002                       \nlanguage       R                           \nversion.string R version 4.3.3 (2024-02-29)\nnickname       Angel Food Cake"
   },
   {
     "objectID": "r-setup.html#step-4-install-required-packages",
@@ -103,5 +103,341 @@
     "title": "R and RStudio Setup",
     "section": "Step 4: Install required packages",
     "text": "Step 4: Install required packages\nWe suggest that you install the following minimal set of R packages which are needed to get started with SURE 2023. We will recommend more packages for you to install as we progress through the program.\n\n\n\n\n\n\nPackage installation\n\n\n\n\n\nIn R, a package is a collection of functions, data and compiled code. In addition to a set of built-in base packages, there are numerous external R packages written by the community to add specific functionality.\nTo get started with SURE 2023, you will need to install a minimal set of packages. Again, open RStudio and type in the following command in the Console pane on the bottom left (refer to the gif in Step 3 for how to access the RStudio Console pane).\n\nrec_packages &lt;- c(\"tidyverse\", \"styler\", \"xaringan\", \"xaringanthemer\", \n                  \"xaringanExtra\", \"tidymodels\")\ninstall.packages(rec_packages)\n\nWe can verify successful package installation, e.g., for the tidyverse, which is arguably the most popular R package for data science. To do this, run the following command in the RStudio Console pane.\n\nlibrary(tidyverse)\n\nYou should get a message similar to the output below.\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.2     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
+  },
+  {
+    "objectID": "personal/plan.html",
+    "href": "personal/plan.html",
+    "title": "Plan",
+    "section": "",
+    "text": "Week\nMonth\nDay\nTopic\n\n\n\n\n\n\n\n1\nJune\n3\n\n\n\n\n\n\n\n\n4\n\n\n\n\n\n\n\n\n5\n\n\n\n\n\n\n\n\n6\n\n\n\n\n\n\n\n\n7\n\n\n\n\n\n\n2\n\n10\n\n\n\n\n\n\n\n\n11\n\n\n\n\n\n\n\n\n12\n\n\n\n\n\n\n\n\n13\n\n\n\n\n\n\n\n\n14\n\n\n\n\n\n\n3\n\n17\n\n\n\n\n\n\n\n\n18\n\n\n\n\n\n\n\n\n19\nNo lecture\n\n\n\n\n\n\n\n20\n\n\n\n\n\n\n\n\n21\n\n\n\n\n\n\n4\n\n24\n\n\n\n\n\n\n\n\n25\n\n\n\n\n\n\n\n\n26\n\n\n\n\n\n\n\n\n27\n\n\n\n\n\n\n\n\n28\n\n\n\n\n\n\n5\nJuly\n1\n\n\n\n\n\n\n\n\n2\n\n\n\n\n\n\n\n\n3\n\n\n\n\n\n\n\n\n4\nNo lecture\n\n\n\n\n\n\n\n5\n\n\n\n\n\n\n6\n\n8\n\n\n\n\n\n\n\n\n9\n\n\n\n\n\n\n\n\n10\n\n\n\n\n\n\n\n\n11\n\n\n\n\n\n\n\n\n12\n\n\n\n\n\n\n7\n\n15\n\n\n\n\n\n\n\n\n16\n\n\n\n\n\n\n\n\n17\n\n\n\n\n\n\n\n\n18\n\n\n\n\n\n\n\n\n19\n\n\n\n\n\n\n8\n\n22\n\n\n\n\n\n\n\n\n23\n\n\n\n\n\n\n\n\n24\n\n\n\n\n\n\n\n\n25\n\n\n\n\n\n\n\n\n26\nPresentations"
+  },
+  {
+    "objectID": "r-setup.html#step-4-install-an-r-package",
+    "href": "r-setup.html#step-4-install-an-r-package",
+    "title": "R and RStudio Setup",
+    "section": "Step 4: Install an R package",
+    "text": "Step 4: Install an R package\nIn R, a package is a collection of functions, data, and compiled code. In addition to a set of built-in base packages, there are numerous external R packages written by the community to add specific functionality.\nIn general, to install an R package, you can use the install.packages() function and pass in the package name.\nThe following example shows how to install the tidyverse package in R. The tidyverse is a suite of R packages we will be using throughout this program. It features popular packages such as ggplot2 for data visualization and dplyr for data manipulation.\nAfter installing R and RStudio, open RStudio and enter the following command in the Console pane.\n\ninstall.packages(\"tidyverse\")\n\nTo verify that tidyverse is successfully installed, run the following command:\n\nlibrary(tidyverse)\n\nYou should get a message similar to the output below.\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.2     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nAsk us for help if you encounter any issues or errors in any of the installation steps above."
+  },
+  {
+    "objectID": "git-setup.html#step-4-connect-rstudio-to-the-github-repository",
+    "href": "git-setup.html#step-4-connect-rstudio-to-the-github-repository",
+    "title": "Git and GitHub Setup",
+    "section": "Step 4: Connect RStudio to the GitHub repository",
+    "text": "Step 4: Connect RStudio to the GitHub repository\n\nIn RStudio, click on File &gt; New Project.... Next click on “Version Control” and then on “Git”\nGo back to the GitHub repository in your browser, click on Code (in the same line as “Go to file”). Under HTTPS, copy the web URL\nIn RStudio, paste this URL into “Repository URL”\nType the name for the folder on your computer associated with this repository into “Project directory name”\nMake sure “Create project as subdirectory of:” points to where you want to locate this new folder.\nClick on “Create Project”\n\nAt this point, you should find that your Files pane is listing the files in your local repository, including one ending in .Rproj and the README.md file that was created on GitHub."
+  },
+  {
+    "objectID": "git-setup.html#step-5-modify-the-repository",
+    "href": "git-setup.html#step-5-modify-the-repository",
+    "title": "Git and GitHub Setup",
+    "section": "Step 5: Modify the repository",
+    "text": "Step 5: Modify the repository\nTo add a new file from your local repository to GitHub,\n\nOpen a new file (e.g, R Script, Quarto document, etc.)\nFill the file with some code/comments/etc\nSave the file. At this point, this file should show up in the Git pane (in the top left of RStudio)\nCheck the box under “Staged” in the Git pane to stage the file for a commit\nClick on “Commit” in the Git pane\nIn the new window that opens, add a “Commit message”, then click on the “Commit” button\nClick on “Push” to push your changes from your local repo to your GitHub repo\n\nIf you encountered no errors then you’re done! While working on a single project you will repeatedly use Step 5—make changes to files, commit changes, then push changes. We will cover pulling later..\nEvery time you want to create a new repository, you can just start with Step 3, use GitHub, copy the repository into RStudio, then repeatedly update, commit, and push.\nAsk us for help if you have any questions."
+  },
+  {
+    "objectID": "lectures/01-explore.html#data-science-workflow",
+    "href": "lectures/01-explore.html#data-science-workflow",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "Data science workflow",
+    "text": "Data science workflow\n\nSource: R for Data Science (2e)\n\nsteve"
+  },
+  {
+    "objectID": "lectures/01-explore.html#import",
+    "href": "lectures/01-explore.html#import",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "Import",
+    "text": "Import"
+  },
+  {
+    "objectID": "lectures/01-explore.html#yo",
+    "href": "lectures/01-explore.html#yo",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "yo",
+    "text": "yo\n\n\ncol 1\na\n\ncol 2\na"
+  },
+  {
+    "objectID": "lectures/01-explore.html#data-wrangling",
+    "href": "lectures/01-explore.html#data-wrangling",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "Data wrangling",
+    "text": "Data wrangling"
+  },
+  {
+    "objectID": "lectures/01-explore.html#exploratory-data-analysis",
+    "href": "lectures/01-explore.html#exploratory-data-analysis",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "Exploratory data analysis",
+    "text": "Exploratory data analysis\n\nWhat is the goal of EDA?\n\nto perform initial investigations on the data in order to better understand the data, discover trends/patterns, spot anomalies, etc.\n\n\n\n\n“EDA is an iterative cycle”\n\nquestions about data \\(\\rightarrow\\) wrangling \\(\\rightarrow\\) visualization\n\n\n\n\n\n“EDA is a state of mind”\n\n\n\n\nThe term EDA was coined by statistician John Tukey in the 1970s."
+  },
+  {
+    "objectID": "lectures/01-explore.html#exploratory-data-analysis-continued",
+    "href": "lectures/01-explore.html#exploratory-data-analysis-continued",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "Exploratory data analysis (continued)",
+    "text": "Exploratory data analysis (continued)\nExamples of questions\n\nWhat type of variation do the variables display?\nWhat type of relationships exist between variables?\n\n\nEDA is NOT a replacement for statistical inference and learning\n\n\nEDA is an important and necessary step to build intuition"
+  },
+  {
+    "objectID": "lectures/01-explore.html#exploratory-data-analysis-contd",
+    "href": "lectures/01-explore.html#exploratory-data-analysis-contd",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "Exploratory data analysis (cont’d)",
+    "text": "Exploratory data analysis (cont’d)\n\nData can be explored numerically (tables, descriptive statistics, etc.) or visually (graphs)\nExamples of questions\n\nWhat type of variation do the variables display?\nWhat type of relationships exist between variables?\n\n\n\n\nEDA is NOT a replacement for statistical inference and learning\n\n\n\n\nEDA is an important and necessary step to build intuition"
+  },
+  {
+    "objectID": "lectures/01-explore.html#first-example-mlb-batting",
+    "href": "lectures/01-explore.html#first-example-mlb-batting",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "First example: MLB batting",
+    "text": "First example: MLB batting\n\nImport Batting table of historical batting statistics from the Lahman\n\n\nlibrary(tidyverse) # load the tidyverse\nlibrary(Lahman) # load the Lahman package to access its datasets\nBatting &lt;- as_tibble(Batting) # initialize the Batting dataset\n\n\n\nBasic info about the Batting dataset\n\n\n# number of rows and columns\n# can also do nrow(Batting) and ncol(Batting)\ndim(Batting) \n\n[1] 112184     22\n\n\n\nclass(Batting)\n\n[1] \"tbl_df\"     \"tbl\"        \"data.frame\"\n\n\n\n\n\ntbl (pronounced tibble) is the tidyverse way of storing tabular data, like a spreadsheet or data.frame"
+  },
+  {
+    "objectID": "lectures/01-explore.html#first-example-mlb-batting-1",
+    "href": "lectures/01-explore.html#first-example-mlb-batting-1",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "First example: MLB batting",
+    "text": "First example: MLB batting\n\nView the first 6 (by default) rows with head()\n\n\n# try just typing Batting into your console, what happens?\n# also try glimpse(Batting)\nhead(Batting) \n\n# A tibble: 6 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 abercda01   1871     1 TRO    NA        1     4     0     0     0     0     0\n2 addybo01    1871     1 RC1    NA       25   118    30    32     6     0     0\n3 allisar01   1871     1 CL1    NA       29   137    28    40     4     5     0\n4 allisdo01   1871     1 WS3    NA       27   133    28    44    10     2     2\n5 ansonca01   1871     1 RC1    NA       25   120    29    39    11     3     0\n6 armstbo01   1871     1 FW1    NA       12    49     9    11     2     1     0\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;\n\n\n\nIs the Batting dataset tidy?\n\nEach row: a player’s season stint with a team (i.e. players can play for multiple teams in year)\nEach column: different measurement or recording about the player-team-season observation (get all column names with colnames(Batting) or names(Batting))"
+  },
+  {
+    "objectID": "lectures/01-explore.html#first-example-mlb-batting-2",
+    "href": "lectures/01-explore.html#first-example-mlb-batting-2",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "First example: MLB batting",
+    "text": "First example: MLB batting"
+  },
+  {
+    "objectID": "lectures/01-explore.html#descriptive-statistics",
+    "href": "lectures/01-explore.html#descriptive-statistics",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "Descriptive statistics",
+    "text": "Descriptive statistics\nSummarize continuous (e.g. yearID, AB) and categorical (e.g. teamID, lgID) variables in different ways…\n\n\nSummary statistics for continuous variables with the summary() function\n\n\nsummary(Batting$yearID)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n   1871    1938    1978    1969    2003    2022 \n\n\n\nCounts of categorical variables with the table() function\n\n\n# be careful it ignores NA values\n# can do table(Batting$lgID, useNA = \"always\")\ntable(Batting$lgID)\n\n\n   AA    AL    FL    NA    NL    PL    UA \n 1893 51799   472   737 56800   149   334"
+  },
+  {
+    "objectID": "lectures/01-explore.html#data-wrangling-with-dplyr",
+    "href": "lectures/01-explore.html#data-wrangling-with-dplyr",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "Data wrangling with dplyr",
+    "text": "Data wrangling with dplyr\n\ndplyr is a package within the tidyverse with functions for data wrangling\nThe dplyr data verbs for manipulating data\n\nselect()\nfilter()\narrange()\nmutate()\ngroup_by()\nsummarize()"
+  },
+  {
+    "objectID": "lectures/01-explore.html#but-first",
+    "href": "lectures/01-explore.html#but-first",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "But first…",
+    "text": "But first…"
+  },
+  {
+    "objectID": "lectures/01-explore.html#select",
+    "href": "lectures/01-explore.html#select",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "select()",
+    "text": "select()\n\nUse select() to extract COLUMNS (variables) of interest\nJust simply specify the column names…\n\n\nselect(Batting, playerID, yearID, G, AB, R, H, HR, BB)\n\n# A tibble: 112,184 × 8\n   playerID  yearID     G    AB     R     H    HR    BB\n   &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1 abercda01   1871     1     4     0     0     0     0\n 2 addybo01    1871    25   118    30    32     0     4\n 3 allisar01   1871    29   137    28    40     0     2\n 4 allisdo01   1871    27   133    28    44     2     0\n 5 ansonca01   1871    25   120    29    39     0     2\n 6 armstbo01   1871    12    49     9    11     0     0\n 7 barkeal01   1871     1     4     0     1     0     1\n 8 barnero01   1871    31   157    66    63     0    13\n 9 barrebi01   1871     1     5     1     1     0     0\n10 barrofr01   1871    18    86    13    13     0     0\n# ℹ 112,174 more rows"
+  },
+  {
+    "objectID": "lectures/01-explore.html#filter",
+    "href": "lectures/01-explore.html#filter",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "filter()",
+    "text": "filter()\n\nUse filter() to extract ROWS (observations) that meet certain conditions\nNeed to specify a logical condition (aka boolean expression)"
+  },
+  {
+    "objectID": "lectures/01-explore.html#examples-of-logical-conditions",
+    "href": "lectures/01-explore.html#examples-of-logical-conditions",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "Examples of logical conditions",
+    "text": "Examples of logical conditions\n\nx &lt; y: less than\nx &lt;= y: less than or equal to\nx == y: equal to\nx != y: not equal to\nx &gt; y: greater than\nx &gt;= y: greater than or equal to\nx %in% y: whether the value is present in a given vector\nis.na(x): is missing\n!is.na(x): is not missing\n… and anything that returns a TRUE/FALSE value"
+  },
+  {
+    "objectID": "lectures/01-explore.html#filter-1",
+    "href": "lectures/01-explore.html#filter-1",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "filter()",
+    "text": "filter()\nExample: Extract batting stats for 2 leagues AL and NL only\n\nfilter(Batting, lgID %in% c(\"AL\", \"NL\")) # or filter(Batting, lgID == \"AL\" | lgID == \"NL\")\n\n# A tibble: 108,599 × 22\n   playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n   &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1 addybo01    1876     1 CHN    NL       32   142    36    40     4     1     0\n 2 allisar01   1876     1 LS1    NL       31   130     9    27     2     1     0\n 3 allisdo01   1876     1 HAR    NL       44   163    19    43     4     0     0\n 4 andrufr01   1876     1 CHN    NL        8    36     6    11     3     0     0\n 5 ansonca01   1876     1 CHN    NL       66   309    63   110     9     7     2\n 6 barnero01   1876     1 CHN    NL       66   322   126   138    21    14     1\n 7 battijo01   1876     1 SL3    NL       64   283    34    85    11     4     0\n 8 bechtge01   1876     1 LS1    NL       14    55     2    10     1     0     0\n 9 bechtge01   1876     2 NY3    NL        2    10     2     3     0     0     0\n10 berghjo01   1876     1 PHN    NL        1     4     0     0     0     0     0\n# ℹ 108,589 more rows\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
+  },
+  {
+    "objectID": "lectures/01-explore.html#filter-2",
+    "href": "lectures/01-explore.html#filter-2",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "filter()",
+    "text": "filter()\nExample: Extract batting stats for Pirates players in 2022\n\n# multiple conditions\nfilter(Batting, yearID == 2022 & teamID == \"PIT\")\n\n# A tibble: 68 × 22\n   playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n   &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1 alforan01   2022     1 PIT    NL        2     4     0     1     0     0     0\n 2 alldrca01   2022     1 PIT    NL        1     0     0     0     0     0     0\n 3 allengr01   2022     1 PIT    NL       46   118    17    22     4     0     2\n 4 andujmi01   2022     2 PIT    NL        9    36     4     9     3     1     0\n 5 baeji01     2022     1 PIT    NL       10    33     5    11     3     0     0\n 6 bandaan01   2022     1 PIT    NL       23     0     0     0     0     0     0\n 7 banuema01   2022     2 PIT    NL       31     0     0     0     0     0     0\n 8 bednada01   2022     1 PIT    NL       45     0     0     0     0     0     0\n 9 beedety01   2022     2 PIT    NL       25     0     0     0     0     0     0\n10 briceau01   2022     1 PIT    NL        4     0     0     0     0     0     0\n# ℹ 58 more rows\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
+  },
+  {
+    "objectID": "lectures/01-explore.html#logical-conditions",
+    "href": "lectures/01-explore.html#logical-conditions",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "Logical conditions",
+    "text": "Logical conditions\n\n\n\nx &lt; y: less than\nx &lt;= y: less than or equal to\nx == y: equal to\nx != y: not equal to\nx &gt; y: greater than\nx &gt;= y: greater than or equal to\n\n\n\nx %in% y: whether the value is present in a given vector\nis.na(x): is missing\n!is.na(x): is not missing\nx & y: and\nx | y: or\n!x: not\n\n\n\n… and basically anything that returns a TRUE/FALSE value"
+  },
+  {
+    "objectID": "lectures/01-explore.html#common-mistakes",
+    "href": "lectures/01-explore.html#common-mistakes",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "Common mistakes",
+    "text": "Common mistakes\n\n\n\n= instead of ==\n\nnay\n\nfilter(Batting, team = \"PIT\")\n\nyay\n\nfilter(Batting, team == \"PIT\")\n\n\n\nForgetting quotes (for string/character)\n\nnay\n\nfilter(Batting, team == PIT)\n\nyay\n\nfilter(Batting, team == \"PIT\")"
+  },
+  {
+    "objectID": "lectures/01-explore.html#mutate",
+    "href": "lectures/01-explore.html#mutate",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "mutate()",
+    "text": "mutate()\n\nUse mutate() to create new variables\nNew variables created via mutate() are usually based on existing variables\n\nMake sure to give your new variable a name\nNote that naming the new variable the same as the existing variable will overwrite the original column"
+  },
+  {
+    "objectID": "lectures/01-explore.html#arrange",
+    "href": "lectures/01-explore.html#arrange",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "arrange()",
+    "text": "arrange()\n\nSort observations (rows) by variables (columns)\n\nascending order is the default (low to high for numeric columns, alphabetical order for character columns)\n\n\nExample: Who holds the single-season home run record?\n\narrange(Batting, desc(HR)) # desc for descending order\n\n# A tibble: 112,184 × 22\n   playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n   &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1 bondsba01   2001     1 SFN    NL      153   476   129   156    32     2    73\n 2 mcgwima01   1998     1 SLN    NL      155   509   130   152    21     0    70\n 3 sosasa01    1998     1 CHN    NL      159   643   134   198    20     0    66\n 4 mcgwima01   1999     1 SLN    NL      153   521   118   145    21     1    65\n 5 sosasa01    2001     1 CHN    NL      160   577   146   189    34     5    64\n 6 sosasa01    1999     1 CHN    NL      162   625   114   180    24     2    63\n 7 judgeaa01   2022     1 NYA    AL      157   570   133   177    28     0    62\n 8 marisro01   1961     1 NYA    AL      161   590   132   159    16     4    61\n 9 ruthba01    1927     1 NYA    AL      151   540   158   192    29     8    60\n10 ruthba01    1921     1 NYA    AL      152   540   177   204    44    16    59\n# ℹ 112,174 more rows\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
+  },
+  {
+    "objectID": "lectures/01-explore.html#arrange-1",
+    "href": "lectures/01-explore.html#arrange-1",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "arrange()",
+    "text": "arrange()\nExample: arrange by multiple columns — at bats from high to low (first sort), then home runs from low to high (second sort) — variable order matters\n\narrange(Batting, desc(AB), HR)\n\n# A tibble: 112,184 × 22\n   playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n   &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1 rolliji01   2007     1 PHI    NL      162   716   139   212    38    20    30\n 2 wilsowi02   1980     1 KCA    AL      161   705   133   230    28    15     3\n 3 suzukic01   2004     1 SEA    AL      161   704   101   262    24     5     8\n 4 samueju01   1984     1 PHI    NL      160   701   105   191    36    19    15\n 5 pierrju01   2006     1 CHN    NL      162   699    87   204    32    13     3\n 6 cashda01    1975     1 PHI    NL      162   699   111   213    40     3     4\n 7 alouma01    1969     1 PIT    NL      162   698   105   231    41     6     1\n 8 reyesjo01   2005     1 NYN    NL      161   696    99   190    24    17     7\n 9 jensewo01   1936     1 PIT    NL      153   696    98   197    34    10    10\n10 soriaal01   2002     1 NYA    AL      156   696   128   209    51     2    39\n# ℹ 112,174 more rows\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
+  },
+  {
+    "objectID": "lectures/01-explore.html#performing-multiple-operations",
+    "href": "lectures/01-explore.html#performing-multiple-operations",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "Performing multiple operations",
+    "text": "Performing multiple operations\n\nWhat if we want to perform several different tasks using multiple dplyr verbs?\nIntroducing the pipe operator |&gt;\nYou might have seen the magrittr pipe %&gt;%…\n\n…from the maggritr package, automatically loaded when loading tidyverse\n\nRecently, many people (including Hadley Wickham) have switched to |&gt;, the built-in “native” pipe to base R\n\nWhat are the differences?\n\n\n\n\nShortcut for the pipe operator in RStudio: Command (or Ctrl) + Shift + M"
+  },
+  {
+    "objectID": "lectures/01-explore.html#the-pipe-operator",
+    "href": "lectures/01-explore.html#the-pipe-operator",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "The pipe operator",
+    "text": "The pipe operator\n\nUse |&gt; to perform a sequence of operations\nThe pipe takes an object (e.g., tibble, data frame, matrix, vector, etc.) on the left and passes it as the first argument of the function on the right\n\n\n# the workflow\nobject |&gt;\n  first_operation(...) |&gt;\n  second_operation(...) |&gt; \n  .\n  .\n  .\n  last_operation(...)"
+  },
+  {
+    "objectID": "lectures/01-explore.html#the-pipe-operator-1",
+    "href": "lectures/01-explore.html#the-pipe-operator-1",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "The pipe operator",
+    "text": "The pipe operator\n\nUse |&gt; a sequence of multiple operations\nThe pipe takes an object on the left and passes it as the first argument of the function on the right\n\n\n# the workflow\nobject |&gt;\n  operation1(...) |&gt;\n  operation2(...) |&gt; \n  .\n  .\n  ."
+  },
+  {
+    "objectID": "lectures/01-explore.html#performing-multiple-operations-1",
+    "href": "lectures/01-explore.html#performing-multiple-operations-1",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "Performing multiple operations",
+    "text": "Performing multiple operations\nExample: Which Pirates players had the highest batting average in 2022, among those with at least 50 at bats?\nWhat are the tasks to be done here?\n\nfilter(): only Pirates players in 2022 with at least 50 at bats\nmutate(): create a new column for batting average\narrange(): sort by batting average in descending order\nselect(): report player name, at bats, and batting average"
+  },
+  {
+    "objectID": "lectures/01-explore.html#performing-multiple-operations-2",
+    "href": "lectures/01-explore.html#performing-multiple-operations-2",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "Performing multiple operations",
+    "text": "Performing multiple operations\n\nBatting |&gt; \n  filter(yearID == 2022, teamID == \"PIT\", AB &gt;= 50) |&gt; \n  mutate(batting_avg = H / AB) |&gt; \n  arrange(desc(batting_avg)) |&gt; \n  select(playerID, AB, batting_avg)\n\n# A tibble: 23 × 3\n   playerID     AB batting_avg\n   &lt;chr&gt;     &lt;int&gt;       &lt;dbl&gt;\n 1 newmake01   288       0.274\n 2 reynobr01   542       0.262\n 3 hayeske01   505       0.244\n 4 marisja01    77       0.234\n 5 perezro02    60       0.233\n 6 castrro01   253       0.233\n 7 cruzon01    331       0.233\n 8 gamelbe01   371       0.232\n 9 chavimi01   401       0.229\n10 vogelda01   237       0.228\n# ℹ 13 more rows\n\n\nWithout the pipe, the code looks every ugly with functions nested within functions…\n\nselect(arrange(mutate(filter(Batting, yearID == 2022, teamID == \"PIT\", AB &gt;= 50), batting_avg = H / AB), \ndesc(batting_avg)), playerID, AB, batting_avg)"
+  },
+  {
+    "objectID": "lectures/01-explore.html#summarize-by-itself",
+    "href": "lectures/01-explore.html#summarize-by-itself",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "summarize() (by itself)",
+    "text": "summarize() (by itself)\n\nUse summarize() to collapse the data down to a single row (per group) by aggregating variables into single values\nUseful for computing summaries (e.g., mean, median, max, min, correlation, etc.)\n\n\nBatting |&gt; \n  summarize(median_at_bats = median(AB))\n\n# A tibble: 1 × 1\n  median_at_bats\n           &lt;dbl&gt;\n1             45\n\nBatting |&gt; \n  summarize(cor_ab_hr = cor(AB, HR))\n\n# A tibble: 1 × 1\n  cor_ab_hr\n      &lt;dbl&gt;\n1     0.704"
+  },
+  {
+    "objectID": "lectures/01-explore.html#group_by-and-summarize",
+    "href": "lectures/01-explore.html#group_by-and-summarize",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "group_by() and summarize()",
+    "text": "group_by() and summarize()\n\ngroup_by() converts the data into a “grouped tbl” where operations are performed by group\n\ni.e., it splits the data into groups based on values in a column\n\ngroup_by() becomes powerful when combining with summarize()\nAfter the operation at the group-level is done, use ungroup() to remove grouping"
+  },
+  {
+    "objectID": "lectures/01-explore.html#mutate-1",
+    "href": "lectures/01-explore.html#mutate-1",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "mutate()",
+    "text": "mutate()\nExample: Get the batting average and strikeout-to-walk ratio for every player\n\nmutate(Batting, batting_avg = H / AB, so_bb_ratio = SO / BB)\n\n# A tibble: 112,184 × 24\n   playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n   &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1 abercda01   1871     1 TRO    NA        1     4     0     0     0     0     0\n 2 addybo01    1871     1 RC1    NA       25   118    30    32     6     0     0\n 3 allisar01   1871     1 CL1    NA       29   137    28    40     4     5     0\n 4 allisdo01   1871     1 WS3    NA       27   133    28    44    10     2     2\n 5 ansonca01   1871     1 RC1    NA       25   120    29    39    11     3     0\n 6 armstbo01   1871     1 FW1    NA       12    49     9    11     2     1     0\n 7 barkeal01   1871     1 RC1    NA        1     4     0     1     0     0     0\n 8 barnero01   1871     1 BS1    NA       31   157    66    63    10     9     0\n 9 barrebi01   1871     1 FW1    NA        1     5     1     1     1     0     0\n10 barrofr01   1871     1 BS1    NA       18    86    13    13     2     1     0\n# ℹ 112,174 more rows\n# ℹ 12 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;, batting_avg &lt;dbl&gt;,\n#   so_bb_ratio &lt;dbl&gt;"
+  },
+  {
+    "objectID": "lectures/01-explore.html#group_by-and-summarize-1",
+    "href": "lectures/01-explore.html#group_by-and-summarize-1",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "group_by() and summarize()",
+    "text": "group_by() and summarize()\nExample: How many home runs, strike outs, and walks did each team accumulate in each season from 2015 to 2019?\n\nBatting |&gt; \n  filter(yearID %in% 2015:2019) |&gt; \n  group_by(teamID) |&gt; \n  summarize(total_hr = sum(HR), total_so = sum(SO), total_bb = sum(BB)) |&gt; \n  arrange(desc(total_hr))\n\n# A tibble: 30 × 4\n   teamID total_hr total_so total_bb\n   &lt;fct&gt;     &lt;int&gt;    &lt;int&gt;    &lt;int&gt;\n 1 NYA        1209     6659     2839\n 2 HOU        1159     6294     2759\n 3 TOR        1139     6741     2752\n 4 LAN        1111     6751     2991\n 5 BAL        1103     6914     2162\n 6 TEX        1041     7008     2572\n 7 SEA        1036     6693     2489\n 8 MIN        1035     6694     2604\n 9 OAK        1033     6474     2610\n10 MIL        1031     7434     2724\n# ℹ 20 more rows"
+  },
+  {
+    "objectID": "lectures/01-explore.html#the-dplyr-package",
+    "href": "lectures/01-explore.html#the-dplyr-package",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "The dplyr package",
+    "text": "The dplyr package\n\ndplyr is a package within the tidyverse with functions for data wrangling\nThe dplyr data verbs for manipulating data\n\nfilter()\nselect()\narrange()\nmutate()\ngroup_by()\nsummarize()"
+  },
+  {
+    "objectID": "lectures/01-explore.html#count",
+    "href": "lectures/01-explore.html#count",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "count()",
+    "text": "count()\ncount() returns the number of observations in each group\n\n\n\nBatting |&gt; \n  count(lgID, name = \"freq\")\n\n# A tibble: 7 × 2\n  lgID   freq\n  &lt;fct&gt; &lt;int&gt;\n1 AA     1893\n2 AL    51799\n3 FL      472\n4 NA      737\n5 NL    56800\n6 PL      149\n7 UA      334\n\n\n\n# recall that in base R...\ntable(Batting$lgID)\n\n\n   AA    AL    FL    NA    NL    PL    UA \n 1893 51799   472   737 56800   149   334 \n\n\n\nThis can also be done with group_by() and summarize()\n\n# note: count is a \"shortcut\" of this\nBatting |&gt; \n  group_by(lgID) |&gt; \n  summarize(freq = n()) |&gt; \n  ungroup()\n\n# A tibble: 7 × 2\n  lgID   freq\n  &lt;fct&gt; &lt;int&gt;\n1 AA     1893\n2 AL    51799\n3 FL      472\n4 NA      737\n5 NL    56800\n6 PL      149\n7 UA      334"
+  },
+  {
+    "objectID": "lectures/01-explore.html#slice_-family-for-subsetting-rows",
+    "href": "lectures/01-explore.html#slice_-family-for-subsetting-rows",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "slice_*() family for subsetting rows",
+    "text": "slice_*() family for subsetting rows\n\nslice(): extract rows (observations) based on the row index\n\n\nBatting |&gt; \n  slice(c(1, 99, 101, 500))\n\n# A tibble: 4 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 abercda01   1871     1 TRO    NA        1     4     0     0     0     0     0\n2 spaldal01   1871     1 BS1    NA       31   144    43    39    10     1     1\n3 stearbi01   1871     1 WS3    NA        2     9     1     0     0     0     0\n4 smilebi01   1874     1 BL1    NA        2     7     0     0     0     0     0\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;\n\n\n\nslice_head() / slice_tail(): extract the first / last n rows\n\n\n# Batting |&gt; slice_tail(n = 5)\nBatting |&gt; \n  slice_head(n = 5)\n\n# A tibble: 5 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 abercda01   1871     1 TRO    NA        1     4     0     0     0     0     0\n2 addybo01    1871     1 RC1    NA       25   118    30    32     6     0     0\n3 allisar01   1871     1 CL1    NA       29   137    28    40     4     5     0\n4 allisdo01   1871     1 WS3    NA       27   133    28    44    10     2     2\n5 ansonca01   1871     1 RC1    NA       25   120    29    39    11     3     0\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
+  },
+  {
+    "objectID": "lectures/01-explore.html#slice_-family-for-subsetting-rows-1",
+    "href": "lectures/01-explore.html#slice_-family-for-subsetting-rows-1",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "slice_*() family for subsetting rows",
+    "text": "slice_*() family for subsetting rows\n\nslice_min() / slice_max(): extract rows with the smallest or largest values of a variable\n\n\n# single-season home run record (top 5)\nBatting |&gt; \n  slice_max(HR, n = 5)\n\n# A tibble: 5 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 bondsba01   2001     1 SFN    NL      153   476   129   156    32     2    73\n2 mcgwima01   1998     1 SLN    NL      155   509   130   152    21     0    70\n3 sosasa01    1998     1 CHN    NL      159   643   134   198    20     0    66\n4 mcgwima01   1999     1 SLN    NL      153   521   118   145    21     1    65\n5 sosasa01    2001     1 CHN    NL      160   577   146   189    34     5    64\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;\n\n\n\nslice_sample(): randomly sample a specified number / fraction of observation in the data\n\nUseful for performing resampling (e.g., bootstrap, cross-validation, etc.)\n\n# randomly sample 1000 rows (without replacement, by default)\nBatting |&gt; \n  slice_sample(n = 1000)\n\n# randomly sample 70% of the rows, with replacement\nBatting |&gt; \n  slice_sample(prop = 0.7, replace = TRUE)"
+  },
+  {
+    "objectID": "lectures/01-explore.html#putting-it-all-together",
+    "href": "lectures/01-explore.html#putting-it-all-together",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "Putting it all together",
+    "text": "Putting it all together\nBatting stats for each year: each row is a year with the following variables\n\ntotal hits, home runs, strikeouts, walks, atbats\ntotal batting average for each year = total H / total AB\nonly keeps AL and NL leagues\n\n\nyearly_batting &lt;- Batting |&gt;\n  filter(lgID %in% c(\"AL\", \"NL\")) |&gt;\n  group_by(yearID) |&gt;\n  summarize(total_h = sum(H, na.rm = TRUE),\n            total_hr = sum(HR, na.rm = TRUE),\n            total_so = sum(SO, na.rm = TRUE),\n            total_bb = sum(BB, na.rm = TRUE),\n            total_ab = sum(AB, na.rm = TRUE)) |&gt;\n  mutate(batting_avg = total_h / total_ab)"
+  },
+  {
+    "objectID": "lectures/01-explore.html#the-diagram",
+    "href": "lectures/01-explore.html#the-diagram",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "The diagram",
+    "text": "The diagram\n\nSource: R for Data Science (2e)"
+  },
+  {
+    "objectID": "lectures/01-explore.html#workflow-diagram",
+    "href": "lectures/01-explore.html#workflow-diagram",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "Workflow diagram",
+    "text": "Workflow diagram\n\nSource: R for Data Science (2e)\nExploring data: data wrangling and data visualization\nAspects of data wrangling\n\nimport: load in data (e.g., read_csv())\ntidy: each row is an observation, each column is a variable\ntransform: filter observations, create new variables, etc."
+  },
+  {
+    "objectID": "lectures/01-explore.html#putting-it-all-together-1",
+    "href": "lectures/01-explore.html#putting-it-all-together-1",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "Putting it all together",
+    "text": "Putting it all together\nWhat are the top three years with the most HRs?\n\nyearly_batting |&gt; \n  slice_max(total_hr, n = 3)\n\n# A tibble: 3 × 7\n  yearID total_h total_hr total_so total_bb total_ab batting_avg\n   &lt;int&gt;   &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;       &lt;dbl&gt;\n1   2019   42039     6776    42823    15895   166651       0.252\n2   2017   42215     6105    40104    15829   165567       0.255\n3   2021   39484     5944    42145    15794   161941       0.244\n\n\n\n# or this \nyearly_batting |&gt;\n  arrange(desc(total_hr)) |&gt;\n  slice(1:3)\n\n# A tibble: 3 × 7\n  yearID total_h total_hr total_so total_bb total_ab batting_avg\n   &lt;int&gt;   &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;       &lt;dbl&gt;\n1   2019   42039     6776    42823    15895   166651       0.252\n2   2017   42215     6105    40104    15829   165567       0.255\n3   2021   39484     5944    42145    15794   161941       0.244"
+  },
+  {
+    "objectID": "lectures/01-explore.html#putting-it-all-together-2",
+    "href": "lectures/01-explore.html#putting-it-all-together-2",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "Putting it all together",
+    "text": "Putting it all together\nWhich years have the best and worst strikeout to walk ratios?\n\nyearly_batting |&gt;\n  mutate(so_bb_ratio = total_so / total_bb) |&gt;\n  arrange(so_bb_ratio) |&gt;\n  slice(c(1, n()))\n\n# A tibble: 2 × 8\n  yearID total_h total_hr total_so total_bb total_ab batting_avg so_bb_ratio\n   &lt;int&gt;   &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;       &lt;dbl&gt;       &lt;dbl&gt;\n1   1893   15913      460     3341     6143    56898       0.280       0.544\n2   1879    6171       58     1843      508    24155       0.255       3.63"
+  },
+  {
+    "objectID": "lectures/01-explore.html#whats-next",
+    "href": "lectures/01-explore.html#whats-next",
+    "title": "Exploring data: Into the tidyverse",
+    "section": "What’s next?",
+    "text": "What’s next?\n\n\nDATA VISUALIZATION\n\nThe simple graph has brought more information to the data analyst’s mind than any other device. — John Tukey\n\n\nUse ggplot2 (and the grammar of graphics) to visually explore data\nMore intuitive than base R plotting\nDifferent types of visualizations for {1D, 2D} {continuous, categorical} data, faceting, etc.\ndplyr verbs and |&gt; leads to natural pipeline for EDA\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#let-the-fun-begin",
+    "href": "lectures/00-welcome.html#let-the-fun-begin",
+    "title": "Welcome to SURE 2024",
+    "section": "Let the fun begin",
+    "text": "Let the fun begin\nyo"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#meet-us",
+    "href": "lectures/00-welcome.html#meet-us",
+    "title": "Welcome to SURE 2024",
+    "section": "Meet us",
+    "text": "Meet us\nsteve\n\n\n36-SURE.github.io"
   }
 ]

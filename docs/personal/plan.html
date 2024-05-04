@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>SURE 2024 - R and RStudio Setup</title>
+<title>SURE 2024 - Plan</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,59 +20,25 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -95,7 +61,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -105,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">SURE 2024</span>
     </a>
   </div>
@@ -116,29 +82,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
+    <a class="nav-link" href="../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./lectures.html" rel="" target="">
+    <a class="nav-link" href="../lectures.html" rel="" target="">
  <span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cmsac.html" rel="" target="">
+    <a class="nav-link" href="../cmsac.html" rel="" target="">
  <span class="menu-text">CMSAC</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./optum.html" rel="" target="">
+    <a class="nav-link" href="../optum.html" rel="" target="">
  <span class="menu-text">Optum</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./r-setup.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../r-setup.html" rel="" target="">
  <span class="menu-text">R and RStudio Setup</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./git-setup.html" rel="" target="">
+    <a class="nav-link" href="../git-setup.html" rel="" target="">
  <span class="menu-text">Git and GitHub Setup</span></a>
   </li>  
 </ul>
@@ -158,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">R and RStudio Setup</h1>
+<h1 class="title">Plan</h1>
 </div>
 
 
@@ -173,127 +139,383 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<hr>
-<section id="r-and-rstudio" class="level1">
-<h1><code>R</code> and <code>RStudio</code></h1>
-<p><code>R</code> is an open-source programming language for statistical computing. <code>R</code> is widely-used in both academia and industry, due to its capacity for statistical analysis and data science.</p>
-<p>In order to use <code>R</code> effectively, we need a suitable editing environment, i.e.&nbsp;<code>RStudio</code>. For more context, <code>RStudio</code> is an integrated development environment (IDE) developed specifically for <code>R</code> programming. Although <code>R</code> can be run without <code>RStudio</code>, <code>RStudio</code> provides a more user-friendly experience with additional functionality.</p>
-<p><strong>To download <code>R</code> and <code>RStudio</code>, visit <a href="https://posit.co/download/rstudio-desktop" class="uri">https://posit.co/download/rstudio-desktop</a>.</strong></p>
-<p>You will see the following two tasks to be completed:</p>
-<ul>
-<li><strong>1: Install <code>R</code></strong></li>
-<li><strong>2: Install <code>RStudio</code></strong></li>
-</ul>
-<section id="step-1-install-r" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-install-r">Step 1: Install <code>R</code></h2>
-<p>(<em>Note that the following instructions apply to the latest <code>R</code> version (4.4.0) as of May 1, 2024</em>)</p>
-<p>Click on <strong><em>DOWNLOAD AND INSTALL R</em></strong>. This will direct you to the CRAN (Comprehensive R Archive Network) website.</p>
-<p><strong>macOS</strong></p>
-<ul>
-<li><p>Click on <strong><em>Download R for macOS</em></strong>.</p></li>
-<li><p>Choose the <code>.pkg</code> file suitable for your Mac (<em>Apple silicon (M1-3) Macs</em> or <em>older Intel Macs</em>.)</p></li>
-<li><p>Open the <code>.pkg</code> file after the download is complete.</p></li>
-<li><p>Follow the installation instructions.</p></li>
-</ul>
-<p><strong>Windows</strong></p>
-<ul>
-<li><p>Click on <strong><em>Download R for Windows</em></strong>.</p></li>
-<li><p>Click on <strong><em>install R for the first time</em></strong> (on the same line as the <strong><em>base</em></strong> subdirectory.)</p></li>
-<li><p>Choose <strong><em>Download R 4.4.0 for Windows</em></strong>.</p></li>
-<li><p>Open the <code>.exe</code> file after the download is complete.</p></li>
-<li><p>Follow the installation instructions.</p></li>
-</ul>
-</section>
-<section id="step-2-install-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-install-rstudio">Step 2: Install <code>RStudio</code></h2>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><code>R</code> <strong>must</strong> be installed before <code>RStudio</code>.</p>
-</div>
-</div>
-<p>Click on <strong><em>DOWNLOAD RSTUDIO DESKTOP…</em></strong> Your operating system is automatically detected. (If your OS is not correctly detected, scroll down and choose the right version for your system.)</p>
-<p><strong>macOS</strong></p>
-<ul>
-<li><p>Open the <code>.dmg</code> file after the download is complete.</p></li>
-<li><p>Drag and drop it to your Applications folder.</p></li>
-</ul>
-<p><strong>Windows</strong></p>
-<ul>
-<li><p>Open the <code>.exe</code> file after the download is complete.</p></li>
-<li><p>Follow the installation instructions.</p></li>
-</ul>
-</section>
-<section id="step3" class="level2">
-<h2 class="anchored" data-anchor-id="step3">Step 3: Check <code>R</code> and <code>RStudio</code> installations</h2>
-<p>Open <code>RStudio</code> and type in the following command in the <strong>Console</strong> pane.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This will print out the current version of <code>R</code> on your machine. The output should look similar to what shown below (the first 4 lines might be different, depending on your operating system.)</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>               _                           
-platform       aarch64-apple-darwin20      
-arch           aarch64                     
-os             darwin20                    
-system         aarch64, darwin20           
-status                                     
-major          4                           
-minor          3.3                         
-year           2024                        
-month          02                          
-day            29                          
-svn rev        86002                       
-language       R                           
-version.string R version 4.3.3 (2024-02-29)
-nickname       Angel Food Cake             </code></pre>
-</div>
-</div>
-<!-- <center> -->
-<!-- ![](files/images/version.gif){height=300} -->
-<!-- </center> -->
-</section>
-<section id="step-4-install-an-r-package" class="level2">
-<h2 class="anchored" data-anchor-id="step-4-install-an-r-package">Step 4: Install an <code>R</code> package</h2>
-<p>In <code>R</code>, a package is a collection of functions, data, and compiled code. In addition to a set of built-in base packages, there are numerous external <code>R</code> packages written by the community to add specific functionality.</p>
-<p>In general, to install an <code>R</code> package, you can use the <code>install.packages()</code> function and pass in the package name.</p>
-<p>The following example shows how to install the <code>tidyverse</code> package in <code>R</code>. The <code>tidyverse</code> is a suite of <code>R</code> packages we will be using throughout this program. It features popular packages such as <code>ggplot2</code> for data visualization and <code>dplyr</code> for data manipulation.</p>
-<p>After installing <code>R</code> and <code>RStudio</code>, open <code>RStudio</code> and enter the following command in the <strong>Console</strong> pane.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>To verify that <code>tidyverse</code> is successfully installed, run the following command:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>You should get a message similar to the output below.</p>
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.2     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.4     ✔ tibble    3.2.1
-✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-✔ purrr     1.0.1     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-</div>
-<p><strong>Ask us for help if you encounter any issues or errors in any of the installation steps above.</strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Week</th>
+<th>Month</th>
+<th>Day</th>
+<th>Topic</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>June</td>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>6</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>7</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td></td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>11</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>12</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>13</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>14</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td></td>
+<td>17</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>18</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>19</td>
+<td>No lecture</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>21</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td></td>
+<td>24</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>25</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>26</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>27</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>28</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>July</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>4</td>
+<td>No lecture</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td></td>
+<td>8</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>9</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>11</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>12</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td></td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>16</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>17</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>18</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>19</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td></td>
+<td>22</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>23</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>24</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>25</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>26</td>
+<td>Presentations</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

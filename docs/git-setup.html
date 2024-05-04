@@ -181,11 +181,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="step-2-install-and-configure-git" class="level2">
 <h2 class="anchored" data-anchor-id="step-2-install-and-configure-git">Step 2: Install and configure Git</h2>
-<p>If you do not have Git installed, install it from here: <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>.</p>
-<p>You may already have Git installed without knowing it, <strong>please read the directions available from the definitive guide on <code>R</code> and Git / GitHub</strong>: <a href="https://happygitwithr.com/install-git.html">https://happygitwithr.com/install-git.html</a>. You may have to access your <strong>shell</strong> (aka <strong>terminal</strong>, <strong>command prompt</strong>, etc). <strong>DO NOT PANIC</strong>. You can read more about the <strong>shell</strong> here: <a href="https://happygitwithr.com/shell.html#shell">https://happygitwithr.com/shell.html#shell</a>, with instructions depending on your operating system.</p>
-<p>After installation, you will need to <strong>configure</strong> Git (read more about it here: <a href="https://happygitwithr.com/hello-git.html">https://happygitwithr.com/hello-git.html</a>). You can use the shell for this, <strong>or you can do this directly in <code>R</code></strong>:</p>
+<p>If you do not have <strong>Git</strong> installed, install it from here: <a href="https://git-scm.com/downloads" class="uri">https://git-scm.com/downloads</a>.</p>
+<!-- https://36-750.github.io/course-info/system-setup/#pre-setup -->
+<p>You may already have <strong>Git</strong> installed without knowing it, <strong>please read the directions available from the definitive guide on <code>R</code> and Git / GitHub</strong>: <a href="https://happygitwithr.com/install-git.html" class="uri">https://happygitwithr.com/install-git.html</a>. You may have to access your <strong>shell</strong> (aka <strong>terminal</strong>, <strong>command prompt</strong>, etc). <strong>DO NOT PANIC</strong>. You can read more about the <strong>shell</strong> here: <a href="https://happygitwithr.com/shell.html#shell" class="uri">https://happygitwithr.com/shell.html#shell</a>, with instructions depending on your operating system.</p>
+<p>After installation, you will need to configure <strong>Git</strong> (read more about it here: <a href="https://happygitwithr.com/hello-git.html" class="uri">https://happygitwithr.com/hello-git.html</a>). You can use the shell for this, <strong>or you can do this directly in <code>R</code></strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment and run the following line to install the usethis package:</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment and run the following line to install the usethis package</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("usethis")</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git_config</span>(<span class="at">user.name =</span> <span class="st">"Your Name"</span>, <span class="at">user.email =</span> <span class="st">"your-github@email.address"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -193,13 +194,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You then need to create a <em>personal access token</em> for authentication, following the steps outlined <a href="https://happygitwithr.com/https-pat.html">here</a> and described below.</p>
 <p>First, create a <strong>personal access token</strong> with the following command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in case usethis version &lt; 2.0.0: usethis::browse_github_token() (or even better: update usethis!)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Recommended scopes will be pre-selected if you used <code>create_github_token()</code>. <strong>Click “Generate token”</strong>. Copy the generated token to your clipboard. Or leave that browser window open and available for a little while, so you can come back to copy the token</p>
 <p>Now, in <code>R</code>, after making sure the <code>gitcreds</code> package is installed, run <code>gitcreds::gitcreds_set()</code> to get a prompt where you can paste your token:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment and run the following line to install the gitcreds package:</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment and run the following line to install the gitcreds package</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("gitcreds")</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -209,53 +209,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; Removing credentials from cache...</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; Done.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>It should display the following where you will paste in your token:</p>
-<pre><code>? Enter password or token: ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code></pre>
-<p>Then present the following messages:</p>
-<pre><code>-&gt; Adding new credentials...
--&gt; Removing credentials from cache...
--&gt; Done.</code></pre>
 <p>You should then be ready to use GitHub!</p>
 </section>
 <section id="step-3-create-repository-with-github" class="level2">
 <h2 class="anchored" data-anchor-id="step-3-create-repository-with-github">Step 3: Create repository with GitHub</h2>
-<p>We will follow the paradigm of “<code>GitHub</code> first”. What this means is that when we create a repository, we will create it on <code>GitHub</code> first, then link a local repository to it from inside <code>RStudio</code>.</p>
-<p>In <code>GitHub</code>, do the following:</p>
+<p>We will follow the paradigm of “<strong>GitHub</strong> first”. What this means is that when we create a repository, we will create it on <strong>GitHub</strong> first, then link a local repository to it from inside <code>RStudio</code>.</p>
+<p>After you’ve logged in, to create a <strong>GitHub</strong> repository</p>
 <ul>
-<li><p>go to the top-level directory (i.e., <code>github.com/&lt;your user name here&gt;</code>)</p></li>
-<li><p>click on “+” at top right, and select “New repository”</p></li>
-<li><p>name the repository (e.g., “summer-eda-project”)</p></li>
-<li><p>provide a short description of the repository (don’t leave completely blank!)</p></li>
-<li><p>keep the repository public</p></li>
-<li><p>click on “Initialize this repository with a README”…there is no need to “Add .gitignore” or “Add a license”</p></li>
-<li><p>click on “Create Repository”</p></li>
+<li><p>Visit https://github.com/new</p></li>
+<li><p>Name the repository (give it a meaningful name)</p></li>
+<li><p>Give the repository a description (don’t leave this blank even though this is optional)</p></li>
+<li><p>Decide whether to keep the repository public or private (for now, let’s just keep it public)</p></li>
+<li><p>Click on “Initialize this repository with a README”. For now, there’s no need to “Add .gitignore” or “Choose a license”</p></li>
+<li><p>Click on “Create Repository”</p></li>
 </ul>
 </section>
-<section id="step-4-..then-in-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="step-4-..then-in-rstudio">Step 4: ..then in RStudio</h2>
-<p>In <code>RStudio</code>, do the following:</p>
+<section id="step-4-connect-rstudio-to-the-github-repository" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-connect-rstudio-to-the-github-repository">Step 4: Connect RStudio to the GitHub repository</h2>
 <ul>
-<li><p>click on <code>File &gt; New Project...</code></p></li>
-<li><p>click on “Version Control”, then on “Git”</p></li>
-<li><p>provide the <em>full</em> address for the “Repository URL” (including the <code>https</code>, etc.; by default, this will provide the name of your local repository)</p></li>
-<li><p>make sure “Create project as subdirectory of:” points to where you want to point it</p></li>
-<li><p>click on “Create Project”</p></li>
+<li><p>In <code>RStudio</code>, click on <code>File &gt; New Project...</code>. Next click on “Version Control” and then on “Git”</p></li>
+<li><p>Go back to the GitHub repository in your browser, click on <strong>Code</strong> (in the same line as “Go to file”). Under HTTPS, copy the web URL</p></li>
+<li><p>In <code>RStudio</code>, paste this URL into “Repository URL”</p></li>
+<li><p>Type the name for the folder on your computer associated with this repository into “Project directory name”</p></li>
+<li><p>Make sure “Create project as subdirectory of:” points to where you want to locate this new folder.</p></li>
+<li><p>Click on “Create Project”</p></li>
 </ul>
-<p>At this point, you should find that your <code>Files</code> pane is listing the files in your local repository, including one ending in <code>.Rproj</code> and the <code>README.md</code> file that was created on <code>GitHub</code>.</p>
+<p>At this point, you should find that your <code>Files</code> pane is listing the files in your local repository, including one ending in <code>.Rproj</code> and the <code>README.md</code> file that was created on GitHub.</p>
 </section>
-<section id="step-5-updating-your-repository" class="level2">
-<h2 class="anchored" data-anchor-id="step-5-updating-your-repository">Step 5: Updating your repository</h2>
-<p>To, e.g., add a new file to your local repository, do the following:</p>
+<section id="step-5-modify-the-repository" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-modify-the-repository">Step 5: Modify the repository</h2>
+<p>To add a new file from your local repository to GitHub,</p>
 <ul>
-<li><p>open the new file as you always would (as an <code>R Script</code>, an <code>R Markdown</code> file, etc.)</p></li>
-<li><p>fill the file with “stuff”</p></li>
-<li><p>save the file…at this point, the file name should show up in the <code>Git</code> pane next to an “M” symbol (for modified)</p></li>
-<li><p>continue to modify the file, or…stage the file for a commit (think of it as: pose it for its snapshot) by clicking on “Staged” in the Git pane</p></li>
-<li><p>click on “Commit” in the <code>Git</code> pane</p></li>
-<li><p>in the new window that opens, add a “Commit message”, then click on the “Commit” button</p></li>
-<li><p>click on “Push” to push your changes from your local repo to your <code>GitHub</code> repo</p></li>
+<li><p>Open a new file (e.g, <code>R Script</code>, <code>Quarto document</code>, etc.)</p></li>
+<li><p>Fill the file with some code/comments/etc</p></li>
+<li><p>Save the file. At this point, this file should show up in the <code>Git</code> pane (in the top left of <code>RStudio</code>)</p></li>
+<li><p>Check the box under “Staged” in the <code>Git</code> pane to stage the file for a commit</p></li>
+<li><p>Click on “Commit” in the <code>Git</code> pane</p></li>
+<li><p>In the new window that opens, add a “Commit message”, then click on the “Commit” button</p></li>
+<li><p>Click on “Push” to push your changes from your local repo to your GitHub repo</p></li>
 </ul>
-<p>If you encountered no errors then you’re done! While working on a single project you will repeatedly use Step 5, update file, commit changes, then push changes. <em>We will cover pulling at a later time</em>.</p>
+<p>If you encountered no errors then you’re done! While working on a single project you will repeatedly use Step 5—make changes to files, commit changes, then push changes. <em>We will cover pulling later.</em>.</p>
 <p>Every time you want to create a new repository, you can just start with Step 3, use GitHub, copy the repository into RStudio, then repeatedly update, commit, and push.</p>
 <p><strong>Ask us for help if you have any questions.</strong></p>
 
