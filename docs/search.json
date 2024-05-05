@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "SURE 2024",
     "section": "",
-    "text": "Welcome to the Summer Undergraduate Research Experience in Statistics (SURE) 2024, hosted by the Department of Statistics & Data Science at Carnegie Mellon University. The purpose of this program is to explore cutting-edge statistics and data science methodology with applications in healthcare and sports analytics."
+    "text": "Welcome to the Summer Undergraduate Research Experience in Statistics (SURE) 2024, hosted by the Department of Statistics & Data Science at Carnegie Mellon University. This program focuses on statistics and data science methodology with applications in healthcare and sports analytics.\nOn this site, the Lectures tab contains all lecture slides. The CMSAC and Optum tabs contain lab/demo materials for sports and healthcare, respectively."
   },
   {
     "objectID": "git-setup.html",
@@ -65,224 +65,224 @@
   {
     "objectID": "lectures/01-explore.html#workflow-diagram",
     "href": "lectures/01-explore.html#workflow-diagram",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "Workflow diagram",
     "text": "Workflow diagram\n\nSource: R for Data Science (2e)\nExploring data: data wrangling and data visualization\nAspects of data wrangling\n\nimport: load in data (e.g., read_csv())\ntidy: each row is an observation, each column is a variable\ntransform: filter observations, create new variables, etc."
   },
   {
     "objectID": "lectures/01-explore.html#exploratory-data-analysis",
     "href": "lectures/01-explore.html#exploratory-data-analysis",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "Exploratory data analysis",
     "text": "Exploratory data analysis\n\nWhat is the goal of EDA?\n\nto perform initial investigations on the data in order to better understand the data, discover trends/patterns, spot anomalies, etc.\n\n\n\n\n“EDA is an iterative cycle”\n\nquestions about data \\(\\rightarrow\\) wrangling \\(\\rightarrow\\) visualization\n\n\n\n\n\n“EDA is a state of mind”\n\n\n\n\nThe term EDA was coined by statistician John Tukey in the 1970s."
   },
   {
     "objectID": "lectures/01-explore.html#exploratory-data-analysis-contd",
     "href": "lectures/01-explore.html#exploratory-data-analysis-contd",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "Exploratory data analysis (cont’d)",
     "text": "Exploratory data analysis (cont’d)\n\nData can be explored numerically (tables, descriptive statistics, etc.) or visually (graphs)\nExamples of questions\n\nWhat type of variation do the variables display?\nWhat type of relationships exist between variables?\n\n\n\n\nEDA is NOT a replacement for statistical inference and learning\n\n\n\n\nEDA is an important and necessary step to build intuition"
   },
   {
     "objectID": "lectures/01-explore.html#first-example-mlb-batting",
     "href": "lectures/01-explore.html#first-example-mlb-batting",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "First example: MLB batting",
     "text": "First example: MLB batting\n\nImport Batting table of historical batting statistics from the Lahman\n\n\nlibrary(tidyverse) # load the tidyverse\nlibrary(Lahman) # load the Lahman package to access its datasets\nBatting &lt;- as_tibble(Batting) # initialize the Batting dataset\n\n\n\nBasic info about the Batting dataset\n\n\n# number of rows and columns\n# can also do nrow(Batting) and ncol(Batting)\ndim(Batting) \n\n[1] 112184     22\n\n\n\nclass(Batting)\n\n[1] \"tbl_df\"     \"tbl\"        \"data.frame\"\n\n\n\n\n\ntbl (pronounced tibble) is the tidyverse way of storing tabular data, like a spreadsheet or data.frame"
   },
   {
     "objectID": "lectures/01-explore.html#first-example-mlb-batting-1",
     "href": "lectures/01-explore.html#first-example-mlb-batting-1",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "First example: MLB batting",
     "text": "First example: MLB batting\n\nView the first 6 (by default) rows with head()\n\n\n# try just typing Batting into your console, what happens?\n# also try glimpse(Batting)\nhead(Batting) \n\n# A tibble: 6 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 abercda01   1871     1 TRO    NA        1     4     0     0     0     0     0\n2 addybo01    1871     1 RC1    NA       25   118    30    32     6     0     0\n3 allisar01   1871     1 CL1    NA       29   137    28    40     4     5     0\n4 allisdo01   1871     1 WS3    NA       27   133    28    44    10     2     2\n5 ansonca01   1871     1 RC1    NA       25   120    29    39    11     3     0\n6 armstbo01   1871     1 FW1    NA       12    49     9    11     2     1     0\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;\n\n\n\nIs the Batting dataset tidy?\n\nEach row: a player’s season stint with a team (i.e. players can play for multiple teams in year)\nEach column: different measurement or recording about the player-team-season observation (get all column names with colnames(Batting) or names(Batting))"
   },
   {
     "objectID": "lectures/01-explore.html#first-example-mlb-batting-2",
     "href": "lectures/01-explore.html#first-example-mlb-batting-2",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "First example: MLB batting",
     "text": "First example: MLB batting"
   },
   {
     "objectID": "lectures/01-explore.html#descriptive-statistics",
     "href": "lectures/01-explore.html#descriptive-statistics",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "Descriptive statistics",
     "text": "Descriptive statistics\nSummarize continuous (e.g. yearID, AB) and categorical (e.g. teamID, lgID) variables in different ways…\n\n\nSummary statistics for continuous variables with the summary() function\n\n\nsummary(Batting$yearID)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n   1871    1938    1978    1969    2003    2022 \n\n\n\nCounts of categorical variables with the table() function\n\n\n# be careful it ignores NA values\n# can do table(Batting$lgID, useNA = \"always\")\ntable(Batting$lgID)\n\n\n   AA    AL    FL    NA    NL    PL    UA \n 1893 51799   472   737 56800   149   334"
   },
   {
     "objectID": "lectures/01-explore.html#the-dplyr-package",
     "href": "lectures/01-explore.html#the-dplyr-package",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "The dplyr package",
     "text": "The dplyr package\n\ndplyr is a package within the tidyverse with functions for data wrangling\nThe dplyr data verbs for manipulating data\n\nfilter()\nselect()\narrange()\nmutate()\ngroup_by()\nsummarize()"
   },
   {
     "objectID": "lectures/01-explore.html#filter",
     "href": "lectures/01-explore.html#filter",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "filter()",
     "text": "filter()\n\nUse filter() to extract ROWS (observations) that meet certain conditions\nNeed to specify a logical condition (aka boolean expression)"
   },
   {
     "objectID": "lectures/01-explore.html#filter-1",
     "href": "lectures/01-explore.html#filter-1",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "filter()",
     "text": "filter()\nExample: Extract batting stats for 2 leagues AL and NL only\n\nfilter(Batting, lgID %in% c(\"AL\", \"NL\")) # or filter(Batting, lgID == \"AL\" | lgID == \"NL\")\n\n# A tibble: 108,599 × 22\n   playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n   &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1 addybo01    1876     1 CHN    NL       32   142    36    40     4     1     0\n 2 allisar01   1876     1 LS1    NL       31   130     9    27     2     1     0\n 3 allisdo01   1876     1 HAR    NL       44   163    19    43     4     0     0\n 4 andrufr01   1876     1 CHN    NL        8    36     6    11     3     0     0\n 5 ansonca01   1876     1 CHN    NL       66   309    63   110     9     7     2\n 6 barnero01   1876     1 CHN    NL       66   322   126   138    21    14     1\n 7 battijo01   1876     1 SL3    NL       64   283    34    85    11     4     0\n 8 bechtge01   1876     1 LS1    NL       14    55     2    10     1     0     0\n 9 bechtge01   1876     2 NY3    NL        2    10     2     3     0     0     0\n10 berghjo01   1876     1 PHN    NL        1     4     0     0     0     0     0\n# ℹ 108,589 more rows\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
   },
   {
     "objectID": "lectures/01-explore.html#filter-2",
     "href": "lectures/01-explore.html#filter-2",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "filter()",
     "text": "filter()\nExample: Extract batting stats for Pirates players in 2022\n\n# multiple conditions\nfilter(Batting, yearID == 2022 & teamID == \"PIT\")\n\n# A tibble: 68 × 22\n   playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n   &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1 alforan01   2022     1 PIT    NL        2     4     0     1     0     0     0\n 2 alldrca01   2022     1 PIT    NL        1     0     0     0     0     0     0\n 3 allengr01   2022     1 PIT    NL       46   118    17    22     4     0     2\n 4 andujmi01   2022     2 PIT    NL        9    36     4     9     3     1     0\n 5 baeji01     2022     1 PIT    NL       10    33     5    11     3     0     0\n 6 bandaan01   2022     1 PIT    NL       23     0     0     0     0     0     0\n 7 banuema01   2022     2 PIT    NL       31     0     0     0     0     0     0\n 8 bednada01   2022     1 PIT    NL       45     0     0     0     0     0     0\n 9 beedety01   2022     2 PIT    NL       25     0     0     0     0     0     0\n10 briceau01   2022     1 PIT    NL        4     0     0     0     0     0     0\n# ℹ 58 more rows\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
   },
   {
     "objectID": "lectures/01-explore.html#logical-conditions",
     "href": "lectures/01-explore.html#logical-conditions",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "Logical conditions",
     "text": "Logical conditions\n\n\n\nx &lt; y: less than\nx &lt;= y: less than or equal to\nx == y: equal to\nx != y: not equal to\nx &gt; y: greater than\nx &gt;= y: greater than or equal to\n\n\n\nx %in% y: whether the value is present in a given vector\nis.na(x): is missing\n!is.na(x): is not missing\nx & y: and\nx | y: or\n!x: not\n\n\n\n… and basically anything that returns a TRUE/FALSE value"
   },
   {
     "objectID": "lectures/01-explore.html#common-mistakes",
     "href": "lectures/01-explore.html#common-mistakes",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "Common mistakes",
     "text": "Common mistakes\n\n\n\n= instead of ==\n\nnay\n\nfilter(Batting, team = \"PIT\")\n\nyay\n\nfilter(Batting, team == \"PIT\")\n\n\n\nForgetting quotes (for string/character)\n\nnay\n\nfilter(Batting, team == PIT)\n\nyay\n\nfilter(Batting, team == \"PIT\")"
   },
   {
     "objectID": "lectures/01-explore.html#select",
     "href": "lectures/01-explore.html#select",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "select()",
     "text": "select()\n\nUse select() to extract COLUMNS (variables) of interest\nJust simply specify the column names…\n\n\nselect(Batting, playerID, yearID, G, AB, R, H, HR, BB)\n\n# A tibble: 112,184 × 8\n   playerID  yearID     G    AB     R     H    HR    BB\n   &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1 abercda01   1871     1     4     0     0     0     0\n 2 addybo01    1871    25   118    30    32     0     4\n 3 allisar01   1871    29   137    28    40     0     2\n 4 allisdo01   1871    27   133    28    44     2     0\n 5 ansonca01   1871    25   120    29    39     0     2\n 6 armstbo01   1871    12    49     9    11     0     0\n 7 barkeal01   1871     1     4     0     1     0     1\n 8 barnero01   1871    31   157    66    63     0    13\n 9 barrebi01   1871     1     5     1     1     0     0\n10 barrofr01   1871    18    86    13    13     0     0\n# ℹ 112,174 more rows"
   },
   {
     "objectID": "lectures/01-explore.html#mutate",
     "href": "lectures/01-explore.html#mutate",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "mutate()",
     "text": "mutate()\n\nUse mutate() to create new variables\nNew variables created via mutate() are usually based on existing variables\n\nMake sure to give your new variable a name\nNote that naming the new variable the same as the existing variable will overwrite the original column"
   },
   {
     "objectID": "lectures/01-explore.html#mutate-1",
     "href": "lectures/01-explore.html#mutate-1",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "mutate()",
     "text": "mutate()\nExample: Get the batting average and strikeout-to-walk ratio for every player\n\nmutate(Batting, batting_avg = H / AB, so_bb_ratio = SO / BB)\n\n# A tibble: 112,184 × 24\n   playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n   &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1 abercda01   1871     1 TRO    NA        1     4     0     0     0     0     0\n 2 addybo01    1871     1 RC1    NA       25   118    30    32     6     0     0\n 3 allisar01   1871     1 CL1    NA       29   137    28    40     4     5     0\n 4 allisdo01   1871     1 WS3    NA       27   133    28    44    10     2     2\n 5 ansonca01   1871     1 RC1    NA       25   120    29    39    11     3     0\n 6 armstbo01   1871     1 FW1    NA       12    49     9    11     2     1     0\n 7 barkeal01   1871     1 RC1    NA        1     4     0     1     0     0     0\n 8 barnero01   1871     1 BS1    NA       31   157    66    63    10     9     0\n 9 barrebi01   1871     1 FW1    NA        1     5     1     1     1     0     0\n10 barrofr01   1871     1 BS1    NA       18    86    13    13     2     1     0\n# ℹ 112,174 more rows\n# ℹ 12 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;, batting_avg &lt;dbl&gt;,\n#   so_bb_ratio &lt;dbl&gt;"
   },
   {
     "objectID": "lectures/01-explore.html#arrange",
     "href": "lectures/01-explore.html#arrange",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "arrange()",
     "text": "arrange()\n\nSort observations (rows) by variables (columns)\n\nascending order is the default (low to high for numeric columns, alphabetical order for character columns)\n\n\nExample: Who holds the single-season home run record?\n\narrange(Batting, desc(HR)) # desc for descending order\n\n# A tibble: 112,184 × 22\n   playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n   &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1 bondsba01   2001     1 SFN    NL      153   476   129   156    32     2    73\n 2 mcgwima01   1998     1 SLN    NL      155   509   130   152    21     0    70\n 3 sosasa01    1998     1 CHN    NL      159   643   134   198    20     0    66\n 4 mcgwima01   1999     1 SLN    NL      153   521   118   145    21     1    65\n 5 sosasa01    2001     1 CHN    NL      160   577   146   189    34     5    64\n 6 sosasa01    1999     1 CHN    NL      162   625   114   180    24     2    63\n 7 judgeaa01   2022     1 NYA    AL      157   570   133   177    28     0    62\n 8 marisro01   1961     1 NYA    AL      161   590   132   159    16     4    61\n 9 ruthba01    1927     1 NYA    AL      151   540   158   192    29     8    60\n10 ruthba01    1921     1 NYA    AL      152   540   177   204    44    16    59\n# ℹ 112,174 more rows\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
   },
   {
     "objectID": "lectures/01-explore.html#arrange-1",
     "href": "lectures/01-explore.html#arrange-1",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "arrange()",
     "text": "arrange()\nExample: arrange by multiple columns — at bats from high to low (first sort), then home runs from low to high (second sort) — variable order matters\n\narrange(Batting, desc(AB), HR)\n\n# A tibble: 112,184 × 22\n   playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n   &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1 rolliji01   2007     1 PHI    NL      162   716   139   212    38    20    30\n 2 wilsowi02   1980     1 KCA    AL      161   705   133   230    28    15     3\n 3 suzukic01   2004     1 SEA    AL      161   704   101   262    24     5     8\n 4 samueju01   1984     1 PHI    NL      160   701   105   191    36    19    15\n 5 pierrju01   2006     1 CHN    NL      162   699    87   204    32    13     3\n 6 cashda01    1975     1 PHI    NL      162   699   111   213    40     3     4\n 7 alouma01    1969     1 PIT    NL      162   698   105   231    41     6     1\n 8 reyesjo01   2005     1 NYN    NL      161   696    99   190    24    17     7\n 9 jensewo01   1936     1 PIT    NL      153   696    98   197    34    10    10\n10 soriaal01   2002     1 NYA    AL      156   696   128   209    51     2    39\n# ℹ 112,174 more rows\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
   },
   {
     "objectID": "lectures/01-explore.html#performing-multiple-operations",
     "href": "lectures/01-explore.html#performing-multiple-operations",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "Performing multiple operations",
     "text": "Performing multiple operations\n\nWhat if we want to perform several different tasks using multiple dplyr verbs?\nIntroducing the pipe operator |&gt;\nYou might have seen the magrittr pipe %&gt;%…\n\n…from the maggritr package, automatically loaded when loading tidyverse\n\nRecently, many people (including Hadley Wickham) have switched to |&gt;, the built-in “native” pipe to base R\n\nWhat are the differences?\n\n\n\n\nShortcut for the pipe operator in RStudio: Command (or Ctrl) + Shift + M"
   },
   {
     "objectID": "lectures/01-explore.html#the-pipe-operator",
     "href": "lectures/01-explore.html#the-pipe-operator",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "The pipe operator",
     "text": "The pipe operator\n\nUse |&gt; to perform a sequence of operations\nThe pipe takes an object (e.g., tibble, data frame, matrix, vector, etc.) on the left and passes it as the first argument of the function on the right\n\n\n# the workflow\nobject |&gt;\n  first_operation(...) |&gt;\n  second_operation(...) |&gt; \n  .\n  .\n  .\n  last_operation(...)"
   },
   {
     "objectID": "lectures/01-explore.html#performing-multiple-operations-1",
     "href": "lectures/01-explore.html#performing-multiple-operations-1",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "Performing multiple operations",
     "text": "Performing multiple operations\nExample: Which Pirates players had the highest batting average in 2022, among those with at least 50 at bats?\nWhat are the tasks to be done here?\n\nfilter(): only Pirates players in 2022 with at least 50 at bats\nmutate(): create a new column for batting average\narrange(): sort by batting average in descending order\nselect(): report player name, at bats, and batting average"
   },
   {
     "objectID": "lectures/01-explore.html#performing-multiple-operations-2",
     "href": "lectures/01-explore.html#performing-multiple-operations-2",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "Performing multiple operations",
     "text": "Performing multiple operations\n\nBatting |&gt; \n  filter(yearID == 2022, teamID == \"PIT\", AB &gt;= 50) |&gt; \n  mutate(batting_avg = H / AB) |&gt; \n  arrange(desc(batting_avg)) |&gt; \n  select(playerID, AB, batting_avg)\n\n# A tibble: 23 × 3\n   playerID     AB batting_avg\n   &lt;chr&gt;     &lt;int&gt;       &lt;dbl&gt;\n 1 newmake01   288       0.274\n 2 reynobr01   542       0.262\n 3 hayeske01   505       0.244\n 4 marisja01    77       0.234\n 5 perezro02    60       0.233\n 6 castrro01   253       0.233\n 7 cruzon01    331       0.233\n 8 gamelbe01   371       0.232\n 9 chavimi01   401       0.229\n10 vogelda01   237       0.228\n# ℹ 13 more rows\n\n\nWithout the pipe, the code looks every ugly with functions nested within functions…\n\nselect(arrange(mutate(filter(Batting, yearID == 2022, teamID == \"PIT\", AB &gt;= 50), batting_avg = H / AB), \ndesc(batting_avg)), playerID, AB, batting_avg)"
   },
   {
     "objectID": "lectures/01-explore.html#summarize-by-itself",
     "href": "lectures/01-explore.html#summarize-by-itself",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "summarize() (by itself)",
     "text": "summarize() (by itself)\n\nUse summarize() to collapse the data down to a single row (per group) by aggregating variables into single values\nUseful for computing summaries (e.g., mean, median, max, min, correlation, etc.)\n\n\nBatting |&gt; \n  summarize(median_at_bats = median(AB))\n\n# A tibble: 1 × 1\n  median_at_bats\n           &lt;dbl&gt;\n1             45\n\nBatting |&gt; \n  summarize(cor_ab_hr = cor(AB, HR))\n\n# A tibble: 1 × 1\n  cor_ab_hr\n      &lt;dbl&gt;\n1     0.704"
   },
   {
     "objectID": "lectures/01-explore.html#group_by-and-summarize",
     "href": "lectures/01-explore.html#group_by-and-summarize",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "group_by() and summarize()",
     "text": "group_by() and summarize()\n\ngroup_by() converts the data into a “grouped tbl” where operations are performed by group\n\ni.e., it splits the data into groups based on values in a column\n\ngroup_by() becomes powerful when combining with summarize()\nAfter the operation at the group-level is done, use ungroup() to remove grouping"
   },
   {
     "objectID": "lectures/01-explore.html#group_by-and-summarize-1",
     "href": "lectures/01-explore.html#group_by-and-summarize-1",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "group_by() and summarize()",
     "text": "group_by() and summarize()\nExample: How many home runs, strike outs, and walks did each team accumulate in each season from 2015 to 2019?\n\nBatting |&gt; \n  filter(yearID %in% 2015:2019) |&gt; \n  group_by(teamID) |&gt; \n  summarize(total_hr = sum(HR), total_so = sum(SO), total_bb = sum(BB)) |&gt; \n  arrange(desc(total_hr))\n\n# A tibble: 30 × 4\n   teamID total_hr total_so total_bb\n   &lt;fct&gt;     &lt;int&gt;    &lt;int&gt;    &lt;int&gt;\n 1 NYA        1209     6659     2839\n 2 HOU        1159     6294     2759\n 3 TOR        1139     6741     2752\n 4 LAN        1111     6751     2991\n 5 BAL        1103     6914     2162\n 6 TEX        1041     7008     2572\n 7 SEA        1036     6693     2489\n 8 MIN        1035     6694     2604\n 9 OAK        1033     6474     2610\n10 MIL        1031     7434     2724\n# ℹ 20 more rows"
   },
   {
     "objectID": "lectures/01-explore.html#count",
     "href": "lectures/01-explore.html#count",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "count()",
     "text": "count()\ncount() returns the number of observations in each group\n\n\n\nBatting |&gt; \n  count(lgID, name = \"freq\")\n\n# A tibble: 7 × 2\n  lgID   freq\n  &lt;fct&gt; &lt;int&gt;\n1 AA     1893\n2 AL    51799\n3 FL      472\n4 NA      737\n5 NL    56800\n6 PL      149\n7 UA      334\n\n\n\n# recall that in base R...\ntable(Batting$lgID)\n\n\n   AA    AL    FL    NA    NL    PL    UA \n 1893 51799   472   737 56800   149   334 \n\n\n\nThis can also be done with group_by() and summarize()\n\n# note: count is a \"shortcut\" of this\nBatting |&gt; \n  group_by(lgID) |&gt; \n  summarize(freq = n()) |&gt; \n  ungroup()\n\n# A tibble: 7 × 2\n  lgID   freq\n  &lt;fct&gt; &lt;int&gt;\n1 AA     1893\n2 AL    51799\n3 FL      472\n4 NA      737\n5 NL    56800\n6 PL      149\n7 UA      334"
   },
   {
     "objectID": "lectures/01-explore.html#slice_-family-for-subsetting-rows",
     "href": "lectures/01-explore.html#slice_-family-for-subsetting-rows",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "slice_*() family for subsetting rows",
     "text": "slice_*() family for subsetting rows\n\nslice(): extract rows (observations) based on the row index\n\n\nBatting |&gt; \n  slice(c(1, 99, 101, 500))\n\n# A tibble: 4 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 abercda01   1871     1 TRO    NA        1     4     0     0     0     0     0\n2 spaldal01   1871     1 BS1    NA       31   144    43    39    10     1     1\n3 stearbi01   1871     1 WS3    NA        2     9     1     0     0     0     0\n4 smilebi01   1874     1 BL1    NA        2     7     0     0     0     0     0\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;\n\n\n\nslice_head() / slice_tail(): extract the first / last n rows\n\n\n# Batting |&gt; slice_tail(n = 5)\nBatting |&gt; \n  slice_head(n = 5)\n\n# A tibble: 5 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 abercda01   1871     1 TRO    NA        1     4     0     0     0     0     0\n2 addybo01    1871     1 RC1    NA       25   118    30    32     6     0     0\n3 allisar01   1871     1 CL1    NA       29   137    28    40     4     5     0\n4 allisdo01   1871     1 WS3    NA       27   133    28    44    10     2     2\n5 ansonca01   1871     1 RC1    NA       25   120    29    39    11     3     0\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
   },
   {
     "objectID": "lectures/01-explore.html#slice_-family-for-subsetting-rows-1",
     "href": "lectures/01-explore.html#slice_-family-for-subsetting-rows-1",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "slice_*() family for subsetting rows",
     "text": "slice_*() family for subsetting rows\n\nslice_min() / slice_max(): extract rows with the smallest or largest values of a variable\n\n\n# single-season home run record (top 5)\nBatting |&gt; \n  slice_max(HR, n = 5)\n\n# A tibble: 5 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 bondsba01   2001     1 SFN    NL      153   476   129   156    32     2    73\n2 mcgwima01   1998     1 SLN    NL      155   509   130   152    21     0    70\n3 sosasa01    1998     1 CHN    NL      159   643   134   198    20     0    66\n4 mcgwima01   1999     1 SLN    NL      153   521   118   145    21     1    65\n5 sosasa01    2001     1 CHN    NL      160   577   146   189    34     5    64\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;\n\n\n\nslice_sample(): randomly sample a specified number / fraction of observation in the data\n\nUseful for performing resampling (e.g., bootstrap, cross-validation, etc.)\n\n# randomly sample 1000 rows (without replacement, by default)\nBatting |&gt; \n  slice_sample(n = 1000)\n\n# randomly sample 70% of the rows, with replacement\nBatting |&gt; \n  slice_sample(prop = 0.7, replace = TRUE)"
   },
   {
     "objectID": "lectures/01-explore.html#putting-it-all-together",
     "href": "lectures/01-explore.html#putting-it-all-together",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "Putting it all together",
     "text": "Putting it all together\nBatting stats for each year: each row is a year with the following variables\n\ntotal hits, home runs, strikeouts, walks, atbats\ntotal batting average for each year = total H / total AB\nonly keeps AL and NL leagues\n\n\nyearly_batting &lt;- Batting |&gt;\n  filter(lgID %in% c(\"AL\", \"NL\")) |&gt;\n  group_by(yearID) |&gt;\n  summarize(total_h = sum(H, na.rm = TRUE),\n            total_hr = sum(HR, na.rm = TRUE),\n            total_so = sum(SO, na.rm = TRUE),\n            total_bb = sum(BB, na.rm = TRUE),\n            total_ab = sum(AB, na.rm = TRUE)) |&gt;\n  mutate(batting_avg = total_h / total_ab)"
   },
   {
     "objectID": "lectures/01-explore.html#putting-it-all-together-1",
     "href": "lectures/01-explore.html#putting-it-all-together-1",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "Putting it all together",
     "text": "Putting it all together\nWhat are the top three years with the most HRs?\n\nyearly_batting |&gt; \n  slice_max(total_hr, n = 3)\n\n# A tibble: 3 × 7\n  yearID total_h total_hr total_so total_bb total_ab batting_avg\n   &lt;int&gt;   &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;       &lt;dbl&gt;\n1   2019   42039     6776    42823    15895   166651       0.252\n2   2017   42215     6105    40104    15829   165567       0.255\n3   2021   39484     5944    42145    15794   161941       0.244\n\n\n\n# or this \nyearly_batting |&gt;\n  arrange(desc(total_hr)) |&gt;\n  slice(1:3)\n\n# A tibble: 3 × 7\n  yearID total_h total_hr total_so total_bb total_ab batting_avg\n   &lt;int&gt;   &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;       &lt;dbl&gt;\n1   2019   42039     6776    42823    15895   166651       0.252\n2   2017   42215     6105    40104    15829   165567       0.255\n3   2021   39484     5944    42145    15794   161941       0.244"
   },
   {
     "objectID": "lectures/01-explore.html#putting-it-all-together-2",
     "href": "lectures/01-explore.html#putting-it-all-together-2",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "Putting it all together",
     "text": "Putting it all together\nWhich years have the best and worst strikeout to walk ratios?\n\nyearly_batting |&gt;\n  mutate(so_bb_ratio = total_so / total_bb) |&gt;\n  arrange(so_bb_ratio) |&gt;\n  slice(c(1, n()))\n\n# A tibble: 2 × 8\n  yearID total_h total_hr total_so total_bb total_ab batting_avg so_bb_ratio\n   &lt;int&gt;   &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;       &lt;dbl&gt;       &lt;dbl&gt;\n1   1893   15913      460     3341     6143    56898       0.280       0.544\n2   1879    6171       58     1843      508    24155       0.255       3.63"
   },
   {
     "objectID": "lectures/01-explore.html#whats-next",
     "href": "lectures/01-explore.html#whats-next",
-    "title": "Exploring data: Into the tidyverse",
+    "title": "Exploring data: into the tidyverse",
     "section": "What’s next?",
     "text": "What’s next?\n\n\nDATA VISUALIZATION\n\nThe simple graph has brought more information to the data analyst’s mind than any other device. — John Tukey\n\n\nUse ggplot2 (and the grammar of graphics) to visually explore data\nMore intuitive than base R plotting\nDifferent types of visualizations for {1D, 2D} {continuous, categorical} data, faceting, etc.\ndplyr verbs and |&gt; leads to natural pipeline for EDA\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
   },
@@ -320,6 +320,160 @@
     "title": "Put your title here",
     "section": "yo",
     "text": "yo\n\n\ncol 1\na\n\ncol 2\na"
+  },
+  {
+    "objectID": "lectures/02-graphics.html#the-goals-of-data-visualization",
+    "href": "lectures/02-graphics.html#the-goals-of-data-visualization",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "The goals of data visualization",
+    "text": "The goals of data visualization\n\nto represent the data in a visual way (enough with tables… though tables are useful in a lot of situations)\nmost importanly, to deliver the information to the viewers and help them understand the story behind the data\n\n\nData Visualization (good DataViz anyway) answers a question. - Greggy J. M."
+  },
+  {
+    "objectID": "lectures/02-graphics.html#always-visualize-your-data-before-modeling-and-analysis",
+    "href": "lectures/02-graphics.html#always-visualize-your-data-before-modeling-and-analysis",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "ALWAYS visualize your data before modeling and analysis",
+    "text": "ALWAYS visualize your data before modeling and analysis\nAnscombe’s quartet\nThe Datasaurus dozen\nViz crime? (or not?)\nrose plots\nspiral"
+  },
+  {
+    "objectID": "lectures/02-graphics.html#previously",
+    "href": "lectures/02-graphics.html#previously",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "Previously…",
+    "text": "Previously…\n\n\nExploring MLB batting statistics from Lahman with tidyverse\n\nlibrary(tidyverse)\nlibrary(Lahman) \nyearly_batting &lt;- Batting |&gt;\n  filter(lgID %in% c(\"AL\", \"NL\")) |&gt;\n  group_by(yearID) |&gt;\n  summarize(total_h = sum(H, na.rm = TRUE),\n            total_hr = sum(HR, na.rm = TRUE),\n            total_so = sum(SO, na.rm = TRUE),\n            total_bb = sum(BB, na.rm = TRUE),\n            total_ab = sum(AB, na.rm = TRUE)) |&gt;\n  mutate(batting_avg = total_h / total_ab)\n\nHow do we make data visualization?\nWhat are the steps to make the figure on the right?"
+  },
+  {
+    "objectID": "lectures/02-graphics.html#the-grammar-of-graphics",
+    "href": "lectures/02-graphics.html#the-grammar-of-graphics",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "The grammar of graphics",
+    "text": "The grammar of graphics\n\nKey idea: specify plotting “layers” and combine them to produce a graphic.\nggplot2 provides an implementation of the grammar of graphics\nThe following layers are building blocks of data graphics\n\n\ndata - one or more datasets (in tidy tabular format)\ngeom - geometric objects to visually represent the data (e.g. points, lines, bars, etc.)\naes - mappings of variables to visual properties (i.e. aesthetics) of the geometric objects\nscale - one scale for each variable displayed (e.g. axis limits, log scale, colors, etc.)\nfacet - similar subplots (i.e. facets) for subsets of the same data using a conditioning variable\nstat - statistical transformations and summaries (e.g. identity, count, smooth, quantile, etc.)\ncoord - one or more coordinate systems (e.g. cartesian, polar, map projection)\nlabs - labels/guides for each variable and other parts of the plot (e.g. title, subtitle, caption, etc.)\ntheme - customization of plot layout (e.g. text size, alignment, legend position, etc.)\n\n\n\nLeland Wilkinson wrote the book “The Grammar of Graphics”, originally published in 1999."
+  },
+  {
+    "objectID": "lectures/02-graphics.html#first-start-with-the-data",
+    "href": "lectures/02-graphics.html#first-start-with-the-data",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "First, start with the data",
+    "text": "First, start with the data\n\n\n\n\nggplot(data = yearly_batting)\n\n\nor equivalently, using |&gt;\n\nyearly_batting |&gt; \n  ggplot()\n\n\nSo far, nothing is displayed"
+  },
+  {
+    "objectID": "lectures/02-graphics.html#specify-variables-and-geometric-object",
+    "href": "lectures/02-graphics.html#specify-variables-and-geometric-object",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "Specify variables and geometric object",
+    "text": "Specify variables and geometric object\n\n\n\n\nyearly_batting |&gt; \n  ggplot() +\n  geom_point(aes(x = yearID, y = total_hr))\n\n\nAdding (+) a geometric layer of points to the plot\nMap yearID to the x-axis and total_hr to the y-axis via aes()\nImplicitly using coord_cartesian()\n\n\nyearly_batting |&gt; \n  ggplot() + \n  geom_point(aes(x = yearID, y = total_hr)) +\n  coord_cartesian()"
+  },
+  {
+    "objectID": "lectures/02-graphics.html#now-can-we-add-another-geometric-layer",
+    "href": "lectures/02-graphics.html#now-can-we-add-another-geometric-layer",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "Now, can we add another geometric layer?",
+    "text": "Now, can we add another geometric layer?\n\n\n\n\nyearly_batting |&gt; \n  ggplot() +\n  geom_point(aes(x = yearID, y = total_hr)) +\n  geom_line(aes(x = yearID, y = total_hr))\n\n\nAdding (+) a line geometric layer\nInclude mappings shared across geometric layers inside ggplot()\n\n\nyearly_batting |&gt;\n  ggplot(aes(x = yearID, y = total_hr)) +\n  geom_point() +\n  geom_line()"
+  },
+  {
+    "objectID": "lectures/02-graphics.html#scaling-axes-changing-axis-label-breaks",
+    "href": "lectures/02-graphics.html#scaling-axes-changing-axis-label-breaks",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "Scaling axes: changing axis label breaks",
+    "text": "Scaling axes: changing axis label breaks\n\n\n\n\nyearly_batting |&gt;\n  ggplot(aes(x = yearID, y = total_hr)) +\n  geom_point() +\n  geom_line() +\n  scale_y_continuous(breaks = seq(0, 6000, 1000))"
+  },
+  {
+    "objectID": "lectures/02-graphics.html#scaling-axes-customizing-axis-limits",
+    "href": "lectures/02-graphics.html#scaling-axes-customizing-axis-limits",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "Scaling axes: customizing axis limits",
+    "text": "Scaling axes: customizing axis limits\n\n\n\n\nyearly_batting |&gt;\n  ggplot(aes(x = yearID, y = total_hr)) +\n  geom_point() +\n  geom_line() +\n  scale_x_continuous(limits = c(2000, 2015))"
+  },
+  {
+    "objectID": "lectures/02-graphics.html#scaling-axes-having-different-axis-scales",
+    "href": "lectures/02-graphics.html#scaling-axes-having-different-axis-scales",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "Scaling axes: having different axis scales",
+    "text": "Scaling axes: having different axis scales\n\n\n\n\nyearly_batting |&gt; \n  ggplot(aes(x = yearID, y = total_hr)) + \n  geom_point() +\n  geom_line() + \n  scale_x_reverse() +\n  scale_y_log10()\n\nWe can easily adjust variable scales without directly modifying the columns in the data"
+  },
+  {
+    "objectID": "lectures/02-graphics.html#adding-a-statistical-summary",
+    "href": "lectures/02-graphics.html#adding-a-statistical-summary",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "Adding a statistical summary",
+    "text": "Adding a statistical summary\n\n\n\n\nyearly_batting |&gt; \n  ggplot(aes(x = yearID, y = total_hr)) + \n  geom_point() +\n  geom_line() + \n  stat_smooth()\n\n\nSmoothing regression summary (will cover later) using yearID and total_hr\nGeometric layers implicitly use a default statistical summary\nTechnically we’re already using geom_point(stat = \"identity\")\n\n\nyearly_batting |&gt; \n  ggplot(aes(x = yearID, y = total_hr)) + \n  geom_point() +\n  geom_line() +\n  geom_smooth()"
+  },
+  {
+    "objectID": "lectures/02-graphics.html#mapping-additional-variables",
+    "href": "lectures/02-graphics.html#mapping-additional-variables",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "Mapping additional variables",
+    "text": "Mapping additional variables\n\n\n\n\nyearly_batting |&gt; \n  ggplot(aes(x = yearID, y = total_hr,\n             color = total_so,\n             size = total_bb)) +\n  geom_point() +\n  geom_line()\n\n\ntotal_hr, total_so, and total_bb are all displayed\ncolor and size are being shared globally across layers\nThis is a bit odd to look at…"
+  },
+  {
+    "objectID": "lectures/02-graphics.html#customizing-mappings-by-layer",
+    "href": "lectures/02-graphics.html#customizing-mappings-by-layer",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "Customizing mappings by layer",
+    "text": "Customizing mappings by layer\n\n\n\n\nyearly_batting |&gt; \n  ggplot(aes(x = yearID, y = total_hr)) + \n  geom_point(aes(color = total_so, size = total_bb)) +\n  geom_line()\n\n\nNow mapping total_so and total_bb to color and size of the point layer only"
+  },
+  {
+    "objectID": "lectures/02-graphics.html#changing-aesthetics-without-mapping-variables",
+    "href": "lectures/02-graphics.html#changing-aesthetics-without-mapping-variables",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "Changing aesthetics without mapping variables",
+    "text": "Changing aesthetics without mapping variables\n\n\n\n\nyearly_batting |&gt; \n  ggplot(aes(x = yearID, y = total_hr)) + \n  geom_point(aes(color = total_so, size = total_bb)) +\n  geom_line(color = \"darkred\", linetype = \"dashed\")\n\n\nManually set the color and linetype of the line layer"
+  },
+  {
+    "objectID": "lectures/02-graphics.html#remember-one-scale-for-each-mapped-variable",
+    "href": "lectures/02-graphics.html#remember-one-scale-for-each-mapped-variable",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "Remember: one scale for each mapped variable",
+    "text": "Remember: one scale for each mapped variable\n\n\n\n\nyearly_batting |&gt; \n  ggplot(aes(x = yearID, y = total_hr)) + \n  geom_point(aes(color = total_so, size = total_bb)) +\n  geom_line(color = \"darkred\", linetype = \"dashed\") +\n  scale_color_gradient(low = \"darkblue\", high = \"gold\") +\n  scale_size_continuous(breaks = seq(0, 20000, 2500))"
+  },
+  {
+    "objectID": "lectures/02-graphics.html#always-label-your-plots-seriously",
+    "href": "lectures/02-graphics.html#always-label-your-plots-seriously",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "Always label your plots! (seriously…)",
+    "text": "Always label your plots! (seriously…)\n\n\n\n\nyearly_batting |&gt; \n  ggplot(aes(x = yearID, y = total_hr)) + \n  geom_point(aes(color = total_so, size = total_bb)) +\n  geom_line(color = \"darkred\", linetype = \"dashed\") +\n  scale_color_gradient(low = \"darkblue\", high = \"gold\") +\n  labs(\n    x = \"Year\",\n    y = \"Homeruns\",\n    color = \"Strikeouts\",\n    size = \"Walks\",\n    title = \"The rise of three true outcomes in baseball\",\n    caption = \"Data courtesy of Lahman\"\n  )\n\n\nEach mapped aesthetic can be labeled"
+  },
+  {
+    "objectID": "lectures/02-graphics.html#custom-theme",
+    "href": "lectures/02-graphics.html#custom-theme",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "Custom theme",
+    "text": "Custom theme\n\n\n\n\nyearly_batting |&gt; \n  ggplot(aes(x = yearID, y = total_hr)) + \n  geom_point(aes(color = total_so, size = total_bb)) +\n  geom_line(color = \"darkred\", linetype = \"dashed\") +\n  scale_color_gradient(low = \"darkblue\", high = \"gold\") +\n  labs(\n    x = \"Year\",\n    y = \"Homeruns\",\n    color = \"Strikeouts\",\n    size = \"Walks\",\n    title = \"The rise of three true outcomes in baseball\",\n    caption = \"Data courtesy of Lahman\"\n  ) +\n  theme_bw(base_size = 20) +\n  theme(legend.position = \"bottom\",\n        plot.title = element_text(hjust = 0.5, \n                                  face = \"bold\"))\n\n\nFor more theme options, check out the ggthemes and hrbrthemes packages"
+  },
+  {
+    "objectID": "lectures/02-graphics.html#a-lesson-about-data-visualization",
+    "href": "lectures/02-graphics.html#a-lesson-about-data-visualization",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "A lesson about data visualization…",
+    "text": "A lesson about data visualization…\n\nSo far we’ve plotted total home runs across the years, with point size representing total walks and point color representing total strikeouts\nSimpler is better\n\n\n\nWhat can we do to improve and make the plot simpler?\nHow about creating three separate plots for home runs, strikeouts, and walks, with each mapped to the y-axis?\nBut how do we do this without repeating the same code?"
+  },
+  {
+    "objectID": "lectures/02-graphics.html#pivoting",
+    "href": "lectures/02-graphics.html#pivoting",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "Pivoting",
+    "text": "Pivoting\nRemember: data should be in tidy format\nWithin the tidyverse, the tidyr package offers functions for reshaping the data\n\npivot_longer: casts/gathers information spread out across variables\n\ntransforms data from wide format into long format\nincrease number of rows and decrease number of columns\n\npivot_wider: melts/spreads information out from observations\n\ntransforms data from long format into wide format\ndecrease number of rows and increase number of columns\n\n\n\n\nSome terminology\nPredecessors: reshape and reshape2"
+  },
+  {
+    "objectID": "lectures/02-graphics.html#pivoting-1",
+    "href": "lectures/02-graphics.html#pivoting-1",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "Pivoting",
+    "text": "Pivoting\n\nyearly_batting |&gt; \n  select(yearID, HRs = total_hr, Strikeouts = total_so, Walks = total_bb) |&gt; # renaming while also selecting\n  pivot_longer(HRs:Walks, # can also do !yearID (to select everything but yearID)\n               names_to = \"stat\",\n               values_to = \"val\")\n\n# A tibble: 441 × 3\n   yearID stat         val\n    &lt;int&gt; &lt;chr&gt;      &lt;int&gt;\n 1   1876 HRs           40\n 2   1876 Strikeouts   589\n 3   1876 Walks        336\n 4   1877 HRs           24\n 5   1877 Strikeouts   726\n 6   1877 Walks        345\n 7   1878 HRs           23\n 8   1878 Strikeouts  1081\n 9   1878 Walks        364\n10   1879 HRs           58\n# ℹ 431 more rows\n\n\nWe’ve pivoted the data and created the following variables\n\nstat, to represent the name of the batting statistics\nval, to represent the total value of each statistic in each year."
+  },
+  {
+    "objectID": "lectures/02-graphics.html#faceting",
+    "href": "lectures/02-graphics.html#faceting",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "Faceting",
+    "text": "Faceting\n\n\n\nyearly_batting |&gt;\n  select(yearID, HRs = total_hr, \n         Strikeouts = total_so, Walks = total_bb) |&gt;\n  pivot_longer(HRs:Walks, \n               names_to = \"stat\", \n               values_to = \"val\") |&gt;\n  ggplot(aes(yearID, val)) +\n  geom_line(color = \"darkblue\") +\n  geom_point(alpha = 0.8, color = \"darkblue\") +\n  facet_wrap(~ stat, scales = \"free_y\", ncol = 1) +\n  labs(\n    x = \"Year\", \n    y = \"Total of statistic\",\n    title = \"The rise of three true outcomes in baseball\",\n    caption = \"Data courtesy of Lahman\"\n  ) +\n  theme_bw(base_size = 20) +\n  theme(strip.background = element_blank(),\n        plot.title = element_text(hjust = 0.5, \n                                  face = \"bold\"))\n\n\nCreate a multi-panel plot faceted by a conditioning variable (in our case, stat)\n\n\n\n\n\n\n\n\n\n\n\nThese facet/panel plots are sometimes called trellis plots (or lattice plots)"
+  },
+  {
+    "objectID": "lectures/02-graphics.html#resources",
+    "href": "lectures/02-graphics.html#resources",
+    "title": "Data visualization: the grammar of graphics and ggplot2",
+    "section": "Resources",
+    "text": "Resources\n\nggplot2 website: cheatsheets, FAQs, extensions, and more\nTidyTuesday\nDavid Robinson’s TidyTuesday screencasts\nVizBuzz: LIVE data viz replication game show\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
   },
   {
     "objectID": "r-setup.html#step-1-install-r",
