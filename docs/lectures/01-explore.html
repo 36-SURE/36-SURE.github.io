@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.361">
 
-  <meta name="author" content=" SURE 2024  Deparment of Statistics &amp; Data Science Carnegie Mellon University">
+  <meta name="author" content=" SURE 2024  Department of Statistics &amp; Data Science Carnegie Mellon University">
   <title>SURE 2024 - Exploring data: into the tidyverse</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -397,7 +397,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<br>SURE 2024<br><br>Deparment of Statistics &amp; Data Science<br>Carnegie Mellon University 
+<br>SURE 2024<br><br>Department of Statistics &amp; Data Science<br>Carnegie Mellon University 
 </div>
 </div>
 </div>
@@ -433,7 +433,7 @@
 <ul>
 <li><p><a href="https://r4ds.hadley.nz/eda">“EDA is an iterative cycle”</a></p>
 <ul>
-<li>questions about data <span class="math inline">\(\rightarrow\)</span> wrangling <span class="math inline">\(\rightarrow\)</span> visualization</li>
+<li>questions about data ⟶ wrangling ⟶ visualization</li>
 </ul></li>
 </ul>
 </div>
@@ -531,15 +531,12 @@
 </ul></li>
 </ul>
 </section>
-<section id="first-example-mlb-batting-2" class="slide level2">
-<h2>First example: MLB batting</h2>
-</section>
 <section id="descriptive-statistics" class="slide level2">
 <h2>Descriptive statistics</h2>
-<p>Summarize continuous (e.g.&nbsp;<code>yearID</code>, <code>AB</code>) and categorical (e.g.&nbsp;<code>teamID</code>, <code>lgID</code>) variables in different ways…</p>
+<p>Summarize quantitative (e.g.&nbsp;<code>yearID</code>, <code>AB</code>) and categorical (e.g.&nbsp;<code>teamID</code>, <code>lgID</code>) variables in different ways…</p>
 <div class="fragment">
 <ul>
-<li>Summary statistics for continuous variables with the <code>summary()</code> function</li>
+<li>Summary statistics for quantitative variables with the <code>summary()</code> function</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Batting<span class="sc">$</span>yearID)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -767,9 +764,10 @@
 <li>ascending order is the default (low to high for numeric columns, alphabetical order for character columns)</li>
 </ul></li>
 </ul>
+<div class="fragment">
 <p>Example: Who holds the single-season home run record?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(Batting, <span class="fu">desc</span>(HR)) <span class="co"># desc for descending order</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(Batting, <span class="fu">desc</span>(HR)) <span class="co"># desc() for descending order</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 112,184 × 22
    playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR
@@ -787,6 +785,7 @@
 # ℹ 112,174 more rows
 # ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,
 #   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;</code></pre>
+</div>
 </div>
 </div>
 </section>
@@ -818,8 +817,15 @@
 <section id="performing-multiple-operations" class="slide level2">
 <h2>Performing multiple operations</h2>
 <ul>
-<li><p>What if we want to perform several different tasks using multiple <code>dplyr</code> verbs?</p></li>
-<li><p>Introducing the pipe operator <code>|&gt;</code></p></li>
+<li>What if we want to perform several different tasks using multiple <code>dplyr</code> verbs?</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Introducing the pipe operator <code>|&gt;</code></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
 <li><p>You might have seen the <code>magrittr</code> pipe <code>%&gt;%</code>…</p>
 <ul>
 <li>…from the <code>maggritr</code> package, automatically loaded when loading <code>tidyverse</code></li>
@@ -830,6 +836,7 @@
 </ul></li>
 </ul>
 
+</div>
 <aside><div>
 <p>Shortcut for the pipe operator in RStudio: Command (or Ctrl) + Shift + M</p>
 </div></aside></section>
@@ -853,13 +860,17 @@
 <section id="performing-multiple-operations-1" class="slide level2">
 <h2>Performing multiple operations</h2>
 <p>Example: Which Pirates players had the highest batting average in 2022, among those with at least 50 at bats?</p>
+<div class="fragment">
 <p>What are the tasks to be done here?</p>
+</div>
+<div class="fragment">
 <ul>
 <li><p><code>filter()</code>: only Pirates players in 2022 with at least 50 at bats</p></li>
 <li><p><code>mutate()</code>: create a new column for batting average</p></li>
 <li><p><code>arrange()</code>: sort by batting average in descending order</p></li>
 <li><p><code>select()</code>: report player name, at bats, and batting average</p></li>
 </ul>
+</div>
 </section>
 <section id="performing-multiple-operations-2" class="slide level2">
 <h2>Performing multiple operations</h2>
@@ -886,10 +897,12 @@
 # ℹ 13 more rows</code></pre>
 </div>
 </div>
+<div class="fragment">
 <p>Without the pipe, the code looks every ugly with functions nested within functions…</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(<span class="fu">arrange</span>(<span class="fu">mutate</span>(<span class="fu">filter</span>(Batting, yearID <span class="sc">==</span> <span class="dv">2022</span>, teamID <span class="sc">==</span> <span class="st">"PIT"</span>, AB <span class="sc">&gt;=</span> <span class="dv">50</span>), <span class="at">batting_avg =</span> H <span class="sc">/</span> AB), </span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">desc</span>(batting_avg)), playerID, AB, batting_avg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </section>
 <section id="summarize-by-itself" class="slide level2">
@@ -962,9 +975,9 @@
 </section>
 <section id="count" class="slide level2">
 <h2><code>count()</code></h2>
-<p><code>count()</code> returns the number of observations in each group</p>
 <div class="columns">
 <div class="column" style="text-align: left;">
+<p><code>count()</code> returns the number of observations in each group</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>Batting <span class="sc">|&gt;</span> </span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(lgID, <span class="at">name =</span> <span class="st">"freq"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1034,6 +1047,7 @@
 #   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;</code></pre>
 </div>
 </div>
+<div class="fragment">
 <ul>
 <li><code>slice_head()</code> / <code>slice_tail()</code>: extract the first / last <code>n</code> rows</li>
 </ul>
@@ -1052,6 +1066,7 @@
 5 ansonca01   1871     1 RC1    NA       25   120    29    39    11     3     0
 # ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,
 #   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;</code></pre>
+</div>
 </div>
 </div>
 </section>
@@ -1077,6 +1092,7 @@
 #   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;</code></pre>
 </div>
 </div>
+<div class="fragment">
 <ul>
 <li><code>slice_sample()</code>: randomly sample a specified number / fraction of observation in the data</li>
 </ul>
@@ -1090,10 +1106,11 @@
 <span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>Batting <span class="sc">|&gt;</span> </span>
 <span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="fl">0.7</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div>
 </section>
 <section id="putting-it-all-together" class="slide level2">
 <h2>Putting it all together</h2>
-<p>Batting stats for each year: each row is a year with the following variables</p>
+<p>Example: Get batting stats for each year: each row is a year with the following variables</p>
 <ul>
 <li>total hits, home runs, strikeouts, walks, atbats</li>
 <li>total batting average for each year = total H / total AB</li>
@@ -1169,7 +1186,7 @@
 <ul>
 <li><p>Use <code>ggplot2</code> (and the grammar of graphics) to visually explore data</p></li>
 <li><p>More intuitive than base <code>R</code> plotting</p></li>
-<li><p>Different types of visualizations for {1D, 2D} {continuous, categorical} data, faceting, etc.</p></li>
+<li><p>Different types of visualizations for categorical and quantitative data, faceting, etc.</p></li>
 <li><p><code>dplyr</code> verbs and <code>|&gt;</code> leads to natural pipeline for EDA</p></li>
 </ul>
 </div><div class="column" style="text-align: center;">
@@ -1180,6 +1197,10 @@
 </div>
 </div>
 </div>
+</section>
+<section id="check-out-this-song" class="slide level2">
+<h2>Check out this song</h2>
+<iframe data-external="1" src="https://www.youtube.com/embed/p8Py9C8iq2s" width="800" height="600" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
 <div class="footer footer-default">
 <p><a href="https://36-sure.github.io">36-SURE.github.io</a></p>
