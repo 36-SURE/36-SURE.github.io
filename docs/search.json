@@ -788,7 +788,14 @@
     "href": "sports/eda/wnba.html#timeline",
     "title": "EDA project: WNBA shooting",
     "section": "Timeline",
-    "text": "Timeline\nThere will be two submission deadlines:\nThursday, June 13 at 5pm ET - Each student will push their individual code for the project thus far to GitHub for review. We will then provide feedback.\nMonday, June 17 at 5pm ET - Slides and full code must be completed and ready for presentation. Send your slides to Quang (quang@stat.cmu.edu). All code must be written in R; but the slides may be created in any software. Take advantage of examples from lectures, but also feel free to explore online resources that may be relevant. ## Data\nThis dataset contains all shot attempts in the 2023 WNBA season accessed via the wehoop package.\nEach row in the dataset corresponds to a shot attempt and the columns are:\n\ngame_id: unique integer ID for each WNBA game\ngame_play_number: integer indicating the recorded play number for the shot attempt, where 1 indicates the first play of the game\ngame_type: type of the game (2: regular season, 3: postseason)\ndesc: string detailed description of shot attempt\nshot_type: string description of the shot type (e.g., dunk, layup, jump shot, etc.)\nmade_shot: boolean denoting if the shot was made (TRUE) or not (FALSE)\nshot_value: numeric value of the shot outcome (0 for shots that were not made, and a positive value for made shots)\ncoordinate_x: horizontal location in feet of shot attempt where the hoop would be located at 25 feet\ncoordinate_y: vertical location in feet of shot attempt with respect to the target hoop (the hoop should be a little in front of 0 but the coordinate system is not exact)\nshooting_team: string name of the team taking the shot\nhome_team_name: string name of the home team\naway_team_name: string name of the away team\nhome_score: integer value of the home team score after the shot\naway_score: integer value of the away team score after the shot\nqtr: integer denoting the quarter/period in the game\nquarter_seconds_remaining: numeric integer value for number of seconds remaining in quarter/period\ngame_seconds_remaining: numeric integer value for number of seconds remaining in game\n\nNote that a full glossary of the features available in the WNBA shot data can be found here."
+    "text": "Timeline\nThere will be two submission deadlines:\nThursday, June 13 at 5pm ET - Each student will push their individual code for the project thus far to GitHub for review. We will then provide feedback.\nMonday, June 17 at 5pm ET - Slides and full code must be completed and ready for presentation. Send your slides to Quang (quang@stat.cmu.edu). All code must be written in R; but the slides may be created in any software. Take advantage of examples from lectures, but also feel free to explore online resources that may be relevant."
+  },
+  {
+    "objectID": "sports/eda/wnba.html#data",
+    "href": "sports/eda/wnba.html#data",
+    "title": "EDA project: WNBA shooting",
+    "section": "Data",
+    "text": "Data\nThis dataset contains all shot attempts in the 2023 WNBA season accessed via the wehoop package.\nEach row in the dataset corresponds to a shot attempt and the columns are:\n\ngame_id: unique integer ID for each WNBA game\ngame_play_number: integer indicating the recorded play number for the shot attempt, where 1 indicates the first play of the game\ngame_type: type of the game (2: regular season, 3: postseason)\ndesc: string detailed description of shot attempt\nshot_type: string description of the shot type (e.g., dunk, layup, jump shot, etc.)\nmade_shot: boolean denoting if the shot was made (TRUE) or not (FALSE)\nshot_value: numeric value of the shot outcome (0 for shots that were not made, and a positive value for made shots)\ncoordinate_x: horizontal location in feet of shot attempt where the hoop would be located at 25 feet\ncoordinate_y: vertical location in feet of shot attempt with respect to the target hoop (the hoop should be a little in front of 0 but the coordinate system is not exact)\nshooting_team: string name of the team taking the shot\nhome_team_name: string name of the home team\naway_team_name: string name of the away team\nhome_score: integer value of the home team score after the shot\naway_score: integer value of the away team score after the shot\nqtr: integer denoting the quarter/period in the game\nquarter_seconds_remaining: numeric integer value for number of seconds remaining in quarter/period\ngame_seconds_remaining: numeric integer value for number of seconds remaining in game\n\nNote that a full glossary of the features available in the WNBA shot data can be found here."
   },
   {
     "objectID": "sports/eda/wnba.html#starter-code",
@@ -2223,7 +2230,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"m\" \"t\" \"l\" \"a\" \"c\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 1 1 0 1 1 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"H\" \"T\" \"T\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 78"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"j\" \"w\" \"u\" \"f\" \"t\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 1 1 0 0 1 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"H\" \"H\" \"T\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 31"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -2265,21 +2272,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.007759976\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9869266"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.07478827\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9656607"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.502\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical      true\n   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n 1 -3.91     0.001 0.0000468\n 2 -3.08     0.002 0.00105  \n 3 -2.99     0.003 0.00139  \n 4 -2.93     0.004 0.00172  \n 5 -2.91     0.005 0.00180  \n 6 -2.71     0.006 0.00336  \n 7 -2.71     0.007 0.00336  \n 8 -2.64     0.008 0.00409  \n 9 -2.59     0.009 0.00474  \n10 -2.51     0.01  0.00609  \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.538\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.56     0.001 0.000188\n 2 -2.99     0.002 0.00141 \n 3 -2.79     0.003 0.00261 \n 4 -2.64     0.004 0.00410 \n 5 -2.60     0.005 0.00464 \n 6 -2.56     0.006 0.00520 \n 7 -2.36     0.007 0.00905 \n 8 -2.35     0.008 0.00929 \n 9 -2.35     0.009 0.00931 \n10 -2.27     0.01  0.0116  \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3892013\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3888962\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -2293,14 +2300,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1372\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1868\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.201887\n\nmean(rnorm(100))\n\n[1] -0.01872993\n\nmean(rnorm(100))\n\n[1] 0.005566308"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.01155412\n\nmean(rnorm(100))\n\n[1] 0.00910349\n\nmean(rnorm(100))\n\n[1] 0.009715114"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
