@@ -1,0 +1,283 @@
+---
+title: "Lab: getting started with `R`"
+format: html
+---
+
+## Installing `R` and RStudio
+
+To install **`R`** (latest release: 4.4.0), visit [`https://www.r-project.org`](https://www.r-project.org) and choose your system. Click on the *download R* link in the middle of the page under “Getting Started.” Download and install the installer files (executable, pkg, etc) that correspond to your system.
+
+Although you can use `R` without any integrated development environment (IDE), you will need to install **RStudio**, by far the most popular IDE for `R`, for this summer. Basically, it makes your life with `R` much easier and we will be using it throughout the program. To install RStudio, visit [`https://posit.co/download/rstudio-desktop`](https://posit.co/download/rstudio-desktop) and choose your system. The installer is preferred. If you have RStudio installed but not the latest version, just download the latest installer and install.
+
+## Typical workflow
+
+### Writing `R` scripts
+
+You can type commands directly into the **Console** (lower left pane), but this can become quite tedious and annoying when your work becomes more complex. Instead, you will be spending most of your time writing code in **R Scripts**. An R Script is a file type which `R` recognizes as storing `R` commands and is saved as a **.R** file. R Scripts are useful as we can edit our code before sending it to be run in the console. You can create a new R Script by clicking on the top left symbol in RStudio and selecting **R Script**.
+
+### Using Quarto
+
+An **Quarto** file is a dynamic document for writing reproducible reports and communicating results. It contains the reproducible source code along with the narration that a reader needs to understand your work.
+
+There are three important elements to a **Quarto** file:
+
+-   A YAML header at the top (surrounded by `---`)
+-   Chunks of `R` code surrounded by \`\`\`
+-   Text mixed with simple text formatting like `## Heading` and *italics*
+
+(Note that this file itself is a **Quarto** document.)
+
+If you are familiar with the LaTeX syntax, math mode works like a charm in almost the same way:
+
+$$
+f (x) = \frac{1}{\sqrt{2\pi}} \exp \left( - \frac{x^2}{2} \right)
+$$
+
+A chunk of embedded `R` code is the following:
+
+```{r}
+# R code here
+print("Hello World")
+```
+
+All the lab documents will be **Quarto** files so you need to know how to render and convert them into a reader-friendly documents. We recommend to render as `html` file but if you have LaTeX installed, you can change the format to pdf.
+
+For more details on Quarto, see the [comprehensive manual online](https://quarto.org/docs/guide) and the [Quarto chapter](https://r4ds.hadley.nz/quarto) of R for Data Science (2e). See also the guide on [Markdown Basics](https://quarto.org/docs/authoring/markdown-basics.html) for more on Markdown syntax. For code chunk options, see [this guide](https://quarto.org/docs/computations/execution-options.html).
+
+## Installing R packages
+
+`R` performs a wide variety of functions, such as data manipulation, modeling, and visualization. The extensive code base beyond the built-in functions are managed by **packages** created from numerous statisticians and developers. The Comprehensive R Archive Network (CRAN) manages the open-source distribution and the quality control of the `R` packages.
+
+To install a `R` package, using the function `install.packages` and put the package name in the parentheses and the quote. While this is preferred, for those using RStudio, you can also go to "Tools" then "Install Packages" and then input the package name.
+
+```{r}
+#| eval: false
+install.packages("tidyverse")
+```
+
+**Important**: NEVER install new packages in a code block in a `.qmd` file. Always install new packages at the command line / Console. That is, the `install.packages()` function should NEVER be in your code chunks (unless they are commented out using `#`). The `library()` function, however, will be used throughout your code: The `library()` function loads packages only after they are installed.
+
+If in any time you get a message says: "Do you want to install from sources the package which needs compilation?" Choose "No" will tend to bring less troubles. (Note: This happens when the bleeding-edge version package is available, but not yet compiled for each OS distribution. In many case, you can just proceed without the source compilation.)
+
+Each package only needs to be installed once. Whenever you want to use functions defined in the package, you need to load the package with the command:
+
+```{r}
+#| message: false
+#| eval: false
+library(tidyverse)
+```
+
+Here is a list of packages that we may need (but not limited to) in the following lectures and/or labs. Make sure you can install all of them. If you fail to install any package, please update the `R` and RStudio first and check the error message for any other packages that need to install first.
+
+```{r}
+#| message: false
+#| eval: false
+library(tidyverse)
+library(devtools)
+library(ranger)
+library(glmnet)
+```
+
+## Basic data type and operators
+
+### Data type: vector
+
+The basic unit of `R` is a vector. A vector is a collection of values of the same type and the type could be:
+
+-   numeric (double/integer number): digits with optional decimal point
+
+```{r}
+v1 <- c(1, 5, 8.3, 0.02, 99999)
+typeof(v1)
+```
+
+-   character: a string (or word) in double or single quotes, "..." or ’...’.
+
+```{r}
+v2 <- c("apple", "banana", "3 chairs", "dimension1", ">-<")
+typeof(v2)
+```
+
+-   logical: TRUE and FALSE
+
+```{r}
+v3 <- c(TRUE, FALSE, FALSE)
+typeof(v3)
+```
+
+Note: Oftentimes, `factor` is used to encode a character vector into unique numeric vector.
+
+```{r}
+player_type <- c("Batter", "Batter", "Hitter", "Batter", "Hitter")
+player_type <- factor(player_type)
+str(player_type)
+typeof(player_type)
+```
+
+### Data type: lists
+
+Vector can store only single data type:
+
+```{r}
+typeof(c(1, TRUE, "apple"))
+```
+
+**List** is a vector of vectors which can store different data types of vectors:
+
+```{r}
+roster <- list(
+  name = c("Quang", "Akshay", "Nick", "Princess", "Yuchen", "JungHo"),
+  role = c("Instructor", "TA", "TA", "TA", "TA", "TA"),
+  is_TA = c(FALSE, TRUE, TRUE, TRUE, TRUE, TRUE)
+)
+
+str(roster)
+```
+
+`R` uses a specific type of list, **data frame**, containing the same number of rows with unique row names.
+
+```{r}
+str(iris)
+typeof(iris)
+```
+
+### Operators
+
+We can perform element-wise actions on vectors through the operators:
+
+-   arithmetic: `+`, `-`, `*`, `/`, `^` (for integer division, `%/%` is quotient, `%%` is remainder)
+
+```{r}
+v1 <- c(1,2,3)
+v2 <- c(4,5,6)
+
+v1 + v2
+v1 * v2
+
+v2 %% v1
+```
+
+-   relation: `>`, `>=`, `<` ,`<=`, `==`, `!=`
+
+```{r}
+5 > 4
+5 <= 4
+33 == 22
+33 != 22
+```
+
+-   logic: `!` (not), `&` (and), `|` (or)
+
+```{r}
+(5 > 6) | (2 < 3)
+(5 > 6) & (2 < 3)
+!(5 > 6) & (2 < 3)
+```
+
+-   sequence: `i:j` (`:` operator, `i` and `j` are any two arbitrary numbers)
+
+```{r}
+1:5
+5:1
+-1:-5
+-1:5
+```
+
+## Loading `.csv` files
+
+Most of the data provided to you are in `.csv` format. In the code chunk below, we use the [`read_csv()`](https://readr.tidyverse.org/reference/read_delim.html) function (from the `readr` package, part of the `tidyverse`) to load a dataset that is saved in a folder located in the SURE GitHub repository. In quotations, insert the file path where the dataset is located, which in this case is online. However, typically you'll save `.csv` files locally first and put them in an organized folder to access later.
+
+```{r}
+#| eval: false
+library(tidyverse)
+heart_disease <- read_csv("https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/heart_disease.csv")
+head(heart_disease)
+```
+
+## Looking for help
+
+If you have any `R` problem, the best step is to use the `help()` function (or equivalently the `?`). For example,
+
+```{r}
+#| eval: false
+help(str)
+help(lm)
+```
+
+Or you can use the command `?`...
+
+```{r}
+#| eval: false
+?str
+?lm
+```
+
+Double question marks can lead to a more general search.
+
+```{r}
+#| eval: false
+??predict
+```
+
+You should **ALWAYS** consult the `R` help documentation first before attempting to google around (or ask ChatGPT) for a solution.
+
+## Exercises
+
+1.  Create four vectors, `v1` and `v2` are numeric vectors, `v3` is a character vector and `v4` is a logic vector. Make sure the length of `v1` and `v2` are the same. (Hint: a way to check the length is to use the function `length()`)
+
+```{r}
+# R code here
+```
+
+2.  Preform add, minus, product and division on `v1` and `v2`.
+
+```{r}
+# R code here
+```
+
+3.  Create four statements with both relation and logic operators, that 2 of them return `TRUE` and 2 of them return `FALSE`.
+
+```{r}
+# R code here
+```
+
+4.  Create 2 sequences with length 20, one in an increasing order and the other in a decreasing order.
+
+```{r}
+# R code here
+```
+
+5.  The following `gapminder` dataset contains health and income outcomes for 184 countries from 1960 to 2016 from the , accessed via the `dslabs` package. How many of the rows in the dataset are from the Caribbean (coded as `Caribbean` in `region`)? How about Eastern Europe? Can you summarize the counts for all regions? (Hint: `table()`)
+
+```{r}
+library(Lahman)
+data(Batting)
+
+# R code here
+```
+
+## Text formatting in Quarto
+
+There are a lot of ways to format text in a Quarto document, e.g., *italics* and **bold** (just scan through this `.qmd` file to see how this was done). See [this guide](https://quarto.org/docs/guide) for more tips/tricks. In particular, check out the [Markdown Basics](https://quarto.org/docs/guide/) and other guides under [Authoring](https://quarto.org/docs/authoring). See also [this guide](https://quarto.org/docs/computations/r.html) on `R` code chunk options.
+
+As you'll see throughout this summer (and especially with your project), well-formatted `.html` files can be a great way to showcase data science results to the public online. (Check out the project showcase from [2023](https://www.stat.cmu.edu/cmsac/sure/2023/showcase/) and [2022](https://www.stat.cmu.edu/cmsac/sure/2022/showcase/).)
+
+## Customizing RStudio
+
+**RStudio theme**
+
+RStudio can be customized with different themes. To explore built-in themes,
+
+-   Navigate to the menu bar at the top of your screen
+-   Choose `Tools > Global Options > Appearance`
+-   Change your RStudio theme under Editor theme
+
+(FYI, Quang uses the *Tomorrow Night Bright* theme.)
+
+Note that within the Appearance tab, there are also options for changing your Editor font, Editor font size, etc.
+
+**RStudio panes**
+
+Within RStudio, there are several panes (e.g., Console, Help, Environment, History, Plots, etc.). To customize, go to `Tools > Global Options > Pane Layout`, and arrange the panes as you see fit.
+
+Feel free to explore other options within the `Tools > Global Option` menu.

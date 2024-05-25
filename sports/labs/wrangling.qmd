@@ -1,0 +1,143 @@
+---
+title: "Lab: data wrangling"
+format: html
+---
+
+## Reading and previewing data
+
+Our data are usually stored as a `.csv` file and after loading a `.csv` file into RStudio, we will have a "data frame". A data frame can be considered a special case of matrix where each column represents a measurement or variable of interest for each observation which correspond to the rows of the dataset. After loading the `tidyverse` suite of packages, we use the [`read_csv()`](https://readr.tidyverse.org/reference/read_delim.html) function to load the 2024 NBA regular season stats dataset from yesterday:
+
+```{r}
+library(tidyverse)
+nba_stats <- read_csv("https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/nba_stats.csv")
+```
+
+By default, `read_csv()` reads in the dataset as a `tbl` (aka `tibble`) object instead of a `data.frame` object. You can read about the differences [here](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html), but it's not that meaningful for purposes.
+
+We can use the functions `head()` and `tail()` to view a sample of the data. Use the `head()` function to view the first 6 rows, then use the `tail()` function to view the last 3 rows:
+
+```{r}
+# INSERT CODE HERE
+```
+
+View the dimensions of the data with `dim()`:
+
+```{r}
+# INSERT CODE HERE
+```
+
+Quickly view summary statistics for all variables with the `summary()` function:
+
+```{r}
+# Uncomment the following code by deleting the # at the front:
+# summary(nba_stats)
+```
+
+View the data structure types with `str()`:
+
+```{r}
+# str(nba_stats)
+```
+
+What's the difference between the output from the two functions?
+
+## Data manipulation with `dplyr`
+
+An easier way to manipulate the data frame is through the `dplyr` package, which is in the `tidyverse` suite of packages. The operations we can do include: selecting specific columns, filtering for rows, re-ordering rows, adding new columns and summarizing data. The "split-apply-combine" concept can be achieved by `dplyr`.
+
+### Selecting columns with `select()`
+
+The function `select()` can be use to select certain column with the column names. First create a new table called `nba_stats_pg` that only contains the `player` and `games` columns:
+
+```{r}
+# INSERT CODE HERE
+```
+
+To select all the columns except a specific column, use the `-` (subtraction) operator. For example, view the output from uncommenting the following line of code:
+
+```{r}
+# head(select(nba_stats, -player))
+```
+
+To select a range of columns by name (that are in consecutive order), use the `:` (colon) operator. For example, view the output from uncommenting the following line of code:
+
+```{r}
+# head(select(nba_stats, player:games))
+```
+
+To select all columns that start with certain character strings, use the function `starts_with()`. Ohter matching options are:
+
+1.  `ends_with()` = Select columns that end with a character string
+
+2.  `contains()` = Select columns that contain a character string
+
+3.  `matches()` = Select columns that match a regular expression
+
+4.  `one_of()` = Select columns names that are from a group of names
+
+```{r}
+# Uncomment the following lines of code
+# head(select(nba_stats, starts_with("three")))
+# head(select(nba_stats, contains("throw")))
+```
+
+### Selecting rows using `filter()`
+
+We can also select the rows/observations that satisfy certain criteria. Try selecting the rows with more than 500 assists:
+
+```{r}
+# INSERT CODE HERE
+```
+
+We can also filter on mutiple criteria. Select rows with `age` above 30 and the team is either "HOU" or "GSW":
+
+```{r}
+# INSERT CODE HERE
+```
+
+### Arranging rows using `arrange()`
+
+To arrange the data frame by a specific order we need to use the function `arrange()`. The default is by increasing order and a negative operator will provide the decreasing order. First arrange the `nba_stats` table by `personal_fouls` in ascending order:
+
+```{r}
+# INSERT CODE HERE
+```
+
+Next by descending order:
+
+```{r}
+# INSERT CODE HERE
+```
+
+Try combining a pipeline of `select()`, `filter()`, and `arrange()` steps together with the `|>` operator by:
+
+1.  Selecting the `player`, `team`, `age`, and `games` columns,
+2.  Filter to select only rows with `games` above 50,
+3.  Sort by `age` in descending order
+
+```{r}
+# INSERT CODE HERE
+```
+
+### Creating new columns using `mutate()`
+
+Sometimes the data does not include the variable that we are interested in and we need to manipulate the current variables to add new variables into the data frame. Create a new colum `fouls_per_game` by taking the `personal_fouls` and dividing by `games` (reassign this output to the `nba_stats` table following the commented code chunk so this column is added to the table):
+
+```{r}
+# nba_stats <- nba_stats |>
+#   mutate(INSERT CODE HERE)
+```
+
+### Creating summaries with `summarize()`
+
+To create summary statistics for a given column in the data frame, we can use `summarize()` function. Compute the `mean`, `min`, and `max` number of `assists`:
+
+```{r}
+# INSERT CODE HERE
+```
+
+The advantage of `summarize` is more obvious if we combine it with the `group_by()`, the group operators. Since players at the different position tend to have very different statistics, first `group_by()` position and then compute the same summary statistics:
+
+```{r}
+# INSERT CODE HERE
+```
