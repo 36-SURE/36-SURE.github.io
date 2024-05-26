@@ -124,12 +124,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./sports.html" rel="" target="">
- <span class="menu-text">Sports</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./health.html" rel="" target="">
  <span class="menu-text">Health</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./sports.html" rel="" target="">
+ <span class="menu-text">Sports</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -174,19 +174,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <hr>
-<section id="r-and-rstudio" class="level1">
-<h1><code>R</code> and <code>RStudio</code></h1>
+<section id="r-and-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="r-and-rstudio"><code>R</code> and RStudio</h2>
 <p><code>R</code> is an open-source programming language for statistical computing. <code>R</code> is widely-used in both academia and industry, due to its capacity for statistical analysis and data science.</p>
-<p>In order to use <code>R</code> effectively, you need a suitable editing environment, i.e.&nbsp;<code>RStudio</code>. For more context, <code>RStudio</code> is an integrated development environment (IDE) developed specifically for <code>R</code> programming. Although <code>R</code> can be run without <code>RStudio</code>, <code>RStudio</code> provides a more user-friendly experience with additional functionality.</p>
-<p><strong>To download <code>R</code> and <code>RStudio</code>, visit <a href="https://posit.co/download/rstudio-desktop" class="uri">https://posit.co/download/rstudio-desktop</a>.</strong></p>
+<p>In order to use <code>R</code> effectively, you need a suitable editing environment, i.e.&nbsp;RStudio. For more context, RStudio is an integrated development environment (IDE) developed specifically for <code>R</code> programming. Although <code>R</code> can be run without RStudio, RStudio provides a more user-friendly experience with additional functionality.</p>
+<p><strong>To download <code>R</code> and RStudio, visit <a href="https://posit.co/download/rstudio-desktop"><code>https://posit.co/download/rstudio-desktop</code></a>.</strong></p>
 <p>You will see the following two tasks to be completed:</p>
 <ul>
 <li><strong>1: Install <code>R</code></strong></li>
-<li><strong>2: Install <code>RStudio</code></strong></li>
+<li><strong>2: Install RStudio</strong></li>
 </ul>
+</section>
 <section id="step-1-install-r" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-install-r">Step 1: Install <code>R</code></h2>
-<p>(<em>Note that the following instructions apply to the latest <code>R</code> version (4.4.0) as of May 15, 2024</em>)</p>
+<p>(<em>Note that the following instructions apply to the latest <code>R</code> version (4.4.0) as of May 24, 2024</em>)</p>
 <p>Click on <strong><em>DOWNLOAD AND INSTALL R</em></strong>. This will direct you to the CRAN (Comprehensive R Archive Network) website.</p>
 <p><strong>macOS</strong></p>
 <ul>
@@ -205,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="step-2-install-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-install-rstudio">Step 2: Install <code>RStudio</code></h2>
+<h2 class="anchored" data-anchor-id="step-2-install-rstudio">Step 2: Install RStudio</h2>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -216,7 +217,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><code>R</code> <strong>must</strong> be installed before <code>RStudio</code>.</p>
+<p><code>R</code> <strong>must</strong> be installed before RStudio.</p>
 </div>
 </div>
 <p>Click on <strong><em>DOWNLOAD RSTUDIO DESKTOP…</em></strong> Your operating system is automatically detected. (If your OS is not correctly detected, scroll down and choose the right version for your system.)</p>
@@ -232,8 +233,8 @@ Important
 </ul>
 </section>
 <section id="step3" class="level2">
-<h2 class="anchored" data-anchor-id="step3">Step 3: Check <code>R</code> and <code>RStudio</code> installations</h2>
-<p>Open <code>RStudio</code> and type in the following command in the <strong>Console</strong> pane.</p>
+<h2 class="anchored" data-anchor-id="step3">Step 3: Check <code>R</code> and RStudio installations</h2>
+<p>Open RStudio and type in the following command in the <strong>Console</strong> pane.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -266,7 +267,7 @@ nickname       Puppy Cup                   </code></pre>
 <p>In <code>R</code>, a package is a collection of functions, data, and compiled code. In addition to a set of built-in base packages, there are numerous external <code>R</code> packages written by the community to add specific functionality.</p>
 <p>In general, to install an <code>R</code> package, you can use the <code>install.packages()</code> function and pass in the package name.</p>
 <p>The following example shows how to install the <code>tidyverse</code> package in <code>R</code>. The <code>tidyverse</code> is a suite of <code>R</code> packages we will be using throughout this program. It features popular packages such as <code>ggplot2</code> for data visualization and <code>dplyr</code> for data manipulation.</p>
-<p>After installing <code>R</code> and <code>RStudio</code>, open <code>RStudio</code> and enter the following command in the <strong>Console</strong> pane.</p>
+<p>After installing <code>R</code> and RStudio, open RStudio and enter the following command in the <strong>Console</strong> pane.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -290,9 +291,13 @@ nickname       Puppy Cup                   </code></pre>
 </div>
 </div>
 <p><strong>Ask us for help if you encounter any issues or errors in any of the installation steps above.</strong></p>
-
-
 </section>
+<section id="r-primers-on-posit-cloud" class="level2">
+<h2 class="anchored" data-anchor-id="r-primers-on-posit-cloud"><code>R</code> Primers on Posit Cloud</h2>
+<p>In addition to following the steps above for installing <code>R</code> and RStudio on your computer, <strong>we recommend you make a free Posit Cloud (formerly RStudio Cloud) account at <a href="https://posit.cloud/"><code>https://posit.cloud/</code></a></strong>. This is a free, browser-based version of <code>R</code> and RStudio that also provides access to a growing number of relevant <code>R</code> tutorials / primers.</p>
+<p>After you create a Posit Cloud account, navigate to the menu on the left and click on <a href="https://posit.cloud/learn/recipes">“Recipes”</a>. This brings up a menu of tutorials, with code primers you can choose to work through. <strong>Please complete the tutorials listed under “R Basics”</strong> (you can skip the first three). Also, feel free to explore the other tutorials.</p>
+
+
 </section>
 
 </main> <!-- /main -->

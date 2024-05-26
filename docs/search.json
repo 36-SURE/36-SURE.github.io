@@ -1,31 +1,17 @@
 [
   {
-    "objectID": "personal/plan.html",
-    "href": "personal/plan.html",
-    "title": "Plan",
-    "section": "",
-    "text": "Week\nMonth\nDay\nTopic\n\n\n\n\n\n\n\n1\nJune\n3\n\n\n\n\n\n\n\n\n4\n\n\n\n\n\n\n\n\n5\n\n\n\n\n\n\n\n\n6\n\n\n\n\n\n\n\n\n7\n\n\n\n\n\n\n2\n\n10\n\n\n\n\n\n\n\n\n11\n\n\n\n\n\n\n\n\n12\n\n\n\n\n\n\n\n\n13\n\n\n\n\n\n\n\n\n14\n\n\n\n\n\n\n3\n\n17\n\n\n\n\n\n\n\n\n18\n\n\n\n\n\n\n\n\n19\nNo lecture\n\n\n\n\n\n\n\n20\n\n\n\n\n\n\n\n\n21\n\n\n\n\n\n\n4\n\n24\n\n\n\n\n\n\n\n\n25\n\n\n\n\n\n\n\n\n26\n\n\n\n\n\n\n\n\n27\n\n\n\n\n\n\n\n\n28\n\n\n\n\n\n\n5\nJuly\n1\n\n\n\n\n\n\n\n\n2\n\n\n\n\n\n\n\n\n3\n\n\n\n\n\n\n\n\n4\nNo lecture\n\n\n\n\n\n\n\n5\n\n\n\n\n\n\n6\n\n8\n\n\n\n\n\n\n\n\n9\n\n\n\n\n\n\n\n\n10\n\n\n\n\n\n\n\n\n11\n\n\n\n\n\n\n\n\n12\n\n\n\n\n\n\n7\n\n15\n\n\n\n\n\n\n\n\n16\n\n\n\n\n\n\n\n\n17\n\n\n\n\n\n\n\n\n18\n\n\n\n\n\n\n\n\n19\n\n\n\n\n\n\n8\n\n22\n\n\n\n\n\n\n\n\n23\n\n\n\n\n\n\n\n\n24\n\n\n\n\n\n\n\n\n25\n\n\n\n\n\n\n\n\n26\nPresentations"
-  },
-  {
     "objectID": "sports.html",
     "href": "sports.html",
     "title": "Sports",
     "section": "",
-    "text": "June 3\nGetting started with R\n.html\n.qmd\n\n\nJune 4\nData wrangling\n.html\n.qmd\n\n\nJune 5\nData visualization\n.html\n.qmd\n\n\nJune 6\nGit and GitHub"
+    "text": "TBA"
   },
   {
     "objectID": "sports.html#labs",
     "href": "sports.html#labs",
     "title": "Sports",
     "section": "",
-    "text": "June 3\nGetting started with R\n.html\n.qmd\n\n\nJune 4\nData wrangling\n.html\n.qmd\n\n\nJune 5\nData visualization\n.html\n.qmd\n\n\nJune 6\nGit and GitHub"
-  },
-  {
-    "objectID": "sports.html#eda-project",
-    "href": "sports.html#eda-project",
-    "title": "Sports",
-    "section": "EDA project",
-    "text": "EDA project\n\n\n\n\nWTA Grand Slam statistics\ndescription\n\n\nWNBA shooting\ndescription\n\n\nNWSL team statistics\ndescription\n\n\nNHL shooting\ndescription\n\n\nNFL passing\ndescription"
+    "text": "TBA"
   },
   {
     "objectID": "health/labs/intro.html",
@@ -96,13 +82,6 @@
     "title": "Lab: getting started with R",
     "section": "Customizing RStudio",
     "text": "Customizing RStudio\nRStudio theme\nRStudio can be customized with different themes. To explore built-in themes,\n\nNavigate to the menu bar at the top of your screen\nChoose Tools &gt; Global Options &gt; Appearance\nChange your RStudio theme under Editor theme\n\n(FYI, Quang uses the Tomorrow Night Bright theme.)\nNote that within the Appearance tab, there are also options for changing your Editor font, Editor font size, etc.\nRStudio panes\nWithin RStudio, there are several panes (e.g., Console, Help, Environment, History, Plots, etc.). To customize, go to Tools &gt; Global Options &gt; Pane Layout, and arrange the panes as you see fit.\nFeel free to explore other options within the Tools &gt; Global Option menu."
-  },
-  {
-    "objectID": "health/labs/intro.html#optional-r-primers-on-rstudio-cloud",
-    "href": "health/labs/intro.html#optional-r-primers-on-rstudio-cloud",
-    "title": "Lab: getting started with R",
-    "section": "OPTIONAL: R Primers on RStudio Cloud",
-    "text": "OPTIONAL: R Primers on RStudio Cloud\nIf you are struggling to install R and RStudio on your computer, and/or having difficulties with installing the tidyverse then you should make a free RStudio Cloud account at https://rstudio.cloud/. This is a free, browser-based version of R and RStudio that also provides access to a growing number of relevant R tutorials/primers.\nAfter you create a RStudio Cloud account, click on the navigation menu by “Your Workspace”. Then click on “Primers” to bring up a menu of tutorials, with code primers you can choose to work through. RStudio Cloud is a great practical alternative to use in case we are unable to resolve errors with regards to installation on your own personal computer (a very unlikely scenario)."
   },
   {
     "objectID": "health/labs/wrangling.html",
@@ -459,28 +438,21 @@
     "href": "health.html",
     "title": "Health",
     "section": "",
-    "text": "June 3\nGetting started with R\n.html\n.qmd\n\n\nJune 4\nData wrangling\n.html\n.qmd\n\n\nJune 5\nData visualization\n.html\n.qmd\n\n\nJune 6\nGit and GitHub\n\n\n\n\n\nRegression 1\n\n\n\n\n\nRegression 2"
+    "text": "TBA"
   },
   {
     "objectID": "health.html#labs",
     "href": "health.html#labs",
     "title": "Health",
     "section": "",
-    "text": "June 3\nGetting started with R\n.html\n.qmd\n\n\nJune 4\nData wrangling\n.html\n.qmd\n\n\nJune 5\nData visualization\n.html\n.qmd\n\n\nJune 6\nGit and GitHub\n\n\n\n\n\nRegression 1\n\n\n\n\n\nRegression 2"
-  },
-  {
-    "objectID": "health.html#eda-project",
-    "href": "health.html#eda-project",
-    "title": "Health",
-    "section": "EDA project",
-    "text": "EDA project\n\n\n\n\nHospital ratings\ndescription\n\n\nMaternal healthcare disparities\ndescription\n\n\nOpioid prescriptions and claims\ndescription\n\n\nCOVID cases and deaths\ndescription\n\n\nCOVID hospitalizations\ndescription\n\n\nRegistered nurses\ndescription"
+    "text": "TBA"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "SURE 2024",
     "section": "",
-    "text": "Welcome to the Summer Undergraduate Research Experience in Statistics (SURE) 2024, hosted by the Department of Statistics & Data Science at Carnegie Mellon University. This program focuses on statistics and data science methodology with applications in healthcare and sports analytics.\nOn this site, the Lectures tab contains all lecture slides. The Sports and Health tabs contain materials for sports and heath labs, respectively."
+    "text": "Welcome to the Summer Undergraduate Research Experience in Statistics (SURE) 2024, hosted by the Department of Statistics & Data Science at Carnegie Mellon University. This program focuses on statistics and data science methodology with applications in healthcare and sports analytics.\nOn this site, the Lectures tab contains all lecture slides. The Health and Sports tabs contain materials for health and sports labs, respectively."
   },
   {
     "objectID": "sports/labs/intro.html",
@@ -551,13 +523,6 @@
     "title": "Lab: getting started with R",
     "section": "Customizing RStudio",
     "text": "Customizing RStudio\nRStudio theme\nRStudio can be customized with different themes. To explore built-in themes,\n\nNavigate to the menu bar at the top of your screen\nChoose Tools &gt; Global Options &gt; Appearance\nChange your RStudio theme under Editor theme\n\n(FYI, Quang uses the Tomorrow Night Bright theme.)\nNote that within the Appearance tab, there are also options for changing your Editor font, Editor font size, etc.\nRStudio panes\nWithin RStudio, there are several panes (e.g., Console, Help, Environment, History, Plots, etc.). To customize, go to Tools &gt; Global Options &gt; Pane Layout, and arrange the panes as you see fit.\nFeel free to explore other options within the Tools &gt; Global Option menu."
-  },
-  {
-    "objectID": "sports/labs/intro.html#optional-r-primers-on-rstudio-cloud",
-    "href": "sports/labs/intro.html#optional-r-primers-on-rstudio-cloud",
-    "title": "Lab: getting started with R",
-    "section": "OPTIONAL: R Primers on RStudio Cloud",
-    "text": "OPTIONAL: R Primers on RStudio Cloud\nIf you are struggling to install R and RStudio on your computer, and/or having difficulties with installing the tidyverse then you should make a free RStudio Cloud account at https://rstudio.cloud/. This is a free, browser-based version of R and RStudio that also provides access to a growing number of relevant R tutorials/primers.\nAfter you create a RStudio Cloud account, click on the navigation menu by “Your Workspace”. Then click on “Primers” to bring up a menu of tutorials, with code primers you can choose to work through. RStudio Cloud is a great practical alternative to use in case we are unable to resolve errors with regards to installation on your own personal computer (a very unlikely scenario)."
   },
   {
     "objectID": "sports/labs/wrangling.html",
@@ -875,18 +840,11 @@
     "text": "Starter code\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nnfl_passing &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/nfl_passing.csv\")\n\nRows: 19997 Columns: 36\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (15): passer_player_name, passer_player_id, posteam, pass_location, pass...\ndbl (21): complete_pass, interception, yards_gained, touchdown, air_yards, y...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nThe code to build this dataset can be found below.\n\nlibrary(tidyverse)\nlibrary(nflfastR) # install.packages(\"nflverse\")\nnfl_pbp &lt;- load_pbp(2023)\nnfl_passing &lt;- nfl_pbp |&gt; \n  filter(play_type == \"pass\", season_type == \"REG\", \n         !is.na(epa), !is.na(posteam), posteam != \"\") |&gt; \n  select(# player info attempting the pass\n         passer_player_name, passer_player_id, posteam,\n         # info about the pass:\n         complete_pass, interception, yards_gained, touchdown,\n         pass_location, pass_length, air_yards, yards_after_catch, epa, wpa,\n         shotgun, no_huddle, qb_dropback, qb_hit, sack,\n         # context about the receiver:\n         receiver_player_name, receiver_player_id,\n         # team context\n         posteam, defteam, posteam_type,\n         # play and game context\n         play_id, yardline_100, side_of_field, down, qtr, play_clock,\n         half_seconds_remaining, game_half, game_id,\n         home_team, away_team, home_score, away_score,\n         # description of play\n         desc)"
   },
   {
-    "objectID": "git-setup.html",
-    "href": "git-setup.html",
+    "objectID": "git-setup.html#step-1-create-a-github-account",
+    "href": "git-setup.html#step-1-create-a-github-account",
     "title": "Git and GitHub Setup",
-    "section": "",
-    "text": "Register for a GitHub account at https://github.com if you do not have one. It is completely free to use. You may use any username you prefer; we will later ask for your username so we can keep track."
-  },
-  {
-    "objectID": "git-setup.html#step-1-make-a-github-account",
-    "href": "git-setup.html#step-1-make-a-github-account",
-    "title": "Git and GitHub Setup",
-    "section": "",
-    "text": "Register for a GitHub account at https://github.com if you do not have one. It is completely free to use. You may use any username you prefer; we will later ask for your username so we can keep track."
+    "section": "Step 1: Create a GitHub account",
+    "text": "Step 1: Create a GitHub account\n\n\nRegister for a GitHub account at https://github.com if you do not have one. It is completely free to use. You may use any username you prefer; we will later ask for your username so we can keep track."
   },
   {
     "objectID": "git-setup.html#step-2-install-git",
@@ -900,35 +858,35 @@
     "href": "git-setup.html#step-3-configure-git",
     "title": "Git and GitHub Setup",
     "section": "Step 3: Configure Git",
-    "text": "Step 3: Configure Git\nAfter installation, you will need to configure Git (read more about it here: https://happygitwithr.com/hello-git.html). You can use the shell for this, or you can do this directly in R:\n\n# Uncomment and run the following line to install the usethis package\n# install.packages(\"usethis\")\n# enter your name and your email inside the command below, and run it\nusethis::use_git_config(user.name = \"Your Name\", user.email = \"your-github@email.address\")\n\nUse your full name for the user.name field and then use the same email as your GitHub account for user.email.\nYou then need to create a personal access token for authentication\nFirst, create a personal access token with the following command:\n\nusethis::create_github_token()\n\nRecommended scopes will be pre-selected if you used create_github_token(). Click “Generate token”. Copy the generated token to your clipboard. Or leave that browser window open and available for a little while, so you can come back to copy the token.\nNow, in R, after making sure the gitcreds package is installed, run gitcreds::gitcreds_set() to get a prompt where you can paste your token:\n\n# Uncomment and run the following line to install the gitcreds package\n# install.packages(\"gitcreds\")\ngitcreds::gitcreds_set()\n\n# It should display the following info - \n# ? Enter password or token: ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n# -&gt; Adding new credentials...\n# -&gt; Removing credentials from cache...\n# -&gt; Done.\n\nYou should then be ready to use GitHub!"
+    "text": "Step 3: Configure Git\nAfter installation, you will need to configure Git (read more about it here). You can use the shell for this, or you can do this directly in R:\n\n# Uncomment and run the following line to install the usethis package\n# install.packages(\"usethis\")\n# enter your name and your email inside the command below, and run it\nusethis::use_git_config(user.name = \"Your Name\", user.email = \"your-github@email.address\")\n\nUse your full name for the user.name field and then use the same email as your GitHub account for user.email.\nYou then need to create a personal access token for authentication\nFirst, create a personal access token with the following command:\n\nusethis::create_github_token()\n\nRecommended scopes will be pre-selected if you used create_github_token(). Click “Generate token”. Copy the generated token to your clipboard. Or leave that browser window open and available for a little while, so you can come back to copy the token.\nNow, in R, after making sure the gitcreds package is installed, run gitcreds::gitcreds_set() to get a prompt where you can paste your token:\n\n# Uncomment and run the following line to install the gitcreds package\n# install.packages(\"gitcreds\")\ngitcreds::gitcreds_set()\n\n# It should display the following info - \n# ? Enter password or token: ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n# -&gt; Adding new credentials...\n# -&gt; Removing credentials from cache...\n# -&gt; Done.\n\nYou should then be ready to use GitHub!"
   },
   {
-    "objectID": "git-setup.html#step-3-create-a-github-repository",
-    "href": "git-setup.html#step-3-create-a-github-repository",
+    "objectID": "git-setup.html#step-4-create-a-github-repository",
+    "href": "git-setup.html#step-4-create-a-github-repository",
     "title": "Git and GitHub Setup",
-    "section": "Step 3: Create a GitHub repository",
-    "text": "Step 3: Create a GitHub repository\nWe will follow the paradigm of “GitHub first”. What this means is that when we create a repository, we will create it on GitHub first, then link a local repository to it from inside RStudio.\nAfter you’ve logged in, to create a GitHub repository\n\nGo to https://github.com/new\nName the repository (give it a meaningful name)\nGive the repository a description (don’t leave this blank although this is optional)\nDecide whether to keep the repository public or private (for now, let’s just keep it public)\nClick on “Initialize this repository with a README”. For now, there’s no need to “Add .gitignore” or “Choose a license”\nClick on “Create Repository”"
+    "section": "Step 4: Create a GitHub repository",
+    "text": "Step 4: Create a GitHub repository\nWe will follow the paradigm of “GitHub first”. What this means is that when we create a repository, we will create it on GitHub first, then link a local repository to it from inside RStudio.\nAfter you’ve logged in, to create a GitHub repository\n\nGo to https://github.com/new\nName the repository (give it a meaningful name)\nGive the repository a description (don’t leave this blank although this is optional)\nDecide whether to keep the repository public or private (for now, let’s just keep it public)\nClick on “Initialize this repository with a README”. For now, there’s no need to “Add .gitignore” or “Choose a license”\nClick on “Create Repository”"
   },
   {
-    "objectID": "git-setup.html#step-4-connect-rstudio-to-the-github-repository",
-    "href": "git-setup.html#step-4-connect-rstudio-to-the-github-repository",
+    "objectID": "git-setup.html#step-5-connect-rstudio-to-the-github-repository",
+    "href": "git-setup.html#step-5-connect-rstudio-to-the-github-repository",
     "title": "Git and GitHub Setup",
-    "section": "Step 4: Connect RStudio to the GitHub repository",
-    "text": "Step 4: Connect RStudio to the GitHub repository\n\nIn RStudio, click on File &gt; New Project.... Next click on “Version Control” and then on “Git”\nGo back to the GitHub repository in your browser, click on Code (in the same line as “Go to file”). Under HTTPS, copy the web URL\nIn RStudio, paste this URL into “Repository URL”\nType the name for the folder on your computer associated with this repository into “Project directory name”\nMake sure “Create project as subdirectory of:” points to where you want to locate this new folder.\nClick on “Create Project”\n\nAt this point, you should find that your Files pane is listing the files in your local repository, including one ending in .Rproj and the README.md file that was created on GitHub."
+    "section": "Step 5: Connect RStudio to the GitHub repository",
+    "text": "Step 5: Connect RStudio to the GitHub repository\n\nIn RStudio, click on File &gt; New Project.... Next click on “Version Control” and then on “Git”\nGo back to the GitHub repository in your browser, click on Code (in the same line as “Go to file”). Under HTTPS, copy the web URL\nIn RStudio, paste this URL into “Repository URL”\nType the name for the folder on your computer associated with this repository into “Project directory name”\nMake sure “Create project as subdirectory of:” points to where you want to locate this new folder.\nClick on “Create Project”\n\nAt this point, you should find that your Files pane is listing the files in your local repository, including one ending in .Rproj and the README.md file that was created on GitHub."
   },
   {
-    "objectID": "git-setup.html#step-5-modify-the-repository",
-    "href": "git-setup.html#step-5-modify-the-repository",
+    "objectID": "git-setup.html#step-6-modify-the-repository",
+    "href": "git-setup.html#step-6-modify-the-repository",
     "title": "Git and GitHub Setup",
-    "section": "Step 5: Modify the repository",
-    "text": "Step 5: Modify the repository\nTo add a new file from your local repository to GitHub,\n\nOpen a new file (e.g, R Script, Quarto document, etc.)\nFill the file with some code/comments/etc.\nSave the file. At this point, this file should show up in the Git pane (in the top right of RStudio)\nCheck the box under “Staged” in the Git pane to stage the file for a commit\nClick on “Commit” in the Git pane\nIn the new window that opens, add a “Commit message”, then click on the “Commit” button\nClick on “Push” to push your changes from your local repo to your GitHub repo\n\nIf you encountered no errors then you’re done! While working on a single project you will repeatedly use Step 5—make changes to files, commit changes, then push changes. We will cover pulling later.\nEvery time you want to create a new repository, you can just start with Step 3, use GitHub, copy the repository into RStudio, then repeatedly update, commit, and push.\nAsk us for help if you have any questions."
+    "section": "Step 6: Modify the repository",
+    "text": "Step 6: Modify the repository\nTo add a new file from your local repository to GitHub,\n\nOpen a new file (e.g, R Script, Quarto document, etc.)\nFill the file with some code/comments/etc.\nSave the file. At this point, this file should show up in the Git pane (in the top right of RStudio)\nCheck the box under “Staged” in the Git pane to stage the file for a commit\nClick on “Commit” in the Git pane\nIn the new window that opens, add a “Commit message”, then click on the “Commit” button\nClick on “Push” to push your changes from your local repo to your GitHub repo\n\nIf you encountered no errors then you’re done! While working on a single project you will repeatedly use Step 5—make changes to files, commit changes, then push changes. We will cover pulling later.\nEvery time you want to create a new repository, you can just start with Step 3, use GitHub, copy the repository into RStudio, then repeatedly update, commit, and push.\nAsk us for help if you have any questions."
   },
   {
     "objectID": "lectures.html",
     "href": "lectures.html",
     "title": "Lectures",
     "section": "",
-    "text": "Lecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides\n\n\nLecture 9\nJune 14\n\n\n\n\nLecture 10\nJune 17\n\n\n\n\n\nJune 18\nEDA project presentation\n\n\n\n\nJune 19\nJuneteenth holiday\n\n\n\nLecture 11\nJune 20\n\n\n\n\nLecture 12\nJune 21\n\n\n\n\nLecture 13\nJune 24\n\n\n\n\nLecture 14\nJune 25\n\n\n\n\nLecture 15\nJune 26\n\n\n\n\nLecture 16\nJune 27\n\n\n\n\nLecture 17\nJune 28"
+    "text": "TBA"
   },
   {
     "objectID": "lectures/04-quantitative.html#data",
@@ -1799,18 +1757,25 @@
     "text": "Check out this song\n\n\n\n36-SURE.github.io"
   },
   {
-    "objectID": "lectures/00-welcome.html#let-the-fun-begin",
-    "href": "lectures/00-welcome.html#let-the-fun-begin",
+    "objectID": "lectures/00-welcome.html#summer-undergraduate-research-experience",
+    "href": "lectures/00-welcome.html#summer-undergraduate-research-experience",
     "title": "Welcome to SURE 2024",
-    "section": "Let the fun begin",
-    "text": "Let the fun begin\nyo"
+    "section": "Summer Undergraduate Research Experience",
+    "text": "Summer Undergraduate Research Experience\nExplore cutting-edge statistics and data science methodology with applications in health and sports analytics\n\n“The best thing about being a statistician…is that you get to play in everyone’s backyard.” — John W. Tukey (1915–2000)"
   },
   {
-    "objectID": "lectures/00-welcome.html#meet-us",
-    "href": "lectures/00-welcome.html#meet-us",
+    "objectID": "lectures/00-welcome.html#goals",
+    "href": "lectures/00-welcome.html#goals",
     "title": "Welcome to SURE 2024",
-    "section": "Meet us",
-    "text": "Meet us\nsteve\n\n\n36-SURE.github.io"
+    "section": "Goals",
+    "text": "Goals\n\nDevelop fundamentals research skills: data wrangling, visualization, modeling, communication\nBecome familiar with R, tidyverse, Quarto, GitHub\nBecame familiar with cutting-edge statistical machine learning techniques\nCreate a portfolio of projects with GitHub and practice reproducible research\nNetwork with academic researchers and industry professionals\n\nHelp navigate your next steps—industry vs. graduate school"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#schedule-subject-to-change",
+    "href": "lectures/00-welcome.html#schedule-subject-to-change",
+    "title": "Welcome to SURE 2024",
+    "section": "Schedule (subject to change)",
+    "text": "Schedule (subject to change)\nA typical day consists of 3 main events:\n\nLectures: Mon-Fri, 9:15-10:45am, Posner 151\nPresentations: Posner 151 (Health) or Posner 153 (Sports)\n\nNote: dates/times may vary; check calendar\n\nLabs: Mon-Fri, 2-3:30pm, Posner 151 (Health) or Posner 153 (Sports)\n\ndemo labs\nproject labs\n\nwill begin with a mini EDA project\nthen shift to focus on main project\n\n\n\n\n\nHolidays: Juneteenth (Wed June 19) and Independence Day break (July 3-5)"
   },
   {
     "objectID": "lectures/template.html#introduction",
@@ -2230,7 +2195,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"j\" \"w\" \"u\" \"f\" \"t\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 1 1 0 0 1 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"H\" \"H\" \"T\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 31"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"m\" \"e\" \"v\" \"k\" \"x\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 0 1 1 0 1 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"T\" \"T\" \"T\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 30"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -2272,21 +2237,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.07478827\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9656607"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.001641663\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9704347"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.538\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.56     0.001 0.000188\n 2 -2.99     0.002 0.00141 \n 3 -2.79     0.003 0.00261 \n 4 -2.64     0.004 0.00410 \n 5 -2.60     0.005 0.00464 \n 6 -2.56     0.006 0.00520 \n 7 -2.36     0.007 0.00905 \n 8 -2.35     0.008 0.00929 \n 9 -2.35     0.009 0.00931 \n10 -2.27     0.01  0.0116  \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.513\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical    true\n   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 -2.91     0.001 0.00180\n 2 -2.87     0.002 0.00205\n 3 -2.86     0.003 0.00213\n 4 -2.74     0.004 0.00310\n 5 -2.57     0.005 0.00505\n 6 -2.57     0.006 0.00508\n 7 -2.56     0.007 0.00524\n 8 -2.33     0.008 0.00980\n 9 -2.31     0.009 0.0104 \n10 -2.27     0.01  0.0115 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3888962\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3891347\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -2300,14 +2265,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1868\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.16\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.01155412\n\nmean(rnorm(100))\n\n[1] 0.00910349\n\nmean(rnorm(100))\n\n[1] 0.009715114"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.123535\n\nmean(rnorm(100))\n\n[1] 0.2241204\n\nmean(rnorm(100))\n\n[1] -0.1668104"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
@@ -2723,11 +2688,18 @@
     "text": "Resources\n\nggplot2 website: cheatsheets, FAQs, extensions, and more\nTidyTuesday\nDavid Robinson’s TidyTuesday screencasts\nVizBuzz: LIVE data viz replication game show\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
   },
   {
+    "objectID": "r-setup.html#r-and-rstudio",
+    "href": "r-setup.html#r-and-rstudio",
+    "title": "R and RStudio Setup",
+    "section": "R and RStudio",
+    "text": "R and RStudio\nR is an open-source programming language for statistical computing. R is widely-used in both academia and industry, due to its capacity for statistical analysis and data science.\nIn order to use R effectively, you need a suitable editing environment, i.e. RStudio. For more context, RStudio is an integrated development environment (IDE) developed specifically for R programming. Although R can be run without RStudio, RStudio provides a more user-friendly experience with additional functionality.\nTo download R and RStudio, visit https://posit.co/download/rstudio-desktop.\nYou will see the following two tasks to be completed:\n\n1: Install R\n2: Install RStudio"
+  },
+  {
     "objectID": "r-setup.html#step-1-install-r",
     "href": "r-setup.html#step-1-install-r",
     "title": "R and RStudio Setup",
     "section": "Step 1: Install R",
-    "text": "Step 1: Install R\n(Note that the following instructions apply to the latest R version (4.4.0) as of May 15, 2024)\nClick on DOWNLOAD AND INSTALL R. This will direct you to the CRAN (Comprehensive R Archive Network) website.\nmacOS\n\nClick on Download R for macOS.\nChoose the .pkg file suitable for your Mac (Apple silicon (M1-3) Macs or older Intel Macs.)\nOpen the .pkg file after the download is complete.\nFollow the installation instructions.\n\nWindows\n\nClick on Download R for Windows.\nClick on install R for the first time (on the same line as the base subdirectory.)\nChoose Download R 4.4.0 for Windows.\nOpen the .exe file after the download is complete.\nFollow the installation instructions."
+    "text": "Step 1: Install R\n(Note that the following instructions apply to the latest R version (4.4.0) as of May 24, 2024)\nClick on DOWNLOAD AND INSTALL R. This will direct you to the CRAN (Comprehensive R Archive Network) website.\nmacOS\n\nClick on Download R for macOS.\nChoose the .pkg file suitable for your Mac (Apple silicon (M1-3) Macs or older Intel Macs.)\nOpen the .pkg file after the download is complete.\nFollow the installation instructions.\n\nWindows\n\nClick on Download R for Windows.\nClick on install R for the first time (on the same line as the base subdirectory.)\nChoose Download R 4.4.0 for Windows.\nOpen the .exe file after the download is complete.\nFollow the installation instructions."
   },
   {
     "objectID": "r-setup.html#step-2-install-rstudio",
@@ -2749,5 +2721,12 @@
     "title": "R and RStudio Setup",
     "section": "Step 4: Install an R package",
     "text": "Step 4: Install an R package\nIn R, a package is a collection of functions, data, and compiled code. In addition to a set of built-in base packages, there are numerous external R packages written by the community to add specific functionality.\nIn general, to install an R package, you can use the install.packages() function and pass in the package name.\nThe following example shows how to install the tidyverse package in R. The tidyverse is a suite of R packages we will be using throughout this program. It features popular packages such as ggplot2 for data visualization and dplyr for data manipulation.\nAfter installing R and RStudio, open RStudio and enter the following command in the Console pane.\n\ninstall.packages(\"tidyverse\")\n\nTo verify that tidyverse is successfully installed, run the following command:\n\nlibrary(tidyverse)\n\nYou should get a message similar to the output below.\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nAsk us for help if you encounter any issues or errors in any of the installation steps above."
+  },
+  {
+    "objectID": "r-setup.html#r-primers-on-posit-cloud",
+    "href": "r-setup.html#r-primers-on-posit-cloud",
+    "title": "R and RStudio Setup",
+    "section": "R Primers on Posit Cloud",
+    "text": "R Primers on Posit Cloud\nIn addition to following the steps above for installing R and RStudio on your computer, we recommend you make a free Posit Cloud (formerly RStudio Cloud) account at https://posit.cloud/. This is a free, browser-based version of R and RStudio that also provides access to a growing number of relevant R tutorials / primers.\nAfter you create a Posit Cloud account, navigate to the menu on the left and click on “Recipes”. This brings up a menu of tutorials, with code primers you can choose to work through. Please complete the tutorials listed under “R Basics” (you can skip the first three). Also, feel free to explore the other tutorials."
   }
 ]
