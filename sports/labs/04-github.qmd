@@ -1,0 +1,108 @@
+---
+title: "Using GitHub for project collaboration"
+format: html
+---
+
+## Goal
+
+The purpose of this lab is to help you set up Git and GitHub on your computer, and use them to collaborate on your EDA project.
+
+## Task 1: Git and GitHub Setup
+
+Follow the instructions in the [Git and GitHub Setup](https://36-sure.github.io/git-setup.html) tab on the website. **You only need to complete the first 3 steps**.
+
+(Note: If you're already have both an existing GitHub account and Git (in its latest version) installed on your computer, you can skip Task 1. However, make sure every group member finishes Task 1 before proceeding to Task 2, which requires a group effort.)
+
+## Task 2: EDA project collaboration with Git and GitHub
+
+### Step 1: Create an EDA project repository on GitHub<br>(Required for ONE group member only)
+
+Each group should elect ONE person to create a GitHub repository for the EDA project. This repository is to be shared among all group members. 
+
+The elected group member should follow [Step 4 of the Git and GitHub Setup page](https://36-sure.github.io/git-setup.html#step-4-create-a-github-repository) to create a new GitHub repository.
+
+To add the rest of your group to the repository:
+
+*   Go to browser page of the GitHub repository you just created and click on "Settings"
+
+*   Navigate to the left sidebar and click on "Collaborators"
+
+*   Click on "Add people" (under Manage access). Enter the GitHub username for the other group members. 
+
+### Step 2: Clone the remote repository to your local computer<br>(Required for ALL group members)
+
+*   Everyone (except the member responsible for creating the repository) should each get an invitation sent to the email associated with your GitHub account.
+
+*   Check your email and accept the invitation
+
+*   Go to the browser page for the EDA project GitHub repository (created in Step 1)
+
+*   Click on Code (in the same line as "Go to file"). Under HTTPS, copy the URL   
+
+*   In RStudio, click on `File > New Project....` Next, click on "Version Control" and then on "Git". Paste the URL you just copied into "Repository URL"
+
+*   Type the name for the folder on your computer associated with this repository into Project directory name 
+
+    *   You can choose whatever name you want, but it is recommended to give a name similar to the repository name on GitHub
+    
+*   Make sure "Create project as subdirectory of:" points to where you want to locate this new folder
+
+*   Click on "Create Project"
+
+*   At this point, you should find that the "Files" pane (in the bottom right of RStudio) is listing the files in your local repository.
+
+### Step 3: Modify the repository <br>(Required for ALL group members)
+
+For ease, each group member should create their own "sandbox" folder as follows:
+
+*  Navigate to the Files pane in RStudio and click on "Folder" to create a new folder (for the new folder name, use your last name.)
+
+*  In RStudio, open a new file (e.g. R Script, Quarto document, etc.)
+
+*   Fill the file with some code/comments/etc.
+
+*   Save the file inside the folder you just created (with your last name as the folder name). At this point, this file should show up in the "Git" pane (in the top right of RStudio)
+
+*   Check the box under "Staged" in the Git pane to stage the file for a commit
+
+*   Click on "Commit" in the Git pane
+
+*   In the new window that opens, add a "Commit message", then click on the "Commit" button
+
+*   Click on "Push" to push your changes from your local repository to the shared remote  repository on GitHub
+
+### Step 4: Update the local repository <br>(Required for ALL group members)
+
+*   First, make sure that everyone in your group have completed Step 3
+
+*   In RStudio, navigate to the Git pane and click on "Pull". A new window will pop up. Once everything is finished running, close the window.
+
+*   At this point, you should find that your `Files` pane in RStudio is listing the folders that your group members have created, in addition to your own folder
+
+    *   This task is know as `git pull`, which updates the local repository to match that content of a shared remote repository
+    
+### Step 5: Start your EDA project
+
+If you encountered no errors then you can feel free to start brainstorming your EDA project with your group.
+
+**For this project, we ask you to create/update/save files within your own sandbox folder** (that you created in Step 3). This will help mitigate the risk of running into trouble when pushing your files to GitHub, especially for those who are new to Git and GitHub. This also allows us to easily review your code.
+
+::: callout-important
+# Important notes
+
+The GitHub procedure for any project collaboration is
+
+1. Pull new changes
+
+2. Make changes on your computer (e.g. create new files, update existing files)
+
+3. Commit your local changes (Note: this step may be repeated)
+
+4. Pull again to avoid merge conflicts
+
+5. Push your commit(s) to GitHub
+
+Advices: Make small, frequent commits. ALWAYS pull before you push.
+:::
+
+**Ask us for help if you run into any issues or have any questions.**
