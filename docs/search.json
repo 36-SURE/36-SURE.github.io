@@ -4,21 +4,21 @@
     "href": "sports.html",
     "title": "Sports",
     "section": "",
-    "text": "Date\nTitle\nMaterials\n\n\n\n\nJune 3\nGetting started with R\n.html   .qmd\n\n\nJune 4\nData wrangling\n.html   .qmd\n\n\nJune 5\nData visualization\n.html   .qmd"
+    "text": "Note: To download a .qmd file, right click and choose “Save Link As…”.\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nJune 3\nGetting started with R\n.html   .qmd\n\n\nJune 4\nData wrangling\n.html   .qmd\n\n\nJune 5\nData visualization\n.html   .qmd"
   },
   {
     "objectID": "sports.html#labs",
     "href": "sports.html#labs",
     "title": "Sports",
     "section": "",
-    "text": "Date\nTitle\nMaterials\n\n\n\n\nJune 3\nGetting started with R\n.html   .qmd\n\n\nJune 4\nData wrangling\n.html   .qmd\n\n\nJune 5\nData visualization\n.html   .qmd"
+    "text": "Note: To download a .qmd file, right click and choose “Save Link As…”.\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nJune 3\nGetting started with R\n.html   .qmd\n\n\nJune 4\nData wrangling\n.html   .qmd\n\n\nJune 5\nData visualization\n.html   .qmd"
   },
   {
     "objectID": "sports.html#resources",
     "href": "sports.html#resources",
     "title": "Sports",
     "section": "Resources",
-    "text": "Resources\n\nCMSAC\nSCORE Network\nCRAN Task View: Sports Analytics\nSportsDataverse\nNFL Big Data Bowl: 2019, 2020, 2021, 2022, 2023, 2024\nAnalyzing Baseball Data with R\nBig ideas in sports analytics and statistical tools for their investigation\nPlayer Tracking Data in Sports\nHandbook of Statistical Methods and Analyses in Sports\nJournal of Quantitative Analysis in Sports\nOther conferences: NESSIS, CASSIS, CSAS"
+    "text": "Resources\n\nCMSAC\nSCORE Network\nCRAN Task View: Sports Analytics\nSportsDataverse\nNFL Big Data Bowl: 2019, 2020, 2021, 2022, 2023, 2024\nAnalyzing Baseball Data with R\nBig ideas in sports analytics and statistical tools for their investigation\nPlayer Tracking Data in Sports\nHandbook of Statistical Methods and Analyses in Sports\nJournal of Quantitative Analysis in Sports\nOther conferences: NESSIS, CASSIS, CSAS\nRecent papers by CMSAC\n\nFractional tackles\nSTRAIN\nAugmented adjusted plus-minus (and Intraocular)\nGoing deep\nnflWAR"
   },
   {
     "objectID": "health/labs/intro.html",
@@ -445,14 +445,14 @@
     "href": "health.html",
     "title": "Health",
     "section": "",
-    "text": "Date\nTitle\nMaterials\n\n\n\n\nJune 3\nGetting started with R\n.html   .qmd\n\n\nJune 4\nData wrangling\n.html   .qmd\n\n\nJune 5\nData visualization\n.html   .qmd"
+    "text": "Note: To download a .qmd file, right click and choose “Save Link As…”.\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nJune 3\nGetting started with R\n.html   .qmd\n\n\nJune 4\nData wrangling\n.html   .qmd\n\n\nJune 5\nData visualization\n.html   .qmd"
   },
   {
     "objectID": "health.html#labs",
     "href": "health.html#labs",
     "title": "Health",
     "section": "",
-    "text": "Date\nTitle\nMaterials\n\n\n\n\nJune 3\nGetting started with R\n.html   .qmd\n\n\nJune 4\nData wrangling\n.html   .qmd\n\n\nJune 5\nData visualization\n.html   .qmd"
+    "text": "Note: To download a .qmd file, right click and choose “Save Link As…”.\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nJune 3\nGetting started with R\n.html   .qmd\n\n\nJune 4\nData wrangling\n.html   .qmd\n\n\nJune 5\nData visualization\n.html   .qmd"
   },
   {
     "objectID": "health.html#resources",
@@ -914,7 +914,308 @@
     "href": "lectures.html#references",
     "title": "Lectures",
     "section": "References",
-    "text": "References\n\nR for Data Science\nModern Data Science with R\nPosit Cheatsheets\nQuarto\nggplot2\nAdvanced Data Analysis from an Elementary Point of View\nAn Introduction to Statistical Learning\nThe Elements of Statistical Learning\nMore recommended R books"
+    "text": "References\n\nR for Data Science\nModern Data Science with R\nPosit Cheatsheets\nQuarto\nggplot2\nTidyTuesday\nAdvanced Data Analysis from an Elementary Point of View\nAn Introduction to Statistical Learning\nThe Elements of Statistical Learning\nMore recommended R books"
+  },
+  {
+    "objectID": "lectures/12-selection.html#setting",
+    "href": "lectures/12-selection.html#setting",
+    "title": "Supervised learning: variable selection",
+    "section": "Setting",
+    "text": "Setting\nWe wish to learn a linear model. Our estimate (denoted by hats) is \\[\n\\hat{Y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 X_1 + \\cdots + \\hat{\\beta}_p X_p\n\\]\n\nWhy would we attempt to select a subset of the \\(p\\) variables?\n\n\n\nTo improve prediction accuracy\n\nEliminating uninformative predictors can lead to lower variance in the test set MSE, at the expense of a slight increase in bias\n\n\n\n\n\nTo improve model interpretability\n\nEliminating uninformative predictors is obviously a good thing when your goal is to tell the story of how your predictors are associated with your response."
+  },
+  {
+    "objectID": "lectures/12-selection.html#best-subset-selection",
+    "href": "lectures/12-selection.html#best-subset-selection",
+    "title": "Supervised learning: variable selection",
+    "section": "Best subset selection",
+    "text": "Best subset selection\n\nStart with the null model \\(\\mathcal{M}_0\\) (intercept-only) that has no predictors\n\nPredict the sample mean for each observation\n\n\n\n\nFor \\(k = 1, 2, \\dots, p\\) (each possible number of predictors)\n\nFit all \\(\\binom{p}{k} = \\frac{p!}{k!(p-k)!}\\) with exactly \\(k\\) predictors\nPick the best among these \\(\\binom{p}{k}\\) models, call it \\(\\mathcal{M}_k\\)\n\n“Best” can be based on cross-validation error, highest adjusted \\(R^2\\), etc.\n“It depends on your loss function”\n\n\n\n\n\n\nSelect a single best model from among \\(\\mathcal{M}_0, \\dots, \\mathcal{M}_p\\)\n\n\n\nThis is not typically used in research!\n\nonly practical for a smaller number of variables\narbitrary way of defining best and ignores prior knowledge about potential predictors"
+  },
+  {
+    "objectID": "lectures/12-selection.html#use-the-shoe-leather-approach",
+    "href": "lectures/12-selection.html#use-the-shoe-leather-approach",
+    "title": "Supervised learning: variable selection",
+    "section": "Use the shoe leather approach",
+    "text": "Use the shoe leather approach\nDo not turn off your brain!\n\nalgorithms can be tempting but they are NOT substitutes!\nyou should NOT avoid the hard work of EDA in your modeling efforts\n\n\nVariable selection is a difficult problem!\n\nLike much of a statistics research, there is not one unique, correct answer\n\n\n\nJustify which predictors / variables used in modeling based on:\n\ncontext\nextensive EDA\nmodel assessment based on holdout predictions\n\n\n\n\nRecommended reading: David A. Freedman (1991). Statistical Models and Shoe Leather"
+  },
+  {
+    "objectID": "lectures/12-selection.html#covariance-and-correlation",
+    "href": "lectures/12-selection.html#covariance-and-correlation",
+    "title": "Supervised learning: variable selection",
+    "section": "Covariance and correlation",
+    "text": "Covariance and correlation\n\nCovariance is a measure of the linear dependence between two variables\n\nTo be “uncorrelated” is not the same as to be “independent”…\nIndependence means there is no dependence, linear or otherwise\n\n\n\n\nCorrelation is a normalized form of covariance, ranges from -1 to 1\n\n-1 means one variable linearly decreases absolutely in value while the other increases\n0 means no linear dependence\n1 means one variable linear increases absolutely while the other increases\n\n\n\n\n\nWe can use the cov() / cor() functions in R to generate the covariance / correlation matrices"
+  },
+  {
+    "objectID": "lectures/12-selection.html#data-hollywood-movies-2012-2018",
+    "href": "lectures/12-selection.html#data-hollywood-movies-2012-2018",
+    "title": "Supervised learning: variable selection",
+    "section": "Data: Hollywood Movies (2012-2018)",
+    "text": "Data: Hollywood Movies (2012-2018)\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nmovies &lt;- read_csv(\"https://www.lock5stat.com/datasets3e/HollywoodMovies.csv\")\nglimpse(movies)\n\nRows: 1,295\nColumns: 15\n$ Movie            &lt;chr&gt; \"2016: Obama's America\", \"21 Jump Street\", \"A Late Qu…\n$ LeadStudio       &lt;chr&gt; \"Rocky Mountain Pictures\", \"Sony Pictures Releasing\",…\n$ RottenTomatoes   &lt;dbl&gt; 26, 85, 76, 90, 35, 27, 91, 56, 11, 44, 93, 63, 87, 9…\n$ AudienceScore    &lt;dbl&gt; 73, 82, 71, 82, 51, 72, 62, 47, 47, 63, 82, 51, 63, 9…\n$ Genre            &lt;chr&gt; \"Documentary\", \"Comedy\", \"Drama\", \"Drama\", \"Horror\", …\n$ TheatersOpenWeek &lt;dbl&gt; 1, 3121, 9, 7, 3108, 3039, 132, 245, 2539, 3192, 3, 1…\n$ OpeningWeekend   &lt;dbl&gt; 0.03, 36.30, 0.08, 0.04, 16.31, 24.48, 1.14, 0.70, 11…\n$ BOAvgOpenWeekend &lt;dbl&gt; 30000, 11631, 8889, 5714, 5248, 8055, 8636, 2857, 449…\n$ Budget           &lt;dbl&gt; 3.0, 42.0, NA, NA, 68.0, 12.0, NA, 7.5, 35.0, 50.0, 1…\n$ DomesticGross    &lt;dbl&gt; 33.35, 138.45, 1.56, 1.55, 37.52, 70.01, 1.99, 3.01, …\n$ WorldGross       &lt;dbl&gt; 33.35, 202.81, 6.30, 7.60, 137.49, 82.50, 3.59, 8.54,…\n$ ForeignGross     &lt;dbl&gt; 0.00, 64.36, 4.74, 6.05, 99.97, 12.49, 1.60, 5.53, 9.…\n$ Profitability    &lt;dbl&gt; 1334.00, 482.88, NA, NA, 202.19, 687.50, NA, 113.87, …\n$ OpenProfit       &lt;dbl&gt; 1.20, 86.43, NA, NA, 23.99, 204.00, NA, 9.33, 32.57, …\n$ Year             &lt;dbl&gt; 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2012,…\n\nmovies &lt;- movies |&gt; \n  select(AudienceScore, RottenTomatoes, TheatersOpenWeek, OpeningWeekend, Budget, DomesticGross, ForeignGross) |&gt; \n  drop_na()"
+  },
+  {
+    "objectID": "lectures/12-selection.html#modeling-audience-rating",
+    "href": "lectures/12-selection.html#modeling-audience-rating",
+    "title": "Supervised learning: variable selection",
+    "section": "Modeling audience rating",
+    "text": "Modeling audience rating\nInterested in modeling the audience rating of a movie\n\nmovies |&gt; \n  ggplot(aes(x = AudienceScore)) +\n  geom_histogram(fill = \"gray\", color = \"white\")"
+  },
+  {
+    "objectID": "lectures/12-selection.html#correlation-matrix-of-score-differential-and-candidate-predictors",
+    "href": "lectures/12-selection.html#correlation-matrix-of-score-differential-and-candidate-predictors",
+    "title": "Supervised learning: variable selection",
+    "section": "Correlation matrix of score differential and candidate predictors",
+    "text": "Correlation matrix of score differential and candidate predictors\n\n\n\nInterested in AudienceScore relationships with opening critics rating, weekend statistics, budget, gross income of viewers\nPlot correlation matrix with ggcorrplot\n\n\n# can also use corrr package\n# library(corrr)\n# movies |&gt; \n#   correlate(diagonal = 1) |&gt; # get correlation matrix\n#   stretch() |&gt;  # similar to pivot_longer\n#   ggplot(aes(x, y, fill = r)) +\n#   geom_tile()\nlibrary(ggcorrplot)\nmovies_cor &lt;- cor(movies)\nggcorrplot(movies_cor)"
+  },
+  {
+    "objectID": "lectures/12-selection.html#customize-the-appearance-of-the-correlation-matrix",
+    "href": "lectures/12-selection.html#customize-the-appearance-of-the-correlation-matrix",
+    "title": "Supervised learning: variable selection",
+    "section": "Customize the appearance of the correlation matrix",
+    "text": "Customize the appearance of the correlation matrix\n\n\n\nAvoid redundancy by only using one half of matrix with type\nAdd correlation value labels using lab (but round first!)\nCan arrange variables based on clustering…\n\n\nmovies_cor |&gt; \n  round(2) |&gt; \n  ggcorrplot(hc.order = TRUE, type = \"lower\", lab = TRUE)"
+  },
+  {
+    "objectID": "lectures/12-selection.html#clustering-variables-using-the-correlation-matrix",
+    "href": "lectures/12-selection.html#clustering-variables-using-the-correlation-matrix",
+    "title": "Supervised learning: variable selection",
+    "section": "Clustering variables using the correlation matrix",
+    "text": "Clustering variables using the correlation matrix\nApply hierarchical clustering to variables instead of observations\n\n\nSelect the explanatory variables of interest from our data\n\n\nmovies_feat &lt;- movies |&gt; \n  select(-AudienceScore)\n\n\n\n\nCompute correlation matrix of these variables\n\n\nfeat_cor &lt;- cor(movies_feat)\n\n\n\n\nCorrelations measure similarity and can be negative BUT distances measure dissimilarity and CANNOT\nConvert your correlations to all be \\(\\geq 0\\): e.g., \\(1 - |\\rho|\\) (which drops the sign) or \\(1 - \\rho\\)\n\n\ncor_dist_matrix &lt;- 1 - abs(feat_cor)\n\n\n\n\nConvert to distance matrix before using hclust\n\n\ncor_dist_matrix &lt;- as.dist(cor_dist_matrix)"
+  },
+  {
+    "objectID": "lectures/12-selection.html#clustering-variables-using-the-correlation-matrix-1",
+    "href": "lectures/12-selection.html#clustering-variables-using-the-correlation-matrix-1",
+    "title": "Supervised learning: variable selection",
+    "section": "Clustering variables using the correlation matrix",
+    "text": "Clustering variables using the correlation matrix\n\n\n\nCluster variables using hclust() as before\nUse ggdendro to quickly visualize dendrogram\n\n\nlibrary(ggdendro)\nmovies_feat_hc &lt;- hclust(cor_dist_matrix, \"complete\")\nggdendrogram(movies_feat_hc,\n             rotate = TRUE,\n             size = 2)"
+  },
+  {
+    "objectID": "lectures/12-selection.html#clustering-variables-using-the-correlation-matrix-2",
+    "href": "lectures/12-selection.html#clustering-variables-using-the-correlation-matrix-2",
+    "title": "Supervised learning: variable selection",
+    "section": "Clustering variables using the correlation matrix",
+    "text": "Clustering variables using the correlation matrix\n\n\n\nAnother flexible option is dendextend\n\n\nlibrary(dendextend)\ncor_dist_matrix |&gt;\n  hclust() |&gt;\n  as.dendrogram() |&gt;\n  set(\"branches_k_col\", k = 2) |&gt;\n  set(\"labels_cex\", 1) |&gt;\n  ggplot(horiz = TRUE)\n\n\nExplore the package documentation for more formatting"
+  },
+  {
+    "objectID": "lectures/12-selection.html#back-to-the-response-variable",
+    "href": "lectures/12-selection.html#back-to-the-response-variable",
+    "title": "Supervised learning: variable selection",
+    "section": "Back to the response variable…",
+    "text": "Back to the response variable…\nPairs plot using GGally\n\nalways look at your data\ncorrelation values alone are not enough!\nwhat if a variable displayed a nonlinear (e.g. quadratic) relationship?\n\n\nlibrary(GGally)\nggpairs(movies)"
+  },
+  {
+    "objectID": "lectures/12-selection.html#back-to-the-response-variable-1",
+    "href": "lectures/12-selection.html#back-to-the-response-variable-1",
+    "title": "Supervised learning: variable selection",
+    "section": "Back to the response variable…",
+    "text": "Back to the response variable…"
+  },
+  {
+    "objectID": "lectures/12-selection.html#which-variables-matter-for-modeling-audience-rating",
+    "href": "lectures/12-selection.html#which-variables-matter-for-modeling-audience-rating",
+    "title": "Supervised learning: variable selection",
+    "section": "Which variables matter for modeling audience rating?",
+    "text": "Which variables matter for modeling audience rating?\n\nUse 10-fold cross-validation to assess how well different sets of variables perform in predicting AudienceScore?\n\n\nCreate a column of test fold assignments to our dataset with the sample() function:\n\nset.seed(100)\nk &lt;- 10\nmovies &lt;- movies |&gt;\n  mutate(test_fold = sample(rep(1:k, length.out = n())))\n\n# table(movies$test_fold)  \n\n\n\nAlways remember to set.seed() prior to performing \\(k\\)-fold cross-validation!"
+  },
+  {
+    "objectID": "lectures/12-selection.html#writing-a-function-for-k-fold-cross-validation",
+    "href": "lectures/12-selection.html#writing-a-function-for-k-fold-cross-validation",
+    "title": "Supervised learning: variable selection",
+    "section": "Writing a function for \\(k\\)-fold cross-validation",
+    "text": "Writing a function for \\(k\\)-fold cross-validation\n\nget_cv_pred &lt;- function(model_formula, data = movies) {\n  # generate holdout predictions for every row based season\n  get_test_pred &lt;- function(fold) {\n  \n    # separate test and training data\n  \n    test_data &lt;- data |&gt; filter(test_fold == fold)\n    train_data &lt;- data |&gt; filter(test_fold != fold)\n    train_fit &lt;- lm(as.formula(model_formula), data = train_data)\n  \n    # return test results\n    test_res &lt;- tibble(test_pred = predict(train_fit, newdata = test_data),\n                       test_actual = test_data$AudienceScore,\n                       test_fold = fold)\n    return(test_res)\n  }\n  \n  test_pred &lt;- map(1:k, get_test_pred) |&gt; \n    bind_rows()\n  \n  return(test_pred)\n}"
+  },
+  {
+    "objectID": "lectures/12-selection.html#function-enables-easy-generation-of-holdout-analysis",
+    "href": "lectures/12-selection.html#function-enables-easy-generation-of-holdout-analysis",
+    "title": "Supervised learning: variable selection",
+    "section": "Function enables easy generation of holdout analysis",
+    "text": "Function enables easy generation of holdout analysis\n\nall_pred &lt;- get_cv_pred(\n  \"AudienceScore ~ RottenTomatoes + TheatersOpenWeek + OpeningWeekend + Budget + DomesticGross + ForeignGross\"\n)\nall_no_critics_pred &lt;- get_cv_pred(\n  \"AudienceScore ~ TheatersOpenWeek + OpeningWeekend + Budget + DomesticGross + ForeignGross\"\n)\ncritics_only_pred &lt;- get_cv_pred(\"AudienceScore ~ RottenTomatoes\")\nopening_only_pred &lt;- get_cv_pred(\"AudienceScore ~ Budget + TheatersOpenWeek + OpeningWeekend + RottenTomatoes\")\ngross_only_pred &lt;- get_cv_pred(\"AudienceScore ~ DomesticGross + ForeignGross + RottenTomatoes\")\nint_only_pred &lt;- get_cv_pred(\"AudienceScore ~ 1\")\n\n\n\n\nCan then summarize together for a single plot:\n\nbind_rows(\n  mutate(all_pred, mod = \"All\"),\n  mutate(all_no_critics_pred, mod = \"All but critics\"),\n  mutate(critics_only_pred, mod = \"Critics only\"),\n  mutate(opening_only_pred, mod = \"Opening only\"),\n  mutate(gross_only_pred, mod = \"Gross income only\"),\n  mutate(int_only_pred, mod = \"Intercept only\")\n) |&gt;\n  group_by(mod) |&gt;\n  summarize(\n    rmse = sqrt(mean((test_actual - test_pred)^2))\n  ) |&gt;\n  mutate(mod = fct_reorder(mod, rmse)) |&gt;\n  ggplot(aes(x = rmse, y = mod)) +\n  geom_point()"
+  },
+  {
+    "objectID": "lectures/12-selection.html#fit-selected-model-on-all-data-and-view-summary",
+    "href": "lectures/12-selection.html#fit-selected-model-on-all-data-and-view-summary",
+    "title": "Supervised learning: variable selection",
+    "section": "Fit selected model on all data and view summary",
+    "text": "Fit selected model on all data and view summary\n\nall_fit &lt;- lm(\n  AudienceScore ~ RottenTomatoes + TheatersOpenWeek + OpeningWeekend + Budget + DomesticGross + ForeignGross, \n  data = movies\n)\n# summary(all_fit)\nlibrary(broom)\nall_fit |&gt; tidy()\n\n# A tibble: 7 × 5\n  term             estimate std.error statistic   p.value\n  &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n1 (Intercept)      40.5      1.35        29.9   1.66e-142\n2 RottenTomatoes    0.395    0.0160      24.7   1.74e-106\n3 TheatersOpenWeek -0.00214  0.000393    -5.44  6.55e-  8\n4 OpeningWeekend   -0.114    0.0362      -3.16  1.62e-  3\n5 Budget            0.0168   0.0116       1.45  1.46e-  1\n6 DomesticGross     0.0690   0.0125       5.52  4.16e-  8\n7 ForeignGross      0.00415  0.00497      0.835 4.04e-  1\n\n\n\n\nBut… do NOT show a coefficients table in a presentation (well… it depends)\nA nicely formatted table of the summary output is more appropriate in a written report\nPackages that can take a model object and produce a neat table summary: texreg, modelsummary, gtsummary, huxtable, sjPlot"
+  },
+  {
+    "objectID": "lectures/12-selection.html#coefficient-plot-or-dot-and-whisker-plot-or-forest-plot-or-blobbogram",
+    "href": "lectures/12-selection.html#coefficient-plot-or-dot-and-whisker-plot-or-forest-plot-or-blobbogram",
+    "title": "Supervised learning: variable selection",
+    "section": "Coefficient plot (or dot-and-whisker plot or forest plot or blobbogram)",
+    "text": "Coefficient plot (or dot-and-whisker plot or forest plot or blobbogram)\nDisplay a coefficient plot with confidence intervals based on the reported standard errors\n\nall_fit |&gt; \n  tidy(conf.int = TRUE) |&gt; \n  filter(term != \"(Intercept)\") |&gt; \n  ggplot(aes(x = estimate, y = term))  +\n  geom_point(size = 4) +\n  geom_errorbar(aes(xmin = conf.low, xmax = conf.high, width = 0.2)) +\n  geom_vline(xintercept = 0, linetype = \"dashed\", color = \"red\")\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
+  },
+  {
+    "objectID": "lectures/14-pca.html#the-big-picture",
+    "href": "lectures/14-pca.html#the-big-picture",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "The big picture",
+    "text": "The big picture\nHow do we visualize structure of high-dimensional data?\n\nExample: What if you’re given a dataset with 50 variables, and ask you to make one visualization that best represents the data? What do you do?\n\n\nTedious task: Make a series of all \\(\\displaystyle \\binom{50}{2} = 1225\\) pairs of plots?\n\n\nIntuition: Take high-dimensional data and represent it in 2-3 dimensions, then visualize those dimensions"
+  },
+  {
+    "objectID": "lectures/14-pca.html#what-is-the-goal-of-dimension-reduction",
+    "href": "lectures/14-pca.html#what-is-the-goal-of-dimension-reduction",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "What is the goal of dimension reduction?",
+    "text": "What is the goal of dimension reduction?\nWe have \\(p\\) variables (columns) for \\(n\\) observations (rows) BUT which variables are interesting?\n\nCan we find a smaller number of dimensions that captures the interesting structure in the data?\n\nCould examine all pairwise scatterplots of each variable - tedious, manual process\nClustering of variables based on correlation\nCan we find a combination of the original \\(p\\) variables?\n\n\n\nDimension reduction:\n\nFocus on reducing the dimensionality of the feature space (i.e., number of columns)\nRetain most of the information / variability in a lower dimensional space (i.e., reducing the number of columns)\nThe process: (big) \\(n \\times p\\) matrix \\(\\longrightarrow\\) dimension reduction method \\(\\longrightarrow\\) (smaller) \\(n \\times k\\) matrix"
+  },
+  {
+    "objectID": "lectures/14-pca.html#principal-components-analysis-pca",
+    "href": "lectures/14-pca.html#principal-components-analysis-pca",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Principal components analysis (PCA)",
+    "text": "Principal components analysis (PCA)"
+  },
+  {
+    "objectID": "lectures/14-pca.html#principal-components-analysis-pca-1",
+    "href": "lectures/14-pca.html#principal-components-analysis-pca-1",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Principal components analysis (PCA)",
+    "text": "Principal components analysis (PCA)\n\\[\n\\begin{pmatrix}\n& & \\text{really} & & \\\\\n& & \\text{wide} & & \\\\\n& & \\text{matrix} & &\n\\end{pmatrix}\n\\rightarrow \\text{matrix algebra razzmatazz} \\rightarrow\n\\begin{pmatrix}\n\\text{much}  \\\\\n\\text{thinner}  \\\\\n\\text{matrix}\n\\end{pmatrix}\n\\]\n\nPCA explores the covariance between variables, and combines variables into a smaller set of uncorrelated variables called principal components (PCs)\n\nTurn a \\(n \\times p\\) matrix of correlated variables into a \\(n \\times k\\) matrix of uncorrelated variables\n\nEach of the \\(k\\) columns in the right-hand matrix are principal components (PCs), all uncorrelated with each other\n\nPCs are weighted, linear combinations of the original variables\nWeights reveal how different variables are loaded into the PCs\n\nFirst column accounts for most variation in the data, second column for second-most variation, and so on\n\nIntuition: we want a small number of PCs (first few PCs) to account for most of the information/variance in the data"
+  },
+  {
+    "objectID": "lectures/14-pca.html#what-are-principal-components",
+    "href": "lectures/14-pca.html#what-are-principal-components",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "What are principal components?",
+    "text": "What are principal components?\n\nAssume \\(\\boldsymbol{X}\\) is a \\(n \\times p\\) matrix that is centered and stardardized\nTotal variation \\(= p\\), since \\(\\text{Var}(\\boldsymbol{x}_j)\\) = 1 for all \\(j = 1, \\dots, p\\)\nPCA will give us \\(p\\) principal components that are \\(n\\)-length columns - call these \\(Z_1, \\dots, Z_p\\)\n\nFirst principal component\n\\[Z_1 = \\phi_{11} X_1 + \\phi_{21} X_2 + \\dots + \\phi_{p1} X_p\\]\n\n\n\\(\\phi_{j1}\\) are the weights indicating the contributions of each variable \\(j \\in 1, \\dots, p\\)\nWeights are normalized \\(\\sum_{j=1}^p \\phi_{j1}^2 = 1\\)\n\\(\\phi_{1} = (\\phi_{11}, \\phi_{21}, \\dots, \\phi_{p1})\\) is the loading vector for PC1\n\n\n\n\n\\(Z_1\\) is a linear combination of the \\(p\\) variables that has the largest variance"
+  },
+  {
+    "objectID": "lectures/14-pca.html#principal-components-analysis-pca-2",
+    "href": "lectures/14-pca.html#principal-components-analysis-pca-2",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Principal components analysis (PCA)",
+    "text": "Principal components analysis (PCA)\nSecond principal component\n\\[Z_2 = \\phi_{12} X_1 + \\phi_{22} X_2 + \\dots + \\phi_{p2} X_p\\]\n\n\\(\\phi_{j2}\\) are the weights indicating the contributions of each variable \\(j \\in 1, \\dots, p\\)\nWeights are normalized \\(\\sum_{j=1}^p \\phi_{j1}^2 = 1\\)\n\\(\\phi_{2} = (\\phi_{12}, \\phi_{22}, \\dots, \\phi_{p2})\\) is the loading vector for PC2\n\\(Z_2\\) is a linear combination of the \\(p\\) variables that has the largest variance\n\nSubject to constraint it is uncorrelated with \\(Z_1\\)\n\n\n\nRepeat this process to create \\(p\\) principal components\n\nUncorrelated: Each (\\(Z_j, Z_{j'}\\)) is uncorrelated with each other\nOrdered Variance: \\(\\text{Var}(Z_1) &gt; \\text{Var}(Z_2) &gt; \\dots &gt; \\text{Var}(Z_p)\\)\nTotal Variance: \\(\\sum_{j=1}^p \\text{Var}(Z_j) = p\\)"
+  },
+  {
+    "objectID": "lectures/14-pca.html#visualizing-pca-in-two-dimensions",
+    "href": "lectures/14-pca.html#visualizing-pca-in-two-dimensions",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Visualizing PCA in two dimensions",
+    "text": "Visualizing PCA in two dimensions"
+  },
+  {
+    "objectID": "lectures/14-pca.html#visualizing-pca-in-two-dimensions-1",
+    "href": "lectures/14-pca.html#visualizing-pca-in-two-dimensions-1",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Visualizing PCA in two dimensions",
+    "text": "Visualizing PCA in two dimensions"
+  },
+  {
+    "objectID": "lectures/14-pca.html#visualizing-pca-in-two-dimensions-2",
+    "href": "lectures/14-pca.html#visualizing-pca-in-two-dimensions-2",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Visualizing PCA in two dimensions",
+    "text": "Visualizing PCA in two dimensions"
+  },
+  {
+    "objectID": "lectures/14-pca.html#visualizing-pca-in-two-dimensions-3",
+    "href": "lectures/14-pca.html#visualizing-pca-in-two-dimensions-3",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Visualizing PCA in two dimensions",
+    "text": "Visualizing PCA in two dimensions"
+  },
+  {
+    "objectID": "lectures/14-pca.html#visualizing-pca-in-two-dimensions-4",
+    "href": "lectures/14-pca.html#visualizing-pca-in-two-dimensions-4",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Visualizing PCA in two dimensions",
+    "text": "Visualizing PCA in two dimensions"
+  },
+  {
+    "objectID": "lectures/14-pca.html#searching-for-variance-in-orthogonal-directions",
+    "href": "lectures/14-pca.html#searching-for-variance-in-orthogonal-directions",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Searching for variance in orthogonal directions",
+    "text": "Searching for variance in orthogonal directions"
+  },
+  {
+    "objectID": "lectures/14-pca.html#pca-singular-value-decomposition-svd",
+    "href": "lectures/14-pca.html#pca-singular-value-decomposition-svd",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "PCA: singular value decomposition (SVD)",
+    "text": "PCA: singular value decomposition (SVD)\n\\[\nX = U D V^T\n\\]\n\n\\(U\\) and \\(V\\): matrices containing the left and right singular vectors of scaled matrix \\(X\\)\n\\(D\\): diagonal matrix of the singular values\n\n\n\nSVD simplifies matrix-vector multiplication as rotate, scale, and rotate again\n\n\n\n\\(V\\): loading matrix for \\(X\\) with \\(\\phi_{j}\\) as columns\n\n\\(Z = X V\\): PC matrix\n\n\n\nBonus: Eigenvalue decomposition (or spectral decomposition)\n\n\\(V\\): eigenvectors of \\(X^TX\\) (covariance matrix, \\(^T\\): transpose)\n\\(U\\): eigenvectors of \\(XX^T\\)\nThe singular values (diagonal of \\(D\\)) are square roots of the eigenvalues of \\(X^TX\\) or \\(XX^T\\)\nMeaning that \\(Z = UD\\)"
+  },
+  {
+    "objectID": "lectures/14-pca.html#eigenvalues-guide-dimension-reduction",
+    "href": "lectures/14-pca.html#eigenvalues-guide-dimension-reduction",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Eigenvalues guide dimension reduction",
+    "text": "Eigenvalues guide dimension reduction\nWe want to choose \\(p^* &lt; p\\) such that we are explaining variation in the data\n\nEigenvalues \\(\\lambda_j\\) for \\(j \\in 1, \\dots, p\\) indicate the variance explained by each component\n\n\\(\\displaystyle \\sum_j^p \\lambda_j = p\\), meaning \\(\\lambda_j \\geq 1\\) indicates \\(\\text{PC}j\\) contains at least one variable’s worth in variability\n\\(\\displaystyle \\frac{\\lambda_j}{p}\\): proportion of variance explained by \\(\\text{PC}j\\)\nArranged in descending order so that \\(\\lambda_1\\) is largest eigenvalue and corresponds to PC1\n\n\n\n\nCompute the cumulative proportion of variance explained (CVE) with \\(p^*\\) components \\[\\text{CVE}_{p^*} = \\sum_j^{p*} \\frac{\\lambda_j}{p}\\] Use scree plot to plot eigenvalues and guide choice for \\(p^* &lt;p\\) by looking for “elbow” (rapid to slow change)"
+  },
+  {
+    "objectID": "lectures/14-pca.html#data-nutritional-information-of-starbucks-drinks",
+    "href": "lectures/14-pca.html#data-nutritional-information-of-starbucks-drinks",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Data: nutritional information of Starbucks drinks",
+    "text": "Data: nutritional information of Starbucks drinks\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nstarbucks &lt;- read_csv(\n  \"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-12-21/starbucks.csv\"\n) |&gt;\n  # convert columns to numeric that were saved as character\n  mutate(trans_fat_g = as.numeric(trans_fat_g), fiber_g = as.numeric(fiber_g))\nglimpse(starbucks)\n\nRows: 1,147\nColumns: 15\n$ product_name    &lt;chr&gt; \"brewed coffee - dark roast\", \"brewed coffee - dark ro…\n$ size            &lt;chr&gt; \"short\", \"tall\", \"grande\", \"venti\", \"short\", \"tall\", \"…\n$ milk            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, …\n$ whip            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ serv_size_m_l   &lt;dbl&gt; 236, 354, 473, 591, 236, 354, 473, 591, 236, 354, 473,…\n$ calories        &lt;dbl&gt; 3, 4, 5, 5, 3, 4, 5, 5, 3, 4, 5, 5, 3, 4, 5, 5, 35, 50…\n$ total_fat_g     &lt;dbl&gt; 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,…\n$ saturated_fat_g &lt;dbl&gt; 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,…\n$ trans_fat_g     &lt;dbl&gt; 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,…\n$ cholesterol_mg  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,…\n$ sodium_mg       &lt;dbl&gt; 5, 10, 10, 10, 5, 10, 10, 10, 5, 5, 5, 5, 5, 5, 5, 5, …\n$ total_carbs_g   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, …\n$ fiber_g         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ sugar_g         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, …\n$ caffeine_mg     &lt;dbl&gt; 130, 193, 260, 340, 15, 20, 25, 30, 155, 235, 310, 410…"
+  },
+  {
+    "objectID": "lectures/14-pca.html#implement-pca",
+    "href": "lectures/14-pca.html#implement-pca",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Implement PCA",
+    "text": "Implement PCA\nUse the prcomp() function (based on SVD) for PCA on centered and scaled data\n\nfeat &lt;- starbucks |&gt; \n  select(serv_size_m_l:caffeine_mg)\nstarbucks_pca &lt;- prcomp(feat, center = TRUE, scale. = TRUE)\nsummary(starbucks_pca)\n\nImportance of components:\n                          PC1    PC2    PC3     PC4     PC5     PC6    PC7\nStandard deviation     2.4748 1.3074 1.0571 0.97919 0.67836 0.56399 0.4413\nProportion of Variance 0.5568 0.1554 0.1016 0.08716 0.04183 0.02892 0.0177\nCumulative Proportion  0.5568 0.7122 0.8138 0.90093 0.94276 0.97168 0.9894\n                           PC8     PC9    PC10    PC11\nStandard deviation     0.28123 0.16874 0.08702 0.04048\nProportion of Variance 0.00719 0.00259 0.00069 0.00015\nCumulative Proportion  0.99657 0.99916 0.99985 1.00000"
+  },
+  {
+    "objectID": "lectures/14-pca.html#pca-output",
+    "href": "lectures/14-pca.html#pca-output",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "PCA output",
+    "text": "PCA output\n\n# str(starbucks_pca)\n\nExamine the output after running prcomp()\n\nstarbucks_pca$sdev: singular values (\\(\\sqrt{\\lambda_j}\\))\nstarbucks_pca$rotation: loading matrix (\\(V\\))\nstarbucks_pca$x: principal component scores matrix (\\(Z=XV\\))\n\nCan use the broom package for tidying prcomp()\n\ntidy(starbucks_pca, matrix = \"eigenvalues\") # equivalent to starbucks_pca$sdev\ntidy(starbucks_pca, matrix = \"rotation\") # equivalent to starbucks_pca$rotation\ntidy(starbucks_pca, matrix = \"scores\") # equivalent to starbucks_pca$x"
+  },
+  {
+    "objectID": "lectures/14-pca.html#proportion-of-variance-explained",
+    "href": "lectures/14-pca.html#proportion-of-variance-explained",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Proportion of variance explained",
+    "text": "Proportion of variance explained\n\nlibrary(broom)\nstarbucks_pca |&gt;\n  tidy(matrix = \"eigenvalues\") |&gt;\n  ggplot(aes(x = PC, y = percent)) +\n  geom_line() + \n  geom_point() +\n  geom_hline(yintercept = 1 / ncol(feat), color = \"darkred\", linetype = \"dashed\") +\n  scale_x_continuous(breaks = 1:ncol(starbucks_pca$x))"
+  },
+  {
+    "objectID": "lectures/14-pca.html#cumulative-proportion-of-variance-explained",
+    "href": "lectures/14-pca.html#cumulative-proportion-of-variance-explained",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Cumulative proportion of variance explained",
+    "text": "Cumulative proportion of variance explained\n\nlibrary(broom)\nstarbucks_pca |&gt;\n  tidy(matrix = \"eigenvalues\") |&gt;\n  ggplot(aes(x = PC, y = cumulative)) +\n  geom_line() + \n  geom_point() +\n  scale_x_continuous(breaks = 1:ncol(starbucks_pca$x))"
+  },
+  {
+    "objectID": "lectures/14-pca.html#computing-principal-components",
+    "href": "lectures/14-pca.html#computing-principal-components",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Computing principal components",
+    "text": "Computing principal components\nExtract the matrix of principal components \\(\\boldsymbol{Z} = XV\\) (dimension of \\(\\boldsymbol{Z}\\) will match original data)\n\nstarbucks_pc_matrix &lt;- starbucks_pca$x\nhead(starbucks_pc_matrix)\n\n           PC1        PC2        PC3           PC4         PC5         PC6\n[1,] -3.766852 -1.0023657  0.2482698 -0.1521871448  0.24739830 -0.11365847\n[2,] -3.633234 -0.6946439  1.2059943 -0.3720566566  0.06052789 -0.06406410\n[3,] -3.518063 -0.3981399  2.2165170 -0.5967175941 -0.13122572 -0.01937237\n[4,] -3.412061 -0.1067045  3.3741594 -0.8490378243 -0.26095965 -0.00899485\n[5,] -3.721426 -0.9868147 -1.0705094  0.0949330091 -0.27181508  0.17491809\n[6,] -3.564899 -0.6712499 -0.7779083 -0.0003019903 -0.72054963  0.37005543\n             PC7         PC8        PC9       PC10        PC11\n[1,] -0.02812472 0.006489978 0.05145094 0.06678083 0.019741873\n[2,]  0.05460952 0.021148978 0.07094211 0.08080545 0.023480029\n[3,]  0.09050806 0.031575955 0.08901403 0.09389227 0.028669251\n[4,]  0.11585507 0.037521689 0.11287190 0.11582260 0.034691142\n[5,]  0.07009414 0.037736197 0.02892317 0.03631676 0.005775410\n[6,]  0.20236484 0.068154160 0.03705252 0.03497690 0.002469611\n\n\nColumns are uncorrelated, such that \\(\\text{Var}(Z_1) &gt; \\text{Var}(Z_2) &gt; \\dots &gt; \\text{Var}(Z_p)\\)"
+  },
+  {
+    "objectID": "lectures/14-pca.html#visualizing-first-two-principal-components",
+    "href": "lectures/14-pca.html#visualizing-first-two-principal-components",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Visualizing first two principal components",
+    "text": "Visualizing first two principal components\n\n\n\nstarbucks &lt;- starbucks |&gt; \n  mutate(pc1 = starbucks_pc_matrix[,1], \n         pc2 = starbucks_pc_matrix[,2])\nstarbucks |&gt; \n  ggplot(aes(x = pc1, y = pc2)) +\n  geom_point(alpha = 0.5) +\n  labs(x = \"PC 1\", y = \"PC 2\")\n\n\nPrincipal components are not interpretable\nMake a biplot with arrows showing the linear relationship between one variable and other variables"
+  },
+  {
+    "objectID": "lectures/14-pca.html#making-pcs-interpretable-with-biplots",
+    "href": "lectures/14-pca.html#making-pcs-interpretable-with-biplots",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Making PCs interpretable with biplots",
+    "text": "Making PCs interpretable with biplots\nBiplot displays both the space of observations and the space of variables\nCheck out the factoextra package\n\n\n\nlibrary(factoextra)\n# fviz_pca_var(): projection of variables\n# fviz_pca_ind(): display observations with first two PCs\nstarbucks_pca |&gt; \n  fviz_pca_biplot(label = \"var\",\n                  alpha.ind = 0.25,\n                  alpha.var = 0.75,\n                  col.var = \"darkblue\",\n                  repel = TRUE)\n\n\nArrow direction: “as the variable increases…”\nArrow angles: correlation\n\n\\(90^{\\circ}\\): uncorrelated\n\\(&lt; 90^{\\circ}\\): positively correlated\n\\(&gt; 90^{\\circ}\\): negatively correlated\n\nArrow length: strength of relationship with PCs"
+  },
+  {
+    "objectID": "lectures/14-pca.html#how-many-principal-components-to-use",
+    "href": "lectures/14-pca.html#how-many-principal-components-to-use",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "How many principal components to use?",
+    "text": "How many principal components to use?\nIntuition: Additional principal components will add smaller and smaller variance\n\nKeep adding components until the added variance drops off\n\n\nsummary(starbucks_pca)\n\nImportance of components:\n                          PC1    PC2    PC3     PC4     PC5     PC6    PC7\nStandard deviation     2.4748 1.3074 1.0571 0.97919 0.67836 0.56399 0.4413\nProportion of Variance 0.5568 0.1554 0.1016 0.08716 0.04183 0.02892 0.0177\nCumulative Proportion  0.5568 0.7122 0.8138 0.90093 0.94276 0.97168 0.9894\n                           PC8     PC9    PC10    PC11\nStandard deviation     0.28123 0.16874 0.08702 0.04048\nProportion of Variance 0.00719 0.00259 0.00069 0.00015\nCumulative Proportion  0.99657 0.99916 0.99985 1.00000"
+  },
+  {
+    "objectID": "lectures/14-pca.html#create-a-scree-plot-or-elbow-plot",
+    "href": "lectures/14-pca.html#create-a-scree-plot-or-elbow-plot",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Create a scree plot (or elbow plot)",
+    "text": "Create a scree plot (or elbow plot)\n\nstarbucks_pca |&gt; \n  fviz_eig(addlabels = TRUE) +\n  geom_hline(yintercept = 100 * (1 / ncol(starbucks_pca$x)), linetype = \"dashed\", color = \"darkred\")\n\n\n\nRule of thumb: horizontal line at \\(1/p\\) (Why?)"
+  },
+  {
+    "objectID": "lectures/14-pca.html#remember-the-spelling",
+    "href": "lectures/14-pca.html#remember-the-spelling",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Remember the spelling…",
+    "text": "Remember the spelling…\n\n\nfolks. it's principal (not principle) components analysis.\n\n— Stephanie Hicks, PhD (@stephaniehicks) February 17, 2023\n\n\n\n\n36-SURE.github.io"
   },
   {
     "objectID": "lectures/04-quantitative.html#data",
@@ -1300,6 +1601,160 @@
     "title": "Exploring data: into the tidyverse",
     "section": "Check out this song",
     "text": "Check out this song\n\n\n\n36-SURE.github.io"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#previously",
+    "href": "lectures/13-regularization.html#previously",
+    "title": "Supervised learning: variable selection",
+    "section": "Previously…",
+    "text": "Previously…\nVariable selection for a linear model  \\(\\qquad \\hat{Y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 x_1 + \\cdots + \\hat{\\beta}_p x_p\\)\nWhy would we attempt to select a subset of the \\(p\\) variables?\n\n\nTo improve prediction accuracy\n\nEliminating uninformative predictors can lead to lower variance in the test-set MSE, at the expense of a slight increase in bias\n\n\n\n\n\nTo improve model interpretability\n\nEliminating uninformative predictors is obviously a good thing when your goal is to tell the story of how your predictors are associated with your response.\n\n\n\n\nRemember the bias-variance tradeoff \\(\\qquad {\\rm MSE} = {\\rm (Bias)}^2 + {\\rm Variance}\\)\n\nIntroduce bias but decrease variance to improve predictions"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#shrinkage-methods-ridge-regression",
+    "href": "lectures/13-regularization.html#shrinkage-methods-ridge-regression",
+    "title": "Supervised learning: variable selection",
+    "section": "Shrinkage methods: Ridge regression",
+    "text": "Shrinkage methods: Ridge regression\nRecall: linear regression estimates coefficients by minimizing:\n\\[\\text{RSS} = \\sum_i^n \\big(Y_i - \\beta_0 -  \\sum_j^p \\hat{\\beta}_j x_{ij}\\big)^2\\]\n\nRidge regression introduces a shrinkage penalty \\(\\lambda \\geq 0\\) by minimizing:\n\\[\\sum_i^n \\big(Y_i - \\beta_0 -  \\sum_j^p \\beta_j x_{ij}\\big)^2 + \\lambda \\sum_j^p \\beta_j^2 = \\text{RSS} + \\lambda \\sum_j^p \\beta_j^2\\]\n\n\n\nas \\(\\lambda\\) increases, flexibility of models decreases\n\nincreases bias, but decreases variance\n\n\n\n\n\nfor fixed value of \\(\\lambda\\), ridge regression fits only a single model\n\nneed to use cross-validation to tune \\(\\lambda\\)"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#shrinkage-methods-ridge-regression-1",
+    "href": "lectures/13-regularization.html#shrinkage-methods-ridge-regression-1",
+    "title": "Supervised learning: variable selection",
+    "section": "Shrinkage methods: Ridge regression",
+    "text": "Shrinkage methods: Ridge regression\nFor example: note how the magnitude of the coefficient for Income trends as \\(\\lambda \\rightarrow \\infty\\)\n\nThe coefficient shrinks towards zero, but never actually reaches it\n\nIncome is always a variable in the learned model, regardless of the value of \\(\\lambda\\)"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#shrinkage-methods-lasso-regression",
+    "href": "lectures/13-regularization.html#shrinkage-methods-lasso-regression",
+    "title": "Supervised learning: variable selection",
+    "section": "Shrinkage methods: Lasso regression",
+    "text": "Shrinkage methods: Lasso regression\nRidge regression keeps all variables… but we may believe there is a sparse solution\n\nLasso enables variable selection with \\(\\lambda\\) by minimizing:\n\\[\\sum_i^n \\big(Y_i - \\beta_0 -  \\sum_j^p \\beta_j X_{ij}\\big)^2 + \\lambda \\sum_j^p\\vert  \\beta_j \\vert = \\text{RSS} + \\lambda \\sum_j^p \\vert \\beta_j \\vert\\]\n\nLasso uses an \\(\\ell_1\\) (“ell 1”) penalty\n\n\n\n\nas \\(\\lambda\\) increases, flexibility of models decreases\n\nincreases bias, but decreases variance\n\n\n\n\n\nCan handle the \\(p &gt; n\\) case, i.e. more variables than observations!"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#shrinkage-methods-lasso-regression-1",
+    "href": "lectures/13-regularization.html#shrinkage-methods-lasso-regression-1",
+    "title": "Supervised learning: variable selection",
+    "section": "Shrinkage methods: Lasso regression",
+    "text": "Shrinkage methods: Lasso regression\nLasso regression performs variable selection yielding sparse models\n\nThe coefficient shrinks towards and eventually equals zero at \\(\\lambda \\approx 1000\\)\n\nif the optimum value of \\(\\lambda\\) is larger, then Income would NOT be included in the learned model"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#best-of-both-worlds-elastic-net",
+    "href": "lectures/13-regularization.html#best-of-both-worlds-elastic-net",
+    "title": "Supervised learning: variable selection",
+    "section": "Best of both worlds? Elastic net",
+    "text": "Best of both worlds? Elastic net\n\\[\\sum_{i}^{n}\\left(Y_{i}-\\beta_{0}-\\sum_{j}^{p} \\beta_{j} X_{i j}\\right)^{2}+\\lambda\\left[(1-\\alpha)\\|\\beta\\|_{2}^{2} / 2+\\alpha\\|\\beta\\|_{1} \\right]\\]\n\n\\(\\vert \\vert \\beta \\vert \\vert_1\\): \\(\\ell_1\\) norm: \\(\\vert \\vert \\beta \\vert \\vert_1 = \\sum_j^p \\vert \\beta_j \\vert\\)\n\\(\\vert \\vert \\beta \\vert \\vert_2\\): \\(\\ell_2\\) (Euclidean) norm: \\(\\vert \\vert \\beta \\vert \\vert_2 = \\sqrt{\\sum_j^p \\beta_j^2}\\)\n\n\n\nRidge penalty: \\(\\lambda \\cdot (1 - \\alpha) / 2\\)\nLasso penalty: \\(\\lambda \\cdot \\alpha\\)\n\n\n\n\n\\(\\alpha\\) controls the mixing between the two types, ranges from 0 to 1\n\n\\(\\alpha = 1\\) returns lasso\n\\(\\alpha = 0\\) return ridge"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#caveats-to-consider",
+    "href": "lectures/13-regularization.html#caveats-to-consider",
+    "title": "Supervised learning: variable selection",
+    "section": "Caveats to consider…",
+    "text": "Caveats to consider…\n\nFor either ridge, lasso, or elastic net: you should standardize your data\nCommon convention: within each column, compute then subtract off the sample mean, and compute the divide off the sample standard deviation \\(\\qquad \\displaystyle \\tilde{x}_{ij} = \\frac{x_{ij} - \\bar{x}_j}{s_{x,j}}\\)\nglmnet package does this by default and reports coefficients on the original scale\n\n\n\n\\(\\lambda\\) and \\(\\alpha\\) are tuning parameters\nChoose appropriate values based on test data / cross-validation\nUse cv.glmnet() function in glmnet to perform cross-validation"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#data-prostate-cancer-data",
+    "href": "lectures/13-regularization.html#data-prostate-cancer-data",
+    "title": "Supervised learning: variable selection",
+    "section": "Data: Prostate Cancer Data",
+    "text": "Data: Prostate Cancer Data\nExamine the level of a prostate specific antigen and a number of clinical measures in men who were about to receive a radical prostatectomy\n\nlibrary(tidyverse)\ntheme_set(theme_light())\n# more info: https://rdrr.io/cran/ElemStatLearn/man/prostate.html\nprostate &lt;- read_tsv(\"https://hastie.su.domains/ElemStatLearn/datasets/prostate.data\")\nglimpse(prostate)\n\nRows: 97\nColumns: 11\n$ ...1    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,…\n$ lcavol  &lt;dbl&gt; -0.5798185, -0.9942523, -0.5108256, -1.2039728, 0.7514161, -1.…\n$ lweight &lt;dbl&gt; 2.769459, 3.319626, 2.691243, 3.282789, 3.432373, 3.228826, 3.…\n$ age     &lt;dbl&gt; 50, 58, 74, 58, 62, 50, 64, 58, 47, 63, 65, 63, 63, 67, 57, 66…\n$ lbph    &lt;dbl&gt; -1.3862944, -1.3862944, -1.3862944, -1.3862944, -1.3862944, -1…\n$ svi     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…\n$ lcp     &lt;dbl&gt; -1.3862944, -1.3862944, -1.3862944, -1.3862944, -1.3862944, -1…\n$ gleason &lt;dbl&gt; 6, 6, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 6, 7, 6, 6, 6, 6,…\n$ pgg45   &lt;dbl&gt; 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 5, 5, 0, 30, 0, 0, 0,…\n$ lpsa    &lt;dbl&gt; -0.4307829, -0.1625189, -0.1625189, -0.1625189, 0.3715636, 0.7…\n$ train   &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE,…"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#introduction-to-glmnet",
+    "href": "lectures/13-regularization.html#introduction-to-glmnet",
+    "title": "Supervised learning: variable selection",
+    "section": "Introduction to glmnet",
+    "text": "Introduction to glmnet\nFit ridge, lasso, and elastic net models with glmnet\n\nlibrary(glmnet)\nprostate &lt;- prostate |&gt; \n  select(lcavol:lpsa)\n\nCreate predictor matrix and response vector\n\n# predictors\n# model_x &lt;- model.matrix(lpsa ~ ., prostate)\nmodel_x &lt;- prostate |&gt; \n  select(lcavol:pgg45) |&gt; \n  as.matrix()\n\n# response\n# model_y &lt;- prostate$lpsa\nmodel_y &lt;- prostate |&gt; \n  pull(lpsa)"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#vanilla-linear-regression-model",
+    "href": "lectures/13-regularization.html#vanilla-linear-regression-model",
+    "title": "Supervised learning: variable selection",
+    "section": "Vanilla linear regression model",
+    "text": "Vanilla linear regression model\n\n\n\nWhat do the initial regression coefficients look like?\nUse broom to tidy model output for plotting\n\n\nprostate_lm &lt;- lm(lpsa ~ ., data = prostate)\nlibrary(broom)\nprostate_lm |&gt; \n  tidy() |&gt; \n  mutate(term = fct_reorder(term, estimate)) |&gt; \n  ggplot(aes(x = estimate, y = term, \n             fill = estimate &gt; 0)) +\n  geom_col(color = \"white\", show.legend = FALSE) +\n  scale_fill_manual(values = c(\"darkred\", \"darkblue\"))"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#ridge-regression",
+    "href": "lectures/13-regularization.html#ridge-regression",
+    "title": "Supervised learning: variable selection",
+    "section": "Ridge regression",
+    "text": "Ridge regression\nPerform ridge regression using glmnet with alpha = 0\nBy default, predictors are standardized and models are fitted across a range of \\(\\lambda\\) values (can plot these!)\n\nprostate_ridge &lt;- glmnet(model_x, model_y, alpha = 0)\nplot(prostate_ridge, xvar = \"lambda\")"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#ridge-regression-1",
+    "href": "lectures/13-regularization.html#ridge-regression-1",
+    "title": "Supervised learning: variable selection",
+    "section": "Ridge regression",
+    "text": "Ridge regression\nUse cross-validation to select \\(\\lambda\\) with cv.glmnet() which uses 10-folds by default\nSpecify ridge regression with alpha = 0\n\nprostate_ridge_cv &lt;- cv.glmnet(model_x, model_y, alpha = 0)\nplot(prostate_ridge_cv)"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#tidy-ridge-regression",
+    "href": "lectures/13-regularization.html#tidy-ridge-regression",
+    "title": "Supervised learning: variable selection",
+    "section": "Tidy ridge regression",
+    "text": "Tidy ridge regression\n\n\n\n# str(prostate_ridge_cv)\ntidy_ridge_coef &lt;- tidy(prostate_ridge_cv$glmnet.fit)\ntidy_ridge_coef |&gt; \n  ggplot(aes(x = lambda, y = estimate, group = term)) +\n  scale_x_log10() +\n  geom_line(alpha = 0.75) +\n  geom_vline(xintercept = prostate_ridge_cv$lambda.min) +\n  geom_vline(xintercept = prostate_ridge_cv$lambda.1se, \n             linetype = \"dashed\", color = \"red\")\n\n\nCould easily add color with legend for variables…"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#tidy-ridge-regression-1",
+    "href": "lectures/13-regularization.html#tidy-ridge-regression-1",
+    "title": "Supervised learning: variable selection",
+    "section": "Tidy ridge regression",
+    "text": "Tidy ridge regression\n\n\n\ntidy_ridge_cv &lt;- tidy(prostate_ridge_cv)\ntidy_ridge_cv |&gt; \n  ggplot(aes(x = lambda, y = estimate)) +\n  geom_line() + \n  scale_x_log10() +\n  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), \n              alpha = 0.2) +\n  geom_vline(xintercept = prostate_ridge_cv$lambda.min) +\n  geom_vline(xintercept = prostate_ridge_cv$lambda.1se,\n             linetype = \"dashed\", color = \"red\")"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#ridge-regression-coefficients",
+    "href": "lectures/13-regularization.html#ridge-regression-coefficients",
+    "title": "Supervised learning: variable selection",
+    "section": "Ridge regression coefficients",
+    "text": "Ridge regression coefficients\n\n\nCoefficients using the 1 standard error rule \\(\\lambda\\)\n\ntidy_ridge_coef |&gt;\n  filter(lambda == prostate_ridge_cv$lambda.1se) |&gt;\n  mutate(term = fct_reorder(term, estimate)) |&gt;\n  ggplot(aes(x = estimate, y = term, \n             fill = estimate &gt; 0)) +\n  geom_col(color = \"white\", show.legend = FALSE) +\n  scale_fill_manual(values = c(\"darkred\", \"darkblue\"))"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#lasso-regression-example",
+    "href": "lectures/13-regularization.html#lasso-regression-example",
+    "title": "Supervised learning: variable selection",
+    "section": "Lasso regression example",
+    "text": "Lasso regression example\n\n\nSimilar syntax to ridge but specify alpha = 1:\n\nprostate_lasso_cv &lt;- cv.glmnet(model_x, model_y, \n                               alpha = 1)\ntidy_lasso_coef &lt;- tidy(prostate_lasso_cv$glmnet.fit)\ntidy_lasso_coef |&gt; \n  ggplot(aes(x = lambda, y = estimate, group = term)) +\n  scale_x_log10() +\n  geom_line(alpha = 0.75) +\n  geom_vline(xintercept = prostate_lasso_cv$lambda.min) +\n  geom_vline(xintercept = prostate_lasso_cv$lambda.1se, \n             linetype = \"dashed\", color = \"red\")"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#lasso-regression-example-1",
+    "href": "lectures/13-regularization.html#lasso-regression-example-1",
+    "title": "Supervised learning: variable selection",
+    "section": "Lasso regression example",
+    "text": "Lasso regression example\n\n\nNumber of non-zero predictors by \\(\\lambda\\)\n\ntidy_lasso_cv &lt;- tidy(prostate_lasso_cv)\ntidy_lasso_cv |&gt;\n  ggplot(aes(x = lambda, y = nzero)) +\n  geom_line() +\n  geom_vline(xintercept = prostate_lasso_cv$lambda.min) +\n  geom_vline(xintercept = prostate_lasso_cv$lambda.1se, \n             linetype = \"dashed\", color = \"red\") +\n  scale_x_log10()\n\nReduction in variables using 1 standard error rule \\(\\lambda\\)"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#lasso-regression-example-2",
+    "href": "lectures/13-regularization.html#lasso-regression-example-2",
+    "title": "Supervised learning: variable selection",
+    "section": "Lasso regression example",
+    "text": "Lasso regression example\n\n\nCoefficients using the 1 standard error rule \\(\\lambda\\)\n\ntidy_lasso_coef |&gt;\n  filter(lambda == prostate_lasso_cv$lambda.1se) |&gt;\n  mutate(term = fct_reorder(term, estimate)) |&gt;\n  ggplot(aes(x = estimate, y = term, \n             fill = estimate &gt; 0)) +\n  geom_col(color = \"white\", show.legend = FALSE) +\n  scale_fill_manual(values = c(\"darkred\", \"darkblue\"))"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#elastic-net-example",
+    "href": "lectures/13-regularization.html#elastic-net-example",
+    "title": "Supervised learning: variable selection",
+    "section": "Elastic net example",
+    "text": "Elastic net example\nNeed to tune both \\(\\lambda\\) and \\(\\alpha\\) - can do so manually with our own folds\n\nset.seed(100)\nfold_id &lt;- sample(rep(1:10, length.out = nrow(model_x)))\n\nThen use cross-validation with these folds for different candidate alpha values:\n\ncv_enet_25 &lt;- cv.glmnet(model_x, model_y, foldid = fold_id, alpha = 0.25)\ncv_enet_50 &lt;- cv.glmnet(model_x, model_y, foldid = fold_id, alpha = 0.5)\ncv_ridge &lt;- cv.glmnet(model_x, model_y, foldid = fold_id, alpha = 0)\ncv_lasso &lt;- cv.glmnet(model_x, model_y, foldid = fold_id, alpha = 1)\n\nCan see which one had the lowest CV error among its candidate \\(\\lambda\\) values:\n\nwhich.min(c(min(cv_enet_25$cvm), min(cv_enet_50$cvm), min(cv_ridge$cvm), min(cv_lasso$cvm)))\n\n[1] 3"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#elastic-net-example-1",
+    "href": "lectures/13-regularization.html#elastic-net-example-1",
+    "title": "Supervised learning: variable selection",
+    "section": "Elastic net example",
+    "text": "Elastic net example\n\n\nCan view same type of summary\n\ncv_enet_50 |&gt; \n  tidy() |&gt; \n  ggplot(aes(x = lambda, y = nzero)) +\n  geom_line() +\n  geom_vline(xintercept = cv_enet_50$lambda.min) +\n  geom_vline(xintercept = cv_enet_50$lambda.1se, \n             linetype = \"dashed\", \n             color = \"red\") +\n  scale_x_log10()\n\n\nMore relaxed than lasso for variable entry"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#comparison-of-models-based-on-holdout-performance",
+    "href": "lectures/13-regularization.html#comparison-of-models-based-on-holdout-performance",
+    "title": "Supervised learning: variable selection",
+    "section": "Comparison of models based on holdout performance",
+    "text": "Comparison of models based on holdout performance\n\nset.seed(101)\nk &lt;- 5\nprostate &lt;- prostate |&gt;\n  mutate(test_fold = sample(rep(1:k, length.out = n())))\n\n\nget_test_pred &lt;- function(k) {\n  test_data &lt;- prostate |&gt; filter(test_fold == k)                     # get test and training data\n  train_data &lt;- prostate |&gt; filter(test_fold != k)\n  test_x &lt;- as.matrix(select(test_data, -lpsa))                       # get test and training matrices\n  train_x &lt;- as.matrix(select(train_data, -lpsa))\n  \n  lm_fit &lt;- lm(lpsa ~ ., data = train_data)                           # fit models to training data\n  ridge_fit &lt;- cv.glmnet(train_x, train_data$lpsa, alpha = 0)\n  lasso_fit &lt;- cv.glmnet(train_x, train_data$lpsa, alpha = 1)\n  enet_fit &lt;- cv.glmnet(train_x, train_data$lpsa, alpha = 0.5)\n  \n  tibble(lm_pred = predict(lm_fit, newdata = test_data),              # return test results\n         ridge_pred = as.numeric(predict(ridge_fit, newx = test_x)),\n         lasso_pred = as.numeric(predict(lasso_fit, newx = test_x)),\n         enet_pred = as.numeric(predict(enet_fit, newx = test_x)),\n         test_actual = test_data$lpsa,\n         test_fold = k)\n}\n\n\ntest_pred_all &lt;- map(1:k, get_test_pred) |&gt; \n  bind_rows()"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#comparison-of-models-based-on-holdout-performance-1",
+    "href": "lectures/13-regularization.html#comparison-of-models-based-on-holdout-performance-1",
+    "title": "Supervised learning: variable selection",
+    "section": "Comparison of models based on holdout performance",
+    "text": "Comparison of models based on holdout performance\n\n\nCompute RMSE across folds with standard error intervals\n\ntest_pred_all |&gt;\n  pivot_longer(lm_pred:enet_pred, \n               names_to = \"type\", \n               values_to = \"test_pred\") |&gt;\n  group_by(type, test_fold) |&gt;\n  summarize(\n    rmse = sqrt(mean((test_actual - test_pred)^2))\n  ) |&gt; \n  ggplot(aes(x = type, y = rmse)) + \n  geom_point(size = 4) +\n  stat_summary(fun = mean, geom = \"point\", \n               color = \"red\", size = 4) + \n  stat_summary(fun.data = mean_se, geom = \"errorbar\", \n               color = \"red\", width = 0.2)\n\nRegularization methods perform better than a linear model\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
   },
   {
     "objectID": "lectures/06-hierarchical.html#data-county-level-health-indicators-for-utah-in-2014",
@@ -1778,6 +2233,13 @@
     "text": "Bias-variance tradeoff\n“Best” model minimizes the test-set MSE, where the true MSE can be decomposed into \\({\\rm MSE} = {\\rm (Bias)}^2 + {\\rm Variance}\\)\n\n\n\n\n\n\n\n\n\n\nTowards the left: high bias, low variance. Towards the right: low bias, high variance.\nOptimal amount of flexibility lies somewhere in the middle (“just the right amount” — Goldilocks principle)"
   },
   {
+    "objectID": "lectures/10-tradeoffs.html#principle-of-parsimony-occams-razor",
+    "href": "lectures/10-tradeoffs.html#principle-of-parsimony-occams-razor",
+    "title": "Supervised learning: the tradeoffs",
+    "section": "Principle of parsimony (Occam’s razor)",
+    "text": "Principle of parsimony (Occam’s razor)\n“Numquam ponenda est pluralitas sine necessitate” (plurality must never be posited without necessity)\nFrom ISLR:\n\nWhen faced with new data modeling and prediction problems, it’s tempting to always go for the trendy new methods. Often they give extremely impressive results, especially when the datasets are very large and can support the fitting of high-dimensional nonlinear models. However, if we can produce models with the simpler tools that perform as well, they are likely to be easier to fit and understand, and potentially less fragile than the more complex approaches. Wherever possible, it makes sense to try the simpler models as well, and then make a choice based on the performance/complexity tradeoff.\n\nIn short: “When faced with several methods that give roughly equivalent performance, pick the simplest.”"
+  },
+  {
     "objectID": "lectures/10-tradeoffs.html#check-out-this-song",
     "href": "lectures/10-tradeoffs.html#check-out-this-song",
     "title": "Supervised learning: the tradeoffs",
@@ -1785,18 +2247,18 @@
     "text": "Check out this song\n\n\n\n36-SURE.github.io"
   },
   {
-    "objectID": "lectures/00-welcome.html#people",
-    "href": "lectures/00-welcome.html#people",
+    "objectID": "lectures/00-welcome.html#who-are-we",
+    "href": "lectures/00-welcome.html#who-are-we",
     "title": "Welcome to SURE 2024",
-    "section": "People",
-    "text": "People\n\nLead instructor: Quang Nguyen (preferred form of address: Quang)\nTeaching assistants\n\nHealth: Akshay Prasadan (lead TA/project manager), Princess Allotey, Nick Kissel\nSports: Yuchen Chen, JungHo Lee, Daven Lagu"
+    "section": "Who are we?",
+    "text": "Who are we?\n\nDepartment of Statistics & Data Science, Carnegie Mellon University\nLead instructor: Quang Nguyen (preferred form of address: Quang)\nTeaching assistants\n\nHealth: Akshay Prasadan (lead TA/project manager), Princess Allotey, Nick Kissel\nSports: Yuchen Chen, JungHo Lee, Daven Lagu"
   },
   {
     "objectID": "lectures/00-welcome.html#summer-undergraduate-research-experience",
     "href": "lectures/00-welcome.html#summer-undergraduate-research-experience",
     "title": "Welcome to SURE 2024",
     "section": "Summer Undergraduate Research Experience",
-    "text": "Summer Undergraduate Research Experience\nExplore cutting-edge statistics and data science methodology with applications in\n\nHeathcare: UnitedHealth Group Bridges to Healthcare Technology (Optum, United Healthcare, UnitedHealth Group)\nSports: Carnegie Mellon Sports Analytics Camp (CMSACamp)\n\n\n\n“The best thing about being a statistician…is that you get to play in everyone’s backyard.” — John W. Tukey"
+    "text": "Summer Undergraduate Research Experience\nExplore cutting-edge statistics and data science methodology with applications in\n\nHeathcare: UnitedHealth Group Bridges to Healthcare Technology\nSports: Carnegie Mellon Sports Analytics Camp (CMSACamp)\n\n\n\n“The best thing about being a statistician…is that you get to play in everyone’s backyard.” — John W. Tukey"
   },
   {
     "objectID": "lectures/00-welcome.html#goals",
@@ -1810,7 +2272,7 @@
     "href": "lectures/00-welcome.html#a-typical-day-consists-of-3-main-events",
     "title": "Welcome to SURE 2024",
     "section": "A typical day consists of 3 main events",
-    "text": "A typical day consists of 3 main events\n\nLectures\n(Industry) Presentations\nLabs"
+    "text": "A typical day consists of 3 main events\n\nLectures\nPresentations\nLabs"
   },
   {
     "objectID": "lectures/00-welcome.html#lectures",
@@ -1845,7 +2307,7 @@
     "href": "lectures/00-welcome.html#main-project",
     "title": "Welcome to SURE 2024",
     "section": "Main project",
-    "text": "Main project\n\nAnalyze a dataset in health or sports analytics to answer a research question that is important to people in your respective field\nWork in a group of 3-4\nDeliverables\n\nReport\nPoster\n8-min presentation\n\n\n(more details on these will be provided later on)"
+    "text": "Main project\n\nAnalyze a dataset in health or sports analytics to answer a research question that is important to people in your respective field\nWork in a group of 2-4\nDeliverables (more details will be provided later on)\n\nReport\nPoster\n8-min presentation"
   },
   {
     "objectID": "lectures/00-welcome.html#resources",
@@ -2279,7 +2741,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"m\" \"f\" \"h\" \"g\" \"o\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 0 1 0 1 0 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"H\" \"H\" \"H\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 10"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"z\" \"n\" \"p\" \"u\" \"e\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 1 1 0 1 1 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"T\" \"T\" \"H\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 91"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -2321,21 +2783,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.009007819\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.006179"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.01132496\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.000618"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.489\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.46     0.001 0.000273\n 2 -3.33     0.002 0.000431\n 3 -2.99     0.003 0.00139 \n 4 -2.88     0.004 0.00198 \n 5 -2.83     0.005 0.00234 \n 6 -2.74     0.006 0.00311 \n 7 -2.63     0.007 0.00424 \n 8 -2.62     0.008 0.00435 \n 9 -2.62     0.009 0.00439 \n10 -2.56     0.01  0.00531 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.51\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.17     0.001 0.000750\n 2 -2.95     0.002 0.00157 \n 3 -2.81     0.003 0.00250 \n 4 -2.78     0.004 0.00272 \n 5 -2.73     0.005 0.00317 \n 6 -2.55     0.006 0.00535 \n 7 -2.50     0.007 0.00616 \n 8 -2.44     0.008 0.00737 \n 9 -2.41     0.009 0.00796 \n10 -2.38     0.01  0.00877 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.38759\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3832186\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -2349,14 +2811,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1244\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1268\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.2277703\n\nmean(rnorm(100))\n\n[1] 0.04465565\n\nmean(rnorm(100))\n\n[1] -0.05015369"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.07287966\n\nmean(rnorm(100))\n\n[1] 0.04031756\n\nmean(rnorm(100))\n\n[1] 0.1104808"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
@@ -2448,153 +2910,6 @@
     "title": "Simulation",
     "section": "Resources",
     "text": "Resources\n\nhere package\nfertile package\nWhat They Forgot to Teach You About R\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
-  },
-  {
-    "objectID": "lectures/11-lm.html#simple-linear-regression",
-    "href": "lectures/11-lm.html#simple-linear-regression",
-    "title": "Supervised learning: linear regression",
-    "section": "Simple linear regression",
-    "text": "Simple linear regression\nWe assume a linear relationship for \\(Y = f(X)\\):\n\\[Y_{i}=\\beta_{0}+\\beta_{1} X_{i}+\\epsilon_{i}, \\quad \\text { for } i=1,2, \\dots, n\\]\n\n\\(Y_i\\) is the \\(i\\)th value for the response variable\n\\(X_i\\) is the \\(i\\)th value for the predictor variable\n\n\n\n\\(\\beta_0\\) is an unknown, constant intercept: average value for \\(Y\\) if \\(X = 0\\)\n\\(\\beta_1\\) is an unknown, constant slope: increase in average value for \\(Y\\) for each one-unit increase in \\(X\\)\n\n\n\n\n\\(\\epsilon_i\\) is the random noise: assume independent, identically distributed (iid) from Normal distribution\n\n\\[\\epsilon_i \\overset{iid}{\\sim}N(0, \\sigma^2) \\quad \\text{ with constant variance } \\sigma^2\\]"
-  },
-  {
-    "objectID": "lectures/11-lm.html#simple-linear-regression-estimation",
-    "href": "lectures/11-lm.html#simple-linear-regression-estimation",
-    "title": "Supervised learning: linear regression",
-    "section": "Simple linear regression estimation",
-    "text": "Simple linear regression estimation\nWe are estimating the conditional expection (mean) for \\(Y\\):\n\\[\\mathbb{E}[Y_i \\mid X_i] = \\beta_0 + \\beta_1X_i\\]\n\naverage value for \\(Y\\) given the value for \\(X\\)\n\n\nHow do we estimate the best fitting line?\n\n\nOrdinary least squares (OLS) - by minimizing the residual sum of squares (RSS)\n\\[\\text{RSS} \\left(\\beta_{0}, \\beta_{1}\\right)=\\sum_{i=1}^{n}\\left[Y_{i}-\\left(\\beta_{0}+\\beta_{1} X_{i}\\right)\\right]^{2}=\\sum_{i=1}^{n}\\left(Y_{i}-\\beta_{0}-\\beta_{1} X_{i}\\right)^{2}\\]\n\n\n\\[\\widehat{\\beta}_{1}=\\frac{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)\\left(Y_{i}-\\bar{Y}\\right)}{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)^{2}} \\quad \\text{ and } \\quad \\widehat{\\beta}_{0}=\\bar{Y}-\\widehat{\\beta}_{1} \\bar{X}\\]\nwhere \\(\\displaystyle \\bar{X} = \\frac{1}{n}\\sum_{i=1}^n X_i\\) and \\(\\displaystyle \\bar{Y} = \\frac{1}{n}\\sum_{i=1}^n Y_i\\)"
-  },
-  {
-    "objectID": "lectures/11-lm.html#connection-to-covariance-and-correlation",
-    "href": "lectures/11-lm.html#connection-to-covariance-and-correlation",
-    "title": "Supervised learning: linear regression",
-    "section": "Connection to covariance and correlation",
-    "text": "Connection to covariance and correlation\nCovariance describes the joint variability of two variables \\[\\text{Cov}(X, Y) = \\sigma_{X,Y} = \\mathbb{E}[(X-\\mathbb{E}[X])(Y-\\mathbb{E}[Y])]\\]\n\nSample covariance (use \\(n - 1\\) since the means are used and we want unbiased estimates) \\[\\hat{\\sigma}_{X,Y} = \\frac{1}{n-1} \\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)\\left(Y_{i}-\\bar{Y}\\right)\\]\n\n\nCorrelation is a normalized form of covariance, ranges from -1 to 1 \\[\\rho_{X,Y} = \\frac{\\text{Cov}(X,Y)}{\\sigma_X \\cdot \\sigma_Y}\\]\nSample correlation uses the sample covariance and standard deviations, e.g. \\(s_X^2 = \\frac{1}{n-1} \\sum_i (X_i - \\bar{X})^2\\) \\[r_{X,Y} = \\frac{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)\\left(Y_{i}-\\bar{Y}\\right)}{\\sqrt{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)^{2} \\sum_{i=1}^{n}\\left(Y_{i}-\\bar{Y}\\right)^{2}}}\\]"
-  },
-  {
-    "objectID": "lectures/11-lm.html#connection-to-covariance-and-correlation-1",
-    "href": "lectures/11-lm.html#connection-to-covariance-and-correlation-1",
-    "title": "Supervised learning: linear regression",
-    "section": "Connection to covariance and correlation",
-    "text": "Connection to covariance and correlation\nWe have\n\\[\\widehat{\\beta}_{1}=\\frac{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)\\left(Y_{i}-\\bar{Y}\\right)}{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)^{2}} \\quad \\text{compared to} \\quad r_{X,Y} = \\frac{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)\\left(Y_{i}-\\bar{Y}\\right)}{\\sqrt{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)^{2} \\sum_{i=1}^{n}\\left(Y_{i}-\\bar{Y}\\right)^{2}}}\\]\n\nWe can rewrite \\(\\hat{\\beta}_1\\) as \\(\\displaystyle \\widehat{\\beta}_{1} = r_{X,Y} \\cdot \\frac{s_Y}{s_X}\\)\nWe can rewrite \\(\\displaystyle r_{X,Y}\\) as \\(\\displaystyle r_{X,Y} = \\widehat{\\beta}_{1} \\cdot \\frac{s_X}{s_Y}\\)\n\n\nCan think of \\(\\widehat{\\beta}_{1}\\) weighting the ratio of variance between \\(X\\) and \\(Y\\)…"
-  },
-  {
-    "objectID": "lectures/11-lm.html#gapminder-data",
-    "href": "lectures/11-lm.html#gapminder-data",
-    "title": "Supervised learning: linear regression",
-    "section": "Gapminder data",
-    "text": "Gapminder data\nHealth and income outcomes for 184 countries from 1960 to 2016 from the famous Gapminder project\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nlibrary(dslabs)\nclean_gapminder &lt;- gapminder |&gt;\n  filter(year == 2011, !is.na(gdp)) |&gt;\n  mutate(log_gdp = log(gdp))\nglimpse(clean_gapminder)\n\nRows: 168\nColumns: 10\n$ country          &lt;fct&gt; \"Albania\", \"Algeria\", \"Angola\", \"Antigua and Barbuda\"…\n$ year             &lt;int&gt; 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011,…\n$ infant_mortality &lt;dbl&gt; 14.3, 22.8, 106.8, 7.2, 12.7, 15.3, 3.8, 3.4, 32.5, 1…\n$ life_expectancy  &lt;dbl&gt; 77.4, 76.1, 58.1, 75.9, 76.0, 73.5, 82.2, 80.7, 70.8,…\n$ fertility        &lt;dbl&gt; 1.75, 2.83, 6.10, 2.12, 2.20, 1.50, 1.88, 1.44, 1.96,…\n$ population       &lt;dbl&gt; 2886010, 36717132, 21942296, 88152, 41655616, 2967984…\n$ gdp              &lt;dbl&gt; 6321690864, 81143448101, 27013935821, 801787943, 4729…\n$ continent        &lt;fct&gt; Europe, Africa, Africa, Americas, Americas, Asia, Oce…\n$ region           &lt;fct&gt; Southern Europe, Northern Africa, Middle Africa, Cari…\n$ log_gdp          &lt;dbl&gt; 22.56725, 25.11948, 24.01962, 20.50235, 26.88222, 22.…"
-  },
-  {
-    "objectID": "lectures/11-lm.html#modeling-life-expectancy",
-    "href": "lectures/11-lm.html#modeling-life-expectancy",
-    "title": "Supervised learning: linear regression",
-    "section": "Modeling life expectancy",
-    "text": "Modeling life expectancy\n\n\nInterested in modeling a country’s life expectancy\n\nclean_gapminder |&gt;\n  ggplot(aes(x = life_expectancy)) +\n  geom_histogram(color = \"black\", fill = \"darkblue\", alpha = 0.3) +\n  labs(x = \"Life expectancy\")"
-  },
-  {
-    "objectID": "lectures/11-lm.html#relationship-between-life-expectancy-and-log-gdp",
-    "href": "lectures/11-lm.html#relationship-between-life-expectancy-and-log-gdp",
-    "title": "Supervised learning: linear regression",
-    "section": "Relationship between life expectancy and log GDP",
-    "text": "Relationship between life expectancy and log GDP\n\n\n\ngdp_plot &lt;- clean_gapminder |&gt;\n  ggplot(aes(x = log_gdp, y = life_expectancy)) +\n  geom_point(size = 4, alpha = 0.5) +\n  labs(x = \"log(GDP)\",\n       y = \"Life expectancy\")\ngdp_plot\n\nWe fit linear regression models using lm(), formula is input as: response ~ predictor\n\nsimple_lm &lt;- lm(life_expectancy ~ log_gdp, \n              data = clean_gapminder)"
-  },
-  {
-    "objectID": "lectures/11-lm.html#summarize-the-model-using-summary",
-    "href": "lectures/11-lm.html#summarize-the-model-using-summary",
-    "title": "Supervised learning: linear regression",
-    "section": "Summarize the model using summary()",
-    "text": "Summarize the model using summary()\n\nsummary(simple_lm)\n\n\nCall:\nlm(formula = life_expectancy ~ log_gdp, data = clean_gapminder)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-18.901  -4.781   1.879   5.335  13.962 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   24.174      5.758   4.198 4.38e-05 ***\nlog_gdp        1.975      0.242   8.161 7.87e-14 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 7.216 on 166 degrees of freedom\nMultiple R-squared:  0.2864,    Adjusted R-squared:  0.2821 \nF-statistic: 66.61 on 1 and 166 DF,  p-value: 7.865e-14"
-  },
-  {
-    "objectID": "lectures/11-lm.html#summarize-the-model-using-the-broom-package",
-    "href": "lectures/11-lm.html#summarize-the-model-using-the-broom-package",
-    "title": "Supervised learning: linear regression",
-    "section": "Summarize the model using the broom package",
-    "text": "Summarize the model using the broom package\nThe 3 broom functions (Note: the output is always a tibble)\n\ntidy(): coefficients table in a tidy format\nglance(): produces summary metrics of a model fit\naugment(): adds/“augments” columns to the original data (e.g., adding predictions)\n\nNote: the output of tidy(), augment() and glance() are always a tibble.\n\nlibrary(broom)\ntidy(simple_lm)\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)    24.2      5.76       4.20 4.38e- 5\n2 log_gdp         1.97     0.242      8.16 7.87e-14\n\nglance(simple_lm)\n\n# A tibble: 1 × 12\n  r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC\n      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     0.286         0.282  7.22      66.6 7.87e-14     1  -569. 1145. 1154.\n# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;"
-  },
-  {
-    "objectID": "lectures/11-lm.html#inference-with-ols",
-    "href": "lectures/11-lm.html#inference-with-ols",
-    "title": "Supervised learning: linear regression",
-    "section": "Inference with OLS",
-    "text": "Inference with OLS\nReports the intercept and coefficient estimates: \\(\\quad \\hat{\\beta}_0 \\approx 24.174 \\quad, \\quad \\hat{\\beta}_1 \\approx 1.975\\)\n\nEstimates of uncertainty for \\(\\beta\\)s via standard errors: \\(\\quad \\widehat{SE}(\\hat{\\beta}_0) \\approx 5.758 \\quad, \\quad \\widehat{SE}(\\hat{\\beta}_1) \\approx 0.242\\)\n\n\n\\(t\\)-statistics are coefficients Estimates / Std. Error, i.e., number of standard deviations from 0\n\np-values (i.e., Pr(&gt;|t|)): estimated probability observing value as extreme as |t value| given the null hypothesis \\(\\beta = 0\\)\np-value \\(&lt;\\) conventional threshold of \\(\\alpha = 0.05\\), sufficient evidence to reject the null hypothesis that the coefficient is zero,\ni.e., there is a significant association between life_expectancy and log_gdp"
-  },
-  {
-    "objectID": "lectures/11-lm.html#be-careful",
-    "href": "lectures/11-lm.html#be-careful",
-    "title": "Supervised learning: linear regression",
-    "section": "Be careful!",
-    "text": "Be careful!\nCaveats to keep in mind regarding p-values:\n\nIf the true value of a coefficient \\(\\beta = 0\\), then the p-value is sampled from a Uniform(0,1) distribution\n\ni.e., it is just as likely to have value 0.45 as 0.16 or 0.84 or 0.9999 or 0.00001…\n\n\n\nHence why we typically only reject for low \\(\\alpha\\) values like 0.05\n\nControlling the Type 1 error rate at \\(\\alpha = 0.05\\), i.e., the probability of a false positive mistake\n5% chance that you’ll conclude there’s a significant association between \\(x\\) and \\(y\\) even when there is none\n\n\n\nRemember what a standard error is? \\(SE = \\frac{\\sigma}{\\sqrt{n}}\\)\n\nAs \\(n\\) gets large standard error goes to zero, and all predictors are eventually deemed significant\nWhile the p-values might be informative, we will explore other approaches to determine which subset of predictors to include (e.g., holdout performance)"
-  },
-  {
-    "objectID": "lectures/11-lm.html#back-to-the-model-summary-multiple-r-squared",
-    "href": "lectures/11-lm.html#back-to-the-model-summary-multiple-r-squared",
-    "title": "Supervised learning: linear regression",
-    "section": "Back to the model summary: Multiple R-squared",
-    "text": "Back to the model summary: Multiple R-squared\nBack to the connection between the coefficient and correlation:\n\\[r_{X,Y} = \\widehat{\\beta}_{1} \\cdot \\frac{s_X}{s_Y} \\quad \\longrightarrow \\quad r^2_{X,Y} = \\widehat{\\beta}_{1}^2\\cdot \\frac{s_X^2}{s_Y^2}\\]\nCompute the correlation with cor():\n\ncor(clean_gapminder$log_gdp, clean_gapminder$life_expectancy)\n\n[1] 0.5351189\n\n\n\nThe squared cor matches the reported Multiple R-squared\n\ncor(clean_gapminder$log_gdp, clean_gapminder$life_expectancy) ^ 2\n\n[1] 0.2863522"
-  },
-  {
-    "objectID": "lectures/11-lm.html#back-to-the-model-summary-multiple-r-squared-1",
-    "href": "lectures/11-lm.html#back-to-the-model-summary-multiple-r-squared-1",
-    "title": "Supervised learning: linear regression",
-    "section": "Back to the model summary: Multiple R-squared",
-    "text": "Back to the model summary: Multiple R-squared\nBack to the connection between the coefficient and correlation:\n\\[r_{X,Y} = \\widehat{\\beta}_{1} \\cdot \\frac{s_X}{s_Y} \\quad \\longrightarrow \\quad r^2_{X,Y} = \\widehat{\\beta}_{1}^2\\cdot \\frac{s_X^2}{s_Y^2}\\]\n\\(r^2\\) (or also \\(R^2\\)) estimates the proportion of the variance of \\(Y\\) explained by \\(X\\)\n\nMore generally: variance of model predictions / variance of \\(Y\\)\n\n\nvar(predict(simple_lm)) / var(clean_gapminder$life_expectancy) \n\n[1] 0.2863522"
-  },
-  {
-    "objectID": "lectures/11-lm.html#generating-predictions",
-    "href": "lectures/11-lm.html#generating-predictions",
-    "title": "Supervised learning: linear regression",
-    "section": "Generating predictions",
-    "text": "Generating predictions\nWe can use the predict() or fitted() function to either get the fitted values of the regression:\n\ntrain_preds &lt;- predict(simple_lm)\nhead(train_preds)\n\n       1        2        3        4        5        6 \n68.74401 73.78465 71.61243 64.66585 77.26605 67.97876 \n\n\n\nhead(fitted(simple_lm))\n\n       1        2        3        4        5        6 \n68.74401 73.78465 71.61243 64.66585 77.26605 67.97876 \n\n\n\nhead(simple_lm$fitted.values)\n\n       1        2        3        4        5        6 \n68.74401 73.78465 71.61243 64.66585 77.26605 67.97876 \n\n\n\nsimple_lm |&gt; \n  pluck(\"fitted.values\") |&gt; \n  head()\n\n       1        2        3        4        5        6 \n68.74401 73.78465 71.61243 64.66585 77.26605 67.97876"
-  },
-  {
-    "objectID": "lectures/11-lm.html#predictions-for-new-data",
-    "href": "lectures/11-lm.html#predictions-for-new-data",
-    "title": "Supervised learning: linear regression",
-    "section": "Predictions for new data",
-    "text": "Predictions for new data\nOr we can provide it newdata which must contain the explanatory variables:\n\n\n\nus_data &lt;- clean_gapminder |&gt; \n  filter(country == \"United States\")\n\nnew_us_data &lt;- us_data |&gt;\n  select(country, gdp) |&gt;\n  slice(rep(1, 3)) |&gt; \n  mutate(adj_factor = c(0.25, 0.5, 0.75),\n         log_gdp = log(gdp * adj_factor))\nnew_us_data$pred_life_exp &lt;- \n  predict(simple_lm, newdata = new_us_data) \ngdp_plot +\n  geom_point(data = new_us_data,\n             aes(x = log_gdp, y = pred_life_exp),\n             color = \"darkred\", size = 5)"
-  },
-  {
-    "objectID": "lectures/11-lm.html#plot-observed-values-against-predictions",
-    "href": "lectures/11-lm.html#plot-observed-values-against-predictions",
-    "title": "Supervised learning: linear regression",
-    "section": "Plot observed values against predictions",
-    "text": "Plot observed values against predictions\nUseful diagnostic (for any type of model, not just linear regression!)\n\n\n\nclean_gapminder |&gt;\n  mutate(pred_vals = predict(simple_lm)) |&gt; \n  ggplot(aes(x = pred_vals, y = life_expectancy)) +\n  geom_point(alpha = 0.5) +\n  geom_abline(slope = 1, intercept = 0, \n              linetype = \"dashed\",\n              color = \"red\",\n              linewidth = 2)\n\n\n“Perfect” model will follow diagonal"
-  },
-  {
-    "objectID": "lectures/11-lm.html#plot-observed-values-against-predictions-1",
-    "href": "lectures/11-lm.html#plot-observed-values-against-predictions-1",
-    "title": "Supervised learning: linear regression",
-    "section": "Plot observed values against predictions",
-    "text": "Plot observed values against predictions\nAugment the data with model output using the broom package\n\n\n\nclean_gapminder &lt;- simple_lm |&gt; \n  augment(clean_gapminder) \nclean_gapminder |&gt;\n  ggplot(aes(x = .fitted, y = life_expectancy)) + \n  geom_point(alpha = 0.5) +\n  geom_abline(slope = 1, intercept = 0, \n              linetype = \"dashed\", color = \"red\", linewidth = 2)\n\n\nAdds various columns from model fit we can use in plotting for model diagnostics"
-  },
-  {
-    "objectID": "lectures/11-lm.html#plot-residuals-against-predicted-values",
-    "href": "lectures/11-lm.html#plot-residuals-against-predicted-values",
-    "title": "Supervised learning: linear regression",
-    "section": "Plot residuals against predicted values",
-    "text": "Plot residuals against predicted values\n\n\n\nResiduals = observed - predicted\nInterpretation of residuals in context?\nConditional on the predicted values, the residuals should have a mean of zero\n\n\nclean_gapminder |&gt;\n  ggplot(aes(x = .fitted, y = .resid)) + \n  geom_point(alpha = 0.5) +\n  geom_hline(yintercept = 0, linetype = \"dashed\", \n             color = \"red\", linewidth = 2) +\n  # plot the residual mean\n  geom_smooth(se = FALSE)\n\n\nResiduals should NOT display any pattern"
-  },
-  {
-    "objectID": "lectures/11-lm.html#multiple-linear-regression",
-    "href": "lectures/11-lm.html#multiple-linear-regression",
-    "title": "Supervised learning: linear regression",
-    "section": "Multiple linear regression",
-    "text": "Multiple linear regression\nWe can include as many variables as we want (assuming \\(n &gt; p\\)!)\n\\[Y=\\beta_{0}+\\beta_{1} X_{1}+\\beta_{2} X_{2}+\\cdots+\\beta_{p} X_{p}+\\epsilon\\]\nOLS estimates in matrix notation ( \\(\\boldsymbol{X}\\) is a \\(n \\times p\\) matrix):\n\\[\\hat{\\boldsymbol{\\beta}} = (\\boldsymbol{X} ^T \\boldsymbol{X})^{-1}\\boldsymbol{X}^T\\boldsymbol{Y}\\]\n\nCan just add more variables to the formula in R\n\nmultiple_lm &lt;- lm(life_expectancy ~ log_gdp + fertility, data = clean_gapminder)\n\n\nUse the Adjusted R-squared when including multiple variables \\(= 1 - \\frac{(1 - R^2)(n - 1)}{(n - p - 1)}\\)\n\nAdjusts for the number of variables in the model \\(p\\)\nAdding more variables will always increase Multiple R-squared"
-  },
-  {
-    "objectID": "lectures/11-lm.html#what-about-the-normal-distribution-assumption",
-    "href": "lectures/11-lm.html#what-about-the-normal-distribution-assumption",
-    "title": "Supervised learning: linear regression",
-    "section": "What about the Normal distribution assumption?",
-    "text": "What about the Normal distribution assumption?\n\nModel: \\(Y=\\beta_{0}+\\beta_{1} X_{1}+\\beta_{2} X_{2}+\\cdots+\\beta_{p} X_{p}+\\epsilon\\)\n\\(\\epsilon_i\\) is the random noise: assume independent and identically distributed (iid) from a Normal distribution \\(\\epsilon_i \\overset{iid}{\\sim}N(0, \\sigma^2)\\) with constant variance \\(\\sigma^2\\)\n\n\n\nOLS doesn’t care about this assumption, it’s just estimating coefficients!\n\n\n\n\nIn order to perform inference, we need to impose additional assumptions\nBy assuming \\(\\epsilon_i \\overset{iid}{\\sim}N(0, \\sigma^2)\\), what we really mean is \\(Y \\overset{iid}{\\sim}N(\\beta_{0}+\\beta_{1} X_{1}+\\beta_{2} X_{2}+\\cdots+\\beta_{p} X_{p}, \\sigma^2)\\)\n\n\n\n\nSo we’re estimating the mean \\(\\mu\\) of this conditional distribution, but what about \\(\\sigma^2\\)?\n\n\n\n\nUnbiased estimate \\(\\displaystyle \\hat{\\sigma}^2 = \\frac{\\text{RSS}}{n - (p + 1)}\\), its square root is the Residual standard error\nDegrees of freedom: \\(n - (p + 1)\\), data supplies us with \\(n\\) “degrees of freedom” and we used up \\(p + 1\\)"
-  },
-  {
-    "objectID": "lectures/11-lm.html#check-the-assumptions-about-normality-with-ggfortify",
-    "href": "lectures/11-lm.html#check-the-assumptions-about-normality-with-ggfortify",
-    "title": "Supervised learning: linear regression",
-    "section": "Check the assumptions about normality with ggfortify",
-    "text": "Check the assumptions about normality with ggfortify\n\nlibrary(ggfortify)\nautoplot(multiple_lm, ncol = 4)\n\n\n\nStandardized residuals = residuals / sd(residuals) (see also .std.resid from augment)\n\n\n\n36-SURE.github.io"
   },
   {
     "objectID": "lectures/02-graphics.html#goals-of-data-visualization",
@@ -2770,6 +3085,279 @@
     "title": "Data visualization: the grammar of graphics and ggplot2",
     "section": "Resources",
     "text": "Resources\n\nggplot2 website: cheatsheets, FAQs, extensions, and more\nTidyTuesday\nDavid Robinson’s TidyTuesday screencasts\nVizBuzz: LIVE data viz replication game show\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
+  },
+  {
+    "objectID": "lectures/15-mixture.html#previously-clustering",
+    "href": "lectures/15-mixture.html#previously-clustering",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Previously: clustering",
+    "text": "Previously: clustering\n\nPrevious methods: \\(k\\)-means clustering  and hierarchical clustering\nOutput hard assignments, strictly assigning observations to only one cluster\n\n\n\nWhat about soft assignments and uncertainty in the clustering results?\n\n\n\n\nEntering mixture models"
+  },
+  {
+    "objectID": "lectures/15-mixture.html#previously-kernel-density-estimation",
+    "href": "lectures/15-mixture.html#previously-kernel-density-estimation",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Previously: kernel density estimation",
+    "text": "Previously: kernel density estimation\nKernel density estimator: \\(\\quad \\displaystyle \\hat{f}(x) = \\frac{1}{n} \\sum_{i=1}^n \\frac{1}{h} K_h(x - x_i)\\)\n\nWe have to use every observation when estimating the density for new points\n\n\n\n\n\n\n\n\n\n\n\nInstead we can make some simplifying assumptions"
+  },
+  {
+    "objectID": "lectures/15-mixture.html#mixture-models",
+    "href": "lectures/15-mixture.html#mixture-models",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Mixture models",
+    "text": "Mixture models\nAssume \\(f(x)\\) is a mixture of \\(K\\) component distributions \\(\\displaystyle f(x) = \\sum_{k=1}^K \\pi_k f_k(x)\\)\n\nwhere \\(\\pi_k =\\) mixing proportions (or weights), with \\(\\pi_k &gt; 0\\), and \\(\\sum_k \\pi_k = 1\\)\n\n\nThis is a data generating process, meaning to generate a new point:\n\npick a distribution/component among our \\(K\\) options by introducing a new variable \\(z \\sim \\text{Multinomial} (\\pi_1, \\pi_2, \\dots, \\pi_k)\\) (categorical variable for which group the new point is from)\n\n\n\n\ngenerate an observation with that distribution / component, i.e. \\(x \\mid z \\sim f_{z}\\)\n\n\n\nSo what do we use for each \\(f_k\\)?"
+  },
+  {
+    "objectID": "lectures/15-mixture.html#gaussian-mixture-models-gmms",
+    "href": "lectures/15-mixture.html#gaussian-mixture-models-gmms",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Gaussian mixture models (GMMs)",
+    "text": "Gaussian mixture models (GMMs)\nAssume a parametric mixture model, with parameters \\(\\theta_k\\) for the \\(k\\)th component \\[f(x) = \\sum_{k=1}^K \\pi_k f_k(x; \\theta_k)\\]\n\nAssume each component is Gaussian/normal, where the 1D case is\n\\[f_k(x; \\theta_k) = N(x; \\mu_k, \\sigma_k^2) = \\frac{1}{\\sqrt{2\\pi \\sigma_k^2}}\\text{exp} \\Big( -\\frac{(x - \\mu_k)^2}{2 \\sigma_k^2} \\Big)\\]\n\n\nWe need to estimate each \\(\\pi_1, \\dots, \\pi_k\\), \\(\\mu_1, \\dots, \\mu_k\\), \\(\\sigma_1, \\dots, \\sigma_k\\)"
+  },
+  {
+    "objectID": "lectures/15-mixture.html#lets-pretend-we-only-have-one-component",
+    "href": "lectures/15-mixture.html#lets-pretend-we-only-have-one-component",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Let’s pretend we only have one component…",
+    "text": "Let’s pretend we only have one component…\nGiven \\(n\\) observations from a single Normal distribution, we estimate the distribution parameters using the likelihood function, the probability/density of observing the data given the parameters\n\\[\\mathcal{L}(\\mu, \\sigma \\mid x_1, \\dots, x_n) = f( x_1, \\dots, x_n \\mid \\mu, \\sigma) =  \\prod_i^n \\frac{1}{\\sqrt{2\\pi \\sigma^2}}\\text{exp } \\left\\{-\\frac{(x_i - \\mu)^2}{2 \\sigma^2}\\right\\}\\]\n\nWe can compute the maximum likelihood estimates (MLEs) for \\(\\mu\\) and \\(\\sigma\\)\nYou already know these values!\n\n\\(\\displaystyle \\hat{\\mu}_{\\rm MLE} = \\frac{1}{n} \\sum_i^n x_i\\), sample mean\n\\(\\displaystyle \\hat{\\sigma}_{\\rm MLE} = \\sqrt{\\frac{1}{n}\\sum_i^n (x_i - \\mu)^2}\\), sample standard deviation (plug in \\(\\hat{\\mu}_{\\rm MLE}\\))"
+  },
+  {
+    "objectID": "lectures/15-mixture.html#the-problem-with-more-than-one-component",
+    "href": "lectures/15-mixture.html#the-problem-with-more-than-one-component",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "The problem with more than one component",
+    "text": "The problem with more than one component\n\n\n\nWe don’t know which component an observation belongs to\nIF WE DID KNOW, then we could compute each component’s MLEs as before\nBut we don’t know because \\(z\\) is a latent variable! So what about its distribution given the data?\n\n\\(\\displaystyle P(z_i = k \\mid x_i) = \\frac{P(x_i \\mid z_i = k) P(z_i = k)}{P(x_i)}\\)\n\\(\\displaystyle =\\frac{\\pi_{k} N\\left(\\mu_{k}, \\sigma_{k}^{2}\\right)}{\\sum_{k=1}^{K} \\pi_{k} N\\left(\\mu_{k}, \\sigma_{k}\\right)}\\)\n\nBut we do NOT know these parameters!"
+  },
+  {
+    "objectID": "lectures/15-mixture.html#expectation-maximization-em-algorithm",
+    "href": "lectures/15-mixture.html#expectation-maximization-em-algorithm",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Expectation-maximization (EM) algorithm",
+    "text": "Expectation-maximization (EM) algorithm\nAlternate between the following:\n\npretend to know the probability each observation belongs to each group, to estimate the parameters of the components\n\n\n\npretend to know the parameters of the components, to estimate the probability each observation belong to each group\n\n\n\nWhere have we seen this before?\n\n\n\\(k\\)-means algorithm!\n\n\n\nStart with initial guesses about \\(\\pi_1, \\dots, \\pi_k\\), \\(\\mu_1, \\dots, \\mu_k\\), \\(\\sigma_1, \\dots, \\sigma_k\\)\nRepeat until nothing changes:\n\n\n\n\nExpectation step: calculate \\(\\hat{z}_{ik}\\) = expected membership of observation \\(i\\) in cluster \\(k\\)\nMaximization step: update parameter estimates with weighted MLE using \\(\\hat{z}_{ik}\\)"
+  },
+  {
+    "objectID": "lectures/15-mixture.html#how-does-this-relate-back-to-clustering",
+    "href": "lectures/15-mixture.html#how-does-this-relate-back-to-clustering",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "How does this relate back to clustering?",
+    "text": "How does this relate back to clustering?\n\nFrom the EM algorithm: \\(\\hat{z}_{ik}\\) is a soft membership of observation \\(i\\) in cluster \\(k\\)\n\n\n\nassign observation \\(i\\) to a cluster with the largest \\(\\hat{z}_{ik}\\)\nmeasure cluster assignment uncertainty of \\(\\displaystyle 1 - \\max_k \\hat{z}_{ik}\\)\n\n\n\nOur parameters determine the type of clusters\n\n\nIn the 1D case, there are two options:\n\n\n\neach cluster is assumed to have equal variance (spread): \\(\\sigma_1^2 = \\sigma_2^2 = \\dots = \\sigma_k^2\\)\n\n\n\n\neach cluster is allowed to have a different variance\n\n\n\nBut that is only 1D… what happens in multiple dimensions?"
+  },
+  {
+    "objectID": "lectures/15-mixture.html#multivariate-gmms",
+    "href": "lectures/15-mixture.html#multivariate-gmms",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Multivariate GMMs",
+    "text": "Multivariate GMMs\n\\[f(x) = \\sum_{k=1}^K \\pi_k f_k(x; \\theta_k) \\qquad \\text{where }f_k(x; \\theta_k) \\sim N(\\boldsymbol{\\mu}_k, \\boldsymbol{\\Sigma}_k)\\]\nEach component is a multivariate normal distribution:\n\n\n\\(\\boldsymbol{\\mu}_k\\) is a vector of means in \\(p\\) dimensions\n\n\n\n\n\\(\\boldsymbol{\\Sigma}_k\\) is the \\(p \\times p\\) covariance matrix - describes the joint variability between pairs of variables\n\n\\[\\sum=\\left[\\begin{array}{cccc}\n\\sigma_{1}^{2} & \\sigma_{1,2} & \\cdots & \\sigma_{1, p} \\\\\n\\sigma_{2,1} & \\sigma_{2}^{2} & \\cdots & \\sigma_{2, p} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n\\sigma_{p, 1} & \\sigma_{p, 2}^{2} & \\cdots & \\sigma_{p}^{2}\n\\end{array}\\right]\\]"
+  },
+  {
+    "objectID": "lectures/15-mixture.html#covariance-constraints",
+    "href": "lectures/15-mixture.html#covariance-constraints",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Covariance constraints",
+    "text": "Covariance constraints\n\\[\\sum=\\left[\\begin{array}{cccc}\n\\sigma_{1}^{2} & \\sigma_{1,2} & \\cdots & \\sigma_{1, p} \\\\\n\\sigma_{2,1} & \\sigma_{2}^{2} & \\cdots & \\sigma_{2, p} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n\\sigma_{p, 1} & \\sigma_{p, 2}^{2} & \\cdots & \\sigma_{p}^{2}\n\\end{array}\\right]\\]\n\nAs the number of dimensions increases, model fitting and estimation become increasingly difficult\n\n\nWe can use constraints on multiple aspects of the \\(k\\) covariance matrices:\n\n\n\nvolume: size of the clusters, i.e., number of observations,\nshape: direction of variance, i.e. which variables display more variance\norientation: aligned with axes (low covariance) versus tilted (due to relationships between variables)"
+  },
+  {
+    "objectID": "lectures/15-mixture.html#covariance-constraints-1",
+    "href": "lectures/15-mixture.html#covariance-constraints-1",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Covariance constraints",
+    "text": "Covariance constraints\n\n\nControl volume, shape, orientation\nE: equal and V: variable (VVV is the most flexible, but has the most parameters)\nTwo II: spherical, one I: diagonal, the remaining are general\n\nHow do we know which one to choose?"
+  },
+  {
+    "objectID": "lectures/15-mixture.html#bayesian-information-criterion-bic",
+    "href": "lectures/15-mixture.html#bayesian-information-criterion-bic",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Bayesian information criterion (BIC)",
+    "text": "Bayesian information criterion (BIC)\nThis is a statistical model\n\\[f(x) = \\sum_{k=1}^K \\pi_k f_k(x; \\theta_k) \\qquad \\text{where }f_k(x; \\theta_k) \\sim N(\\boldsymbol{\\mu}_k, \\boldsymbol{\\Sigma}_k)\\]\n\nUse a model selection procedure for determining which best characterizes the data\n\n\nSpecifically, use a penalized likelihood measure \\[\\text{BIC} = 2\\log \\mathcal{L} - m\\log n\\]\n\n\\(\\log \\mathcal{L}\\): log-likelihood of the considered model\nwith \\(m\\) parameters (VVV has the most parameters) and \\(n\\) observations\n\n\n\n\npenalizes large models with many clusters without constraints\nuse BIC to choose the covariance constraints AND number of clusters\n\n\n\n\nThe above \\(\\text{BIC}\\) is really the \\(- \\text{BIC}\\) of what you typically see, this sign flip is just for ease"
+  },
+  {
+    "objectID": "lectures/15-mixture.html#data-nba-player-statistics-per-100-possessions",
+    "href": "lectures/15-mixture.html#data-nba-player-statistics-per-100-possessions",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Data: NBA player statistics per 100 possessions",
+    "text": "Data: NBA player statistics per 100 possessions\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nlibrary(ballr)\nnba_stats &lt;- NBAPerGameStatisticsPer100Poss(season = 2024)\nnba_stats &lt;- nba_stats |&gt; \n  group_by(player) |&gt; \n  slice_max(g) |&gt; \n  ungroup() |&gt; \n  filter(mp &gt;= 150) # keep players with at least 150 minutes played\nhead(nba_stats)\n\n# A tibble: 6 × 33\n     rk player   pos     age tm        g    gs    mp    fg   fga fgpercent   x3p\n  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1   183 A.J. Gr… SG       24 MIL      56     0   614   6.5  15.3     0.423   5.4\n2   290 A.J. La… SG       23 DAL      42     0   311   8.3  18.7     0.446   2  \n3   190 AJ Grif… SF       20 ATL      20     0   171   5    17.4     0.29    2.8\n4   178 Aaron G… PF       28 DEN      73    73  2297   8.6  15.5     0.556   0.9\n5   221 Aaron H… PG       27 HOU      78     1  1269   7.1  15.9     0.446   3.2\n6   372 Aaron N… SF       24 IND      72    47  1995   7.4  15       0.496   3.3\n# ℹ 21 more variables: x3pa &lt;dbl&gt;, x3ppercent &lt;dbl&gt;, x2p &lt;dbl&gt;, x2pa &lt;dbl&gt;,\n#   x2ppercent &lt;dbl&gt;, ft &lt;dbl&gt;, fta &lt;dbl&gt;, ftpercent &lt;dbl&gt;, orb &lt;dbl&gt;,\n#   drb &lt;dbl&gt;, trb &lt;dbl&gt;, ast &lt;dbl&gt;, stl &lt;dbl&gt;, blk &lt;dbl&gt;, tov &lt;dbl&gt;, pf &lt;dbl&gt;,\n#   pts &lt;dbl&gt;, x &lt;dbl&gt;, ortg &lt;dbl&gt;, drtg &lt;dbl&gt;, link &lt;chr&gt;"
+  },
+  {
+    "objectID": "lectures/15-mixture.html#implementation-with-mclust-package",
+    "href": "lectures/15-mixture.html#implementation-with-mclust-package",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Implementation with mclust package",
+    "text": "Implementation with mclust package\nSelect the model and number of clusters\nUse Mclust() function to search over 1 to 9 clusters (default) and the different covariance constraints (i.e. models)\n\nlibrary(mclust)\n# x3pa: 3pt attempts per 100 possessions\n# trb: total rebounds per 100 possessions\nnba_mclust &lt;- nba_stats |&gt; \n  select(x3pa, trb) |&gt; \n  Mclust()\nsummary(nba_mclust)\n\n---------------------------------------------------- \nGaussian finite mixture model fitted by EM algorithm \n---------------------------------------------------- \n\nMclust VVV (ellipsoidal, varying volume, shape, and orientation) model with 3\ncomponents: \n\n log-likelihood   n df     BIC       ICL\n      -2246.434 452 17 -4596.8 -4749.605\n\nClustering table:\n  1   2   3 \n138  40 274"
+  },
+  {
+    "objectID": "lectures/15-mixture.html#display-the-bic-for-each-model-and-number-of-clusters",
+    "href": "lectures/15-mixture.html#display-the-bic-for-each-model-and-number-of-clusters",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Display the BIC for each model and number of clusters",
+    "text": "Display the BIC for each model and number of clusters\n\n\n\nnba_mclust |&gt; \n  plot(what = \"BIC\", \n       legendArgs = list(x = \"bottomright\", ncol = 4))\n\n\n\n\n\n\n\n\n\n\nnba_mclust |&gt; \n  plot(what = \"classification\")"
+  },
+  {
+    "objectID": "lectures/15-mixture.html#how-do-the-cluster-assignments-compare-to-the-positions",
+    "href": "lectures/15-mixture.html#how-do-the-cluster-assignments-compare-to-the-positions",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "How do the cluster assignments compare to the positions?",
+    "text": "How do the cluster assignments compare to the positions?\nTwo-way table to compare the clustering assignments with player positions\n(What’s the way to visually compare the two labels?)\n\ntable(\"Clusters\" = nba_mclust$classification, \"Positions\" = nba_stats$pos)\n\n        Positions\nClusters  C C-PF PF PF-C PF-SF PG PG-SG SF SF-PF SF-SG SG SG-PG\n       1 43    1 56    1     0  4     0 24     1     0  8     0\n       2 34    2  3    0     0  1     0  0     0     0  0     0\n       3  3    0 30    0     1 77     4 68     1     1 88     1\n\n\nTakeaway: positions tend to fall within particular clusters"
+  },
+  {
+    "objectID": "lectures/15-mixture.html#what-about-the-cluster-probabilities",
+    "href": "lectures/15-mixture.html#what-about-the-cluster-probabilities",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "What about the cluster probabilities?",
+    "text": "What about the cluster probabilities?\n\nnba_player_probs &lt;- nba_mclust$z\ncolnames(nba_player_probs) &lt;- c(\"cluster1\", \"cluster2\", \"cluster3\")\n\nnba_player_probs &lt;- nba_player_probs |&gt;\n  as_tibble() |&gt;\n  mutate(player = nba_stats$player) |&gt;\n  pivot_longer(!player, names_to = \"cluster\", values_to = \"prob\")\n\nnba_player_probs |&gt;\n  ggplot(aes(prob)) +\n  geom_histogram() +\n  facet_wrap(~ cluster)"
+  },
+  {
+    "objectID": "lectures/15-mixture.html#which-players-have-the-highest-uncertainty",
+    "href": "lectures/15-mixture.html#which-players-have-the-highest-uncertainty",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Which players have the highest uncertainty?",
+    "text": "Which players have the highest uncertainty?\n\n\n\n\nnba_stats |&gt;\n  mutate(cluster = nba_mclust$classification,\n         uncertainty = nba_mclust$uncertainty) |&gt; \n  group_by(cluster) |&gt;\n  slice_max(uncertainty, n = 5) |&gt; \n  mutate(player = fct_reorder(player, uncertainty)) |&gt; \n  ggplot(aes(x = uncertainty, y = player)) +\n  geom_point(size = 3) +\n  facet_wrap(~ cluster, scales = \"free_y\", nrow = 3)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
+  },
+  {
+    "objectID": "lectures/11-linear.html#simple-linear-regression",
+    "href": "lectures/11-linear.html#simple-linear-regression",
+    "title": "Supervised learning: linear regression",
+    "section": "Simple linear regression",
+    "text": "Simple linear regression\nWe assume a linear relationship for \\(Y = f(X)\\):\n\\[Y_{i}=\\beta_{0}+\\beta_{1} X_{i}+\\epsilon_{i}, \\quad \\text { for } i=1,2, \\dots, n\\]\n\n\\(Y_i\\) is the \\(i\\)th value for the response variable\n\\(X_i\\) is the \\(i\\)th value for the predictor variable\n\n\n\n\\(\\beta_0\\) is an unknown, constant intercept: average value for \\(Y\\) if \\(X = 0\\)\n\\(\\beta_1\\) is an unknown, constant slope: increase in average value for \\(Y\\) for each one-unit increase in \\(X\\)\n\n\n\n\n\\(\\epsilon_i\\) is the random noise: assume independent, identically distributed (iid) from Normal distribution\n\n\\[\\epsilon_i \\overset{iid}{\\sim}N(0, \\sigma^2) \\quad \\text{ with constant variance } \\sigma^2\\]"
+  },
+  {
+    "objectID": "lectures/11-linear.html#simple-linear-regression-estimation",
+    "href": "lectures/11-linear.html#simple-linear-regression-estimation",
+    "title": "Supervised learning: linear regression",
+    "section": "Simple linear regression estimation",
+    "text": "Simple linear regression estimation\nWe are estimating the conditional expection (mean) for \\(Y\\):\n\\[\\mathbb{E}[Y_i \\mid X_i] = \\beta_0 + \\beta_1X_i\\]\n\naverage value for \\(Y\\) given the value for \\(X\\)\n\n\nHow do we estimate the best fitting line?\n\n\nOrdinary least squares (OLS) - by minimizing the residual sum of squares (RSS)\n\\[\\text{RSS} \\left(\\beta_{0}, \\beta_{1}\\right)=\\sum_{i=1}^{n}\\left[Y_{i}-\\left(\\beta_{0}+\\beta_{1} X_{i}\\right)\\right]^{2}=\\sum_{i=1}^{n}\\left(Y_{i}-\\beta_{0}-\\beta_{1} X_{i}\\right)^{2}\\]\n\n\n\\[\\widehat{\\beta}_{1}=\\frac{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)\\left(Y_{i}-\\bar{Y}\\right)}{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)^{2}} \\quad \\text{ and } \\quad \\widehat{\\beta}_{0}=\\bar{Y}-\\widehat{\\beta}_{1} \\bar{X}\\]\nwhere \\(\\displaystyle \\bar{X} = \\frac{1}{n}\\sum_{i=1}^n X_i\\) and \\(\\displaystyle \\bar{Y} = \\frac{1}{n}\\sum_{i=1}^n Y_i\\)"
+  },
+  {
+    "objectID": "lectures/11-linear.html#connection-to-covariance-and-correlation",
+    "href": "lectures/11-linear.html#connection-to-covariance-and-correlation",
+    "title": "Supervised learning: linear regression",
+    "section": "Connection to covariance and correlation",
+    "text": "Connection to covariance and correlation\nCovariance describes the joint variability of two variables \\[\\text{Cov}(X, Y) = \\sigma_{X,Y} = \\mathbb{E}[(X-\\mathbb{E}[X])(Y-\\mathbb{E}[Y])]\\]\n\nSample covariance (use \\(n - 1\\) since the means are used and we want unbiased estimates) \\[\\hat{\\sigma}_{X,Y} = \\frac{1}{n-1} \\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)\\left(Y_{i}-\\bar{Y}\\right)\\]\n\n\nCorrelation is a normalized form of covariance, ranges from -1 to 1 \\[\\rho_{X,Y} = \\frac{\\text{Cov}(X,Y)}{\\sigma_X \\cdot \\sigma_Y}\\]\nSample correlation uses the sample covariance and standard deviations, e.g. \\(s_X^2 = \\frac{1}{n-1} \\sum_i (X_i - \\bar{X})^2\\) \\[r_{X,Y} = \\frac{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)\\left(Y_{i}-\\bar{Y}\\right)}{\\sqrt{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)^{2} \\sum_{i=1}^{n}\\left(Y_{i}-\\bar{Y}\\right)^{2}}}\\]"
+  },
+  {
+    "objectID": "lectures/11-linear.html#connection-to-covariance-and-correlation-1",
+    "href": "lectures/11-linear.html#connection-to-covariance-and-correlation-1",
+    "title": "Supervised learning: linear regression",
+    "section": "Connection to covariance and correlation",
+    "text": "Connection to covariance and correlation\nWe have\n\\[\\widehat{\\beta}_{1}=\\frac{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)\\left(Y_{i}-\\bar{Y}\\right)}{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)^{2}} \\quad \\text{compared to} \\quad r_{X,Y} = \\frac{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)\\left(Y_{i}-\\bar{Y}\\right)}{\\sqrt{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)^{2} \\sum_{i=1}^{n}\\left(Y_{i}-\\bar{Y}\\right)^{2}}}\\]\n\nWe can rewrite \\(\\hat{\\beta}_1\\) as \\(\\displaystyle \\widehat{\\beta}_{1} = r_{X,Y} \\cdot \\frac{s_Y}{s_X}\\)\nWe can rewrite \\(\\displaystyle r_{X,Y}\\) as \\(\\displaystyle r_{X,Y} = \\widehat{\\beta}_{1} \\cdot \\frac{s_X}{s_Y}\\)\n\n\nCan think of \\(\\widehat{\\beta}_{1}\\) weighting the ratio of variance between \\(X\\) and \\(Y\\)…"
+  },
+  {
+    "objectID": "lectures/11-linear.html#gapminder-data",
+    "href": "lectures/11-linear.html#gapminder-data",
+    "title": "Supervised learning: linear regression",
+    "section": "Gapminder data",
+    "text": "Gapminder data\nHealth and income outcomes for 184 countries from 1960 to 2016 from the famous Gapminder project\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nlibrary(dslabs)\nclean_gapminder &lt;- gapminder |&gt;\n  filter(year == 2011, !is.na(gdp)) |&gt;\n  mutate(log_gdp = log(gdp))\nglimpse(clean_gapminder)\n\nRows: 168\nColumns: 10\n$ country          &lt;fct&gt; \"Albania\", \"Algeria\", \"Angola\", \"Antigua and Barbuda\"…\n$ year             &lt;int&gt; 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011,…\n$ infant_mortality &lt;dbl&gt; 14.3, 22.8, 106.8, 7.2, 12.7, 15.3, 3.8, 3.4, 32.5, 1…\n$ life_expectancy  &lt;dbl&gt; 77.4, 76.1, 58.1, 75.9, 76.0, 73.5, 82.2, 80.7, 70.8,…\n$ fertility        &lt;dbl&gt; 1.75, 2.83, 6.10, 2.12, 2.20, 1.50, 1.88, 1.44, 1.96,…\n$ population       &lt;dbl&gt; 2886010, 36717132, 21942296, 88152, 41655616, 2967984…\n$ gdp              &lt;dbl&gt; 6321690864, 81143448101, 27013935821, 801787943, 4729…\n$ continent        &lt;fct&gt; Europe, Africa, Africa, Americas, Americas, Asia, Oce…\n$ region           &lt;fct&gt; Southern Europe, Northern Africa, Middle Africa, Cari…\n$ log_gdp          &lt;dbl&gt; 22.56725, 25.11948, 24.01962, 20.50235, 26.88222, 22.…"
+  },
+  {
+    "objectID": "lectures/11-linear.html#modeling-life-expectancy",
+    "href": "lectures/11-linear.html#modeling-life-expectancy",
+    "title": "Supervised learning: linear regression",
+    "section": "Modeling life expectancy",
+    "text": "Modeling life expectancy\n\n\nInterested in modeling a country’s life expectancy\n\nclean_gapminder |&gt;\n  ggplot(aes(x = life_expectancy)) +\n  geom_histogram(color = \"black\", fill = \"darkblue\", alpha = 0.3) +\n  labs(x = \"Life expectancy\")"
+  },
+  {
+    "objectID": "lectures/11-linear.html#relationship-between-life-expectancy-and-log-gdp",
+    "href": "lectures/11-linear.html#relationship-between-life-expectancy-and-log-gdp",
+    "title": "Supervised learning: linear regression",
+    "section": "Relationship between life expectancy and log GDP",
+    "text": "Relationship between life expectancy and log GDP\n\n\n\ngdp_plot &lt;- clean_gapminder |&gt;\n  ggplot(aes(x = log_gdp, y = life_expectancy)) +\n  geom_point(size = 4, alpha = 0.5) +\n  labs(x = \"log(GDP)\",\n       y = \"Life expectancy\")\ngdp_plot\n\nWe fit linear regression models using lm(), formula is input as: response ~ predictor\n\nsimple_lm &lt;- lm(life_expectancy ~ log_gdp, \n              data = clean_gapminder)"
+  },
+  {
+    "objectID": "lectures/11-linear.html#summarize-the-model-using-summary",
+    "href": "lectures/11-linear.html#summarize-the-model-using-summary",
+    "title": "Supervised learning: linear regression",
+    "section": "Summarize the model using summary()",
+    "text": "Summarize the model using summary()\n\nsummary(simple_lm)\n\n\nCall:\nlm(formula = life_expectancy ~ log_gdp, data = clean_gapminder)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-18.901  -4.781   1.879   5.335  13.962 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   24.174      5.758   4.198 4.38e-05 ***\nlog_gdp        1.975      0.242   8.161 7.87e-14 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 7.216 on 166 degrees of freedom\nMultiple R-squared:  0.2864,    Adjusted R-squared:  0.2821 \nF-statistic: 66.61 on 1 and 166 DF,  p-value: 7.865e-14"
+  },
+  {
+    "objectID": "lectures/11-linear.html#summarize-the-model-using-the-broom-package",
+    "href": "lectures/11-linear.html#summarize-the-model-using-the-broom-package",
+    "title": "Supervised learning: linear regression",
+    "section": "Summarize the model using the broom package",
+    "text": "Summarize the model using the broom package\nThe 3 broom functions (Note: the output is always a tibble)\n\ntidy(): coefficients table in a tidy format\nglance(): produces summary metrics of a model fit\naugment(): adds/“augments” columns to the original data (e.g., adding predictions)\n\nNote: the output of tidy(), augment() and glance() are always a tibble.\n\nlibrary(broom)\ntidy(simple_lm)\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)    24.2      5.76       4.20 4.38e- 5\n2 log_gdp         1.97     0.242      8.16 7.87e-14\n\nglance(simple_lm)\n\n# A tibble: 1 × 12\n  r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC\n      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     0.286         0.282  7.22      66.6 7.87e-14     1  -569. 1145. 1154.\n# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;"
+  },
+  {
+    "objectID": "lectures/11-linear.html#inference-with-ols",
+    "href": "lectures/11-linear.html#inference-with-ols",
+    "title": "Supervised learning: linear regression",
+    "section": "Inference with OLS",
+    "text": "Inference with OLS\nReports the intercept and coefficient estimates: \\(\\quad \\hat{\\beta}_0 \\approx 24.174 \\quad, \\quad \\hat{\\beta}_1 \\approx 1.975\\)\n\nEstimates of uncertainty for \\(\\beta\\)s via standard errors: \\(\\quad \\widehat{SE}(\\hat{\\beta}_0) \\approx 5.758 \\quad, \\quad \\widehat{SE}(\\hat{\\beta}_1) \\approx 0.242\\)\n\n\n\\(t\\)-statistics are coefficients Estimates / Std. Error, i.e., number of standard deviations from 0\n\np-values (i.e., Pr(&gt;|t|)): estimated probability observing value as extreme as |t value| given the null hypothesis \\(\\beta = 0\\)\np-value \\(&lt;\\) conventional threshold of \\(\\alpha = 0.05\\), sufficient evidence to reject the null hypothesis that the coefficient is zero,\ni.e., there is a significant association between life_expectancy and log_gdp"
+  },
+  {
+    "objectID": "lectures/11-linear.html#be-careful",
+    "href": "lectures/11-linear.html#be-careful",
+    "title": "Supervised learning: linear regression",
+    "section": "Be careful!",
+    "text": "Be careful!\nCaveats to keep in mind regarding p-values:\n\nIf the true value of a coefficient \\(\\beta = 0\\), then the p-value is sampled from a Uniform(0,1) distribution\n\ni.e., it is just as likely to have value 0.45 as 0.16 or 0.84 or 0.9999 or 0.00001…\n\n\n\nHence why we typically only reject for low \\(\\alpha\\) values like 0.05\n\nControlling the Type 1 error rate at \\(\\alpha = 0.05\\), i.e., the probability of a false positive mistake\n5% chance that you’ll conclude there’s a significant association between \\(x\\) and \\(y\\) even when there is none\n\n\n\nRemember what a standard error is? \\(SE = \\frac{\\sigma}{\\sqrt{n}}\\)\n\nAs \\(n\\) gets large standard error goes to zero, and all predictors are eventually deemed significant\nWhile the p-values might be informative, we will explore other approaches to determine which subset of predictors to include (e.g., holdout performance)"
+  },
+  {
+    "objectID": "lectures/11-linear.html#back-to-the-model-summary-multiple-r-squared",
+    "href": "lectures/11-linear.html#back-to-the-model-summary-multiple-r-squared",
+    "title": "Supervised learning: linear regression",
+    "section": "Back to the model summary: Multiple R-squared",
+    "text": "Back to the model summary: Multiple R-squared\nBack to the connection between the coefficient and correlation:\n\\[r_{X,Y} = \\widehat{\\beta}_{1} \\cdot \\frac{s_X}{s_Y} \\quad \\longrightarrow \\quad r^2_{X,Y} = \\widehat{\\beta}_{1}^2\\cdot \\frac{s_X^2}{s_Y^2}\\]\nCompute the correlation with cor():\n\ncor(clean_gapminder$log_gdp, clean_gapminder$life_expectancy)\n\n[1] 0.5351189\n\n\n\nThe squared cor matches the reported Multiple R-squared\n\ncor(clean_gapminder$log_gdp, clean_gapminder$life_expectancy) ^ 2\n\n[1] 0.2863522"
+  },
+  {
+    "objectID": "lectures/11-linear.html#back-to-the-model-summary-multiple-r-squared-1",
+    "href": "lectures/11-linear.html#back-to-the-model-summary-multiple-r-squared-1",
+    "title": "Supervised learning: linear regression",
+    "section": "Back to the model summary: Multiple R-squared",
+    "text": "Back to the model summary: Multiple R-squared\nBack to the connection between the coefficient and correlation:\n\\[r_{X,Y} = \\widehat{\\beta}_{1} \\cdot \\frac{s_X}{s_Y} \\quad \\longrightarrow \\quad r^2_{X,Y} = \\widehat{\\beta}_{1}^2\\cdot \\frac{s_X^2}{s_Y^2}\\]\n\\(r^2\\) (or also \\(R^2\\)) estimates the proportion of the variance of \\(Y\\) explained by \\(X\\)\n\nMore generally: variance of model predictions / variance of \\(Y\\)\n\n\nvar(predict(simple_lm)) / var(clean_gapminder$life_expectancy) \n\n[1] 0.2863522"
+  },
+  {
+    "objectID": "lectures/11-linear.html#generating-predictions",
+    "href": "lectures/11-linear.html#generating-predictions",
+    "title": "Supervised learning: linear regression",
+    "section": "Generating predictions",
+    "text": "Generating predictions\nWe can use the predict() or fitted() function to either get the fitted values of the regression:\n\ntrain_preds &lt;- predict(simple_lm)\nhead(train_preds)\n\n       1        2        3        4        5        6 \n68.74401 73.78465 71.61243 64.66585 77.26605 67.97876 \n\n\n\nhead(fitted(simple_lm))\n\n       1        2        3        4        5        6 \n68.74401 73.78465 71.61243 64.66585 77.26605 67.97876 \n\n\n\nhead(simple_lm$fitted.values)\n\n       1        2        3        4        5        6 \n68.74401 73.78465 71.61243 64.66585 77.26605 67.97876 \n\n\n\nsimple_lm |&gt; \n  pluck(\"fitted.values\") |&gt; \n  head()\n\n       1        2        3        4        5        6 \n68.74401 73.78465 71.61243 64.66585 77.26605 67.97876"
+  },
+  {
+    "objectID": "lectures/11-linear.html#predictions-for-new-data",
+    "href": "lectures/11-linear.html#predictions-for-new-data",
+    "title": "Supervised learning: linear regression",
+    "section": "Predictions for new data",
+    "text": "Predictions for new data\nOr we can provide it newdata which must contain the explanatory variables:\n\n\n\nus_data &lt;- clean_gapminder |&gt; \n  filter(country == \"United States\")\n\nnew_us_data &lt;- us_data |&gt;\n  select(country, gdp) |&gt;\n  slice(rep(1, 3)) |&gt; \n  mutate(adj_factor = c(0.25, 0.5, 0.75),\n         log_gdp = log(gdp * adj_factor))\nnew_us_data$pred_life_exp &lt;- \n  predict(simple_lm, newdata = new_us_data) \ngdp_plot +\n  geom_point(data = new_us_data,\n             aes(x = log_gdp, y = pred_life_exp),\n             color = \"darkred\", size = 5)"
+  },
+  {
+    "objectID": "lectures/11-linear.html#plot-observed-values-against-predictions",
+    "href": "lectures/11-linear.html#plot-observed-values-against-predictions",
+    "title": "Supervised learning: linear regression",
+    "section": "Plot observed values against predictions",
+    "text": "Plot observed values against predictions\nUseful diagnostic (for any type of model, not just linear regression!)\n\n\n\nclean_gapminder |&gt;\n  mutate(pred_vals = predict(simple_lm)) |&gt; \n  ggplot(aes(x = pred_vals, y = life_expectancy)) +\n  geom_point(alpha = 0.5) +\n  geom_abline(slope = 1, intercept = 0, \n              linetype = \"dashed\",\n              color = \"red\",\n              linewidth = 2)\n\n\n“Perfect” model will follow diagonal"
+  },
+  {
+    "objectID": "lectures/11-linear.html#plot-observed-values-against-predictions-1",
+    "href": "lectures/11-linear.html#plot-observed-values-against-predictions-1",
+    "title": "Supervised learning: linear regression",
+    "section": "Plot observed values against predictions",
+    "text": "Plot observed values against predictions\nAugment the data with model output using the broom package\n\n\n\nclean_gapminder &lt;- simple_lm |&gt; \n  augment(clean_gapminder) \nclean_gapminder |&gt;\n  ggplot(aes(x = .fitted, y = life_expectancy)) + \n  geom_point(alpha = 0.5) +\n  geom_abline(slope = 1, intercept = 0, \n              linetype = \"dashed\", color = \"red\", linewidth = 2)\n\n\nAdds various columns from model fit we can use in plotting for model diagnostics"
+  },
+  {
+    "objectID": "lectures/11-linear.html#plot-residuals-against-predicted-values",
+    "href": "lectures/11-linear.html#plot-residuals-against-predicted-values",
+    "title": "Supervised learning: linear regression",
+    "section": "Plot residuals against predicted values",
+    "text": "Plot residuals against predicted values\n\n\n\nResiduals = observed - predicted\nInterpretation of residuals in context?\nConditional on the predicted values, the residuals should have a mean of zero\n\n\nclean_gapminder |&gt;\n  ggplot(aes(x = .fitted, y = .resid)) + \n  geom_point(alpha = 0.5) +\n  geom_hline(yintercept = 0, linetype = \"dashed\", \n             color = \"red\", linewidth = 2) +\n  # plot the residual mean\n  geom_smooth(se = FALSE)\n\n\nResiduals should NOT display any pattern"
+  },
+  {
+    "objectID": "lectures/11-linear.html#multiple-linear-regression",
+    "href": "lectures/11-linear.html#multiple-linear-regression",
+    "title": "Supervised learning: linear regression",
+    "section": "Multiple linear regression",
+    "text": "Multiple linear regression\nWe can include as many variables as we want (assuming \\(n &gt; p\\)!)\n\\[Y=\\beta_{0}+\\beta_{1} X_{1}+\\beta_{2} X_{2}+\\cdots+\\beta_{p} X_{p}+\\epsilon\\]\nOLS estimates in matrix notation ( \\(\\boldsymbol{X}\\) is a \\(n \\times p\\) matrix):\n\\[\\hat{\\boldsymbol{\\beta}} = (\\boldsymbol{X} ^T \\boldsymbol{X})^{-1}\\boldsymbol{X}^T\\boldsymbol{Y}\\]\n\nCan just add more variables to the formula in R\n\nmultiple_lm &lt;- lm(life_expectancy ~ log_gdp + fertility, data = clean_gapminder)\n\n\nUse the Adjusted R-squared when including multiple variables \\(= 1 - \\frac{(1 - R^2)(n - 1)}{(n - p - 1)}\\)\n\nAdjusts for the number of variables in the model \\(p\\)\nAdding more variables will always increase Multiple R-squared"
+  },
+  {
+    "objectID": "lectures/11-linear.html#what-about-the-normal-distribution-assumption",
+    "href": "lectures/11-linear.html#what-about-the-normal-distribution-assumption",
+    "title": "Supervised learning: linear regression",
+    "section": "What about the Normal distribution assumption?",
+    "text": "What about the Normal distribution assumption?\n\nModel: \\(Y=\\beta_{0}+\\beta_{1} X_{1}+\\beta_{2} X_{2}+\\cdots+\\beta_{p} X_{p}+\\epsilon\\)\n\\(\\epsilon_i\\) is the random noise: assume independent and identically distributed (iid) from a Normal distribution \\(\\epsilon_i \\overset{iid}{\\sim}N(0, \\sigma^2)\\) with constant variance \\(\\sigma^2\\)\n\n\n\nOLS doesn’t care about this assumption, it’s just estimating coefficients!\n\n\n\n\nIn order to perform inference, we need to impose additional assumptions\nBy assuming \\(\\epsilon_i \\overset{iid}{\\sim}N(0, \\sigma^2)\\), what we really mean is \\(Y \\overset{iid}{\\sim}N(\\beta_{0}+\\beta_{1} X_{1}+\\beta_{2} X_{2}+\\cdots+\\beta_{p} X_{p}, \\sigma^2)\\)\n\n\n\n\nSo we’re estimating the mean \\(\\mu\\) of this conditional distribution, but what about \\(\\sigma^2\\)?\n\n\n\n\nUnbiased estimate \\(\\displaystyle \\hat{\\sigma}^2 = \\frac{\\text{RSS}}{n - (p + 1)}\\), its square root is the Residual standard error\nDegrees of freedom: \\(n - (p + 1)\\), data supplies us with \\(n\\) “degrees of freedom” and we used up \\(p + 1\\)"
+  },
+  {
+    "objectID": "lectures/11-linear.html#check-the-assumptions-about-normality-with-ggfortify",
+    "href": "lectures/11-linear.html#check-the-assumptions-about-normality-with-ggfortify",
+    "title": "Supervised learning: linear regression",
+    "section": "Check the assumptions about normality with ggfortify",
+    "text": "Check the assumptions about normality with ggfortify\n\nlibrary(ggfortify)\nautoplot(multiple_lm, ncol = 4)\n\n\n\nStandardized residuals = residuals / sd(residuals) (see also .std.resid from augment)\n\n\n\n36-SURE.github.io"
   },
   {
     "objectID": "r-setup.html#r-and-rstudio",
