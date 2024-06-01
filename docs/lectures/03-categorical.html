@@ -419,13 +419,9 @@
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_light</span>()) <span class="co"># setting the ggplot theme</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggmosaic) <span class="co"># make sure to install it first</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>flying_etiquette <span class="ot">&lt;-</span> fly <span class="sc">|&gt;</span> </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(do_you_recline), <span class="sc">!</span><span class="fu">is.na</span>(rude_to_recline))</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#mutate(across(where(is.factor), as.character))</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(flying_etiquette)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>flying_etiquette <span class="ot">&lt;-</span> fly <span class="sc">|&gt;</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(do_you_recline), <span class="sc">!</span><span class="fu">is.na</span>(rude_to_recline))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(flying_etiquette)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "id"                             "flight_freq"                   
  [3] "do_you_recline"                 "height"                        
@@ -458,15 +454,15 @@
 </section>
 <section id="factors-in-r" class="slide level2">
 <h2>Factors in <code>R</code></h2>
-<p>TODO edit this</p>
 <ul>
-<li>Factors are used for categorical variables</li>
+<li><p>In <code>R</code>, factors are used to work with categorical variables</p></li>
+<li><p><code>R</code> treats factors as ordinal - defaults to alphabetical</p>
+<ul>
+<li><p>The lowest level is called the reference level</p></li>
+<li><p>May need to manually define the factor levels</p></li>
+</ul></li>
+<li><p>See the <a href="https://forcats.tidyverse.org/"><code>forcats</code></a> package (automatically loaded with <code>tidyverse</code>)</p></li>
 </ul>
-<p><code>R</code> treats factors as ordinal - defaults to alphabetical</p>
-<p>The lowest level is called the reference level</p>
-<p>May need to manually define the factor levels</p>
-<p><code>forcats</code> package (automatically loaded with <code>tidyverse</code>)</p>
-<p>see R4ds</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(flying_etiquette<span class="sc">$</span>do_you_recline)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1381,7 +1377,7 @@ X-squared = 316.73, df = 8, p-value &lt; 2.2e-16</code></pre>
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

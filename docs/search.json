@@ -1124,14 +1124,14 @@
     "href": "lectures.html",
     "title": "Lectures",
     "section": "",
-    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides"
+    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides"
   },
   {
     "objectID": "lectures.html#contents",
     "href": "lectures.html#contents",
     "title": "Lectures",
     "section": "",
-    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides"
+    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides"
   },
   {
     "objectID": "lectures.html#references",
@@ -1446,7 +1446,7 @@
     "href": "lectures/04-quantitative.html#data",
     "title": "Data visualization: quantitative data",
     "section": "Data",
-    "text": "Data\nTaylor Swift songs via the taylor package (data dictionary here\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nlibrary(taylor)\n\nnames(taylor_all_songs)\n\n [1] \"album_name\"          \"ep\"                  \"album_release\"      \n [4] \"track_number\"        \"track_name\"          \"artist\"             \n [7] \"featuring\"           \"bonus_track\"         \"promotional_release\"\n[10] \"single_release\"      \"track_release\"       \"danceability\"       \n[13] \"energy\"              \"key\"                 \"loudness\"           \n[16] \"mode\"                \"speechiness\"         \"acousticness\"       \n[19] \"instrumentalness\"    \"liveness\"            \"valence\"            \n[22] \"tempo\"               \"time_signature\"      \"duration_ms\"        \n[25] \"explicit\"            \"key_name\"            \"mode_name\"          \n[28] \"key_mode\"            \"lyrics\""
+    "text": "Data\nTaylor Swift songs via the taylor package (data dictionary here)\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nlibrary(taylor)\n\nnames(taylor_all_songs)\n\n [1] \"album_name\"          \"ep\"                  \"album_release\"      \n [4] \"track_number\"        \"track_name\"          \"artist\"             \n [7] \"featuring\"           \"bonus_track\"         \"promotional_release\"\n[10] \"single_release\"      \"track_release\"       \"danceability\"       \n[13] \"energy\"              \"key\"                 \"loudness\"           \n[16] \"mode\"                \"speechiness\"         \"acousticness\"       \n[19] \"instrumentalness\"    \"liveness\"            \"valence\"            \n[22] \"tempo\"               \"time_signature\"      \"duration_ms\"        \n[25] \"explicit\"            \"key_name\"            \"mode_name\"          \n[28] \"key_mode\"            \"lyrics\""
   },
   {
     "objectID": "lectures/04-quantitative.html#quantitative-data",
@@ -1530,14 +1530,28 @@
     "href": "lectures/04-quantitative.html#summarizing-2d-quantitative-data",
     "title": "Data visualization: quantitative data",
     "section": "Summarizing 2D quantitative data",
-    "text": "Summarizing 2D quantitative data\n\nDirection/trend (positive, negative)\nStrength of the relationship (strong, moderate, weak)\nLinearity (linear, non-linear)"
+    "text": "Summarizing 2D quantitative data\n\nDirection/trend (positive, negative)\nStrength of the relationship (strong, moderate, weak)\nLinearity (linear, non-linear)\n\nBig picture\n\nScatterplots are by far the most common visual\nRegression analysis is by far the most popular analysis (we will have a class on this)\nRelationships may vary across other variables, e.g., categorical variables"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#making-scatterplots",
+    "href": "lectures/04-quantitative.html#making-scatterplots",
+    "title": "Data visualization: quantitative data",
+    "section": "Making scatterplots",
+    "text": "Making scatterplots\n\n\n\nUse geom_point()\nDisplaying the joint (bivariate) distribution\nWhat is the obvious flaw with this plot?\n\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = loudness, y = energy)) +\n  geom_point(color = \"darkred\", size = 4)"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#making-scatterplots-always-adjust-the-transparency-alpha",
+    "href": "lectures/04-quantitative.html#making-scatterplots-always-adjust-the-transparency-alpha",
+    "title": "Data visualization: quantitative data",
+    "section": "Making scatterplots: always adjust the transparency (alpha)",
+    "text": "Making scatterplots: always adjust the transparency (alpha)\n\n\n\nAdjust the transparency of points via alpha to visualize overlap\nProvides better understanding of joint frequency\nEspecially important with larger datasets\nSee also: ggblend\n\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = loudness, y = energy)) +\n  geom_point(color = \"darkred\", size = 4, alpha = 0.5)"
   },
   {
     "objectID": "lectures/04-quantitative.html#summarizing-2d-quantitative-data-1",
     "href": "lectures/04-quantitative.html#summarizing-2d-quantitative-data-1",
     "title": "Data visualization: quantitative data",
     "section": "Summarizing 2D quantitative data",
-    "text": "Summarizing 2D quantitative data\n\n\n\nScatterplot\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = loudness, y = energy)) +\n  geom_point(color = \"darkred\", size = 4, alpha = 0.7)\n\n\n\n\n\n\n\n\n\n\nCorrelation coefficient\n\n\ncor(taylor_all_songs$loudness, \n    taylor_all_songs$energy, \n    use = \"complete.obs\")\n\n[1] 0.7826175\n\n\nNote: the default correlation you get from cor() is Pearson correlation coefficient\nOther correlations:\n\nSpearman’s correlation\nKendall rank correlation coefficient\nand more"
+    "text": "Summarizing 2D quantitative data\n\n\n\nScatterplot\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = loudness, y = energy)) +\n  geom_point(color = \"darkred\", size = 4, alpha = 0.5)\n\n\n\n\n\n\n\n\n\n\nCorrelation coefficient\n\n\ncor(taylor_all_songs$loudness, \n    taylor_all_songs$energy, \n    use = \"complete.obs\")\n\n[1] 0.7826175\n\n\nNote: the default correlation you get from cor() is Pearson correlation coefficient\nOther correlations:\n\nSpearman’s correlation\nKendall rank correlation coefficient\nand more"
   },
   {
     "objectID": "lectures/04-quantitative.html#when-the-correlations-high",
@@ -1547,11 +1561,18 @@
     "text": "When the correlation’s high…"
   },
   {
+    "objectID": "lectures/04-quantitative.html#displaying-trend-line-linear-regression-a-preview",
+    "href": "lectures/04-quantitative.html#displaying-trend-line-linear-regression-a-preview",
+    "title": "Data visualization: quantitative data",
+    "section": "Displaying trend line: linear regression (a preview)",
+    "text": "Displaying trend line: linear regression (a preview)\n\n\n\nDisplay regression line for energy ~ loudness\n95% confidence intervals by default\nEstimating the conditional expectation of energy | loudness\n\ni.e., \\(\\mathbb{E}[\\) energy \\(\\mid\\) loudness \\(]\\)\n\n\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = loudness, y = energy)) +\n  geom_point(color = \"darkred\", size = 4, alpha = 0.5) +\n  geom_smooth(method = \"lm\", linewidth = 2)"
+  },
+  {
     "objectID": "lectures/04-quantitative.html#summarizing-2d-quantitative-data-2",
     "href": "lectures/04-quantitative.html#summarizing-2d-quantitative-data-2",
     "title": "Data visualization: quantitative data",
     "section": "Summarizing 2D quantitative data",
-    "text": "Summarizing 2D quantitative data\n\n\nAdd rug plots to supplement scatterplot\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = loudness, y = energy)) +\n  geom_point(color = \"darkred\", size = 4, alpha = 0.7) +\n  geom_rug(alpha = 0.4)"
+    "text": "Summarizing 2D quantitative data\n\n\nAdd rug plots to supplement scatterplot\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = loudness, y = energy)) +\n  geom_point(color = \"darkred\", size = 4, alpha = 0.5) +\n  geom_rug(alpha = 0.4)"
   },
   {
     "objectID": "lectures/04-quantitative.html#pairs-plot",
@@ -2580,7 +2601,7 @@
     "href": "lectures/03-categorical.html#data",
     "title": "Data visualization: categorical data",
     "section": "Data",
-    "text": "Data\n\nFlying ettiquette survey\nPublicly available on GitHub and also via the ggmosaic package (the dataset is called fly).\nWhat does each row represent here?\n\n\nlibrary(tidyverse)\ntheme_set(theme_light()) # setting the ggplot theme\nlibrary(ggmosaic) # make sure to install it first\n\nflying_etiquette &lt;- fly |&gt; \n  filter(!is.na(do_you_recline), !is.na(rude_to_recline))\n  \n#mutate(across(where(is.factor), as.character))\n\nnames(flying_etiquette)\n\n [1] \"id\"                             \"flight_freq\"                   \n [3] \"do_you_recline\"                 \"height\"                        \n [5] \"has_child_under_18\"             \"three_seats_two_arms\"          \n [7] \"two_seats_one_arm\"              \"window_shade\"                  \n [9] \"rude_to_move_to_unsold_seat\"    \"rude_to_talk_to_neighbor\"      \n[11] \"six_hr_flight_leave_seat\"       \"reclining_obligation_to_behind\"\n[13] \"rude_to_recline\"                \"eliminate_reclining\"           \n[15] \"rude_to_switch_seats_friends\"   \"rude_to_switch_seats_family\"   \n[17] \"rude_to_wake_neighbor_bathroom\" \"rude_to_wake_neighbor_walk\"    \n[19] \"rude_to_bring_baby\"             \"rude_to_bring_unruly_child\"    \n[21] \"use_electronics_takeoff\"        \"smoked_inflight\"               \n[23] \"gender\"                         \"age\"                           \n[25] \"household_income\"               \"education\"                     \n[27] \"region\""
+    "text": "Data\n\nFlying ettiquette survey\nPublicly available on GitHub and also via the ggmosaic package (the dataset is called fly).\nWhat does each row represent here?\n\n\nlibrary(tidyverse)\ntheme_set(theme_light()) # setting the ggplot theme\nlibrary(ggmosaic) # make sure to install it first\nflying_etiquette &lt;- fly |&gt; \n  filter(!is.na(do_you_recline), !is.na(rude_to_recline))\nnames(flying_etiquette)\n\n [1] \"id\"                             \"flight_freq\"                   \n [3] \"do_you_recline\"                 \"height\"                        \n [5] \"has_child_under_18\"             \"three_seats_two_arms\"          \n [7] \"two_seats_one_arm\"              \"window_shade\"                  \n [9] \"rude_to_move_to_unsold_seat\"    \"rude_to_talk_to_neighbor\"      \n[11] \"six_hr_flight_leave_seat\"       \"reclining_obligation_to_behind\"\n[13] \"rude_to_recline\"                \"eliminate_reclining\"           \n[15] \"rude_to_switch_seats_friends\"   \"rude_to_switch_seats_family\"   \n[17] \"rude_to_wake_neighbor_bathroom\" \"rude_to_wake_neighbor_walk\"    \n[19] \"rude_to_bring_baby\"             \"rude_to_bring_unruly_child\"    \n[21] \"use_electronics_takeoff\"        \"smoked_inflight\"               \n[23] \"gender\"                         \"age\"                           \n[25] \"household_income\"               \"education\"                     \n[27] \"region\""
   },
   {
     "objectID": "lectures/03-categorical.html#categorical-data",
@@ -2594,7 +2615,7 @@
     "href": "lectures/03-categorical.html#factors-in-r",
     "title": "Data visualization: categorical data",
     "section": "Factors in R",
-    "text": "Factors in R\nTODO edit this\n\nFactors are used for categorical variables\n\nR treats factors as ordinal - defaults to alphabetical\nThe lowest level is called the reference level\nMay need to manually define the factor levels\nforcats package (automatically loaded with tidyverse)\nsee R4ds\n\nclass(flying_etiquette$do_you_recline)\n\n[1] \"factor\"\n\nlevels(flying_etiquette$do_you_recline)\n\n[1] \"never\"               \"once in a while\"     \"about half the time\"\n[4] \"usually\"             \"always\""
+    "text": "Factors in R\n\nIn R, factors are used to work with categorical variables\nR treats factors as ordinal - defaults to alphabetical\n\nThe lowest level is called the reference level\nMay need to manually define the factor levels\n\nSee the forcats package (automatically loaded with tidyverse)\n\n\nclass(flying_etiquette$do_you_recline)\n\n[1] \"factor\"\n\nlevels(flying_etiquette$do_you_recline)\n\n[1] \"never\"               \"once in a while\"     \"about half the time\"\n[4] \"usually\"             \"always\""
   },
   {
     "objectID": "lectures/03-categorical.html#summarizing-1d-categorical-data",
@@ -2804,7 +2825,7 @@
     "href": "lectures/07-density.html#data-sabrina-ionescus-shots",
     "title": "Data visualization: density estimation",
     "section": "Data: Sabrina Ionescu’s shots",
-    "text": "Data: Sabrina Ionescu’s shots\n\n\nCreated dataset of shot attempts by the Sabrina Ionescu in the 2023 WNBA season using wehoop\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nlibrary(wehoop)\n\nwnba_pbp &lt;- load_wnba_pbp(2023)\nionescu_shots &lt;- wnba_pbp |&gt; \n  filter(shooting_play) |&gt; \n  filter(str_detect(text, \"Ionescu\")) |&gt; \n  filter(!str_detect(text, \"Ionescu assists\")) |&gt; \n  filter(!str_detect(text, \"free throw\")) |&gt; \n  transmute(\n    shot_x = coordinate_x_raw - 25,\n    shot_y = coordinate_y_raw,\n    shot_distance = sqrt((abs(shot_x) ^ 2) + shot_y ^ 2), \n    shot_type = type_text,\n    scoring_play,\n    score_value\n  )\n# glimpse(ionescu_shots)\n\n\n\n\n\nRows: 617\nColumns: 6\n$ shot_x        &lt;dbl&gt; -10, 11, 2, -13, -18, 19, -1, 0, -1, -12, -1, -14, -7, -…\n$ shot_y        &lt;dbl&gt; 24, 23, 2, 21, 19, 16, 3, 2, 4, 5, 2, 21, 26, 14, 7, 6, …\n$ shot_distance &lt;dbl&gt; 26.000000, 25.495098, 2.828427, 24.698178, 26.172505, 24…\n$ shot_type     &lt;chr&gt; \"Pullup Jump Shot\", \"Running Jump Shot\", \"Cutting Layup …\n$ scoring_play  &lt;lgl&gt; FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE, FALSE, FAL…\n$ score_value   &lt;int&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0, 0,…\n\n\n\n\nEach row is a shot attempt by Ionescu in the 2023 WNBA season\nCategorical / qualitative variables: scoring_play, shot_type\nContinuous / quantitative variables: shot_x, shot_y, shot_distance, score_value"
+    "text": "Data: Sabrina Ionescu’s shots\n\n\nShot attempts by the Sabrina Ionescu in the 2023 WNBA season using wehoop\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nlibrary(wehoop)\nwnba_pbp &lt;- load_wnba_pbp(2023)\nionescu_shots &lt;- wnba_pbp |&gt; \n  filter(shooting_play) |&gt; \n  filter(str_detect(text, \"Ionescu\")) |&gt; \n  filter(!str_detect(text, \"Ionescu assists\")) |&gt; \n  filter(!str_detect(text, \"free throw\")) |&gt; \n  transmute(\n    shot_x = coordinate_x_raw - 25,\n    shot_y = coordinate_y_raw,\n    shot_distance = sqrt((abs(shot_x) ^ 2) + shot_y ^ 2), \n    shot_type = type_text,\n    scoring_play,\n    score_value\n  )\n# glimpse(ionescu_shots)\n\n\n\n\n\nRows: 617\nColumns: 6\n$ shot_x        &lt;dbl&gt; -10, 11, 2, -13, -18, 19, -1, 0, -1, -12, -1, -14, -7, -…\n$ shot_y        &lt;dbl&gt; 24, 23, 2, 21, 19, 16, 3, 2, 4, 5, 2, 21, 26, 14, 7, 6, …\n$ shot_distance &lt;dbl&gt; 26.000000, 25.495098, 2.828427, 24.698178, 26.172505, 24…\n$ shot_type     &lt;chr&gt; \"Pullup Jump Shot\", \"Running Jump Shot\", \"Cutting Layup …\n$ scoring_play  &lt;lgl&gt; FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE, FALSE, FAL…\n$ score_value   &lt;int&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0, 0,…\n\n\n\n\nEach row is a shot attempt by Ionescu in the 2023 WNBA season\nCategorical / qualitative variables: scoring_play, shot_type\nContinuous / quantitative variables: shot_x, shot_y, shot_distance, score_value"
   },
   {
     "objectID": "lectures/07-density.html#back-to-histograms",
@@ -2905,18 +2926,46 @@
     "text": "Alternative to density plots - ridge plots\n\n\n\nCheck out the ggridges package for a variety of customization options\n\n\nlibrary(ggridges)\nionescu_shots |&gt;\n  ggplot(aes(x = shot_distance, y = shot_type)) + \n  geom_density_ridges(rel_min_height = 0.01) \n\n\nUseful to display conditional distributions across many levels"
   },
   {
-    "objectID": "lectures/07-density.html#what-about-for-2d-two-continuous-variables",
-    "href": "lectures/07-density.html#what-about-for-2d-two-continuous-variables",
+    "objectID": "lectures/07-density.html#what-about-for-2d-density-estimation-two-continuous-variables",
+    "href": "lectures/07-density.html#what-about-for-2d-density-estimation-two-continuous-variables",
     "title": "Data visualization: density estimation",
-    "section": "What about for 2D? (two continuous variables)",
-    "text": "What about for 2D? (two continuous variables)\nWe can visualize all of the shot locations: (shot_x, shot_y)\n\n\n\nionescu_shots |&gt;\n  ggplot(aes(x = shot_x, y = shot_y)) +\n  geom_point(size = 4, alpha = 0.3)\n\n\nAdjust transparency with alpha for overlapping points"
+    "section": "What about for 2D density estimation? (two continuous variables)",
+    "text": "What about for 2D density estimation? (two continuous variables)\nGoing from 1D to 2D density estimation"
+  },
+  {
+    "objectID": "lectures/07-density.html#going-from-1d-to-2d-density-estimation",
+    "href": "lectures/07-density.html#going-from-1d-to-2d-density-estimation",
+    "title": "Data visualization: density estimation",
+    "section": "Going from 1D to 2D density estimation",
+    "text": "Going from 1D to 2D density estimation\nIn 1D: estimate density \\(f(x)\\), assuming that \\(f(x)\\) is smooth:\n\\[\n\\hat{f}(x) = \\frac{1}{n} \\sum_{i=1}^n \\frac{1}{h} K_h(x - x_i)\n\\]\n\nIn 2D: estimate joint density \\(f(x_1, x_2)\\)\n\\[\\hat{f}(x_1, x_2) = \\frac{1}{n} \\sum_{i=1}^n \\frac{1}{h_1h_2} K(\\frac{x_1 - x_{i1}}{h_1}) K(\\frac{x_2 - x_{i2}}{h_2})\\]\n\n\nIn 1D there’s one bandwidth, now we have two bandwidths\n\n\\(h_1\\): controls smoothness as \\(X_1\\) changes, holding \\(X_2\\) fixed\n\\(h_2\\): controls smoothness as \\(X_2\\) changes, holding \\(X_1\\) fixed\n\nGaussian kernels are still a popular choice"
+  },
+  {
+    "objectID": "lectures/07-density.html#display-densities-for-2d-data",
+    "href": "lectures/07-density.html#display-densities-for-2d-data",
+    "title": "Data visualization: density estimation",
+    "section": "Display densities for 2D data",
+    "text": "Display densities for 2D data"
+  },
+  {
+    "objectID": "lectures/07-density.html#how-to-read-contour-plots",
+    "href": "lectures/07-density.html#how-to-read-contour-plots",
+    "title": "Data visualization: density estimation",
+    "section": "How to read contour plots",
+    "text": "How to read contour plots\nBest known in topology: outlines (contours) denote levels of elevation"
+  },
+  {
+    "objectID": "lectures/07-density.html#d-density-estimation",
+    "href": "lectures/07-density.html#d-density-estimation",
+    "title": "Data visualization: density estimation",
+    "section": "2D density estimation",
+    "text": "2D density estimation\nWe can visualize all of the shot locations: (shot_x, shot_y)\n\n\n\nionescu_shots |&gt;\n  ggplot(aes(x = shot_x, y = shot_y)) +\n  geom_point(size = 4, alpha = 0.3)\n\n\nAdjust transparency with alpha for overlapping points"
   },
   {
     "objectID": "lectures/07-density.html#create-contours-of-2d-kernel-density-estimate-kde",
     "href": "lectures/07-density.html#create-contours-of-2d-kernel-density-estimate-kde",
     "title": "Data visualization: density estimation",
     "section": "Create contours of 2D kernel density estimate (KDE)",
-    "text": "Create contours of 2D kernel density estimate (KDE)\n\n\n\nWe make 2D KDE contour plots using geom_density2d()\n\n\nionescu_shots |&gt;\n  filter(shot_y &lt; 35) |&gt; # remove outliers\n  ggplot(aes(x = shot_x, y = shot_y)) + \n  geom_point(size = 4, alpha = 0.3) + \n  geom_density2d() +\n  coord_fixed() +\n  theme(legend.position = \"bottom\")\n\n\nExtend KDE for joint density estimates in 2D (see section 14.4.2 for details)\ncoord_fixed() forced a fixed ratio"
+    "text": "Create contours of 2D kernel density estimate (KDE)\n\n\n\nUse geom_density2d() to display contour lines\n\n\nionescu_shots |&gt;\n  filter(shot_y &lt; 35) |&gt; # remove outliers\n  ggplot(aes(x = shot_x, y = shot_y)) + \n  geom_point(size = 4, alpha = 0.3) + \n  geom_density2d() +\n  coord_fixed() +\n  theme(legend.position = \"bottom\")\n\n\nExtend KDE for joint density estimates in 2D (see section 14.4.2 for details)\nInner lines denote “peaks”\ncoord_fixed() forced a fixed ratio"
   },
   {
     "objectID": "lectures/07-density.html#create-contours-of-2d-kernel-density-estimate-kde-1",
@@ -2930,21 +2979,21 @@
     "href": "lectures/07-density.html#contours-are-difficult-lets-make-a-heatmap-instead",
     "title": "Data visualization: density estimation",
     "section": "Contours are difficult… let’s make a heatmap instead",
-    "text": "Contours are difficult… let’s make a heatmap instead\n\n\n\nWe make 2D KDE heatmap plots using stat_density_2d() and the after_stat() function\n\n\nionescu_shots |&gt;\n  filter(shot_y &lt; 35) |&gt; \n  ggplot(aes(x = shot_x, y = shot_y)) + \n  stat_density2d(aes(fill = after_stat(level)),\n                 h = 0.6, bins = 60, geom = \"polygon\") +\n  scale_fill_gradient(low = \"midnightblue\", \n                      high = \"gold\") +\n  coord_fixed() +\n  theme(legend.position = \"bottom\")\n\nMultivariate density estimation can be difficult"
+    "text": "Contours are difficult… let’s make a heatmap instead\n\n\n\nUse stat_density_2d() and the after_stat() function to make 2D KDE heatmaps\nMay be easier to read than nested lines with color\nDefault color scale is awful. Always change it.\n\n\nionescu_shots |&gt;\n  filter(shot_y &lt; 35) |&gt; \n  ggplot(aes(x = shot_x, y = shot_y)) + \n  stat_density2d(aes(fill = after_stat(level)),\n                 h = 0.6, bins = 60, geom = \"polygon\") +\n  scale_fill_gradient(low = \"midnightblue\", \n                      high = \"gold\") +\n  coord_fixed() +\n  theme(legend.position = \"bottom\")\n\nMultivariate density estimation can be difficult"
   },
   {
     "objectID": "lectures/07-density.html#turn-off-contours-and-use-tiles-instead",
     "href": "lectures/07-density.html#turn-off-contours-and-use-tiles-instead",
     "title": "Data visualization: density estimation",
     "section": "Turn off contours and use tiles instead",
-    "text": "Turn off contours and use tiles instead\n\n\n\nWe make 2D KDE heatmap plots using stat_density_2d() and the .. or after_stat() function\n\n\nionescu_shots |&gt;\n  filter(shot_y &lt; 35) |&gt; \n  ggplot(aes(x = shot_x, y = shot_y)) + \n  stat_density2d(aes(fill = after_stat(density)),\n                 h = 0.6, bins = 60, contour = FALSE,\n                 geom = \"raster\") +\n  scale_fill_gradient(low = \"midnightblue\",\n                      high = \"gold\") +\n  theme(legend.position = \"bottom\") +\n  coord_fixed()"
+    "text": "Turn off contours and use tiles instead\n\n\n\nDivide the space into a grid and color the grid according to high/low values\n\n\nionescu_shots |&gt;\n  filter(shot_y &lt; 35) |&gt; \n  ggplot(aes(x = shot_x, y = shot_y)) + \n  stat_density2d(aes(fill = after_stat(density)),\n                 h = 0.6, bins = 60, contour = FALSE,\n                 geom = \"raster\") +\n  # scale_fill_gradient(low = \"white\", high = \"red\") +\n  scale_fill_gradient(low = \"midnightblue\", \n                      high = \"gold\") +\n  theme(legend.position = \"bottom\") +\n  coord_fixed()"
   },
   {
     "objectID": "lectures/07-density.html#best-alternative-hexagonal-binning",
     "href": "lectures/07-density.html#best-alternative-hexagonal-binning",
     "title": "Data visualization: density estimation",
     "section": "Best alternative? Hexagonal binning",
-    "text": "Best alternative? Hexagonal binning\n\n\n\nWe make hexagonal heatmap plots using geom_hex()\nNeed to have the hexbin package installed\n\n\nionescu_shots |&gt;\n  filter(shot_y &lt; 35) |&gt;\n  ggplot(aes(x = shot_x, y = shot_y)) + \n  geom_hex(binwidth = c(1, 1)) +\n  scale_fill_gradient(low = \"midnightblue\", \n                      high = \"gold\") + \n  theme(legend.position = \"bottom\") +\n  coord_fixed()\n\n\nCan specify binwidth in both directions\nAvoids limitations from smoothing"
+    "text": "Best alternative? Hexagonal binning\n\n\n\nUse geom_hex() to make hexagonal heatmaps\nNeed to have the hexbin package installed\n2D version of histogram\n\n\nionescu_shots |&gt;\n  filter(shot_y &lt; 35) |&gt;\n  ggplot(aes(x = shot_x, y = shot_y)) + \n  geom_hex(binwidth = c(1, 1)) +\n  scale_fill_gradient(low = \"midnightblue\", \n                      high = \"gold\") + \n  theme(legend.position = \"bottom\") +\n  coord_fixed()\n\n\nCan specify binwidth in both directions\nAvoids limitations from smoothing"
   },
   {
     "objectID": "lectures/07-density.html#what-about-shooting-efficiency",
@@ -2972,7 +3021,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"x\" \"v\" \"m\" \"s\" \"p\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 1 1 1 1 0 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"H\" \"T\" \"H\" \"H\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 70"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"n\" \"x\" \"h\" \"k\" \"s\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 1 0 1 1 1 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"T\" \"T\" \"T\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 38"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -3014,21 +3063,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.002922784\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9768791"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.0007657352\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.012446"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.503\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical    true\n   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 -2.87     0.001 0.00206\n 2 -2.69     0.002 0.00356\n 3 -2.60     0.003 0.00468\n 4 -2.57     0.004 0.00509\n 5 -2.50     0.005 0.00617\n 6 -2.46     0.006 0.00702\n 7 -2.42     0.007 0.00782\n 8 -2.41     0.008 0.00802\n 9 -2.28     0.009 0.0113 \n10 -2.27     0.01  0.0117 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.494\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.20     0.001 0.000685\n 2 -2.83     0.002 0.00232 \n 3 -2.66     0.003 0.00396 \n 4 -2.56     0.004 0.00522 \n 5 -2.46     0.005 0.00693 \n 6 -2.43     0.006 0.00759 \n 7 -2.42     0.007 0.00778 \n 8 -2.39     0.008 0.00852 \n 9 -2.38     0.009 0.00858 \n10 -2.38     0.01  0.00877 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3871575\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3857785\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -3042,14 +3091,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1308\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1244\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.02242165\n\nmean(rnorm(100))\n\n[1] -0.0785695\n\nmean(rnorm(100))\n\n[1] -0.1451581"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.09024606\n\nmean(rnorm(100))\n\n[1] 0.01892552\n\nmean(rnorm(100))\n\n[1] -0.1051228"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
@@ -3147,7 +3196,7 @@
     "href": "lectures/02-graphics.html#goals-of-data-visualization",
     "title": "Data visualization: the grammar of graphics and ggplot2",
     "section": "Goals of data visualization",
-    "text": "Goals of data visualization\n\nto represent the data in a visual way (enough with tables… though tables are useful in a lot of situations)\nmost importantly, to deliver the information to your audience and help them understand the story behind the data\n\n\nData Visualization (good DataViz anyway) answers a question. - Greggy J. M."
+    "text": "Goals of data visualization\n\nto represent the data in a visual way (enough with tables… though tables are useful in a lot of situations)\n\n\n\nmost importantly, to deliver the information to your audience and help them understand the story behind the data\n\n\n\n\nData Visualization (good DataViz anyway) answers a question. - Greggy J. M."
   },
   {
     "objectID": "lectures/02-graphics.html#always-visualize-your-data-before-modeling-and-analysis",
@@ -3189,7 +3238,7 @@
     "href": "lectures/02-graphics.html#the-grammar-of-graphics",
     "title": "Data visualization: the grammar of graphics and ggplot2",
     "section": "The grammar of graphics",
-    "text": "The grammar of graphics\n\nKey idea: specify plotting “layers” and combine them to produce a graphic.\nggplot2 provides an implementation of the grammar of graphics\nThe following layers are building blocks of data graphics\n\n\ndata - one or more datasets (in tidy tabular format)\ngeom - geometric objects to visually represent the data (e.g. points, lines, bars, etc.)\naes - mappings of variables to visual properties (i.e. aesthetics) of the geometric objects\nscale - one scale for each variable displayed (e.g. axis limits, log scale, colors, etc.)\nfacet - similar subplots (i.e. facets) for subsets of the same data using a conditioning variable\nstat - statistical transformations and summaries (e.g. identity, count, smooth, quantile, etc.)\ncoord - one or more coordinate systems (e.g. cartesian, polar, map projection)\nlabs - labels/guides for each variable and other parts of the plot (e.g. title, subtitle, caption, etc.)\ntheme - customization of plot layout (e.g. text size, alignment, legend position, etc.)\n\n\n\nLeland Wilkinson wrote the book “The Grammar of Graphics”, originally published in 1999."
+    "text": "The grammar of graphics\n\n\nKey idea: specify plotting “layers” and combine them to produce a graphic\n\n\n\n\nggplot2 provides an implementation of the grammar of graphics\n\n\n\n\nThe following layers are building blocks of data graphics\n\n\ndata - one or more datasets (in tidy tabular format)\ngeom - geometric objects to visually represent the data (e.g. points, lines, bars, etc.)\naes - mappings of variables to visual properties (i.e. aesthetics) of the geometric objects\nscale - one scale for each variable displayed (e.g. axis limits, log scale, colors, etc.)\nfacet - similar subplots (i.e. facets) for subsets of the same data using a conditioning variable\nstat - statistical transformations and summaries (e.g. identity, count, smooth, quantile, etc.)\ncoord - one or more coordinate systems (e.g. cartesian, polar, map projection)\nlabs - labels/guides for each variable and other parts of the plot (e.g. title, subtitle, caption, etc.)\ntheme - customization of plot layout (e.g. text size, alignment, legend position, etc.)\n\n\n\n\nLeland Wilkinson wrote the book “The Grammar of Graphics”, originally published in 1999."
   },
   {
     "objectID": "lectures/02-graphics.html#first-start-with-the-data",
@@ -3287,7 +3336,7 @@
     "href": "lectures/02-graphics.html#a-lesson-about-data-visualization",
     "title": "Data visualization: the grammar of graphics and ggplot2",
     "section": "A lesson about data visualization…",
-    "text": "A lesson about data visualization…\n\nSo far we’ve plotted total home runs across the years, with point size representing total walks and point color representing total strikeouts\nSimpler is better\n\n\n\nWhat can we do to improve and make the plot simpler?\nHow about creating three separate plots for home runs, strikeouts, and walks, with each mapped to the y-axis?\nBut how do we do this without repeating the same code?"
+    "text": "A lesson about data visualization…\n\nSo far we’ve plotted total home runs across the years, with point size representing total walks and point color representing total strikeouts\n\n\n\nSimpler is better. What can we do to improve and make the plot simpler?\n\n\n\n\nHow about creating three separate plots for home runs, strikeouts, and walks, with each mapped to the y-axis?\nBut how do we do this without repeating the same code?"
   },
   {
     "objectID": "lectures/02-graphics.html#pivoting",

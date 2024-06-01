@@ -411,12 +411,18 @@
 <section id="goals-of-data-visualization" class="slide level2">
 <h2>Goals of data visualization</h2>
 <ul>
-<li><p>to represent the data in a visual way (enough with tables… though tables are useful in a lot of situations)</p></li>
-<li><p>most importantly, to deliver the information to your audience and help them understand the story behind the data</p></li>
+<li>to represent the data in a visual way (enough with tables… though tables are useful in a lot of situations)</li>
 </ul>
+<div class="fragment">
+<ul>
+<li>most importantly, to deliver the information to your audience and help them understand the story behind the data</li>
+</ul>
+</div>
+<div class="fragment">
 <blockquote>
 <p><a href="https://dataservices.uoregon.edu/2022/06/02/beyond-data-visualization-data-as-art-talk-by-dr-greg-mathews/">Data Visualization (good DataViz anyway) answers a question.</a> - Greggy J. M.</p>
 </blockquote>
+</div>
 </section>
 <section id="always-visualize-your-data-before-modeling-and-analysis" class="slide level2">
 <h2>ALWAYS visualize your data before modeling and analysis</h2>
@@ -521,10 +527,19 @@
 </section>
 <section id="the-grammar-of-graphics" class="slide level2">
 <h2>The grammar of graphics</h2>
+<div class="fragment">
 <ul>
-<li><p>Key idea: specify plotting “layers” and combine them to produce a graphic.</p></li>
-<li><p><code>ggplot2</code> provides an implementation of the grammar of graphics</p></li>
-<li><p>The following layers are building blocks of data graphics</p></li>
+<li>Key idea: specify plotting “layers” and combine them to produce a graphic</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><code>ggplot2</code> provides an implementation of the grammar of graphics</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>The following layers are building blocks of data graphics</li>
 </ul>
 <ol type="1">
 <li><p>data - one or more datasets (in tidy tabular format)</p></li>
@@ -538,6 +553,7 @@
 <li><p>theme - customization of plot layout (e.g.&nbsp;text size, alignment, legend position, etc.)</p></li>
 </ol>
 
+</div>
 <aside><div>
 <p>Leland Wilkinson wrote the book “The Grammar of Graphics”, originally published in 1999.</p>
 </div></aside></section></section>
@@ -895,12 +911,15 @@
 <section id="a-lesson-about-data-visualization" class="slide level2">
 <h2>A lesson about data visualization…</h2>
 <ul>
-<li><p>So far we’ve plotted total home runs across the years, with point size representing total walks and point color representing total strikeouts</p></li>
-<li><p><strong>Simpler is better</strong></p></li>
+<li>So far we’ve plotted total home runs across the years, with point size representing total walks and point color representing total strikeouts</li>
 </ul>
 <div class="fragment">
 <ul>
-<li><p>What can we do to improve and make the plot simpler?</p></li>
+<li><strong>Simpler is better.</strong> What can we do to improve and make the plot simpler?</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
 <li><p>How about creating three separate plots for home runs, strikeouts, and walks, with each mapped to the y-axis?</p></li>
 <li><p>But how do we do this without repeating the same code?</p></li>
 </ul>
@@ -1207,7 +1226,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
