@@ -177,6 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="installing-r-and-rstudio" class="level2">
 <h2 class="anchored" data-anchor-id="installing-r-and-rstudio">Installing <code>R</code> and RStudio</h2>
+<p><strong>(Skip this part if you’ve already installed <code>R</code> and RStudio.)</strong></p>
 <p>To install <strong><code>R</code></strong> (latest release: 4.4.0), visit <a href="https://www.r-project.org"><code>https://www.r-project.org</code></a> and choose your system. Click on the <em>download R</em> link in the middle of the page under “Getting Started.” Download and install the installer files (executable, pkg, etc) that correspond to your system.</p>
 <p>Although you can use <code>R</code> without any integrated development environment (IDE), you will need to install <strong>RStudio</strong>, by far the most popular IDE for <code>R</code>, for this summer. Basically, it makes your life with <code>R</code> much easier and we will be using it throughout the program. To install RStudio, visit <a href="https://posit.co/download/rstudio-desktop"><code>https://posit.co/download/rstudio-desktop</code></a> and choose your system. The installer is preferred. If you have RStudio installed but not the latest version, just download the latest installer and install.</p>
 </section>
@@ -184,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="typical-workflow">Typical workflow</h2>
 <section id="writing-r-scripts" class="level3">
 <h3 class="anchored" data-anchor-id="writing-r-scripts">Writing <code>R</code> scripts</h3>
-<p>You can type commands directly into the <strong>Console</strong> (lower left pane), but this can become quite tedious and annoying when your work becomes more complex. Instead, you will be spending most of your time writing code in <strong>R Scripts</strong>. An R Script is a file type which <code>R</code> recognizes as storing <code>R</code> commands and is saved as a <strong>.R</strong> file. R Scripts are useful as we can edit our code before sending it to be run in the console. You can create a new R Script by clicking on the top left symbol in RStudio and selecting <strong>R Script</strong>.</p>
+<p>You can type commands directly into the <strong>Console</strong> (lower left pane), but this can become quite tedious and annoying when your work becomes more complex. Instead, you can code in <strong>R Scripts</strong>. An R Script is a file type which <code>R</code> recognizes as storing <code>R</code> commands and is saved as a <strong>.R</strong> file. R Scripts are useful as we can edit our code before sending it to be run in the console. You can create a new R Script by clicking on the top left symbol in RStudio and selecting <strong>R Script</strong>.</p>
 </section>
 <section id="using-quarto" class="level3">
 <h3 class="anchored" data-anchor-id="using-quarto">Using Quarto</h3>
@@ -219,13 +220,13 @@ f (x) = \frac{1}{\sqrt{2\pi}} \exp \left( - \frac{x^2}{2} \right)
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Important</strong>: NEVER install new packages in a code block in a <code>.qmd</code> file. Always install new packages at the command line / Console. That is, the <code>install.packages()</code> function should NEVER be in your code chunks (unless they are commented out using <code>#</code>). The <code>library()</code> function, however, will be used throughout your code: The <code>library()</code> function loads packages only after they are installed.</p>
+<p><strong>Important</strong>: NEVER install new packages in a code block in a <code>.qmd</code> file. That is, the <code>install.packages()</code> function should NEVER be in your code chunks (unless they are commented out using <code>#</code>). The <code>library()</code> function, however, will be used throughout your code: The <code>library()</code> function loads packages only after they are installed.</p>
 <p>If in any time you get a message says: “Do you want to install from sources the package which needs compilation?” Choose “No” will tend to bring less troubles. (Note: This happens when the bleeding-edge version package is available, but not yet compiled for each OS distribution. In many case, you can just proceed without the source compilation.)</p>
 <p>Each package only needs to be installed once. Whenever you want to use functions defined in the package, you need to load the package with the command:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Here is a list of packages that we may need (but not limited to) in the following lectures and/or labs. Make sure you can install all of them. If you fail to install any package, please update the <code>R</code> and RStudio first and check the error message for any other packages that need to install first.</p>
+<p>Here is a list of packages that we may need (but not limited to) in the following lectures and/or labs. Make sure you can install all of them. If you fail to install any package, please update <code>R</code> and RStudio first and check the error message for any other packages that need to install first.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
