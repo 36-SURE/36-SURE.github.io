@@ -186,15 +186,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Download Git.</strong> <br> (if Git is already installed on your computer, the following instructions still hold for updating Git to its latest version)</p>
 <p>(Windows)</p>
 <ul>
-<li>Go to <a href="https://git-scm.com/download/win"><code>https://git-scm.com/download/win</code></a></li>
-<li>Navigate to “Click here to download” on the first line and click on it</li>
-<li>Follow the installation instructions</li>
+<li><p>Go to <a href="https://git-scm.com/download/win"><code>https://git-scm.com/download/win</code></a></p></li>
+<li><p>Navigate to “Click here to download” on the first line and click on it</p></li>
+<li><p>Follow the installation instructions</p></li>
 </ul>
 <p>(macOS)</p>
 <ul>
-<li>Open the Terminal app on your computer (Finder <span class="math inline">\(\rightarrow\)</span> Applications <span class="math inline">\(\rightarrow\)</span> Terminal)</li>
-<li>Go to <a href="https://brew.sh"><code>https://brew.sh</code></a> and copy/paste the chunk under “Install Homebrew” to the Terminal</li>
-<li>Once Homebrew is installed, type this into the Terminal: <code>brew install git</code></li>
+<li><p>Open the Terminal app on your computer (Finder <span class="math inline">\(\rightarrow\)</span> Applications <span class="math inline">\(\rightarrow\)</span> Terminal)</p></li>
+<li><p>Go to <a href="https://brew.sh"><code>https://brew.sh</code></a> and copy/paste the chunk under “Install Homebrew” to the Terminal</p></li>
+<li><p>Once Homebrew is installed, type this into the Terminal: <code>brew install git</code></p></li>
 </ul>
 </section>
 <section id="task-1-git-configuration" class="level2">
@@ -218,9 +218,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>This will direct you to the GitHub site on your browser (you may have to log in). On this site:</p>
 <ul>
-<li>Under “Note”, type in some description for this token (e.g., “SURE 2024 GitHub token”)</li>
-<li>For “Expiration”, set an expiration date for this token (e.g., 90 days) or make it permanent (i.e.&nbsp;choose “No expiration” if you don’t want to deal with this again in the future)</li>
-<li>Under “Select scopes”, recommended scopes will be pre-selected. Stick with these for now.</li>
+<li><p>Under “Note”, type in some description for this token (e.g., “SURE 2024 GitHub token”)</p></li>
+<li><p>For “Expiration”, set an expiration date for this token (e.g., 90 days) or make it permanent (i.e.&nbsp;choose “No expiration” if you don’t want to deal with this again in the future)</p></li>
+<li><p>Under “Select scopes”, recommended scopes will be pre-selected. Stick with these for now.</p></li>
 </ul></li>
 <li><p>Next, click on “Generate token”</p></li>
 <li><p>Copy the token to your clipboard (or leave the browser window open, so you can come back to copy the token later)</p></li>
@@ -237,9 +237,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Make sure every group member finishes Task 1 before proceeding to Task 2, which requires a group effort.</p>
 <section id="step-1-create-an-eda-project-repository-on-github-required-for-one-group-member-only" class="level3">
 <h3 class="anchored" data-anchor-id="step-1-create-an-eda-project-repository-on-github-required-for-one-group-member-only">Step 1: Create an EDA project repository on GitHub<br>(Required for ONE group member only)</h3>
-<p>Each group should elect ONE person to create a GitHub repository for the EDA project. This repository is to be shared among all group members.</p>
-<p>The elected group member should follow <a href="https://36-sure.github.io/git-setup.html#step-4-create-a-github-repository">Step 4 of the Git and GitHub Setup page</a> to create a new GitHub repository.</p>
-<p>To add the rest of your group to the repository:</p>
+<p><strong>Each group should elect ONE person to create a GitHub repository for the EDA project.</strong> This repository is to be shared among all group members.</p>
+<p>The elected group member should do the following to create a new GitHub repository:</p>
+<ul>
+<li><p>After you’ve signed in to GitHub, go to <a href="https://github.com/new"><code>https://github.com/new</code></a></p></li>
+<li><p>Name the repository (give it a meaningful name)</p></li>
+<li><p>Give the repository a description (don’t leave this blank although this is optional)</p></li>
+<li><p>Decide whether to keep the repository public or private (for now, keep it public, so that we can review your code)</p></li>
+<li><p>Click on “Initialize this repository with a README”. For now, there’s no need to “Add .gitignore” or “Choose a license”</p></li>
+<li><p>Click on “Create Repository”</p></li>
+</ul>
+<p>Next, to add the rest of your group to the repository:</p>
 <ul>
 <li><p>Go to browser page of the GitHub repository you just created and click on “Settings”</p></li>
 <li><p>Navigate to the left sidebar and click on “Collaborators”</p></li>
@@ -249,7 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-2-clone-the-remote-repository-to-your-local-computer-required-for-all-group-members" class="level3">
 <h3 class="anchored" data-anchor-id="step-2-clone-the-remote-repository-to-your-local-computer-required-for-all-group-members">Step 2: Clone the remote repository to your local computer<br>(Required for ALL group members)</h3>
 <ul>
-<li><p>Everyone (except the member responsible for creating the repository) should each get an invitation sent to the email associated with your GitHub account.</p></li>
+<li><p>Everyone (except the member responsible for creating the repository) should each get an invitation sent to the email associated with your GitHub account</p></li>
 <li><p>Check your email and accept the invitation</p></li>
 <li><p>Go to the browser page for the EDA project GitHub repository (created in Step 1)</p></li>
 <li><p>Click on Code (in the same line as “Go to file”). Under HTTPS, copy the URL</p></li>
@@ -268,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Each group member should create their own “sandbox” folder locally on their own computer as follows:</p>
 <ul>
 <li><p>Navigate to the Files pane in RStudio and click on “Folder” to create a new folder (for the new folder name, use your last name.)</p></li>
-<li><p>In RStudio, open a new file (could be anything - e.g.&nbsp;R Script, Quarto document, etc.). Fill the file with some code/comments/etc. (This is just for illustration purpose, to show how you can push a file to GitHub from your computer)</p></li>
+<li><p>In RStudio, open a new file (could be anything - e.g.&nbsp;R Script, Quarto document, etc.). Fill the file with some code/comments/etc. (This is just for illustration purpose, to show how you can add a file to GitHub from your computer)</p></li>
 <li><p>Save the file inside the folder you just created (with your last name as the folder name). At this point, this file should show up in the “Git” pane (in the top right of RStudio)</p></li>
 <li><p>Check the box under “Staged” in the Git pane to stage the file for a commit</p></li>
 <li><p>Click on “Commit” in the Git pane</p></li>
