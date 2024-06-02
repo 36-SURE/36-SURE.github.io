@@ -81,14 +81,14 @@
     "href": "health/labs/03-visualization.html#notes-on-colors-in-plots",
     "title": "Lab: data visualization",
     "section": "Notes on colors in plots",
-    "text": "Notes on colors in plots\nThree types of color scales to work with:\n\nQualitative: distinguishing discrete items that don’t have an order (nominal categorical). Colors should be distinct and equal with none standing out unless otherwise desired for emphasis.\n\n\nDo NOT use a discrete scale on a continuous variable\n\n\nSequential: when data values are mapped to one shade, e.g., for an ordered categorical variable or low to high continuous variable\n\n\nDo NOT use a sequential scale on an unordered variable\n\n\nDivergent: think of it as two sequential scales with a natural midpoint midpoint could represent 0 (assuming +/- values) or 50% if your data spans the full scale\n\n\nDo NOT use a divergent scale on data without natural midpoint\n\n\nOptions for ggplot2 colors\nThe default color scheme is pretty bad to put it bluntly, but ggplot2 has ColorBrewer built in which makes it easy to customize your color scales. For instance, we can make a scatterplot with Cost on the y-axis and Duration on the x-axis and using the geom_point() layer with each point colored by Drugs:\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Drugs)) +\n  geom_point(alpha = 0.5) +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Number of drugs\") +\n  theme_bw()\n\n\n\n\nWhat does alpha change? We can change the color plot for this plot using scale_color_brewer() function:\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Drugs)) +\n  geom_point(alpha = 0.5) +\n  scale_color_brewer(palette = \"Set2\") +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Number of drugs\") +\n  theme_bw()\n\n\n\n\nWhich do you prefer, the default palette or this new one? You can check out more color palettes here.\nSomething you should keep in mind is to pick a color-blind friendly palette. One simple way to do this is by using the ggthemes package (you need to install it first before running this code!) which has color-blind friendly palettes included:\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Drugs)) +\n  geom_point(alpha = 0.5) +\n  # call the function directly from the package using `::` instead of library(ggthemes)\n  ggthemes::scale_color_colorblind() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Number of drugs\") +\n  theme_bw()\n\n\n\n\nIn terms of displaying color from low to high, the viridis scales are excellent choices (and are also color-blind friendly!). For instance, we can map another quantitative variable (Interventions) to the color:\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Interventions\") +\n  theme_bw()\n\n\n\n\nWhat does this reveal about the plot? What happens if you delete scale_color_viridis_c() + from above? Which do you prefer?"
+    "text": "Notes on colors in plots\nThree types of color scales to work with:\n\nQualitative: distinguishing discrete items that don’t have an order (nominal categorical). Colors should be distinct and equal with none standing out unless otherwise desired for emphasis.\n\n\nDo NOT use a discrete scale on a continuous variable\n\n\nSequential: when data values are mapped to one shade, e.g., for an ordered categorical variable or low to high continuous variable\n\n\nDo NOT use a sequential scale on an unordered variable\n\n\nDivergent: think of it as two sequential scales with a natural midpoint midpoint could represent 0 (assuming +/- values) or 50% if your data spans the full scale\n\n\nDo NOT use a divergent scale on data without natural midpoint\n\n\nOptions for ggplot2 colors\nThe default color scheme is pretty bad to put it bluntly, but ggplot2 has ColorBrewer built in which makes it easy to customize your color scales. For instance, we can make a scatterplot with Cost on the y-axis and Duration on the x-axis and using the geom_point() layer with each point colored by Drugs:\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Drugs)) +\n  geom_point(alpha = 0.5) +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Number of drugs\") +\n  theme_light()\n\n\n\n\nWhat does alpha change? We can change the color plot for this plot using scale_color_brewer() function:\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Drugs)) +\n  geom_point(alpha = 0.5) +\n  scale_color_brewer(palette = \"Set2\") +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Number of drugs\") +\n  theme_light()\n\n\n\n\nWhich do you prefer, the default palette or this new one? You can check out more color palettes here.\nSomething you should keep in mind is to pick a color-blind friendly palette. One simple way to do this is by using the ggthemes package (you need to install it first before running this code!) which has color-blind friendly palettes included:\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Drugs)) +\n  geom_point(alpha = 0.5) +\n  # call the function directly from the package using `::` instead of library(ggthemes)\n  ggthemes::scale_color_colorblind() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Number of drugs\") +\n  theme_light()\n\n\n\n\nIn terms of displaying color from low to high, the viridis scales are excellent choices (and are also color-blind friendly!). For instance, we can map another quantitative variable (Interventions) to the color:\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Interventions\") +\n  theme_light()\n\n\n\n\nWhat does this reveal about the plot? What happens if you delete scale_color_viridis_c() + from above? Which do you prefer?"
   },
   {
     "objectID": "health/labs/03-visualization.html#notes-on-themes",
     "href": "health/labs/03-visualization.html#notes-on-themes",
     "title": "Lab: data visualization",
     "section": "Notes on themes",
-    "text": "Notes on themes\nYou might have noticed above have various changes to the theme of plots for customization. You will constantly be changing the theme of your plots to optimize the display. Fortunately, there are a number of built-in themes you can use to start with rather than the default theme_gray():\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Interventions\") +\n  theme_gray()\n\n\n\n\nFor instance, Quang’s go-to theme is theme_light()\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Interventions\") +\n  theme_light()\n\n\n\n\nThere are options such as theme_minimal():\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Interventions\") +\n  theme_minimal()\n\n\n\n\nor theme_classic():\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Interventions\") +\n  theme_classic()\n\n\n\n\nor theme_bw():\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Interventions\") +\n  theme_bw()\n\n\n\n\nThere are also packages with popular, such as the ggthemes package which includes, for example, theme_economist():\n\nlibrary(ggthemes)\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Interventions\") +\n  theme_economist()\n\n\n\n\nand theme_fivethirtyeight(), to name a couple:\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Interventions\") +\n  theme_fivethirtyeight()\n\n\n\n\nWith any theme you have picked, you can then modify specific components directly using the theme() layer. There are many aspects of the plot’s theme to modify, such as my decision to move the legend to the bottom of the figure, drop the legend title, and increase the font size for the y-axis:\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       title = \"Joint distribution of patients' duration and cost\",\n       color = \"Interventions\") +\n  theme_bw() +\n  theme(legend.position = \"bottom\",\n        legend.title = element_blank(),\n        axis.text.y = element_text(size = 14),\n        axis.text.x = element_text(size = 6))\n\n\n\n\nIf you’re tired of explicitly customizing every plot in the same way all the time, then you should make a custom theme. It’s quite easy to make a custom theme for ggplot2 and of course there are an incredible number of ways to customize your theme. Below, we modify theme_bw() using the %+replace% argument to a new customized theme named theme_cus() - which is stored as a function:\n\ntheme_cus &lt;- function () {\n  # start with the base font size\n  theme_bw(base_size = 10) %+replace%\n    theme(\n      panel.background  = element_blank(),\n      plot.background = element_rect(fill = \"transparent\", color = NA), \n      legend.position = \"bottom\",\n      legend.background = element_rect(fill = \"transparent\", color = NA),\n      legend.key = element_rect(fill = \"transparent\", color = NA),\n      axis.ticks = element_blank(),\n      panel.grid.major = element_line(color = \"grey90\", linewidth = 0.3), \n      panel.grid.minor = element_blank(),\n      plot.title = element_text(size = 15, hjust = 0, vjust = 0.5, face = \"bold\", \n                                margin = margin(b = 0.2, unit = \"cm\")),\n      plot.subtitle = element_text(size = 12, hjust = 0, vjust = 0.5, \n                                   margin = margin(b = 0.2, unit = \"cm\")),\n      plot.caption = element_text(size = 7, hjust = 1, face = \"italic\", \n                                  margin = margin(t = 0.1, unit = \"cm\")),\n      axis.text.x = element_text(size = 13),\n      axis.text.y = element_text(size = 13)\n    )\n}\n\nCreate the plot from before with this theme:\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost,\n             color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       title = \"Joint distribution of patients' duration and cost\",\n       color = \"Interventions\") +\n  theme_cus()"
+    "text": "Notes on themes\nYou might have noticed above have various changes to the theme of plots for customization. You will constantly be changing the theme of your plots to optimize the display. Fortunately, there are a number of built-in themes you can use to start with rather than the default theme_gray():\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Interventions\") +\n  theme_gray()\n\n\n\n\nFor instance, Quang’s go-to theme is theme_light()\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Interventions\") +\n  theme_light()\n\n\n\n\nThere are options such as theme_minimal():\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Interventions\") +\n  theme_minimal()\n\n\n\n\nor theme_classic():\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Interventions\") +\n  theme_classic()\n\n\n\n\nor theme_bw():\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Interventions\") +\n  theme_bw()\n\n\n\n\nThere are also packages with popular, such as the ggthemes package which includes, for example, theme_economist():\n\nlibrary(ggthemes)\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Interventions\") +\n  theme_economist()\n\n\n\n\nand theme_fivethirtyeight(), to name a couple:\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       color = \"Interventions\") +\n  theme_fivethirtyeight()\n\n\n\n\nWith any theme you have picked, you can then modify specific components directly using the theme() layer. There are many aspects of the plot’s theme to modify, such as my decision to move the legend to the bottom of the figure, drop the legend title, and increase the font size for the y-axis:\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost, color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       title = \"Joint distribution of patients' duration and cost\",\n       color = \"Interventions\") +\n  theme_light() +\n  theme(legend.position = \"bottom\",\n        legend.title = element_blank(),\n        axis.text.y = element_text(size = 14),\n        axis.text.x = element_text(size = 6))\n\n\n\n\nIf you’re tired of explicitly customizing every plot in the same way all the time, then you should make a custom theme. It’s quite easy to make a custom theme for ggplot2 and of course there are an incredible number of ways to customize your theme. Below, we modify theme_bw() using the %+replace% argument to a new customized theme named theme_cus() - which is stored as a function:\n\ntheme_cus &lt;- function() {\n  # start with the base font size\n  theme_bw(base_size = 10) %+replace%\n    theme(\n      panel.background  = element_blank(),\n      plot.background = element_rect(fill = \"transparent\", color = NA), \n      legend.position = \"bottom\",\n      legend.background = element_rect(fill = \"transparent\", color = NA),\n      legend.key = element_rect(fill = \"transparent\", color = NA),\n      axis.ticks = element_blank(),\n      panel.grid.major = element_line(color = \"grey90\", linewidth = 0.3), \n      panel.grid.minor = element_blank(),\n      plot.title = element_text(size = 15, hjust = 0, vjust = 0.5, face = \"bold\", \n                                margin = margin(b = 0.2, unit = \"cm\")),\n      plot.subtitle = element_text(size = 12, hjust = 0, vjust = 0.5, \n                                   margin = margin(b = 0.2, unit = \"cm\")),\n      plot.caption = element_text(size = 7, hjust = 1, face = \"italic\", \n                                  margin = margin(t = 0.1, unit = \"cm\")),\n      axis.text.x = element_text(size = 13),\n      axis.text.y = element_text(size = 13)\n    )\n}\n\nCreate the plot from before with this theme:\n\nheart_disease |&gt;\n  ggplot(aes(x = Duration, y = Cost,\n             color = Interventions)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Duration\", \n       y = \"Cost\",\n       title = \"Joint distribution of patients' duration and cost\",\n       color = \"Interventions\") +\n  theme_cus()"
   },
   {
     "objectID": "health/labs/01-intro.html",
@@ -144,7 +144,7 @@
     "href": "health/labs/01-intro.html#exercises",
     "title": "Lab: getting started with R",
     "section": "Exercises",
-    "text": "Exercises\n\nCreate four vectors, v1 and v2 are numeric vectors, v3 is a character vector and v4 is a logic vector. Make sure the length of v1 and v2 are the same. (Hint: a way to check the length is to use the function length())\n\n\n# R code here\n\n\nPreform add, minus, product and division on v1 and v2.\n\n\n# R code here\n\n\nCreate four statements with both relation and logic operators, that 2 of them return TRUE and 2 of them return FALSE.\n\n\n# R code here\n\n\nCreate 2 sequences with length 20, one in an increasing order and the other in a decreasing order.\n\n\n# R code here\n\n\nThe following gapminder dataset contains health and income outcomes for 184 countries from 1960 to 2016 from the , accessed via the dslabs package. How many of the rows in the dataset are from the Caribbean (coded as Caribbean in region)? How about Eastern Europe? Can you summarize the counts for all regions? (Hint: table())\n\n\nlibrary(Lahman)\ndata(Batting)\n\n# R code here"
+    "text": "Exercises\n\nCreate four vectors, v1 and v2 are numeric vectors, v3 is a character vector and v4 is a logic vector. Make sure the length of v1 and v2 are the same. (Hint: a way to check the length is to use the function length())\n\n\n# R code here\n\n\nPreform add, minus, product and division on v1 and v2.\n\n\n# R code here\n\n\nCreate four statements with both relation and logic operators, that 2 of them return TRUE and 2 of them return FALSE.\n\n\n# R code here\n\n\nCreate 2 sequences with length 20, one in an increasing order and the other in a decreasing order.\n\n\n# R code here\n\n\nThe following gapminder dataset contains health and income outcomes for 184 countries from 1960 to 2016 from the , accessed via the dslabs package. How many of the rows in the dataset are from the Caribbean (coded as Caribbean in region)? How about Eastern Europe? Can you summarize the counts for all regions? (Hint: table())\n\n\nlibrary(dslabs)\ndata(gapminder)\n\n# R code here"
   },
   {
     "objectID": "health/labs/01-intro.html#text-formatting-in-quarto",
@@ -585,7 +585,7 @@
     "href": "health.html#resources",
     "title": "Health",
     "section": "Resources",
-    "text": "Resources\n\nCMU Delphi\nR for Public Health\nCRAN Task View: Epidemiology\nEpiverse and Epiverse-TRACE\nThe Epidemiologist R Handbook\nThe R4Epis project\nThe R Epidemics Consortium (RECON)\npharmaverse\nPast R/Medicine workshops: 2023, 2022"
+    "text": "Resources\n\nCMU Delphi\nPHIGHT COVID\nR for Public Health\nCRAN Task View: Epidemiology\nEpiverse and Epiverse-TRACE\nThe Epidemiologist R Handbook\nThe R4Epis project\nThe R Epidemics Consortium (RECON)\npharmaverse\nR/Pharma Conference\nR/Medicine workshops: 2023, 2022"
   },
   {
     "objectID": "index.html",
@@ -662,7 +662,7 @@
     "href": "sports/labs/03-visualization.html#notes-on-themes",
     "title": "Lab: data visualization",
     "section": "Notes on themes",
-    "text": "Notes on themes\nYou might have noticed above have various changes to the theme of plots for customization. You will constantly be changing the theme of your plots to optimize the display. Fortunately, there are a number of built-in themes you can use to start with rather than the default theme_gray():\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_gray()\n\n\n\n\nFor instance, Quang’s go-to theme is theme_light()\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_light()\n\n\n\n\nThere are options such as theme_minimal():\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_minimal()\n\n\n\n\nor theme_classic():\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_classic()\n\n\n\n\nor theme_bw():\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_bw()\n\n\n\n\nThere are also packages with popular, such as the ggthemes package which includes, for example, theme_economist():\n\nlibrary(ggthemes)\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_economist()\n\n\n\n\nand theme_fivethirtyeight(), to name a couple:\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_fivethirtyeight()\n\n\n\n\nWith any theme you have picked, you can then modify specific components directly using the theme() layer. There are many aspects of the plot’s theme to modify, such as my decision to move the legend to the bottom of the figure, drop the legend title, and increase the font size for the y-axis:\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       title = \"Joint distribution of three-pointers and offensive rebounds\",\n       subtitle = \"NBA statistics from 2021-2022 season\",\n       color = \"Minutes played\") +\n  theme_light() +\n  theme(legend.position = \"bottom\",\n        legend.title = element_blank(),\n        axis.text.y = element_text(size = 14),\n        axis.text.x = element_text(size = 6))\n\n\n\n\nIf you’re tired of explicitly customizing every plot in the same way all the time, then you should make a custom theme. It’s quite easy to make a custom theme for ggplot2 and of course there are an incredible number of ways to customize your theme. Below, we modify theme_bw() using the %+replace% argument to a new customized theme named theme_cus() - which is stored as a function:\n\ntheme_cus &lt;- function () {\n  # start with the base font size\n  theme_bw(base_size = 10) %+replace%\n    theme(\n      panel.background  = element_blank(),\n      plot.background = element_rect(fill = \"transparent\", color = NA), \n      legend.position = \"bottom\",\n      legend.background = element_rect(fill = \"transparent\", color = NA),\n      legend.key = element_rect(fill = \"transparent\", color = NA),\n      axis.ticks = element_blank(),\n      panel.grid.major = element_line(color = \"grey90\", linewidth = 0.3), \n      panel.grid.minor = element_blank(),\n      plot.title = element_text(size = 15, hjust = 0, vjust = 0.5, face = \"bold\", \n                                margin = margin(b = 0.2, unit = \"cm\")),\n      plot.subtitle = element_text(size = 12, hjust = 0, vjust = 0.5, \n                                   margin = margin(b = 0.2, unit = \"cm\")),\n      plot.caption = element_text(size = 7, hjust = 1, face = \"italic\", \n                                  margin = margin(t = 0.1, unit = \"cm\")),\n      axis.text.x = element_text(size = 13),\n      axis.text.y = element_text(size = 13)\n    )\n}\n\nCreate the plot from before with this theme:\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       title = \"Joint distribution of three-pointers and offensive rebounds\",\n       subtitle = \"NBA statistics from 2021-2022 season\",\n       color = \"Minutes played\") +\n  theme_cus()"
+    "text": "Notes on themes\nYou might have noticed above have various changes to the theme of plots for customization. You will constantly be changing the theme of your plots to optimize the display. Fortunately, there are a number of built-in themes you can use to start with rather than the default theme_gray():\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_gray()\n\n\n\n\nFor instance, Quang’s go-to theme is theme_light()\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_light()\n\n\n\n\nThere are options such as theme_minimal():\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_minimal()\n\n\n\n\nor theme_classic():\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_classic()\n\n\n\n\nor theme_bw():\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_bw()\n\n\n\n\nThere are also packages with popular, such as the ggthemes package which includes, for example, theme_economist():\n\nlibrary(ggthemes)\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_economist()\n\n\n\n\nand theme_fivethirtyeight(), to name a couple:\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_fivethirtyeight()\n\n\n\n\nWith any theme you have picked, you can then modify specific components directly using the theme() layer. There are many aspects of the plot’s theme to modify, such as my decision to move the legend to the bottom of the figure, drop the legend title, and increase the font size for the y-axis:\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       title = \"Joint distribution of three-pointers and offensive rebounds\",\n       subtitle = \"NBA statistics from 2021-2022 season\",\n       color = \"Minutes played\") +\n  theme_light() +\n  theme(legend.position = \"bottom\",\n        legend.title = element_blank(),\n        axis.text.y = element_text(size = 14),\n        axis.text.x = element_text(size = 6))\n\n\n\n\nIf you’re tired of explicitly customizing every plot in the same way all the time, then you should make a custom theme. It’s quite easy to make a custom theme for ggplot2 and of course there are an incredible number of ways to customize your theme. Below, we modify theme_bw() using the %+replace% argument to a new customized theme named theme_cus() - which is stored as a function:\n\ntheme_cus &lt;- function() {\n  # start with the base font size\n  theme_bw(base_size = 10) %+replace%\n    theme(\n      panel.background  = element_blank(),\n      plot.background = element_rect(fill = \"transparent\", color = NA), \n      legend.position = \"bottom\",\n      legend.background = element_rect(fill = \"transparent\", color = NA),\n      legend.key = element_rect(fill = \"transparent\", color = NA),\n      axis.ticks = element_blank(),\n      panel.grid.major = element_line(color = \"grey90\", linewidth = 0.3), \n      panel.grid.minor = element_blank(),\n      plot.title = element_text(size = 15, hjust = 0, vjust = 0.5, face = \"bold\", \n                                margin = margin(b = 0.2, unit = \"cm\")),\n      plot.subtitle = element_text(size = 12, hjust = 0, vjust = 0.5, \n                                   margin = margin(b = 0.2, unit = \"cm\")),\n      plot.caption = element_text(size = 7, hjust = 1, face = \"italic\", \n                                  margin = margin(t = 0.1, unit = \"cm\")),\n      axis.text.x = element_text(size = 13),\n      axis.text.y = element_text(size = 13)\n    )\n}\n\nCreate the plot from before with this theme:\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       title = \"Joint distribution of three-pointers and offensive rebounds\",\n       subtitle = \"NBA statistics from 2021-2022 season\",\n       color = \"Minutes played\") +\n  theme_cus()"
   },
   {
     "objectID": "sports/labs/01-intro.html",
@@ -1152,7 +1152,7 @@
     "href": "lectures.html#references",
     "title": "Lectures",
     "section": "References",
-    "text": "References\n\nR for Data Science\nModern Data Science with R\nPosit Cheatsheets\nQuarto\nggplot2\nTidyTuesday\nAdvanced Data Analysis from an Elementary Point of View\nAn Introduction to Statistical Learning\nThe Elements of Statistical Learning\nMore recommended R books"
+    "text": "References\n\nR for Data Science\nModern Data Science with R\nPosit Cheatsheets\nQuarto\nggplot2\nTidyTuesday\nAdvanced Data Analysis from an Elementary Point of View\nBeyond Multiple Linear Regression\nAn Introduction to Statistical Learning\nThe Elements of Statistical Learning\nMore recommended R books"
   },
   {
     "objectID": "lectures/12-selection.html#setting",
@@ -1279,181 +1279,6 @@
     "title": "Supervised learning: variable selection",
     "section": "Coefficient plot (or dot-and-whisker plot or forest plot or blobbogram)",
     "text": "Coefficient plot (or dot-and-whisker plot or forest plot or blobbogram)\nDisplay a coefficient plot with confidence intervals based on the reported standard errors\n\nall_fit |&gt; \n  tidy(conf.int = TRUE) |&gt; \n  filter(term != \"(Intercept)\") |&gt; \n  ggplot(aes(x = estimate, y = term))  +\n  geom_point(size = 4) +\n  geom_errorbar(aes(xmin = conf.low, xmax = conf.high, width = 0.2)) +\n  geom_vline(xintercept = 0, linetype = \"dashed\", color = \"red\")\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
-  },
-  {
-    "objectID": "lectures/14-pca.html#the-big-picture",
-    "href": "lectures/14-pca.html#the-big-picture",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "The big picture",
-    "text": "The big picture\nHow do we visualize structure of high-dimensional data?\n\nExample: What if you’re given a dataset with 50 variables, and ask you to make one visualization that best represents the data? What do you do?\n\n\nTedious task: Make a series of all \\(\\displaystyle \\binom{50}{2} = 1225\\) pairs of plots?\n\n\nIntuition: Take high-dimensional data and represent it in 2-3 dimensions, then visualize those dimensions"
-  },
-  {
-    "objectID": "lectures/14-pca.html#what-is-the-goal-of-dimension-reduction",
-    "href": "lectures/14-pca.html#what-is-the-goal-of-dimension-reduction",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "What is the goal of dimension reduction?",
-    "text": "What is the goal of dimension reduction?\nWe have \\(p\\) variables (columns) for \\(n\\) observations (rows) BUT which variables are interesting?\n\nCan we find a smaller number of dimensions that captures the interesting structure in the data?\n\nCould examine all pairwise scatterplots of each variable - tedious, manual process\nClustering of variables based on correlation\nCan we find a combination of the original \\(p\\) variables?\n\n\n\nDimension reduction:\n\nFocus on reducing the dimensionality of the feature space (i.e., number of columns)\nRetain most of the information / variability in a lower dimensional space (i.e., reducing the number of columns)\nThe process: (big) \\(n \\times p\\) matrix \\(\\longrightarrow\\) dimension reduction method \\(\\longrightarrow\\) (smaller) \\(n \\times k\\) matrix"
-  },
-  {
-    "objectID": "lectures/14-pca.html#principal-components-analysis-pca",
-    "href": "lectures/14-pca.html#principal-components-analysis-pca",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Principal components analysis (PCA)",
-    "text": "Principal components analysis (PCA)"
-  },
-  {
-    "objectID": "lectures/14-pca.html#principal-components-analysis-pca-1",
-    "href": "lectures/14-pca.html#principal-components-analysis-pca-1",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Principal components analysis (PCA)",
-    "text": "Principal components analysis (PCA)\n\\[\n\\begin{pmatrix}\n& & \\text{really} & & \\\\\n& & \\text{wide} & & \\\\\n& & \\text{matrix} & &\n\\end{pmatrix}\n\\rightarrow \\text{matrix algebra razzmatazz} \\rightarrow\n\\begin{pmatrix}\n\\text{much}  \\\\\n\\text{thinner}  \\\\\n\\text{matrix}\n\\end{pmatrix}\n\\]\n\nPCA explores the covariance between variables, and combines variables into a smaller set of uncorrelated variables called principal components (PCs)\n\nTurn a \\(n \\times p\\) matrix of correlated variables into a \\(n \\times k\\) matrix of uncorrelated variables\n\nEach of the \\(k\\) columns in the right-hand matrix are principal components (PCs), all uncorrelated with each other\n\nPCs are weighted, linear combinations of the original variables\nWeights reveal how different variables are loaded into the PCs\n\nFirst column accounts for most variation in the data, second column for second-most variation, and so on\n\nIntuition: we want a small number of PCs (first few PCs) to account for most of the information/variance in the data"
-  },
-  {
-    "objectID": "lectures/14-pca.html#what-are-principal-components",
-    "href": "lectures/14-pca.html#what-are-principal-components",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "What are principal components?",
-    "text": "What are principal components?\n\nAssume \\(\\boldsymbol{X}\\) is a \\(n \\times p\\) matrix that is centered and stardardized\nTotal variation \\(= p\\), since \\(\\text{Var}(\\boldsymbol{x}_j)\\) = 1 for all \\(j = 1, \\dots, p\\)\nPCA will give us \\(p\\) principal components that are \\(n\\)-length columns - call these \\(Z_1, \\dots, Z_p\\)\n\nFirst principal component\n\\[Z_1 = \\phi_{11} X_1 + \\phi_{21} X_2 + \\dots + \\phi_{p1} X_p\\]\n\n\n\\(\\phi_{j1}\\) are the weights indicating the contributions of each variable \\(j \\in 1, \\dots, p\\)\nWeights are normalized \\(\\sum_{j=1}^p \\phi_{j1}^2 = 1\\)\n\\(\\phi_{1} = (\\phi_{11}, \\phi_{21}, \\dots, \\phi_{p1})\\) is the loading vector for PC1\n\n\n\n\n\\(Z_1\\) is a linear combination of the \\(p\\) variables that has the largest variance"
-  },
-  {
-    "objectID": "lectures/14-pca.html#principal-components-analysis-pca-2",
-    "href": "lectures/14-pca.html#principal-components-analysis-pca-2",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Principal components analysis (PCA)",
-    "text": "Principal components analysis (PCA)\nSecond principal component\n\\[Z_2 = \\phi_{12} X_1 + \\phi_{22} X_2 + \\dots + \\phi_{p2} X_p\\]\n\n\\(\\phi_{j2}\\) are the weights indicating the contributions of each variable \\(j \\in 1, \\dots, p\\)\nWeights are normalized \\(\\sum_{j=1}^p \\phi_{j1}^2 = 1\\)\n\\(\\phi_{2} = (\\phi_{12}, \\phi_{22}, \\dots, \\phi_{p2})\\) is the loading vector for PC2\n\\(Z_2\\) is a linear combination of the \\(p\\) variables that has the largest variance\n\nSubject to constraint it is uncorrelated with \\(Z_1\\)\n\n\n\nRepeat this process to create \\(p\\) principal components\n\nUncorrelated: Each (\\(Z_j, Z_{j'}\\)) is uncorrelated with each other\nOrdered Variance: \\(\\text{Var}(Z_1) &gt; \\text{Var}(Z_2) &gt; \\dots &gt; \\text{Var}(Z_p)\\)\nTotal Variance: \\(\\sum_{j=1}^p \\text{Var}(Z_j) = p\\)"
-  },
-  {
-    "objectID": "lectures/14-pca.html#visualizing-pca-in-two-dimensions",
-    "href": "lectures/14-pca.html#visualizing-pca-in-two-dimensions",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Visualizing PCA in two dimensions",
-    "text": "Visualizing PCA in two dimensions"
-  },
-  {
-    "objectID": "lectures/14-pca.html#visualizing-pca-in-two-dimensions-1",
-    "href": "lectures/14-pca.html#visualizing-pca-in-two-dimensions-1",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Visualizing PCA in two dimensions",
-    "text": "Visualizing PCA in two dimensions"
-  },
-  {
-    "objectID": "lectures/14-pca.html#visualizing-pca-in-two-dimensions-2",
-    "href": "lectures/14-pca.html#visualizing-pca-in-two-dimensions-2",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Visualizing PCA in two dimensions",
-    "text": "Visualizing PCA in two dimensions"
-  },
-  {
-    "objectID": "lectures/14-pca.html#visualizing-pca-in-two-dimensions-3",
-    "href": "lectures/14-pca.html#visualizing-pca-in-two-dimensions-3",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Visualizing PCA in two dimensions",
-    "text": "Visualizing PCA in two dimensions"
-  },
-  {
-    "objectID": "lectures/14-pca.html#visualizing-pca-in-two-dimensions-4",
-    "href": "lectures/14-pca.html#visualizing-pca-in-two-dimensions-4",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Visualizing PCA in two dimensions",
-    "text": "Visualizing PCA in two dimensions"
-  },
-  {
-    "objectID": "lectures/14-pca.html#searching-for-variance-in-orthogonal-directions",
-    "href": "lectures/14-pca.html#searching-for-variance-in-orthogonal-directions",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Searching for variance in orthogonal directions",
-    "text": "Searching for variance in orthogonal directions"
-  },
-  {
-    "objectID": "lectures/14-pca.html#pca-singular-value-decomposition-svd",
-    "href": "lectures/14-pca.html#pca-singular-value-decomposition-svd",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "PCA: singular value decomposition (SVD)",
-    "text": "PCA: singular value decomposition (SVD)\n\\[\nX = U D V^T\n\\]\n\n\\(U\\) and \\(V\\): matrices containing the left and right singular vectors of scaled matrix \\(X\\)\n\\(D\\): diagonal matrix of the singular values\n\n\n\nSVD simplifies matrix-vector multiplication as rotate, scale, and rotate again\n\n\n\n\\(V\\): loading matrix for \\(X\\) with \\(\\phi_{j}\\) as columns\n\n\\(Z = X V\\): PC matrix\n\n\n\nBonus: Eigenvalue decomposition (or spectral decomposition)\n\n\\(V\\): eigenvectors of \\(X^TX\\) (covariance matrix, \\(^T\\): transpose)\n\\(U\\): eigenvectors of \\(XX^T\\)\nThe singular values (diagonal of \\(D\\)) are square roots of the eigenvalues of \\(X^TX\\) or \\(XX^T\\)\nMeaning that \\(Z = UD\\)"
-  },
-  {
-    "objectID": "lectures/14-pca.html#eigenvalues-guide-dimension-reduction",
-    "href": "lectures/14-pca.html#eigenvalues-guide-dimension-reduction",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Eigenvalues guide dimension reduction",
-    "text": "Eigenvalues guide dimension reduction\nWe want to choose \\(p^* &lt; p\\) such that we are explaining variation in the data\n\nEigenvalues \\(\\lambda_j\\) for \\(j \\in 1, \\dots, p\\) indicate the variance explained by each component\n\n\\(\\displaystyle \\sum_j^p \\lambda_j = p\\), meaning \\(\\lambda_j \\geq 1\\) indicates \\(\\text{PC}j\\) contains at least one variable’s worth in variability\n\\(\\displaystyle \\frac{\\lambda_j}{p}\\): proportion of variance explained by \\(\\text{PC}j\\)\nArranged in descending order so that \\(\\lambda_1\\) is largest eigenvalue and corresponds to PC1\n\n\n\n\nCompute the cumulative proportion of variance explained (CVE) with \\(p^*\\) components \\[\\text{CVE}_{p^*} = \\sum_j^{p*} \\frac{\\lambda_j}{p}\\] Use scree plot to plot eigenvalues and guide choice for \\(p^* &lt;p\\) by looking for “elbow” (rapid to slow change)"
-  },
-  {
-    "objectID": "lectures/14-pca.html#data-nutritional-information-of-starbucks-drinks",
-    "href": "lectures/14-pca.html#data-nutritional-information-of-starbucks-drinks",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Data: nutritional information of Starbucks drinks",
-    "text": "Data: nutritional information of Starbucks drinks\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nstarbucks &lt;- read_csv(\n  \"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-12-21/starbucks.csv\"\n) |&gt;\n  # convert columns to numeric that were saved as character\n  mutate(trans_fat_g = as.numeric(trans_fat_g), fiber_g = as.numeric(fiber_g))\nglimpse(starbucks)\n\nRows: 1,147\nColumns: 15\n$ product_name    &lt;chr&gt; \"brewed coffee - dark roast\", \"brewed coffee - dark ro…\n$ size            &lt;chr&gt; \"short\", \"tall\", \"grande\", \"venti\", \"short\", \"tall\", \"…\n$ milk            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, …\n$ whip            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ serv_size_m_l   &lt;dbl&gt; 236, 354, 473, 591, 236, 354, 473, 591, 236, 354, 473,…\n$ calories        &lt;dbl&gt; 3, 4, 5, 5, 3, 4, 5, 5, 3, 4, 5, 5, 3, 4, 5, 5, 35, 50…\n$ total_fat_g     &lt;dbl&gt; 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,…\n$ saturated_fat_g &lt;dbl&gt; 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,…\n$ trans_fat_g     &lt;dbl&gt; 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,…\n$ cholesterol_mg  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,…\n$ sodium_mg       &lt;dbl&gt; 5, 10, 10, 10, 5, 10, 10, 10, 5, 5, 5, 5, 5, 5, 5, 5, …\n$ total_carbs_g   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, …\n$ fiber_g         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ sugar_g         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, …\n$ caffeine_mg     &lt;dbl&gt; 130, 193, 260, 340, 15, 20, 25, 30, 155, 235, 310, 410…"
-  },
-  {
-    "objectID": "lectures/14-pca.html#implement-pca",
-    "href": "lectures/14-pca.html#implement-pca",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Implement PCA",
-    "text": "Implement PCA\nUse the prcomp() function (based on SVD) for PCA on centered and scaled data\n\nfeat &lt;- starbucks |&gt; \n  select(serv_size_m_l:caffeine_mg)\nstarbucks_pca &lt;- prcomp(feat, center = TRUE, scale. = TRUE)\nsummary(starbucks_pca)\n\nImportance of components:\n                          PC1    PC2    PC3     PC4     PC5     PC6    PC7\nStandard deviation     2.4748 1.3074 1.0571 0.97919 0.67836 0.56399 0.4413\nProportion of Variance 0.5568 0.1554 0.1016 0.08716 0.04183 0.02892 0.0177\nCumulative Proportion  0.5568 0.7122 0.8138 0.90093 0.94276 0.97168 0.9894\n                           PC8     PC9    PC10    PC11\nStandard deviation     0.28123 0.16874 0.08702 0.04048\nProportion of Variance 0.00719 0.00259 0.00069 0.00015\nCumulative Proportion  0.99657 0.99916 0.99985 1.00000"
-  },
-  {
-    "objectID": "lectures/14-pca.html#pca-output",
-    "href": "lectures/14-pca.html#pca-output",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "PCA output",
-    "text": "PCA output\n\n# str(starbucks_pca)\n\nExamine the output after running prcomp()\n\nstarbucks_pca$sdev: singular values (\\(\\sqrt{\\lambda_j}\\))\nstarbucks_pca$rotation: loading matrix (\\(V\\))\nstarbucks_pca$x: principal component scores matrix (\\(Z=XV\\))\n\nCan use the broom package for tidying prcomp()\n\ntidy(starbucks_pca, matrix = \"eigenvalues\") # equivalent to starbucks_pca$sdev\ntidy(starbucks_pca, matrix = \"rotation\") # equivalent to starbucks_pca$rotation\ntidy(starbucks_pca, matrix = \"scores\") # equivalent to starbucks_pca$x"
-  },
-  {
-    "objectID": "lectures/14-pca.html#proportion-of-variance-explained",
-    "href": "lectures/14-pca.html#proportion-of-variance-explained",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Proportion of variance explained",
-    "text": "Proportion of variance explained\n\nlibrary(broom)\nstarbucks_pca |&gt;\n  tidy(matrix = \"eigenvalues\") |&gt;\n  ggplot(aes(x = PC, y = percent)) +\n  geom_line() + \n  geom_point() +\n  geom_hline(yintercept = 1 / ncol(feat), color = \"darkred\", linetype = \"dashed\") +\n  scale_x_continuous(breaks = 1:ncol(starbucks_pca$x))"
-  },
-  {
-    "objectID": "lectures/14-pca.html#cumulative-proportion-of-variance-explained",
-    "href": "lectures/14-pca.html#cumulative-proportion-of-variance-explained",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Cumulative proportion of variance explained",
-    "text": "Cumulative proportion of variance explained\n\nlibrary(broom)\nstarbucks_pca |&gt;\n  tidy(matrix = \"eigenvalues\") |&gt;\n  ggplot(aes(x = PC, y = cumulative)) +\n  geom_line() + \n  geom_point() +\n  scale_x_continuous(breaks = 1:ncol(starbucks_pca$x))"
-  },
-  {
-    "objectID": "lectures/14-pca.html#computing-principal-components",
-    "href": "lectures/14-pca.html#computing-principal-components",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Computing principal components",
-    "text": "Computing principal components\nExtract the matrix of principal components \\(\\boldsymbol{Z} = XV\\) (dimension of \\(\\boldsymbol{Z}\\) will match original data)\n\nstarbucks_pc_matrix &lt;- starbucks_pca$x\nhead(starbucks_pc_matrix)\n\n           PC1        PC2        PC3           PC4         PC5         PC6\n[1,] -3.766852 -1.0023657  0.2482698 -0.1521871448  0.24739830 -0.11365847\n[2,] -3.633234 -0.6946439  1.2059943 -0.3720566566  0.06052789 -0.06406410\n[3,] -3.518063 -0.3981399  2.2165170 -0.5967175941 -0.13122572 -0.01937237\n[4,] -3.412061 -0.1067045  3.3741594 -0.8490378243 -0.26095965 -0.00899485\n[5,] -3.721426 -0.9868147 -1.0705094  0.0949330091 -0.27181508  0.17491809\n[6,] -3.564899 -0.6712499 -0.7779083 -0.0003019903 -0.72054963  0.37005543\n             PC7         PC8        PC9       PC10        PC11\n[1,] -0.02812472 0.006489978 0.05145094 0.06678083 0.019741873\n[2,]  0.05460952 0.021148978 0.07094211 0.08080545 0.023480029\n[3,]  0.09050806 0.031575955 0.08901403 0.09389227 0.028669251\n[4,]  0.11585507 0.037521689 0.11287190 0.11582260 0.034691142\n[5,]  0.07009414 0.037736197 0.02892317 0.03631676 0.005775410\n[6,]  0.20236484 0.068154160 0.03705252 0.03497690 0.002469611\n\n\nColumns are uncorrelated, such that \\(\\text{Var}(Z_1) &gt; \\text{Var}(Z_2) &gt; \\dots &gt; \\text{Var}(Z_p)\\)"
-  },
-  {
-    "objectID": "lectures/14-pca.html#visualizing-first-two-principal-components",
-    "href": "lectures/14-pca.html#visualizing-first-two-principal-components",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Visualizing first two principal components",
-    "text": "Visualizing first two principal components\n\n\n\nstarbucks &lt;- starbucks |&gt; \n  mutate(pc1 = starbucks_pc_matrix[,1], \n         pc2 = starbucks_pc_matrix[,2])\nstarbucks |&gt; \n  ggplot(aes(x = pc1, y = pc2)) +\n  geom_point(alpha = 0.5) +\n  labs(x = \"PC 1\", y = \"PC 2\")\n\n\nPrincipal components are not interpretable\nMake a biplot with arrows showing the linear relationship between one variable and other variables"
-  },
-  {
-    "objectID": "lectures/14-pca.html#making-pcs-interpretable-with-biplots",
-    "href": "lectures/14-pca.html#making-pcs-interpretable-with-biplots",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Making PCs interpretable with biplots",
-    "text": "Making PCs interpretable with biplots\nBiplot displays both the space of observations and the space of variables\nCheck out the factoextra package\n\n\n\nlibrary(factoextra)\n# fviz_pca_var(): projection of variables\n# fviz_pca_ind(): display observations with first two PCs\nstarbucks_pca |&gt; \n  fviz_pca_biplot(label = \"var\",\n                  alpha.ind = 0.25,\n                  alpha.var = 0.75,\n                  col.var = \"darkblue\",\n                  repel = TRUE)\n\n\nArrow direction: “as the variable increases…”\nArrow angles: correlation\n\n\\(90^{\\circ}\\): uncorrelated\n\\(&lt; 90^{\\circ}\\): positively correlated\n\\(&gt; 90^{\\circ}\\): negatively correlated\n\nArrow length: strength of relationship with PCs"
-  },
-  {
-    "objectID": "lectures/14-pca.html#how-many-principal-components-to-use",
-    "href": "lectures/14-pca.html#how-many-principal-components-to-use",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "How many principal components to use?",
-    "text": "How many principal components to use?\nIntuition: Additional principal components will add smaller and smaller variance\n\nKeep adding components until the added variance drops off\n\n\nsummary(starbucks_pca)\n\nImportance of components:\n                          PC1    PC2    PC3     PC4     PC5     PC6    PC7\nStandard deviation     2.4748 1.3074 1.0571 0.97919 0.67836 0.56399 0.4413\nProportion of Variance 0.5568 0.1554 0.1016 0.08716 0.04183 0.02892 0.0177\nCumulative Proportion  0.5568 0.7122 0.8138 0.90093 0.94276 0.97168 0.9894\n                           PC8     PC9    PC10    PC11\nStandard deviation     0.28123 0.16874 0.08702 0.04048\nProportion of Variance 0.00719 0.00259 0.00069 0.00015\nCumulative Proportion  0.99657 0.99916 0.99985 1.00000"
-  },
-  {
-    "objectID": "lectures/14-pca.html#create-a-scree-plot-or-elbow-plot",
-    "href": "lectures/14-pca.html#create-a-scree-plot-or-elbow-plot",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Create a scree plot (or elbow plot)",
-    "text": "Create a scree plot (or elbow plot)\n\nstarbucks_pca |&gt; \n  fviz_eig(addlabels = TRUE) +\n  geom_hline(yintercept = 100 * (1 / ncol(starbucks_pca$x)), linetype = \"dashed\", color = \"darkred\")\n\n\n\nRule of thumb: horizontal line at \\(1/p\\) (Why?)"
-  },
-  {
-    "objectID": "lectures/14-pca.html#remember-the-spelling",
-    "href": "lectures/14-pca.html#remember-the-spelling",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Remember the spelling…",
-    "text": "Remember the spelling…\n\n\nfolks. it's principal (not principle) components analysis.\n\n— Stephanie Hicks, PhD (@stephaniehicks) February 17, 2023\n\n\n\n\n36-SURE.github.io"
   },
   {
     "objectID": "lectures/04-quantitative.html#data",
@@ -1862,6 +1687,132 @@
     "text": "Check out this song\n\n\n\n36-SURE.github.io"
   },
   {
+    "objectID": "lectures/17-mixture.html#previously-clustering",
+    "href": "lectures/17-mixture.html#previously-clustering",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Previously: clustering",
+    "text": "Previously: clustering\n\nPrevious methods: \\(k\\)-means clustering  and hierarchical clustering\nOutput hard assignments, strictly assigning observations to only one cluster\n\n\n\nWhat about soft assignments and uncertainty in the clustering results?\n\n\n\n\nEntering mixture models"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#previously-kernel-density-estimation",
+    "href": "lectures/17-mixture.html#previously-kernel-density-estimation",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Previously: kernel density estimation",
+    "text": "Previously: kernel density estimation\nKernel density estimator: \\(\\quad \\displaystyle \\hat{f}(x) = \\frac{1}{n} \\sum_{i=1}^n \\frac{1}{h} K_h(x - x_i)\\)\n\nWe have to use every observation when estimating the density for new points\n\n\n\n\n\n\n\n\n\n\n\nInstead we can make some simplifying assumptions"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#mixture-models",
+    "href": "lectures/17-mixture.html#mixture-models",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Mixture models",
+    "text": "Mixture models\nAssume \\(f(x)\\) is a mixture of \\(K\\) component distributions \\(\\displaystyle f(x) = \\sum_{k=1}^K \\pi_k f_k(x)\\)\n\nwhere \\(\\pi_k =\\) mixing proportions (or weights), with \\(\\pi_k &gt; 0\\), and \\(\\sum_k \\pi_k = 1\\)\n\n\nThis is a data generating process, meaning to generate a new point:\n\npick a distribution/component among our \\(K\\) options by introducing a new variable \\(z \\sim \\text{Multinomial} (\\pi_1, \\pi_2, \\dots, \\pi_k)\\) (categorical variable for which group the new point is from)\n\n\n\n\ngenerate an observation with that distribution / component, i.e. \\(x \\mid z \\sim f_{z}\\)\n\n\n\nSo what do we use for each \\(f_k\\)?"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#gaussian-mixture-models-gmms",
+    "href": "lectures/17-mixture.html#gaussian-mixture-models-gmms",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Gaussian mixture models (GMMs)",
+    "text": "Gaussian mixture models (GMMs)\nAssume a parametric mixture model, with parameters \\(\\theta_k\\) for the \\(k\\)th component \\[f(x) = \\sum_{k=1}^K \\pi_k f_k(x; \\theta_k)\\]\n\nAssume each component is Gaussian/normal, where the 1D case is\n\\[f_k(x; \\theta_k) = N(x; \\mu_k, \\sigma_k^2) = \\frac{1}{\\sqrt{2\\pi \\sigma_k^2}}\\text{exp} \\Big( -\\frac{(x - \\mu_k)^2}{2 \\sigma_k^2} \\Big)\\]\n\n\nWe need to estimate each \\(\\pi_1, \\dots, \\pi_k\\), \\(\\mu_1, \\dots, \\mu_k\\), \\(\\sigma_1, \\dots, \\sigma_k\\)"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#lets-pretend-we-only-have-one-component",
+    "href": "lectures/17-mixture.html#lets-pretend-we-only-have-one-component",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Let’s pretend we only have one component…",
+    "text": "Let’s pretend we only have one component…\nGiven \\(n\\) observations from a single Normal distribution, we estimate the distribution parameters using the likelihood function, the probability/density of observing the data given the parameters\n\\[\\mathcal{L}(\\mu, \\sigma \\mid x_1, \\dots, x_n) = f( x_1, \\dots, x_n \\mid \\mu, \\sigma) =  \\prod_i^n \\frac{1}{\\sqrt{2\\pi \\sigma^2}}\\text{exp } \\left\\{-\\frac{(x_i - \\mu)^2}{2 \\sigma^2}\\right\\}\\]\n\nWe can compute the maximum likelihood estimates (MLEs) for \\(\\mu\\) and \\(\\sigma\\)\nYou already know these values!\n\n\\(\\displaystyle \\hat{\\mu}_{\\rm MLE} = \\frac{1}{n} \\sum_i^n x_i\\), sample mean\n\\(\\displaystyle \\hat{\\sigma}_{\\rm MLE} = \\sqrt{\\frac{1}{n}\\sum_i^n (x_i - \\mu)^2}\\), sample standard deviation (plug in \\(\\hat{\\mu}_{\\rm MLE}\\))"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#the-problem-with-more-than-one-component",
+    "href": "lectures/17-mixture.html#the-problem-with-more-than-one-component",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "The problem with more than one component",
+    "text": "The problem with more than one component\n\n\n\nWe don’t know which component an observation belongs to\nIF WE DID KNOW, then we could compute each component’s MLEs as before\nBut we don’t know because \\(z\\) is a latent variable! So what about its distribution given the data?\n\n\\(\\displaystyle P(z_i = k \\mid x_i) = \\frac{P(x_i \\mid z_i = k) P(z_i = k)}{P(x_i)}\\)\n\\(\\displaystyle =\\frac{\\pi_{k} N\\left(\\mu_{k}, \\sigma_{k}^{2}\\right)}{\\sum_{k=1}^{K} \\pi_{k} N\\left(\\mu_{k}, \\sigma_{k}\\right)}\\)\n\nBut we do NOT know these parameters!"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#expectation-maximization-em-algorithm",
+    "href": "lectures/17-mixture.html#expectation-maximization-em-algorithm",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Expectation-maximization (EM) algorithm",
+    "text": "Expectation-maximization (EM) algorithm\nAlternate between the following:\n\npretend to know the probability each observation belongs to each group, to estimate the parameters of the components\n\n\n\npretend to know the parameters of the components, to estimate the probability each observation belong to each group\n\n\n\nWhere have we seen this before?\n\n\n\\(k\\)-means algorithm!\n\n\n\nStart with initial guesses about \\(\\pi_1, \\dots, \\pi_k\\), \\(\\mu_1, \\dots, \\mu_k\\), \\(\\sigma_1, \\dots, \\sigma_k\\)\nRepeat until nothing changes:\n\n\n\n\nExpectation step: calculate \\(\\hat{z}_{ik}\\) = expected membership of observation \\(i\\) in cluster \\(k\\)\nMaximization step: update parameter estimates with weighted MLE using \\(\\hat{z}_{ik}\\)"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#how-does-this-relate-back-to-clustering",
+    "href": "lectures/17-mixture.html#how-does-this-relate-back-to-clustering",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "How does this relate back to clustering?",
+    "text": "How does this relate back to clustering?\n\nFrom the EM algorithm: \\(\\hat{z}_{ik}\\) is a soft membership of observation \\(i\\) in cluster \\(k\\)\n\n\n\nassign observation \\(i\\) to a cluster with the largest \\(\\hat{z}_{ik}\\)\nmeasure cluster assignment uncertainty of \\(\\displaystyle 1 - \\max_k \\hat{z}_{ik}\\)\n\n\n\nOur parameters determine the type of clusters\n\n\nIn the 1D case, there are two options:\n\n\n\neach cluster is assumed to have equal variance (spread): \\(\\sigma_1^2 = \\sigma_2^2 = \\dots = \\sigma_k^2\\)\n\n\n\n\neach cluster is allowed to have a different variance\n\n\n\nBut that is only 1D… what happens in multiple dimensions?"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#multivariate-gmms",
+    "href": "lectures/17-mixture.html#multivariate-gmms",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Multivariate GMMs",
+    "text": "Multivariate GMMs\n\\[f(x) = \\sum_{k=1}^K \\pi_k f_k(x; \\theta_k) \\qquad \\text{where }f_k(x; \\theta_k) \\sim N(\\boldsymbol{\\mu}_k, \\boldsymbol{\\Sigma}_k)\\]\nEach component is a multivariate normal distribution:\n\n\n\\(\\boldsymbol{\\mu}_k\\) is a vector of means in \\(p\\) dimensions\n\n\n\n\n\\(\\boldsymbol{\\Sigma}_k\\) is the \\(p \\times p\\) covariance matrix - describes the joint variability between pairs of variables\n\n\\[\\sum=\\left[\\begin{array}{cccc}\n\\sigma_{1}^{2} & \\sigma_{1,2} & \\cdots & \\sigma_{1, p} \\\\\n\\sigma_{2,1} & \\sigma_{2}^{2} & \\cdots & \\sigma_{2, p} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n\\sigma_{p, 1} & \\sigma_{p, 2}^{2} & \\cdots & \\sigma_{p}^{2}\n\\end{array}\\right]\\]"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#covariance-constraints",
+    "href": "lectures/17-mixture.html#covariance-constraints",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Covariance constraints",
+    "text": "Covariance constraints\n\\[\\sum=\\left[\\begin{array}{cccc}\n\\sigma_{1}^{2} & \\sigma_{1,2} & \\cdots & \\sigma_{1, p} \\\\\n\\sigma_{2,1} & \\sigma_{2}^{2} & \\cdots & \\sigma_{2, p} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n\\sigma_{p, 1} & \\sigma_{p, 2}^{2} & \\cdots & \\sigma_{p}^{2}\n\\end{array}\\right]\\]\n\nAs the number of dimensions increases, model fitting and estimation become increasingly difficult\n\n\nWe can use constraints on multiple aspects of the \\(k\\) covariance matrices:\n\n\n\nvolume: size of the clusters, i.e., number of observations,\nshape: direction of variance, i.e. which variables display more variance\norientation: aligned with axes (low covariance) versus tilted (due to relationships between variables)"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#covariance-constraints-1",
+    "href": "lectures/17-mixture.html#covariance-constraints-1",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Covariance constraints",
+    "text": "Covariance constraints\n\n\nControl volume, shape, orientation\nE: equal and V: variable (VVV is the most flexible, but has the most parameters)\nTwo II: spherical, one I: diagonal, the remaining are general\n\nHow do we know which one to choose?"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#bayesian-information-criterion-bic",
+    "href": "lectures/17-mixture.html#bayesian-information-criterion-bic",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Bayesian information criterion (BIC)",
+    "text": "Bayesian information criterion (BIC)\nThis is a statistical model\n\\[f(x) = \\sum_{k=1}^K \\pi_k f_k(x; \\theta_k) \\qquad \\text{where }f_k(x; \\theta_k) \\sim N(\\boldsymbol{\\mu}_k, \\boldsymbol{\\Sigma}_k)\\]\n\nUse a model selection procedure for determining which best characterizes the data\n\n\nSpecifically, use a penalized likelihood measure \\[\\text{BIC} = 2\\log \\mathcal{L} - m\\log n\\]\n\n\\(\\log \\mathcal{L}\\): log-likelihood of the considered model\nwith \\(m\\) parameters (VVV has the most parameters) and \\(n\\) observations\n\n\n\n\npenalizes large models with many clusters without constraints\nuse BIC to choose the covariance constraints AND number of clusters\n\n\n\n\nThe above \\(\\text{BIC}\\) is really the \\(- \\text{BIC}\\) of what you typically see, this sign flip is just for ease"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#data-nba-player-statistics-per-100-possessions",
+    "href": "lectures/17-mixture.html#data-nba-player-statistics-per-100-possessions",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Data: NBA player statistics per 100 possessions",
+    "text": "Data: NBA player statistics per 100 possessions\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nlibrary(ballr)\nnba_stats &lt;- NBAPerGameStatisticsPer100Poss(season = 2024)\nnba_stats &lt;- nba_stats |&gt; \n  group_by(player) |&gt; \n  slice_max(g) |&gt; \n  ungroup() |&gt; \n  filter(mp &gt;= 150) # keep players with at least 150 minutes played\nhead(nba_stats)\n\n# A tibble: 6 × 33\n     rk player   pos     age tm        g    gs    mp    fg   fga fgpercent   x3p\n  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1   183 A.J. Gr… SG       24 MIL      56     0   614   6.5  15.3     0.423   5.4\n2   290 A.J. La… SG       23 DAL      42     0   311   8.3  18.7     0.446   2  \n3   190 AJ Grif… SF       20 ATL      20     0   171   5    17.4     0.29    2.8\n4   178 Aaron G… PF       28 DEN      73    73  2297   8.6  15.5     0.556   0.9\n5   221 Aaron H… PG       27 HOU      78     1  1269   7.1  15.9     0.446   3.2\n6   372 Aaron N… SF       24 IND      72    47  1995   7.4  15       0.496   3.3\n# ℹ 21 more variables: x3pa &lt;dbl&gt;, x3ppercent &lt;dbl&gt;, x2p &lt;dbl&gt;, x2pa &lt;dbl&gt;,\n#   x2ppercent &lt;dbl&gt;, ft &lt;dbl&gt;, fta &lt;dbl&gt;, ftpercent &lt;dbl&gt;, orb &lt;dbl&gt;,\n#   drb &lt;dbl&gt;, trb &lt;dbl&gt;, ast &lt;dbl&gt;, stl &lt;dbl&gt;, blk &lt;dbl&gt;, tov &lt;dbl&gt;, pf &lt;dbl&gt;,\n#   pts &lt;dbl&gt;, x &lt;dbl&gt;, ortg &lt;dbl&gt;, drtg &lt;dbl&gt;, link &lt;chr&gt;"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#implementation-with-mclust-package",
+    "href": "lectures/17-mixture.html#implementation-with-mclust-package",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Implementation with mclust package",
+    "text": "Implementation with mclust package\nSelect the model and number of clusters\nUse Mclust() function to search over 1 to 9 clusters (default) and the different covariance constraints (i.e. models)\n\nlibrary(mclust)\n# x3pa: 3pt attempts per 100 possessions\n# trb: total rebounds per 100 possessions\nnba_mclust &lt;- nba_stats |&gt; \n  select(x3pa, trb) |&gt; \n  Mclust()\nsummary(nba_mclust)\n\n---------------------------------------------------- \nGaussian finite mixture model fitted by EM algorithm \n---------------------------------------------------- \n\nMclust VVV (ellipsoidal, varying volume, shape, and orientation) model with 3\ncomponents: \n\n log-likelihood   n df     BIC       ICL\n      -2246.434 452 17 -4596.8 -4749.605\n\nClustering table:\n  1   2   3 \n138  40 274"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#display-the-bic-for-each-model-and-number-of-clusters",
+    "href": "lectures/17-mixture.html#display-the-bic-for-each-model-and-number-of-clusters",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Display the BIC for each model and number of clusters",
+    "text": "Display the BIC for each model and number of clusters\n\n\n\nnba_mclust |&gt; \n  plot(what = \"BIC\", \n       legendArgs = list(x = \"bottomright\", ncol = 4))\n\n\n\n\n\n\n\n\n\n\nnba_mclust |&gt; \n  plot(what = \"classification\")"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#how-do-the-cluster-assignments-compare-to-the-positions",
+    "href": "lectures/17-mixture.html#how-do-the-cluster-assignments-compare-to-the-positions",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "How do the cluster assignments compare to the positions?",
+    "text": "How do the cluster assignments compare to the positions?\nTwo-way table to compare the clustering assignments with player positions\n(What’s the way to visually compare the two labels?)\n\ntable(\"Clusters\" = nba_mclust$classification, \"Positions\" = nba_stats$pos)\n\n        Positions\nClusters  C C-PF PF PF-C PF-SF PG PG-SG SF SF-PF SF-SG SG SG-PG\n       1 43    1 56    1     0  4     0 24     1     0  8     0\n       2 34    2  3    0     0  1     0  0     0     0  0     0\n       3  3    0 30    0     1 77     4 68     1     1 88     1\n\n\nTakeaway: positions tend to fall within particular clusters"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#what-about-the-cluster-probabilities",
+    "href": "lectures/17-mixture.html#what-about-the-cluster-probabilities",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "What about the cluster probabilities?",
+    "text": "What about the cluster probabilities?\n\nnba_player_probs &lt;- nba_mclust$z\ncolnames(nba_player_probs) &lt;- c(\"cluster1\", \"cluster2\", \"cluster3\")\n\nnba_player_probs &lt;- nba_player_probs |&gt;\n  as_tibble() |&gt;\n  mutate(player = nba_stats$player) |&gt;\n  pivot_longer(!player, names_to = \"cluster\", values_to = \"prob\")\n\nnba_player_probs |&gt;\n  ggplot(aes(prob)) +\n  geom_histogram() +\n  facet_wrap(~ cluster)"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#which-players-have-the-highest-uncertainty",
+    "href": "lectures/17-mixture.html#which-players-have-the-highest-uncertainty",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Which players have the highest uncertainty?",
+    "text": "Which players have the highest uncertainty?\n\n\n\n\nnba_stats |&gt;\n  mutate(cluster = nba_mclust$classification,\n         uncertainty = nba_mclust$uncertainty) |&gt; \n  group_by(cluster) |&gt;\n  slice_max(uncertainty, n = 5) |&gt; \n  mutate(player = fct_reorder(player, uncertainty)) |&gt; \n  ggplot(aes(x = uncertainty, y = player)) +\n  geom_point(size = 3) +\n  facet_wrap(~ cluster, scales = \"free_y\", nrow = 3)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
+  },
+  {
     "objectID": "lectures/13-regularization.html#previously",
     "href": "lectures/13-regularization.html#previously",
     "title": "Supervised learning: variable selection",
@@ -2175,6 +2126,62 @@
     "title": "Template for Quarto reports",
     "section": "",
     "text": "Resources:\nhttps://r4ds.hadley.nz/quarto\nhttps://quarto.org/docs/guide/\nhttps://quarto.org/docs/authoring/markdown-basics.html\nThis short template demonstrates the useful features of Quarto you’ll need to write reproducible reports. You should read the Qmd source file and also use the Render button to see what it looks like in PDF.\nQuarto has a comprehensive manual online.\n\nText formatting\nAs you can see above, # indicates a top-level section header. Subsection headers can be made with ##, sub-subsections with ###, and so on. These are automatically numbered. We can also assign labels to sections, subsections, and so on, and refer to them by number; for instance, Section 2 below describes how to include R code. To be able to refer to a section, give it a label using the {#sec-label} syntax on the same line as the header.\nText can be bolded with double asterisks and italicized with single asterisks. Monospace text, such as for short code snippets, uses backticks. (Note these are different from quotation marks or apostrophes.) Links are written like this.\nBulleted lists can be written with asterisks:\n\nEach item starts on a new line with an asterisk.\nItems should start on the beginning of the line.\nLeave blank lines after the end of the list so the list does not continue.\n\nMathematics can be written with LaTeX syntax using dollar signs. For instance, using single dollar signs we can write inline math: \\((-b \\pm \\sqrt{b^2 - 4ac})/2a\\).\nTo write math in “display style”, i.e. displayed on its own line centered on the page, we use double dollar signs: \\[\nN(A) = \\int_A \\lambda(t) \\, dt.\n\\] (Notice how I used \\, to put a space between the integrand and the differential. Notice also that I left no blank lines before and after the equation, since blank lines create new paragraphs that are hence indented.)\n\n\nCode blocks\nCode blocks are evaluated sequentially when you hit Render. As the code runs, R prints out which block is running, so naming blocks is useful if you want to know which one takes a long time. After the block name, you can specify chunk options. For example, echo controls whether the code is printed in the document. By default, output is printed in the document in monospace:\n\n\n  speed dist\n1     4    2\n2     4   10\n3     7    4\n4     7   22\n5     8   16\n6     9   10\n\n\nChunk options can also be written inside the code block as YAML, which is helpful for really long options, as we’ll see soon.\n\n\n  speed dist\n1     4    2\n2     4   10\n3     7    4\n4     7   22\n5     8   16\n6     9   10\n\n\nCode often prints out irrelevant output we don’t want to include. For instance, many packages print out “helpful” messages when they’re loaded. We usually want to suppress these so they don’t appear in the finalized report. There are a few ways to do this.\nFor package startup messages, we can suppress them individually without suppressing other output:\n\nsuppressPackageStartupMessages(library(ggplot2))\n\n2 + 2\n\n[1] 4\n\n\nNote the output appears but not the normal ggplot2 message.\nTo hide all warnings, use the warning option:\n\nwarning(\"This is an example warning!\")\n\nTo hide messages printed with message(), use the message option:\n\nmessage(\"This is an example message\")\n\nTo hide all text output, including things printed with cat() or print(), use the results option:\n\ncat(\"foobar\\n\")\n\n\n\nInline code\nSometimes it’s useful to embed the output of R code into the middle of the paragraph. For instance, suppose you have code that calculates an MSE:\n\nmse &lt;- 71243.2451\n\nTo embed this in text, we can use backticks in a special way. For instance, I can embed this number like so: 7.1243245^{4}. Note how it’s automatically formatted.\nThe prettyNum() function can be very useful. It allows you to print numbers with commas (for thousands separators) and with a limited number of significant digits: 71,243.2.\n\n\nFigures\nIf a code block produces a plot or figure, this figure will automatically be inserted inline in the report. That is, it will be inserted exactly where the code block is. This is not what we normally want. We normally want plots to be in figures, i.e. to appear at the top of bottom of the printed page with a caption, figure number, and so on. We can do this with the right options.\n\n\n\n\n\nFigure 1: This is a caption. It should explain what’s in the figure and what’s interesting about it. For instance: Stopping distances of 1920s cars as a function of their speed. The trend appears linear, although there is a hint of a quadratic trend, which would make sense as kinetic energy is proportional to the square of speed.\n\n\n\n\nWe can refer to this figure in the text by its number. For instance, we can write this: Figure 1 illustrates the relationship between car speed and stopping distance.\nThe @ref syntax tells Quarto to insert the reference. We write @fig-with-caption to indicate it’s a figure and produced by the code block named fig-with-caption. The code block name must begin with fig- so Quarto knows to refer to it by “Figure N”, rather than “Table N” or some other prefix.\nNotice the use of fig.width and fig.height to control the figure’s size (in inches). These control the sizes given to R when it generates the plot, so R proportionally adjusts the font sizes to be large enough.\n\n\nModels\nWe can summarize model results with a table. For instance, suppose we fit a couple linear regression models:\n\nmodel1 &lt;- lm(mpg ~ disp + hp + drat, data = mtcars)\nmodel2 &lt;- lm(mpg ~ disp + hp + drat + qsec, data = mtcars)\n\nIt is not appropriate to simply print summary(model1) into the report. If we want the reader to understand what models we have fit and what their results are, we should provide a nicely formatted table. Packages such as texreg can do this, although they do not integrate with Quarto very well. A simpler option is to use broom::tidy() to get a data frame of the model fit, and simply report that as a table. Table 1 shows the results. To show multiple models at once, you can use dplyr::full_join() to pull together the tidied models and rearrange the columns as you desire.\n\n\n\n\nTable 1: Predicting fuel economy using vehicle features.\n\n\nTerm\nEstimate\nSE\nt\np\n\n\n\n\n(Intercept)\n19.34\n6.37\n3.04\n0.01\n\n\ndisp\n-0.02\n0.01\n-2.05\n0.05\n\n\nhp\n-0.03\n0.01\n-2.34\n0.03\n\n\ndrat\n2.71\n1.49\n1.83\n0.08\n\n\n\n\n\n\nSadly this table does not float, i.e. it appears exactly where we put it instead of going to the top or bottom of the page; this causes some strange page layouts but appears to be unavoidable without contorted code."
+  },
+  {
+    "objectID": "lectures/09-presentation.html#begin-with-background-and-motivation",
+    "href": "lectures/09-presentation.html#begin-with-background-and-motivation",
+    "title": "Presentations",
+    "section": "Begin with background and motivation",
+    "text": "Begin with background and motivation\nEvery presentation has a story:\n\nWhat is the motivation? Why should people care about your work?\nYou want to build up want your work is trying to address\n\n\nExample nflWAR talk from 2017:\n\nDo NOT begin with: “We’re introducing WAR for NFL!”\nInstead begin with current state of NFL analytics and need for better, reproducible player level-metrics\n\n\n\nDo NOT include an outline slide!\n\nYour presentation should flow naturally"
+  },
+  {
+    "objectID": "lectures/09-presentation.html#describing-the-data",
+    "href": "lectures/09-presentation.html#describing-the-data",
+    "title": "Presentations",
+    "section": "Describing the data",
+    "text": "Describing the data\nYou want to provide a general overview of your dataset:\n\nWhat are your observations? i.e., what does each row of your dataset represent?\n\n\n\nWhat are the relevant variables / features? i.e., what are the columns of interest?\n\nBe careful though with many variables - avoid just listing everything!\nSimplify by describing groups of variables together\n\n\n\n\nUse examples - makes your data explicit and concrete for the audience\n\nBut do NOT print out raw R console output or screenshots of output!\nUse text or a clean formatted table (via knitr, DT, gt)"
+  },
+  {
+    "objectID": "lectures/09-presentation.html#introducing-and-describing-methods",
+    "href": "lectures/09-presentation.html#introducing-and-describing-methods",
+    "title": "Presentations",
+    "section": "Introducing and describing methods",
+    "text": "Introducing and describing methods\n\nPrior to presenting results, you want to clearly state any transformations and methods used in the analysis\nYour presentation should provide the general steps for someone to replicate your work\n\ne.g., Used complete-linkage hierarchical clustering with [INSERT VARIABLES], determined \\(k\\) number of clusters by [INSERT REASON]\ne.g., Modeled [INSERT RESPONSE VARIABLE] as a function of [INSERT EXPLANATORY VARIABLES]\n\n\n\n\nFor more complicated methods, you’ll want to provide a brief review of the methodology\nIf introducing new methodology: walk through the steps clearly\n\n\n\n\nAlways justify your choice of methodology\n\nWhy you used a flexible tree-based model over linear regression"
+  },
+  {
+    "objectID": "lectures/09-presentation.html#presenting-results",
+    "href": "lectures/09-presentation.html#presenting-results",
+    "title": "Presentations",
+    "section": "Presenting results",
+    "text": "Presenting results\n\nUse the assertion-evidence model\nAssertion: title of the slide should be the key takeaway in brief sentence form\n\nIndicates the point of the visualization or whatever means used to display the results\n\nEvidence: the body of the slide containing the results\n\nDisplay of the results in some format that is simple to explain and understand\n\n\n\n\nLimit the amount of text in your Evidence portion - brief statements with important context\nTreat the Assertion as the title of your Evidence\n\nPlot titles are then redundant and not necessary with an effective assertion"
+  },
+  {
+    "objectID": "lectures/09-presentation.html#assertion",
+    "href": "lectures/09-presentation.html#assertion",
+    "title": "Presentations",
+    "section": "Assertion",
+    "text": "Assertion\n\n\n\nEvidence\n\n(e.g., plots, animations, tables, etc.)"
+  },
+  {
+    "objectID": "lectures/09-presentation.html#mlb-strikeout-rates-have-been-increasing-throughout-history",
+    "href": "lectures/09-presentation.html#mlb-strikeout-rates-have-been-increasing-throughout-history",
+    "title": "Presentations",
+    "section": "MLB strikeout rates have been increasing throughout history",
+    "text": "MLB strikeout rates have been increasing throughout history\n\n\n(Explain the aes of your graph - what is each axis, color, shape, etc referring to? And what is the unit scale?)"
+  },
+  {
+    "objectID": "lectures/09-presentation.html#discussion-and-ending-a-presentation",
+    "href": "lectures/09-presentation.html#discussion-and-ending-a-presentation",
+    "title": "Presentations",
+    "section": "Discussion (and ending a presentation)",
+    "text": "Discussion (and ending a presentation)\n\nConclude with a recap of the main points of your work\n\n\n\nThen point out limitations and indicate a direction for the next steps\n\n\n\n\nEither end with the Discussion slide (or Acknowledgements but this is sometimes placed at the beginning)\nNever end a presentation with lone Thank you slide!\n\nWant the audience to focus on the final points in your Discussion slide\n\n\n\n\n\nInclude back-up Appendix slides with additional info, ready for questions\n\n\n\n\nSlides for References should not be displayed during your talk\n\nTheir purpose is just for sharing with others\nAlternative option: include references directly on slides either in text or via footnotes 1\n\n\n\nLike this…"
+  },
+  {
+    "objectID": "lectures/09-presentation.html#additional-tips-and-reminders",
+    "href": "lectures/09-presentation.html#additional-tips-and-reminders",
+    "title": "Presentations",
+    "section": "Additional tips and reminders",
+    "text": "Additional tips and reminders\nUse pauses effectively to highlight points and explain steps\n\n\nShowing all of your text at once can overwhelm your audience\n\n\n\nBut\n\n\ndon’t\n\n\nbe\n\n\nridiculous\n\n\nRemember: memory overload is real!\n\nDo NOT introduce too much notation at once\nRepetitive language and usage of words are useful and reminders for the audience\n\nUse consistent language and terminology throughout the talk\n\n\n\n\nKnow your audience!"
   },
   {
     "objectID": "lectures/05-kmeans.html#statistical-learning-and-unsupervised-learning",
@@ -2504,6 +2511,188 @@
     "title": "Supervised learning: the tradeoffs",
     "section": "Check out this song",
     "text": "Check out this song\n\n\n\n36-SURE.github.io"
+  },
+  {
+    "objectID": "lectures/14-logistic.html#data-pima",
+    "href": "lectures/14-logistic.html#data-pima",
+    "title": "Supervised learning: logistic regression",
+    "section": "Data: pima",
+    "text": "Data: pima\n\nlibrary(tidyverse)\n# https://www.refsmmat.com/courses/707/lecture-notes/logistic-regression.html\n\n\n\n36-SURE.github.io"
+  },
+  {
+    "objectID": "lectures/16-pca.html#the-big-picture",
+    "href": "lectures/16-pca.html#the-big-picture",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "The big picture",
+    "text": "The big picture\nHow do we visualize structure of high-dimensional data?\n\nExample: What if you’re given a dataset with 50 variables, and ask you to make one visualization that best represents the data? What do you do?\n\n\nTedious task: Make a series of all \\(\\displaystyle \\binom{50}{2} = 1225\\) pairs of plots?\n\n\nIntuition: Take high-dimensional data and represent it in 2-3 dimensions, then visualize those dimensions"
+  },
+  {
+    "objectID": "lectures/16-pca.html#what-is-the-goal-of-dimension-reduction",
+    "href": "lectures/16-pca.html#what-is-the-goal-of-dimension-reduction",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "What is the goal of dimension reduction?",
+    "text": "What is the goal of dimension reduction?\nWe have \\(p\\) variables (columns) for \\(n\\) observations (rows) BUT which variables are interesting?\n\nCan we find a smaller number of dimensions that captures the interesting structure in the data?\n\nCould examine all pairwise scatterplots of each variable - tedious, manual process\nClustering of variables based on correlation\nCan we find a combination of the original \\(p\\) variables?\n\n\n\nDimension reduction:\n\nFocus on reducing the dimensionality of the feature space (i.e., number of columns)\nRetain most of the information / variability in a lower dimensional space (i.e., reducing the number of columns)\nThe process: (big) \\(n \\times p\\) matrix \\(\\longrightarrow\\) dimension reduction method \\(\\longrightarrow\\) (smaller) \\(n \\times k\\) matrix"
+  },
+  {
+    "objectID": "lectures/16-pca.html#principal-components-analysis-pca",
+    "href": "lectures/16-pca.html#principal-components-analysis-pca",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Principal components analysis (PCA)",
+    "text": "Principal components analysis (PCA)"
+  },
+  {
+    "objectID": "lectures/16-pca.html#principal-components-analysis-pca-1",
+    "href": "lectures/16-pca.html#principal-components-analysis-pca-1",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Principal components analysis (PCA)",
+    "text": "Principal components analysis (PCA)\n\\[\n\\begin{pmatrix}\n& & \\text{really} & & \\\\\n& & \\text{wide} & & \\\\\n& & \\text{matrix} & &\n\\end{pmatrix}\n\\rightarrow \\text{matrix algebra razzmatazz} \\rightarrow\n\\begin{pmatrix}\n\\text{much}  \\\\\n\\text{thinner}  \\\\\n\\text{matrix}\n\\end{pmatrix}\n\\]\n\nPCA explores the covariance between variables, and combines variables into a smaller set of uncorrelated variables called principal components (PCs)\n\nTurn a \\(n \\times p\\) matrix of correlated variables into a \\(n \\times k\\) matrix of uncorrelated variables\n\nEach of the \\(k\\) columns in the right-hand matrix are principal components (PCs), all uncorrelated with each other\n\nPCs are weighted, linear combinations of the original variables\nWeights reveal how different variables are loaded into the PCs\n\nFirst column accounts for most variation in the data, second column for second-most variation, and so on\n\nIntuition: we want a small number of PCs (first few PCs) to account for most of the information/variance in the data"
+  },
+  {
+    "objectID": "lectures/16-pca.html#what-are-principal-components",
+    "href": "lectures/16-pca.html#what-are-principal-components",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "What are principal components?",
+    "text": "What are principal components?\n\nAssume \\(\\boldsymbol{X}\\) is a \\(n \\times p\\) matrix that is centered and stardardized\nTotal variation \\(= p\\), since \\(\\text{Var}(\\boldsymbol{x}_j)\\) = 1 for all \\(j = 1, \\dots, p\\)\nPCA will give us \\(p\\) principal components that are \\(n\\)-length columns - call these \\(Z_1, \\dots, Z_p\\)\n\nFirst principal component\n\\[Z_1 = \\phi_{11} X_1 + \\phi_{21} X_2 + \\dots + \\phi_{p1} X_p\\]\n\n\n\\(\\phi_{j1}\\) are the weights indicating the contributions of each variable \\(j \\in 1, \\dots, p\\)\nWeights are normalized \\(\\sum_{j=1}^p \\phi_{j1}^2 = 1\\)\n\\(\\phi_{1} = (\\phi_{11}, \\phi_{21}, \\dots, \\phi_{p1})\\) is the loading vector for PC1\n\n\n\n\n\\(Z_1\\) is a linear combination of the \\(p\\) variables that has the largest variance"
+  },
+  {
+    "objectID": "lectures/16-pca.html#principal-components-analysis-pca-2",
+    "href": "lectures/16-pca.html#principal-components-analysis-pca-2",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Principal components analysis (PCA)",
+    "text": "Principal components analysis (PCA)\nSecond principal component\n\\[Z_2 = \\phi_{12} X_1 + \\phi_{22} X_2 + \\dots + \\phi_{p2} X_p\\]\n\n\\(\\phi_{j2}\\) are the weights indicating the contributions of each variable \\(j \\in 1, \\dots, p\\)\nWeights are normalized \\(\\sum_{j=1}^p \\phi_{j1}^2 = 1\\)\n\\(\\phi_{2} = (\\phi_{12}, \\phi_{22}, \\dots, \\phi_{p2})\\) is the loading vector for PC2\n\\(Z_2\\) is a linear combination of the \\(p\\) variables that has the largest variance\n\nSubject to constraint it is uncorrelated with \\(Z_1\\)\n\n\n\nRepeat this process to create \\(p\\) principal components\n\nUncorrelated: Each (\\(Z_j, Z_{j'}\\)) is uncorrelated with each other\nOrdered Variance: \\(\\text{Var}(Z_1) &gt; \\text{Var}(Z_2) &gt; \\dots &gt; \\text{Var}(Z_p)\\)\nTotal Variance: \\(\\sum_{j=1}^p \\text{Var}(Z_j) = p\\)"
+  },
+  {
+    "objectID": "lectures/16-pca.html#visualizing-pca-in-two-dimensions",
+    "href": "lectures/16-pca.html#visualizing-pca-in-two-dimensions",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Visualizing PCA in two dimensions",
+    "text": "Visualizing PCA in two dimensions"
+  },
+  {
+    "objectID": "lectures/16-pca.html#visualizing-pca-in-two-dimensions-1",
+    "href": "lectures/16-pca.html#visualizing-pca-in-two-dimensions-1",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Visualizing PCA in two dimensions",
+    "text": "Visualizing PCA in two dimensions"
+  },
+  {
+    "objectID": "lectures/16-pca.html#visualizing-pca-in-two-dimensions-2",
+    "href": "lectures/16-pca.html#visualizing-pca-in-two-dimensions-2",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Visualizing PCA in two dimensions",
+    "text": "Visualizing PCA in two dimensions"
+  },
+  {
+    "objectID": "lectures/16-pca.html#visualizing-pca-in-two-dimensions-3",
+    "href": "lectures/16-pca.html#visualizing-pca-in-two-dimensions-3",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Visualizing PCA in two dimensions",
+    "text": "Visualizing PCA in two dimensions"
+  },
+  {
+    "objectID": "lectures/16-pca.html#visualizing-pca-in-two-dimensions-4",
+    "href": "lectures/16-pca.html#visualizing-pca-in-two-dimensions-4",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Visualizing PCA in two dimensions",
+    "text": "Visualizing PCA in two dimensions"
+  },
+  {
+    "objectID": "lectures/16-pca.html#searching-for-variance-in-orthogonal-directions",
+    "href": "lectures/16-pca.html#searching-for-variance-in-orthogonal-directions",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Searching for variance in orthogonal directions",
+    "text": "Searching for variance in orthogonal directions"
+  },
+  {
+    "objectID": "lectures/16-pca.html#pca-singular-value-decomposition-svd",
+    "href": "lectures/16-pca.html#pca-singular-value-decomposition-svd",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "PCA: singular value decomposition (SVD)",
+    "text": "PCA: singular value decomposition (SVD)\n\\[\nX = U D V^T\n\\]\n\n\\(U\\) and \\(V\\): matrices containing the left and right singular vectors of scaled matrix \\(X\\)\n\\(D\\): diagonal matrix of the singular values\n\n\n\nSVD simplifies matrix-vector multiplication as rotate, scale, and rotate again\n\n\n\n\\(V\\): loading matrix for \\(X\\) with \\(\\phi_{j}\\) as columns\n\n\\(Z = X V\\): PC matrix\n\n\n\nBonus: Eigenvalue decomposition (or spectral decomposition)\n\n\\(V\\): eigenvectors of \\(X^TX\\) (covariance matrix, \\(^T\\): transpose)\n\\(U\\): eigenvectors of \\(XX^T\\)\nThe singular values (diagonal of \\(D\\)) are square roots of the eigenvalues of \\(X^TX\\) or \\(XX^T\\)\nMeaning that \\(Z = UD\\)"
+  },
+  {
+    "objectID": "lectures/16-pca.html#eigenvalues-guide-dimension-reduction",
+    "href": "lectures/16-pca.html#eigenvalues-guide-dimension-reduction",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Eigenvalues guide dimension reduction",
+    "text": "Eigenvalues guide dimension reduction\nWe want to choose \\(p^* &lt; p\\) such that we are explaining variation in the data\n\nEigenvalues \\(\\lambda_j\\) for \\(j \\in 1, \\dots, p\\) indicate the variance explained by each component\n\n\\(\\displaystyle \\sum_j^p \\lambda_j = p\\), meaning \\(\\lambda_j \\geq 1\\) indicates \\(\\text{PC}j\\) contains at least one variable’s worth in variability\n\\(\\displaystyle \\frac{\\lambda_j}{p}\\): proportion of variance explained by \\(\\text{PC}j\\)\nArranged in descending order so that \\(\\lambda_1\\) is largest eigenvalue and corresponds to PC1\n\n\n\n\nCompute the cumulative proportion of variance explained (CVE) with \\(p^*\\) components \\[\\text{CVE}_{p^*} = \\sum_j^{p*} \\frac{\\lambda_j}{p}\\] Use scree plot to plot eigenvalues and guide choice for \\(p^* &lt;p\\) by looking for “elbow” (rapid to slow change)"
+  },
+  {
+    "objectID": "lectures/16-pca.html#data-nutritional-information-of-starbucks-drinks",
+    "href": "lectures/16-pca.html#data-nutritional-information-of-starbucks-drinks",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Data: nutritional information of Starbucks drinks",
+    "text": "Data: nutritional information of Starbucks drinks\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nstarbucks &lt;- read_csv(\n  \"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-12-21/starbucks.csv\"\n) |&gt;\n  # convert columns to numeric that were saved as character\n  mutate(trans_fat_g = as.numeric(trans_fat_g), fiber_g = as.numeric(fiber_g))\nglimpse(starbucks)\n\nRows: 1,147\nColumns: 15\n$ product_name    &lt;chr&gt; \"brewed coffee - dark roast\", \"brewed coffee - dark ro…\n$ size            &lt;chr&gt; \"short\", \"tall\", \"grande\", \"venti\", \"short\", \"tall\", \"…\n$ milk            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, …\n$ whip            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ serv_size_m_l   &lt;dbl&gt; 236, 354, 473, 591, 236, 354, 473, 591, 236, 354, 473,…\n$ calories        &lt;dbl&gt; 3, 4, 5, 5, 3, 4, 5, 5, 3, 4, 5, 5, 3, 4, 5, 5, 35, 50…\n$ total_fat_g     &lt;dbl&gt; 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,…\n$ saturated_fat_g &lt;dbl&gt; 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,…\n$ trans_fat_g     &lt;dbl&gt; 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,…\n$ cholesterol_mg  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,…\n$ sodium_mg       &lt;dbl&gt; 5, 10, 10, 10, 5, 10, 10, 10, 5, 5, 5, 5, 5, 5, 5, 5, …\n$ total_carbs_g   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, …\n$ fiber_g         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ sugar_g         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, …\n$ caffeine_mg     &lt;dbl&gt; 130, 193, 260, 340, 15, 20, 25, 30, 155, 235, 310, 410…"
+  },
+  {
+    "objectID": "lectures/16-pca.html#implement-pca",
+    "href": "lectures/16-pca.html#implement-pca",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Implement PCA",
+    "text": "Implement PCA\nUse the prcomp() function (based on SVD) for PCA on centered and scaled data\n\nfeat &lt;- starbucks |&gt; \n  select(serv_size_m_l:caffeine_mg)\nstarbucks_pca &lt;- prcomp(feat, center = TRUE, scale. = TRUE)\nsummary(starbucks_pca)\n\nImportance of components:\n                          PC1    PC2    PC3     PC4     PC5     PC6    PC7\nStandard deviation     2.4748 1.3074 1.0571 0.97919 0.67836 0.56399 0.4413\nProportion of Variance 0.5568 0.1554 0.1016 0.08716 0.04183 0.02892 0.0177\nCumulative Proportion  0.5568 0.7122 0.8138 0.90093 0.94276 0.97168 0.9894\n                           PC8     PC9    PC10    PC11\nStandard deviation     0.28123 0.16874 0.08702 0.04048\nProportion of Variance 0.00719 0.00259 0.00069 0.00015\nCumulative Proportion  0.99657 0.99916 0.99985 1.00000"
+  },
+  {
+    "objectID": "lectures/16-pca.html#pca-output",
+    "href": "lectures/16-pca.html#pca-output",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "PCA output",
+    "text": "PCA output\n\n# str(starbucks_pca)\n\nExamine the output after running prcomp()\n\nstarbucks_pca$sdev: singular values (\\(\\sqrt{\\lambda_j}\\))\nstarbucks_pca$rotation: loading matrix (\\(V\\))\nstarbucks_pca$x: principal component scores matrix (\\(Z=XV\\))\n\nCan use the broom package for tidying prcomp()\n\ntidy(starbucks_pca, matrix = \"eigenvalues\") # equivalent to starbucks_pca$sdev\ntidy(starbucks_pca, matrix = \"rotation\") # equivalent to starbucks_pca$rotation\ntidy(starbucks_pca, matrix = \"scores\") # equivalent to starbucks_pca$x"
+  },
+  {
+    "objectID": "lectures/16-pca.html#proportion-of-variance-explained",
+    "href": "lectures/16-pca.html#proportion-of-variance-explained",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Proportion of variance explained",
+    "text": "Proportion of variance explained\n\nlibrary(broom)\nstarbucks_pca |&gt;\n  tidy(matrix = \"eigenvalues\") |&gt;\n  ggplot(aes(x = PC, y = percent)) +\n  geom_line() + \n  geom_point() +\n  geom_hline(yintercept = 1 / ncol(feat), color = \"darkred\", linetype = \"dashed\") +\n  scale_x_continuous(breaks = 1:ncol(starbucks_pca$x))"
+  },
+  {
+    "objectID": "lectures/16-pca.html#cumulative-proportion-of-variance-explained",
+    "href": "lectures/16-pca.html#cumulative-proportion-of-variance-explained",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Cumulative proportion of variance explained",
+    "text": "Cumulative proportion of variance explained\n\nlibrary(broom)\nstarbucks_pca |&gt;\n  tidy(matrix = \"eigenvalues\") |&gt;\n  ggplot(aes(x = PC, y = cumulative)) +\n  geom_line() + \n  geom_point() +\n  scale_x_continuous(breaks = 1:ncol(starbucks_pca$x))"
+  },
+  {
+    "objectID": "lectures/16-pca.html#computing-principal-components",
+    "href": "lectures/16-pca.html#computing-principal-components",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Computing principal components",
+    "text": "Computing principal components\nExtract the matrix of principal components \\(\\boldsymbol{Z} = XV\\) (dimension of \\(\\boldsymbol{Z}\\) will match original data)\n\nstarbucks_pc_matrix &lt;- starbucks_pca$x\nhead(starbucks_pc_matrix)\n\n           PC1        PC2        PC3           PC4         PC5         PC6\n[1,] -3.766852 -1.0023657  0.2482698 -0.1521871448  0.24739830 -0.11365847\n[2,] -3.633234 -0.6946439  1.2059943 -0.3720566566  0.06052789 -0.06406410\n[3,] -3.518063 -0.3981399  2.2165170 -0.5967175941 -0.13122572 -0.01937237\n[4,] -3.412061 -0.1067045  3.3741594 -0.8490378243 -0.26095965 -0.00899485\n[5,] -3.721426 -0.9868147 -1.0705094  0.0949330091 -0.27181508  0.17491809\n[6,] -3.564899 -0.6712499 -0.7779083 -0.0003019903 -0.72054963  0.37005543\n             PC7         PC8        PC9       PC10        PC11\n[1,] -0.02812472 0.006489978 0.05145094 0.06678083 0.019741873\n[2,]  0.05460952 0.021148978 0.07094211 0.08080545 0.023480029\n[3,]  0.09050806 0.031575955 0.08901403 0.09389227 0.028669251\n[4,]  0.11585507 0.037521689 0.11287190 0.11582260 0.034691142\n[5,]  0.07009414 0.037736197 0.02892317 0.03631676 0.005775410\n[6,]  0.20236484 0.068154160 0.03705252 0.03497690 0.002469611\n\n\nColumns are uncorrelated, such that \\(\\text{Var}(Z_1) &gt; \\text{Var}(Z_2) &gt; \\dots &gt; \\text{Var}(Z_p)\\)"
+  },
+  {
+    "objectID": "lectures/16-pca.html#visualizing-first-two-principal-components",
+    "href": "lectures/16-pca.html#visualizing-first-two-principal-components",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Visualizing first two principal components",
+    "text": "Visualizing first two principal components\n\n\n\nstarbucks &lt;- starbucks |&gt; \n  mutate(pc1 = starbucks_pc_matrix[,1], \n         pc2 = starbucks_pc_matrix[,2])\nstarbucks |&gt; \n  ggplot(aes(x = pc1, y = pc2)) +\n  geom_point(alpha = 0.5) +\n  labs(x = \"PC 1\", y = \"PC 2\")\n\n\nPrincipal components are not interpretable\nMake a biplot with arrows showing the linear relationship between one variable and other variables"
+  },
+  {
+    "objectID": "lectures/16-pca.html#making-pcs-interpretable-with-biplots",
+    "href": "lectures/16-pca.html#making-pcs-interpretable-with-biplots",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Making PCs interpretable with biplots",
+    "text": "Making PCs interpretable with biplots\nBiplot displays both the space of observations and the space of variables\nCheck out the factoextra package\n\n\n\nlibrary(factoextra)\n# fviz_pca_var(): projection of variables\n# fviz_pca_ind(): display observations with first two PCs\nstarbucks_pca |&gt; \n  fviz_pca_biplot(label = \"var\",\n                  alpha.ind = 0.25,\n                  alpha.var = 0.75,\n                  col.var = \"darkblue\",\n                  repel = TRUE)\n\n\nArrow direction: “as the variable increases…”\nArrow angles: correlation\n\n\\(90^{\\circ}\\): uncorrelated\n\\(&lt; 90^{\\circ}\\): positively correlated\n\\(&gt; 90^{\\circ}\\): negatively correlated\n\nArrow length: strength of relationship with PCs"
+  },
+  {
+    "objectID": "lectures/16-pca.html#how-many-principal-components-to-use",
+    "href": "lectures/16-pca.html#how-many-principal-components-to-use",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "How many principal components to use?",
+    "text": "How many principal components to use?\nIntuition: Additional principal components will add smaller and smaller variance\n\nKeep adding components until the added variance drops off\n\n\nsummary(starbucks_pca)\n\nImportance of components:\n                          PC1    PC2    PC3     PC4     PC5     PC6    PC7\nStandard deviation     2.4748 1.3074 1.0571 0.97919 0.67836 0.56399 0.4413\nProportion of Variance 0.5568 0.1554 0.1016 0.08716 0.04183 0.02892 0.0177\nCumulative Proportion  0.5568 0.7122 0.8138 0.90093 0.94276 0.97168 0.9894\n                           PC8     PC9    PC10    PC11\nStandard deviation     0.28123 0.16874 0.08702 0.04048\nProportion of Variance 0.00719 0.00259 0.00069 0.00015\nCumulative Proportion  0.99657 0.99916 0.99985 1.00000"
+  },
+  {
+    "objectID": "lectures/16-pca.html#create-a-scree-plot-or-elbow-plot",
+    "href": "lectures/16-pca.html#create-a-scree-plot-or-elbow-plot",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Create a scree plot (or elbow plot)",
+    "text": "Create a scree plot (or elbow plot)\n\nstarbucks_pca |&gt; \n  fviz_eig(addlabels = TRUE) +\n  geom_hline(yintercept = 100 * (1 / ncol(starbucks_pca$x)), linetype = \"dashed\", color = \"darkred\")\n\n\n\nRule of thumb: horizontal line at \\(1/p\\) (Why?)"
+  },
+  {
+    "objectID": "lectures/16-pca.html#remember-the-spelling",
+    "href": "lectures/16-pca.html#remember-the-spelling",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Remember the spelling…",
+    "text": "Remember the spelling…\n\n\nfolks. it's principal (not principle) components analysis.\n\n— Stephanie Hicks, PhD (@stephaniehicks) February 17, 2023\n\n\n\n\n36-SURE.github.io"
   },
   {
     "objectID": "lectures/00-welcome.html#plan-for-today",
@@ -3035,7 +3224,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"a\" \"y\" \"x\" \"d\" \"l\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 0 0 0 0 0 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"T\" \"T\" \"T\" \"H\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 36"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"r\" \"w\" \"a\" \"z\" \"o\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 1 1 0 1 1 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"H\" \"H\" \"H\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 62"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -3077,21 +3266,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.02318022\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.01064"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.02293999\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.987958"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.518\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.34     0.001 0.000413\n 2 -3.16     0.002 0.000790\n 3 -2.76     0.003 0.00285 \n 4 -2.71     0.004 0.00336 \n 5 -2.66     0.005 0.00390 \n 6 -2.64     0.006 0.00416 \n 7 -2.64     0.007 0.00418 \n 8 -2.45     0.008 0.00720 \n 9 -2.43     0.009 0.00750 \n10 -2.43     0.01  0.00765 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.51\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.39     0.001 0.000345\n 2 -3.15     0.002 0.000824\n 3 -3.15     0.003 0.000824\n 4 -3.10     0.004 0.000954\n 5 -2.82     0.005 0.00242 \n 6 -2.77     0.006 0.00278 \n 7 -2.50     0.007 0.00629 \n 8 -2.34     0.008 0.00974 \n 9 -2.33     0.009 0.00990 \n10 -2.32     0.01  0.0101  \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3861352\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.385941\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -3105,14 +3294,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1516\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1348\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.1570827\n\nmean(rnorm(100))\n\n[1] 0.100688\n\nmean(rnorm(100))\n\n[1] 0.03743374"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.09220582\n\nmean(rnorm(100))\n\n[1] -0.1710574\n\nmean(rnorm(100))\n\n[1] 0.01319152"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
@@ -3381,137 +3570,11 @@
     "text": "Resources\n\nggplot2 website: cheatsheets, FAQs, extensions, and more\nTidyTuesday\nDavid Robinson’s TidyTuesday screencasts\nVizBuzz: LIVE data viz replication game show\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
   },
   {
-    "objectID": "lectures/15-mixture.html#previously-clustering",
-    "href": "lectures/15-mixture.html#previously-clustering",
-    "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "Previously: clustering",
-    "text": "Previously: clustering\n\nPrevious methods: \\(k\\)-means clustering  and hierarchical clustering\nOutput hard assignments, strictly assigning observations to only one cluster\n\n\n\nWhat about soft assignments and uncertainty in the clustering results?\n\n\n\n\nEntering mixture models"
-  },
-  {
-    "objectID": "lectures/15-mixture.html#previously-kernel-density-estimation",
-    "href": "lectures/15-mixture.html#previously-kernel-density-estimation",
-    "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "Previously: kernel density estimation",
-    "text": "Previously: kernel density estimation\nKernel density estimator: \\(\\quad \\displaystyle \\hat{f}(x) = \\frac{1}{n} \\sum_{i=1}^n \\frac{1}{h} K_h(x - x_i)\\)\n\nWe have to use every observation when estimating the density for new points\n\n\n\n\n\n\n\n\n\n\n\nInstead we can make some simplifying assumptions"
-  },
-  {
-    "objectID": "lectures/15-mixture.html#mixture-models",
-    "href": "lectures/15-mixture.html#mixture-models",
-    "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "Mixture models",
-    "text": "Mixture models\nAssume \\(f(x)\\) is a mixture of \\(K\\) component distributions \\(\\displaystyle f(x) = \\sum_{k=1}^K \\pi_k f_k(x)\\)\n\nwhere \\(\\pi_k =\\) mixing proportions (or weights), with \\(\\pi_k &gt; 0\\), and \\(\\sum_k \\pi_k = 1\\)\n\n\nThis is a data generating process, meaning to generate a new point:\n\npick a distribution/component among our \\(K\\) options by introducing a new variable \\(z \\sim \\text{Multinomial} (\\pi_1, \\pi_2, \\dots, \\pi_k)\\) (categorical variable for which group the new point is from)\n\n\n\n\ngenerate an observation with that distribution / component, i.e. \\(x \\mid z \\sim f_{z}\\)\n\n\n\nSo what do we use for each \\(f_k\\)?"
-  },
-  {
-    "objectID": "lectures/15-mixture.html#gaussian-mixture-models-gmms",
-    "href": "lectures/15-mixture.html#gaussian-mixture-models-gmms",
-    "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "Gaussian mixture models (GMMs)",
-    "text": "Gaussian mixture models (GMMs)\nAssume a parametric mixture model, with parameters \\(\\theta_k\\) for the \\(k\\)th component \\[f(x) = \\sum_{k=1}^K \\pi_k f_k(x; \\theta_k)\\]\n\nAssume each component is Gaussian/normal, where the 1D case is\n\\[f_k(x; \\theta_k) = N(x; \\mu_k, \\sigma_k^2) = \\frac{1}{\\sqrt{2\\pi \\sigma_k^2}}\\text{exp} \\Big( -\\frac{(x - \\mu_k)^2}{2 \\sigma_k^2} \\Big)\\]\n\n\nWe need to estimate each \\(\\pi_1, \\dots, \\pi_k\\), \\(\\mu_1, \\dots, \\mu_k\\), \\(\\sigma_1, \\dots, \\sigma_k\\)"
-  },
-  {
-    "objectID": "lectures/15-mixture.html#lets-pretend-we-only-have-one-component",
-    "href": "lectures/15-mixture.html#lets-pretend-we-only-have-one-component",
-    "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "Let’s pretend we only have one component…",
-    "text": "Let’s pretend we only have one component…\nGiven \\(n\\) observations from a single Normal distribution, we estimate the distribution parameters using the likelihood function, the probability/density of observing the data given the parameters\n\\[\\mathcal{L}(\\mu, \\sigma \\mid x_1, \\dots, x_n) = f( x_1, \\dots, x_n \\mid \\mu, \\sigma) =  \\prod_i^n \\frac{1}{\\sqrt{2\\pi \\sigma^2}}\\text{exp } \\left\\{-\\frac{(x_i - \\mu)^2}{2 \\sigma^2}\\right\\}\\]\n\nWe can compute the maximum likelihood estimates (MLEs) for \\(\\mu\\) and \\(\\sigma\\)\nYou already know these values!\n\n\\(\\displaystyle \\hat{\\mu}_{\\rm MLE} = \\frac{1}{n} \\sum_i^n x_i\\), sample mean\n\\(\\displaystyle \\hat{\\sigma}_{\\rm MLE} = \\sqrt{\\frac{1}{n}\\sum_i^n (x_i - \\mu)^2}\\), sample standard deviation (plug in \\(\\hat{\\mu}_{\\rm MLE}\\))"
-  },
-  {
-    "objectID": "lectures/15-mixture.html#the-problem-with-more-than-one-component",
-    "href": "lectures/15-mixture.html#the-problem-with-more-than-one-component",
-    "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "The problem with more than one component",
-    "text": "The problem with more than one component\n\n\n\nWe don’t know which component an observation belongs to\nIF WE DID KNOW, then we could compute each component’s MLEs as before\nBut we don’t know because \\(z\\) is a latent variable! So what about its distribution given the data?\n\n\\(\\displaystyle P(z_i = k \\mid x_i) = \\frac{P(x_i \\mid z_i = k) P(z_i = k)}{P(x_i)}\\)\n\\(\\displaystyle =\\frac{\\pi_{k} N\\left(\\mu_{k}, \\sigma_{k}^{2}\\right)}{\\sum_{k=1}^{K} \\pi_{k} N\\left(\\mu_{k}, \\sigma_{k}\\right)}\\)\n\nBut we do NOT know these parameters!"
-  },
-  {
-    "objectID": "lectures/15-mixture.html#expectation-maximization-em-algorithm",
-    "href": "lectures/15-mixture.html#expectation-maximization-em-algorithm",
-    "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "Expectation-maximization (EM) algorithm",
-    "text": "Expectation-maximization (EM) algorithm\nAlternate between the following:\n\npretend to know the probability each observation belongs to each group, to estimate the parameters of the components\n\n\n\npretend to know the parameters of the components, to estimate the probability each observation belong to each group\n\n\n\nWhere have we seen this before?\n\n\n\\(k\\)-means algorithm!\n\n\n\nStart with initial guesses about \\(\\pi_1, \\dots, \\pi_k\\), \\(\\mu_1, \\dots, \\mu_k\\), \\(\\sigma_1, \\dots, \\sigma_k\\)\nRepeat until nothing changes:\n\n\n\n\nExpectation step: calculate \\(\\hat{z}_{ik}\\) = expected membership of observation \\(i\\) in cluster \\(k\\)\nMaximization step: update parameter estimates with weighted MLE using \\(\\hat{z}_{ik}\\)"
-  },
-  {
-    "objectID": "lectures/15-mixture.html#how-does-this-relate-back-to-clustering",
-    "href": "lectures/15-mixture.html#how-does-this-relate-back-to-clustering",
-    "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "How does this relate back to clustering?",
-    "text": "How does this relate back to clustering?\n\nFrom the EM algorithm: \\(\\hat{z}_{ik}\\) is a soft membership of observation \\(i\\) in cluster \\(k\\)\n\n\n\nassign observation \\(i\\) to a cluster with the largest \\(\\hat{z}_{ik}\\)\nmeasure cluster assignment uncertainty of \\(\\displaystyle 1 - \\max_k \\hat{z}_{ik}\\)\n\n\n\nOur parameters determine the type of clusters\n\n\nIn the 1D case, there are two options:\n\n\n\neach cluster is assumed to have equal variance (spread): \\(\\sigma_1^2 = \\sigma_2^2 = \\dots = \\sigma_k^2\\)\n\n\n\n\neach cluster is allowed to have a different variance\n\n\n\nBut that is only 1D… what happens in multiple dimensions?"
-  },
-  {
-    "objectID": "lectures/15-mixture.html#multivariate-gmms",
-    "href": "lectures/15-mixture.html#multivariate-gmms",
-    "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "Multivariate GMMs",
-    "text": "Multivariate GMMs\n\\[f(x) = \\sum_{k=1}^K \\pi_k f_k(x; \\theta_k) \\qquad \\text{where }f_k(x; \\theta_k) \\sim N(\\boldsymbol{\\mu}_k, \\boldsymbol{\\Sigma}_k)\\]\nEach component is a multivariate normal distribution:\n\n\n\\(\\boldsymbol{\\mu}_k\\) is a vector of means in \\(p\\) dimensions\n\n\n\n\n\\(\\boldsymbol{\\Sigma}_k\\) is the \\(p \\times p\\) covariance matrix - describes the joint variability between pairs of variables\n\n\\[\\sum=\\left[\\begin{array}{cccc}\n\\sigma_{1}^{2} & \\sigma_{1,2} & \\cdots & \\sigma_{1, p} \\\\\n\\sigma_{2,1} & \\sigma_{2}^{2} & \\cdots & \\sigma_{2, p} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n\\sigma_{p, 1} & \\sigma_{p, 2}^{2} & \\cdots & \\sigma_{p}^{2}\n\\end{array}\\right]\\]"
-  },
-  {
-    "objectID": "lectures/15-mixture.html#covariance-constraints",
-    "href": "lectures/15-mixture.html#covariance-constraints",
-    "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "Covariance constraints",
-    "text": "Covariance constraints\n\\[\\sum=\\left[\\begin{array}{cccc}\n\\sigma_{1}^{2} & \\sigma_{1,2} & \\cdots & \\sigma_{1, p} \\\\\n\\sigma_{2,1} & \\sigma_{2}^{2} & \\cdots & \\sigma_{2, p} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n\\sigma_{p, 1} & \\sigma_{p, 2}^{2} & \\cdots & \\sigma_{p}^{2}\n\\end{array}\\right]\\]\n\nAs the number of dimensions increases, model fitting and estimation become increasingly difficult\n\n\nWe can use constraints on multiple aspects of the \\(k\\) covariance matrices:\n\n\n\nvolume: size of the clusters, i.e., number of observations,\nshape: direction of variance, i.e. which variables display more variance\norientation: aligned with axes (low covariance) versus tilted (due to relationships between variables)"
-  },
-  {
-    "objectID": "lectures/15-mixture.html#covariance-constraints-1",
-    "href": "lectures/15-mixture.html#covariance-constraints-1",
-    "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "Covariance constraints",
-    "text": "Covariance constraints\n\n\nControl volume, shape, orientation\nE: equal and V: variable (VVV is the most flexible, but has the most parameters)\nTwo II: spherical, one I: diagonal, the remaining are general\n\nHow do we know which one to choose?"
-  },
-  {
-    "objectID": "lectures/15-mixture.html#bayesian-information-criterion-bic",
-    "href": "lectures/15-mixture.html#bayesian-information-criterion-bic",
-    "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "Bayesian information criterion (BIC)",
-    "text": "Bayesian information criterion (BIC)\nThis is a statistical model\n\\[f(x) = \\sum_{k=1}^K \\pi_k f_k(x; \\theta_k) \\qquad \\text{where }f_k(x; \\theta_k) \\sim N(\\boldsymbol{\\mu}_k, \\boldsymbol{\\Sigma}_k)\\]\n\nUse a model selection procedure for determining which best characterizes the data\n\n\nSpecifically, use a penalized likelihood measure \\[\\text{BIC} = 2\\log \\mathcal{L} - m\\log n\\]\n\n\\(\\log \\mathcal{L}\\): log-likelihood of the considered model\nwith \\(m\\) parameters (VVV has the most parameters) and \\(n\\) observations\n\n\n\n\npenalizes large models with many clusters without constraints\nuse BIC to choose the covariance constraints AND number of clusters\n\n\n\n\nThe above \\(\\text{BIC}\\) is really the \\(- \\text{BIC}\\) of what you typically see, this sign flip is just for ease"
-  },
-  {
-    "objectID": "lectures/15-mixture.html#data-nba-player-statistics-per-100-possessions",
-    "href": "lectures/15-mixture.html#data-nba-player-statistics-per-100-possessions",
-    "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "Data: NBA player statistics per 100 possessions",
-    "text": "Data: NBA player statistics per 100 possessions\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nlibrary(ballr)\nnba_stats &lt;- NBAPerGameStatisticsPer100Poss(season = 2024)\nnba_stats &lt;- nba_stats |&gt; \n  group_by(player) |&gt; \n  slice_max(g) |&gt; \n  ungroup() |&gt; \n  filter(mp &gt;= 150) # keep players with at least 150 minutes played\nhead(nba_stats)\n\n# A tibble: 6 × 33\n     rk player   pos     age tm        g    gs    mp    fg   fga fgpercent   x3p\n  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1   183 A.J. Gr… SG       24 MIL      56     0   614   6.5  15.3     0.423   5.4\n2   290 A.J. La… SG       23 DAL      42     0   311   8.3  18.7     0.446   2  \n3   190 AJ Grif… SF       20 ATL      20     0   171   5    17.4     0.29    2.8\n4   178 Aaron G… PF       28 DEN      73    73  2297   8.6  15.5     0.556   0.9\n5   221 Aaron H… PG       27 HOU      78     1  1269   7.1  15.9     0.446   3.2\n6   372 Aaron N… SF       24 IND      72    47  1995   7.4  15       0.496   3.3\n# ℹ 21 more variables: x3pa &lt;dbl&gt;, x3ppercent &lt;dbl&gt;, x2p &lt;dbl&gt;, x2pa &lt;dbl&gt;,\n#   x2ppercent &lt;dbl&gt;, ft &lt;dbl&gt;, fta &lt;dbl&gt;, ftpercent &lt;dbl&gt;, orb &lt;dbl&gt;,\n#   drb &lt;dbl&gt;, trb &lt;dbl&gt;, ast &lt;dbl&gt;, stl &lt;dbl&gt;, blk &lt;dbl&gt;, tov &lt;dbl&gt;, pf &lt;dbl&gt;,\n#   pts &lt;dbl&gt;, x &lt;dbl&gt;, ortg &lt;dbl&gt;, drtg &lt;dbl&gt;, link &lt;chr&gt;"
-  },
-  {
-    "objectID": "lectures/15-mixture.html#implementation-with-mclust-package",
-    "href": "lectures/15-mixture.html#implementation-with-mclust-package",
-    "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "Implementation with mclust package",
-    "text": "Implementation with mclust package\nSelect the model and number of clusters\nUse Mclust() function to search over 1 to 9 clusters (default) and the different covariance constraints (i.e. models)\n\nlibrary(mclust)\n# x3pa: 3pt attempts per 100 possessions\n# trb: total rebounds per 100 possessions\nnba_mclust &lt;- nba_stats |&gt; \n  select(x3pa, trb) |&gt; \n  Mclust()\nsummary(nba_mclust)\n\n---------------------------------------------------- \nGaussian finite mixture model fitted by EM algorithm \n---------------------------------------------------- \n\nMclust VVV (ellipsoidal, varying volume, shape, and orientation) model with 3\ncomponents: \n\n log-likelihood   n df     BIC       ICL\n      -2246.434 452 17 -4596.8 -4749.605\n\nClustering table:\n  1   2   3 \n138  40 274"
-  },
-  {
-    "objectID": "lectures/15-mixture.html#display-the-bic-for-each-model-and-number-of-clusters",
-    "href": "lectures/15-mixture.html#display-the-bic-for-each-model-and-number-of-clusters",
-    "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "Display the BIC for each model and number of clusters",
-    "text": "Display the BIC for each model and number of clusters\n\n\n\nnba_mclust |&gt; \n  plot(what = \"BIC\", \n       legendArgs = list(x = \"bottomright\", ncol = 4))\n\n\n\n\n\n\n\n\n\n\nnba_mclust |&gt; \n  plot(what = \"classification\")"
-  },
-  {
-    "objectID": "lectures/15-mixture.html#how-do-the-cluster-assignments-compare-to-the-positions",
-    "href": "lectures/15-mixture.html#how-do-the-cluster-assignments-compare-to-the-positions",
-    "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "How do the cluster assignments compare to the positions?",
-    "text": "How do the cluster assignments compare to the positions?\nTwo-way table to compare the clustering assignments with player positions\n(What’s the way to visually compare the two labels?)\n\ntable(\"Clusters\" = nba_mclust$classification, \"Positions\" = nba_stats$pos)\n\n        Positions\nClusters  C C-PF PF PF-C PF-SF PG PG-SG SF SF-PF SF-SG SG SG-PG\n       1 43    1 56    1     0  4     0 24     1     0  8     0\n       2 34    2  3    0     0  1     0  0     0     0  0     0\n       3  3    0 30    0     1 77     4 68     1     1 88     1\n\n\nTakeaway: positions tend to fall within particular clusters"
-  },
-  {
-    "objectID": "lectures/15-mixture.html#what-about-the-cluster-probabilities",
-    "href": "lectures/15-mixture.html#what-about-the-cluster-probabilities",
-    "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "What about the cluster probabilities?",
-    "text": "What about the cluster probabilities?\n\nnba_player_probs &lt;- nba_mclust$z\ncolnames(nba_player_probs) &lt;- c(\"cluster1\", \"cluster2\", \"cluster3\")\n\nnba_player_probs &lt;- nba_player_probs |&gt;\n  as_tibble() |&gt;\n  mutate(player = nba_stats$player) |&gt;\n  pivot_longer(!player, names_to = \"cluster\", values_to = \"prob\")\n\nnba_player_probs |&gt;\n  ggplot(aes(prob)) +\n  geom_histogram() +\n  facet_wrap(~ cluster)"
-  },
-  {
-    "objectID": "lectures/15-mixture.html#which-players-have-the-highest-uncertainty",
-    "href": "lectures/15-mixture.html#which-players-have-the-highest-uncertainty",
-    "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "Which players have the highest uncertainty?",
-    "text": "Which players have the highest uncertainty?\n\n\n\n\nnba_stats |&gt;\n  mutate(cluster = nba_mclust$classification,\n         uncertainty = nba_mclust$uncertainty) |&gt; \n  group_by(cluster) |&gt;\n  slice_max(uncertainty, n = 5) |&gt; \n  mutate(player = fct_reorder(player, uncertainty)) |&gt; \n  ggplot(aes(x = uncertainty, y = player)) +\n  geom_point(size = 3) +\n  facet_wrap(~ cluster, scales = \"free_y\", nrow = 3)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
-  },
-  {
     "objectID": "lectures/11-linear.html#simple-linear-regression",
     "href": "lectures/11-linear.html#simple-linear-regression",
     "title": "Supervised learning: linear regression",
     "section": "Simple linear regression",
-    "text": "Simple linear regression\nWe assume a linear relationship for \\(Y = f(X)\\):\n\\[Y_{i}=\\beta_{0}+\\beta_{1} X_{i}+\\epsilon_{i}, \\quad \\text { for } i=1,2, \\dots, n\\]\n\n\\(Y_i\\) is the \\(i\\)th value for the response variable\n\\(X_i\\) is the \\(i\\)th value for the predictor variable\n\n\n\n\\(\\beta_0\\) is an unknown, constant intercept: average value for \\(Y\\) if \\(X = 0\\)\n\\(\\beta_1\\) is an unknown, constant slope: increase in average value for \\(Y\\) for each one-unit increase in \\(X\\)\n\n\n\n\n\\(\\epsilon_i\\) is the random noise: assume independent, identically distributed (iid) from Normal distribution\n\n\\[\\epsilon_i \\overset{iid}{\\sim}N(0, \\sigma^2) \\quad \\text{ with constant variance } \\sigma^2\\]"
+    "text": "Simple linear regression\nAssume a linear relationship for \\(Y = f(X)\\) \\[Y_{i}=\\beta_{0}+\\beta_{1} X_{i}+\\epsilon_{i}, \\quad \\text { for } i=1,2, \\dots, n\\]\n\n\\(Y_i\\) is the \\(i\\)th value for the response variable\n\\(X_i\\) is the \\(i\\)th value for the predictor variable\n\n\n\n\\(\\beta_0\\) is an unknown, constant intercept\n\naverage value for \\(Y\\) if \\(X = 0\\) (be careful sometimes…)\n\n\\(\\beta_1\\) is an unknown, constant slope\n\nchange in average value for \\(Y\\) for each one-unit increase in \\(X\\)\n\n\n\n\n\n\\(\\epsilon_i\\) is the random noise\n\nassume independent, identically distributed (iid) from a normal distribution\n\\(\\epsilon_i \\overset{iid}{\\sim}N(0, \\sigma^2)\\) with constant variance \\(\\sigma^2\\)"
   },
   {
     "objectID": "lectures/11-linear.html#simple-linear-regression-estimation",
@@ -3525,14 +3588,21 @@
     "href": "lectures/11-linear.html#connection-to-covariance-and-correlation",
     "title": "Supervised learning: linear regression",
     "section": "Connection to covariance and correlation",
-    "text": "Connection to covariance and correlation\nCovariance describes the joint variability of two variables \\[\\text{Cov}(X, Y) = \\sigma_{X,Y} = \\mathbb{E}[(X-\\mathbb{E}[X])(Y-\\mathbb{E}[Y])]\\]\n\nSample covariance (use \\(n - 1\\) since the means are used and we want unbiased estimates) \\[\\hat{\\sigma}_{X,Y} = \\frac{1}{n-1} \\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)\\left(Y_{i}-\\bar{Y}\\right)\\]\n\n\nCorrelation is a normalized form of covariance, ranges from -1 to 1 \\[\\rho_{X,Y} = \\frac{\\text{Cov}(X,Y)}{\\sigma_X \\cdot \\sigma_Y}\\]\nSample correlation uses the sample covariance and standard deviations, e.g. \\(s_X^2 = \\frac{1}{n-1} \\sum_i (X_i - \\bar{X})^2\\) \\[r_{X,Y} = \\frac{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)\\left(Y_{i}-\\bar{Y}\\right)}{\\sqrt{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)^{2} \\sum_{i=1}^{n}\\left(Y_{i}-\\bar{Y}\\right)^{2}}}\\]"
+    "text": "Connection to covariance and correlation\nCovariance describes the joint variability of two variables \\[\\text{Cov}(X, Y) = \\sigma_{X,Y} = \\mathbb{E}[(X-\\mathbb{E}[X])(Y-\\mathbb{E}[Y])]\\]\n\nSample covariance (use \\(n - 1\\) since the means are used and we want unbiased estimates) \\[\\hat{\\sigma}_{X,Y} = \\frac{1}{n-1} \\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)\\left(Y_{i}-\\bar{Y}\\right)\\]"
   },
   {
     "objectID": "lectures/11-linear.html#connection-to-covariance-and-correlation-1",
     "href": "lectures/11-linear.html#connection-to-covariance-and-correlation-1",
     "title": "Supervised learning: linear regression",
     "section": "Connection to covariance and correlation",
-    "text": "Connection to covariance and correlation\nWe have\n\\[\\widehat{\\beta}_{1}=\\frac{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)\\left(Y_{i}-\\bar{Y}\\right)}{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)^{2}} \\quad \\text{compared to} \\quad r_{X,Y} = \\frac{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)\\left(Y_{i}-\\bar{Y}\\right)}{\\sqrt{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)^{2} \\sum_{i=1}^{n}\\left(Y_{i}-\\bar{Y}\\right)^{2}}}\\]\n\nWe can rewrite \\(\\hat{\\beta}_1\\) as \\(\\displaystyle \\widehat{\\beta}_{1} = r_{X,Y} \\cdot \\frac{s_Y}{s_X}\\)\nWe can rewrite \\(\\displaystyle r_{X,Y}\\) as \\(\\displaystyle r_{X,Y} = \\widehat{\\beta}_{1} \\cdot \\frac{s_X}{s_Y}\\)\n\n\nCan think of \\(\\widehat{\\beta}_{1}\\) weighting the ratio of variance between \\(X\\) and \\(Y\\)…"
+    "text": "Connection to covariance and correlation\nCorrelation is a normalized form of covariance, ranges from -1 to 1 \\[\\rho_{X,Y} = \\frac{\\text{Cov}(X,Y)}{\\sigma_X \\cdot \\sigma_Y}\\]\nSample correlation uses the sample covariance and standard deviations, e.g. \\(\\displaystyle s_X^2 = \\frac{1}{n-1} \\sum_i (X_i - \\bar{X})^2\\) \\[r_{X,Y} = \\frac{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)\\left(Y_{i}-\\bar{Y}\\right)}{\\sqrt{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)^{2} \\sum_{i=1}^{n}\\left(Y_{i}-\\bar{Y}\\right)^{2}}}\\]"
+  },
+  {
+    "objectID": "lectures/11-linear.html#connection-to-covariance-and-correlation-2",
+    "href": "lectures/11-linear.html#connection-to-covariance-and-correlation-2",
+    "title": "Supervised learning: linear regression",
+    "section": "Connection to covariance and correlation",
+    "text": "Connection to covariance and correlation\nWe have \\[\\widehat{\\beta}_{1}=\\frac{\\sum_{i=1}^{n}(X_{i}-\\bar{X})(Y_{i}-\\bar{Y})}{\\sum_{i=1}^{n}(X_{i}-\\bar{X})^{2}} \\quad \\text{ and } \\quad r_{X,Y} = \\frac{\\sum_{i=1}^{n}(X_{i}-\\bar{X})(Y_{i}-\\bar{Y})}{\\sqrt{\\sum_{i=1}^{n}(X_{i}-\\bar{X})^{2} \\sum_{i=1}^{n}(Y_{i}-\\bar{Y})^{2}}}\\]\n\nWe can rewrite \\(\\hat{\\beta}_1\\) as \\[\\widehat{\\beta}_{1} = r_{X,Y} \\cdot \\frac{s_Y}{s_X}\\]\nWe can rewrite \\(\\displaystyle r_{X,Y}\\) as \\[r_{X,Y} = \\widehat{\\beta}_{1} \\cdot \\frac{s_X}{s_Y}\\]\n\n\nCan think of \\(\\widehat{\\beta}_{1}\\) weighting the ratio of variance between \\(X\\) and \\(Y\\)…"
   },
   {
     "objectID": "lectures/11-linear.html#gapminder-data",
@@ -3546,14 +3616,14 @@
     "href": "lectures/11-linear.html#modeling-life-expectancy",
     "title": "Supervised learning: linear regression",
     "section": "Modeling life expectancy",
-    "text": "Modeling life expectancy\n\n\nInterested in modeling a country’s life expectancy\n\nclean_gapminder |&gt;\n  ggplot(aes(x = life_expectancy)) +\n  geom_histogram(color = \"black\", fill = \"darkblue\", alpha = 0.3) +\n  labs(x = \"Life expectancy\")"
+    "text": "Modeling life expectancy\n\n\nInterested in modeling a country’s life expectancy\n\nclean_gapminder |&gt;\n  ggplot(aes(x = life_expectancy)) +\n  geom_histogram(color = \"black\", fill = \"gray\")"
   },
   {
     "objectID": "lectures/11-linear.html#relationship-between-life-expectancy-and-log-gdp",
     "href": "lectures/11-linear.html#relationship-between-life-expectancy-and-log-gdp",
     "title": "Supervised learning: linear regression",
     "section": "Relationship between life expectancy and log GDP",
-    "text": "Relationship between life expectancy and log GDP\n\n\n\ngdp_plot &lt;- clean_gapminder |&gt;\n  ggplot(aes(x = log_gdp, y = life_expectancy)) +\n  geom_point(size = 4, alpha = 0.5) +\n  labs(x = \"log(GDP)\",\n       y = \"Life expectancy\")\ngdp_plot\n\nWe fit linear regression models using lm(), formula is input as: response ~ predictor\n\nsimple_lm &lt;- lm(life_expectancy ~ log_gdp, \n              data = clean_gapminder)"
+    "text": "Relationship between life expectancy and log GDP\n\n\n\ngdp_plot &lt;- clean_gapminder |&gt;\n  ggplot(aes(x = log_gdp, y = life_expectancy)) +\n  geom_point(size = 3, alpha = 0.5)\ngdp_plot\n\nWe fit linear regression models using lm(), formula is input as: response ~ predictor\n\nsimple_lm &lt;- lm(life_expectancy ~ log_gdp, \n              data = clean_gapminder)"
   },
   {
     "objectID": "lectures/11-linear.html#summarize-the-model-using-summary",
@@ -3574,28 +3644,28 @@
     "href": "lectures/11-linear.html#inference-with-ols",
     "title": "Supervised learning: linear regression",
     "section": "Inference with OLS",
-    "text": "Inference with OLS\nReports the intercept and coefficient estimates: \\(\\quad \\hat{\\beta}_0 \\approx 24.174 \\quad, \\quad \\hat{\\beta}_1 \\approx 1.975\\)\n\nEstimates of uncertainty for \\(\\beta\\)s via standard errors: \\(\\quad \\widehat{SE}(\\hat{\\beta}_0) \\approx 5.758 \\quad, \\quad \\widehat{SE}(\\hat{\\beta}_1) \\approx 0.242\\)\n\n\n\\(t\\)-statistics are coefficients Estimates / Std. Error, i.e., number of standard deviations from 0\n\np-values (i.e., Pr(&gt;|t|)): estimated probability observing value as extreme as |t value| given the null hypothesis \\(\\beta = 0\\)\np-value \\(&lt;\\) conventional threshold of \\(\\alpha = 0.05\\), sufficient evidence to reject the null hypothesis that the coefficient is zero,\ni.e., there is a significant association between life_expectancy and log_gdp"
+    "text": "Inference with OLS\nIntercept and coefficient estimates \\[\\quad \\hat{\\beta}_0 = 24.174 \\quad \\text{and} \\quad \\hat{\\beta}_1 = 1.975\\]\n\nEstimates of uncertainty for \\(\\beta\\)s via standard errors \\[\\quad \\widehat{SE}(\\hat{\\beta}_0) = 5.758 \\quad \\text{and} \\quad \\widehat{SE}(\\hat{\\beta}_1) = 0.242\\]\n\n\n\\(t\\)-statistics: Estimates / Std. Error, i.e., number of standard deviations from 0\n\n\\(p\\)-values (i.e., Pr(&gt;|t|)): estimated probability observing value as extreme as |t value| given the null hypothesis \\(\\beta = 0\\)\n\\(p\\)-value \\(&lt; \\alpha = 0.05\\) (conventional threshold): sufficient evidence to reject the null hypothesis that the coefficient is zero\ni.e., there is a significant association between life_expectancy and log_gdp"
   },
   {
     "objectID": "lectures/11-linear.html#be-careful",
     "href": "lectures/11-linear.html#be-careful",
     "title": "Supervised learning: linear regression",
     "section": "Be careful!",
-    "text": "Be careful!\nCaveats to keep in mind regarding p-values:\n\nIf the true value of a coefficient \\(\\beta = 0\\), then the p-value is sampled from a Uniform(0,1) distribution\n\ni.e., it is just as likely to have value 0.45 as 0.16 or 0.84 or 0.9999 or 0.00001…\n\n\n\nHence why we typically only reject for low \\(\\alpha\\) values like 0.05\n\nControlling the Type 1 error rate at \\(\\alpha = 0.05\\), i.e., the probability of a false positive mistake\n5% chance that you’ll conclude there’s a significant association between \\(x\\) and \\(y\\) even when there is none\n\n\n\nRemember what a standard error is? \\(SE = \\frac{\\sigma}{\\sqrt{n}}\\)\n\nAs \\(n\\) gets large standard error goes to zero, and all predictors are eventually deemed significant\nWhile the p-values might be informative, we will explore other approaches to determine which subset of predictors to include (e.g., holdout performance)"
+    "text": "Be careful!\nCaveats to keep in mind regarding p-values:\n\nIf the true value of a coefficient \\(\\beta = 0\\), then the \\(p\\)-value is sampled from a Uniform(0,1) distribution\n\ni.e., it is just as likely to have value 0.45 as 0.16 or 0.84 or 0.9999 or 0.00001…\n\n\n\nHence why we typically only reject for low \\(\\alpha\\) values like 0.05\n\nControlling the Type 1 error rate at \\(\\alpha = 0.05\\), i.e., the probability of a false positive mistake\n5% chance that you’ll conclude there’s a significant association between \\(x\\) and \\(y\\) even when there is none\n\n\n\nRemember what a standard error is? \\(\\displaystyle \\text{SE} = \\frac{\\sigma}{\\sqrt{n}}\\)\n\nAs \\(n\\) gets large standard error goes to zero, and all predictors are eventually deemed significant\nWhile the \\(p\\)-values might be informative, we will explore other approaches to determine which subset of predictors to include (e.g., holdout performance)"
   },
   {
     "objectID": "lectures/11-linear.html#back-to-the-model-summary-multiple-r-squared",
     "href": "lectures/11-linear.html#back-to-the-model-summary-multiple-r-squared",
     "title": "Supervised learning: linear regression",
     "section": "Back to the model summary: Multiple R-squared",
-    "text": "Back to the model summary: Multiple R-squared\nBack to the connection between the coefficient and correlation:\n\\[r_{X,Y} = \\widehat{\\beta}_{1} \\cdot \\frac{s_X}{s_Y} \\quad \\longrightarrow \\quad r^2_{X,Y} = \\widehat{\\beta}_{1}^2\\cdot \\frac{s_X^2}{s_Y^2}\\]\nCompute the correlation with cor():\n\ncor(clean_gapminder$log_gdp, clean_gapminder$life_expectancy)\n\n[1] 0.5351189\n\n\n\nThe squared cor matches the reported Multiple R-squared\n\ncor(clean_gapminder$log_gdp, clean_gapminder$life_expectancy) ^ 2\n\n[1] 0.2863522"
+    "text": "Back to the model summary: Multiple R-squared\nBack to the connection between the coefficient and correlation \\[r_{X,Y} = \\widehat{\\beta}_{1} \\cdot \\frac{s_X}{s_Y} \\quad \\longrightarrow \\quad r^2_{X,Y} = \\widehat{\\beta}_{1}^2\\cdot \\frac{s_X^2}{s_Y^2}\\]\nCompute the correlation with cor():\n\ncor(clean_gapminder$log_gdp, clean_gapminder$life_expectancy)\n\n[1] 0.5351189\n\n\n\nThe squared cor matches the reported Multiple R-squared\n\ncor(clean_gapminder$log_gdp, clean_gapminder$life_expectancy) ^ 2\n\n[1] 0.2863522"
   },
   {
     "objectID": "lectures/11-linear.html#back-to-the-model-summary-multiple-r-squared-1",
     "href": "lectures/11-linear.html#back-to-the-model-summary-multiple-r-squared-1",
     "title": "Supervised learning: linear regression",
     "section": "Back to the model summary: Multiple R-squared",
-    "text": "Back to the model summary: Multiple R-squared\nBack to the connection between the coefficient and correlation:\n\\[r_{X,Y} = \\widehat{\\beta}_{1} \\cdot \\frac{s_X}{s_Y} \\quad \\longrightarrow \\quad r^2_{X,Y} = \\widehat{\\beta}_{1}^2\\cdot \\frac{s_X^2}{s_Y^2}\\]\n\\(r^2\\) (or also \\(R^2\\)) estimates the proportion of the variance of \\(Y\\) explained by \\(X\\)\n\nMore generally: variance of model predictions / variance of \\(Y\\)\n\n\nvar(predict(simple_lm)) / var(clean_gapminder$life_expectancy) \n\n[1] 0.2863522"
+    "text": "Back to the model summary: Multiple R-squared\nBack to the connection between the coefficient and correlation \\[r_{X,Y} = \\widehat{\\beta}_{1} \\cdot \\frac{s_X}{s_Y} \\quad \\longrightarrow \\quad r^2_{X,Y} = \\widehat{\\beta}_{1}^2\\cdot \\frac{s_X^2}{s_Y^2}\\]\n\\(r^2\\) (or also \\(R^2\\)) estimates the proportion of the variance of \\(Y\\) explained by \\(X\\)\n\nMore generally: variance of model predictions / variance of \\(Y\\)\n\n\nvar(predict(simple_lm)) / var(clean_gapminder$life_expectancy) \n\n[1] 0.2863522"
   },
   {
     "objectID": "lectures/11-linear.html#generating-predictions",
@@ -3609,35 +3679,42 @@
     "href": "lectures/11-linear.html#predictions-for-new-data",
     "title": "Supervised learning: linear regression",
     "section": "Predictions for new data",
-    "text": "Predictions for new data\nOr we can provide it newdata which must contain the explanatory variables:\n\n\n\nus_data &lt;- clean_gapminder |&gt; \n  filter(country == \"United States\")\n\nnew_us_data &lt;- us_data |&gt;\n  select(country, gdp) |&gt;\n  slice(rep(1, 3)) |&gt; \n  mutate(adj_factor = c(0.25, 0.5, 0.75),\n         log_gdp = log(gdp * adj_factor))\nnew_us_data$pred_life_exp &lt;- \n  predict(simple_lm, newdata = new_us_data) \ngdp_plot +\n  geom_point(data = new_us_data,\n             aes(x = log_gdp, y = pred_life_exp),\n             color = \"darkred\", size = 5)"
+    "text": "Predictions for new data\nOr we can provide it newdata which must contain the explanatory variables:\n\n\n\nus_data &lt;- clean_gapminder |&gt; \n  filter(country == \"United States\")\n\nnew_us_data &lt;- us_data |&gt;\n  select(country, gdp) |&gt;\n  slice(rep(1, 3)) |&gt; \n  mutate(adj_factor = c(0.25, 0.5, 0.75),\n         log_gdp = log(gdp * adj_factor))\nnew_us_data$pred_life_exp &lt;- \n  predict(simple_lm, newdata = new_us_data) \ngdp_plot +\n  geom_point(data = new_us_data,\n             aes(x = log_gdp, y = pred_life_exp),\n             color = \"darkred\", size = 3)"
   },
   {
     "objectID": "lectures/11-linear.html#plot-observed-values-against-predictions",
     "href": "lectures/11-linear.html#plot-observed-values-against-predictions",
     "title": "Supervised learning: linear regression",
     "section": "Plot observed values against predictions",
-    "text": "Plot observed values against predictions\nUseful diagnostic (for any type of model, not just linear regression!)\n\n\n\nclean_gapminder |&gt;\n  mutate(pred_vals = predict(simple_lm)) |&gt; \n  ggplot(aes(x = pred_vals, y = life_expectancy)) +\n  geom_point(alpha = 0.5) +\n  geom_abline(slope = 1, intercept = 0, \n              linetype = \"dashed\",\n              color = \"red\",\n              linewidth = 2)\n\n\n“Perfect” model will follow diagonal"
+    "text": "Plot observed values against predictions\nUseful diagnostic (for any type of model, not just linear regression!)\n\n\n\nclean_gapminder |&gt;\n  mutate(pred_vals = predict(simple_lm)) |&gt; \n  ggplot(aes(x = pred_vals, y = life_expectancy)) +\n  geom_point(alpha = 0.5, size = 3) +\n  geom_abline(slope = 1, intercept = 0, \n              linetype = \"dashed\",\n              color = \"red\",\n              linewidth = 2)\n\n\n“Perfect” model will follow diagonal"
   },
   {
     "objectID": "lectures/11-linear.html#plot-observed-values-against-predictions-1",
     "href": "lectures/11-linear.html#plot-observed-values-against-predictions-1",
     "title": "Supervised learning: linear regression",
     "section": "Plot observed values against predictions",
-    "text": "Plot observed values against predictions\nAugment the data with model output using the broom package\n\n\n\nclean_gapminder &lt;- simple_lm |&gt; \n  augment(clean_gapminder) \nclean_gapminder |&gt;\n  ggplot(aes(x = .fitted, y = life_expectancy)) + \n  geom_point(alpha = 0.5) +\n  geom_abline(slope = 1, intercept = 0, \n              linetype = \"dashed\", color = \"red\", linewidth = 2)\n\n\nAdds various columns from model fit we can use in plotting for model diagnostics"
+    "text": "Plot observed values against predictions\nAugment the data with model output using the broom package\n\n\n\nclean_gapminder &lt;- simple_lm |&gt; \n  augment(clean_gapminder) \nclean_gapminder |&gt;\n  ggplot(aes(x = .fitted, y = life_expectancy)) + \n  geom_point(alpha = 0.5, size = 3) +\n  geom_abline(slope = 1, intercept = 0, color = \"red\", \n              linetype = \"dashed\", linewidth = 2)\n\n\nAdds various columns from model fit we can use in plotting for model diagnostics"
+  },
+  {
+    "objectID": "lectures/11-linear.html#assessing-assumptions-of-linear-regression",
+    "href": "lectures/11-linear.html#assessing-assumptions-of-linear-regression",
+    "title": "Supervised learning: linear regression",
+    "section": "Assessing assumptions of linear regression",
+    "text": "Assessing assumptions of linear regression\nSimple linear regression assumes \\(Y_i \\overset{iid}{\\sim} N(\\beta_0 + \\beta_1 X_i, \\sigma^2)\\)\n\nIf this is true, then \\(Y_i - \\hat{Y}_i \\overset{iid}{\\sim} N(0, \\sigma^2)\\)\n\n\nPlot residuals against \\(\\hat{Y}_i\\), residuals vs fit plot\n\nUsed to assess linearity, any divergence from mean 0\nUsed to assess equal variance, i.e., if \\(\\sigma^2\\) is homogenous across predictions/fits \\(\\hat{Y}_i\\)\n\n\n\nMore difficult to assess the independence and fixed \\(X\\) assumptions\n\nMake these assumptions based on subject-matter knowledge"
   },
   {
     "objectID": "lectures/11-linear.html#plot-residuals-against-predicted-values",
     "href": "lectures/11-linear.html#plot-residuals-against-predicted-values",
     "title": "Supervised learning: linear regression",
     "section": "Plot residuals against predicted values",
-    "text": "Plot residuals against predicted values\n\n\n\nResiduals = observed - predicted\nInterpretation of residuals in context?\nConditional on the predicted values, the residuals should have a mean of zero\n\n\nclean_gapminder |&gt;\n  ggplot(aes(x = .fitted, y = .resid)) + \n  geom_point(alpha = 0.5) +\n  geom_hline(yintercept = 0, linetype = \"dashed\", \n             color = \"red\", linewidth = 2) +\n  # plot the residual mean\n  geom_smooth(se = FALSE)\n\n\nResiduals should NOT display any pattern"
+    "text": "Plot residuals against predicted values\n\n\n\nResiduals = observed - predicted\nInterpretation of residuals in context?\nConditional on the predicted values, the residuals should have a mean of zero\n\n\nclean_gapminder |&gt;\n  ggplot(aes(x = .fitted, y = .resid)) + \n  geom_point(alpha = 0.5, size = 3) +\n  geom_hline(yintercept = 0, linetype = \"dashed\", \n             color = \"red\", linewidth = 2) +\n  # plot the residual mean\n  geom_smooth(se = FALSE)\n\n\nResiduals should NOT display any pattern\nTwo things to look for:\n\nAny trend around horizontal reference line?\nEqual vertical spread?"
   },
   {
     "objectID": "lectures/11-linear.html#multiple-linear-regression",
     "href": "lectures/11-linear.html#multiple-linear-regression",
     "title": "Supervised learning: linear regression",
     "section": "Multiple linear regression",
-    "text": "Multiple linear regression\nWe can include as many variables as we want (assuming \\(n &gt; p\\)!)\n\\[Y=\\beta_{0}+\\beta_{1} X_{1}+\\beta_{2} X_{2}+\\cdots+\\beta_{p} X_{p}+\\epsilon\\]\nOLS estimates in matrix notation ( \\(\\boldsymbol{X}\\) is a \\(n \\times p\\) matrix):\n\\[\\hat{\\boldsymbol{\\beta}} = (\\boldsymbol{X} ^T \\boldsymbol{X})^{-1}\\boldsymbol{X}^T\\boldsymbol{Y}\\]\n\nCan just add more variables to the formula in R\n\nmultiple_lm &lt;- lm(life_expectancy ~ log_gdp + fertility, data = clean_gapminder)\n\n\nUse the Adjusted R-squared when including multiple variables \\(= 1 - \\frac{(1 - R^2)(n - 1)}{(n - p - 1)}\\)\n\nAdjusts for the number of variables in the model \\(p\\)\nAdding more variables will always increase Multiple R-squared"
+    "text": "Multiple linear regression\nWe can include as many variables as we want (assuming \\(n &gt; p\\)!)\n\\[Y=\\beta_{0}+\\beta_{1} X_{1}+\\beta_{2} X_{2}+\\cdots+\\beta_{p} X_{p}+\\epsilon\\]\nOLS estimates in matrix notation ( \\(\\boldsymbol{X}\\) is a \\(n \\times p\\) matrix):\n\\[\\hat{\\boldsymbol{\\beta}} = (\\boldsymbol{X} ^T \\boldsymbol{X})^{-1}\\boldsymbol{X}^T\\boldsymbol{Y}\\]\n\nCan just add more variables to the formula in R\n\nmultiple_lm &lt;- lm(life_expectancy ~ log_gdp + fertility, data = clean_gapminder)\n\n\nUse the Adjusted R-squared when including multiple variables \\(\\displaystyle 1 - \\frac{(1 - R^2)(n - 1)}{(n - p - 1)}\\)\n\nAdjusts for the number of variables in the model \\(p\\)\nAdding more variables will always increase Multiple R-squared"
   },
   {
     "objectID": "lectures/11-linear.html#what-about-the-normal-distribution-assumption",

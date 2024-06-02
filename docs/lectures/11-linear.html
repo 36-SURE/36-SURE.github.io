@@ -410,23 +410,31 @@
 </section>
 <section id="simple-linear-regression" class="slide level2">
 <h2>Simple linear regression</h2>
-<p>We assume a <strong>linear relationship</strong> for <span class="math inline">\(Y = f(X)\)</span>:</p>
-<p><span class="math display">\[Y_{i}=\beta_{0}+\beta_{1} X_{i}+\epsilon_{i}, \quad \text { for } i=1,2, \dots, n\]</span></p>
+<p>Assume a <strong>linear relationship</strong> for <span class="math inline">\(Y = f(X)\)</span> <span class="math display">\[Y_{i}=\beta_{0}+\beta_{1} X_{i}+\epsilon_{i}, \quad \text { for } i=1,2, \dots, n\]</span></p>
 <ul>
 <li><p><span class="math inline">\(Y_i\)</span> is the <span class="math inline">\(i\)</span>th value for the <strong>response</strong> variable</p></li>
 <li><p><span class="math inline">\(X_i\)</span> is the <span class="math inline">\(i\)</span>th value for the <strong>predictor</strong> variable</p></li>
 </ul>
 <div class="fragment">
 <ul>
-<li><p><span class="math inline">\(\beta_0\)</span> is an <em>unknown</em>, constant <strong>intercept</strong>: average value for <span class="math inline">\(Y\)</span> if <span class="math inline">\(X = 0\)</span></p></li>
-<li><p><span class="math inline">\(\beta_1\)</span> is an <em>unknown</em>, constant <strong>slope</strong>: increase in average value for <span class="math inline">\(Y\)</span> for each one-unit increase in <span class="math inline">\(X\)</span></p></li>
+<li><p><span class="math inline">\(\beta_0\)</span> is an <em>unknown</em>, constant <strong>intercept</strong></p>
+<ul>
+<li>average value for <span class="math inline">\(Y\)</span> if <span class="math inline">\(X = 0\)</span> (be careful sometimes…)</li>
+</ul></li>
+<li><p><span class="math inline">\(\beta_1\)</span> is an <em>unknown</em>, constant <strong>slope</strong></p>
+<ul>
+<li>change in average value for <span class="math inline">\(Y\)</span> for each one-unit increase in <span class="math inline">\(X\)</span></li>
+</ul></li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li><span class="math inline">\(\epsilon_i\)</span> is the <strong>random</strong> noise: assume <strong>independent, identically distributed</strong> (<em>iid</em>) from Normal distribution</li>
+<li><p><span class="math inline">\(\epsilon_i\)</span> is the <strong>random</strong> noise</p>
+<ul>
+<li><p>assume <strong>independent, identically distributed</strong> (<em>iid</em>) from a normal distribution</p></li>
+<li><p><span class="math inline">\(\epsilon_i \overset{iid}{\sim}N(0, \sigma^2)\)</span> with constant variance <span class="math inline">\(\sigma^2\)</span></p></li>
+</ul></li>
 </ul>
-<p><span class="math display">\[\epsilon_i \overset{iid}{\sim}N(0, \sigma^2) \quad \text{ with constant variance } \sigma^2\]</span></p>
 </div>
 </section>
 <section id="simple-linear-regression-estimation" class="slide level2">
@@ -454,18 +462,18 @@
 <div class="fragment">
 <p><strong>Sample covariance</strong> (use <span class="math inline">\(n - 1\)</span> since the means are used and we want <a href="https://lazyprogrammer.me/covariance-matrix-divide-by-n-or-n-1/"><strong>unbiased estimates</strong></a>) <span class="math display">\[\hat{\sigma}_{X,Y} = \frac{1}{n-1} \sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)\left(Y_{i}-\bar{Y}\right)\]</span></p>
 </div>
-<div class="fragment">
-<p><strong>Correlation</strong> is a <em>normalized</em> form of covariance, ranges from -1 to 1 <span class="math display">\[\rho_{X,Y} = \frac{\text{Cov}(X,Y)}{\sigma_X \cdot \sigma_Y}\]</span></p>
-<p><strong>Sample correlation</strong> uses the sample covariance and standard deviations, e.g.&nbsp;<span class="math inline">\(s_X^2 = \frac{1}{n-1} \sum_i (X_i - \bar{X})^2\)</span> <span class="math display">\[r_{X,Y} = \frac{\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)\left(Y_{i}-\bar{Y}\right)}{\sqrt{\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2} \sum_{i=1}^{n}\left(Y_{i}-\bar{Y}\right)^{2}}}\]</span></p>
-</div>
 </section>
 <section id="connection-to-covariance-and-correlation-1" class="slide level2">
 <h2>Connection to covariance and correlation</h2>
-<p>We have</p>
-<p><span class="math display">\[\widehat{\beta}_{1}=\frac{\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)\left(Y_{i}-\bar{Y}\right)}{\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}} \quad \text{compared to} \quad r_{X,Y} = \frac{\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)\left(Y_{i}-\bar{Y}\right)}{\sqrt{\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2} \sum_{i=1}^{n}\left(Y_{i}-\bar{Y}\right)^{2}}}\]</span></p>
+<p><strong>Correlation</strong> is a <em>normalized</em> form of covariance, ranges from -1 to 1 <span class="math display">\[\rho_{X,Y} = \frac{\text{Cov}(X,Y)}{\sigma_X \cdot \sigma_Y}\]</span></p>
+<p><strong>Sample correlation</strong> uses the sample covariance and standard deviations, e.g.&nbsp;<span class="math inline">\(\displaystyle s_X^2 = \frac{1}{n-1} \sum_i (X_i - \bar{X})^2\)</span> <span class="math display">\[r_{X,Y} = \frac{\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)\left(Y_{i}-\bar{Y}\right)}{\sqrt{\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2} \sum_{i=1}^{n}\left(Y_{i}-\bar{Y}\right)^{2}}}\]</span></p>
+</section>
+<section id="connection-to-covariance-and-correlation-2" class="slide level2">
+<h2>Connection to covariance and correlation</h2>
+<p>We have <span class="math display">\[\widehat{\beta}_{1}=\frac{\sum_{i=1}^{n}(X_{i}-\bar{X})(Y_{i}-\bar{Y})}{\sum_{i=1}^{n}(X_{i}-\bar{X})^{2}} \quad \text{ and } \quad r_{X,Y} = \frac{\sum_{i=1}^{n}(X_{i}-\bar{X})(Y_{i}-\bar{Y})}{\sqrt{\sum_{i=1}^{n}(X_{i}-\bar{X})^{2} \sum_{i=1}^{n}(Y_{i}-\bar{Y})^{2}}}\]</span></p>
 <div class="fragment">
-<p>We can rewrite <span class="math inline">\(\hat{\beta}_1\)</span> as <span class="math inline">\(\displaystyle \widehat{\beta}_{1} = r_{X,Y} \cdot \frac{s_Y}{s_X}\)</span></p>
-<p>We can rewrite <span class="math inline">\(\displaystyle r_{X,Y}\)</span> as <span class="math inline">\(\displaystyle r_{X,Y} = \widehat{\beta}_{1} \cdot \frac{s_X}{s_Y}\)</span></p>
+<p>We can rewrite <span class="math inline">\(\hat{\beta}_1\)</span> as <span class="math display">\[\widehat{\beta}_{1} = r_{X,Y} \cdot \frac{s_Y}{s_X}\]</span></p>
+<p>We can rewrite <span class="math inline">\(\displaystyle r_{X,Y}\)</span> as <span class="math display">\[r_{X,Y} = \widehat{\beta}_{1} \cdot \frac{s_X}{s_Y}\]</span></p>
 </div>
 <div class="fragment">
 <p>Can think of <span class="math inline">\(\widehat{\beta}_{1}\)</span> weighting the ratio of variance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>…</p>
@@ -511,8 +519,7 @@ $ log_gdp          &lt;dbl&gt; 22.56725, 25.11948, 24.01962, 20.50235, 26.88222,
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>clean_gapminder <span class="sc">|&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> life_expectancy)) <span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"darkblue"</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Life expectancy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"gray"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
@@ -534,10 +541,8 @@ $ log_gdp          &lt;dbl&gt; 22.56725, 25.11948, 24.01962, 20.50235, 26.88222,
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gdp_plot <span class="ot">&lt;-</span> clean_gapminder <span class="sc">|&gt;</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_gdp, <span class="at">y =</span> life_expectancy)) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log(GDP)"</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Life expectancy"</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>gdp_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>gdp_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We fit linear regression models using <code>lm()</code>, formula is input as: <code>response ~ predictor</code></p>
 <div class="cell" data-layout-align="center">
@@ -614,15 +619,15 @@ F-statistic: 66.61 on 1 and 166 DF,  p-value: 7.865e-14</code></pre>
 </section>
 <section id="inference-with-ols" class="slide level2">
 <h2>Inference with OLS</h2>
-<p>Reports the intercept and coefficient estimates: <span class="math inline">\(\quad \hat{\beta}_0 \approx 24.174 \quad, \quad \hat{\beta}_1 \approx 1.975\)</span></p>
+<p>Intercept and coefficient estimates <span class="math display">\[\quad \hat{\beta}_0 = 24.174 \quad \text{and} \quad \hat{\beta}_1 = 1.975\]</span></p>
 <div class="fragment">
-<p>Estimates of uncertainty for <span class="math inline">\(\beta\)</span>s via <strong>standard errors</strong>: <span class="math inline">\(\quad \widehat{SE}(\hat{\beta}_0) \approx 5.758 \quad, \quad \widehat{SE}(\hat{\beta}_1) \approx 0.242\)</span></p>
+<p>Estimates of uncertainty for <span class="math inline">\(\beta\)</span>s via <strong>standard errors</strong> <span class="math display">\[\quad \widehat{SE}(\hat{\beta}_0) = 5.758 \quad \text{and} \quad \widehat{SE}(\hat{\beta}_1) = 0.242\]</span></p>
 </div>
 <div class="fragment">
-<p><span class="math inline">\(t\)</span>-statistics are coefficients <code>Estimates</code> / <code>Std. Error</code>, i.e., number of standard deviations from 0</p>
+<p><span class="math inline">\(t\)</span>-statistics: <code>Estimates</code> / <code>Std. Error</code>, i.e., number of standard deviations from 0</p>
 <ul>
-<li><p><em>p-values</em> (i.e., <code>Pr(&gt;|t|)</code>): estimated probability observing value as extreme as |<code>t value</code>| <strong>given the null hypothesis</strong> <span class="math inline">\(\beta = 0\)</span></p></li>
-<li><p>p-value <span class="math inline">\(&lt;\)</span> conventional threshold of <span class="math inline">\(\alpha = 0.05\)</span>, <strong>sufficient evidence to reject the null hypothesis that the coefficient is zero</strong>,</p></li>
+<li><p><span class="math inline">\(p\)</span>-values (i.e., <code>Pr(&gt;|t|)</code>): estimated probability observing value as extreme as |<code>t value</code>| <strong>given the null hypothesis</strong> <span class="math inline">\(\beta = 0\)</span></p></li>
+<li><p><span class="math inline">\(p\)</span>-value <span class="math inline">\(&lt; \alpha = 0.05\)</span> (conventional threshold): <strong>sufficient evidence to reject the null hypothesis that the coefficient is zero</strong></p></li>
 <li><p>i.e., there is a <strong>significant</strong> association between <code>life_expectancy</code> and <code>log_gdp</code></p></li>
 </ul>
 </div>
@@ -631,7 +636,7 @@ F-statistic: 66.61 on 1 and 166 DF,  p-value: 7.865e-14</code></pre>
 <h2>Be careful!</h2>
 <p><strong>Caveats to keep in mind regarding p-values:</strong></p>
 <div class="fragment">
-<p>If the true value of a coefficient <span class="math inline">\(\beta = 0\)</span>, then the p-value is sampled from a <a href="https://en.wikipedia.org/wiki/Continuous_uniform_distribution">Uniform(0,1) distribution</a></p>
+<p>If the true value of a coefficient <span class="math inline">\(\beta = 0\)</span>, then the <span class="math inline">\(p\)</span>-value is sampled from a <a href="https://en.wikipedia.org/wiki/Continuous_uniform_distribution">Uniform(0,1) distribution</a></p>
 <ul>
 <li>i.e., it is just as likely to have value 0.45 as 0.16 or 0.84 or 0.9999 or 0.00001…</li>
 </ul>
@@ -644,17 +649,16 @@ F-statistic: 66.61 on 1 and 166 DF,  p-value: 7.865e-14</code></pre>
 </ul>
 </div>
 <div class="fragment">
-<p>Remember what a standard error is? <span class="math inline">\(SE = \frac{\sigma}{\sqrt{n}}\)</span></p>
+<p>Remember what a standard error is? <span class="math inline">\(\displaystyle \text{SE} = \frac{\sigma}{\sqrt{n}}\)</span></p>
 <ul>
 <li><p>As <span class="math inline">\(n\)</span> gets large <strong>standard error goes to zero</strong>, and <em>all</em> predictors are eventually deemed significant</p></li>
-<li><p>While the p-values might be informative, we will explore other approaches to determine which subset of predictors to include (e.g., holdout performance)</p></li>
+<li><p>While the <span class="math inline">\(p\)</span>-values might be informative, we will explore other approaches to determine which subset of predictors to include (e.g., holdout performance)</p></li>
 </ul>
 </div>
 </section>
 <section id="back-to-the-model-summary-multiple-r-squared" class="slide level2">
 <h2>Back to the model summary: <code>Multiple R-squared</code></h2>
-<p>Back to the connection between the coefficient and correlation:</p>
-<p><span class="math display">\[r_{X,Y} = \widehat{\beta}_{1} \cdot \frac{s_X}{s_Y} \quad \longrightarrow \quad r^2_{X,Y} = \widehat{\beta}_{1}^2\cdot \frac{s_X^2}{s_Y^2}\]</span></p>
+<p>Back to the connection between the coefficient and correlation <span class="math display">\[r_{X,Y} = \widehat{\beta}_{1} \cdot \frac{s_X}{s_Y} \quad \longrightarrow \quad r^2_{X,Y} = \widehat{\beta}_{1}^2\cdot \frac{s_X^2}{s_Y^2}\]</span></p>
 <p>Compute the correlation with <code>cor()</code>:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(clean_gapminder<span class="sc">$</span>log_gdp, clean_gapminder<span class="sc">$</span>life_expectancy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -674,8 +678,7 @@ F-statistic: 66.61 on 1 and 166 DF,  p-value: 7.865e-14</code></pre>
 </section>
 <section id="back-to-the-model-summary-multiple-r-squared-1" class="slide level2">
 <h2>Back to the model summary: <code>Multiple R-squared</code></h2>
-<p>Back to the connection between the coefficient and correlation:</p>
-<p><span class="math display">\[r_{X,Y} = \widehat{\beta}_{1} \cdot \frac{s_X}{s_Y} \quad \longrightarrow \quad r^2_{X,Y} = \widehat{\beta}_{1}^2\cdot \frac{s_X^2}{s_Y^2}\]</span></p>
+<p>Back to the connection between the coefficient and correlation <span class="math display">\[r_{X,Y} = \widehat{\beta}_{1} \cdot \frac{s_X}{s_Y} \quad \longrightarrow \quad r^2_{X,Y} = \widehat{\beta}_{1}^2\cdot \frac{s_X^2}{s_Y^2}\]</span></p>
 <p><span class="math inline">\(r^2\)</span> (or also <span class="math inline">\(R^2\)</span>) estimates the <strong>proportion of the variance</strong> of <span class="math inline">\(Y\)</span> explained by <span class="math inline">\(X\)</span></p>
 <ul>
 <li>More generally: variance of model predictions / variance of <span class="math inline">\(Y\)</span></li>
@@ -741,7 +744,7 @@ F-statistic: 66.61 on 1 and 166 DF,  p-value: 7.865e-14</code></pre>
 <span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>gdp_plot <span class="sc">+</span></span>
 <span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> new_us_data,</span>
 <span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> log_gdp, <span class="at">y =</span> pred_life_exp),</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">"darkred"</span>, <span class="at">size =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">"darkred"</span>, <span class="at">size =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
@@ -765,7 +768,7 @@ F-statistic: 66.61 on 1 and 166 DF,  p-value: 7.865e-14</code></pre>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>clean_gapminder <span class="sc">|&gt;</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_vals =</span> <span class="fu">predict</span>(simple_lm)) <span class="sc">|&gt;</span> </span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> pred_vals, <span class="at">y =</span> life_expectancy)) <span class="sc">+</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, </span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">linetype =</span> <span class="st">"dashed"</span>,</span>
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">"red"</span>,</span>
@@ -797,9 +800,9 @@ F-statistic: 66.61 on 1 and 166 DF,  p-value: 7.865e-14</code></pre>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(clean_gapminder) </span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>clean_gapminder <span class="sc">|&gt;</span></span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> life_expectancy)) <span class="sc">+</span> </span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, </span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>, </span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Adds various columns from model fit we can use in plotting for model diagnostics</li>
@@ -817,6 +820,26 @@ F-statistic: 66.61 on 1 and 166 DF,  p-value: 7.865e-14</code></pre>
 </div>
 </div>
 </section>
+<section id="assessing-assumptions-of-linear-regression" class="slide level2">
+<h2>Assessing assumptions of linear regression</h2>
+<p>Simple linear regression assumes <span class="math inline">\(Y_i \overset{iid}{\sim} N(\beta_0 + \beta_1 X_i, \sigma^2)\)</span></p>
+<ul>
+<li>If this is true, then <span class="math inline">\(Y_i - \hat{Y}_i \overset{iid}{\sim} N(0, \sigma^2)\)</span></li>
+</ul>
+<div class="fragment">
+<p>Plot residuals against <span class="math inline">\(\hat{Y}_i\)</span>, <strong>residuals vs fit</strong> plot</p>
+<ul>
+<li><p>Used to assess linearity, any divergence from mean 0</p></li>
+<li><p>Used to assess equal variance, i.e., if <span class="math inline">\(\sigma^2\)</span> is homogenous across predictions/fits <span class="math inline">\(\hat{Y}_i\)</span></p></li>
+</ul>
+</div>
+<div class="fragment">
+<p>More difficult to assess the independence and fixed <span class="math inline">\(X\)</span> assumptions</p>
+<ul>
+<li>Make these assumptions based on subject-matter knowledge</li>
+</ul>
+</div>
+</section>
 <section id="plot-residuals-against-predicted-values" class="slide level2">
 <h2>Plot residuals against predicted values</h2>
 <div class="columns">
@@ -829,14 +852,19 @@ F-statistic: 66.61 on 1 and 166 DF,  p-value: 7.865e-14</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>clean_gapminder <span class="sc">|&gt;</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span> </span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, </span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># plot the residual mean</span></span>
 <span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Residuals <strong>should NOT display any pattern</strong></li>
+<li><p>Residuals <strong>should NOT display any pattern</strong></p></li>
+<li><p>Two things to look for:</p>
+<ul>
+<li><p>Any trend around horizontal reference line?</p></li>
+<li><p>Equal vertical spread?</p></li>
+</ul></li>
 </ul>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
@@ -863,7 +891,7 @@ F-statistic: 66.61 on 1 and 166 DF,  p-value: 7.865e-14</code></pre>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>multiple_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(life_expectancy <span class="sc">~</span> log_gdp <span class="sc">+</span> fertility, <span class="at">data =</span> clean_gapminder)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><p>Use the <code>Adjusted R-squared</code> when including multiple variables <span class="math inline">\(= 1 - \frac{(1 - R^2)(n - 1)}{(n - p - 1)}\)</span></p>
+<li><p>Use the <code>Adjusted R-squared</code> when including multiple variables <span class="math inline">\(\displaystyle 1 - \frac{(1 - R^2)(n - 1)}{(n - p - 1)}\)</span></p>
 <ul>
 <li><p>Adjusts for the number of variables in the model <span class="math inline">\(p\)</span></p></li>
 <li><p>Adding more variables <strong>will always increase</strong> <code>Multiple R-squared</code></p></li>
@@ -1102,7 +1130,7 @@ F-statistic: 66.61 on 1 and 166 DF,  p-value: 7.865e-14</code></pre>
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

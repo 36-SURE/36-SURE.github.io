@@ -465,7 +465,7 @@ dbl (20): age, games, games_started, minutes_played, field_goals, field_goal...
 </div>
 <p>If you’re tired of explicitly customizing every plot in the same way all the time, then you should make a custom theme. It’s quite easy to make a custom theme for <code>ggplot2</code> and of course <a href="https://themockup.blog/posts/2020-12-26-creating-and-using-custom-ggplot2-themes/">there are an incredible number of ways to customize your theme</a>. Below, we modify <code>theme_bw()</code> using the <code>%+replace%</code> argument to a new customized theme named <code>theme_cus()</code> - which is stored as a function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>theme_cus <span class="ot">&lt;-</span> <span class="cf">function</span> () {</span>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>theme_cus <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># start with the base font size</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">10</span>) <span class="sc">%+replace%</span></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
