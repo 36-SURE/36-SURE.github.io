@@ -94,6 +94,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -177,10 +179,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="goal">Goal</h2>
 <p>The purpose of this lab is to help you set up Git and GitHub on your computer, and use them to collaborate on your EDA project.</p>
 </section>
-<section id="task-1-git-and-github-setup" class="level2">
-<h2 class="anchored" data-anchor-id="task-1-git-and-github-setup">Task 1: Git and GitHub Setup</h2>
+<section id="task-0-github-registration-and-git-installation" class="level2">
+<h2 class="anchored" data-anchor-id="task-0-github-registration-and-git-installation">Task 0: GitHub registration and Git installation</h2>
+<p><strong>(Note: You were already being asked to complete these prior to the start of the program. Proceed to Task 1 if you already completed this task.)</strong></p>
+<p><strong>GitHub account.</strong> Register for a (free) GitHub account at <a href="https://github.com"><code>https://github.com</code></a>. <br> (if you already have a GitHub account, feel free to ignore this)</p>
+<p><strong>Download Git.</strong> <br> (if Git is already installed on your computer, the following instructions still hold for updating Git to its latest version)</p>
+<p>(Windows)</p>
 <ul>
-<li><p>First, make sure you’ve already (i) created a GitHub account and (ii) installed Git on your computer. You were already being asked to complete these tasks prior to the start of SURE 2024.</p></li>
+<li>Go to <a href="https://git-scm.com/download/win"><code>https://git-scm.com/download/win</code></a></li>
+<li>Navigate to “Click here to download” on the first line and click on it</li>
+<li>Follow the installation instructions</li>
+</ul>
+<p>(macOS)</p>
+<ul>
+<li>Open the Terminal app on your computer (Finder <span class="math inline">\(\rightarrow\)</span> Applications <span class="math inline">\(\rightarrow\)</span> Terminal)</li>
+<li>Go to <a href="https://brew.sh"><code>https://brew.sh</code></a> and copy/paste the chunk under “Install Homebrew” to the Terminal</li>
+<li>Once Homebrew is installed, type this into the Terminal: <code>brew install git</code></li>
+</ul>
+</section>
+<section id="task-1-git-configuration" class="level2">
+<h2 class="anchored" data-anchor-id="task-1-git-configuration">Task 1: Git configuration</h2>
+<ul>
+<li><p>Make sure you’ve already (i) created a GitHub account and (ii) installed Git on your computer</p></li>
 <li><p>You then need to configure Git. This can be done directly in <code>R</code>:</p></li>
 </ul>
 <div class="cell">
@@ -196,8 +216,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><p>This will direct you to the GitHub site on your browser (you may have to log in)</p></li>
-<li><p>Recommended scopes will be pre-selected. Click on “Generate token”.</p></li>
+<li><p>This will direct you to the GitHub site on your browser (you may have to log in). On this site:</p>
+<ul>
+<li>Under “Note”, type in some description for this token (e.g., “SURE 2024 GitHub token”)</li>
+<li>For “Expiration”, set an expiration date for this token (e.g., 90 days) or make it permanent (i.e.&nbsp;choose “No expiration” if you don’t want to deal with this again in the future)</li>
+<li>Under “Select scopes”, recommended scopes will be pre-selected. Stick with these for now.</li>
+</ul></li>
+<li><p>Next, click on “Generate token”</p></li>
 <li><p>Copy the token to your clipboard (or leave the browser window open, so you can come back to copy the token later)</p></li>
 <li><p>In RStudio, run the following to get a prompt where you can paste your token:</p></li>
 </ul>

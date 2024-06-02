@@ -175,11 +175,18 @@
     "text": "The purpose of this lab is to help you set up Git and GitHub on your computer, and use them to collaborate on your EDA project."
   },
   {
-    "objectID": "health/labs/04-github.html#task-1-git-and-github-setup",
-    "href": "health/labs/04-github.html#task-1-git-and-github-setup",
+    "objectID": "health/labs/04-github.html#task-0-github-registration-and-git-installation",
+    "href": "health/labs/04-github.html#task-0-github-registration-and-git-installation",
     "title": "Using GitHub for project collaboration",
-    "section": "Task 1: Git and GitHub Setup",
-    "text": "Task 1: Git and GitHub Setup\n\nFirst, make sure you’ve already (i) created a GitHub account and (ii) installed Git on your computer. You were already being asked to complete these tasks prior to the start of SURE 2024.\nYou then need to configure Git. This can be done directly in R:\n\n\n# uncomment and run the following line to install the usethis package\n# install.packages(\"usethis\")\nusethis::use_git_config(user.name = \"Your Name\", user.email = \"your-github@email.address\")\n\n\nUse your full name for the user.name field and the same email as your GitHub account for user.email\nYou then need to create a personal access token for authentication as follows:\n\n\nusethis::create_github_token()\n\n\nThis will direct you to the GitHub site on your browser (you may have to log in)\nRecommended scopes will be pre-selected. Click on “Generate token”.\nCopy the token to your clipboard (or leave the browser window open, so you can come back to copy the token later)\nIn RStudio, run the following to get a prompt where you can paste your token:\n\n\n# uncomment and run the following line to install the gitcreds package\n# install.packages(\"gitcreds\")\ngitcreds::gitcreds_set()"
+    "section": "Task 0: GitHub registration and Git installation",
+    "text": "Task 0: GitHub registration and Git installation\n(Note: You were already being asked to complete these prior to the start of the program. Proceed to Task 1 if you already completed this task.)\nGitHub account. Register for a (free) GitHub account at https://github.com.  (if you already have a GitHub account, feel free to ignore this)\nDownload Git.  (if Git is already installed on your computer, the following instructions still hold for updating Git to its latest version)\n(Windows)\n\nGo to https://git-scm.com/download/win\nNavigate to “Click here to download” on the first line and click on it\nFollow the installation instructions\n\n(macOS)\n\nOpen the Terminal app on your computer (Finder \\(\\rightarrow\\) Applications \\(\\rightarrow\\) Terminal)\nGo to https://brew.sh and copy/paste the chunk under “Install Homebrew” to the Terminal\nOnce Homebrew is installed, type this into the Terminal: brew install git"
+  },
+  {
+    "objectID": "health/labs/04-github.html#task-1-git-configuration",
+    "href": "health/labs/04-github.html#task-1-git-configuration",
+    "title": "Using GitHub for project collaboration",
+    "section": "Task 1: Git configuration",
+    "text": "Task 1: Git configuration\n\nMake sure you’ve already (i) created a GitHub account and (ii) installed Git on your computer\nYou then need to configure Git. This can be done directly in R:\n\n\n# uncomment and run the following line to install the usethis package\n# install.packages(\"usethis\")\nusethis::use_git_config(user.name = \"Your Name\", user.email = \"your-github@email.address\")\n\n\nUse your full name for the user.name field and the same email as your GitHub account for user.email\nYou then need to create a personal access token for authentication as follows:\n\n\nusethis::create_github_token()\n\n\nThis will direct you to the GitHub site on your browser (you may have to log in). On this site:\n\nUnder “Note”, type in some description for this token (e.g., “SURE 2024 GitHub token”)\nFor “Expiration”, set an expiration date for this token (e.g., 90 days) or make it permanent (i.e. choose “No expiration” if you don’t want to deal with this again in the future)\nUnder “Select scopes”, recommended scopes will be pre-selected. Stick with these for now.\n\nNext, click on “Generate token”\nCopy the token to your clipboard (or leave the browser window open, so you can come back to copy the token later)\nIn RStudio, run the following to get a prompt where you can paste your token:\n\n\n# uncomment and run the following line to install the gitcreds package\n# install.packages(\"gitcreds\")\ngitcreds::gitcreds_set()"
   },
   {
     "objectID": "health/labs/04-github.html#task-2-eda-project-collaboration-with-git-and-github",
@@ -742,11 +749,18 @@
     "text": "The purpose of this lab is to help you set up Git and GitHub on your computer, and use them to collaborate on your EDA project."
   },
   {
-    "objectID": "sports/labs/04-github.html#task-1-git-and-github-setup",
-    "href": "sports/labs/04-github.html#task-1-git-and-github-setup",
+    "objectID": "sports/labs/04-github.html#task-0-github-registration-and-git-installation",
+    "href": "sports/labs/04-github.html#task-0-github-registration-and-git-installation",
     "title": "Using GitHub for project collaboration",
-    "section": "Task 1: Git and GitHub Setup",
-    "text": "Task 1: Git and GitHub Setup\n\nFirst, make sure you’ve already (i) created a GitHub account and (ii) installed Git on your computer. You were already being asked to complete these tasks prior to the start of SURE 2024.\nYou then need to configure Git. This can be done directly in R:\n\n\n# uncomment and run the following line to install the usethis package\n# install.packages(\"usethis\")\nusethis::use_git_config(user.name = \"Your Name\", user.email = \"your-github@email.address\")\n\n\nUse your full name for the user.name field and the same email as your GitHub account for user.email\nYou then need to create a personal access token for authentication as follows:\n\n\nusethis::create_github_token()\n\n\nThis will direct you to the GitHub site on your browser (you may have to log in)\nRecommended scopes will be pre-selected. Click on “Generate token”.\nCopy the token to your clipboard (or leave the browser window open, so you can come back to copy the token later)\nIn RStudio, run the following to get a prompt where you can paste your token:\n\n\n# uncomment and run the following line to install the gitcreds package\n# install.packages(\"gitcreds\")\ngitcreds::gitcreds_set()"
+    "section": "Task 0: GitHub registration and Git installation",
+    "text": "Task 0: GitHub registration and Git installation\n(Note: You were already being asked to complete these prior to the start of the program. Proceed to Task 1 if you already completed this task.)\nGitHub account. Register for a (free) GitHub account at https://github.com.  (if you already have a GitHub account, feel free to ignore this)\nDownload Git.  (if Git is already installed on your computer, the following instructions still hold for updating Git to its latest version)\n(Windows)\n\nGo to https://git-scm.com/download/win\nNavigate to “Click here to download” on the first line and click on it\nFollow the installation instructions\n\n(macOS)\n\nOpen the Terminal app on your computer (Finder \\(\\rightarrow\\) Applications \\(\\rightarrow\\) Terminal)\nGo to https://brew.sh and copy/paste the chunk under “Install Homebrew” to the Terminal\nOnce Homebrew is installed, type this into the Terminal: brew install git"
+  },
+  {
+    "objectID": "sports/labs/04-github.html#task-1-git-configuration",
+    "href": "sports/labs/04-github.html#task-1-git-configuration",
+    "title": "Using GitHub for project collaboration",
+    "section": "Task 1: Git configuration",
+    "text": "Task 1: Git configuration\n\nMake sure you’ve already (i) created a GitHub account and (ii) installed Git on your computer\nYou then need to configure Git. This can be done directly in R:\n\n\n# uncomment and run the following line to install the usethis package\n# install.packages(\"usethis\")\nusethis::use_git_config(user.name = \"Your Name\", user.email = \"your-github@email.address\")\n\n\nUse your full name for the user.name field and the same email as your GitHub account for user.email\nYou then need to create a personal access token for authentication as follows:\n\n\nusethis::create_github_token()\n\n\nThis will direct you to the GitHub site on your browser (you may have to log in). On this site:\n\nUnder “Note”, type in some description for this token (e.g., “SURE 2024 GitHub token”)\nFor “Expiration”, set an expiration date for this token (e.g., 90 days) or make it permanent (i.e. choose “No expiration” if you don’t want to deal with this again in the future)\nUnder “Select scopes”, recommended scopes will be pre-selected. Stick with these for now.\n\nNext, click on “Generate token”\nCopy the token to your clipboard (or leave the browser window open, so you can come back to copy the token later)\nIn RStudio, run the following to get a prompt where you can paste your token:\n\n\n# uncomment and run the following line to install the gitcreds package\n# install.packages(\"gitcreds\")\ngitcreds::gitcreds_set()"
   },
   {
     "objectID": "sports/labs/04-github.html#task-2-eda-project-collaboration-with-git-and-github",
@@ -3021,7 +3035,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"n\" \"x\" \"h\" \"k\" \"s\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 1 0 1 1 1 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"T\" \"T\" \"T\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 38"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"p\" \"m\" \"z\" \"f\" \"t\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 0 1 0 0 1 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"H\" \"H\" \"H\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 56"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -3063,21 +3077,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.0007657352\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.012446"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.03236912\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.032776"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.494\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.20     0.001 0.000685\n 2 -2.83     0.002 0.00232 \n 3 -2.66     0.003 0.00396 \n 4 -2.56     0.004 0.00522 \n 5 -2.46     0.005 0.00693 \n 6 -2.43     0.006 0.00759 \n 7 -2.42     0.007 0.00778 \n 8 -2.39     0.008 0.00852 \n 9 -2.38     0.009 0.00858 \n10 -2.38     0.01  0.00877 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.515\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.17     0.001 0.000753\n 2 -3.05     0.002 0.00114 \n 3 -2.87     0.003 0.00208 \n 4 -2.85     0.004 0.00215 \n 5 -2.68     0.005 0.00369 \n 6 -2.68     0.006 0.00371 \n 7 -2.51     0.007 0.00603 \n 8 -2.46     0.008 0.00693 \n 9 -2.38     0.009 0.00862 \n10 -2.38     0.01  0.00865 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3857785\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3811291\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -3091,14 +3105,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1244\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1164\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.09024606\n\nmean(rnorm(100))\n\n[1] 0.01892552\n\nmean(rnorm(100))\n\n[1] -0.1051228"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.04466105\n\nmean(rnorm(100))\n\n[1] -0.090844\n\nmean(rnorm(100))\n\n[1] -0.01753956"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
