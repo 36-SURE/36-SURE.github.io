@@ -118,7 +118,7 @@ heart_disease |>
   labs(x = "Duration", 
        y = "Cost",
        color = "Number of drugs") +
-  theme_bw()
+  theme_light()
 ```
 
 *What does `alpha` change?* We can change the color plot for this plot using `scale_color_brewer()` function:
@@ -131,7 +131,7 @@ heart_disease |>
   labs(x = "Duration", 
        y = "Cost",
        color = "Number of drugs") +
-  theme_bw()
+  theme_light()
 ```
 
 Which do you prefer, the default palette or this new one? You can [check out more color palettes here.](https://r-graph-gallery.com/38-rcolorbrewers-palettes.html)
@@ -147,7 +147,7 @@ heart_disease |>
   labs(x = "Duration", 
        y = "Cost",
        color = "Number of drugs") +
-  theme_bw()
+  theme_light()
 ```
 
 In terms of displaying color from low to high, the [viridis scales](https://ggplot2.tidyverse.org/reference/scale_viridis.html) are excellent choices (and are also color-blind friendly!). For instance, we can map another quantitative variable (`Interventions`) to the color:
@@ -160,7 +160,7 @@ heart_disease |>
   labs(x = "Duration", 
        y = "Cost",
        color = "Interventions") +
-  theme_bw()
+  theme_light()
 ```
 
 What does this reveal about the plot? What happens if you delete `scale_color_viridis_c() +` from above? Which do you prefer?
@@ -271,7 +271,7 @@ heart_disease |>
        y = "Cost",
        title = "Joint distribution of patients' duration and cost",
        color = "Interventions") +
-  theme_bw() +
+  theme_light() +
   theme(legend.position = "bottom",
         legend.title = element_blank(),
         axis.text.y = element_text(size = 14),
@@ -281,7 +281,7 @@ heart_disease |>
 If you're tired of explicitly customizing every plot in the same way all the time, then you should make a custom theme. It's quite easy to make a custom theme for `ggplot2` and of course [there are an incredible number of ways to customize your theme](https://themockup.blog/posts/2020-12-26-creating-and-using-custom-ggplot2-themes/). Below, we modify `theme_bw()` using the `%+replace%` argument to a new customized theme named `theme_cus()` - which is stored as a function:
 
 ```{r}
-theme_cus <- function () {
+theme_cus <- function() {
   # start with the base font size
   theme_bw(base_size = 10) %+replace%
     theme(

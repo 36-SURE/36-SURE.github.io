@@ -7,21 +7,95 @@ format: html
 
 The purpose of this lab is to help you set up Git and GitHub on your computer, and use them to collaborate on your EDA project.
 
-## Task 1: Git and GitHub Setup
+## Task 0: GitHub registration and Git installation
 
-Follow the instructions in the [Git and GitHub Setup](https://36-sure.github.io/git-setup.html) tab on the website. **You only need to complete the first 3 steps**.
+**(Note: You were already being asked to complete these prior to the start of the program. Proceed to Task 1 if you already completed this task.)**
 
-(Note: If you're already have both an existing GitHub account and Git (in its latest version) installed on your computer, you can skip Task 1. However, make sure every group member finishes Task 1 before proceeding to Task 2, which requires a group effort.)
+**GitHub account.** Register for a (free) GitHub account at [`https://github.com`](https://github.com). <br>
+(if you already have a GitHub account, feel free to ignore this)
+
+**Download Git.** <br> (if Git is already installed on your computer, the following instructions still hold for updating Git to its latest version)
+
+(Windows) 
+
+*   Go to [`https://git-scm.com/download/win`](https://git-scm.com/download/win)
+
+*   Navigate to "Click here to download" on the first line and click on it
+
+*   Follow the installation instructions
+
+(macOS)
+
+*   Open the Terminal app on your computer (Finder $\rightarrow$ Applications $\rightarrow$ Terminal)
+
+*   Go to [`https://brew.sh`](https://brew.sh) and copy/paste the chunk under "Install Homebrew" to the Terminal
+
+*   Once Homebrew is installed, type this into the Terminal:  `brew install git`
+
+## Task 1: Git configuration
+
+* Make sure you've already (i) created a GitHub account and (ii) installed Git on your computer
+
+* You then need to configure Git. This can be done directly in `R`:
+
+```{r git-config, eval = FALSE}
+# uncomment and run the following line to install the usethis package
+# install.packages("usethis")
+usethis::use_git_config(user.name = "Your Name", user.email = "your-github@email.address")
+```
+
+* Use your full name for the `user.name` field and the same email as your GitHub account for `user.email`
+
+* You then need to create a *personal access token* for authentication as follows:
+
+```{r git-pat, eval = FALSE}
+usethis::create_github_token()
+```
+
+* This will direct you to the GitHub site on your browser (you may have to log in). On this site:
+
+  *   Under "Note", type in some description for this token (e.g., "SURE 2024 GitHub token")
+  
+  *   For "Expiration", set an expiration date for this token (e.g., 90 days) or make it permanent (i.e. choose "No expiration" if you don't want to deal with this again in the future)
+  
+  *   Under "Select scopes", recommended scopes will be pre-selected. Stick with these for now.
+
+* Next, click on "Generate token"
+
+* Copy the token to your clipboard (or leave the browser window open, so you can come back to copy the token later)
+
+* In RStudio, run the following to get a prompt where you can paste your token:
+
+```{r git-set, eval = FALSE}
+# uncomment and run the following line to install the gitcreds package
+# install.packages("gitcreds")
+gitcreds::gitcreds_set()
+```
+
 
 ## Task 2: EDA project collaboration with Git and GitHub
 
+Make sure every group member finishes Task 1 before proceeding to Task 2, which requires a group effort.
+
 ### Step 1: Create an EDA project repository on GitHub<br>(Required for ONE group member only)
 
-Each group should elect ONE person to create a GitHub repository for the EDA project. This repository is to be shared among all group members. 
+**Each group should elect ONE person to create a GitHub repository for the EDA project.** This repository is to be shared among all group members. 
 
-The elected group member should follow [Step 4 of the Git and GitHub Setup page](https://36-sure.github.io/git-setup.html#step-4-create-a-github-repository) to create a new GitHub repository.
+The elected group member should do the following to create a new GitHub repository:
 
-To add the rest of your group to the repository:
+*   After you've signed in to GitHub, go to [`https://github.com/new`](https://github.com/new)
+
+*   Name the repository (give it a meaningful name)
+
+*   Give the repository a description (don't leave this blank although this is optional)
+
+*   Decide whether to keep the repository public or private (for now, keep it public, so that we can review your code)
+
+*   Click on "Initialize this repository with a README". For now, there's no need to "Add .gitignore" or "Choose a license"
+
+*   Click on "Create Repository"
+
+Next, to add the rest of your group to the repository:
 
 *   Go to browser page of the GitHub repository you just created and click on "Settings"
 
@@ -31,7 +105,7 @@ To add the rest of your group to the repository:
 
 ### Step 2: Clone the remote repository to your local computer<br>(Required for ALL group members)
 
-*   Everyone (except the member responsible for creating the repository) should each get an invitation sent to the email associated with your GitHub account.
+*   Everyone (except the member responsible for creating the repository) should each get an invitation sent to the email associated with your GitHub account
 
 *   Check your email and accept the invitation
 
@@ -53,13 +127,11 @@ To add the rest of your group to the repository:
 
 ### Step 3: Modify the repository <br>(Required for ALL group members)
 
-For ease, each group member should create their own "sandbox" folder as follows:
+Each group member should create their own "sandbox" folder locally on their own computer as follows:
 
 *  Navigate to the Files pane in RStudio and click on "Folder" to create a new folder (for the new folder name, use your last name.)
 
-*  In RStudio, open a new file (e.g. R Script, Quarto document, etc.)
-
-*   Fill the file with some code/comments/etc.
+*  In RStudio, open a new file (could be anything - e.g. R Script, Quarto document, etc.). Fill the file with some code/comments/etc. (This is just for illustration purpose, to show how you can add a file to GitHub from your computer)
 
 *   Save the file inside the folder you just created (with your last name as the folder name). At this point, this file should show up in the "Git" pane (in the top right of RStudio)
 

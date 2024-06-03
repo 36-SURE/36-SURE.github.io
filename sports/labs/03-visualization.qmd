@@ -264,7 +264,7 @@ nba_stats |>
 If you're tired of explicitly customizing every plot in the same way all the time, then you should make a custom theme. It's quite easy to make a custom theme for `ggplot2` and of course [there are an incredible number of ways to customize your theme](https://themockup.blog/posts/2020-12-26-creating-and-using-custom-ggplot2-themes/). Below, we modify `theme_bw()` using the `%+replace%` argument to a new customized theme named `theme_cus()` - which is stored as a function:
 
 ```{r}
-theme_cus <- function () {
+theme_cus <- function() {
   # start with the base font size
   theme_bw(base_size = 10) %+replace%
     theme(

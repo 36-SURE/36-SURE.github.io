@@ -5,6 +5,8 @@ format: html
 
 ## Installing `R` and RStudio
 
+**(Skip this part if you've already installed `R` and RStudio.)**
+
 To install **`R`** (latest release: 4.4.0), visit [`https://www.r-project.org`](https://www.r-project.org) and choose your system. Click on the *download R* link in the middle of the page under “Getting Started.” Download and install the installer files (executable, pkg, etc) that correspond to your system.
 
 Although you can use `R` without any integrated development environment (IDE), you will need to install **RStudio**, by far the most popular IDE for `R`, for this summer. Basically, it makes your life with `R` much easier and we will be using it throughout the program. To install RStudio, visit [`https://posit.co/download/rstudio-desktop`](https://posit.co/download/rstudio-desktop) and choose your system. The installer is preferred. If you have RStudio installed but not the latest version, just download the latest installer and install.
@@ -13,7 +15,7 @@ Although you can use `R` without any integrated development environment (IDE), y
 
 ### Writing `R` scripts
 
-You can type commands directly into the **Console** (lower left pane), but this can become quite tedious and annoying when your work becomes more complex. Instead, you will be spending most of your time writing code in **R Scripts**. An R Script is a file type which `R` recognizes as storing `R` commands and is saved as a **.R** file. R Scripts are useful as we can edit our code before sending it to be run in the console. You can create a new R Script by clicking on the top left symbol in RStudio and selecting **R Script**.
+You can type commands directly into the **Console** (lower left pane), but this can become quite tedious and annoying when your work becomes more complex. Instead, you can code in **R Scripts**. An R Script is a file type which `R` recognizes as storing `R` commands and is saved as a **.R** file. R Scripts are useful as we can edit our code before sending it to be run in the console. You can create a new R Script by clicking on the top left symbol in RStudio and selecting **R Script**.
 
 ### Using Quarto
 
@@ -55,7 +57,7 @@ To install a `R` package, using the function `install.packages` and put the pack
 install.packages("tidyverse")
 ```
 
-**Important**: NEVER install new packages in a code block in a `.qmd` file. Always install new packages at the command line / Console. That is, the `install.packages()` function should NEVER be in your code chunks (unless they are commented out using `#`). The `library()` function, however, will be used throughout your code: The `library()` function loads packages only after they are installed.
+**Important**: NEVER install new packages in a code block in a `.qmd` file. That is, the `install.packages()` function should NEVER be in your code chunks (unless they are commented out using `#`). The `library()` function, however, will be used throughout your code: The `library()` function loads packages only after they are installed.
 
 If in any time you get a message says: "Do you want to install from sources the package which needs compilation?" Choose "No" will tend to bring less troubles. (Note: This happens when the bleeding-edge version package is available, but not yet compiled for each OS distribution. In many case, you can just proceed without the source compilation.)
 
@@ -67,7 +69,7 @@ Each package only needs to be installed once. Whenever you want to use functions
 library(tidyverse)
 ```
 
-Here is a list of packages that we may need (but not limited to) in the following lectures and/or labs. Make sure you can install all of them. If you fail to install any package, please update the `R` and RStudio first and check the error message for any other packages that need to install first.
+Here is a list of packages that we may need (but not limited to) in the following lectures and/or labs. Make sure you can install all of them. If you fail to install any package, please update `R` and RStudio first and check the error message for any other packages that need to install first.
 
 ```{r}
 #| message: false
@@ -126,11 +128,10 @@ typeof(c(1, TRUE, "apple"))
 
 ```{r}
 roster <- list(
-  name = c("Quang", "Akshay", "Nick", "Princess", "Yuchen", "JungHo"),
-  role = c("Instructor", "TA", "TA", "TA", "TA", "TA"),
-  is_TA = c(FALSE, TRUE, TRUE, TRUE, TRUE, TRUE)
+  name = c("Quang", "Akshay", "Nick", "Princess", "Yuchen", "JungHo", "Daven"),
+  role = c("Instructor", "TA", "TA", "TA", "TA", "TA", "TA"),
+  is_TA = c(FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE)
 )
-
 str(roster)
 ```
 
