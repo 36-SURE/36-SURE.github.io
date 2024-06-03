@@ -203,7 +203,7 @@ dbl (9): Cost, Age, Interventions, Drugs, ERVisit, Complications, Comorbidit...
 </div>
 </div>
 <p>By default, <code>read_csv()</code> reads in the dataset as a <code>tbl</code> (aka <code>tibble</code>) object instead of a <code>data.frame</code> object. You can read about the differences <a href="https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html">here</a>, but it’s not that meaningful for purposes.</p>
-<p>We can use the functions <code>head()</code> and <code>tail()</code> to view a sample of the data. Use the <code>head()</code> function to view the first 6 rows, then use the <code>tail()</code> function to view the last 3 rows:</p>
+<p>We can use the functions <code>slice_head()</code> and <code>slice_tail()</code> to view a sample of the data. Use the <code>slice_head()</code> function to view the first 6 rows, then use the <code>slice_tail()</code> function to view the last 3 rows:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># INSERT CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -213,7 +213,7 @@ dbl (9): Cost, Age, Interventions, Drugs, ERVisit, Complications, Comorbidit...
 </div>
 <p>Quickly view summary statistics for all variables with the <code>summary()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment the following code by deleting the # at the front:</span></span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment the following code by deleting the # at the front</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(heart_disease)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>View the data structure types with <code>str()</code>:</p>
@@ -234,13 +234,13 @@ dbl (9): Cost, Age, Interventions, Drugs, ERVisit, Complications, Comorbidit...
 </div>
 <p>To select all the columns except a specific column, use the <code>-</code> (subtraction) operator. For example, view the output from uncommenting the following line of code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># head(select(heart_disease, -Interventions))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select(heart_disease, -Interventions)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To select a range of columns by name (that are in consecutive order), use the <code>:</code> (colon) operator. For example, view the output from uncommenting the following line of code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#head(select(heart_disease, Drugs:Duration))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select(heart_disease, Drugs:Duration)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To select all columns that start with certain character strings, use the function <code>starts_with()</code>. Ohter matching options are:</p>
+<p>To select all columns that start with certain character strings, use the function <code>starts_with()</code>. Other matching options are:</p>
 <ol type="1">
 <li><p><code>ends_with()</code>: select columns that end with a character string</p></li>
 <li><p><code>contains()</code>: select columns that contain a character string</p></li>
@@ -249,17 +249,17 @@ dbl (9): Cost, Age, Interventions, Drugs, ERVisit, Complications, Comorbidit...
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment the following lines of code</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#head(select(heart_disease, starts_with("Com")))</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#head(select(heart_disease, contains("er")))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># select(heart_disease, starts_with("Com"))</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># select(heart_disease, contains("er"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="selecting-rows-using-filter" class="level3">
 <h3 class="anchored" data-anchor-id="selecting-rows-using-filter">Selecting rows using <code>filter()</code></h3>
-<p>We can also select the rows/observations that satisfy certain criteria. Try selecting the rows with more than 500 assists:</p>
+<p>We can also select the rows/observations that satisfy certain criteria. Try selecting the rows with cost of more than 400:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># INSERT CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We can also filter on mutiple criteria. Select rows with <code>Age</code> above 60 and the <code>gender</code> is ‘Male’:</p>
+<p>We can also filter on multiple criteria. Select rows with <code>Age</code> above 60 and the <code>gender</code> is “Male”:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># INSERT CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>

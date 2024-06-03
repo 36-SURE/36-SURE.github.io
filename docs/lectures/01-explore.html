@@ -1116,6 +1116,7 @@
 <li>total batting average for each year = total H / total AB</li>
 <li>only keeps AL and NL leagues</li>
 </ul>
+<div class="fragment">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="ot">&lt;-</span> Batting <span class="sc">|&gt;</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(lgID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"AL"</span>, <span class="st">"NL"</span>)) <span class="sc">|&gt;</span></span>
@@ -1127,10 +1128,12 @@
 <span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">total_ab =</span> <span class="fu">sum</span>(AB, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">batting_avg =</span> total_h <span class="sc">/</span> total_ab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div>
 </section>
 <section id="putting-it-all-together-1" class="slide level2">
 <h2>Putting it all together</h2>
 <p>What are the top three years with the most HRs?</p>
+<div class="fragment">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span> </span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(total_hr, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1157,10 +1160,12 @@
 3   2021   39484     5944    42145    15794   161941       0.244</code></pre>
 </div>
 </div>
+</div>
 </section>
 <section id="putting-it-all-together-2" class="slide level2">
 <h2>Putting it all together</h2>
 <p>Which years have the best and worst strikeout to walk ratios?</p>
+<div class="fragment">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">so_bb_ratio =</span> total_so <span class="sc">/</span> total_bb) <span class="sc">|&gt;</span></span>
@@ -1172,6 +1177,7 @@
    &lt;int&gt;   &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;       &lt;dbl&gt;       &lt;dbl&gt;
 1   1893   15913      460     3341     6143    56898       0.280       0.544
 2   1879    6171       58     1843      508    24155       0.255       3.63 </code></pre>
+</div>
 </div>
 </div>
 </section>
