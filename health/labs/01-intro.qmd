@@ -17,7 +17,9 @@ Although you can use `R` without any integrated development environment (IDE), y
 
 ### Writing `R` scripts
 
-You can type commands directly into the **Console** (lower left pane), but this can become quite tedious and annoying when your work becomes more complex. Instead, you can code in **R Scripts**. An R Script is a file type which `R` recognizes as storing `R` commands and is saved as a **.R** file. R Scripts are useful as we can edit our code before sending it to be run in the console. You can create a new R Script by clicking on the top left symbol in RStudio and selecting **R Script**.
+You can type `R` commands directly into the **Console** (lower left pane), but this can become quite tedious and annoying when your work becomes more complex. Instead, you can code in **R Scripts**. An R Script is a file type which `R` recognizes as storing `R` commands and is saved as a **.R** file. R Scripts are useful as we can edit our code before sending it to be run in the console. 
+
+In RStudio, to open a new R Script: File > New File > R Script.
 
 ### Using Quarto
 
