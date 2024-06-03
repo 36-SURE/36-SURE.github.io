@@ -2121,13 +2121,6 @@
     "text": "Wrapping up…\n\nFor context, how does median income relate to our clustering results?\n\n\nutah_health |&gt; \n  mutate(cluster = as.factor(minimax_county_clusters$cl)) |&gt; \n  ggplot(aes(x = MedianIncome, fill = cluster)) +\n  geom_density(alpha = 0.1) +\n  scale_fill_manual(values = c(\"darkblue\", \"purple\", \"gold\", \"orange\"))\n\n\n\nDifferent income levels tend to fall within particular clusters…\nIt’s easy to include more variables - just change the distance matrix\nBut we might want to explore soft probability assignments instead…\n\n\n\n36-SURE.github.io"
   },
   {
-    "objectID": "lectures/quarto-template.html",
-    "href": "lectures/quarto-template.html",
-    "title": "Template for Quarto reports",
-    "section": "",
-    "text": "Resources:\nhttps://r4ds.hadley.nz/quarto\nhttps://quarto.org/docs/guide/\nhttps://quarto.org/docs/authoring/markdown-basics.html\nThis short template demonstrates the useful features of Quarto you’ll need to write reproducible reports. You should read the Qmd source file and also use the Render button to see what it looks like in PDF.\nQuarto has a comprehensive manual online.\n\nText formatting\nAs you can see above, # indicates a top-level section header. Subsection headers can be made with ##, sub-subsections with ###, and so on. These are automatically numbered. We can also assign labels to sections, subsections, and so on, and refer to them by number; for instance, Section 2 below describes how to include R code. To be able to refer to a section, give it a label using the {#sec-label} syntax on the same line as the header.\nText can be bolded with double asterisks and italicized with single asterisks. Monospace text, such as for short code snippets, uses backticks. (Note these are different from quotation marks or apostrophes.) Links are written like this.\nBulleted lists can be written with asterisks:\n\nEach item starts on a new line with an asterisk.\nItems should start on the beginning of the line.\nLeave blank lines after the end of the list so the list does not continue.\n\nMathematics can be written with LaTeX syntax using dollar signs. For instance, using single dollar signs we can write inline math: \\((-b \\pm \\sqrt{b^2 - 4ac})/2a\\).\nTo write math in “display style”, i.e. displayed on its own line centered on the page, we use double dollar signs: \\[\nN(A) = \\int_A \\lambda(t) \\, dt.\n\\] (Notice how I used \\, to put a space between the integrand and the differential. Notice also that I left no blank lines before and after the equation, since blank lines create new paragraphs that are hence indented.)\n\n\nCode blocks\nCode blocks are evaluated sequentially when you hit Render. As the code runs, R prints out which block is running, so naming blocks is useful if you want to know which one takes a long time. After the block name, you can specify chunk options. For example, echo controls whether the code is printed in the document. By default, output is printed in the document in monospace:\n\n\n  speed dist\n1     4    2\n2     4   10\n3     7    4\n4     7   22\n5     8   16\n6     9   10\n\n\nChunk options can also be written inside the code block as YAML, which is helpful for really long options, as we’ll see soon.\n\n\n  speed dist\n1     4    2\n2     4   10\n3     7    4\n4     7   22\n5     8   16\n6     9   10\n\n\nCode often prints out irrelevant output we don’t want to include. For instance, many packages print out “helpful” messages when they’re loaded. We usually want to suppress these so they don’t appear in the finalized report. There are a few ways to do this.\nFor package startup messages, we can suppress them individually without suppressing other output:\n\nsuppressPackageStartupMessages(library(ggplot2))\n\n2 + 2\n\n[1] 4\n\n\nNote the output appears but not the normal ggplot2 message.\nTo hide all warnings, use the warning option:\n\nwarning(\"This is an example warning!\")\n\nTo hide messages printed with message(), use the message option:\n\nmessage(\"This is an example message\")\n\nTo hide all text output, including things printed with cat() or print(), use the results option:\n\ncat(\"foobar\\n\")\n\n\n\nInline code\nSometimes it’s useful to embed the output of R code into the middle of the paragraph. For instance, suppose you have code that calculates an MSE:\n\nmse &lt;- 71243.2451\n\nTo embed this in text, we can use backticks in a special way. For instance, I can embed this number like so: 7.1243245^{4}. Note how it’s automatically formatted.\nThe prettyNum() function can be very useful. It allows you to print numbers with commas (for thousands separators) and with a limited number of significant digits: 71,243.2.\n\n\nFigures\nIf a code block produces a plot or figure, this figure will automatically be inserted inline in the report. That is, it will be inserted exactly where the code block is. This is not what we normally want. We normally want plots to be in figures, i.e. to appear at the top of bottom of the printed page with a caption, figure number, and so on. We can do this with the right options.\n\n\n\n\n\nFigure 1: This is a caption. It should explain what’s in the figure and what’s interesting about it. For instance: Stopping distances of 1920s cars as a function of their speed. The trend appears linear, although there is a hint of a quadratic trend, which would make sense as kinetic energy is proportional to the square of speed.\n\n\n\n\nWe can refer to this figure in the text by its number. For instance, we can write this: Figure 1 illustrates the relationship between car speed and stopping distance.\nThe @ref syntax tells Quarto to insert the reference. We write @fig-with-caption to indicate it’s a figure and produced by the code block named fig-with-caption. The code block name must begin with fig- so Quarto knows to refer to it by “Figure N”, rather than “Table N” or some other prefix.\nNotice the use of fig.width and fig.height to control the figure’s size (in inches). These control the sizes given to R when it generates the plot, so R proportionally adjusts the font sizes to be large enough.\n\n\nModels\nWe can summarize model results with a table. For instance, suppose we fit a couple linear regression models:\n\nmodel1 &lt;- lm(mpg ~ disp + hp + drat, data = mtcars)\nmodel2 &lt;- lm(mpg ~ disp + hp + drat + qsec, data = mtcars)\n\nIt is not appropriate to simply print summary(model1) into the report. If we want the reader to understand what models we have fit and what their results are, we should provide a nicely formatted table. Packages such as texreg can do this, although they do not integrate with Quarto very well. A simpler option is to use broom::tidy() to get a data frame of the model fit, and simply report that as a table. Table 1 shows the results. To show multiple models at once, you can use dplyr::full_join() to pull together the tidied models and rearrange the columns as you desire.\n\n\n\n\nTable 1: Predicting fuel economy using vehicle features.\n\n\nTerm\nEstimate\nSE\nt\np\n\n\n\n\n(Intercept)\n19.34\n6.37\n3.04\n0.01\n\n\ndisp\n-0.02\n0.01\n-2.05\n0.05\n\n\nhp\n-0.03\n0.01\n-2.34\n0.03\n\n\ndrat\n2.71\n1.49\n1.83\n0.08\n\n\n\n\n\n\nSadly this table does not float, i.e. it appears exactly where we put it instead of going to the top or bottom of the page; this causes some strange page layouts but appears to be unavoidable without contorted code."
-  },
-  {
     "objectID": "lectures/09-presentation.html#begin-with-background-and-motivation",
     "href": "lectures/09-presentation.html#begin-with-background-and-motivation",
     "title": "Presentations",
@@ -2723,6 +2716,13 @@
     "text": "Goals\n\nDevelop fundamentals research skills: data wrangling, visualization, modeling, communication\nBecome familiar with R, tidyverse, Quarto (Markdown syntax), Git/GitHub\nBecome familiar with cutting-edge statistical machine learning techniques\nCreate a portfolio of projects and practice reproducible research\nNetwork with academic researchers and industry professionals\n\nHelp navigate your next steps—industry vs. graduate school"
   },
   {
+    "objectID": "lectures/00-welcome.html#resources",
+    "href": "lectures/00-welcome.html#resources",
+    "title": "Welcome to SURE 2024",
+    "section": "Resources",
+    "text": "Resources\n\nWebsite\nGoogle Calendar\nSlack\nEmail"
+  },
+  {
     "objectID": "lectures/00-welcome.html#a-typical-day-consists-of-3-main-events",
     "href": "lectures/00-welcome.html#a-typical-day-consists-of-3-main-events",
     "title": "Welcome to SURE 2024",
@@ -2765,11 +2765,11 @@
     "text": "Main project\n\nAnalyze a dataset in health or sports analytics to answer a research question that is important to people in your respective field\nWork in a group of 2-4\nDeliverables (more details will be provided later on)\n\nReport\nPoster\n8-min presentation"
   },
   {
-    "objectID": "lectures/00-welcome.html#resources",
-    "href": "lectures/00-welcome.html#resources",
+    "objectID": "lectures/00-welcome.html#reminders",
+    "href": "lectures/00-welcome.html#reminders",
     "title": "Welcome to SURE 2024",
-    "section": "Resources",
-    "text": "Resources\n\nWebsite\nGoogle Calendar\nSlack\nEmail\n\nReminder\n\nFill out the survey forms (Communication and Data Science Background)\nReset CMU wifi password (for non-CMU students)"
+    "section": "Reminders",
+    "text": "Reminders\n\nFill out the survey forms (Communication and Data Science Background)\nReset CMU wifi password (for non-CMU students)"
   },
   {
     "objectID": "lectures/00-welcome.html#expectations",
@@ -2777,27 +2777,6 @@
     "title": "Welcome to SURE 2024",
     "section": "Expectations",
     "text": "Expectations\n\nIn-person attendance\n\nBe on time. PLEASE\n\nParticipate and ask questions\nWork together. Help and support each other.\nEnjoy, learn and grow\n\n\n\n36-SURE.github.io"
-  },
-  {
-    "objectID": "lectures/template.html#introduction",
-    "href": "lectures/template.html#introduction",
-    "title": "Put your title here",
-    "section": "introduction",
-    "text": "introduction\n\nlibrary(tidyverse)\nlibrary(scales)\nlibrary(knitr)\nlibrary(kableExtra)\noptions(dplyr.print_min = 6, dplyr.print_max = 6)\ntheme_set(theme_gray(base_size = 18))"
-  },
-  {
-    "objectID": "lectures/template.html#collaborators",
-    "href": "lectures/template.html#collaborators",
-    "title": "Put your title here",
-    "section": "collaborators",
-    "text": "collaborators\nsteve"
-  },
-  {
-    "objectID": "lectures/template.html#yo",
-    "href": "lectures/template.html#yo",
-    "title": "Put your title here",
-    "section": "yo",
-    "text": "yo\n\n\ncol 1\na\n\ncol 2\na"
   },
   {
     "objectID": "lectures/03-categorical.html#data",
@@ -2874,7 +2853,7 @@
     "href": "lectures/03-categorical.html#population-vs-sample",
     "title": "Data visualization: categorical data",
     "section": "Population vs sample",
-    "text": "Population vs sample\nPopulation: The collection of all subjects of interest\nSample: A representative subset of the population of interest\n\nThe survey respondents is just a subset of all airplane flyers\n\n\nEmpirical distribution: estimating the true marginal distribution with observed (sample) data\n\n\n\nEstimate \\(P(\\) do_you_recline \\(C_j\\)) with \\(\\hat p_j\\) for each category \\(C_j\\) (e.g., \\(\\hat p_\\texttt{always}\\), …, \\(\\hat p_\\texttt{never}\\))\n\nStandard error for each \\(\\hat p_j\\): \\(\\displaystyle SE(\\hat{p}_j) = \\sqrt{\\frac{\\hat{p}_j (1 - \\hat{p}_j)}{n}}\\)"
+    "text": "Population vs sample\nPopulation: The collection of all subjects of interest\nSample: A representative subset of the population of interest\n\nThe survey respondents is just a subset of all airplane flyers\n\n\nEmpirical distribution: estimating the true marginal distribution with observed (sample) data\n\n\n\nEstimate \\(P(\\) do_you_recline = \\(C_j\\)) with \\(\\hat p_j\\) for each category \\(C_j\\) (e.g., \\(\\hat p_\\texttt{always}\\), …, \\(\\hat p_\\texttt{never}\\))\n\nStandard error for each \\(\\hat p_j\\): \\(\\displaystyle SE(\\hat{p}_j) = \\sqrt{\\frac{\\hat{p}_j (1 - \\hat{p}_j)}{n}}\\)"
   },
   {
     "objectID": "lectures/03-categorical.html#adding-confidence-intervals-to-bar-chart",
@@ -3224,7 +3203,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"v\" \"s\" \"j\" \"b\" \"y\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 0 0 1 1 0 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"H\" \"T\" \"T\" \"H\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 4"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"w\" \"o\" \"p\" \"a\" \"m\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 0 0 1 1 1 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"H\" \"T\" \"T\" \"H\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 26"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -3266,21 +3245,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.03696998\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.011147"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.01325603\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9748779"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.507\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.26     0.001 0.000561\n 2 -2.95     0.002 0.00160 \n 3 -2.93     0.003 0.00171 \n 4 -2.90     0.004 0.00188 \n 5 -2.81     0.005 0.00250 \n 6 -2.60     0.006 0.00464 \n 7 -2.56     0.007 0.00518 \n 8 -2.55     0.008 0.00536 \n 9 -2.50     0.009 0.00622 \n10 -2.45     0.01  0.00712 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.504\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical    true\n   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 -2.84     0.001 0.00227\n 2 -2.76     0.002 0.00288\n 3 -2.59     0.003 0.00481\n 4 -2.53     0.004 0.00564\n 5 -2.46     0.005 0.00696\n 6 -2.34     0.006 0.00955\n 7 -2.18     0.007 0.0145 \n 8 -2.17     0.008 0.0149 \n 9 -2.17     0.009 0.0150 \n10 -2.14     0.01  0.0164 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3820724\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3905178\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -3294,14 +3273,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1268\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.134\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.05747087\n\nmean(rnorm(100))\n\n[1] 0.1343932\n\nmean(rnorm(100))\n\n[1] -0.0001183606"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.0730866\n\nmean(rnorm(100))\n\n[1] -0.0263888\n\nmean(rnorm(100))\n\n[1] -0.1377413"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
