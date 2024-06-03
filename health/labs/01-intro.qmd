@@ -3,6 +3,8 @@ title: "Lab: getting started with `R`"
 format: html
 ---
 
+NOTE: To preview this file, click the "Render" button in RStudio.
+
 ## Installing `R` and RStudio
 
 **(Skip this part if you've already installed `R` and RStudio.)**
@@ -24,7 +26,7 @@ An **Quarto** file is a dynamic document for writing reproducible reports and co
 There are three important elements to a **Quarto** file:
 
 -   A YAML header at the top (surrounded by `---`)
--   Chunks of `R` code surrounded by \`\`\`
+-   Chunks of `R` code surrounded by ```
 -   Text mixed with simple text formatting like `## Heading` and *italics*
 
 (Note that this file itself is a **Quarto** document.)
@@ -50,7 +52,7 @@ For more details on Quarto, see the [comprehensive manual online](https://quarto
 
 `R` performs a wide variety of functions, such as data manipulation, modeling, and visualization. The extensive code base beyond the built-in functions are managed by **packages** created from numerous statisticians and developers. The Comprehensive R Archive Network (CRAN) manages the open-source distribution and the quality control of the `R` packages.
 
-To install a `R` package, using the function `install.packages` and put the package name in the parentheses and the quote. While this is preferred, for those using RStudio, you can also go to "Tools" then "Install Packages" and then input the package name.
+To install an `R` package, using the function `install.packages` and put the package name in the parentheses and the quote. While this is preferred, for those using RStudio, you can also go to "Tools" then "Install Packages" and then input the package name.
 
 ```{r}
 #| eval: false
