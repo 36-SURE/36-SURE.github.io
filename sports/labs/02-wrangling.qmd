@@ -53,7 +53,7 @@ The function `select()` can be use to select certain column with the column name
 # INSERT CODE HERE
 ```
 
-To select all the columns except a specific column, use the `-` (subtraction) operator. For example, view the output from uncommenting the following line of code:
+To select all columns except a specific column, use the `-` (subtraction) operator. For example, view the output from uncommenting the following line of code:
 
 ```{r}
 # select(nba_stats, -player)
@@ -81,15 +81,15 @@ To select all columns that start with certain character strings, use the functio
 # select(nba_stats, contains("throw"))
 ```
 
-### Selecting rows using `filter()`
+### Extracting rows using `filter()`
 
-We can also select the rows/observations that satisfy certain criteria. Try selecting the rows with more than 500 assists:
+We can also extract the rows/observations that satisfy certain criteria. Try extracting the rows with more than 500 assists:
 
 ```{r}
 # INSERT CODE HERE
 ```
 
-We can also filter on multiple criteria. Select rows with `age` above 30 and the team is either "HOU" or "GSW":
+We can also filter on multiple criteria. Subset the rows with `age` above 30 and the team is either "HOU" or "GSW":
 
 ```{r}
 # INSERT CODE HERE
@@ -97,7 +97,7 @@ We can also filter on multiple criteria. Select rows with `age` above 30 and the
 
 ### Arranging rows using `arrange()`
 
-To arrange the data frame by a specific order we need to use the function `arrange()`. The default is by increasing order and a negative operator will provide the decreasing order. First arrange the `nba_stats` table by `personal_fouls` in ascending order:
+To arrange the data frame by a specific order we need to use the function `arrange()`. The default is by increasing order and the `desc()` function will provide the decreasing order. First arrange the `nba_stats` table by `personal_fouls` in ascending order:
 
 ```{r}
 # INSERT CODE HERE
@@ -121,7 +121,7 @@ Try combining a pipeline of `select()`, `filter()`, and `arrange()` steps togeth
 
 ### Creating new columns using `mutate()`
 
-Sometimes the data does not include the variable that we are interested in and we need to manipulate the current variables to add new variables into the data frame. Create a new colum `fouls_per_game` by taking the `personal_fouls` and dividing by `games` (reassign this output to the `nba_stats` table following the commented code chunk so this column is added to the table):
+Sometimes the data does not include the variable that we are interested in and we need to manipulate the current variables to add new variables into the data frame. Create a new column `fouls_per_game` by taking the `personal_fouls` and dividing by `games` (reassign this output to the `nba_stats` table following the commented code chunk so this column is added to the table):
 
 ```{r}
 # nba_stats <- nba_stats |>
@@ -136,7 +136,7 @@ To create summary statistics for a given column in the data frame, we can use `s
 # INSERT CODE HERE
 ```
 
-The advantage of `summarize` is more obvious if we combine it with the `group_by()`, the group operators. Since players at the different position tend to have very different statistics, first `group_by()` position and then compute the same summary statistics:
+The advantage of `summarize()` is more obvious if we combine it with `group_by()`, the group operators. Since players at the different position tend to have very different statistics, first `group_by()` position and then compute the same summary statistics for `assists`:
 
 ```{r}
 # INSERT CODE HERE
