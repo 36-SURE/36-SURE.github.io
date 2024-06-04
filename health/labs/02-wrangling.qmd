@@ -14,7 +14,7 @@ heart_disease <- read_csv("https://raw.githubusercontent.com/36-SURE/36-SURE.git
 
 By default, `read_csv()` reads in the dataset as a `tbl` (aka `tibble`) object instead of a `data.frame` object. You can read about the differences [here](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html), but it's not that meaningful for purposes.
 
-We can use the functions `head()` and `tail()` to view a sample of the data. Use the `head()` function to view the first 6 rows, then use the `tail()` function to view the last 3 rows:
+We can use the functions `slice_head()` and `slice_tail()` to view a sample of the data. Use the `slice_head()` function to view the first 6 rows, then use the `slice_tail()` function to view the last 3 rows:
 
 ```{r}
 # INSERT CODE HERE
@@ -29,7 +29,7 @@ View the dimensions of the data with `dim()`:
 Quickly view summary statistics for all variables with the `summary()` function:
 
 ```{r}
-# Uncomment the following code by deleting the # at the front:
+# Uncomment the following code by deleting the # at the front
 # summary(heart_disease)
 ```
 
@@ -58,16 +58,16 @@ The function `select()` can be use to select certain column with the column name
 To select all the columns except a specific column, use the `-` (subtraction) operator. For example, view the output from uncommenting the following line of code:
 
 ```{r}
-# head(select(heart_disease, -Interventions))
+# select(heart_disease, -Interventions)
 ```
 
 To select a range of columns by name (that are in consecutive order), use the `:` (colon) operator. For example, view the output from uncommenting the following line of code:
 
 ```{r}
-#head(select(heart_disease, Drugs:Duration))
+# select(heart_disease, Drugs:Duration)
 ```
 
-To select all columns that start with certain character strings, use the function `starts_with()`. Ohter matching options are:
+To select all columns that start with certain character strings, use the function `starts_with()`. Other matching options are:
 
 1.  `ends_with()`: select columns that end with a character string
 
@@ -79,19 +79,19 @@ To select all columns that start with certain character strings, use the functio
 
 ```{r}
 # Uncomment the following lines of code
-#head(select(heart_disease, starts_with("Com")))
-#head(select(heart_disease, contains("er")))
+# select(heart_disease, starts_with("Com"))
+# select(heart_disease, contains("er"))
 ```
 
 ### Selecting rows using `filter()`
 
-We can also select the rows/observations that satisfy certain criteria. Try selecting the rows with more than 500 assists:
+We can also select the rows/observations that satisfy certain criteria. Try selecting the rows with cost of more than 400:
 
 ```{r}
 # INSERT CODE HERE
 ```
 
-We can also filter on mutiple criteria. Select rows with `Age` above 60 and the `gender` is 'Male':
+We can also filter on multiple criteria. Select rows with `Age` above 60 and the `gender` is "Male":
 
 ```{r}
 # INSERT CODE HERE
