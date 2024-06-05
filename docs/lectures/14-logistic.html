@@ -403,11 +403,358 @@
 </div>
 
 </section>
+<section>
 <section id="background" class="title-slide slide level1 center">
 <h1>Background</h1>
 
 </section>
+<section id="classification" class="slide level2">
+<h2>Classification</h2>
+</section>
+<section id="logistic-regression" class="slide level2">
+<h2>Logistic regression</h2>
+<p>Assuming that we are dealing with two classes, the possible observed values for <span class="math inline">\(Y\)</span> are 0 and 1, <span class="math display">\[
+Y \mid x \sim {\rm Binomial}(n=1,p=\mathbb{E}[Y\mid x]) = \text{Bernoulli}(p = \mathbb{E}[Y\mid x])
+\]</span></p>
+<div class="fragment">
+<p>To limit the regression betweewn <span class="math inline">\([0, 1]\)</span>: use the <strong>logit</strong> function, aka the <strong>log-odds ratio</strong></p>
+<p><span class="math display">\[
+\text{logit}(p(x)) = \log \left[ \frac{p(x)}{1 - p(x)} \right] =  \log\left[\frac{\mathbb{E}[Y \mid x]}{1-\mathbb{E}[Y \mid x]}\right] = \beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p
+\]</span></p>
+</div>
+<div class="fragment">
+<p>meaning <span class="math display">\[
+p(x) = \mathbb{E}[Y \mid x] = \frac{e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}{1 + e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}
+\]</span></p>
+</div>
+</section>
+<section id="major-difference-between-linear-and-logistic-regression" class="slide level2">
+<h2>Major difference between linear and logistic regression</h2>
+<p>Logistic regression <strong>involves numerical optimization</strong></p>
+<ul>
+<li><span class="math inline">\(y_i\)</span> is observed response for <span class="math inline">\(n\)</span> observations - either 0 or 1</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>we need to use an iterative algorithm to find <span class="math inline">\(\beta\)</span>’s that maximize the <strong>likelihood</strong></li>
+</ul>
+<p><span class="math display">\[\prod_{i=1}^{n} p\left(x_{i}\right)^{y_{i}}\left(1-p\left(x_{i}\right)\right)^{1-y_{i}}\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Newton’s method</strong>: start with initial guess, calculate gradient of log-likelihood, add amount proportional to the gradient to parameters, moving up log-likelihood surface</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>means logistic regression runs more slowly than linear regression</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>if you’re interested: <a href="http://www.stat.cmu.edu/~cshalizi/uADA/15/lectures/12.pdf">you use iteratively re-weighted least squares, Section 12.3.1</a></li>
+</ul>
+</div>
+</section>
+<section id="inference-with-logistic-regression" class="slide level2">
+<h2>Inference with logistic regression</h2>
+<p><strong>Major motivation</strong> for logistic regression (and all GLMs) is <strong>inference</strong></p>
+<ul>
+<li>how does the response change when we change a predictor by one unit?</li>
+</ul>
+<div class="fragment">
+<p>For linear regression, the answer is straightforward</p>
+<p><span class="math display">\[\mathbb{E}[Y \mid x] = \beta_0 + \beta_1 x_1\]</span></p>
+</div>
+<div class="fragment">
+<p>For logistic regression… it is a little <em>less</em> straightforward,</p>
+<p><span class="math display">\[
+E[Y \mid x] = \frac{e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}{1 + e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}
+\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li><p>the predicted response varies <strong>non-linearly</strong> with the predictor variable values</p></li>
+<li><p>one convention is to fall back upon the concept of <strong>odds</strong></p></li>
+</ul>
+</div>
+</section>
+<section id="the-odds-interpretation" class="slide level2">
+<h2>The odds interpretation</h2>
+<p>Pretend the predicted probability is 0.8 given a particular predictor variable value</p>
+<ul>
+<li>just pretend we only have one predictor variable</li>
+</ul>
+<div class="fragment">
+<p>This means that if we were to repeatedly sample response values given that predictor variable value: <strong>we expect class 1 to appear 4 times as often as class 0</strong></p>
+<p><span class="math display">\[Odds = \frac{\mathbb{E}[Y \mid x]}{1-\mathbb{E}[Y \mid x]} = \frac{0.8}{1-0.8} = 4 = e^{\beta_0+\beta_1x}\]</span></p>
+<p>Thus we say that for the given predictor variable value, the <span class="math inline">\(Odds\)</span> are 4 (or 4-1) in favor of class 1</p>
+</div>
+<div class="fragment">
+<p>How does the odds change if I change the value of a predictor variable by one unit?</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[Odds_{\rm new} = e^{\beta_0+\beta_1(x+1)} = e^{\beta_0+\beta_1x}e^{\beta_1} = e^{\beta_1}Odds_{\rm old}\]</span></p>
+<p>For every unit change in <span class="math inline">\(x\)</span>, the odds change by a <strong>factor</strong> <span class="math inline">\(e^{\beta_1}\)</span></p>
+</div>
+</section>
+<section id="example-data-nfl-field-goal-attempts" class="slide level2">
+<h2>Example data: NFL field goal attempts</h2>
+<p>Created dataset using <a href="https://github.com/ryurko/nflscrapR-data"><code>nflscrapR-data</code></a> of all NFL field goal attempts from 2009 to 2019</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>nfl_fg_attempts <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://www.stat.cmu.edu/cmsac/sure/2022/materials/data/sports/glm_examples/nfl_fg_attempt_data.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>nfl_fg_attempts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10,811 × 11
+   kicker_player_id kicker_player_name   qtr score_differential home_team
+   &lt;chr&gt;            &lt;chr&gt;              &lt;dbl&gt;              &lt;dbl&gt; &lt;chr&gt;    
+ 1 00-0020962       R.Bironas              1                  0 PIT      
+ 2 00-0020962       R.Bironas              2                  0 PIT      
+ 3 00-0020962       R.Bironas              4                  0 PIT      
+ 4 00-0020737       J.Reed                 4                 -3 PIT      
+ 5 00-0020737       J.Reed                 5                  0 PIT      
+ 6 00-0004091       P.Dawson               1                  0 CLE      
+ 7 00-0010072       R.Longwell             1                 -3 CLE      
+ 8 00-0004091       P.Dawson               2                 -7 CLE      
+ 9 00-0010072       R.Longwell             4                 12 CLE      
+10 00-0006800       J.Hanson               1                -14 NO       
+# ℹ 10,801 more rows
+# ℹ 6 more variables: posteam &lt;chr&gt;, posteam_type &lt;chr&gt;, kick_distance &lt;dbl&gt;,
+#   pbp_season &lt;dbl&gt;, abs_score_diff &lt;dbl&gt;, is_fg_made &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="fitting-a-logistic-regression-model" class="slide level2">
+<h2>Fitting a logistic regression model</h2>
+<div class="columns">
+<div class="column" style="text-align: left;">
+<ul>
+<li><p>We use the <code>glm</code> function (similar to <code>lm</code>)</p></li>
+<li><p><strong>Specify the family is <code>binomial</code></strong></p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>init_logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(is_fg_made <span class="sc">~</span> kick_distance, <span class="co">#&lt;&lt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> nfl_fg_attempts,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">"binomial"</span>) <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>View predicted probability relationship</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>nfl_fg_attempts <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_prob =</span> init_logit<span class="sc">$</span>fitted.values) <span class="sc">%&gt;%</span> <span class="co">#&lt;&lt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> kick_distance)) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_prob), </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> is_fg_made), </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> <span class="fl">0.3</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">"darkorange"</span>) <span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="14-logistic_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(init_logit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = is_fg_made ~ kick_distance, family = "binomial", 
+    data = nfl_fg_attempts)
 
+Coefficients:
+               Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)    5.916656   0.145371   40.70   &lt;2e-16 ***
+kick_distance -0.104365   0.003255  -32.06   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 9593.1  on 10810  degrees of freedom
+Residual deviance: 8277.5  on 10809  degrees of freedom
+AIC: 8281.5
+
+Number of Fisher Scoring iterations: 5</code></pre>
+</div>
+</div>
+</section>
+<section id="what-is-deviancehttpsen.wikipedia.orgwikideviance_statistics" class="slide level2">
+<h2>What is [Deviance](https://en.wikipedia.org/wiki/Deviance_(statistics)?</h2>
+<p>For model of interest <span class="math inline">\(\mathcal{M}\)</span> the total deviance is:</p>
+<p><span class="math display">\[D_{\mathcal{M}}= -2 \log \frac{\mathcal{L}_{\mathcal{M}}}{\mathcal{L}_{\mathcal{S}}} = 2\left(\log  \mathcal{L}_{\mathcal{S}}-\log  \mathcal{L}_{\mathcal{M}}\right)\]</span></p>
+<ul>
+<li><span class="math inline">\(\mathcal{L}_{\mathcal{M}}\)</span> is the likelihood for model <span class="math inline">\(\mathcal{M}\)</span></li>
+</ul>
+<div class="fragment">
+<ul>
+<li><p><span class="math inline">\(\mathcal{L}_{\mathcal{S}}\)</span> is the likelihood for the <strong>saturated</strong> model, with <span class="math inline">\(n\)</span> parameters! (i.e., a perfect fit)</p></li>
+<li><p>Can think of <span class="math inline">\(\mathcal{L}_{\mathcal{S}}\)</span> as some constant that does not change</p></li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>Deviance is a measure of goodness of fit</strong>: the smaller the deviance, the better the fit</p>
+<ul>
+<li>Generalization of RSS in linear regression to any distribution family</li>
+</ul>
+</div>
+</section>
+<section id="logistic-regression-output" class="slide level2">
+<h2>Logistic regression output</h2>
+<pre><code>Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.7752   0.2420   0.4025   0.6252   1.5136 </code></pre>
+<p>The <strong>deviance residuals</strong> are contributions to total deviance (signed square roots of unit deviances) <span class="math display">\[
+d_i = \mbox{sign}(y_i-\hat{p}_i) \sqrt{-2[y_i \log \hat{p}_i + (1-y_i) \log (1 - \hat{p}_i)]}
+\]</span> where <span class="math inline">\(y_i\)</span> is the <span class="math inline">\(i^{\rm th}\)</span> observed response and <span class="math inline">\(\hat{p}_i\)</span> is the estimated probability of success</p>
+<pre><code>Coefficients:
+               Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)    5.916656   0.145371   40.70   &lt;2e-16 ***
+kick_distance -0.104365   0.003255  -32.06   &lt;2e-16 ***</code></pre>
+<p>The intercept of the prediction curve is <span class="math inline">\(e^{5.916656}\)</span> and <span class="math inline">\(Odds_{\rm new}/Odds_{\rm old} = e^{-0.104365}\)</span>.</p>
+</section>
+<section id="logistic-regression-output-1" class="slide level2">
+<h2>Logistic regression output</h2>
+<pre><code>    Null deviance: 9593.1  on 10810  degrees of freedom
+Residual deviance: 8277.5  on 10809  degrees of freedom
+AIC: 8281.5</code></pre>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logLik</span>(init_logit)   <span class="co"># the maximum log-likelihood value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'log Lik.' -4138.732 (df=2)</code></pre>
+</div>
+</div>
+<ul>
+<li><p><strong>Residual deviance</strong> is -2 times -4138.732, or 8277.5 (<em>What about the saturated model?</em>)</p>
+<ul>
+<li>Null deviance corresponds to intercept-only model</li>
+</ul></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Akaike_information_criterion">AIC</a> is <span class="math inline">\(2k - 2\log{\cal L}\)</span> = <span class="math inline">\(2 \cdot k - 2 \cdot (-4138.732)\)</span> = 8281.5</p>
+<ul>
+<li>where <span class="math inline">\(k\)</span> is the number of degrees of freedom (here, <code>df</code> = 2)</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li><p>These are all metrics of quality of fit of the model</p></li>
+<li><p><strong>We will consider these to be less important than test-set performances</strong></p></li>
+</ul>
+</div>
+</section>
+<section id="logistic-regression-predictions" class="slide level2">
+<h2>Logistic regression predictions</h2>
+<p>To generate logistic regression predictions there are few things to keep in mind…</p>
+<ul>
+<li>the <code>fitted.values</code> <strong>are on the probability scale</strong>: all are between 0 and 1</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>but the <strong>default</strong> for <code>predict(init_logit)</code> is <strong>the log-odds scale!</strong></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>we change this with the <code>type</code> argument: <code>predict(init_logit, type = "response")</code></li>
+</ul>
+</div>
+<div class="fragment">
+<p>How do we predict the class? e.g make or miss field goal?</p>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pred_fg_outcome <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(init_logit<span class="sc">$</span>fitted.values <span class="sc">&gt;</span> <span class="fl">0.5</span>,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"make"</span>, <span class="st">"miss"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>typically if predicted probability is &gt; 0.5 then we predict success, else failure</li>
+</ul>
+</div>
+</section>
+<section id="model-assessment" class="slide level2">
+<h2>Model assessment</h2>
+<p>Most straight-forward way is the <strong>confusion matrix</strong> (rows are predictions, and columns are observed):</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="st">"Predictions"</span> <span class="ot">=</span> pred_fg_outcome, <span class="st">"Observed"</span> <span class="ot">=</span> nfl_fg_attempts<span class="sc">$</span>is_fg_made)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Observed
+Predictions    0    1
+       make 1662 8994
+       miss   94   61</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><strong>In-sample misclassification rate</strong>:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">ifelse</span>(<span class="fu">fitted</span>(init_logit) <span class="sc">&lt;</span> <span class="fl">0.5</span>, <span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">!=</span> nfl_fg_attempts<span class="sc">$</span>is_fg_made)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1593747</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><a href="https://en.wikipedia.org/wiki/Brier_score"><strong>Brier score</strong></a>:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>((nfl_fg_attempts<span class="sc">$</span>is_fg_made <span class="sc">-</span> <span class="fu">fitted</span>(init_logit))<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1197629</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="calibration" class="slide level2">
+<h2>Calibration</h2>
+<p>TODO</p>
+</section>
+<section id="well-calibrated-if-actual-probabilities-match-predicted-probabilities" class="slide level2">
+<h2><strong>Well-calibrated</strong> if actual probabilities match predicted probabilities</h2>
+<div class="columns">
+<div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>nfl_fg_attempts <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_prob =</span> init_logit<span class="sc">$</span>fitted.values,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">bin_pred_prob =</span> <span class="fu">round</span>(pred_prob <span class="sc">/</span> <span class="fl">0.05</span>) <span class="sc">*</span> .<span class="dv">05</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group by bin_pred_prob:</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(bin_pred_prob) <span class="sc">%&gt;%</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate the calibration results:</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n_attempts =</span> <span class="fu">n</span>(),</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">bin_actual_prob =</span> <span class="fu">mean</span>(is_fg_made)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> bin_pred_prob, <span class="at">y =</span> bin_actual_prob)) <span class="sc">+</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> n_attempts)) <span class="sc">+</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, </span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span> </span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">size =</span> <span class="st">"Number of attempts"</span>,</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Estimated make probability"</span>,</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Observed make probability"</span>) <span class="sc">+</span> </span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="text-align: left;">
+<p>If model says the probability of rain for a group of days is 50%, it better rain on half those days… <strong>or something is incorrect about the probability!</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="14-logistic_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
 <section>
 <section id="example" class="title-slide slide level1 center">
 <h1>Example</h1>
@@ -416,8 +763,8 @@
 <section id="data-pima" class="slide level2">
 <h2>Data: pima</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># https://www.refsmmat.com/courses/707/lecture-notes/logistic-regression.html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># https://www.refsmmat.com/courses/707/lecture-notes/logistic-regression.html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <div class="footer footer-default">
