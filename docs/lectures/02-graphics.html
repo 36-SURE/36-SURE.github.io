@@ -429,13 +429,17 @@
 <p><strong>Anscombe’s quartet</strong></p>
 <div class="columns">
 <div class="column" style="text-align: left;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="02-graphics_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div><div class="column" style="text-align: left;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 6
   set   x_mean x_var y_mean y_var x_y_cor
@@ -454,13 +458,17 @@
 <p><strong>The Datasaurus dozen</strong></p>
 <div class="columns">
 <div class="column" style="text-align: left;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="02-graphics_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div><div class="column" style="text-align: left;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 13 × 6
    dataset    x_mean x_var y_mean y_var x_y_cor
@@ -498,10 +506,20 @@
 </section>
 <section id="previously" class="slide level2">
 <h2>Previously…</h2>
+<p>Get batting stats for each year: each row is a year with the following variables</p>
+<p>total hits, home runs, strikeouts, walks, atbats total batting average for each year = total H / total AB only keeps AL and NL leagues</p>
+</section>
+<section id="previously-1" class="slide level2">
+<h2>Previously…</h2>
 <div class="columns">
 <div class="column" style="text-align: left;">
-<p>Exploring MLB batting statistics from <code>Lahman</code> with <code>tidyverse</code></p>
-<div class="cell">
+<p>Yearly MLB batting statistics from <code>Lahman</code> with <code>tidyverse</code>:</p>
+<ul>
+<li>total hits, home runs, strikeouts, walks, at bats</li>
+<li>total batting average for each year<br>= total H / total AB</li>
+<li>only keeps AL and NL leagues</li>
+</ul>
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Lahman) </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="ot">&lt;-</span> Batting <span class="sc">|&gt;</span></span>
@@ -514,12 +532,16 @@
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">total_ab =</span> <span class="fu">sum</span>(AB, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">batting_avg =</span> total_h <span class="sc">/</span> total_ab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div><div class="column" style="text-align: left;">
 <p>How do we make data visualization?</p>
-<p>What are the steps to make the figure on the right?</p>
-</div><div class="column" style="text-align: center;">
-<div class="cell">
+<p>What are the steps to make this figure below?</p>
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="02-graphics_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -527,20 +549,12 @@
 </section>
 <section id="the-grammar-of-graphics" class="slide level2">
 <h2>The grammar of graphics</h2>
-<div class="fragment">
 <ul>
-<li>Key idea: specify plotting “layers” and combine them to produce a graphic</li>
+<li><p>Key idea: specify plotting “layers” and combine them to produce a graphic</p></li>
+<li><p><code>ggplot2</code> provides an implementation of the grammar of graphics</p></li>
+<li><p>The following layers are building blocks of data graphics</p></li>
 </ul>
-</div>
 <div class="fragment">
-<ul>
-<li><code>ggplot2</code> provides an implementation of the grammar of graphics</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>The following layers are building blocks of data graphics</li>
-</ul>
 <ol type="1">
 <li><p>data - one or more datasets (in tidy tabular format)</p></li>
 <li><p>geom - geometric objects to visually represent the data (e.g.&nbsp;points, lines, bars, etc.)</p></li>
@@ -567,21 +581,25 @@
 <div class="columns">
 <div class="column" style="text-align: left;">
 <p><br></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> yearly_batting)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <p>or equivalently, using <code>|&gt;</code></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span> </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <p>So far, nothing is displayed</p>
 </div><div class="column" style="text-align: center;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="02-graphics_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -592,7 +610,7 @@
 <div class="columns">
 <div class="column" style="text-align: left;">
 <p><br></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span> </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> total_hr))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -602,16 +620,20 @@
 <li><p>Map <code>yearID</code> to the x-axis and <code>total_hr</code> to the y-axis via <code>aes()</code></p></li>
 <li><p>Implicitly using <code>coord_cartesian()</code></p></li>
 </ul>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span> </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> total_hr)) <span class="sc">+</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="text-align: left;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="02-graphics_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -622,7 +644,7 @@
 <div class="columns">
 <div class="column" style="text-align: left;">
 <p><br></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span> </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> total_hr)) <span class="sc">+</span></span>
@@ -632,16 +654,20 @@
 <li><p>Adding (<code>+</code>) a line geometric layer</p></li>
 <li><p>Include mappings shared across geometric layers inside <code>ggplot()</code></p></li>
 </ul>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> total_hr)) <span class="sc">+</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="text-align: left;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="02-graphics_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -652,7 +678,7 @@
 <div class="columns">
 <div class="column" style="text-align: left;">
 <p><br></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> total_hr)) <span class="sc">+</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -660,9 +686,13 @@
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">6000</span>, <span class="dv">1000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="text-align: left;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="02-graphics_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -673,7 +703,7 @@
 <div class="columns">
 <div class="column" style="text-align: left;">
 <p><br></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> total_hr)) <span class="sc">+</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -681,9 +711,13 @@
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2015</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="text-align: left;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="02-graphics_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -694,7 +728,7 @@
 <div class="columns">
 <div class="column" style="text-align: left;">
 <p><br></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span> </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> total_hr)) <span class="sc">+</span> </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -704,9 +738,13 @@
 </div>
 <p>We can easily adjust variable scales without directly modifying the columns in the data</p>
 </div><div class="column" style="text-align: left;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="02-graphics_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -717,7 +755,7 @@
 <div class="columns">
 <div class="column" style="text-align: left;">
 <p><br></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span> </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> total_hr)) <span class="sc">+</span> </span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -729,7 +767,7 @@
 <li>Geometric layers implicitly use a default statistical summary</li>
 <li>Technically we’re already using <code>geom_point(stat = "identity")</code></li>
 </ul>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span> </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> total_hr)) <span class="sc">+</span> </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -737,9 +775,13 @@
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="text-align: left;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="02-graphics_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -750,7 +792,7 @@
 <div class="columns">
 <div class="column" style="text-align: left;">
 <p><br></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span> </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> total_hr,</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> total_so,</span>
@@ -764,9 +806,13 @@
 <li><p>This is a bit odd to look at…</p></li>
 </ul>
 </div><div class="column" style="text-align: left;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="02-graphics_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -777,7 +823,7 @@
 <div class="columns">
 <div class="column" style="text-align: left;">
 <p><br></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span> </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> total_hr)) <span class="sc">+</span> </span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> total_so, <span class="at">size =</span> total_bb)) <span class="sc">+</span></span>
@@ -787,9 +833,13 @@
 <li>Now mapping <code>total_so</code> and <code>total_bb</code> to <code>color</code> and <code>size</code> of the point layer only</li>
 </ul>
 </div><div class="column" style="text-align: left;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="02-graphics_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -800,7 +850,7 @@
 <div class="columns">
 <div class="column" style="text-align: left;">
 <p><br></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span> </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> total_hr)) <span class="sc">+</span> </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> total_so, <span class="at">size =</span> total_bb)) <span class="sc">+</span></span>
@@ -810,9 +860,13 @@
 <li>Manually set the <code>color</code> and <code>linetype</code> of the line layer</li>
 </ul>
 </div><div class="column" style="text-align: left;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="02-graphics_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -823,7 +877,7 @@
 <div class="columns">
 <div class="column" style="text-align: left;">
 <p><br></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span> </span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> total_hr)) <span class="sc">+</span> </span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> total_so, <span class="at">size =</span> total_bb)) <span class="sc">+</span></span>
@@ -832,9 +886,13 @@
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20000</span>, <span class="dv">2500</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="text-align: left;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="02-graphics_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -845,7 +903,7 @@
 <div class="columns">
 <div class="column" style="text-align: left;">
 <p><br></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span> </span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> total_hr)) <span class="sc">+</span> </span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> total_so, <span class="at">size =</span> total_bb)) <span class="sc">+</span></span>
@@ -864,9 +922,13 @@
 <li>Each mapped aesthetic can be labeled</li>
 </ul>
 </div><div class="column" style="text-align: left;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="02-graphics_files/figure-revealjs/unnamed-chunk-35-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -877,7 +939,7 @@
 <div class="columns">
 <div class="column" style="text-align: left;">
 <p><br></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span> </span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> total_hr)) <span class="sc">+</span> </span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> total_so, <span class="at">size =</span> total_bb)) <span class="sc">+</span></span>
@@ -900,9 +962,13 @@
 <li>For more theme options, check out the <a href="https://jrnold.github.io/ggthemes/"><code>ggthemes</code></a> and <a href="https://cinc.rud.is/web/packages/hrbrthemes/"><code>hrbrthemes</code></a> packages</li>
 </ul>
 </div><div class="column" style="text-align: left;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="02-graphics_files/figure-revealjs/unnamed-chunk-37-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -948,7 +1014,7 @@
 </div></aside></section>
 <section id="pivoting-1" class="slide level2">
 <h2>Pivoting</h2>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span> </span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(yearID, <span class="at">HRs =</span> total_hr, <span class="at">Strikeouts =</span> total_so, <span class="at">Walks =</span> total_bb) <span class="sc">|&gt;</span> <span class="co"># renaming while also selecting</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(HRs<span class="sc">:</span>Walks, <span class="co"># can also do !yearID (to select everything but yearID)</span></span>
@@ -981,7 +1047,7 @@
 <h2>Faceting</h2>
 <div class="columns">
 <div class="column" style="text-align: left;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>yearly_batting <span class="sc">|&gt;</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(yearID, <span class="at">HRs =</span> total_hr, </span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">Strikeouts =</span> total_so, <span class="at">Walks =</span> total_bb) <span class="sc">|&gt;</span></span>
@@ -1007,9 +1073,13 @@
 <li>Create a multi-panel plot faceted by a conditioning variable (in our case, <code>stat</code>)</li>
 </ul>
 </div><div class="column" style="text-align: left;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="02-graphics_files/figure-revealjs/unnamed-chunk-40-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -1018,6 +1088,18 @@
 <aside><div>
 <p>These facet/panel plots are sometimes called trellis plots (or lattice plots)</p>
 </div></aside></section>
+<section id="exercise" class="slide level2">
+<h2>Exercise</h2>
+<p>The <a href="https://hadley.github.io/babynames"><code>babynames</code> package</a> contains a dataset (also) named <code>babynames</code>, which contains information on the number of children of each sex given each name from 1880 to 2017, provided by the United States Social Security Administration.</p>
+<p>How does the popularity (in terms of frequency) of your own name (combination of name and sex) change over time? Also, stick a thick, red, vertical dashed line on the plot at your birth year (try <code>geom_vline()</code>).</p>
+<p>Next, pick two other names and compare their popularity over time with your own name.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("babynames")</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(babynames)</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># babynames |&gt; </span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   INSERT CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 <section id="resources" class="slide level2">
 <h2>Resources</h2>
 <ul>
