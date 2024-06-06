@@ -1,0 +1,841 @@
+---
+title: "Data visualization: the grammar of graphics and `ggplot2`"
+author: "<br>SURE 2024<br><br>Department of Statistics & Data Science<br>Carnegie Mellon University"
+footer:  "[36-SURE.github.io](https://36-sure.github.io)"
+format:
+  revealjs:
+    theme: theme.scss
+    chalkboard: true
+    smaller: true
+    slide-number: c/t
+    code-line-numbers: false
+    linestretch: 1.25
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+---
+
+```{r}
+#| include: false
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center"
+)
+ggplot2::theme_set(ggplot2::theme_gray(base_size = 20))
+```
+
+# Motivation and background
+
+## Goals of data visualization
+
+-   to represent the data in a visual way (enough with tables... though tables are useful in a lot of situations)
+
+. . .
+
+-   most importantly, to deliver the information to your audience and help them understand the story behind the data
+
+
+. . .
+
+> [Data Visualization (good DataViz anyway) answers a question.](https://dataservices.uoregon.edu/2022/06/02/beyond-data-visualization-data-as-art-talk-by-dr-greg-mathews/) - Greggy J. M.
+
+## ALWAYS visualize your data before modeling and analysis
+
+**Anscombe's quartet**
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 9
+library(tidyverse)
+theme_set(theme_light(base_size = 20))
+anscombe |> 
+  pivot_longer(everything(),
+               cols_vary = "slowest",
+               names_to = c(".value", "set"),
+               names_pattern = "(.)(.)") |> 
+  ggplot(aes(x, y)) +
+  geom_smooth(method = "lm", se = FALSE, color = "red", fullrange = TRUE) +
+  geom_point(size = 4) +
+  facet_wrap(~ set)
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+anscombe |> 
+  pivot_longer(everything(),
+               cols_vary = "slowest",
+               names_to = c(".value", "set"),
+               names_pattern = "(.)(.)") |> 
+  group_by(set) |> 
+  summarise(across(c(x, y), list(mean = mean, var = var)),
+            x_y_cor = cor(x, y))
+```
+:::
+:::
+
+## ALWAYS visualize your data before modeling and analysis
+
+**The Datasaurus dozen**
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 10
+datasauRus::datasaurus_dozen |> 
+  group_by(dataset) |> 
+  ggplot(aes(x, y, color = dataset)) +
+  geom_point(show.legend = FALSE) +
+  facet_wrap(~ dataset, ncol = 4)
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+datasauRus::datasaurus_dozen |> 
+  group_by(dataset) |> 
+  summarise(across(c(x, y), list(mean = mean, var = var)),
+            x_y_cor = cor(x, y))
+ggplot2::theme_set(ggplot2::theme_gray(base_size = 20))
+```
+:::
+:::
+
+## Viz crime?
+
+**Florence Nightingale's rose diagram**
+
+<center>![](https://daily.jstor.org/wp-content/uploads/2020/08/florence_nightingagle_data_visualization_visionary_1050x700.jpg){width="749"}</center>
+
+## Viz crime?
+
+<center>![](https://raw.githubusercontent.com/ryurko/SURE22-examples/main/figures/lecture_examples/nyt_ex.png)</center>
+
+## Previously...
+
+Get batting stats for each year: each row is a year with the following variables
+
+total hits, home runs, strikeouts, walks, atbats
+total batting average for each year = total H / total AB
+only keeps AL and NL leagues
+
+## Previously...
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+Yearly MLB batting statistics from `Lahman` with `tidyverse`:
+
+* total hits, home runs, strikeouts, walks, at bats
+* total batting average for each year<br>= total H / total AB
+* only keeps AL and NL leagues
+
+```{r}
+library(tidyverse)
+library(Lahman) 
+yearly_batting <- Batting |>
+  filter(lgID %in% c("AL", "NL")) |>
+  group_by(yearID) |>
+  summarize(total_h = sum(H, na.rm = TRUE),
+            total_hr = sum(HR, na.rm = TRUE),
+            total_so = sum(SO, na.rm = TRUE),
+            total_bb = sum(BB, na.rm = TRUE),
+            total_ab = sum(AB, na.rm = TRUE)) |>
+  mutate(batting_avg = total_h / total_ab)
+```
+
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+
+
+How do we make data visualization?
+
+What are the steps to make this figure below?
+
+```{r}
+#| echo: false
+#| fig-height: 10
+yearly_batting |>
+  select(yearID, HRs = total_hr, Strikeouts = total_so, Walks = total_bb) |>
+  pivot_longer(HRs:Walks,
+               names_to = "stat", 
+               values_to = "val") |>
+  ggplot(aes(yearID, val)) +
+  geom_line(color = "darkblue") +
+  geom_point(alpha = 0.8, color = "darkblue") +
+  facet_wrap(~ stat, scales = "free_y", ncol = 1) +
+  labs(x = "Year", 
+       y = "Total of statistic",
+       title = "The rise of three true outcomes in baseball",
+       caption = "Data courtesy of Lahman") +
+  theme_bw(base_size = 20) +
+  theme(strip.background = element_blank(),
+        plot.title = element_text(hjust = 0.5, face = "bold"))
+```
+:::
+:::
+
+## The grammar of graphics
+
+-   Key idea: specify plotting "layers" and combine them to produce a graphic
+
+-   `ggplot2` provides an implementation of the grammar of graphics
+
+-   The following layers are building blocks of data graphics
+
+. . .
+
+1.  data - one or more datasets (in tidy tabular format)
+
+2.  geom - geometric objects to visually represent the data (e.g. points, lines, bars, etc.)
+
+3.  aes - mappings of variables to visual properties (i.e. aesthetics) of the geometric objects
+
+4.  scale - one scale for each variable displayed (e.g. axis limits, log scale, colors, etc.)
+
+5.  facet - similar subplots (i.e. facets) for subsets of the same data using a conditioning variable
+
+6.  stat - statistical transformations and summaries (e.g. identity, count, smooth, quantile, etc.)
+
+7.  coord - one or more coordinate systems (e.g. cartesian, polar, map projection)
+
+8.  labs - labels/guides for each variable and other parts of the plot (e.g. title, subtitle, caption, etc.)
+
+9.  theme - customization of plot layout (e.g. text size, alignment, legend position, etc.)
+
+::: aside
+Leland Wilkinson wrote the book "The Grammar of Graphics", originally published in 1999.
+:::
+
+# A walkthrough of `ggplot2`
+
+## First, start with the data
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+<br>
+
+```{r}
+#| eval: false
+ggplot(data = yearly_batting)
+```
+
+<br>
+
+or equivalently, using `|>`
+
+```{r}
+#| eval: false
+yearly_batting |> 
+  ggplot()
+```
+
+<br>
+
+So far, nothing is displayed
+:::
+
+::: {.column width="50%" style="text-align: center;"}
+```{r}
+#| echo: false
+#| fig-height: 9
+ggplot(data = yearly_batting)
+```
+:::
+:::
+
+## Specify variables and geometric object
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+<br>
+
+```{r}
+#| eval: false
+yearly_batting |> 
+  ggplot() +
+  geom_point(aes(x = yearID, y = total_hr))
+```
+
+-   Adding (`+`) a geometric layer of points to the plot
+
+-   Map `yearID` to the x-axis and `total_hr` to the y-axis via `aes()`
+
+-   Implicitly using `coord_cartesian()`
+
+```{r}
+#| eval: false
+yearly_batting |> 
+  ggplot() + 
+  geom_point(aes(x = yearID, y = total_hr)) +
+  coord_cartesian()
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 9
+yearly_batting |> 
+  ggplot() + 
+  geom_point(aes(x = yearID, y = total_hr))
+```
+:::
+:::
+
+## Now, can we add another geometric layer?
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+<br>
+
+```{r}
+#| eval: false
+yearly_batting |> 
+  ggplot() +
+  geom_point(aes(x = yearID, y = total_hr)) +
+  geom_line(aes(x = yearID, y = total_hr))
+```
+
+-   Adding (`+`) a line geometric layer
+
+-   Include mappings shared across geometric layers inside `ggplot()`
+
+```{r}
+#| eval: false
+yearly_batting |>
+  ggplot(aes(x = yearID, y = total_hr)) +
+  geom_point() +
+  geom_line()
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 9
+yearly_batting |>
+  ggplot(aes(x = yearID, y = total_hr)) +
+  geom_point() +
+  geom_line()
+```
+:::
+:::
+
+## Scaling axes: changing axis label breaks
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+<br>
+
+```{r}
+#| eval: false
+yearly_batting |>
+  ggplot(aes(x = yearID, y = total_hr)) +
+  geom_point() +
+  geom_line() +
+  scale_y_continuous(breaks = seq(0, 6000, 1000))
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 9
+yearly_batting |>
+  ggplot(aes(x = yearID, y = total_hr)) +
+  geom_point() +
+  geom_line() +
+  scale_y_continuous(breaks = seq(0, 6000, 1000))
+```
+:::
+:::
+
+## Scaling axes: customizing axis limits
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+<br>
+
+```{r}
+#| eval: false
+yearly_batting |>
+  ggplot(aes(x = yearID, y = total_hr)) +
+  geom_point() +
+  geom_line() +
+  scale_x_continuous(limits = c(2000, 2015))
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 9
+yearly_batting |>
+  ggplot(aes(x = yearID, y = total_hr)) +
+  geom_point() +
+  geom_line() +
+  scale_x_continuous(limits = c(2000, 2015))
+```
+:::
+:::
+
+## Scaling axes: having different axis scales
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+<br>
+
+```{r}
+#| eval: false
+yearly_batting |> 
+  ggplot(aes(x = yearID, y = total_hr)) + 
+  geom_point() +
+  geom_line() + 
+  scale_x_reverse() +
+  scale_y_log10()
+```
+
+We can easily adjust variable scales without directly modifying the columns in the data
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 9
+yearly_batting |> 
+  ggplot(aes(x = yearID, y = total_hr)) + 
+  geom_point() +
+  geom_line() + 
+  scale_x_reverse() +
+  scale_y_log10()
+```
+:::
+:::
+
+## Adding a statistical summary
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+<br>
+
+```{r}
+#| eval: false
+yearly_batting |> 
+  ggplot(aes(x = yearID, y = total_hr)) + 
+  geom_point() +
+  geom_line() + 
+  stat_smooth()
+```
+
+-   Smoothing regression summary (will cover later) using `yearID` and `total_hr`
+-   Geometric layers implicitly use a default statistical summary
+-   Technically we're already using `geom_point(stat = "identity")`
+
+```{r}
+#| eval: false
+yearly_batting |> 
+  ggplot(aes(x = yearID, y = total_hr)) + 
+  geom_point() +
+  geom_line() +
+  geom_smooth()
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 9
+yearly_batting |> 
+  ggplot(aes(x = yearID, y = total_hr)) + 
+  geom_point() +
+  geom_line() +
+  geom_smooth()
+```
+:::
+:::
+
+## Mapping additional variables
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+<br>
+
+```{r}
+#| eval: false
+yearly_batting |> 
+  ggplot(aes(x = yearID, y = total_hr,
+             color = total_so,
+             size = total_bb)) +
+  geom_point() +
+  geom_line()
+```
+
+-   `total_hr`, `total_so`, and `total_bb` are all displayed
+
+-   `color` and `size` are being shared globally across layers
+
+-   This is a bit odd to look at...
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 9
+yearly_batting |> 
+  ggplot(aes(x = yearID, y = total_hr,
+             color = total_so,
+             size = total_bb)) +
+  geom_point() +
+  geom_line()
+```
+:::
+:::
+
+## Customizing mappings by layer
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+<br>
+
+```{r}
+#| eval: false
+yearly_batting |> 
+  ggplot(aes(x = yearID, y = total_hr)) + 
+  geom_point(aes(color = total_so, size = total_bb)) +
+  geom_line()
+```
+
+-   Now mapping `total_so` and `total_bb` to `color` and `size` of the point layer only
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 9
+yearly_batting |> 
+  ggplot(aes(x = yearID, y = total_hr)) + 
+  geom_point(aes(color = total_so, size = total_bb)) +
+  geom_line()
+```
+:::
+:::
+
+## Changing aesthetics without mapping variables
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+<br>
+
+```{r}
+#| eval: false
+yearly_batting |> 
+  ggplot(aes(x = yearID, y = total_hr)) + 
+  geom_point(aes(color = total_so, size = total_bb)) +
+  geom_line(color = "darkred", linetype = "dashed")
+```
+
+-   Manually set the `color` and `linetype` of the line layer
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 9
+yearly_batting |> 
+  ggplot(aes(x = yearID, y = total_hr)) + 
+  geom_point(aes(color = total_so, size = total_bb)) +
+  geom_line(color = "darkred", linetype = "dashed")
+```
+:::
+:::
+
+## Remember: one scale for each mapped variable
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+<br>
+
+```{r}
+#| eval: false
+yearly_batting |> 
+  ggplot(aes(x = yearID, y = total_hr)) + 
+  geom_point(aes(color = total_so, size = total_bb)) +
+  geom_line(color = "darkred", linetype = "dashed") +
+  scale_color_gradient(low = "darkblue", high = "gold") +
+  scale_size_continuous(breaks = seq(0, 20000, 2500))
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 9
+yearly_batting |> 
+  ggplot(aes(x = yearID, y = total_hr)) + 
+  geom_point(aes(color = total_so, size = total_bb)) +
+  geom_line(color = "darkred", linetype = "dashed") +
+  scale_color_gradient(low = "darkblue", high = "gold") +
+  scale_size_continuous(breaks = seq(0, 20000, 2500))
+```
+:::
+:::
+
+## Always label your plots! (seriously...)
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+<br>
+
+```{r}
+#| eval: false
+yearly_batting |> 
+  ggplot(aes(x = yearID, y = total_hr)) + 
+  geom_point(aes(color = total_so, size = total_bb)) +
+  geom_line(color = "darkred", linetype = "dashed") +
+  scale_color_gradient(low = "darkblue", high = "gold") +
+  labs(
+    x = "Year",
+    y = "Homeruns",
+    color = "Strikeouts",
+    size = "Walks",
+    title = "The rise of three true outcomes in baseball",
+    caption = "Data courtesy of Lahman"
+  )
+```
+
+-   Each mapped aesthetic can be labeled
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 9
+yearly_batting |> 
+  ggplot(aes(x = yearID, y = total_hr)) + 
+  geom_point(aes(color = total_so, size = total_bb)) +
+  geom_line(color = "darkred", linetype = "dashed") +
+  scale_color_gradient(low = "darkblue", high = "gold") +
+  labs(x = "Year",
+       y = "Homeruns",
+       color = "Strikeouts",
+       size = "Walks",
+       title = "The rise of three true outcomes in baseball",
+       caption = "Data courtesy of Lahman")
+```
+:::
+:::
+
+## Custom theme
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+<br>
+
+```{r}
+#| eval: false
+yearly_batting |> 
+  ggplot(aes(x = yearID, y = total_hr)) + 
+  geom_point(aes(color = total_so, size = total_bb)) +
+  geom_line(color = "darkred", linetype = "dashed") +
+  scale_color_gradient(low = "darkblue", high = "gold") +
+  labs(
+    x = "Year",
+    y = "Homeruns",
+    color = "Strikeouts",
+    size = "Walks",
+    title = "The rise of three true outcomes in baseball",
+    caption = "Data courtesy of Lahman"
+  ) +
+  theme_bw(base_size = 20) +
+  theme(legend.position = "bottom",
+        plot.title = element_text(hjust = 0.5, 
+                                  face = "bold"))
+```
+
+-   For more theme options, check out the [`ggthemes`](https://jrnold.github.io/ggthemes/) and [`hrbrthemes`](https://cinc.rud.is/web/packages/hrbrthemes/) packages
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 10
+yearly_batting |> 
+  ggplot(aes(x = yearID, y = total_hr)) + 
+  geom_point(aes(color = total_so, size = total_bb)) +
+  geom_line(color = "darkred", linetype = "dashed") +
+  scale_color_gradient(low = "darkblue", high = "gold") +
+  labs(x = "Year",
+       y = "Homeruns",
+       color = "Strikeouts",
+       size = "Walks",
+       title = "The rise of three true outcomes in baseball",
+       caption = "Data courtesy of Lahman") +
+  theme_bw(base_size = 20) +
+  theme(legend.position = "bottom",
+        plot.title = element_text(hjust = 0.5, 
+                                  face = "bold"))
+```
+:::
+:::
+
+## A lesson about data visualization...
+
+-   So far we've plotted total home runs across the years, with point size representing total walks and point color representing total strikeouts
+
+. . .
+
+-   **Simpler is better.** What can we do to improve and make the plot simpler?
+
+. . .
+
+-   How about creating three separate plots for home runs, strikeouts, and walks, with each mapped to the y-axis?
+
+-   But how do we do this without repeating the same code?
+
+## Pivoting
+
+Remember: data should be in tidy format
+
+Within the tidyverse, the `tidyr` package offers functions for reshaping the data
+
+-   `pivot_longer`: casts/gathers information spread out across variables
+
+    -   transforms data from wide format into long format
+
+    -   increase number of rows and decrease number of columns
+
+-   `pivot_wider`: melts/spreads information out from observations
+
+    -   transforms data from long format into wide format
+
+    -   decrease number of rows and increase number of columns
+
+::: aside
+[Some terminology](https://en.wikipedia.org/wiki/Wide_and_narrow_data)
+
+Predecessors: [`reshape`](https://www.jstatsoft.org/article/view/v021i12) and [`reshape2`](https://cran.r-project.org/web/packages/reshape2/reshape2.pdf)
+:::
+
+## Pivoting
+
+```{r}
+yearly_batting |> 
+  select(yearID, HRs = total_hr, Strikeouts = total_so, Walks = total_bb) |> # renaming while also selecting
+  pivot_longer(HRs:Walks, # can also do !yearID (to select everything but yearID)
+               names_to = "stat",
+               values_to = "val")
+```
+
+We've pivoted the data and created the following variables
+
+-   `stat`, to represent the name of the batting statistics
+-   `val`, to represent the total value of each statistic in each year.
+
+## Faceting
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| eval: false
+yearly_batting |>
+  select(yearID, HRs = total_hr, 
+         Strikeouts = total_so, Walks = total_bb) |>
+  pivot_longer(HRs:Walks, 
+               names_to = "stat", 
+               values_to = "val") |>
+  ggplot(aes(yearID, val)) +
+  geom_line(color = "darkblue") +
+  geom_point(alpha = 0.8, color = "darkblue") +
+  facet_wrap(~ stat, scales = "free_y", ncol = 1) +
+  labs(
+    x = "Year", 
+    y = "Total of statistic",
+    title = "The rise of three true outcomes in baseball",
+    caption = "Data courtesy of Lahman"
+  ) +
+  theme_bw(base_size = 20) +
+  theme(strip.background = element_blank(),
+        plot.title = element_text(hjust = 0.5, 
+                                  face = "bold"))
+```
+
+-   Create a multi-panel plot faceted by a conditioning variable (in our case, `stat`)
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 10
+yearly_batting |>
+  select(yearID, HRs = total_hr, Strikeouts = total_so, Walks = total_bb) |>
+  pivot_longer(HRs:Walks, names_to = "stat", values_to = "val") |>
+  ggplot(aes(yearID, val)) +
+  geom_line(color = "darkblue") +
+  geom_point(alpha = 0.8, color = "darkblue") +
+  facet_wrap(~ stat, scales = "free_y", ncol = 1) +
+  labs(x = "Year", 
+       y = "Total of statistic",
+    title = "The rise of three true outcomes in baseball",
+       caption = "Data courtesy of Lahman") +
+  theme_bw(base_size = 20) +
+  theme(strip.background = element_blank(),
+        plot.title = element_text(hjust = 0.5, 
+                                  face = "bold"))
+```
+:::
+:::
+
+::: aside
+These facet/panel plots are sometimes called trellis plots (or lattice plots)
+:::
+
+## Exercise
+
+The [`babynames` package](https://hadley.github.io/babynames) contains a dataset (also) named `babynames`, which contains information on the number of children of each sex given each name from 1880 to 2017, provided by the United States Social Security Administration.
+
+How does the popularity (in terms of frequency) of your own name (combination of name and sex) change over time? Also, stick a thick, red, vertical dashed line on the plot at your birth year (try `geom_vline()`).
+
+Next, pick two other names and compare their popularity over time with your own name.
+
+```{r}
+# install.packages("babynames")
+# library(babynames)
+# babynames |> 
+#   INSERT CODE HERE
+```
+
+
+
+## Resources
+
+-   [`ggplot2` website](https://ggplot2.tidyverse.org/): cheatsheets, FAQs, extensions, and more
+
+-   [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
+
+-   [David Robinson's TidyTuesday screencasts](https://www.youtube.com/@safe4democracy/streams)
+
+-   [VizBuzz](https://www.youtube.com/playlist?list=PL6PX3YIZuHhwZ-C-jZ427D-XkLGNWFPVB): LIVE data viz replication game show
+
+<!-- ::: columns -->
+
+<!-- ::: {.column width="50%" style="text-align: left;"} -->
+
+<!-- c1 -->
+
+<!-- ::: -->
+
+<!-- ::: {.column width="50%" style="text-align: left;"} -->
+
+<!-- c2 -->
+
+<!-- ::: -->
+
+<!-- ::: -->

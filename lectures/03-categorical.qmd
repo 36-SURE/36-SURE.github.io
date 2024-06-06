@@ -1,0 +1,771 @@
+---
+title: "Data visualization: categorical data"
+author: "<br>SURE 2024<br><br>Department of Statistics & Data Science<br>Carnegie Mellon University"
+footer:  "[36-SURE.github.io](https://36-sure.github.io)"
+format:
+  revealjs:
+    theme: theme.scss
+    chalkboard: true
+    smaller: true
+    slide-number: c/t
+    code-line-numbers: false
+    linestretch: 1.25
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+---
+
+```{r}
+#| include: false
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+# ggplot2::theme_set(ggplot2::theme_light(base_size = 20))
+```
+
+# Background
+
+## Data
+
+-   [Flying ettiquette survey](https://fivethirtyeight.com/features/airplane-etiquette-recline-seat)
+
+-   Publicly available on [GitHub](https://github.com/fivethirtyeight/data/tree/master/flying-etiquette-survey) and also via the `ggmosaic` package (the dataset is called `fly`).
+
+-   What does each row represent here?
+
+```{r}
+library(tidyverse)
+theme_set(theme_light()) # setting the ggplot theme
+library(ggmosaic) # make sure to install it first
+flying_etiquette <- fly |> 
+  filter(!is.na(do_you_recline), !is.na(rude_to_recline))
+names(flying_etiquette)
+```
+
+```{r}
+#| echo: false
+ggplot2::theme_set(ggplot2::theme_light(base_size = 20))
+```
+
+## Categorical data
+
+Two different versions of categorical data:
+
+**Nominal**: categorical variables having unordered scales
+
+-   Examples: race, gender, species, etc,
+
+**Ordinal**: ordered categories; levels with a meaningful order
+
+-   Examples: education level, grades, ranks
+
+## Factors in `R`
+
+-   In `R`, factors are used to work with categorical variables
+
+-   `R` treats factors as ordinal - defaults to alphabetical
+
+    -   May need to manually define the factor levels (e.g., the reference level)
+
+-   See the [`forcats`](https://forcats.tidyverse.org/) package (automatically loaded with `tidyverse`)
+
+
+```{r}
+class(flying_etiquette$do_you_recline)
+levels(flying_etiquette$do_you_recline)
+```
+
+# 1D categorical data
+
+## Summarizing 1D categorical data
+
+How often do these respondents recline?
+
+Frequency tables (counts)
+
+```{r}
+table(flying_etiquette$do_you_recline)
+
+# flying_etiquette |> 
+#   group_by(do_you_recline) |>
+#   summarize(n = n(), .groups = "drop")
+
+flying_etiquette |> 
+  count(do_you_recline)
+```
+
+## Summarizing 1D categorical data
+
+Proportion table
+
+```{r}
+prop.table(table(flying_etiquette$do_you_recline))
+
+flying_etiquette |> 
+  count(do_you_recline) |> 
+  mutate(prop = n / sum(n))
+```
+
+## Visualizing 1D categorical data
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+Create a bar chart with `geom_bar()`
+
+-   Map `do_you_recline` to the x-axis
+
+-   Counts of each category are displayed on the y-axis
+
+```{r}
+#| eval: false
+flying_etiquette |> 
+  ggplot(aes(x = do_you_recline)) +
+  geom_bar()
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 10
+flying_etiquette |> 
+  ggplot(aes(x = do_you_recline)) +
+  geom_bar()
+```
+:::
+:::
+
+## Behind the scenes of `geom_bar()`
+
+-   start with the data
+-   aggregate and count the number of observations in each bar
+-   map to plot aesthetics
+
+![](https://r4ds.hadley.nz/images/visualization-stat-bar.png)
+
+## Visualizing 1D categorical data
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+Instead of `geom_bar()`, do this "by hand" (Quang prefers this way)
+
+-   aggregate and obtain the counts first with `count()` or (`group_by` and `summarize()`)
+
+-   then use `geom_col()`
+
+```{r}
+#| eval: false
+flying_etiquette |>
+  count(do_you_recline, name = "count") |> 
+  ggplot(aes(x = do_you_recline, y = count)) +
+  geom_col()
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 10
+flying_etiquette |>
+  count(do_you_recline, name = "count") |> 
+  ggplot(aes(x = do_you_recline, y = count)) +
+  geom_col()
+```
+:::
+:::
+
+## Visualizing 1D categorical data
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+Flip your bar chart axes!
+
+Just simply replace `x` with `y` (Quang prefers this way)
+
+```{r}
+#| eval: false
+flying_etiquette |>
+  ggplot(aes(y = do_you_recline)) +
+  geom_bar()
+```
+
+Or use `coord_flip()`
+
+```{r}
+#| eval: false
+#| fig-height: 10
+flying_etiquette |> 
+  ggplot(aes(x = do_you_recline)) +
+  geom_bar() +
+  coord_flip()
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig.height: 8
+flying_etiquette |> 
+  ggplot(aes(x = do_you_recline)) +
+  geom_bar() +
+  coord_flip()
+```
+:::
+:::
+
+## What does a bar chart show?
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+**Marginal distribution**: probability that a categorical variable $X$ (e.g., `do_you_recline`) takes each particular category value $x$ (`always`, `usually`, ..., `never`)
+
+-   Frequency bar charts (earlier version) give info about sample size, but this could be labeled in the chart (use `geom_text()` or `geom_label()`)
+
+-   Now, we create a proportion/percent bar chart to display the individual probabilities
+
+-   This shows the probability mass function (PMF) for discrete variables
+
+    -   (e.g. $P($ `do_you_recline` $=$ `never`$)$)
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| fig-height: 9
+flying_etiquette |> 
+  count(do_you_recline) |> 
+  mutate(prop = n / sum(n)) |> 
+  ggplot(aes(x = prop, y = do_you_recline)) +
+  geom_col()   # + geom_label(aes(label = n), hjust = 1)
+```
+:::
+:::
+
+## Population vs sample
+
+Population: The collection of all subjects of interest
+
+Sample: A representative subset of the population of interest
+
+. . .
+
+The survey respondents is just a subset of all airplane flyers
+
+. . .
+
+**Empirical distribution**: estimating the true marginal distribution with observed (sample) data
+
+. . .
+
+-   Estimate $P($ `do_you_recline` = $C_j$) with $\hat p_j$ for each category $C_j$ (e.g., $\hat p_\texttt{always}$, ..., $\hat p_\texttt{never}$)
+
+    -   Standard error for each $\hat p_j$: $\quad \displaystyle \text{SE}(\hat{p}_j) = \sqrt{\frac{\hat{p}_j (1 - \hat{p}_j)}{n}}$
+
+## Adding confidence intervals to bar chart
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+<br>
+
+```{r}
+#| eval: false
+flying_etiquette |> 
+  count(do_you_recline) |> 
+  mutate(prop = n / sum(n),
+         se = sqrt(prop * (1 - prop) / sum(n)),
+         lower = prop - 2 * se,
+         upper = prop + 2 * se) |> 
+  ggplot(aes(x = prop, y = do_you_recline)) +
+  geom_col() +
+  geom_errorbar(aes(xmin = lower, xmax = upper), 
+                color = "blue", 
+                width = 0.2, 
+                linewidth = 1)
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 10
+flying_etiquette |> 
+  count(do_you_recline) |> 
+  mutate(prop = n / sum(n),
+         se = sqrt(prop * (1 - prop) / sum(n)),
+         lower = prop - 2 * se,
+         upper = prop + 2 * se) |> 
+  ggplot(aes(x = prop, y = do_you_recline)) +
+  geom_col() +
+  geom_errorbar(aes(xmin = lower, xmax = upper), 
+                color = "blue", width = 0.2, linewidth = 1)
+```
+:::
+:::
+
+## Ordering factors in a bar chart
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+Order the bars by proportion
+
+(Let's also flip the axes)
+
+```{r}
+#| eval: false
+flying_etiquette |> 
+  count(do_you_recline) |> 
+  mutate(
+    prop = n / sum(n),
+    se = sqrt(prop * (1 - prop) / sum(n)),
+    lower = prop - 2 * se,
+    upper = prop + 2 * se,
+    do_you_recline = fct_reorder(do_you_recline, prop)
+  ) |> 
+  ggplot(aes(x = prop, y = do_you_recline)) +
+  geom_col() +
+  geom_errorbar(aes(xmin = lower, xmax = upper), 
+                color = "blue", 
+                width = 0.2, 
+                linewidth = 1)
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 10
+flying_etiquette |> 
+  count(do_you_recline) |> 
+  mutate(prop = n / sum(n),
+         se = sqrt(prop * (1 - prop) / sum(n)),
+         lower = prop - 2 * se,
+         upper = prop + 2 * se,
+         do_you_recline = fct_reorder(do_you_recline, prop)) |> 
+  ggplot(aes(x = prop, y = do_you_recline)) +
+  geom_col() +
+  geom_errorbar(aes(xmin = lower, xmax = upper), 
+                color = "blue", width = 0.2, linewidth = 1)
+```
+:::
+:::
+
+## Pie charts... don't make them
+
+Why?
+
+-   <https://www.data-to-viz.com/caveat/pie.html>
+
+-   <https://github.com/cxli233/FriendsDontLetFriends>
+
+3D pie charts?... even worse
+
+## Inference for 1D categorical data
+
+Chi-square test for 1D categorical data
+
+-   Null hypothesis: $H_0$: $p_1 = p_2 = \cdots = p_K$
+
+-   Test statistic: $\displaystyle \chi^2 = \sum_{j=1}^K \frac{(O_j - E_j)^2}{E_j}$, where
+
+    -   $O_j$: observed counts in category $j$
+
+    -   $E_j$ : expected counts under the null (i.e., $n/K$ or each category is equally likely to occur)
+
+```{r}
+chisq.test(table(flying_etiquette$do_you_recline))
+```
+
+## Hypothesis testing in general
+
+Computing $p$-values works like this:
+
+-   Choose a test statistic
+
+-   Compute the test statistic using the data
+
+-   Is test statistic "unusual" compared to what we would expect under the null?
+
+-   Compare $p$-value to the target error rate ("significance level") $\alpha$
+
+    -   Typically choose $\alpha = 0.05$ ([the origins of 0.05](https://www2.psych.ubc.ca/~schaller/528Readings/CowlesDavis1982.pdf))
+
+# 2D categorical data
+
+## Summarizing 2D categorical data
+
+Continuing with the flying etiquette survey data, let's look at the responses to 2 questions
+
+-   `do_you_recline` (Do you ever recline your seat when you fly?)
+
+-   `rude_to_recline` (Is it rude to recline your seat on a plane?)
+
+How many levels does each variable have?
+
+```{r}
+table(flying_etiquette$do_you_recline)
+table(flying_etiquette$rude_to_recline)
+```
+
+## Summarizing 2D categorical data
+
+Two-way table (or contingency table, cross tabulation, crosstab)
+
+```{r}
+table("Recline?" = flying_etiquette$do_you_recline, 
+      "Rude to reline?" = flying_etiquette$rude_to_recline)
+
+xtabs(~ do_you_recline + rude_to_recline, data = flying_etiquette)
+```
+
+## Visualizing 2D categorical data
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+Stacked bar chart: a bar chart of spine charts
+
+Emphasizes the marginal distribution of each category of `x` variable
+
+-   e.g., $P($ `rude_to_recline` $=$ `somewhat` $)$
+
+Similar to 1D bar charts, start with counting every combination of 2 variables (using `count()` or `group_by()` and `summarize()`), then plot with `geom_col()`
+
+```{r}
+#| eval: false
+# flying_etiquette |>
+#   ggplot(aes(x = rude_to_recline,
+#              fill = do_you_recline)) +
+#   geom_bar()
+flying_etiquette |>
+  count(rude_to_recline, do_you_recline) |>
+  ggplot(aes(x = rude_to_recline, y = n, 
+             # filled by the other categorical variable
+             fill = do_you_recline)) + 
+  geom_col()
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 9
+flying_etiquette |>
+  count(rude_to_recline, do_you_recline) |>
+  ggplot(aes(x = rude_to_recline, y = n, fill = do_you_recline)) +
+  geom_col()
+```
+:::
+:::
+
+## Visualizing 2D categorical data
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+Stacked bar chart (proportion version)
+
+```{r}
+#| eval: false
+flying_etiquette |>
+  count(rude_to_recline, do_you_recline) |>
+  ggplot(aes(x = rude_to_recline, y = n, 
+             fill = do_you_recline)) +
+  geom_col(position = "fill")
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 9
+flying_etiquette |>
+  count(rude_to_recline, do_you_recline) |>
+  ggplot(aes(x = rude_to_recline, y = n, fill = do_you_recline)) +
+  geom_col(position = "fill")
+```
+:::
+:::
+
+## Visualizing 2D categorical data
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+Side-by-side (grouped, dodged) bar chart: a bar chart of bar charts
+
+Shows the conditional distribution of `fill` variable given `x` variable
+
+-   e.g., $P($ `do_you_recline` $=$ `always` $\mid$ `rude_to_recline` $=$ `somewhat` $)$
+
+```{r}
+#| eval: false
+flying_etiquette |>
+  count(rude_to_recline, do_you_recline) |>
+  ggplot(aes(x = rude_to_recline, y = n, 
+             fill = do_you_recline)) + 
+  geom_col(position = "dodge")
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 9
+flying_etiquette |>
+  count(rude_to_recline, do_you_recline) |>
+  ggplot(aes(x = rude_to_recline, y = n, 
+             fill = do_you_recline)) + 
+  geom_col(position = "dodge")
+```
+:::
+:::
+
+## Joint, marginal, and conditional probabilities
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+Let $X$ = `rude_to_recline` and $Y$ = `do_you_recline`
+
+-   Joint distribution: frequency of the intersection
+
+    -   e.g., $P(X =$ `somewhat` $, Y =$ `always` $)$
+
+-   Marginal distribution: row sums or column sums
+
+    -   e.g., $P(X =$ `somewhat` $)$, $P(Y =$ `always` $)$
+
+-   Conditional distribution: probability event $X$ given event $Y$
+
+    -   e.g., $P(X =$ `somewhat` $\mid Y =$ `always` $)$
+
+    $\displaystyle \qquad \quad = \frac{P(X = \texttt{somewhat}, Y = \texttt{always})}{P(Y = \texttt{always})}$
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+flying_etiquette |> 
+  select(do_you_recline, rude_to_recline) |> 
+  table()
+
+flying_etiquette |> 
+  select(do_you_recline, rude_to_recline) |> 
+  table() |> 
+  prop.table()
+```
+:::
+:::
+
+## Joint, marginal, and conditional probabilities
+
+Two-way proportion table (the `tidyverse` way) with `pivot_wider`
+
+```{r}
+flying_etiquette |>
+  group_by(rude_to_recline, do_you_recline) |>
+  summarize(joint = n() / nrow(flying_etiquette)) |>
+  pivot_wider(names_from = rude_to_recline, values_from = joint, values_fill = 0)
+```
+
+## Categorical heatmaps
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+-   Use `geom_tile` to display joint distribution of two categorical variables
+
+-   Annotate tiles with labels of percentages using `geom_text()` and the `scales` package (a very neat package)
+
+```{r}
+#| eval: false
+flying_etiquette |>
+  group_by(rude_to_recline, do_you_recline) |>
+  summarize(
+    freq = n(), 
+    joint = n() / nrow(flying_etiquette)
+  ) |> 
+  ggplot(aes(x = rude_to_recline, y = do_you_recline)) +
+  geom_tile(aes(fill = freq), color = "white") +
+  geom_text(aes(label = scales::percent(joint))) +
+  scale_fill_gradient2()
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 12
+flying_etiquette |>
+  group_by(rude_to_recline, do_you_recline) |>
+  summarize(
+    freq = n(), 
+    joint = n() / nrow(flying_etiquette)
+  ) |> 
+  ggplot(aes(x = rude_to_recline, y = do_you_recline)) +
+  geom_tile(aes(fill = freq), color = "white") +
+  geom_text(aes(label = scales::percent(joint))) +
+  scale_fill_gradient2() +
+  coord_equal()
+```
+:::
+:::
+
+## Visualizing independence
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+Mosaic plot
+
+-   spine chart of spine charts
+
+-   width: marginal distribution of `rude_to_recline`
+
+-   height: conditional distribution of `do_you_recline` \| `rude_to_recline`
+
+-   area: joint distribution
+
+Using a mosaic plot to visually check for independence:
+
+-   check whether all proportions are the same (the boxes line up in a grid)
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| fig-height: 8
+flying_etiquette |> 
+  select(rude_to_recline, do_you_recline) |> 
+  table() |> 
+  mosaicplot(main = "Relationship between reclining frequency and opinion on rudeness")
+```
+:::
+:::
+
+## Visualizing independence
+
+Mosaic plot with `ggmosaic` package
+
+```{r}
+#| fig-height: 7
+#| fig-align: center
+flying_etiquette |> 
+  ggplot() +
+  geom_mosaic(aes(x = product(do_you_recline, rude_to_recline), fill = do_you_recline))
+```
+
+## Inference for 2D categorical data
+
+Chi-square test for 2D categorical data
+
+-   Null hypothesis: $H_0$: 2 categorical variables are independent of each other
+
+    -   e.g., no association between `do_you_recline` and `rude_to_recline`
+
+-   Test statistic: $\displaystyle \chi^2 = \sum_i^{k_1} \sum_j^{k_2} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}$
+
+```{r}
+# chisq.test(table(flying_etiquette$rude_to_recline, flying_etiquette$do_you_recline))
+flying_etiquette |> 
+  select(rude_to_recline, do_you_recline) |> 
+  table() |> 
+  chisq.test()
+```
+
+## Residuals
+
+Recall the test statistic: $\displaystyle \chi^2 = \sum_i^{k_1} \sum_j^{k_2} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}$
+
+Define the Pearson residuals: $\displaystyle r_{ij} = \frac{O_{ij} - E_{ij}}{\sqrt{E_{ij}}}$
+
+Some rules of thumb:
+
+-   $r_{ij} \approx 0$: observed counts are close to expected counts
+
+-   $|r_{ij}| > 2$: significant at $\alpha = 0.05$
+
+-   very positive $r_{ij}$: higher than expected
+
+-   very negative $r_{ij}$: lower than expected
+
+## Residuals
+
+Mosaic plots with boxes color-coded by Pearson residuals
+
+Tells us which combinations of 2 categorical variables (cells) are much higher/lower than expected
+
+```{r}
+#| fig-height: 8
+#| fig-align: center
+flying_etiquette |> 
+  select(rude_to_recline, do_you_recline) |> 
+  table() |> 
+  mosaicplot(main = "Relationship between reclining frequency and opinion on rudeness", shade = TRUE)
+```
+
+## Beyond 2D: facets!
+
+```{r}
+#| fig-width: 12
+flying_etiquette %>%
+  ggplot(aes(x = rude_to_recline, fill = do_you_recline)) + 
+  geom_bar() +
+  facet_wrap(~ flight_freq)
+```
+
+# Appendix
+
+## The `janitor` package
+
+The most popular `janitor` function is `clean_names()`... for cleaning column names
+
+```{r}
+# before
+iris |> 
+  head()
+
+# after
+library(janitor)
+iris |> 
+  clean_names() |> 
+  head()
+```
+
+## Tabulation with the `janitor` package
+
+The lesser-known stars of `janitor`: functions for tabulation of categorical data
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+`tabyl`
+
+```{r}
+flying_etiquette |> 
+  tabyl(do_you_recline)
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+`adorn_*()` functions
+
+```{r}
+flying_etiquette |> 
+  tabyl(do_you_recline, rude_to_recline) |> 
+  adorn_percentages("row") |> 
+  adorn_pct_formatting(digits = 2) |> 
+  adorn_ns()
+```
+:::
+:::
+
+For more, see [this overview](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html) and [this tutorial](https://cran.r-project.org/web/packages/janitor/vignettes/tabyls.html)
+
+<!-- ::: columns -->
+
+<!-- ::: {.column width="50%" style="text-align: left;"} -->
+
+<!-- c1 -->
+
+<!-- ::: -->
+
+<!-- ::: {.column width="50%" style="text-align: left;"} -->
+
+<!-- c2 -->
+
+<!-- ::: -->
+
+<!-- ::: -->

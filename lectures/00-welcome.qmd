@@ -1,0 +1,196 @@
+---
+title: "Welcome to SURE 2024"
+author: "<br>SURE 2024<br><br>Department of Statistics & Data Science<br>Carnegie Mellon University"
+footer:  "[36-SURE.github.io](https://36-sure.github.io)"
+format:
+  revealjs:
+    theme: theme.scss
+    chalkboard: true
+    smaller: true
+    slide-number: c/t
+    code-line-numbers: false
+    linestretch: 1.25
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+---
+
+# Introduction
+
+## Plan for today
+
+* 9:15: Opening remarks + program overview
+
+* 10:00: Meet the department staff (Jess/Chrissie/LeeAnn)
+
+* 10:15: Meet the academic advisor (Glenn)
+
+* 11:30 (ish): Lunch
+
+Health (Posner 151)
+
+*   11:30: Webinar
+
+*   2:00: Lab
+
+Sports (Posner 153)
+
+*   12:30: Guest speaker
+
+*   2:00: Lab
+
+## Who are we?
+
+* Department of Statistics & Data Science, Carnegie Mellon University
+
+* Lead instructor: Quang Nguyen (preferred form of address: Quang)
+
+  *   Office hours: 12:45-1:45pm Fridays
+
+* Teaching assistants
+  
+  * Health: Akshay Prasadan (lead TA/project manager), Princess Allotey, Nick Kissel
+  
+  * Sports: Yuchen Chen, JungHo Lee, Daven Lagu
+
+
+# About SURE
+
+## Summer Undergraduate Research Experience
+
+Explore cutting-edge statistics and data science methodology with applications in
+
+* Heathcare: UnitedHealth Group Bridges to Healthcare Technology
+
+* Sports: Carnegie Mellon Sports Analytics Camp (CMSACamp)
+
+. . .
+
+> "The best thing about being a statistician...is that you get to play in everyone’s backyard." --- John W. Tukey
+
+## Goals
+
+* Develop fundamentals research skills: data wrangling, visualization, modeling, communication
+
+* Become familiar with `R`, `tidyverse`, Quarto (Markdown syntax), Git/GitHub
+
+* Become familiar with cutting-edge statistical machine learning techniques
+
+* Create a portfolio of projects and practice reproducible research
+
+* Network with academic researchers and industry professionals
+
+  * Help navigate your next steps---industry vs. graduate school
+  
+## Resources
+
+* [Website](https://36-SURE.github.io/)
+
+* [Google Calendar](https://calendar.google.com/calendar/embed?src=c_aca0e704d928c40d5a0dc89ec61c27e8d48e5f6367e1935f254c5131ebf93bb7%40group.calendar.google.com)
+
+* [Slack](https://sure2024.slack.com/)
+
+* Email
+  
+<!-- ## SURE alumni -->
+
+
+# Schedule (subject to change)
+
+## A typical day consists of 3 main events
+
+* Lectures 
+
+* Presentations
+
+* Labs
+
+## Lectures
+
+**Mon-Fri, 9:15-10:45am, Posner 151**
+
+. . .
+
+* First ~2 weeks: EDA, basic data science tasks
+
+. . .
+  
+* Next ~4 weeks: statistical modeling, machine learning
+
+. . .
+  
+* After that: special topics, guest lectures
+
+. . .
+  
+* 8th week: MN trip (Health), sport-specific activities, presentations on last day
+
+. . .
+
+Holidays: Juneteenth (Wed June 19) and Independence Day break (July 3-5)
+
+## Presentations
+
+**Around mid-day/lunchtime, Posner 151 (Health) or Posner 153 (Sports)**
+
+*Note: dates/times may vary; check calendar*
+
+*   Health: UHG webinar speakers
+
+*   Sports: project pitches, guest speakers
+
+## Labs
+
+**Mon-Fri, 2-3:30pm, Posner 151 (Health) or Posner 153 (Sports)**
+  
+* Demo labs
+
+* Project labs
+
+    * will begin with a mini EDA project
+    
+    * then shift to focus on main project
+
+## EDA project
+
+* Practice understanding the structure of a dataset and perform basic EDA and data visualization techniques in `R`, and using GitHub for collaboration
+
+* Work in a group of 3
+
+* Timeline
+
+  *   Release date: Thursday, June 6
+  
+  *   8-minute presentation on Tuesday, June 18 during lecture time
+
+## Main project
+
+* Analyze a dataset in health or sports analytics to answer a research question that is important to people in your respective field
+
+* Work in a group of 2-4
+
+* Deliverables (more details will be provided later on)
+
+  * Report
+  * Poster 
+  * 8-min presentation
+
+# Miscellaneous
+
+## Reminders
+
+* Fill out the survey forms (Communication and Data Science Background)
+
+* Reset CMU wifi password (for non-CMU students)
+
+## Expectations
+
+* In-person attendance
+
+  * Be on time. PLEASE
+  
+* Participate and ask questions
+
+* Work together. Help and support each other.
+
+* Enjoy, learn and grow
