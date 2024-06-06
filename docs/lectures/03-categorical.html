@@ -625,7 +625,7 @@
 <h2>What does a bar chart show?</h2>
 <div class="columns">
 <div class="column" style="text-align: left;">
-<p><strong>Marginal distribution</strong>: probably that a categorical variable <span class="math inline">\(X\)</span> (e.g., <code>do_you_recline</code>) takes each particular category value <span class="math inline">\(x\)</span> (<code>always</code>, <code>usually</code>, …, <code>never</code>)</p>
+<p><strong>Marginal distribution</strong>: probability that a categorical variable <span class="math inline">\(X\)</span> (e.g., <code>do_you_recline</code>) takes each particular category value <span class="math inline">\(x\)</span> (<code>always</code>, <code>usually</code>, …, <code>never</code>)</p>
 <ul>
 <li><p>Frequency bar charts (earlier version) give info about sample size, but this could be labeled in the chart (use <code>geom_text()</code> or <code>geom_label()</code>)</p></li>
 <li><p>Now, we create a proportion/percent bar chart to display the individual probabilities</p></li>
@@ -662,7 +662,7 @@
 <ul>
 <li><p>Estimate <span class="math inline">\(P(\)</span> <code>do_you_recline</code> = <span class="math inline">\(C_j\)</span>) with <span class="math inline">\(\hat p_j\)</span> for each category <span class="math inline">\(C_j\)</span> (e.g., <span class="math inline">\(\hat p_\texttt{always}\)</span>, …, <span class="math inline">\(\hat p_\texttt{never}\)</span>)</p>
 <ul>
-<li>Standard error for each <span class="math inline">\(\hat p_j\)</span>: <span class="math inline">\(\displaystyle SE(\hat{p}_j) = \sqrt{\frac{\hat{p}_j (1 - \hat{p}_j)}{n}}\)</span></li>
+<li>Standard error for each <span class="math inline">\(\hat p_j\)</span>: <span class="math inline">\(\quad \displaystyle \text{SE}(\hat{p}_j) = \sqrt{\frac{\hat{p}_j (1 - \hat{p}_j)}{n}}\)</span></li>
 </ul></li>
 </ul>
 </div>
@@ -913,15 +913,15 @@ do_you_recline         no somewhat yes
 <ul>
 <li><p>Joint distribution: frequency of the intersection</p>
 <ul>
-<li>e.g., <span class="math inline">\(P(X = \texttt{somewhat}, Y = \texttt{always})\)</span></li>
+<li>e.g., <span class="math inline">\(P(X =\)</span> <code>somewhat</code> <span class="math inline">\(, Y =\)</span> <code>always</code> <span class="math inline">\()\)</span></li>
 </ul></li>
 <li><p>Marginal distribution: row sums or column sums</p>
 <ul>
-<li>e.g., <span class="math inline">\(P(X = \texttt{somewhat})\)</span>, <span class="math inline">\(P(Y = \texttt{always})\)</span></li>
+<li>e.g., <span class="math inline">\(P(X =\)</span> <code>somewhat</code> <span class="math inline">\()\)</span>, <span class="math inline">\(P(Y =\)</span> <code>always</code> <span class="math inline">\()\)</span></li>
 </ul></li>
 <li><p>Conditional distribution: probability event <span class="math inline">\(X\)</span> given event <span class="math inline">\(Y\)</span></p>
 <ul>
-<li>e.g., <span class="math inline">\(P(X = \texttt{somewhat} \mid Y = \texttt{always})\)</span></li>
+<li>e.g., <span class="math inline">\(P(X =\)</span> <code>somewhat</code> <span class="math inline">\(\mid Y =\)</span> <code>always</code> <span class="math inline">\()\)</span></li>
 </ul>
 <p><span class="math inline">\(\displaystyle \qquad \quad = \frac{P(X = \texttt{somewhat}, Y = \texttt{always})}{P(Y = \texttt{always})}\)</span></p></li>
 </ul>

@@ -14,11 +14,11 @@
     "text": "Note: To download a .qmd file, right click and choose “Save Link As…”.\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nJune 3\nGetting started with R\n.html   .qmd\n\n\nJune 4\nData wrangling\n.html   .qmd\n\n\nJune 5\nData visualization\n.html   .qmd\n\n\nJune 6\nUsing GitHub for project collaboration\n.html"
   },
   {
-    "objectID": "sports.html#eda-project",
-    "href": "sports.html#eda-project",
+    "objectID": "sports.html#eda-projects",
+    "href": "sports.html#eda-projects",
     "title": "Sports",
-    "section": "EDA project",
-    "text": "EDA project\n\n\n\nProject 1\nWTA Grand Slam statistics\ndescription\n\n\nProject 2\nWNBA shooting\ndescription\n\n\nProject 3\nNWSL team statistics\ndescription\n\n\nProject 4\nNHL shooting\ndescription\n\n\nProject 5\nNFL passing\ndescription"
+    "section": "EDA projects",
+    "text": "EDA projects\n\n\n\nProject 1\nWTA Grand Slam statistics\ndescription\n\n\nProject 2\nWNBA shooting\ndescription\n\n\nProject 3\nNWSL team statistics\ndescription\n\n\nProject 4\nNHL shooting\ndescription\n\n\nProject 5\nNFL passing\ndescription"
   },
   {
     "objectID": "sports.html#resources",
@@ -588,11 +588,11 @@
     "text": "Note: To download a .qmd file, right click and choose “Save Link As…”.\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nJune 3\nGetting started with R\n.html   .qmd\n\n\nJune 4\nData wrangling\n.html   .qmd\n\n\nJune 5\nData visualization\n.html   .qmd\n\n\nJune 6\nUsing GitHub for project collaboration\n.html"
   },
   {
-    "objectID": "health.html#eda-project",
-    "href": "health.html#eda-project",
+    "objectID": "health.html#eda-projects",
+    "href": "health.html#eda-projects",
     "title": "Health",
-    "section": "EDA project",
-    "text": "EDA project\n\n\n\nProject 1\nHospital ratings\ndescription\n\n\nProject 2\nMaternal healthcare disparities\ndescription\n\n\nProject 3\nOpioid prescriptions and claims\ndescription\n\n\nProject 4\nRegistered nurses\ndescription\n\n\nProject 5\nCOVID cases and deaths\ndescription\n\n\nProject 6\nCOVID hospitalizations\ndescription"
+    "section": "EDA projects",
+    "text": "EDA projects\n\n\n\nProject 1\nHospital ratings\ndescription\n\n\nProject 2\nMaternal healthcare disparities\ndescription\n\n\nProject 3\nOpioid prescriptions and claims\ndescription\n\n\nProject 4\nRegistered nurses\ndescription\n\n\nProject 5\nCOVID cases and deaths\ndescription\n\n\nProject 6\nCOVID hospitalizations\ndescription"
   },
   {
     "objectID": "health.html#resources",
@@ -2193,154 +2193,154 @@
   {
     "objectID": "lectures/05-kmeans.html#statistical-learning-and-unsupervised-learning",
     "href": "lectures/05-kmeans.html#statistical-learning-and-unsupervised-learning",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "Statistical learning and unsupervised learning",
-    "text": "Statistical learning and unsupervised learning\nWhat is statistical learning?\n\nPreface of Introduction to Statistical Learning with Applications in R (ISLR):\n\nrefers to a set of tools for modeling and understanding complex datasets\n\n\n\nWhat is unsupervised learning?\n\n\nWe have \\(p\\) variables for \\(n\\) observations \\(x_1,\\dots,x_n\\), and for observation \\(i\\):\n\\[x_{i1},x_{i2},\\ldots,x_{ip} \\sim P\\]\n\n\\(P\\) is a \\(p\\)-dimensional distribution that we might not know much about a priori.\nunsupervised: none of the variables are response variables, i.e., there are no labeled data\n\n\n\nThink of unsupervised learning as an extension of EDA…\n\n\n\nThere is no unique right answer!"
+    "text": "Statistical learning and unsupervised learning\nPreface of (ISLR):\n\nStatistical learning refers to a set of tools for making sense of complex datasets.\n\n\n\nMachine learning constructs algorithms that can learn from data\nStatistical learning emphasizes statistical models and assessment of uncertainty\n\n\n\nWhat is unsupervised learning?\n\n\nGiven a dataset of \\(p\\) variables and \\(n\\) observations \\(x_1,\\dots,x_n\\), and for observation \\(i\\):\n\\[x_{i1},x_{i2},\\ldots,x_{ip} \\sim P\\]\n\n\\(P\\) is a \\(p\\)-dimensional distribution that we might not know much about a priori.\nunsupervised: none of the variables are response variables, i.e., there are no labeled data\n\n\n\nThink of unsupervised learning as an extension of EDA…\n\n\n\nThere is no unique right answer!"
   },
   {
     "objectID": "lectures/05-kmeans.html#what-is-clustering-aka-cluster-analysis",
     "href": "lectures/05-kmeans.html#what-is-clustering-aka-cluster-analysis",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "What is clustering (aka cluster analysis)?",
     "text": "What is clustering (aka cluster analysis)?\n\nISLR 10.3\n\nvery broad set of techniques for finding subgroups, or clusters, in a dataset\n\n\n\nGoals:\n\nobservations within clusters are more similar to each other,\nobservations in different clusters are more different from each other\n\n\n\nHow do we define distance / dissimilarity between observations?\n\n\n\ne.g. Euclidean distance between observations \\(i\\) and \\(j\\)\n\n\\[d(x_i, x_j) = \\sqrt{(x_{i1}-x_{j1})^2 + \\cdots + (x_{ip}-x_{jp})^2}\\]"
   },
   {
     "objectID": "lectures/05-kmeans.html#units-matter-in-clustering",
     "href": "lectures/05-kmeans.html#units-matter-in-clustering",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "Units matter in clustering",
     "text": "Units matter in clustering\n\nOne variable may dominate others when computing Euclidean distance because its range is much larger\nCan standardize each variable / column of dataset to have mean 0 and standard divation 1 with scale()\nBut we may value the separation in that variable! (so just be careful…)"
   },
   {
     "objectID": "lectures/05-kmeans.html#whats-the-clustering-objective",
     "href": "lectures/05-kmeans.html#whats-the-clustering-objective",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "What’s the clustering objective?",
     "text": "What’s the clustering objective?\n\n\\(C_1, \\dots, C_K\\) are sets containing indices of observations in each of the \\(k\\) clusters\n\nif observation \\(i\\) is in cluster \\(k\\), then \\(i \\in C_k\\)\n\n\n\n\nWe want to minimize the within-cluster variation \\(W(C_k)\\) for each cluster \\(C_k\\) and solve \\[\\underset{C_1, \\dots, C_K}{\\text{minimize }} \\Big\\{ \\sum_{k=1}^K W(C_k) \\Big\\}\\]\nCan define using the squared Euclidean distance ( \\(|C_k| = n_k =\\) # observations in cluster \\(k\\)) \\[W(C_k) = \\frac{1}{|C_k|}\\sum_{i,j \\in C_k} d(x_i, x_j)^2\\]\n\nCommonly referred to as the within-cluster sum of squares (WSS)\n\n\n\n\nSo how can we solve this?"
   },
   {
     "objectID": "lectures/05-kmeans.html#lloyds-algorithm",
     "href": "lectures/05-kmeans.html#lloyds-algorithm",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "Lloyd’s algorithm",
     "text": "Lloyd’s algorithm\n\n\n\nChoose \\(k\\) random centers, aka centroids\nAssign each observation closest center (using Euclidean distance)\nRepeat until cluster assignment stop changing:\n\n\nCompute new centroids as the averages of the updated groups\nReassign each observations to closest center\n\nConverges to a local optimum, not the global\nResults will change from run to run (set the seed!)\nTakes \\(k\\) as an input!"
   },
   {
     "objectID": "lectures/05-kmeans.html#gapminder-data",
     "href": "lectures/05-kmeans.html#gapminder-data",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "Gapminder data",
     "text": "Gapminder data\nHealth and income outcomes for 184 countries from 1960 to 2016 from the famous Gapminder project\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nlibrary(dslabs)\nglimpse(gapminder)\n\nRows: 10,545\nColumns: 9\n$ country          &lt;fct&gt; \"Albania\", \"Algeria\", \"Angola\", \"Antigua and Barbuda\"…\n$ year             &lt;int&gt; 1960, 1960, 1960, 1960, 1960, 1960, 1960, 1960, 1960,…\n$ infant_mortality &lt;dbl&gt; 115.40, 148.20, 208.00, NA, 59.87, NA, NA, 20.30, 37.…\n$ life_expectancy  &lt;dbl&gt; 62.87, 47.50, 35.98, 62.97, 65.39, 66.86, 65.66, 70.8…\n$ fertility        &lt;dbl&gt; 6.19, 7.65, 7.32, 4.43, 3.11, 4.55, 4.82, 3.45, 2.70,…\n$ population       &lt;dbl&gt; 1636054, 11124892, 5270844, 54681, 20619075, 1867396,…\n$ gdp              &lt;dbl&gt; NA, 13828152297, NA, NA, 108322326649, NA, NA, 966778…\n$ continent        &lt;fct&gt; Europe, Africa, Africa, Americas, Americas, Asia, Ame…\n$ region           &lt;fct&gt; Southern Europe, Northern Africa, Middle Africa, Cari…"
   },
   {
     "objectID": "lectures/05-kmeans.html#gdp-is-severely-skewed-right",
     "href": "lectures/05-kmeans.html#gdp-is-severely-skewed-right",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "GDP is severely skewed right…",
     "text": "GDP is severely skewed right…\n\ngapminder |&gt; \n  ggplot(aes(x = gdp)) + \n  geom_histogram()"
   },
   {
     "objectID": "lectures/05-kmeans.html#some-initial-cleaning",
     "href": "lectures/05-kmeans.html#some-initial-cleaning",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "Some initial cleaning…",
     "text": "Some initial cleaning…\n\nEach row is at the country-year level\nFocus on data for 2011 where gdp is not missing\nLog-transform gdp\n\n\nclean_gapminder &lt;- gapminder |&gt;\n  filter(year == 2011, !is.na(gdp)) |&gt;\n  mutate(log_gdp = log(gdp))"
   },
   {
     "objectID": "lectures/05-kmeans.html#k-means-clustering-example-gdp-and-life_expectancy",
     "href": "lectures/05-kmeans.html#k-means-clustering-example-gdp-and-life_expectancy",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "\\(k\\)-means clustering example (gdp and life_expectancy)",
     "text": "\\(k\\)-means clustering example (gdp and life_expectancy)\n\n\n\nUse the kmeans() function, but must provide number of clusters \\(k\\)\n\n\ninit_kmeans &lt;- clean_gapminder |&gt; \n  select(log_gdp, life_expectancy) |&gt; \n  kmeans(algorithm = \"Lloyd\", centers = 4, nstart = 1)\n\nclean_gapminder |&gt;\n  mutate(\n    country_clusters = as.factor(init_kmeans$cluster)\n  ) |&gt;\n  ggplot(aes(x = log_gdp, y = life_expectancy,\n             color = country_clusters)) +\n  geom_point(size = 4) + \n  ggthemes::scale_color_colorblind() +\n  theme(legend.position = \"bottom\")"
   },
   {
     "objectID": "lectures/05-kmeans.html#careful-with-units",
     "href": "lectures/05-kmeans.html#careful-with-units",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "Careful with units…",
     "text": "Careful with units…\n\n\n\nUse coord_fixed() so that the axes match with unit scales\n\n\nclean_gapminder |&gt;\n  mutate(\n    country_clusters = as.factor(init_kmeans$cluster)\n  ) |&gt;\n  ggplot(aes(x = log_gdp, y = life_expectancy,\n             color = country_clusters)) +\n  geom_point(size = 4) + \n  ggthemes::scale_color_colorblind() +\n  theme(legend.position = \"bottom\") +\n  coord_fixed()"
   },
   {
     "objectID": "lectures/05-kmeans.html#standardize-the-variables",
     "href": "lectures/05-kmeans.html#standardize-the-variables",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "Standardize the variables!",
     "text": "Standardize the variables!\n\n\n\nUse the scale() function to first standardize the variables, \\(\\frac{\\text{value} - \\text{mean}}{\\text{sd}}\\)\n\n\nclean_gapminder &lt;- clean_gapminder |&gt;\n  mutate(\n    std_log_gdp = as.numeric(scale(log_gdp, center = TRUE, scale = TRUE)),\n    std_life_exp = as.numeric(scale(life_expectancy, center = TRUE, scale = TRUE))\n  )\n\nstd_kmeans &lt;- clean_gapminder |&gt; \n  select(std_log_gdp, std_life_exp) |&gt; \n  kmeans(algorithm = \"Lloyd\", centers = 4, nstart = 1)\n\nclean_gapminder |&gt;\n  mutate(\n    country_clusters = as.factor(std_kmeans$cluster)\n  ) |&gt;\n  ggplot(aes(x = log_gdp, y = life_expectancy,\n             color = country_clusters)) +\n  geom_point(size = 4) + \n  ggthemes::scale_color_colorblind() +\n  theme(legend.position = \"bottom\") +\n  coord_fixed()"
   },
   {
     "objectID": "lectures/05-kmeans.html#standardize-the-variables-1",
     "href": "lectures/05-kmeans.html#standardize-the-variables-1",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "Standardize the variables!",
     "text": "Standardize the variables!\n\n\n\nclean_gapminder |&gt;\n  mutate(\n    country_clusters = as.factor(std_kmeans$cluster)\n  ) |&gt;\n  ggplot(aes(x = std_log_gdp, y = std_life_exp,\n             color = country_clusters)) +\n  geom_point(size = 4) + \n  ggthemes::scale_color_colorblind() +\n  theme(legend.position = \"bottom\") +\n  coord_fixed()"
   },
   {
     "objectID": "lectures/05-kmeans.html#and-if-we-run-it-again",
     "href": "lectures/05-kmeans.html#and-if-we-run-it-again",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "And if we run it again?",
     "text": "And if we run it again?\n\n\nWe get different clustering results!\n\nanother_kmeans &lt;- clean_gapminder |&gt; \n  select(std_log_gdp, std_life_exp) |&gt; \n  kmeans(algorithm = \"Lloyd\", centers = 4, nstart = 1)\n\nclean_gapminder |&gt;\n  mutate(\n    country_clusters = as.factor(another_kmeans$cluster)\n  ) |&gt;\n  ggplot(aes(x = log_gdp, y = life_expectancy,\n             color = country_clusters)) +\n  geom_point(size = 4) + \n  ggthemes::scale_color_colorblind() +\n  theme(legend.position = \"bottom\")\n\nResults depend on initialization\nKeep in mind: the labels / colors are arbitrary"
   },
   {
     "objectID": "lectures/05-kmeans.html#fix-randomness-issue-with-nstart",
     "href": "lectures/05-kmeans.html#fix-randomness-issue-with-nstart",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "Fix randomness issue with nstart",
     "text": "Fix randomness issue with nstart\n\n\nRun the algorithm nstart times, then pick the results with lowest total within-cluster variation \\[\\text{total WSS} = \\sum_{k=1}^K W(C_k)\\]\n\nnstart_kmeans &lt;- clean_gapminder |&gt; \n  select(std_log_gdp, std_life_exp) |&gt; \n  kmeans(algorithm = \"Lloyd\", centers = 4, nstart = 30)\n\nclean_gapminder |&gt;\n  mutate(\n    country_clusters = as.factor(nstart_kmeans$cluster)\n  ) |&gt; \n  ggplot(aes(x = log_gdp, y = life_expectancy,\n             color = country_clusters)) +\n  geom_point(size = 4) + \n  ggthemes::scale_color_colorblind() +\n  theme(legend.position = \"bottom\")"
   },
   {
     "objectID": "lectures/05-kmeans.html#by-default-r-uses-hartigan-and-wong-algorithm",
     "href": "lectures/05-kmeans.html#by-default-r-uses-hartigan-and-wong-algorithm",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "By default R uses Hartigan and Wong algorithm",
     "text": "By default R uses Hartigan and Wong algorithm\n\n\nUpdates based on changing a single observation\nComputational advantages over re-computing distances for every observation\n\ndefault_kmeans &lt;- clean_gapminder |&gt; \n  select(std_log_gdp, std_life_exp) |&gt; \n  kmeans(algorithm = \"Hartigan-Wong\",\n         centers = 4, nstart = 30) \n\nclean_gapminder |&gt;\n  mutate(\n    country_clusters = as.factor(default_kmeans$cluster)\n  ) |&gt; \n  ggplot(aes(x = log_gdp, y = life_expectancy,\n             color = country_clusters)) +\n  geom_point(size = 4) + \n  ggthemes::scale_color_colorblind() +\n  theme(legend.position = \"bottom\")\n\nVery little differences for our purposes…"
   },
   {
     "objectID": "lectures/05-kmeans.html#better-alternative-to-nstart-k-means",
     "href": "lectures/05-kmeans.html#better-alternative-to-nstart-k-means",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "Better alternative to nstart: \\(k\\)-means++",
     "text": "Better alternative to nstart: \\(k\\)-means++\nPick a random observation to be the center \\(c_1\\) of the first cluster \\(C_1\\)\n\nThis initializes a set \\(Centers = \\{c_1 \\}\\)\n\n\nThen for each remaining cluster \\(c^* \\in 2, \\dots, K\\):\n\nFor each observation (that is not a center), compute \\(D(x_i) = \\underset{c \\in Centers}{\\text{min}} d(x_i, c)\\)\n\nDistance between observation and its closest center \\(c \\in Centers\\)\n\n\n\n\n\nRandomly pick a point \\(x_i\\) with probability: \\(p_i = \\frac{D^2(x_i)}{\\sum_{j=1}^n D^2(x_j)}\\)\n\n\n\n\nAs distance to closest center increases, the probability of selection increases\nCall this randomly selected observation \\(c^*\\), update \\(Centers = Centers\\ \\cup c^*\\)\n\nSame as centers = c(centers, c_new)\n\n\n\n\nThen run \\(k\\)-means using these \\(Centers\\) as the starting points"
   },
   {
     "objectID": "lectures/05-kmeans.html#k-means-in-r-using-flexclust",
     "href": "lectures/05-kmeans.html#k-means-in-r-using-flexclust",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "\\(k\\)-means++ in R using flexclust",
     "text": "\\(k\\)-means++ in R using flexclust\n\n\n\nlibrary(flexclust)\ninit_kmeanspp &lt;- clean_gapminder |&gt; \n  select(std_log_gdp, std_life_exp) |&gt; \n  kcca(k = 4, control = list(initcent = \"kmeanspp\"))\n\nclean_gapminder |&gt;\n  mutate(\n    country_clusters = as.factor(init_kmeanspp@cluster)\n  ) |&gt;\n  ggplot(aes(x = log_gdp, y = life_expectancy,\n             color = country_clusters)) +\n  geom_point(size = 4) + \n  ggthemes::scale_color_colorblind() +\n  theme(legend.position = \"bottom\")\n\nNote the use of @ instead of $…"
   },
   {
     "objectID": "lectures/05-kmeans.html#so-how-do-we-choose-the-number-of-clusters",
     "href": "lectures/05-kmeans.html#so-how-do-we-choose-the-number-of-clusters",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "So, how do we choose the number of clusters?",
     "text": "So, how do we choose the number of clusters?"
   },
   {
     "objectID": "lectures/05-kmeans.html#so-how-do-we-choose-the-number-of-clusters-1",
     "href": "lectures/05-kmeans.html#so-how-do-we-choose-the-number-of-clusters-1",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "So, how do we choose the number of clusters?",
     "text": "So, how do we choose the number of clusters?\nThere is no universally accepted way to conclude that a particular choice of \\(k\\) is optimal!\nFrom Cosma Shalizi’s notes\n\nOne reason you should be intensely skeptical of clustering results — including your own! — is that there is currently very little theory about how to find the right number of clusters. It’s not even completely clear what “the right number of clusters” means!"
   },
   {
     "objectID": "lectures/05-kmeans.html#popular-heuristic-elbow-plot-use-with-caution",
     "href": "lectures/05-kmeans.html#popular-heuristic-elbow-plot-use-with-caution",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "Popular heuristic: elbow plot (use with caution)",
     "text": "Popular heuristic: elbow plot (use with caution)\nLook at the total within-cluster variation as a function of the number of clusters\n\n\n\n# function to perform clustering for each value of k\ngapminder_kmeans &lt;- function(k) {\n  \n  kmeans_results &lt;- clean_gapminder |&gt;\n    select(std_log_gdp, std_life_exp) |&gt;\n    kmeans(centers = k, nstart = 30)\n  \n  kmeans_out &lt;- tibble(\n    clusters = k,\n    total_wss = kmeans_results$tot.withinss\n  )\n  return(kmeans_out)\n}\n\n\n\n# number of clusters to search over\nn_clusters_search &lt;- 2:12\n\n# iterate over each k to compute total wss\nkmeans_search &lt;- n_clusters_search |&gt; \n  map(gapminder_kmeans) |&gt; \n  bind_rows()\n\nkmeans_search |&gt; \n  ggplot(aes(x = clusters, y = total_wss)) +\n  geom_line() + \n  geom_point(size = 4)"
   },
   {
     "objectID": "lectures/05-kmeans.html#popular-heuristic-elbow-plot-use-with-caution-1",
     "href": "lectures/05-kmeans.html#popular-heuristic-elbow-plot-use-with-caution-1",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "Popular heuristic: elbow plot (use with caution)",
     "text": "Popular heuristic: elbow plot (use with caution)\n\n\nChoose \\(k\\) where marginal improvements is low at the bend (hence the elbow)\nThis is just a guideline and should not dictate your choice of \\(k\\)!\nGap statistic is a popular choice (see clusGap function in cluster package)\nLater on: model-based approach to choosing the number of clusters"
   },
   {
     "objectID": "lectures/05-kmeans.html#appendix-elbow-plot-with-flexclust",
     "href": "lectures/05-kmeans.html#appendix-elbow-plot-with-flexclust",
-    "title": "Unsupervised learning: \\(k\\)-means clustering",
+    "title": "Data visualization: categorical data",
     "section": "Appendix: elbow plot with flexclust",
     "text": "Appendix: elbow plot with flexclust\n\n\n\ngapminder_kmpp &lt;- function(k) {\n  \n  kmeans_results &lt;- clean_gapminder |&gt;\n    select(std_log_gdp, std_life_exp) |&gt;\n    kcca(k = k, control = list(initcent = \"kmeanspp\"))\n  \n  kmeans_out &lt;- tibble(\n    clusters = k,\n    total_wss = sum(kmeans_results@clusinfo$size * \n                      kmeans_results@clusinfo$av_dist)\n  )\n  return(kmeans_out)\n}\n\nn_clusters_search &lt;- 2:12\nkmpp_search &lt;- n_clusters_search |&gt; \n  map(gapminder_kmpp) |&gt; \n  bind_rows()\n\nkmpp_search |&gt; \n  ggplot(aes(x = clusters, y = total_wss)) +\n  geom_line() + \n  geom_point(size = 4)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
   },
@@ -2958,14 +2958,14 @@
     "href": "lectures/03-categorical.html#what-does-a-bar-chart-show",
     "title": "Data visualization: categorical data",
     "section": "What does a bar chart show?",
-    "text": "What does a bar chart show?\n\n\nMarginal distribution: probably that a categorical variable \\(X\\) (e.g., do_you_recline) takes each particular category value \\(x\\) (always, usually, …, never)\n\nFrequency bar charts (earlier version) give info about sample size, but this could be labeled in the chart (use geom_text() or geom_label())\nNow, we create a proportion/percent bar chart to display the individual probabilities\nThis shows the probability mass function (PMF) for discrete variables\n\n(e.g. \\(P(\\) do_you_recline \\(=\\) never\\()\\))\n\n\n\n\nflying_etiquette |&gt; \n  count(do_you_recline) |&gt; \n  mutate(prop = n / sum(n)) |&gt; \n  ggplot(aes(x = prop, y = do_you_recline)) +\n  geom_col()   # + geom_label(aes(label = n), hjust = 1)"
+    "text": "What does a bar chart show?\n\n\nMarginal distribution: probability that a categorical variable \\(X\\) (e.g., do_you_recline) takes each particular category value \\(x\\) (always, usually, …, never)\n\nFrequency bar charts (earlier version) give info about sample size, but this could be labeled in the chart (use geom_text() or geom_label())\nNow, we create a proportion/percent bar chart to display the individual probabilities\nThis shows the probability mass function (PMF) for discrete variables\n\n(e.g. \\(P(\\) do_you_recline \\(=\\) never\\()\\))\n\n\n\n\nflying_etiquette |&gt; \n  count(do_you_recline) |&gt; \n  mutate(prop = n / sum(n)) |&gt; \n  ggplot(aes(x = prop, y = do_you_recline)) +\n  geom_col()   # + geom_label(aes(label = n), hjust = 1)"
   },
   {
     "objectID": "lectures/03-categorical.html#population-vs-sample",
     "href": "lectures/03-categorical.html#population-vs-sample",
     "title": "Data visualization: categorical data",
     "section": "Population vs sample",
-    "text": "Population vs sample\nPopulation: The collection of all subjects of interest\nSample: A representative subset of the population of interest\n\nThe survey respondents is just a subset of all airplane flyers\n\n\nEmpirical distribution: estimating the true marginal distribution with observed (sample) data\n\n\n\nEstimate \\(P(\\) do_you_recline = \\(C_j\\)) with \\(\\hat p_j\\) for each category \\(C_j\\) (e.g., \\(\\hat p_\\texttt{always}\\), …, \\(\\hat p_\\texttt{never}\\))\n\nStandard error for each \\(\\hat p_j\\): \\(\\displaystyle SE(\\hat{p}_j) = \\sqrt{\\frac{\\hat{p}_j (1 - \\hat{p}_j)}{n}}\\)"
+    "text": "Population vs sample\nPopulation: The collection of all subjects of interest\nSample: A representative subset of the population of interest\n\nThe survey respondents is just a subset of all airplane flyers\n\n\nEmpirical distribution: estimating the true marginal distribution with observed (sample) data\n\n\n\nEstimate \\(P(\\) do_you_recline = \\(C_j\\)) with \\(\\hat p_j\\) for each category \\(C_j\\) (e.g., \\(\\hat p_\\texttt{always}\\), …, \\(\\hat p_\\texttt{never}\\))\n\nStandard error for each \\(\\hat p_j\\): \\(\\quad \\displaystyle \\text{SE}(\\hat{p}_j) = \\sqrt{\\frac{\\hat{p}_j (1 - \\hat{p}_j)}{n}}\\)"
   },
   {
     "objectID": "lectures/03-categorical.html#adding-confidence-intervals-to-bar-chart",
@@ -3042,7 +3042,7 @@
     "href": "lectures/03-categorical.html#joint-marginal-and-conditional-probabilities",
     "title": "Data visualization: categorical data",
     "section": "Joint, marginal, and conditional probabilities",
-    "text": "Joint, marginal, and conditional probabilities\n\n\nLet \\(X\\) = rude_to_recline and \\(Y\\) = do_you_recline\n\nJoint distribution: frequency of the intersection\n\ne.g., \\(P(X = \\texttt{somewhat}, Y = \\texttt{always})\\)\n\nMarginal distribution: row sums or column sums\n\ne.g., \\(P(X = \\texttt{somewhat})\\), \\(P(Y = \\texttt{always})\\)\n\nConditional distribution: probability event \\(X\\) given event \\(Y\\)\n\ne.g., \\(P(X = \\texttt{somewhat} \\mid Y = \\texttt{always})\\)\n\n\\(\\displaystyle \\qquad \\quad = \\frac{P(X = \\texttt{somewhat}, Y = \\texttt{always})}{P(Y = \\texttt{always})}\\)\n\n\n\nflying_etiquette |&gt; \n  select(do_you_recline, rude_to_recline) |&gt; \n  table()\n\n                     rude_to_recline\ndo_you_recline         no somewhat yes\n  never                35       81  54\n  once in a while     116      129  11\n  about half the time  82       35   0\n  usually             145       27   3\n  always              124        9   3\n\nflying_etiquette |&gt; \n  select(do_you_recline, rude_to_recline) |&gt; \n  table() |&gt; \n  prop.table()\n\n                     rude_to_recline\ndo_you_recline                 no    somewhat         yes\n  never               0.040983607 0.094847775 0.063231850\n  once in a while     0.135831382 0.151053864 0.012880562\n  about half the time 0.096018735 0.040983607 0.000000000\n  usually             0.169789227 0.031615925 0.003512881\n  always              0.145199063 0.010538642 0.003512881"
+    "text": "Joint, marginal, and conditional probabilities\n\n\nLet \\(X\\) = rude_to_recline and \\(Y\\) = do_you_recline\n\nJoint distribution: frequency of the intersection\n\ne.g., \\(P(X =\\) somewhat \\(, Y =\\) always \\()\\)\n\nMarginal distribution: row sums or column sums\n\ne.g., \\(P(X =\\) somewhat \\()\\), \\(P(Y =\\) always \\()\\)\n\nConditional distribution: probability event \\(X\\) given event \\(Y\\)\n\ne.g., \\(P(X =\\) somewhat \\(\\mid Y =\\) always \\()\\)\n\n\\(\\displaystyle \\qquad \\quad = \\frac{P(X = \\texttt{somewhat}, Y = \\texttt{always})}{P(Y = \\texttt{always})}\\)\n\n\n\nflying_etiquette |&gt; \n  select(do_you_recline, rude_to_recline) |&gt; \n  table()\n\n                     rude_to_recline\ndo_you_recline         no somewhat yes\n  never                35       81  54\n  once in a while     116      129  11\n  about half the time  82       35   0\n  usually             145       27   3\n  always              124        9   3\n\nflying_etiquette |&gt; \n  select(do_you_recline, rude_to_recline) |&gt; \n  table() |&gt; \n  prop.table()\n\n                     rude_to_recline\ndo_you_recline                 no    somewhat         yes\n  never               0.040983607 0.094847775 0.063231850\n  once in a while     0.135831382 0.151053864 0.012880562\n  about half the time 0.096018735 0.040983607 0.000000000\n  usually             0.169789227 0.031615925 0.003512881\n  always              0.145199063 0.010538642 0.003512881"
   },
   {
     "objectID": "lectures/03-categorical.html#joint-marginal-and-conditional-probabilities-1",
@@ -3315,7 +3315,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"l\" \"s\" \"g\" \"a\" \"z\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 0 1 0 1 0 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"H\" \"T\" \"H\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 69"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"f\" \"s\" \"w\" \"j\" \"k\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 0 1 0 0 0 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"T\" \"H\" \"T\" \"H\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 45"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -3357,21 +3357,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.07183683\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.014547"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.0279528\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9854868"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.484\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.43     0.001 0.000297\n 2 -2.66     0.002 0.00388 \n 3 -2.61     0.003 0.00453 \n 4 -2.57     0.004 0.00505 \n 5 -2.42     0.005 0.00777 \n 6 -2.33     0.006 0.0100  \n 7 -2.31     0.007 0.0105  \n 8 -2.27     0.008 0.0116  \n 9 -2.25     0.009 0.0121  \n10 -2.24     0.01  0.0127  \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.517\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical    true\n   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 -2.92     0.001 0.00177\n 2 -2.87     0.002 0.00207\n 3 -2.77     0.003 0.00283\n 4 -2.63     0.004 0.00425\n 5 -2.50     0.005 0.00624\n 6 -2.47     0.006 0.00672\n 7 -2.41     0.007 0.00787\n 8 -2.39     0.008 0.00837\n 9 -2.32     0.009 0.0103 \n10 -2.26     0.01  0.0118 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3826282\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3858239\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -3385,14 +3385,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1484\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1772\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.08969777\n\nmean(rnorm(100))\n\n[1] 0.1085665\n\nmean(rnorm(100))\n\n[1] -0.05887518"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.09398593\n\nmean(rnorm(100))\n\n[1] -0.1021088\n\nmean(rnorm(100))\n\n[1] 0.04419211"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",

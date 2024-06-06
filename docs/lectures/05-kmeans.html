@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.361">
 
   <meta name="author" content=" SURE 2024  Department of Statistics &amp; Data Science Carnegie Mellon University">
-  <title>SURE 2024 - Unsupervised learning: \(k\)-means clustering</title>
+  <title>SURE 2024 - Data visualization: categorical data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -392,7 +392,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Unsupervised learning: <span class="math inline">\(k\)</span>-means clustering</h1>
+  <h1 class="title">Data visualization: categorical data</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -410,18 +410,21 @@
 </section>
 <section id="statistical-learning-and-unsupervised-learning" class="slide level2">
 <h2>Statistical learning and unsupervised learning</h2>
-<p>What is <strong>statistical learning?</strong></p>
-<div class="fragment">
-<p><a href="https://www.statlearning.com/">Preface of Introduction to Statistical Learning with Applications in R (ISLR)</a>:</p>
+<p><a href="https://www.statlearning.com/">Preface of (ISLR)</a>:</p>
 <blockquote>
-<p><em>refers to a set of tools for modeling and understanding complex datasets</em></p>
+<p>Statistical learning refers to a set of tools for making sense of complex datasets.</p>
 </blockquote>
+<div class="fragment">
+<ul>
+<li><p>Machine learning constructs algorithms that can learn from data</p></li>
+<li><p>Statistical learning emphasizes statistical models and assessment of uncertainty</p></li>
+</ul>
 </div>
 <div class="fragment">
 <p>What is <strong>unsupervised learning?</strong></p>
 </div>
 <div class="fragment">
-<p>We have <span class="math inline">\(p\)</span> variables for <span class="math inline">\(n\)</span> observations <span class="math inline">\(x_1,\dots,x_n\)</span>, and for observation <span class="math inline">\(i\)</span>:</p>
+<p>Given a dataset of <span class="math inline">\(p\)</span> variables and <span class="math inline">\(n\)</span> observations <span class="math inline">\(x_1,\dots,x_n\)</span>, and for observation <span class="math inline">\(i\)</span>:</p>
 <p><span class="math display">\[x_{i1},x_{i2},\ldots,x_{ip} \sim P\]</span></p>
 <ul>
 <li><p><span class="math inline">\(P\)</span> is a <span class="math inline">\(p\)</span>-dimensional distribution that we might not know much about <em>a priori</em>.</p></li>
@@ -891,8 +894,8 @@ $ region           &lt;fct&gt; Southern Europe, Northern Africa, Middle Africa, 
 <img data-src="https://i.pinimg.com/originals/86/90/6c/86906c4cb23094b8bfb851031509b9f4.gif" style="width:60.0%" class="r-stretch quarto-figure-center"></section>
 <section id="so-how-do-we-choose-the-number-of-clusters-1" class="slide level2">
 <h2>So, how do we choose the number of clusters?</h2>
-<p><strong>There is no universally accepted way to conclude that a particular choice of</strong> <span class="math inline">\(k\)</span> is optimal!</p>
-<p>From <a href="https://www.stat.cmu.edu/~cshalizi/ADAfaEPoV/ADAfaEPoV.pdf">Cosma Shalizi’s notes</a></p>
+<p><strong>There is no universally accepted way to conclude that a particular choice of <span class="math inline">\(k\)</span> is optimal!</strong></p>
+<p>From <a href="https://www.stat.cmu.edu/~cshalizi/350/lectures/08/lecture-08.pdf">Cosma Shalizi’s notes</a></p>
 <blockquote>
 <p>One reason you should be intensely skeptical of clustering results — including your own! — is that there is currently very little theory about how to find the right number of clusters. It’s not even completely clear what “the right number of clusters” means!</p>
 </blockquote>
@@ -1197,7 +1200,7 @@ $ region           &lt;fct&gt; Southern Europe, Northern Africa, Middle Africa, 
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
