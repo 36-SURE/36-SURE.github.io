@@ -3315,7 +3315,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"e\" \"a\" \"i\" \"z\" \"n\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 0 1 0 0 0 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"H\" \"T\" \"H\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 69"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"q\" \"r\" \"e\" \"v\" \"z\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 1 0 1 1 0 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"T\" \"H\" \"H\" \"H\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 30"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -3336,7 +3336,7 @@
     "href": "lectures/08-simulation.html#binomial-distribution",
     "title": "Simulation",
     "section": "Binomial distribution",
-    "text": "Binomial distribution\n\n\n\nPMF: \\(\\displaystyle f(x \\mid n, p)= \\binom{n}{x} p^{x}(1-p)^{n-x}\\); \\(x = 0, 1, \\dots, n\\)\nModel for the probability of \\(x\\) successes in \\(n\\) independent trials, each with success probability \\(p\\).\nWe write \\(X \\sim \\text{Binomial}(n,p)\\)\n\n\ntibble(x = 0:20) %&gt;%\n  mutate(binom1 = dbinom(x, size = 20, prob = 0.5),\n         binom2 = dbinom(x, size = 20, prob = 0.1)) %&gt;%\n  ggplot(aes(x)) + \n  geom_point(aes(y = binom1), color = \"blue\", size = 4) +\n  geom_point(aes(y = binom2), color = \"red\", size = 4)"
+    "text": "Binomial distribution\n\n\n\nPMF: \\(\\displaystyle f(x \\mid n, p)= \\binom{n}{x} p^{x}(1-p)^{n-x}\\); \\(x = 0, 1, \\dots, n\\)\nModel for the probability of \\(x\\) successes in \\(n\\) independent trials, each with success probability \\(p\\).\nWe write \\(X \\sim \\text{Binomial}(n,p)\\)\n\n\ntibble(x = 0:20) |&gt;\n  mutate(binom1 = dbinom(x, size = 20, prob = 0.5),\n         binom2 = dbinom(x, size = 20, prob = 0.1)) |&gt;\n  ggplot(aes(x)) + \n  geom_point(aes(y = binom1), color = \"blue\", size = 4) +\n  geom_point(aes(y = binom2), color = \"red\", size = 4)"
   },
   {
     "objectID": "lectures/08-simulation.html#poisson-distribution",
@@ -3357,21 +3357,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.03973818\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.975771"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.02160449\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.002257"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.476\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical    true\n   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 -2.98     0.001 0.00143\n 2 -2.67     0.002 0.00374\n 3 -2.66     0.003 0.00395\n 4 -2.60     0.004 0.00465\n 5 -2.53     0.005 0.00576\n 6 -2.51     0.006 0.00601\n 7 -2.46     0.007 0.00687\n 8 -2.44     0.008 0.00736\n 9 -2.37     0.009 0.00889\n10 -2.34     0.01  0.00954\n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.485\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.20     0.001 0.000692\n 2 -3.09     0.002 0.000988\n 3 -2.78     0.003 0.00274 \n 4 -2.66     0.004 0.00386 \n 5 -2.55     0.005 0.00533 \n 6 -2.50     0.006 0.00619 \n 7 -2.44     0.007 0.00729 \n 8 -2.42     0.008 0.00784 \n 9 -2.41     0.009 0.00799 \n10 -2.36     0.01  0.00926 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3822925\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3859742\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -3385,14 +3385,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1364\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1464\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.0928059\n\nmean(rnorm(100))\n\n[1] 0.08249062\n\nmean(rnorm(100))\n\n[1] -0.09859748"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.04843008\n\nmean(rnorm(100))\n\n[1] -0.0568882\n\nmean(rnorm(100))\n\n[1] 0.03697312"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
