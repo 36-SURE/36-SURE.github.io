@@ -1295,13 +1295,6 @@
     "text": "Coefficient plot (or dot-and-whisker plot or forest plot or blobbogram)\nDisplay a coefficient plot with confidence intervals based on the reported standard errors\n\nall_fit |&gt; \n  tidy(conf.int = TRUE) |&gt; \n  filter(term != \"(Intercept)\") |&gt; \n  ggplot(aes(x = estimate, y = term))  +\n  geom_point(size = 4) +\n  geom_errorbar(aes(xmin = conf.low, xmax = conf.high, width = 0.2)) +\n  geom_vline(xintercept = 0, linetype = \"dashed\", color = \"red\")\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
   },
   {
-    "objectID": "lectures/04-quantitative.html#data",
-    "href": "lectures/04-quantitative.html#data",
-    "title": "Data visualization: quantitative data",
-    "section": "Data",
-    "text": "Data\nTaylor Swift songs via the taylor package (data dictionary here)\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nlibrary(taylor)\n\nnames(taylor_all_songs)\n\n [1] \"album_name\"          \"ep\"                  \"album_release\"      \n [4] \"track_number\"        \"track_name\"          \"artist\"             \n [7] \"featuring\"           \"bonus_track\"         \"promotional_release\"\n[10] \"single_release\"      \"track_release\"       \"danceability\"       \n[13] \"energy\"              \"key\"                 \"loudness\"           \n[16] \"mode\"                \"speechiness\"         \"acousticness\"       \n[19] \"instrumentalness\"    \"liveness\"            \"valence\"            \n[22] \"tempo\"               \"time_signature\"      \"duration_ms\"        \n[25] \"explicit\"            \"key_name\"            \"mode_name\"          \n[28] \"key_mode\"            \"lyrics\""
-  },
-  {
     "objectID": "lectures/04-quantitative.html#quantitative-data",
     "href": "lectures/04-quantitative.html#quantitative-data",
     "title": "Data visualization: quantitative data",
@@ -1309,81 +1302,88 @@
     "text": "Quantitative data\nTwo different versions of quantitative data:\nDiscrete: countable and has clear space between values (i.e. whole number only)\n\nExamples: number of goals scored in a game, number of children in a family\n\nContinuous: can take any value within some interval\n\nExamples: price of houses in Pittsburgh, water temperature, wind speed"
   },
   {
+    "objectID": "lectures/04-quantitative.html#data",
+    "href": "lectures/04-quantitative.html#data",
+    "title": "Data visualization: quantitative data",
+    "section": "Data",
+    "text": "Data\nTaylor Swift songs via the taylor package (data dictionary here)\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nlibrary(taylor)\nnames(taylor_all_songs)\n\n [1] \"album_name\"          \"ep\"                  \"album_release\"      \n [4] \"track_number\"        \"track_name\"          \"artist\"             \n [7] \"featuring\"           \"bonus_track\"         \"promotional_release\"\n[10] \"single_release\"      \"track_release\"       \"danceability\"       \n[13] \"energy\"              \"key\"                 \"loudness\"           \n[16] \"mode\"                \"speechiness\"         \"acousticness\"       \n[19] \"instrumentalness\"    \"liveness\"            \"valence\"            \n[22] \"tempo\"               \"time_signature\"      \"duration_ms\"        \n[25] \"explicit\"            \"key_name\"            \"mode_name\"          \n[28] \"key_mode\"            \"lyrics\"             \n\ntaylor_all_songs &lt;- taylor_all_songs |&gt; \n  mutate(duration = duration_ms / 60000)"
+  },
+  {
     "objectID": "lectures/04-quantitative.html#summarizing-1d-quantitative-data",
     "href": "lectures/04-quantitative.html#summarizing-1d-quantitative-data",
     "title": "Data visualization: quantitative data",
     "section": "Summarizing 1D quantitative data",
-    "text": "Summarizing 1D quantitative data\n\nCenter: mean, median, number and location of modes\nSpread: range (max - min), quantiles, variance (standard deviation), etc.\nShape: skew vs symmetry, outliers, heavy vs light tails, etc.\n\nCompute various statistics in R with summary(), mean(), median(), quantile(), range(), sd(), var(), etc.\n\nExample: Summarizing the duration (in ms) of Taylor Swift songs\n\nsummary(taylor_all_songs$duration_ms)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n 131907  212600  235803  239523  260933  613027      11 \n\nsd(taylor_all_songs$duration_ms, na.rm = TRUE)\n\n[1] 45372.68"
+    "text": "Summarizing 1D quantitative data\n\nCenter: mean, median, number and location of modes\n\n\n\nSpread: range, variance, standard deviation, IQR, etc.\n\n\n\n\nShape: skew vs symmetry, outliers, heavy vs light tails, etc.\n\n\n\nCompute various statistics in R with summary(), mean(), median(), quantile(), range(), sd(), var(), etc.\n\n\nExample: Summarizing the duration of Taylor Swift songs\n\nsummary(taylor_all_songs$duration)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n  2.198   3.543   3.930   3.992   4.349  10.217      11 \n\nsd(taylor_all_songs$duration, na.rm = TRUE)\n\n[1] 0.7562114"
   },
   {
     "objectID": "lectures/04-quantitative.html#boxplots-visualize-summary-statistics",
     "href": "lectures/04-quantitative.html#boxplots-visualize-summary-statistics",
     "title": "Data visualization: quantitative data",
     "section": "Boxplots visualize summary statistics",
-    "text": "Boxplots visualize summary statistics\n\n\nPros:\n\nDisplays outliers, percentiles, spread, skew\nUseful for side-by-side comparison\n\nCons:\n\nDoes not display the full distribution shape\nDoes not display modes\n\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = duration_ms / 60000, y = \"\")) +\n  geom_boxplot()"
+    "text": "Boxplots visualize summary statistics\n\n\nPros:\n\nDisplays outliers, percentiles, spread, skew\nUseful for side-by-side comparison\n\nCons:\n\nDoes not display the full distribution shape\nDoes not display modes\n\nThe expert weighed in…\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = duration)) +\n  geom_boxplot() +\n  theme(axis.text.y = element_blank())"
   },
   {
     "objectID": "lectures/04-quantitative.html#histograms-display-1d-continuous-distributions",
     "href": "lectures/04-quantitative.html#histograms-display-1d-continuous-distributions",
     "title": "Data visualization: quantitative data",
     "section": "Histograms display 1D continuous distributions",
-    "text": "Histograms display 1D continuous distributions\n\n\n\\(\\displaystyle \\text{# total obs.} = \\sum_{j=1}^k \\text{# obs. in bin }j\\)\nPros:\n\nDisplays full shape of distribution\nEasy to interpret\n\nCons:\n\nHave to choose number of bins and bin locations (will revisit later)\n\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = duration_ms / 60000)) +\n  geom_histogram()"
+    "text": "Histograms display 1D continuous distributions\n\n\n\\(\\displaystyle \\text{# total obs.} = \\sum_{j=1}^k \\text{# obs. in bin }j\\)\nPros:\n\nDisplays full shape of distribution\nEasy to interpret\n\nCons:\n\nHave to choose number of bins and bin locations (will revisit later)\n\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = duration)) +\n  geom_histogram()"
   },
   {
     "objectID": "lectures/04-quantitative.html#display-the-data-points-directly-with-beeswarm-plots",
     "href": "lectures/04-quantitative.html#display-the-data-points-directly-with-beeswarm-plots",
     "title": "Data visualization: quantitative data",
     "section": "Display the data points directly with beeswarm plots",
-    "text": "Display the data points directly with beeswarm plots\n\n\nPros:\n\nDisplays each data point\nEasy to view full shape of distribution\n\nCons:\n\nCan be overbearing with large datasets\nWhich algorithm for arranging points?\n\n\n\nlibrary(ggbeeswarm)\ntaylor_all_songs |&gt; \n  ggplot(aes(x = duration_ms / 60000, y = \"\")) +\n  geom_beeswarm(cex = 2)"
+    "text": "Display the data points directly with beeswarm plots\n\n\nPros:\n\nDisplays each data point\nEasy to view full shape of distribution\n\nCons:\n\nCan be overbearing with large datasets\nWhich algorithm for arranging points?\n\n\n\nlibrary(ggbeeswarm)\ntaylor_all_songs |&gt; \n  ggplot(aes(x = duration, y = \"\")) +\n  geom_beeswarm(cex = 2)"
   },
   {
     "objectID": "lectures/04-quantitative.html#smooth-summary-with-violin-plots",
     "href": "lectures/04-quantitative.html#smooth-summary-with-violin-plots",
     "title": "Data visualization: quantitative data",
     "section": "Smooth summary with violin plots",
-    "text": "Smooth summary with violin plots\n\n\nPros:\n\nDisplays full shape of distribution\nCan easily layer…\n\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = duration_ms / 60000, y = \"\")) +\n  geom_violin()"
+    "text": "Smooth summary with violin plots\n\n\nPros:\n\nDisplays full shape of distribution\nCan easily layer…\n\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = duration, y = \"\")) +\n  geom_violin()"
   },
   {
     "objectID": "lectures/04-quantitative.html#smooth-summary-with-violin-plots-box-plots",
     "href": "lectures/04-quantitative.html#smooth-summary-with-violin-plots-box-plots",
     "title": "Data visualization: quantitative data",
     "section": "Smooth summary with violin plots + box plots",
-    "text": "Smooth summary with violin plots + box plots\n\n\nPros:\n\nDisplays full shape of distribution\nCan easily layer… with box plots on top\n\nCons:\n\nSummary of data via density estimate\nMirror image is duplicate information\n\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = duration_ms / 60000, y = \"\")) +\n  geom_violin() +\n  geom_boxplot(width = 0.4)"
+    "text": "Smooth summary with violin plots + box plots\n\n\nPros:\n\nDisplays full shape of distribution\nCan easily layer… with box plots on top\n\nCons:\n\nSummary of data via density estimate\nMirror image is duplicate information\n\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = duration, y = \"\")) +\n  geom_violin() +\n  geom_boxplot(width = 0.4)"
   },
   {
     "objectID": "lectures/04-quantitative.html#what-do-visualizations-of-continuous-distributions-display",
     "href": "lectures/04-quantitative.html#what-do-visualizations-of-continuous-distributions-display",
     "title": "Data visualization: quantitative data",
     "section": "What do visualizations of continuous distributions display?",
-    "text": "What do visualizations of continuous distributions display?\nProbability that continuous variable X takes a particular value is 0\ne.g. \\(P(\\) duration_ms \\(= 200000) = 0\\) (why?)\nInstead we use the probability density function (PDF) to provide a relative likelihood\nFor continuous variables, the cumulative distribution function (CDF) is \\(F(x) = P(X \\leq x)\\)\nFor \\(n\\) observations we can easily compute the Empirical CDF (ECDF) based on the observed data\n\\[\\hat{F}_n(x)  = \\frac{\\text{# obs. with variable} \\leq x}{n} = \\frac{1}{n} \\sum_{i=1}^{n} I (x_i \\leq x)\\]\nwhere \\(I()\\) is the indicator function, i.e. ifelse(x_i &lt;= x, 1, 0)"
+    "text": "What do visualizations of continuous distributions display?\nProbability that continuous variable \\(X\\) takes a particular value is 0\ne.g. \\(P(\\) duration \\(= 3) = 0\\) (why?)\nFor continuous variables, the cumulative distribution function (CDF) is \\[F(x) = P(X \\leq x)\\]\nFor \\(n\\) observations, the empirical CDF (ECDF) can be computed based on the observed data \\[\\hat{F}_n(x)  = \\frac{\\text{# obs. with variable} \\leq x}{n} = \\frac{1}{n} \\sum_{i=1}^{n} I (x_i \\leq x)\\]\nwhere \\(I()\\) is the indicator function, i.e. ifelse(x_i &lt;= x, 1, 0)"
   },
   {
     "objectID": "lectures/04-quantitative.html#display-full-distribution-with-ecdf-plot",
     "href": "lectures/04-quantitative.html#display-full-distribution-with-ecdf-plot",
     "title": "Data visualization: quantitative data",
     "section": "Display full distribution with ECDF plot",
-    "text": "Display full distribution with ECDF plot\n\n\nPros:\n\nDisplays all of your data at once\nAs \\(n \\rightarrow \\infty\\), the ECDF \\(\\hat F_n(x)\\) converges to the true CDF \\(F(x)\\)\n\nCons:\n\nWhat are the cons?\n\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = duration_ms / 60000)) +\n  stat_ecdf()"
+    "text": "Display full distribution with ECDF plot\n\n\nPros:\n\nDisplays all of your data at once\nAs \\(n \\rightarrow \\infty\\), the ECDF \\(\\hat F_n(x)\\) converges to the true CDF \\(F(x)\\)\n\nCons:\n\nWhat are the cons?\n\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = duration)) +\n  stat_ecdf()"
   },
   {
     "objectID": "lectures/04-quantitative.html#rug-plots-display-raw-data",
     "href": "lectures/04-quantitative.html#rug-plots-display-raw-data",
     "title": "Data visualization: quantitative data",
     "section": "Rug plots display raw data",
-    "text": "Rug plots display raw data\n\n\nPros:\n\nDisplays raw data points\nUseful supplement for summaries and 2D plots\n\nCons:\n\nCan be overbearing for large datasets\n\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = duration_ms / 60000)) +\n  geom_rug(alpha = 0.5)"
+    "text": "Rug plots display raw data\n\n\nPros:\n\nDisplays raw data points\nUseful supplement for summaries and 2D plots\n\nCons:\n\nCan be overbearing for large datasets\n\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = duration)) +\n  geom_rug(alpha = 0.5)"
   },
   {
     "objectID": "lectures/04-quantitative.html#rug-plots-supplement-other-displays",
     "href": "lectures/04-quantitative.html#rug-plots-supplement-other-displays",
     "title": "Data visualization: quantitative data",
     "section": "Rug plots supplement other displays",
-    "text": "Rug plots supplement other displays\n\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = duration_ms / 60000)) +\n  geom_histogram() +\n  geom_rug(alpha = 0.5)\n\n\n\n\n\n\n\n\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = duration_ms / 60000)) +\n  stat_ecdf() +\n  geom_rug(alpha = 0.5)"
+    "text": "Rug plots supplement other displays\n\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = duration)) +\n  geom_histogram() +\n  geom_rug(alpha = 0.5)\n\n\n\n\n\n\n\n\n\n\ntaylor_all_songs |&gt; \n  ggplot(aes(x = duration)) +\n  stat_ecdf() +\n  geom_rug(alpha = 0.5)"
   },
   {
     "objectID": "lectures/04-quantitative.html#summarizing-2d-quantitative-data",
     "href": "lectures/04-quantitative.html#summarizing-2d-quantitative-data",
     "title": "Data visualization: quantitative data",
     "section": "Summarizing 2D quantitative data",
-    "text": "Summarizing 2D quantitative data\n\nDirection/trend (positive, negative)\nStrength of the relationship (strong, moderate, weak)\nLinearity (linear, non-linear)\n\nBig picture\n\nScatterplots are by far the most common visual\nRegression analysis is by far the most popular analysis (we will have a class on this)\nRelationships may vary across other variables, e.g., categorical variables"
+    "text": "Summarizing 2D quantitative data\n\nDirection/trend (positive, negative)\nStrength of the relationship (strong, moderate, weak)\nLinearity (linear, non-linear)\n\n\nBig picture\n\nScatterplots are by far the most common visual\nRegression analysis is by far the most popular analysis (we will have a class on this)\nRelationships may vary across other variables, e.g., categorical variables"
   },
   {
     "objectID": "lectures/04-quantitative.html#making-scatterplots",
@@ -1439,42 +1439,42 @@
     "href": "lectures/04-quantitative.html#continuous-by-categorical-side-by-side-plots",
     "title": "Data visualization: quantitative data",
     "section": "Continuous by categorical: side by side plots",
-    "text": "Continuous by categorical: side by side plots\n\ntaylor_all_songs |&gt; \n  filter(album_name %in% c(\"Lover\", \"folklore\", \"evermore\", \"Midnights\")) |&gt;\n  ggplot(aes(x = duration_ms / 60000, y = album_name)) +\n  geom_violin() +\n  geom_boxplot(width = 0.4)"
+    "text": "Continuous by categorical: side by side plots\n\ntaylor_all_songs |&gt; \n  filter(album_name %in% c(\"Lover\", \"folklore\", \"evermore\", \"Midnights\")) |&gt;\n  ggplot(aes(x = duration, y = album_name)) +\n  geom_violin() +\n  geom_boxplot(width = 0.4)"
   },
   {
     "objectID": "lectures/04-quantitative.html#continuous-by-categorical-color",
     "href": "lectures/04-quantitative.html#continuous-by-categorical-color",
     "title": "Data visualization: quantitative data",
     "section": "Continuous by categorical: color",
-    "text": "Continuous by categorical: color\n\ntaylor_all_songs |&gt; \n  filter(album_name %in% c(\"Lover\", \"folklore\", \"evermore\", \"Midnights\")) |&gt;\n  ggplot(aes(x = duration_ms / 60000, color = album_name)) +\n  stat_ecdf(linewidth = 1) +\n  scale_color_albums() + # from the taylor package \n  theme(legend.position = \"bottom\")"
+    "text": "Continuous by categorical: color\n\ntaylor_all_songs |&gt; \n  filter(album_name %in% c(\"Lover\", \"folklore\", \"evermore\", \"Midnights\")) |&gt;\n  ggplot(aes(x = duration, color = album_name)) +\n  stat_ecdf(linewidth = 1) +\n  scale_color_albums() + # from the taylor package \n  theme(legend.position = \"bottom\")"
   },
   {
     "objectID": "lectures/04-quantitative.html#continuous-by-categorical-ridgeline-plot-joyplot",
     "href": "lectures/04-quantitative.html#continuous-by-categorical-ridgeline-plot-joyplot",
     "title": "Data visualization: quantitative data",
     "section": "Continuous by categorical: ridgeline plot (joyplot)",
-    "text": "Continuous by categorical: ridgeline plot (joyplot)\nFor more, see this tutorial\n\nlibrary(ggridges)\ntaylor_all_songs |&gt; \n  filter(album_name %in% c(\"Lover\", \"folklore\", \"evermore\", \"Midnights\")) |&gt;\n  ggplot(aes(x = duration_ms / 60000, y = album_name)) +\n  geom_density_ridges(scale = 1)"
+    "text": "Continuous by categorical: ridgeline plot (joyplot)\nFor more, see this tutorial\n\nlibrary(ggridges)\ntaylor_all_songs |&gt; \n  filter(album_name %in% c(\"Lover\", \"folklore\", \"evermore\", \"Midnights\")) |&gt;\n  ggplot(aes(x = duration, y = album_name)) +\n  geom_density_ridges(scale = 1)"
   },
   {
     "objectID": "lectures/04-quantitative.html#what-about-for-histograms",
     "href": "lectures/04-quantitative.html#what-about-for-histograms",
     "title": "Data visualization: quantitative data",
     "section": "What about for histograms?",
-    "text": "What about for histograms?\n\ntaylor_all_songs |&gt; \n  filter(album_name %in% c(\"Lover\", \"folklore\", \"evermore\", \"Midnights\")) |&gt;\n  ggplot(aes(x = duration_ms / 60000, fill = album_name)) +\n  geom_histogram(alpha = 0.6, bins = 15) +\n  scale_fill_albums()"
+    "text": "What about for histograms?\n\ntaylor_all_songs |&gt; \n  filter(album_name %in% c(\"Lover\", \"folklore\", \"evermore\", \"Midnights\")) |&gt;\n  ggplot(aes(x = duration, fill = album_name)) +\n  geom_histogram(alpha = 0.6, bins = 15) +\n  scale_fill_albums()"
   },
   {
     "objectID": "lectures/04-quantitative.html#what-about-facets",
     "href": "lectures/04-quantitative.html#what-about-facets",
     "title": "Data visualization: quantitative data",
     "section": "What about facets?",
-    "text": "What about facets?\n\ntaylor_all_songs |&gt; \n  filter(album_name %in% c(\"Lover\", \"folklore\", \"evermore\", \"Midnights\")) |&gt;\n  ggplot(aes(x = duration_ms / 60000)) +\n  geom_histogram(bins = 15) +\n  facet_wrap(~ album_name, nrow = 1)"
+    "text": "What about facets?\nDifference between facet_wrap and facet_grid\n\ntaylor_all_songs |&gt; \n  filter(album_name %in% c(\"Lover\", \"folklore\", \"evermore\", \"Midnights\")) |&gt;\n  ggplot(aes(x = duration)) +\n  geom_histogram(bins = 15) +\n  facet_wrap(~ album_name, nrow = 1)"
   },
   {
     "objectID": "lectures/04-quantitative.html#what-about-facets-1",
     "href": "lectures/04-quantitative.html#what-about-facets-1",
     "title": "Data visualization: quantitative data",
     "section": "What about facets?",
-    "text": "What about facets?\n\ntaylor_all_songs |&gt; \n  filter(album_name %in% c(\"Lover\", \"folklore\", \"evermore\", \"Midnights\")) |&gt;\n  ggplot(aes(x = duration_ms / 60000)) +\n  geom_histogram(bins = 15) +\n  facet_grid(album_name ~ ., margins = TRUE)\n\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
+    "text": "What about facets?\n\ntaylor_all_songs |&gt; \n  filter(album_name %in% c(\"Lover\", \"folklore\", \"evermore\", \"Midnights\")) |&gt;\n  ggplot(aes(x = duration)) +\n  geom_histogram(bins = 15) +\n  facet_grid(album_name ~ ., margins = TRUE)\n\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
   },
   {
     "objectID": "lectures/01-explore.html#workflow-diagram",
@@ -3315,7 +3315,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"b\" \"x\" \"i\" \"j\" \"r\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 1 1 0 0 0 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"T\" \"H\" \"H\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 23"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"b\" \"s\" \"q\" \"g\" \"r\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 1 0 1 0 0 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"H\" \"T\" \"T\" \"H\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 56"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -3357,21 +3357,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.03061971\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9863375"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.1149692\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9791696"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.506\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.60     0.001 0.000161\n 2 -3.00     0.002 0.00135 \n 3 -2.95     0.003 0.00158 \n 4 -2.62     0.004 0.00442 \n 5 -2.50     0.005 0.00620 \n 6 -2.48     0.006 0.00664 \n 7 -2.47     0.007 0.00682 \n 8 -2.40     0.008 0.00826 \n 9 -2.33     0.009 0.00980 \n10 -2.32     0.01  0.0102  \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.547\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.10     0.001 0.000976\n 2 -2.86     0.002 0.00215 \n 3 -2.79     0.003 0.00262 \n 4 -2.72     0.004 0.00331 \n 5 -2.69     0.005 0.00356 \n 6 -2.69     0.006 0.00359 \n 7 -2.68     0.007 0.00370 \n 8 -2.63     0.008 0.00421 \n 9 -2.63     0.009 0.00432 \n10 -2.62     0.01  0.00444 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3787393\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.384953\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -3385,14 +3385,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1484\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1348\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.02843833\n\nmean(rnorm(100))\n\n[1] 0.0896655\n\nmean(rnorm(100))\n\n[1] -0.05999913"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.03548504\n\nmean(rnorm(100))\n\n[1] -0.1104492\n\nmean(rnorm(100))\n\n[1] -0.03793002"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
