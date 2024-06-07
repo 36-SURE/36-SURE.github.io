@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.361">
 
   <meta name="author" content=" SURE 2024  Department of Statistics &amp; Data Science Carnegie Mellon University">
-  <title>SURE 2024 - Data visualization: categorical data</title>
+  <title>SURE 2024 - Unsupervised learning: \(k\)-means clustering</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -392,7 +392,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Data visualization: categorical data</h1>
+  <h1 class="title">Unsupervised learning: <span class="math inline">\(k\)</span>-means clustering</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -825,33 +825,33 @@ $ region           &lt;fct&gt; Southern Europe, Northern Africa, Middle Africa, 
 <h2>Better alternative to <code>nstart</code>: <span class="math inline">\(k\)</span>-means++</h2>
 <p>Pick a random observation to be the center <span class="math inline">\(c_1\)</span> of the first cluster <span class="math inline">\(C_1\)</span></p>
 <ul>
-<li>This initializes a set <span class="math inline">\(Centers = \{c_1 \}\)</span></li>
+<li>This initializes a set <span class="math inline">\(\text{Centers} = \{c_1 \}\)</span></li>
 </ul>
 <div class="fragment">
 <p>Then for each remaining cluster <span class="math inline">\(c^* \in 2, \dots, K\)</span>:</p>
 <ul>
-<li><p>For each observation (that is not a center), compute <span class="math inline">\(D(x_i) = \underset{c \in Centers}{\text{min}} d(x_i, c)\)</span></p>
+<li><p>For each observation (that is not a center), compute <span class="math inline">\(D(x_i) = \underset{c \in \text{Centers}}{\text{min}} d(x_i, c)\)</span></p>
 <ul>
-<li>Distance between observation and its closest center <span class="math inline">\(c \in Centers\)</span></li>
+<li>Distance between observation and its closest center <span class="math inline">\(c \in \text{Centers}\)</span></li>
 </ul></li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li>Randomly pick a point <span class="math inline">\(x_i\)</span> with probability: <span class="math inline">\(p_i = \frac{D^2(x_i)}{\sum_{j=1}^n D^2(x_j)}\)</span></li>
+<li>Randomly pick a point <span class="math inline">\(x_i\)</span> with probability: <span class="math inline">\(\displaystyle p_i = \frac{D^2(x_i)}{\sum_{j=1}^n D^2(x_j)}\)</span></li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
 <li><p>As distance to closest center increases, the probability of selection increases</p></li>
-<li><p>Call this randomly selected observation <span class="math inline">\(c^*\)</span>, update <span class="math inline">\(Centers = Centers\ \cup c^*\)</span></p>
+<li><p>Call this randomly selected observation <span class="math inline">\(c^*\)</span>, update <span class="math inline">\(\text{Centers} = \text{Centers} \cup c^*\)</span></p>
 <ul>
 <li>Same as <code>centers = c(centers, c_new)</code></li>
 </ul></li>
 </ul>
 </div>
 <div class="fragment">
-<p><strong>Then run</strong> <span class="math inline">\(k\)</span>-means using these <span class="math inline">\(Centers\)</span> as the starting points</p>
+<p><strong>Then run</strong> <span class="math inline">\(k\)</span>-means using these <span class="math inline">\(\text{Centers}\)</span> as the starting points</p>
 </div>
 </section>
 <section id="k-means-in-r-using-flexclust" class="slide level2">

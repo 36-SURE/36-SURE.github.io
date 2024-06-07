@@ -410,32 +410,12 @@
 </section>
 <section id="data-sabrina-ionescus-shots" class="slide level2">
 <h2>Data: Sabrina Ionescu’s shots</h2>
-<div class="columns">
-<div class="column" style="text-align: left;">
 <p>Shot attempts by the <a href="https://en.wikipedia.org/wiki/Sabrina_Ionescu">Sabrina Ionescu</a> in the 2023 WNBA season using <a href="https://wehoop.sportsdataverse.org/"><code>wehoop</code></a></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_light</span>())</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wehoop)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>wnba_pbp <span class="ot">&lt;-</span> <span class="fu">load_wnba_pbp</span>(<span class="dv">2023</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="ot">&lt;-</span> wnba_pbp <span class="sc">|&gt;</span> </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(shooting_play) <span class="sc">|&gt;</span> </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(text, <span class="st">"Ionescu"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">"Ionescu assists"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">"free throw"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">shot_x =</span> coordinate_x_raw <span class="sc">-</span> <span class="dv">25</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">shot_y =</span> coordinate_y_raw,</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">shot_distance =</span> <span class="fu">sqrt</span>((<span class="fu">abs</span>(shot_x) <span class="sc">^</span> <span class="dv">2</span>) <span class="sc">+</span> shot_y <span class="sc">^</span> <span class="dv">2</span>), </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">shot_type =</span> type_text,</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    scoring_play,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    score_value</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># glimpse(ionescu_shots)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div><div class="column" style="text-align: left;">
-<p><small></small></p><small>
-<div class="cell" data-layout-align="center">
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/ionescu_shots.csv"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ionescu_shots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 617
 Columns: 6
@@ -444,17 +424,14 @@ $ shot_y        &lt;dbl&gt; 24, 23, 2, 21, 19, 16, 3, 2, 4, 5, 2, 21, 26, 14, 7,
 $ shot_distance &lt;dbl&gt; 26.000000, 25.495098, 2.828427, 24.698178, 26.172505, 24…
 $ shot_type     &lt;chr&gt; "Pullup Jump Shot", "Running Jump Shot", "Cutting Layup …
 $ scoring_play  &lt;lgl&gt; FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE, FALSE, FAL…
-$ score_value   &lt;int&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0, 0,…</code></pre>
+$ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0, 0,…</code></pre>
 </div>
 </div>
-</small><p><small></small></p>
 <ul>
-<li>Each row is a shot attempt by Ionescu in the 2023 WNBA season</li>
-<li><strong>Categorical</strong> / qualitative variables: <code>scoring_play</code>, <code>shot_type</code></li>
-<li><strong>Continuous</strong> / quantitative variables: <code>shot_x</code>, <code>shot_y</code>, <code>shot_distance</code>, <code>score_value</code></li>
+<li><p>Each row is a shot attempt by Ionescu in the 2023 WNBA season</p></li>
+<li><p><strong>Categorical</strong> / qualitative variables: <code>scoring_play</code>, <code>shot_type</code></p></li>
+<li><p><strong>Continuous</strong> / quantitative variables: <code>shot_x</code>, <code>shot_y</code>, <code>shot_distance</code>, <code>score_value</code></p></li>
 </ul>
-</div>
-</div>
 </section>
 <section id="back-to-histograms" class="slide level2">
 <h2>Back to <a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">histograms</a>…</h2>
@@ -485,7 +462,7 @@ $ score_value   &lt;int&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -559,7 +536,7 @@ $ score_value   &lt;int&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -587,10 +564,10 @@ $ score_value   &lt;int&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 </section>
 <section id="how-do-histograms-relate-to-the-pdf-and-cdf" class="slide level2">
 <h2>How do histograms relate to the PDF and CDF?</h2>
-<p><strong>Remember</strong>: we use the <strong>probability density function (PDF)</strong> to provide a <strong>relative likelihood</strong></p>
+<p>We use the <strong>probability density function (PDF)</strong> to provide a <strong>relative likelihood</strong></p>
 <ul>
-<li>PDF is the <strong>derivative</strong> of the cumulative distribution function (CDF)</li>
-<li>Histograms approximate the PDF with bins, and <strong>points are equally likely within a bin</strong></li>
+<li><p>PDF is the <strong>derivative</strong> of the cumulative distribution function (CDF)</p></li>
+<li><p>Histograms approximate the PDF with bins, and <strong>points are equally likely within a bin</strong></p></li>
 </ul>
 <div class="columns">
 <div class="column" style="text-align: left;">
@@ -616,10 +593,7 @@ $ score_value   &lt;int&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 </div>
 </div>
 <div class="fragment">
-<p><strong>What can say about the relative likelihood of data we have not observed?</strong></p>
-<ul>
-<li>we want <strong>non-zero density</strong> between our observations, e.g., just beyond 20 feet</li>
-</ul>
+<p><strong>What can say about the relative likelihood of data we have not observed?</strong><br>We want <strong>non-zero density</strong> between our observations, e.g., just beyond 20 feet</p>
 </div>
 </section></section>
 <section>
@@ -688,7 +662,7 @@ $ score_value   &lt;int&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -790,8 +764,8 @@ $ score_value   &lt;int&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>ionescu_shot_dens_made <span class="sc">+</span> ionescu_shot_ecdf_made <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="alternative-to-density-plots---ridge-plots" class="slide level2">
-<h2>Alternative to density plots - ridge plots</h2>
+<section id="ridgeline-plots" class="slide level2">
+<h2>Ridgeline plots</h2>
 <div class="columns">
 <div class="column" style="text-align: left;">
 <ul>
@@ -811,17 +785,13 @@ $ score_value   &lt;int&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 </div>
-</section>
-<section id="what-about-for-2d-density-estimation-two-continuous-variables" class="slide level2">
-<h2>What about for 2D density estimation? (two continuous variables)</h2>
-<p>Going from 1D to 2D density estimation</p>
 </section>
 <section id="going-from-1d-to-2d-density-estimation" class="slide level2">
 <h2>Going from 1D to 2D density estimation</h2>
@@ -848,7 +818,7 @@ $ score_value   &lt;int&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <img data-src="https://www.byclb.com/TR/Tutorials/neural_networks/Ch_4_dosyalar/image044.gif" style="width:60.0%" class="r-stretch quarto-figure-center"></section>
 <section id="how-to-read-contour-plots" class="slide level2">
 <h2>How to read contour plots</h2>
-<p>Best known in topology: outlines (contours) denote levels of elevation</p>
+<p>Best known in topography: outlines (contours) denote levels of elevation</p>
 
 <img data-src="https://preview.redd.it/2rbe8s8t7re31.jpg?auto=webp&amp;s=eed849b180dd803d394f556432df026c4cd1dae2" style="width:60.0%" class="r-stretch quarto-figure-center"></section>
 <section id="d-density-estimation" class="slide level2">
@@ -869,7 +839,7 @@ $ score_value   &lt;int&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -903,7 +873,7 @@ $ score_value   &lt;int&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -935,7 +905,7 @@ $ score_value   &lt;int&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -969,7 +939,7 @@ $ score_value   &lt;int&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1002,7 +972,7 @@ $ score_value   &lt;int&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1038,7 +1008,7 @@ $ score_value   &lt;int&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1070,7 +1040,7 @@ $ score_value   &lt;int&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1088,8 +1058,28 @@ $ score_value   &lt;int&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"midnightblue"</span>, <span class="at">high =</span> <span class="st">"gold"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
+<img data-src="07-density_files/figure-revealjs/unnamed-chunk-33-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="appendix-code-to-build-dataset" class="slide level2">
+<h2>Appendix: Code to build dataset</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wehoop)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>wnba_pbp <span class="ot">&lt;-</span> <span class="fu">load_wnba_pbp</span>(<span class="dv">2023</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="ot">&lt;-</span> wnba_pbp <span class="sc">|&gt;</span> </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(shooting_play) <span class="sc">|&gt;</span> </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(text, <span class="st">"Ionescu"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">"Ionescu assists"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">"free throw"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">shot_x =</span> coordinate_x_raw <span class="sc">-</span> <span class="dv">25</span>,</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">shot_y =</span> coordinate_y_raw,</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">shot_distance =</span> <span class="fu">sqrt</span>((<span class="fu">abs</span>(shot_x) <span class="sc">^</span> <span class="dv">2</span>) <span class="sc">+</span> shot_y <span class="sc">^</span> <span class="dv">2</span>), </span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">shot_type =</span> type_text,</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    scoring_play,</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    score_value</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
-<img data-src="07-density_files/figure-revealjs/unnamed-chunk-34-1.png" width="960" class="r-stretch quarto-figure-center"><div class="footer footer-default">
+<div class="footer footer-default">
 <p><a href="https://36-sure.github.io">36-SURE.github.io</a></p>
 </div>
 </section></section>
