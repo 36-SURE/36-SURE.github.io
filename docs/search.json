@@ -1981,6 +1981,13 @@
     "text": "Comparison of models based on holdout performance\n\n\nCompute RMSE across folds with standard error intervals\n\ntest_pred_all |&gt;\n  pivot_longer(lm_pred:enet_pred, \n               names_to = \"type\", \n               values_to = \"test_pred\") |&gt;\n  group_by(type, test_fold) |&gt;\n  summarize(\n    rmse = sqrt(mean((test_actual - test_pred)^2))\n  ) |&gt; \n  ggplot(aes(x = type, y = rmse)) + \n  geom_point(size = 4) +\n  stat_summary(fun = mean, geom = \"point\", \n               color = \"red\", size = 4) + \n  stat_summary(fun.data = mean_se, geom = \"errorbar\", \n               color = \"red\", width = 0.2)\n\nRegularization methods perform better than a linear model\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
   },
   {
+    "objectID": "lectures/06-hierarchical.html#the-big-picture",
+    "href": "lectures/06-hierarchical.html#the-big-picture",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "The big picture",
+    "text": "The big picture\n\n\\(k\\)-means clustering: partition the observations into a pre-specified number of clusters.\nHierarchical clustering: does not require commitment to a particular choice of clusters\n\nIn fact, we end up with a tree-like visual representation of the observations, called a dendrogram\nThis allows us to view at once the clusterings obtained for each possible number of clusters\nCommon approach: agglomerative (bottom-up) hierarchical clustering: build a dendrogram starting from the leaves and combining clusters up to the trunk\nThere’s also divisive (top-down) hierarchical clustering: start with one large cluster and then break the cluster recursively into smaller and smaller pieces"
+  },
+  {
     "objectID": "lectures/06-hierarchical.html#data-county-level-health-indicators-for-utah-in-2014",
     "href": "lectures/06-hierarchical.html#data-county-level-health-indicators-for-utah-in-2014",
     "title": "Unsupervised learning: hierarchical clustering",
@@ -1988,11 +1995,11 @@
     "text": "Data: County-level health indicators for Utah in 2014\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nutah_health &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/utah_health.csv\")\nglimpse(utah_health)\n\nRows: 30\nColumns: 20\n$ County                 &lt;chr&gt; \"Tooele\", \"Uintah\", \"Wasatch\", \"Statewide\", \"Sa…\n$ Population             &lt;dbl&gt; 59870, 34524, 25273, 2855287, 27906, 1524, 7221…\n$ PercentUnder18         &lt;dbl&gt; 35.3, 33.6, 33.1, 31.1, 29.4, 27.8, 23.4, 33.6,…\n$ PercentOver65          &lt;dbl&gt; 7.9, 9.1, 9.1, 9.5, 12.3, 23.7, 20.5, 11.0, 10.…\n$ DiabeticRate           &lt;dbl&gt; 9, 8, 6, 7, 8, 10, 10, 8, 8, 7, 7, 9, 6, 4, 9, …\n$ HIVRate                &lt;dbl&gt; 37, 21, 28, 111, 22, NA, NA, NA, 72, 36, NA, NA…\n$ PrematureMortalityRate &lt;dbl&gt; 347.6, 396.2, 227.2, 286.7, 314.3, 445.8, 293.6…\n$ InfantMortalityRate    &lt;dbl&gt; 5.0, 5.2, NA, 5.0, NA, NA, NA, NA, 5.8, 7.1, NA…\n$ ChildMortalityRate     &lt;dbl&gt; 47.7, 57.4, 69.0, 52.9, 61.2, NA, NA, 70.4, 58.…\n$ LimitedAccessToFood    &lt;dbl&gt; 14, 14, 14, 17, 17, 15, 14, 14, 16, 19, 11, 18,…\n$ FoodInsecure           &lt;dbl&gt; 7, 5, 1, 5, 4, 41, 16, 8, 6, 12, 0, 14, 4, 4, 8…\n$ MotorDeathRate         &lt;dbl&gt; 18, 23, 16, 11, 18, NA, 21, 36, 10, 13, NA, NA,…\n$ DrugDeathRate          &lt;dbl&gt; 18, 13, 17, 17, 16, NA, 26, 18, 20, 18, NA, NA,…\n$ Uninsured              &lt;dbl&gt; 17, 24, 24, 20, 24, 26, 19, 23, 20, 26, 14, 26,…\n$ UninsuredChildren      &lt;dbl&gt; 10, 16, 16, 11, 15, 17, 12, 14, 12, 15, 10, 20,…\n$ HealthCareCosts        &lt;dbl&gt; 9095, 7086, 8327, 8925, 8942, 7824, 8121, 8527,…\n$ CouldNotSeeDr          &lt;dbl&gt; 13, 12, 13, 13, 13, NA, NA, 13, 11, 13, 13, NA,…\n$ MedianIncome           &lt;dbl&gt; 61927, 60419, 62014, 57067, 43921, 36403, 43128…\n$ ChildrenFreeLunch      &lt;dbl&gt; 34, 36, 30, 31, 38, 58, 31, 34, 37, 40, 12, 33,…\n$ HomicideRate           &lt;dbl&gt; NA, NA, NA, 2, NA, NA, NA, NA, 2, NA, NA, NA, 1…"
   },
   {
-    "objectID": "lectures/06-hierarchical.html#lets-work-from-the-bottom-up",
-    "href": "lectures/06-hierarchical.html#lets-work-from-the-bottom-up",
+    "objectID": "lectures/06-hierarchical.html#general-setup",
+    "href": "lectures/06-hierarchical.html#general-setup",
     "title": "Unsupervised learning: hierarchical clustering",
-    "section": "Let’s work from the bottom-up…",
-    "text": "Let’s work from the bottom-up…\n\n\n\nReview: We have \\(p\\) variables for \\(n\\) observations \\(x_1,\\dots,x_n\\),\nCompute the distance / dissimilarity between observations\ne.g. Euclidean distance between observations \\(i\\) and \\(j\\)\n\n\\[d(x_i, x_j) = \\sqrt{(x_{i1}-x_{j1})^2 + \\cdots + (x_{ip}-x_{jp})^2}\\]\nWhat are the distances between these counties using PercentOver65 (percent of county population that is 65 and over) and DiabeticRate (prevalence of diabetes)?"
+    "section": "General setup",
+    "text": "General setup\n\n\n\nGiven a dataset with \\(p\\) variables (columns) and \\(n\\) observations (rows) \\(x_1,\\dots,x_n\\)\nCompute the distance/dissimilarity between observations\ne.g. Euclidean distance between observations \\(i\\) and \\(j\\)\n\n\\[d(x_i, x_j) = \\sqrt{(x_{i1}-x_{j1})^2 + \\cdots + (x_{ip}-x_{jp})^2}\\]\nWhat are the distances between these counties using PercentOver65 (percent of county population that is 65 and over) and DiabeticRate (prevalence of diabetes)?\n\n\n\nutah_health |&gt; \n  ggplot(aes(x = PercentOver65, y = DiabeticRate)) +\n  geom_point(size = 4)"
   },
   {
     "objectID": "lectures/06-hierarchical.html#remember-to-standardize",
@@ -2027,7 +2034,7 @@
     "href": "lectures/06-hierarchical.html#agglomerative-hierarchical-clustering",
     "title": "Unsupervised learning: hierarchical clustering",
     "section": "(Agglomerative) Hierarchical clustering",
-    "text": "(Agglomerative) Hierarchical clustering\nLet’s pretend all \\(n\\) observations are in their own cluster\n\n\nStep 1: Compute the pairwise dissimilarities between each cluster\n\ne.g., distance matrix on previous slides\n\n\n\n\n\nStep 2: Identify the pair of clusters that are least dissimilar\n\n\n\n\nStep 3: Fuse these two clusters into a new cluster!\n\n\n\n\nRepeat Steps 1 to 3 until all observations are in the same cluster\n\n\n\n“Bottom-up”, agglomerative clustering that forms a tree / hierarchy of merging\nNo mention of any randomness!\nNo mention of the number of clusters \\(k\\)!"
+    "text": "(Agglomerative) Hierarchical clustering\nLet’s pretend all \\(n\\) observations are in their own cluster\n\n\nStep 1: Compute the pairwise dissimilarities between each cluster\n\ne.g., distance matrix on previous slides\n\n\n\n\n\nStep 2: Identify the pair of clusters that are least dissimilar\n\n\n\n\nStep 3: Fuse these two clusters into a new cluster!\n\n\n\n\nRepeat Steps 1 to 3 until all observations are in the same cluster\n\n\n\n“Bottom-up”, agglomerative clustering that forms a tree/hierarchy of merging\nNo mention of any randomness. And no mention of the number of clusters \\(k\\)."
   },
   {
     "objectID": "lectures/06-hierarchical.html#agglomerative-hierarchical-clustering-1",
@@ -2044,11 +2051,18 @@
     "text": "(Agglomerative) Hierarchical clustering\n\n\nStart with all observations in their own cluster\n\nStep 1: Compute the pairwise dissimilarities between each cluster\nStep 2: Identify the pair of clusters that are least dissimilar\nStep 3: Fuse these two clusters into a new cluster!\nRepeat Steps 1 to 3 until all observations are in the same cluster\n\n\n\n\n\n\n\n\n\n\n\nForms a dendrogram (typically displayed from bottom-up)"
   },
   {
-    "objectID": "lectures/06-hierarchical.html#how-do-we-define-dissimilarity-between-clusters",
-    "href": "lectures/06-hierarchical.html#how-do-we-define-dissimilarity-between-clusters",
+    "objectID": "lectures/06-hierarchical.html#dissimilarity-between-clusters",
+    "href": "lectures/06-hierarchical.html#dissimilarity-between-clusters",
     "title": "Unsupervised learning: hierarchical clustering",
-    "section": "How do we define dissimilarity between clusters?",
-    "text": "How do we define dissimilarity between clusters?\nWe know how to compute distance / dissimilarity between two observations\nBut how do we handle clusters?\n\nDissimilarity between a cluster and an observation, or between two clusters\n\n\nWe need to choose a linkage function! Clusters are built up by linking them together\n\n\nCompute all pairwise dissimilarities between observations in cluster 1 with those in cluster 2\ni.e. Compute the distance matrix between observations, \\(d(x_i, x_j)\\) for \\(i \\in C_1\\) and \\(j \\in C_2\\)\n\n\n\nComplete linkage: Use the maximum value of these dissimilarities: \\(\\underset{i \\in C_1, j \\in C_2}{\\text{max}} d(x_i, x_j)\\)\nSingle linkage: Use the minimum value: \\(\\underset{i \\in C_1, j \\in C_2}{\\text{min}} d(x_i, x_j)\\)\nAverage linkage: Use the average value: \\(\\displaystyle \\frac{1}{|C_1||C_2|} \\sum_{i \\in C_1} \\sum_{j \\in C_2} d(x_i, x_j)\\)\n\n\n\nDefine dissimilarity between two clusters based on our initial dissimilarity matrix between observations"
+    "section": "Dissimilarity between clusters",
+    "text": "Dissimilarity between clusters\n\nWe know how to compute distance/dissimilarity between two observations\nBut how do we handle clusters?\n\nDissimilarity between a cluster and an observation, or between two clusters\n\n\n\nWe need to choose a linkage function. Clusters are built up by linking them together"
+  },
+  {
+    "objectID": "lectures/06-hierarchical.html#types-of-linkage",
+    "href": "lectures/06-hierarchical.html#types-of-linkage",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Types of linkage",
+    "text": "Types of linkage\nFirst, compute all pairwise dissimilarities between the observations in the two clusters\ni.e., compute the distance matrix between observations, \\(d(x_i, x_j)\\) for \\(i \\in C_1\\) and \\(j \\in C_2\\)\n\n\nComplete linkage: use the maximum (largest) value of these dissimilarities \\(\\underset{i \\in C_1, j \\in C_2}{\\text{max}} d(x_i, x_j)\\) (maximal inter-cluster dissimilarity)\n\n\n\n\nSingle linkage: use the minimum (smallest) value of these dissimilarities \\(\\underset{i \\in C_1, j \\in C_2}{\\text{min}} d(x_i, x_j)\\) (minimal inter-cluster dissimilarity)\n\n\n\n\nAverage linkage: use the average value of these dissimilarities \\(\\displaystyle \\frac{1}{|C_1||C_2|} \\sum_{i \\in C_1} \\sum_{j \\in C_2} d(x_i, x_j)\\) (mean inter-cluster dissimilarity)"
   },
   {
     "objectID": "lectures/06-hierarchical.html#complete-linkage-example",
@@ -2076,7 +2090,7 @@
     "href": "lectures/06-hierarchical.html#cut-dendrograms-to-obtain-cluster-labels",
     "title": "Unsupervised learning: hierarchical clustering",
     "section": "Cut dendrograms to obtain cluster labels",
-    "text": "Cut dendrograms to obtain cluster labels\n\n\nSpecify the height to cut with h instead of k\n\n\n\n\n\n\n\n\n\n\nFor example, cutree(utah_complete, h = 4)"
+    "text": "Cut dendrograms to obtain cluster labels\n\n\nSpecify the height to cut with h (instead of k)\n\n\n\n\n\n\n\n\n\n\nFor example, cutree(utah_complete, h = 4)"
   },
   {
     "objectID": "lectures/06-hierarchical.html#single-linkage-example",
@@ -2104,7 +2118,7 @@
     "href": "lectures/06-hierarchical.html#minimax-linkage",
     "title": "Unsupervised learning: hierarchical clustering",
     "section": "Minimax linkage",
-    "text": "Minimax linkage\n\nEach cluster is defined by a prototype observation (most representative)\nIdentify the point whose farthest point is closest (hence the minimax)\n\n\n\nUse this minimum-maximum distance as the measure of cluster dissimilarity\nDendogram interpretation: each point point is \\(\\leq h\\) in dissimilarity to the prototype of cluster\nCluster centers are chosen among the observations themselves - hence prototype"
+    "text": "Minimax linkage\n\nEach cluster is defined by a prototype observation (most representative)\nIdentify the point whose farthest point is closest (hence the minimax)\n\n\n\nUse this minimum-maximum distance as the measure of cluster dissimilarity\nDendrogram interpretation: each point is \\(\\leq h\\) in dissimilarity to the prototype of cluster\nCluster centers are chosen among the observations themselves - hence prototype"
   },
   {
     "objectID": "lectures/06-hierarchical.html#minimax-linkage-example",
@@ -2125,14 +2139,21 @@
     "href": "lectures/06-hierarchical.html#minimax-linkage-example-2",
     "title": "Unsupervised learning: hierarchical clustering",
     "section": "Minimax linkage example",
-    "text": "Minimax linkage example\n\nWant to check out the prototypes for the three clusters\nprotocut returns the indices of the prototypes (in order of the cluster labels)\n\n\nminimax_county_clusters$protos\n\n[1]  8 13  7 24\n\n\n\nSubset the rows for these counties using slice\n\n\nutah_health |&gt;\n  select(County, std_pct_over65, std_diabetic_rate) |&gt;\n  slice(minimax_county_clusters$protos)\n\n# A tibble: 4 × 3\n  County   std_pct_over65 std_diabetic_rate\n  &lt;chr&gt;             &lt;dbl&gt;             &lt;dbl&gt;\n1 Duchesne         -0.448             0.116\n2 Davis            -0.978            -1.27 \n3 Kane              1.74              1.50 \n4 Rich              0.798             0.810"
+    "text": "Minimax linkage example\n\nWant to check out the prototypes for the three clusters\nprotocut returns the indices of the prototypes (in order of the cluster labels)\n\n\nminimax_county_clusters$protos\n\n[1]  8 13  7 24\n\n\n\nSubset the rows for these counties using slice()\n\n\nutah_health |&gt;\n  select(County, std_pct_over65, std_diabetic_rate) |&gt;\n  slice(minimax_county_clusters$protos)\n\n# A tibble: 4 × 3\n  County   std_pct_over65 std_diabetic_rate\n  &lt;chr&gt;             &lt;dbl&gt;             &lt;dbl&gt;\n1 Duchesne         -0.448             0.116\n2 Davis            -0.978            -1.27 \n3 Kane              1.74              1.50 \n4 Rich              0.798             0.810"
   },
   {
-    "objectID": "lectures/06-hierarchical.html#wrapping-up",
-    "href": "lectures/06-hierarchical.html#wrapping-up",
+    "objectID": "lectures/06-hierarchical.html#post-clustering-analysis",
+    "href": "lectures/06-hierarchical.html#post-clustering-analysis",
     "title": "Unsupervised learning: hierarchical clustering",
-    "section": "Wrapping up…",
-    "text": "Wrapping up…\n\nFor context, how does median income relate to our clustering results?\n\n\nutah_health |&gt; \n  mutate(cluster = as.factor(minimax_county_clusters$cl)) |&gt; \n  ggplot(aes(x = MedianIncome, fill = cluster)) +\n  geom_density(alpha = 0.1) +\n  scale_fill_manual(values = c(\"darkblue\", \"purple\", \"gold\", \"orange\"))\n\n\n\nDifferent income levels tend to fall within particular clusters…\nIt’s easy to include more variables - just change the distance matrix\nBut we might want to explore soft probability assignments instead…\n\n\n\n36-SURE.github.io"
+    "section": "Post-clustering analysis",
+    "text": "Post-clustering analysis\n\nFor context, how does median income relate to our clustering results?\n\n\nutah_health |&gt; \n  mutate(cluster = as.factor(minimax_county_clusters$cl)) |&gt; \n  ggplot(aes(x = MedianIncome, fill = cluster)) +\n  geom_density(alpha = 0.1) +\n  scale_fill_manual(values = c(\"darkblue\", \"purple\", \"gold\", \"orange\"))\n\n\n\nDifferent income levels tend to fall within particular clusters…\nIt’s easy to include more variables - just change the distance matrix\nBut we might want to explore soft probability assignments instead…"
+  },
+  {
+    "objectID": "lectures/06-hierarchical.html#practical-issues",
+    "href": "lectures/06-hierarchical.html#practical-issues",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Practical issues",
+    "text": "Practical issues\n\nWhat dissimilarity measure should be used?\nWhat type of linkage should be used?\nHow many clusters to choose?\nWhich features should we use to drive the clustering?\n\n\n\n\nIT DEPENDS…\n\n\n\n\n36-SURE.github.io"
   },
   {
     "objectID": "lectures/09-presentation.html#begin-with-background-and-motivation",
@@ -2216,7 +2237,7 @@
     "href": "lectures/05-kmeans.html#unsupervised-learning",
     "title": "Unsupervised learning: \\(k\\)-means clustering",
     "section": "Unsupervised learning",
-    "text": "Unsupervised learning\n\nNo response variable (i.e. data are not labeled)\nOnly given a set of features measured on a set of observations\nObjective: discover interesting things about the features\n\ne.g., discover subgroups among the variables or among the observations\n\nDifficult to know how “good” you are doing"
+    "text": "Unsupervised learning\n\nNo response variable (i.e. data are not labeled)\nOnly given a set of features measured on a set of observations\nObjective: understand the variation and grouping structure of a set of unlabeled data\n\ne.g., discover subgroups among the variables or among the observations\n\nDifficult to know how “good” you are doing"
   },
   {
     "objectID": "lectures/05-kmeans.html#unsupervised-learning-1",
@@ -2581,6 +2602,13 @@
     "title": "Supervised learning: the tradeoffs",
     "section": "Bias-variance tradeoff",
     "text": "Bias-variance tradeoff\n“Best” model minimizes the test-set MSE, where the true MSE can be decomposed into \\({\\rm MSE} = {\\rm (Bias)}^2 + {\\rm Variance}\\)\n\n\n\n\n\n\n\n\n\n\nTowards the left: high bias, low variance. Towards the right: low bias, high variance.\nOptimal amount of flexibility lies somewhere in the middle (“just the right amount” — Goldilocks principle)"
+  },
+  {
+    "objectID": "lectures/10-tradeoffs.html#the-sweet-spot",
+    "href": "lectures/10-tradeoffs.html#the-sweet-spot",
+    "title": "Supervised learning: the tradeoffs",
+    "section": "“The sweet spot”",
+    "text": "“The sweet spot”\n\n\nRemember, when building predictive models, try to find the sweet spot between bias and variance. #babybear\n\n— Dr. G. J. Matthews (@StatsClass) September 6, 2018"
   },
   {
     "objectID": "lectures/10-tradeoffs.html#principle-of-parsimony-occams-razor",
@@ -3392,7 +3420,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"c\" \"e\" \"v\" \"q\" \"g\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 0 0 0 0 1 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"T\" \"H\" \"T\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 45"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"n\" \"q\" \"f\" \"s\" \"u\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 1 0 0 1 0 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"H\" \"T\" \"H\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 18"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -3434,21 +3462,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.0243838\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.026051"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.04539361\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9424758"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.507\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.63     0.001 0.000141\n 2 -3.48     0.002 0.000249\n 3 -3.48     0.003 0.000249\n 4 -3.43     0.004 0.000304\n 5 -2.85     0.005 0.00221 \n 6 -2.76     0.006 0.00290 \n 7 -2.70     0.007 0.00348 \n 8 -2.69     0.008 0.00356 \n 9 -2.67     0.009 0.00378 \n10 -2.43     0.01  0.00753 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.482\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical    true\n   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 -2.96     0.001 0.00156\n 2 -2.90     0.002 0.00186\n 3 -2.82     0.003 0.00243\n 4 -2.73     0.004 0.00321\n 5 -2.50     0.005 0.00627\n 6 -2.41     0.006 0.00789\n 7 -2.41     0.007 0.00808\n 8 -2.40     0.008 0.00828\n 9 -2.33     0.009 0.00985\n10 -2.26     0.01  0.0118 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3883024\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3853491\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -3462,14 +3490,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1288\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1684\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.1579893\n\nmean(rnorm(100))\n\n[1] 0.1446211\n\nmean(rnorm(100))\n\n[1] 0.09364349"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.2281595\n\nmean(rnorm(100))\n\n[1] 0.02355909\n\nmean(rnorm(100))\n\n[1] -0.1061711"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
