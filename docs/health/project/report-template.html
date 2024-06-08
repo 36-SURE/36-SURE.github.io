@@ -4818,7 +4818,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> disp <span class="sc">+</span> hp <span class="sc">+</span> drat, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>It is <em>not</em> appropriate to simply print <code>summary(model1)</code> into the report. If we want the reader to understand what models we have fit and what their results are, we should provide a nicely formatted table. A simpler option is to use the <code>tidy()</code> function from the <code>broom</code> package to get a data frame of the model fit, and simply report that as a table.</p>
+<p>It is <em>not</em> appropriate to simply print <code>summary(model1)</code> into the report. If we want the reader to understand what models we have fit and what their results are, we should provide a nicely formatted table. A simple option is to use the <code>tidy()</code> function from the <code>broom</code> package to get a data frame of the model fit, and simply report that as a table.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">

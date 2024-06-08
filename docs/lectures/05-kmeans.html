@@ -408,102 +408,204 @@
 <h1>Background</h1>
 
 </section>
-<section id="statistical-learning-and-unsupervised-learning" class="slide level2">
-<h2>Statistical learning and unsupervised learning</h2>
-<p><a href="https://www.statlearning.com/">Preface of (ISLR)</a>:</p>
+<section id="statistical-learning" class="slide level2">
+<h2>Statistical learning</h2>
 <blockquote>
-<p>Statistical learning refers to a set of tools for making sense of complex datasets.</p>
+<p>Statistical learning refers to a set of tools for making sense of complex datasets. — <a href="https://www.statlearning.com/">Preface of ISLR</a>:</p>
 </blockquote>
 <div class="fragment">
+<p>General setup: Given a dataset of <span class="math inline">\(p\)</span> variables (columns) and <span class="math inline">\(n\)</span> observations (rows) <span class="math inline">\(x_1,\dots,x_n\)</span>.</p>
+<p>For observation <span class="math inline">\(i\)</span>, <span class="math display">\[x_{i1},x_{i2},\ldots,x_{ip} \sim P \,,\]</span> where <span class="math inline">\(P\)</span> is a <span class="math inline">\(p\)</span>-dimensional distribution that we might not know much about <em>a priori</em></p>
+</div>
+</section>
+<section id="statistical-learning-vs.-machine-learning" class="slide level2">
+<h2>Statistical learning vs.&nbsp;machine learning???</h2>
 <ul>
-<li><p>Machine learning constructs algorithms that can learn from data</p></li>
-<li><p>Statistical learning emphasizes statistical models and assessment of uncertainty</p></li>
-</ul>
-</div>
-<div class="fragment">
-<p>What is <strong>unsupervised learning?</strong></p>
-</div>
-<div class="fragment">
-<p>Given a dataset of <span class="math inline">\(p\)</span> variables and <span class="math inline">\(n\)</span> observations <span class="math inline">\(x_1,\dots,x_n\)</span>, and for observation <span class="math inline">\(i\)</span>:</p>
-<p><span class="math display">\[x_{i1},x_{i2},\ldots,x_{ip} \sim P\]</span></p>
+<li><p>Plenty of overlap - both fields focus on supervised and unsupervised problems</p>
 <ul>
-<li><p><span class="math inline">\(P\)</span> is a <span class="math inline">\(p\)</span>-dimensional distribution that we might not know much about <em>a priori</em>.</p></li>
-<li><p><em>unsupervised</em>: none of the variables are <strong>response</strong> variables, i.e., there are no labeled data</p></li>
-</ul>
-</div>
-<div class="fragment">
-<p>Think of unsupervised learning as <strong>an extension of EDA…</strong></p>
-</div>
-<div class="fragment">
-<ul>
-<li><strong>There is no unique right answer!</strong></li>
+<li>Machine learning has a greater emphasis on large scale applications and prediction accuracy</li>
+<li>Statistical learning emphasizes models and their interpretability, and the assessment of uncertainty</li>
+</ul></li>
+<li><p>The distinction has become more and more blurred, and there is a great deal of “cross-fertilization”</p></li>
+<li><p>“Statistical machine learning”???</p></li>
 </ul>
 <!-- ??? -->
 <!-- - Statistical learning is the process of ascertaining (discovering) associations between groups of variables -->
 <!-- - unsupervised learning - where the goal is to discover interesting things about the data -->
+</section>
+<section id="supervised-learning" class="slide level2">
+<h2>Supervised learning</h2>
+<ul>
+<li><p>Response variable <span class="math inline">\(Y\)</span> in one of the <span class="math inline">\(p\)</span> variables (columns)</p></li>
+<li><p>The remaining <span class="math inline">\(p-1\)</span> variables are predictor measurements <span class="math inline">\(X\)</span></p>
+<ul>
+<li><p>Regression: <span class="math inline">\(Y\)</span> is quantitative</p></li>
+<li><p>Classification: <span class="math inline">\(Y\)</span> is categorical</p></li>
+</ul></li>
+</ul>
+<div class="fragment">
+<p>Objective: Given training data <span class="math inline">\((x_1, y_1), ..., (x_n, y_n)\)</span></p>
+<ul>
+<li><p>Accurately predict unseen test cases</p></li>
+<li><p>Understand which features affect the response (and how)</p></li>
+<li><p>Assess the quality of our predictions and inferences</p></li>
+</ul>
 </div>
 </section>
-<section id="what-is-clustering-aka-cluster-analysis" class="slide level2">
-<h2>What is clustering (aka cluster analysis)?</h2>
+<section id="unsupervised-learning" class="slide level2">
+<h2>Unsupervised learning</h2>
+<ul>
+<li><p>No response variable (i.e.&nbsp;data are not labeled)</p></li>
+<li><p>Only given a set of features measured on a set of observations</p></li>
+<li><p>Objective: discover interesting things about the features</p>
+<ul>
+<li>e.g., discover subgroups among the variables or among the observations</li>
+</ul></li>
+<li><p>Difficult to know how “good” you are doing</p></li>
+</ul>
+</section>
+<section id="unsupervised-learning-1" class="slide level2">
+<h2>Unsupervised learning</h2>
+<ul>
+<li><p>It is often easier to obtain unlabeled data than labeled data</p></li>
+<li><p>Unsupervised learning is more subjective than supervised learning</p></li>
+<li><p>There is no simple goal for the analysis, such as prediction of a response</p></li>
+<li><p>Unsupervised learning can be useful as a pre-processing step for supervised learning</p></li>
+</ul>
+<p>Think of unsupervised learning as <strong>an extension of EDA</strong> - <strong>there’s no unique right answer!</strong></p>
+</section>
+<section id="clustering-cluster-analysis" class="slide level2">
+<h2>Clustering (cluster analysis)</h2>
 <div class="fragment">
-<p><a href="https://www.statlearning.com/">ISLR 10.3</a></p>
 <blockquote>
-<p><em>very broad set of techniques for finding subgroups, or clusters, in a dataset</em></p>
+<p>Clustering refers to a very broad set of techniques for finding subgroups, or clusters, in a data set — ISLR</p>
 </blockquote>
 </div>
 <div class="fragment">
-<p><strong>Goals</strong>:</p>
+<p><strong>Goals</strong>: partition of the observations into distinct clusters so that</p>
 <ul>
-<li><p>observations <strong>within</strong> clusters are <strong>more similar</strong> to each other,</p></li>
+<li><p>observations <strong>within</strong> clusters are <strong>more similar</strong> to each other</p></li>
 <li><p>observations <strong>in different</strong> clusters are <strong>more different</strong> from each other</p></li>
 </ul>
 </div>
 <div class="fragment">
-<p>How do we define <strong>distance / dissimilarity</strong> between observations?</p>
+<ul>
+<li>This often involves domain-specific considerations based on knowledge of the data being studied</li>
+</ul>
+</div>
+</section>
+<section id="distance-between-observations" class="slide level2">
+<h2>Distance between observations</h2>
+<ul>
+<li>What does it means for two or more observations to be similar or different?</li>
+</ul>
+<div class="fragment">
+<ul>
+<li><p>This require characterizing the <strong>distance</strong> between observations</p>
+<ul>
+<li>Clusters: groups of observations that are “close” together</li>
+</ul></li>
+</ul>
 </div>
 <div class="fragment">
 <ul>
-<li>e.g.&nbsp;<strong>Euclidean distance</strong> between observations <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span></li>
+<li>This is easy to do for 2 quantitative variables: just make a scatterplot</li>
 </ul>
-<p><span class="math display">\[d(x_i, x_j) = \sqrt{(x_{i1}-x_{j1})^2 + \cdots + (x_{ip}-x_{jp})^2}\]</span></p>
+</div>
+<div class="fragment">
+<p><strong>But how do we define “distance” beyond 2D data?</strong></p>
+</div>
+<div class="fragment">
+<p>Let <span class="math inline">\(\boldsymbol{x}_i = (x_{i1}, \dots, x_{ip})\)</span> be a vector of <span class="math inline">\(p\)</span> features for observation <span class="math inline">\(i\)</span></p>
+<p>Question of interest: How “far away” is <span class="math inline">\(\boldsymbol{x}_i\)</span> from <span class="math inline">\(\boldsymbol{x}_j\)</span>?</p>
+</div>
+<div class="fragment">
+<p>When looking at a scatterplot, we’re using <strong>Euclidean distance</strong> <span class="math display">\[d(\boldsymbol{x}_i, \boldsymbol{x}_j) = \sqrt{(x_{i1} - x_{j1})^2 + \dots + (x_{ip} - x_{jp})^2}\]</span></p>
+</div>
+</section>
+<section id="distances-in-general" class="slide level2">
+<h2>Distances in general</h2>
+<ul>
+<li><p>There’s a variety of different types of distance metrics: <a href="https://en.wikipedia.org/wiki/Taxicab_geometry">Manhattan</a>, <a href="https://en.wikipedia.org/wiki/Mahalanobis_distance">Mahalanobis</a>, <a href="https://en.wikipedia.org/wiki/Cosine_similarity">Cosine</a>, <a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">Kullback-Leibler</a>, <a href="https://en.wikipedia.org/wiki/Hellinger_distance">Hellinger</a>, <a href="https://en.wikipedia.org/wiki/Wasserstein_metric">Wasserstein</a></p></li>
+<li><p>We’re just going to focus on <a href="https://en.wikipedia.org/wiki/Euclidean_distance">Euclidean distance</a></p></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Let <span class="math inline">\(d(\boldsymbol{x}_i, \boldsymbol{x}_j)\)</span> denote the pairwise distance between two observations <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span></li>
+</ul>
+<ol type="1">
+<li><p><strong>Identity</strong>: <span class="math inline">\(\boldsymbol{x}_i = \boldsymbol{x}_j \Leftrightarrow d(\boldsymbol{x}_i, \boldsymbol{x}_j) = 0\)</span></p></li>
+<li><p><strong>Non-negativity</strong>: <span class="math inline">\(d(\boldsymbol{x}_i, \boldsymbol{x}_j) \geq 0\)</span></p></li>
+<li><p><strong>Symmetry</strong>: <span class="math inline">\(d(\boldsymbol{x}_i, \boldsymbol{x}_j) = d(\boldsymbol{x}_j, \boldsymbol{x}_i)\)</span></p></li>
+<li><p><strong>Triangle inequality</strong>: <span class="math inline">\(d(\boldsymbol{x}_i, \boldsymbol{x}_j) \leq d(\boldsymbol{x}_i, \boldsymbol{x}_k) + d(\boldsymbol{x}_k, \boldsymbol{x}_j)\)</span></p></li>
+</ol>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="text-align: left;">
+<p><strong>Distance Matrix</strong>: matrix <span class="math inline">\(D\)</span> of all pairwise distances</p>
+<ul>
+<li><p><span class="math inline">\(D_{ij} = d(\boldsymbol{x}_i, \boldsymbol{x}_j)\)</span></p></li>
+<li><p>where <span class="math inline">\(D_{ii} = 0\)</span> and <span class="math inline">\(D_{ij} = D_{ji}\)</span></p></li>
+</ul>
+</div><div class="column" style="text-align: left;">
+<p><span class="math display">\[D = \begin{pmatrix}
+                0 &amp; D_{12} &amp; \cdots &amp; D_{1n} \\
+                D_{21} &amp; 0 &amp; \cdots &amp; D_{2n} \\
+                \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+                D_{n1} &amp; \cdots &amp; \cdots &amp; 0
+            \end{pmatrix}\]</span></p>
+</div>
+</div>
 </div>
 </section>
 <section id="units-matter-in-clustering" class="slide level2">
 <h2>Units matter in clustering</h2>
 <ul>
 <li><p>One variable may <em>dominate</em> others when computing Euclidean distance because its range is much larger</p></li>
-<li><p>Can standardize each variable / column of dataset to have mean 0 and standard divation 1 with <code>scale()</code></p></li>
+<li><p>Can standardize each variable in the dataset to have mean 0 and standard deviation 1 with <code>scale()</code></p></li>
 <li><p><strong>But we may value the separation in that variable!</strong> (so just be careful…)</p></li>
 </ul>
 <!-- ??? -->
 <!-- It is the partitioning of data into homogeneous subgroups -->
 <!-- Goal define clusters for which the within-cluster variation is relatively small, i.e. observations within clusters are similar to each other -->
-</section>
-<section id="whats-the-clustering-objective" class="slide level2">
-<h2>What’s the clustering objective?</h2>
-<ul>
-<li><p><span class="math inline">\(C_1, \dots, C_K\)</span> are <em>sets</em> containing indices of observations in each of the <span class="math inline">\(k\)</span> clusters</p>
-<ul>
-<li>if observation <span class="math inline">\(i\)</span> is in cluster <span class="math inline">\(k\)</span>, then <span class="math inline">\(i \in C_k\)</span></li>
-</ul></li>
-</ul>
-<div class="fragment">
-<ul>
-<li><p>We want to minimize the <strong>within-cluster variation</strong> <span class="math inline">\(W(C_k)\)</span> for each cluster <span class="math inline">\(C_k\)</span> and solve <span class="math display">\[\underset{C_1, \dots, C_K}{\text{minimize }} \Big\{ \sum_{k=1}^K W(C_k) \Big\}\]</span></p></li>
-<li><p>Can define using the <strong>squared Euclidean distance</strong> ( <span class="math inline">\(|C_k| = n_k =\)</span> # observations in cluster <span class="math inline">\(k\)</span>) <span class="math display">\[W(C_k) = \frac{1}{|C_k|}\sum_{i,j \in C_k} d(x_i, x_j)^2\]</span></p>
-<ul>
-<li>Commonly referred to as the within-cluster sum of squares (WSS)</li>
-</ul></li>
-</ul>
-</div>
-<div class="fragment">
-<p><strong>So how can we solve this?</strong></p>
-</div>
 </section></section>
 <section>
 <section id="k-means-clustering" class="title-slide slide level1 center">
 <h1><span class="math inline">\(k\)</span>-means clustering</h1>
 
+</section>
+<section id="k-means-clustering-1" class="slide level2">
+<h2><span class="math inline">\(k\)</span>-means clustering</h2>
+<ul>
+<li>Goal: partition the observations into a pre-specified number of clusters</li>
+</ul>
+<div class="fragment">
+<ul>
+<li><p>Let <span class="math inline">\(C_1, \dots, C_K\)</span> denote sets containing indices of observations in each of the <span class="math inline">\(k\)</span> clusters</p>
+<ul>
+<li>if observation <span class="math inline">\(i\)</span> is in cluster <span class="math inline">\(k\)</span>, then <span class="math inline">\(i \in C_k\)</span></li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><p>We want to minimize the <strong>within-cluster variation</strong> <span class="math inline">\(W(C_k)\)</span> for each cluster <span class="math inline">\(C_k\)</span> (i.e.&nbsp;the amount by which the observations within a cluster differ from each other)</p></li>
+<li><p>This is equivalent to solving <span class="math display">\[\underset{C_1, \dots, C_K}{\text{minimize }} \Big\{ \sum_{k=1}^K W(C_k) \Big\}\]</span></p></li>
+<li><p>In other words, we want to partition the observations into <span class="math inline">\(K\)</span> clusters such that the total within-cluster variation, summed over all K clusters, is as small as possible</p></li>
+</ul>
+</div>
+</section>
+<section id="k-means-clustering-2" class="slide level2">
+<h2><span class="math inline">\(k\)</span>-means clustering</h2>
+<p>How do we define within-cluster variation?</p>
+<ul>
+<li><p>Use the <strong>(squared) Euclidean distance</strong> <span class="math display">\[W(C_k) = \frac{1}{|C_k|}\sum_{i,j \in C_k} d(x_i, x_j)^2 \,,\]</span> where <span class="math inline">\(|C_k|\)</span> denote the number of observations in cluster <span class="math inline">\(k\)</span></p></li>
+<li><p>Commonly referred to as the within-cluster sum of squares (WSS)</p></li>
+</ul>
+<div class="fragment">
+<p><strong>So how do we solve this?</strong></p>
+</div>
 </section>
 <section id="lloyds-algorithm" class="slide level2">
 <h2><a href="https://en.wikipedia.org/wiki/K-means_clustering">Lloyd’s algorithm</a></h2>
@@ -785,8 +887,8 @@ $ region           &lt;fct&gt; Southern Europe, Northern Africa, Middle Africa, 
 </div>
 </div>
 </section>
-<section id="by-default-r-uses-hartigan-and-wong-algorithm" class="slide level2">
-<h2>By default <code>R</code> uses <a href="https://en.wikipedia.org/wiki/K-means_clustering#Hartigan%E2%80%93Wong_method">Hartigan and Wong algorithm</a></h2>
+<section id="by-default-r-uses-hartiganwong-method" class="slide level2">
+<h2>By default <code>R</code> uses <a href="https://en.wikipedia.org/wiki/K-means_clustering#Hartigan%E2%80%93Wong_method">Hartigan–Wong method</a></h2>
 <div class="columns">
 <div class="column" style="text-align: left;">
 <p>Updates based on changing a single observation</p>
@@ -823,6 +925,17 @@ $ region           &lt;fct&gt; Southern Europe, Northern Africa, Middle Africa, 
 </section>
 <section id="better-alternative-to-nstart-k-means" class="slide level2">
 <h2>Better alternative to <code>nstart</code>: <span class="math inline">\(k\)</span>-means++</h2>
+<p>Objective: initialize the cluster centers before proceeding with the standard <span class="math inline">\(k\)</span>-means clustering algorithm</p>
+<div class="fragment">
+<p>Intuition:</p>
+<ul>
+<li><p>randomly choose a data point the first cluster center</p></li>
+<li><p>each subsequent cluster center is chosen from the remaining data points with probability proportional to its squared distance from the point’s closest existing cluster center</p></li>
+</ul>
+</div>
+</section>
+<section id="k-means" class="slide level2">
+<h2><span class="math inline">\(k\)</span>-means++</h2>
 <p>Pick a random observation to be the center <span class="math inline">\(c_1\)</span> of the first cluster <span class="math inline">\(C_1\)</span></p>
 <ul>
 <li>This initializes a set <span class="math inline">\(\text{Centers} = \{c_1 \}\)</span></li>
@@ -844,14 +957,11 @@ $ region           &lt;fct&gt; Southern Europe, Northern Africa, Middle Africa, 
 <div class="fragment">
 <ul>
 <li><p>As distance to closest center increases, the probability of selection increases</p></li>
-<li><p>Call this randomly selected observation <span class="math inline">\(c^*\)</span>, update <span class="math inline">\(\text{Centers} = \text{Centers} \cup c^*\)</span></p>
-<ul>
-<li>Same as <code>centers = c(centers, c_new)</code></li>
-</ul></li>
+<li><p>Call this randomly selected observation <span class="math inline">\(c^*\)</span>, update <span class="math inline">\(\text{Centers} = \text{Centers} \cup c^*\)</span></p></li>
 </ul>
 </div>
 <div class="fragment">
-<p><strong>Then run</strong> <span class="math inline">\(k\)</span>-means using these <span class="math inline">\(\text{Centers}\)</span> as the starting points</p>
+<p>Then run <span class="math inline">\(k\)</span>-means using these <span class="math inline">\(\text{Centers}\)</span> as the starting points</p>
 </div>
 </section>
 <section id="k-means-in-r-using-flexclust" class="slide level2">
@@ -899,6 +1009,7 @@ $ region           &lt;fct&gt; Southern Europe, Northern Africa, Middle Africa, 
 <blockquote>
 <p>One reason you should be intensely skeptical of clustering results — including your own! — is that there is currently very little theory about how to find the right number of clusters. It’s not even completely clear what “the right number of clusters” means!</p>
 </blockquote>
+<p>Additional readings: <a href="https://www.stat.cmu.edu/~larry/=sml/clustering.pdf">here</a> and <a href="https://www.stat.cmu.edu/~larry/=sml/Clustering2.pdf">here</a></p>
 </section>
 <section id="popular-heuristic-elbow-plot-use-with-caution" class="slide level2">
 <h2>Popular heuristic: elbow plot (use with caution)</h2>
@@ -933,7 +1044,8 @@ $ region           &lt;fct&gt; Southern Europe, Northern Africa, Middle Africa, 
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>kmeans_search <span class="sc">|&gt;</span> </span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> clusters, <span class="at">y =</span> total_wss)) <span class="sc">+</span></span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> n_clusters_search)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -943,7 +1055,7 @@ $ region           &lt;fct&gt; Southern Europe, Northern Africa, Middle Africa, 
 <div class="columns">
 <div class="column" style="text-align: left;">
 <p>Choose <span class="math inline">\(k\)</span> where marginal improvements is low at the bend (hence the elbow)</p>
-<p><strong>This is just a guideline and should not dictate your choice of</strong> <span class="math inline">\(k\)</span>!</p>
+<p><strong>This is just a guideline and should not dictate your choice of</strong> <span class="math inline">\(k\)</span></p>
 <p><a href="https://web.stanford.edu/~hastie/Papers/gap.pdf">Gap statistic</a> is a popular choice (see <a href="https://stat.ethz.ch/R-manual/R-devel/library/cluster/html/clusGap.html"><code>clusGap</code> function</a> in <a href="https://cran.r-project.org/web/packages/cluster/cluster.pdf"><code>cluster</code> package</a>)</p>
 <p>Later on: model-based approach to choosing the number of clusters</p>
 </div><div class="column" style="text-align: left;">
@@ -982,11 +1094,11 @@ $ region           &lt;fct&gt; Southern Europe, Northern Africa, Middle Africa, 
 <span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>kmpp_search <span class="ot">&lt;-</span> n_clusters_search <span class="sc">|&gt;</span> </span>
 <span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(gapminder_kmpp) <span class="sc">|&gt;</span> </span>
 <span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>()</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>kmpp_search <span class="sc">|&gt;</span> </span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> clusters, <span class="at">y =</span> total_wss)) <span class="sc">+</span></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>kmpp_search <span class="sc">|&gt;</span> </span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> clusters, <span class="at">y =</span> total_wss)) <span class="sc">+</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> n_clusters_search)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
@@ -1000,6 +1112,65 @@ $ region           &lt;fct&gt; Southern Europe, Northern Africa, Middle Africa, 
 </div>
 </div>
 </div>
+</section>
+<section id="appendix-k-means-for-image-segmentation-and-compression" class="slide level2">
+<h2>Appendix: <span class="math inline">\(k\)</span>-means for image segmentation and compression</h2>
+<p>Goal: partition an image into multiple segments, where each segment typically represents an object in the image</p>
+<ul>
+<li><p>Treat each pixel in the image as a point in 3-dimensional space comprising the intensities of the (red, blue, green) channels</p></li>
+<li><p>Treat each pixel in the image as a separate data point</p></li>
+<li><p>Apply <span class="math inline">\(k\)</span>-means clustering and identify the clusters</p></li>
+<li><p>All the pixels belonging to a cluster are treated as a segment in the image</p></li>
+</ul>
+<p>Then for any <span class="math inline">\(k\)</span>, reconstruct the image by replacing each pixel vector with the (red, blue, green) triplet given by the center to which that pixel has been assigned</p>
+</section>
+<section id="appendix-k-means-for-image-segmentation-and-compression-1" class="slide level2">
+<h2>Appendix: <span class="math inline">\(k\)</span>-means for image segmentation and compression</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/spongebob.jpeg</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jpeg)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>img_raw <span class="ot">&lt;-</span> <span class="fu">readJPEG</span>(<span class="st">"../data/spongebob.jpeg"</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>img_width <span class="ot">&lt;-</span> <span class="fu">dim</span>(img_raw)[<span class="dv">1</span>]</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>img_height <span class="ot">&lt;-</span> <span class="fu">dim</span>(img_raw)[<span class="dv">2</span>]</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>img_tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>img_height, <span class="at">each =</span> img_width),</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> <span class="fu">rep</span>(img_width<span class="sc">:</span><span class="dv">1</span>, img_height),</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">r =</span> <span class="fu">as.vector</span>(img_raw[, , <span class="dv">1</span>]),</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">g =</span> <span class="fu">as.vector</span>(img_raw[, , <span class="dv">2</span>]),</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">b =</span> <span class="fu">as.vector</span>(img_raw[, , <span class="dv">3</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>img_kmpp <span class="ot">&lt;-</span> <span class="cf">function</span>(k) {</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  km_fit <span class="ot">&lt;-</span> img_tbl <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(r, g, b) <span class="sc">|&gt;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kcca</span>(<span class="at">k =</span> k, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">initcent =</span> <span class="st">"kmeanspp"</span>))</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  km_col <span class="ot">&lt;-</span> <span class="fu">rgb</span>(km_fit<span class="sc">@</span>centers[km_fit<span class="sc">@</span>cluster,])</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(km_col)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>img_tbl <span class="ot">&lt;-</span> img_tbl <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">original =</span> <span class="fu">rgb</span>(r, g, b),</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">k2 =</span> <span class="fu">img_kmpp</span>(<span class="dv">2</span>),</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">k4 =</span> <span class="fu">img_kmpp</span>(<span class="dv">4</span>),</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">k8 =</span> <span class="fu">img_kmpp</span>(<span class="dv">8</span>),</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">k11 =</span> <span class="fu">img_kmpp</span>(<span class="dv">11</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(original<span class="sc">:</span>k11, <span class="at">names_to =</span> <span class="st">"k"</span>, <span class="at">values_to =</span> <span class="st">"hex"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">k =</span> <span class="fu">factor</span>(k, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"original"</span>, <span class="st">"k2"</span>, <span class="st">"k4"</span>, <span class="st">"k8"</span>, <span class="st">"k11"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="appendix-k-means-for-image-segmentation-and-compression-2" class="slide level2">
+<h2>Appendix: <span class="math inline">\(k\)</span>-means for image segmentation and compression</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>img_tbl <span class="sc">|&gt;</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y, <span class="at">color =</span> hex)) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_identity</span>() <span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> k, <span class="at">nrow =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
 <!-- ::: columns -->
 <!-- ::: {.column width="50%" style="text-align: left;"} -->
 <!-- c1 -->
@@ -1009,7 +1180,7 @@ $ region           &lt;fct&gt; Southern Europe, Northern Africa, Middle Africa, 
 <!-- ::: -->
 <!-- ::: -->
 
-<div class="footer footer-default">
+<img data-src="05-kmeans_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch quarto-figure-center"><div class="footer footer-default">
 <p><a href="https://36-sure.github.io">36-SURE.github.io</a></p>
 </div>
 </section></section>
