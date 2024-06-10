@@ -411,7 +411,7 @@
 <section id="statistical-learning" class="slide level2">
 <h2>Statistical learning</h2>
 <blockquote>
-<p>Statistical learning refers to a set of tools for making sense of complex datasets. — <a href="https://www.statlearning.com/">Preface of ISLR</a>:</p>
+<p>Statistical learning refers to a set of tools for making sense of complex datasets. — <a href="https://www.statlearning.com/">Preface of ISLR</a></p>
 </blockquote>
 <div class="fragment">
 <p>General setup: Given a dataset of <span class="math inline">\(p\)</span> variables (columns) and <span class="math inline">\(n\)</span> observations (rows) <span class="math inline">\(x_1,\dots,x_n\)</span>.</p>
@@ -562,9 +562,10 @@
 <section id="units-matter-in-clustering" class="slide level2">
 <h2>Units matter in clustering</h2>
 <ul>
+<li><p>Variables are typically measured in different units</p></li>
 <li><p>One variable may <em>dominate</em> others when computing Euclidean distance because its range is much larger</p></li>
-<li><p>Can standardize each variable in the dataset to have mean 0 and standard deviation 1 with <code>scale()</code></p></li>
-<li><p><strong>But we may value the separation in that variable!</strong> (so just be careful…)</p></li>
+<li><p>Scaling of the variables matters!</p></li>
+<li><p>Standardize each variable in the dataset to have mean 0 and standard deviation 1 with <code>scale()</code></p></li>
 </ul>
 <!-- ??? -->
 <!-- It is the partitioning of data into homogeneous subgroups -->

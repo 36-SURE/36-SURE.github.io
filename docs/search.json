@@ -483,18 +483,11 @@
     "text": "Starter code\n\nlibrary(tidyverse)\nprescriptions &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/prescriptions.csv\")"
   },
   {
-    "objectID": "health/project/report-template.html",
-    "href": "health/project/report-template.html",
-    "title": "Title",
-    "section": "",
-    "text": "Describe the problem and why it is important."
-  },
-  {
     "objectID": "health/project/report-template.html#introduction",
     "href": "health/project/report-template.html#introduction",
     "title": "Title",
-    "section": "",
-    "text": "Describe the problem and why it is important."
+    "section": "Introduction",
+    "text": "Introduction\nDescribe the problem and why it is important."
   },
   {
     "objectID": "health/project/report-template.html#data",
@@ -550,14 +543,14 @@
     "href": "health/project/description.html#deliverables",
     "title": "Project Guidelines",
     "section": "Deliverables",
-    "text": "Deliverables\nThis project has the following three key deliverables DUE FRIDAY JULY 19, 2024.\n(NOTE: It is important to finish everything by the July 19 deadline, due to the Minneapolis trip the week of July 22.)\n\nReport [template] (right click and choose “Save Link As…” to download)\n\nDUE FRIDAY JULY 19\nYour report should be written using Quarto and submitted as a rendered .html file. We recommend using an IDMRaD (Introduction, Data, Methods, Results and Discussion) report format, with details provided in the report template.\n\nPoster [template]\n\nDUE FRIDAY JULY 19\nYour poster should be submitted as a .pdf file. We will then make a printed copy for the poster session on the final day (July 26).\n\nPresentation\n\nDUE FRIDAY JULY 19\nEach group will give an 8-minute presentation on the final day (July 26). The presentation should effectively have the same structure as your report with an introduction, followed by data description, an overview of methods, followed by results and discussion. Your slides may be created in any software, but we prefer submissions in the form of a .pdf file or a Google Slides link."
+    "text": "Deliverables\nThis project has the following three key deliverables DUE FRIDAY JULY 19, 2024.\n(NOTE: It is important to finish everything by the July 19 deadline, due to the Minneapolis trip the week of July 22.)\n\nReport [template] (right click and choose “Save Link As…” to download)\n\nDUE FRIDAY JULY 19\nYour report should be written using Quarto and submitted as a rendered .html file. We recommend using an IDMRaD (Introduction, Data, Methods, Results and Discussion) report format, with details provided in the report template.\n\nPoster [template]\n\nDUE FRIDAY JULY 19\nYour poster should be submitted as a .pdf file. We will then make a printed copy for the poster session on the final day (July 26).\n\nSlides\n\nDUE FRIDAY JULY 19\nEach group will give an 8-minute presentation on the final day (July 26). The presentation should effectively have the same structure as your report with an introduction, followed by data description, an overview of methods, followed by results and discussion. Your slides may be created in any software, but we ony accept submissions in the form of a .pdf file, a Google Slides link, or a Quarto presentation (self-contained .html file or hosted online)."
   },
   {
     "objectID": "health/project/description.html#project-topics",
     "href": "health/project/description.html#project-topics",
     "title": "Project Guidelines",
     "section": "Project Topics",
-    "text": "Project Topics\n\nPremature deaths\n\nDo income inequality, unemployment and high school completion rates affect the number of premature deaths of certain racial groups at the county level?\n\nPreventable hospital stays\n\nDo income inequality, unemployment and high school completion rates affect the number of preventable hospital stays of certain racial groups at the county level?\n\nMental health\n\nDo the number of mental health professionals per county affect the number of poor mental health days?\n\nDrug overdose alcohol related deaths\n\nAre there demographic and social factors that are predictors of drug overdose, alcohol-related incidents (e.g., driving accidents)?\n\nInfluences on childhood outcomes\n\nHow are juvenile healthcare outcomes impacted by adult health-related practices (e.g., smoking, drinking, diet)?\n(Note: All five topics above contribute to an overall theme of “the impact of race, social and demographic factors on health, survival, and mortality.”)"
+    "text": "Project Topics\n(Note: All five topics below contribute to an overall theme of “the impact of race, social and demographic factors on health, survival, and mortality.”)\nProject 1: Premature deaths\nDo income inequality, unemployment and high school completion rates affect the number of premature deaths of certain racial groups at the county level?\nProject 2: Preventable hospital stays\nDo income inequality, unemployment and high school completion rates affect the number of preventable hospital stays of certain racial groups at the county level?\nProject 3: Mental health\nDo the number of mental health professionals per county affect the number of poor mental health days?\nProject 4: Drug overdose alcohol related deaths\nAre there demographic and social factors that are predictors of drug overdose, alcohol-related incidents (e.g., driving accidents)?\nProject 5: Influences on childhood outcomes\nHow are juvenile healthcare outcomes impacted by adult health-related practices (e.g., smoking, drinking, diet)?"
   },
   {
     "objectID": "health/project/description.html#analysis",
@@ -1029,18 +1022,11 @@
     "text": "Starter code\n\nlibrary(tidyverse)\nnfl_passing &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/nfl_passing.csv\")\n\nIn case you’re curious, the code to build this dataset can be found below.\n\nlibrary(tidyverse)\nlibrary(nflfastR) # install.packages(\"nflverse\")\nnfl_pbp &lt;- load_pbp(2023)\nnfl_passing &lt;- nfl_pbp |&gt; \n  filter(play_type == \"pass\", season_type == \"REG\", \n         !is.na(epa), !is.na(posteam), posteam != \"\") |&gt; \n  select(# player info attempting the pass\n         passer_player_name, passer_player_id, posteam,\n         # info about the pass:\n         complete_pass, interception, yards_gained, touchdown,\n         pass_location, pass_length, air_yards, yards_after_catch, epa, wpa,\n         shotgun, no_huddle, qb_dropback, qb_hit, sack,\n         # context about the receiver:\n         receiver_player_name, receiver_player_id,\n         # team context\n         posteam, defteam, posteam_type,\n         # play and game context\n         play_id, yardline_100, side_of_field, down, qtr, play_clock,\n         half_seconds_remaining, game_half, game_id,\n         home_team, away_team, home_score, away_score,\n         # description of play\n         desc)"
   },
   {
-    "objectID": "sports/project/report-template.html",
-    "href": "sports/project/report-template.html",
-    "title": "Title",
-    "section": "",
-    "text": "Describe the problem and why it is important."
-  },
-  {
     "objectID": "sports/project/report-template.html#introduction",
     "href": "sports/project/report-template.html#introduction",
     "title": "Title",
-    "section": "",
-    "text": "Describe the problem and why it is important."
+    "section": "Introduction",
+    "text": "Introduction\nDescribe the problem and why it is important."
   },
   {
     "objectID": "sports/project/report-template.html#data",
@@ -1075,7 +1061,7 @@
     "href": "sports/project/report-template.html#appendix-a-quick-tutorial",
     "title": "Title",
     "section": "Appendix: A quick tutorial",
-    "text": "Appendix: A quick tutorial\n(Feel free to remove this section when you submit)\nThis a Quarto document. To learn more about Quarto see https://quarto.org. You can use the Render button to see what it looks like in HTML.\n\nText formatting\nText can be bolded with double asterisks and italicized with single asterisks. Monospace text, such as for short code snippets, uses backticks. Links are written like this.\nBulleted lists can be written with asterisks:\n\nEach item starts on a new line with an asterisk.\nItems should start on the beginning of the line.\nLeave blank lines after the end of the list so the list does not continue.\n\nMathematics can be written with LaTeX syntax using dollar signs. For instance, using single dollar signs we can write inline math: (-b \\pm \\sqrt{b^2 - 4ac})/2a.\nTo write math in “display style”, i.e. displayed on its own line centered on the page, we use double dollar signs: \nx^2 + y^2 = 1\n\n\n\nCode blocks\nCode blocks are evaluated sequentially when you hit Render. As the code runs, R prints out which block is running, so naming blocks is useful if you want to know which one takes a long time. After the block name, you can specify chunk options. For example, echo controls whether the code is printed in the document. By default, output is printed in the document in monospace:\n\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n\n\nChunk options can also be written inside the code block, which is helpful for really long options, as we’ll see soon.\n\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n\n\n\n\nFigures\nIf a code block produces a plot or figure, this figure will automatically be inserted inline in the report. That is, it will be inserted exactly where the code block is.\n\n\n\n\n\nThis is a caption. It should explain what’s in the figure and what’s interesting about it. For instance: There is a negative, strong linear correlation between miles per gallon and horsepower for US cars in the 1970s.\n\n\n\n\nNotice the use of fig-width and fig-height to control the figure’s size (in inches). These control the sizes given to R when it generates the plot, so R proportionally adjusts the font sizes to be large enough.\n\n\nTables\nUse the knitr::kable() function to print tables as HTML:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n\nMazda RX4\n21.0\n6\n160\n110\n3.90\n2.620\n16.46\n0\n1\n4\n4\n\n\nMazda RX4 Wag\n21.0\n6\n160\n110\n3.90\n2.875\n17.02\n0\n1\n4\n4\n\n\nDatsun 710\n22.8\n4\n108\n93\n3.85\n2.320\n18.61\n1\n1\n4\n1\n\n\nHornet 4 Drive\n21.4\n6\n258\n110\n3.08\n3.215\n19.44\n1\n0\n3\n1\n\n\nHornet Sportabout\n18.7\n8\n360\n175\n3.15\n3.440\n17.02\n0\n0\n3\n2\n\n\n\n\n\nWe can summarize model results with a table. For instance, suppose we fit a linear regression model:\n\nmodel1 &lt;- lm(mpg ~ disp + hp + drat, data = mtcars)\n\nIt is not appropriate to simply print summary(model1) into the report. If we want the reader to understand what models we have fit and what their results are, we should provide a nicely formatted table. A simple option is to use the tidy() function from the broom package to get a data frame of the model fit, and simply report that as a table.\n\n\n\nPredicting fuel economy using vehicle features. \n\n\nTerm\nEstimate\nSE\nt\np\n\n\n\n\n(Intercept)\n19.34\n6.37\n3.04\n0.01\n\n\ndisp\n-0.02\n0.01\n-2.05\n0.05\n\n\nhp\n-0.03\n0.01\n-2.34\n0.03\n\n\ndrat\n2.71\n1.49\n1.83\n0.08"
+    "text": "Appendix: A quick tutorial\n(Feel free to remove this section when you submit)\nThis a Quarto document. To learn more about Quarto see https://quarto.org. You can use the Render button to see what it looks like in HTML.\n\nText formatting\nText can be bolded with double asterisks and italicized with single asterisks. Monospace text, such as for short code snippets, uses backticks. (Note these are different from quotation marks or apostrophes.) Links are written like this.\nBulleted lists can be written with asterisks:\n\nEach item starts on a new line with an asterisk.\nItems should start on the beginning of the line.\nLeave blank lines after the end of the list so the list does not continue.\n\nMathematics can be written with LaTeX syntax using dollar signs. For instance, using single dollar signs we can write inline math: (-b \\pm \\sqrt{b^2 - 4ac})/2a.\nTo write math in “display style”, i.e. displayed on its own line centered on the page, we use double dollar signs: \nx^2 + y^2 = 1\n\n\n\nCode blocks\nCode blocks are evaluated sequentially when you hit Render. As the code runs, R prints out which block is running, so naming blocks is useful if you want to know which one takes a long time. After the block name, you can specify chunk options. For example, echo controls whether the code is printed in the document. By default, output is printed in the document in monospace:\n\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n\n\nChunk options can also be written inside the code block, which is helpful for really long options, as we’ll see soon.\n\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n\n\n\n\nFigures\nIf a code block produces a plot or figure, this figure will automatically be inserted inline in the report. That is, it will be inserted exactly where the code block is.\n\n\n\n\n\nThis is a caption. It should explain what’s in the figure and what’s interesting about it. For instance: There is a negative, strong linear correlation between miles per gallon and horsepower for US cars in the 1970s.\n\n\n\n\nNotice the use of fig-width and fig-height to control the figure’s size (in inches). These control the sizes given to R when it generates the plot, so R proportionally adjusts the font sizes to be large enough.\n\n\nTables\nUse the knitr::kable() function to print tables as HTML:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n\nMazda RX4\n21.0\n6\n160\n110\n3.90\n2.620\n16.46\n0\n1\n4\n4\n\n\nMazda RX4 Wag\n21.0\n6\n160\n110\n3.90\n2.875\n17.02\n0\n1\n4\n4\n\n\nDatsun 710\n22.8\n4\n108\n93\n3.85\n2.320\n18.61\n1\n1\n4\n1\n\n\nHornet 4 Drive\n21.4\n6\n258\n110\n3.08\n3.215\n19.44\n1\n0\n3\n1\n\n\nHornet Sportabout\n18.7\n8\n360\n175\n3.15\n3.440\n17.02\n0\n0\n3\n2\n\n\n\n\n\nWe can summarize model results with a table. For instance, suppose we fit a linear regression model:\n\nmodel1 &lt;- lm(mpg ~ disp + hp + drat, data = mtcars)\n\nIt is not appropriate to simply print summary(model1) into the report. If we want the reader to understand what models we have fit and what their results are, we should provide a nicely formatted table. A simple option is to use the tidy() function from the broom package to get a data frame of the model fit, and simply report that as a table.\n\n\n\nPredicting fuel economy using vehicle features. \n\n\nTerm\nEstimate\nSE\nt\np\n\n\n\n\n(Intercept)\n19.34\n6.37\n3.04\n0.01\n\n\ndisp\n-0.02\n0.01\n-2.05\n0.05\n\n\nhp\n-0.03\n0.01\n-2.34\n0.03\n\n\ndrat\n2.71\n1.49\n1.83\n0.08"
   },
   {
     "objectID": "sports/project/description.html",
@@ -1096,7 +1082,7 @@
     "href": "sports/project/description.html#deliverables",
     "title": "Project Guidelines",
     "section": "Deliverables",
-    "text": "Deliverables\nThis project has the following three key deliverables:\n\nReport [template] (right click and choose “Save Link As…” to download)\n\nDUE THURSDAY JULY 25\nYour report should be written using Quarto and submitted as a rendered .html file. We recommend using an IDMRaD (Introduction, Data, Methods, Results and Discussion) report format, with details provided in the report template.\n\nPoster [template]\n\nDUE WEDNESDAY JULY 24 (so that we have time to print the posters)\nYour poster should be submitted as a .pdf file. We will then make a printed copy for the poster session on the final day (July 26).\n\nPresentation\n\nDUE THURSDAY JULY 25\nEach group will give an 8-minute presentation on the final day (July 26). The presentation should effectively have the same structure as your report with an introduction, followed by data description, an overview of methods, followed by results and discussion. Your slides may be created in any software, but we prefer submissions in the form of a .pdf file or a Google Slides link."
+    "text": "Deliverables\nThis project has the following three key deliverables:\n\nReport [template] (right click and choose “Save Link As…” to download)\n\nDUE THURSDAY JULY 25\nYour report should be written using Quarto and submitted as a rendered .html file. We recommend using an IDMRaD (Introduction, Data, Methods, Results and Discussion) report format, with details provided in the report template.\n\nPoster [template]\n\nDUE WEDNESDAY JULY 24 (so that we have time to print the posters)\nYour poster should be submitted as a .pdf file. We will then make a printed copy for the poster session on the final day (July 26).\n\nPresentation\n\nDUE THURSDAY JULY 25\nEach group will give an 8-minute presentation on the final day (July 26). The presentation should effectively have the same structure as your report with an introduction, followed by data description, an overview of methods, followed by results and discussion. Your slides may be created in any software, but we ony accept submissions in the form of a .pdf file, a Google Slides link, or a Quarto presentation (self-contained .html file or hosted online)."
   },
   {
     "objectID": "sports/project/description.html#analysis",
@@ -2160,14 +2146,14 @@
     "href": "lectures/09-presentation.html#begin-with-background-and-motivation",
     "title": "Presentations",
     "section": "Begin with background and motivation",
-    "text": "Begin with background and motivation\nEvery presentation has a story:\n\nWhat is the motivation? Why should people care about your work?\nYou want to build up want your work is trying to address\n\n\nExample nflWAR talk from 2017:\n\nDo NOT begin with: “We’re introducing WAR for NFL!”\nInstead begin with current state of NFL analytics and need for better, reproducible player level-metrics\n\n\n\nDo NOT include an outline slide!\n\nYour presentation should flow naturally"
+    "text": "Begin with background and motivation\nEvery presentation has a story:\n\nWhat is the motivation? Why should people care about your work?\nYou want to build up what your work is trying to address\n\n\nExample: Ron’s nflWAR talk at NESSIS 2017:\n\nDo NOT begin with: “We’re introducing [project topic]” (WAR for NFL)\nInstead begin with current state of NFL analytics and need for better, reproducible player level-metrics\n\n\n\nDo NOT include an outline slide!\n\nYour presentation should flow naturally\n\n\n\nOr you can begin with a “creative” intro…"
   },
   {
     "objectID": "lectures/09-presentation.html#describing-the-data",
     "href": "lectures/09-presentation.html#describing-the-data",
     "title": "Presentations",
     "section": "Describing the data",
-    "text": "Describing the data\nYou want to provide a general overview of your dataset:\n\nWhat are your observations? i.e., what does each row of your dataset represent?\n\n\n\nWhat are the relevant variables / features? i.e., what are the columns of interest?\n\nBe careful though with many variables - avoid just listing everything!\nSimplify by describing groups of variables together\n\n\n\n\nUse examples - makes your data explicit and concrete for the audience\n\nBut do NOT print out raw R console output or screenshots of output!\nUse text or a clean formatted table (via knitr, DT, gt)"
+    "text": "Describing the data\nYou want to provide a general overview of your dataset:\n\nWhat are your observations? i.e., what does each row of your dataset represent?\n\n\n\nWhat are the relevant variables/features? i.e., what are the columns of interest?\n\nBe careful though with many variables - avoid just listing everything!\nSimplify by describing groups of variables together\n\n\n\n\nUse examples - makes your data explicit and concrete for the audience\n\nBut do NOT print out raw R console output or screenshots of output!\nUse text or a clean formatted table (via e.g., knitr, DT, gt, etc.)"
   },
   {
     "objectID": "lectures/09-presentation.html#introducing-and-describing-methods",
@@ -2212,11 +2198,25 @@
     "text": "Additional tips and reminders\nUse pauses effectively to highlight points and explain steps\n\n\nShowing all of your text at once can overwhelm your audience\n\n\n\nBut\n\n\ndon’t\n\n\nbe\n\n\nridiculous\n\n\nRemember: memory overload is real!\n\nDo NOT introduce too much notation at once\nRepetitive language and usage of words are useful and reminders for the audience\n\nUse consistent language and terminology throughout the talk\n\n\n\n\nKnow your audience!"
   },
   {
+    "objectID": "lectures/09-presentation.html#design-tips",
+    "href": "lectures/09-presentation.html#design-tips",
+    "title": "Presentations",
+    "section": "Design tips",
+    "text": "Design tips\n\nLess text!\nYour plot should be big enough (font size, line width, point size, etc.)\nReformat variable names (don’t show the original names in the data)\nIf a table can be represented by a figure, turn it into a figure (e.g., comparison of model evaluation metrics)\nAdvices from Andrew Patton:\n\n\nYou don’t need 17 decimal points for anything ever.\n\n\nMake sure your figures and charts, etc. all display the correct size. If I have to zoom in 27 times to read the legends that’s not going to help your case.\n\n\nPick better colors for your charts. Your submission should look expensive."
+  },
+  {
+    "objectID": "lectures/09-presentation.html#resources",
+    "href": "lectures/09-presentation.html#resources",
+    "title": "Presentations",
+    "section": "Resources",
+    "text": "Resources\n\n\n36-SURE.github.io"
+  },
+  {
     "objectID": "lectures/05-kmeans.html#statistical-learning",
     "href": "lectures/05-kmeans.html#statistical-learning",
     "title": "Unsupervised learning: \\(k\\)-means clustering",
     "section": "Statistical learning",
-    "text": "Statistical learning\n\nStatistical learning refers to a set of tools for making sense of complex datasets. — Preface of ISLR:\n\n\nGeneral setup: Given a dataset of \\(p\\) variables (columns) and \\(n\\) observations (rows) \\(x_1,\\dots,x_n\\).\nFor observation \\(i\\), \\[x_{i1},x_{i2},\\ldots,x_{ip} \\sim P \\,,\\] where \\(P\\) is a \\(p\\)-dimensional distribution that we might not know much about a priori"
+    "text": "Statistical learning\n\nStatistical learning refers to a set of tools for making sense of complex datasets. — Preface of ISLR\n\n\nGeneral setup: Given a dataset of \\(p\\) variables (columns) and \\(n\\) observations (rows) \\(x_1,\\dots,x_n\\).\nFor observation \\(i\\), \\[x_{i1},x_{i2},\\ldots,x_{ip} \\sim P \\,,\\] where \\(P\\) is a \\(p\\)-dimensional distribution that we might not know much about a priori"
   },
   {
     "objectID": "lectures/05-kmeans.html#statistical-learning-vs.-machine-learning",
@@ -2272,7 +2272,7 @@
     "href": "lectures/05-kmeans.html#units-matter-in-clustering",
     "title": "Unsupervised learning: \\(k\\)-means clustering",
     "section": "Units matter in clustering",
-    "text": "Units matter in clustering\n\nOne variable may dominate others when computing Euclidean distance because its range is much larger\nCan standardize each variable in the dataset to have mean 0 and standard deviation 1 with scale()\nBut we may value the separation in that variable! (so just be careful…)"
+    "text": "Units matter in clustering\n\nVariables are typically measured in different units\nOne variable may dominate others when computing Euclidean distance because its range is much larger\nScaling of the variables matters!\nStandardize each variable in the dataset to have mean 0 and standard deviation 1 with scale()"
   },
   {
     "objectID": "lectures/05-kmeans.html#k-means-clustering-1",
@@ -2629,105 +2629,147 @@
     "href": "lectures/14-logistic.html#classification",
     "title": "Supervised learning: logistic regression",
     "section": "Classification",
-    "text": "Classification"
+    "text": "Classification\n\nCategorical variables take values in an unordered set with different categories\nClassification: predicting a categorical response \\(Y\\) for an observation (since it involves assigning the observation to a category/class)\nOften, we are more interested in estimating the probability for each category of the response \\(Y\\)\nClassification is different from clustering, since we know the true label \\(Y\\)\nWe will focus on binary categorical response (categorical response variables with only two categories)\n\nExamples: whether it will rain or not tomorrow, whether the kicker makes or misses a field goal attempt"
   },
   {
     "objectID": "lectures/14-logistic.html#logistic-regression",
     "href": "lectures/14-logistic.html#logistic-regression",
     "title": "Supervised learning: logistic regression",
     "section": "Logistic regression",
-    "text": "Logistic regression\nAssuming that we are dealing with two classes, the possible observed values for \\(Y\\) are 0 and 1, \\[\nY \\mid x \\sim {\\rm Binomial}(n=1,p=\\mathbb{E}[Y\\mid x]) = \\text{Bernoulli}(p = \\mathbb{E}[Y\\mid x])\n\\]\n\nTo limit the regression betweewn \\([0, 1]\\): use the logit function, aka the log-odds ratio\n\\[\n\\text{logit}(p(x)) = \\log \\left[ \\frac{p(x)}{1 - p(x)} \\right] =  \\log\\left[\\frac{\\mathbb{E}[Y \\mid x]}{1-\\mathbb{E}[Y \\mid x]}\\right] = \\beta_0 + \\beta_1 x_1 + \\cdots + \\beta_p x_p\n\\]\n\n\nmeaning \\[\np(x) = \\mathbb{E}[Y \\mid x] = \\frac{e^{\\beta_0 + \\beta_1 x_1 + \\cdots + \\beta_p x_p}}{1 + e^{\\beta_0 + \\beta_1 x_1 + \\cdots + \\beta_p x_p}}\n\\]"
+    "text": "Logistic regression\n\nReview: in linear regression, the response variable \\(Y\\) is continuous\nLogistic regression is used to model binary outcomes (i.e. \\(Y \\in \\{0, 1\\}\\))\nMany concepts are similar to the linear regression\n\ntests for coefficients\nindicator variables\nmodel selection techniques\n\nOther concepts are different\n\ninterpretation of coefficients\nresiduals are not normally distributed\nmodel evaluation"
+  },
+  {
+    "objectID": "lectures/14-logistic.html#why-not-linear-regression-for-categorical-data",
+    "href": "lectures/14-logistic.html#why-not-linear-regression-for-categorical-data",
+    "title": "Supervised learning: logistic regression",
+    "section": "Why not linear regression for categorical data?",
+    "text": "Why not linear regression for categorical data?\nFrom ISLR:\n\n\n\n\nLinear regression\npredicted probabilities might be outside the \\([0, 1]\\) interval\n\nLogistic regression\nall probabilities lie between 0 and 1"
+  },
+  {
+    "objectID": "lectures/14-logistic.html#logistic-regression-1",
+    "href": "lectures/14-logistic.html#logistic-regression-1",
+    "title": "Supervised learning: logistic regression",
+    "section": "Logistic regression",
+    "text": "Logistic regression\n\nLogistic regression models the probability of success \\(p(x)\\) of a binary response variable \\(Y \\in \\{0, 1\\}\\)\nTo limit the regression between \\([0, 1]\\), we use the logit function, or the log-odds ratio\n\n\\[\n\\log \\left( \\frac{p(x)}{1 - p(x)} \\right) = \\beta_0 + \\beta_1 x_1 + \\cdots + \\beta_p x_p\n\\]\n\nor equivalently,\n\\[\np(x) =  \\frac{e^{\\beta_0 + \\beta_1 x_1 + \\cdots + \\beta_p x_p}}{1 + e^{\\beta_0 + \\beta_1 x_1 + \\cdots + \\beta_p x_p}}\n\\] . . .\n\nNote: \\(p(x)= P(Y = 1 \\mid X = x) = \\mathbb E[Y \\mid X = x]\\)"
   },
   {
     "objectID": "lectures/14-logistic.html#major-difference-between-linear-and-logistic-regression",
     "href": "lectures/14-logistic.html#major-difference-between-linear-and-logistic-regression",
     "title": "Supervised learning: logistic regression",
     "section": "Major difference between linear and logistic regression",
-    "text": "Major difference between linear and logistic regression\nLogistic regression involves numerical optimization\n\n\\(y_i\\) is observed response for \\(n\\) observations - either 0 or 1\n\n\n\nwe need to use an iterative algorithm to find \\(\\beta\\)’s that maximize the likelihood\n\n\\[\\prod_{i=1}^{n} p\\left(x_{i}\\right)^{y_{i}}\\left(1-p\\left(x_{i}\\right)\\right)^{1-y_{i}}\\]\n\n\n\nNewton’s method: start with initial guess, calculate gradient of log-likelihood, add amount proportional to the gradient to parameters, moving up log-likelihood surface\n\n\n\n\nmeans logistic regression runs more slowly than linear regression\n\n\n\n\nif you’re interested: you use iteratively re-weighted least squares, Section 12.3.1"
+    "text": "Major difference between linear and logistic regression\nLogistic regression involves numerical optimization\n\n\\(y_i\\) is observed response for \\(n\\) observations, either 0 or 1\n\n\n\nWe need to use an iterative algorithm to find \\(\\beta\\)’s that maximize the likelihood \\[\\prod_{i=1}^{n} p\\left(x_{i}\\right)^{y_{i}}\\left(1-p\\left(x_{i}\\right)\\right)^{1-y_{i}}\\]\n\n\n\n\nNewton’s method: start with initial guess, calculate gradient of log-likelihood, add amount proportional to the gradient to parameters, moving up log-likelihood surface\n\n\n\n\nThis means logistic regression runs more slowly than linear regression\n\n\n\n\nif you’re interested: iteratively re-weighted least squares, see here"
   },
   {
     "objectID": "lectures/14-logistic.html#inference-with-logistic-regression",
     "href": "lectures/14-logistic.html#inference-with-logistic-regression",
     "title": "Supervised learning: logistic regression",
     "section": "Inference with logistic regression",
-    "text": "Inference with logistic regression\nMajor motivation for logistic regression (and all GLMs) is inference\n\nhow does the response change when we change a predictor by one unit?\n\n\nFor linear regression, the answer is straightforward\n\\[\\mathbb{E}[Y \\mid x] = \\beta_0 + \\beta_1 x_1\\]\n\n\nFor logistic regression… it is a little less straightforward,\n\\[\nE[Y \\mid x] = \\frac{e^{\\beta_0 + \\beta_1 x_1 + \\cdots + \\beta_p x_p}}{1 + e^{\\beta_0 + \\beta_1 x_1 + \\cdots + \\beta_p x_p}}\n\\]\n\n\n\nthe predicted response varies non-linearly with the predictor variable values\none convention is to fall back upon the concept of odds"
+    "text": "Inference with logistic regression\n\nMajor motivation for logistic regression (and all GLMs) is inference\n\nHow does the response change when we change a predictor by one unit?\n\n\n\n\nFor linear regression, the answer is straightforward \\[\\mathbb{E}[Y \\mid x] = \\beta_0 + \\beta_1 x_1\\]\n\n\n\n\nFor logistic regression, it is a little less straightforward \\[\\mathbb E[Y \\mid x] = \\frac{e^{\\beta_0 + \\beta_1 x_1 + \\cdots + \\beta_p x_p}}{1 + e^{\\beta_0 + \\beta_1 x_1 + \\cdots + \\beta_p x_p}}\\]\n\nThe predicted response varies non-linearly with the predictor variable values\nInterpretation on the odds scale"
   },
   {
     "objectID": "lectures/14-logistic.html#the-odds-interpretation",
     "href": "lectures/14-logistic.html#the-odds-interpretation",
     "title": "Supervised learning: logistic regression",
     "section": "The odds interpretation",
-    "text": "The odds interpretation\nPretend the predicted probability is 0.8 given a particular predictor variable value\n\njust pretend we only have one predictor variable\n\n\nThis means that if we were to repeatedly sample response values given that predictor variable value: we expect class 1 to appear 4 times as often as class 0\n\\[Odds = \\frac{\\mathbb{E}[Y \\mid x]}{1-\\mathbb{E}[Y \\mid x]} = \\frac{0.8}{1-0.8} = 4 = e^{\\beta_0+\\beta_1x}\\]\nThus we say that for the given predictor variable value, the \\(Odds\\) are 4 (or 4-1) in favor of class 1\n\n\nHow does the odds change if I change the value of a predictor variable by one unit?\n\n\n\\[Odds_{\\rm new} = e^{\\beta_0+\\beta_1(x+1)} = e^{\\beta_0+\\beta_1x}e^{\\beta_1} = e^{\\beta_1}Odds_{\\rm old}\\]\nFor every unit change in \\(x\\), the odds change by a factor \\(e^{\\beta_1}\\)"
+    "text": "The odds interpretation\n\nThe odds of an event are the probability of the event divided by the probability of the event not occurring\n\nPretend the predicted probability is 0.8 given a particular predictor variable value\n\njust pretend we only have one predictor variable\n\n\nThis means that if we were to repeatedly sample response values given that predictor variable value: we expect class 1 to appear 4 times as often as class 0\n\\[Odds = \\frac{\\mathbb{E}[Y \\mid x]}{1-\\mathbb{E}[Y \\mid x]} = \\frac{0.8}{1-0.8} = 4 = e^{\\beta_0+\\beta_1x}\\]\nThus we say that for the given predictor variable value, the \\(Odds\\) are 4 (or 4-1) in favor of class 1\n\n\nHow does the odds change if I change the value of a predictor variable by one unit?\n\n\n\\[Odds_{\\rm new} = e^{\\beta_0+\\beta_1(x+1)} = e^{\\beta_0+\\beta_1x}e^{\\beta_1} = e^{\\beta_1}Odds_{\\rm old}\\]\nFor every unit change in \\(x\\), the odds change by a factor \\(e^{\\beta_1}\\)"
   },
   {
-    "objectID": "lectures/14-logistic.html#example-data-nfl-field-goal-attempts",
-    "href": "lectures/14-logistic.html#example-data-nfl-field-goal-attempts",
+    "objectID": "lectures/14-logistic.html#data-diabetes-in-the-pima",
+    "href": "lectures/14-logistic.html#data-diabetes-in-the-pima",
     "title": "Supervised learning: logistic regression",
-    "section": "Example data: NFL field goal attempts",
-    "text": "Example data: NFL field goal attempts\nCreated dataset using nflscrapR-data of all NFL field goal attempts from 2009 to 2019\n\nnfl_fg_attempts &lt;- read_csv(\"http://www.stat.cmu.edu/cmsac/sure/2022/materials/data/sports/glm_examples/nfl_fg_attempt_data.csv\")\nnfl_fg_attempts\n\n# A tibble: 10,811 × 11\n   kicker_player_id kicker_player_name   qtr score_differential home_team\n   &lt;chr&gt;            &lt;chr&gt;              &lt;dbl&gt;              &lt;dbl&gt; &lt;chr&gt;    \n 1 00-0020962       R.Bironas              1                  0 PIT      \n 2 00-0020962       R.Bironas              2                  0 PIT      \n 3 00-0020962       R.Bironas              4                  0 PIT      \n 4 00-0020737       J.Reed                 4                 -3 PIT      \n 5 00-0020737       J.Reed                 5                  0 PIT      \n 6 00-0004091       P.Dawson               1                  0 CLE      \n 7 00-0010072       R.Longwell             1                 -3 CLE      \n 8 00-0004091       P.Dawson               2                 -7 CLE      \n 9 00-0010072       R.Longwell             4                 12 CLE      \n10 00-0006800       J.Hanson               1                -14 NO       \n# ℹ 10,801 more rows\n# ℹ 6 more variables: posteam &lt;chr&gt;, posteam_type &lt;chr&gt;, kick_distance &lt;dbl&gt;,\n#   pbp_season &lt;dbl&gt;, abs_score_diff &lt;dbl&gt;, is_fg_made &lt;dbl&gt;"
+    "section": "Data: diabetes in the Pima",
+    "text": "Data: diabetes in the Pima\n\nEach observation represents one Pima woman, at least 21 years old, who was tested for diabetes as part of the study.\ntype: if they had diabetes according to the diagnostic criteria\nnpreg: number of pregnancies\nbp: blood pressure\n\n\nlibrary(tidyverse)\ntheme_set(theme_light())\npima &lt;- as_tibble(MASS::Pima.tr)\npima &lt;- pima |&gt; \n  mutate(pregnancy = ifelse(npreg &gt; 0, \"Yes\", \"No\")) # whether the patient has had any pregnancies"
   },
   {
     "objectID": "lectures/14-logistic.html#fitting-a-logistic-regression-model",
     "href": "lectures/14-logistic.html#fitting-a-logistic-regression-model",
     "title": "Supervised learning: logistic regression",
     "section": "Fitting a logistic regression model",
-    "text": "Fitting a logistic regression model\n\n\n\nWe use the glm function (similar to lm)\nSpecify the family is binomial\n\n\ninit_logit &lt;- glm(is_fg_made ~ kick_distance, #&lt;&lt;\n                  data = nfl_fg_attempts,\n                  family = \"binomial\") #&lt;&lt;\n\n\nView predicted probability relationship\n\n\nnfl_fg_attempts %&gt;%\n  mutate(pred_prob = init_logit$fitted.values) %&gt;% #&lt;&lt;\n  ggplot(aes(x = kick_distance)) +\n  geom_line(aes(y = pred_prob), \n            color = \"blue\") +\n  geom_point(aes(y = is_fg_made), \n             alpha = 0.3,\n             color = \"darkorange\") +\n  theme_bw()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsummary(init_logit)\n\n\nCall:\nglm(formula = is_fg_made ~ kick_distance, family = \"binomial\", \n    data = nfl_fg_attempts)\n\nCoefficients:\n               Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)    5.916656   0.145371   40.70   &lt;2e-16 ***\nkick_distance -0.104365   0.003255  -32.06   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 9593.1  on 10810  degrees of freedom\nResidual deviance: 8277.5  on 10809  degrees of freedom\nAIC: 8281.5\n\nNumber of Fisher Scoring iterations: 5"
+    "text": "Fitting a logistic regression model\n\nUse the glm function, but specify the family is binomial\nGet coefficients table using the tidy() function in the broom package\nCould exponentiate the coefficient estimates (log-odds) to back-transform and get the odds\n\n\npima_logit &lt;- glm(type ~ pregnancy + bp, data = pima, family = binomial)\nlibrary(broom)\n# summary(pima_logit)\ntidy(pima_logit)\n\n# A tibble: 3 × 5\n  term         estimate std.error statistic p.value\n  &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 (Intercept)   -3.16      1.08       -2.94 0.00329\n2 pregnancyYes  -0.468     0.427      -1.10 0.273  \n3 bp             0.0403    0.0140      2.89 0.00391\n\ntidy(pima_logit, conf.int = TRUE, exponentiate = TRUE)\n\n# A tibble: 3 × 7\n  term         estimate std.error statistic p.value conf.low conf.high\n  &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;\n1 (Intercept)    0.0422    1.08       -2.94 0.00329  0.00472     0.329\n2 pregnancyYes   0.626     0.427      -1.10 0.273    0.272       1.47 \n3 bp             1.04      0.0140      2.89 0.00391  1.01        1.07"
   },
   {
-    "objectID": "lectures/14-logistic.html#what-is-deviancehttpsen.wikipedia.orgwikideviance_statistics",
-    "href": "lectures/14-logistic.html#what-is-deviancehttpsen.wikipedia.orgwikideviance_statistics",
+    "objectID": "lectures/14-logistic.html#interpreting-a-logistic-regression-model",
+    "href": "lectures/14-logistic.html#interpreting-a-logistic-regression-model",
     "title": "Supervised learning: logistic regression",
-    "section": "What is [Deviance](https://en.wikipedia.org/wiki/Deviance_(statistics)?",
-    "text": "What is [Deviance](https://en.wikipedia.org/wiki/Deviance_(statistics)?\nFor model of interest \\(\\mathcal{M}\\) the total deviance is:\n\\[D_{\\mathcal{M}}= -2 \\log \\frac{\\mathcal{L}_{\\mathcal{M}}}{\\mathcal{L}_{\\mathcal{S}}} = 2\\left(\\log  \\mathcal{L}_{\\mathcal{S}}-\\log  \\mathcal{L}_{\\mathcal{M}}\\right)\\]\n\n\\(\\mathcal{L}_{\\mathcal{M}}\\) is the likelihood for model \\(\\mathcal{M}\\)\n\n\n\n\\(\\mathcal{L}_{\\mathcal{S}}\\) is the likelihood for the saturated model, with \\(n\\) parameters! (i.e., a perfect fit)\nCan think of \\(\\mathcal{L}_{\\mathcal{S}}\\) as some constant that does not change\n\n\n\nDeviance is a measure of goodness of fit: the smaller the deviance, the better the fit\n\nGeneralization of RSS in linear regression to any distribution family"
+    "section": "Interpreting a logistic regression model",
+    "text": "Interpreting a logistic regression model\n\ntidy(pima_logit)\n\n# A tibble: 3 × 5\n  term         estimate std.error statistic p.value\n  &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 (Intercept)   -3.16      1.08       -2.94 0.00329\n2 pregnancyYes  -0.468     0.427      -1.10 0.273  \n3 bp             0.0403    0.0140      2.89 0.00391\n\n\n\nIntercept: the estimated log-odds of diabetes for a Pima woman who has never been pregnant and has a diastolic blood pressure of 0 (hmm…) are -3.16, so the odds are exp(-3.16) = 0.0422\nPregnancy: pregnancy changes the log-odds of diabetes, relative to the baseline value, by -0.468. The odds ratio is exp(-0.47) = 0.626\n\nThe odds of diabetes for those that has had at least one pregnancies is 0.626 times that the odds of diabetes for those with no previous pregnancies\n\nBlood pressure: each unit of increase in blood pressure (in mmHg) is associated with an increase in the log-odds of diabetes of 0.0403, or an increase in the odds of diabetes by a multiplicative factor of exp(0.0403) = 1.04\n\nEvery extra mmHg in blood pressure multiplies the odds of diabetes by 1.04"
   },
   {
-    "objectID": "lectures/14-logistic.html#logistic-regression-output",
-    "href": "lectures/14-logistic.html#logistic-regression-output",
+    "objectID": "lectures/14-logistic.html#view-predicted-probability-relationship",
+    "href": "lectures/14-logistic.html#view-predicted-probability-relationship",
     "title": "Supervised learning: logistic regression",
-    "section": "Logistic regression output",
-    "text": "Logistic regression output\nDeviance Residuals: \n    Min       1Q   Median       3Q      Max  \n-2.7752   0.2420   0.4025   0.6252   1.5136 \nThe deviance residuals are contributions to total deviance (signed square roots of unit deviances) \\[\nd_i = \\mbox{sign}(y_i-\\hat{p}_i) \\sqrt{-2[y_i \\log \\hat{p}_i + (1-y_i) \\log (1 - \\hat{p}_i)]}\n\\] where \\(y_i\\) is the \\(i^{\\rm th}\\) observed response and \\(\\hat{p}_i\\) is the estimated probability of success\nCoefficients:\n               Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)    5.916656   0.145371   40.70   &lt;2e-16 ***\nkick_distance -0.104365   0.003255  -32.06   &lt;2e-16 ***\nThe intercept of the prediction curve is \\(e^{5.916656}\\) and \\(Odds_{\\rm new}/Odds_{\\rm old} = e^{-0.104365}\\)."
+    "section": "View predicted probability relationship",
+    "text": "View predicted probability relationship\n\npima |&gt; \n  mutate(pred_prob = fitted(pima_logit),\n         i_type = as.numeric(type == \"Yes\")) |&gt; \n  ggplot(aes(bp)) +\n  geom_line(aes(y = pred_prob, color = pregnancy), linewidth = 2) +\n  geom_point(aes(y = i_type), alpha = 0.3, color = \"darkorange\", size = 4)"
   },
   {
-    "objectID": "lectures/14-logistic.html#logistic-regression-output-1",
-    "href": "lectures/14-logistic.html#logistic-regression-output-1",
+    "objectID": "lectures/14-logistic.html#effects-plot",
+    "href": "lectures/14-logistic.html#effects-plot",
     "title": "Supervised learning: logistic regression",
-    "section": "Logistic regression output",
-    "text": "Logistic regression output\n    Null deviance: 9593.1  on 10810  degrees of freedom\nResidual deviance: 8277.5  on 10809  degrees of freedom\nAIC: 8281.5\n\nlogLik(init_logit)   # the maximum log-likelihood value\n\n'log Lik.' -4138.732 (df=2)\n\n\n\nResidual deviance is -2 times -4138.732, or 8277.5 (What about the saturated model?)\n\nNull deviance corresponds to intercept-only model\n\nAIC is \\(2k - 2\\log{\\cal L}\\) = \\(2 \\cdot k - 2 \\cdot (-4138.732)\\) = 8281.5\n\nwhere \\(k\\) is the number of degrees of freedom (here, df = 2)\n\n\n\n\nThese are all metrics of quality of fit of the model\nWe will consider these to be less important than test-set performances"
+    "section": "Effects plot",
+    "text": "Effects plot\n\nNonlinear relationship between blood pressure and probability of diabetes\nThe gap between women who were or were not previously pregnant is different across the range\n\n\nlibrary(ggeffects)\npima_logit |&gt; \n  ggeffect(terms = c(\"bp\", \"pregnancy\")) |&gt;\n  plot()"
   },
   {
-    "objectID": "lectures/14-logistic.html#logistic-regression-predictions",
-    "href": "lectures/14-logistic.html#logistic-regression-predictions",
+    "objectID": "lectures/14-logistic.html#deviancehttpsen.wikipedia.orgwikideviance_statistics",
+    "href": "lectures/14-logistic.html#deviancehttpsen.wikipedia.orgwikideviance_statistics",
     "title": "Supervised learning: logistic regression",
-    "section": "Logistic regression predictions",
-    "text": "Logistic regression predictions\nTo generate logistic regression predictions there are few things to keep in mind…\n\nthe fitted.values are on the probability scale: all are between 0 and 1\n\n\n\nbut the default for predict(init_logit) is the log-odds scale!\n\n\n\n\nwe change this with the type argument: predict(init_logit, type = \"response\")\n\n\n\nHow do we predict the class? e.g make or miss field goal?\n\n\n\npred_fg_outcome &lt;- ifelse(init_logit$fitted.values &gt; 0.5,\n                          \"make\", \"miss\")\n\n\ntypically if predicted probability is &gt; 0.5 then we predict success, else failure"
+    "section": "[Deviance](https://en.wikipedia.org/wiki/Deviance_(statistics)?",
+    "text": "[Deviance](https://en.wikipedia.org/wiki/Deviance_(statistics)?\nFor model of interest \\(\\mathcal{M}\\) the total deviance is:\n\\[D_{\\mathcal{M}}= -2 \\log \\frac{\\mathcal{L}_{\\mathcal{M}}}{\\mathcal{L}_{\\mathcal{S}}} = 2\\left(\\log  \\mathcal{L}_{\\mathcal{S}}-\\log  \\mathcal{L}_{\\mathcal{M}}\\right)\\]\n\n\\(\\mathcal{L}_{\\mathcal{M}}\\) is the likelihood for model \\(\\mathcal{M}\\)\n\n\n\n\\(\\mathcal{L}_{\\mathcal{S}}\\) is the likelihood for the saturated model, with \\(n\\) parameters! (i.e., a perfect fit)\nCan think of \\(\\mathcal{L}_{\\mathcal{S}}\\) as some constant that does not change\n\n\n\nDeviance is a measure of goodness-of-fit: the smaller the deviance, the better the fit\n\nGeneralization of RSS in linear regression to any distribution family"
+  },
+  {
+    "objectID": "lectures/14-logistic.html#deviance-residuals",
+    "href": "lectures/14-logistic.html#deviance-residuals",
+    "title": "Supervised learning: logistic regression",
+    "section": "Deviance residuals",
+    "text": "Deviance residuals\n\npima_logit |&gt; \n  residuals(type = \"deviance\") |&gt; \n  summary()\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n-1.5293 -0.9156 -0.7463 -0.0990  1.3205  1.9326 \n\n\nThe deviance residuals are contributions to total deviance (signed square roots of unit deviances)\n\\[d_i = \\mbox{sign}(y_i-\\hat{p}_i) \\sqrt{-2[y_i \\log \\hat{p}_i + (1-y_i) \\log (1 - \\hat{p}_i)]}\\]\nwhere \\(y_i\\) is the \\(i\\)-th observed response and \\(\\hat p_i\\) is the estimated probability of success\nNote: The use of the sign of the difference ensures that the deviance residuals are positive/negative when the observation is larger/smaller than predicted."
+  },
+  {
+    "objectID": "lectures/14-logistic.html#model-measures",
+    "href": "lectures/14-logistic.html#model-measures",
+    "title": "Supervised learning: logistic regression",
+    "section": "Model measures",
+    "text": "Model measures\n\nglance(pima_logit)\n\n# A tibble: 1 × 8\n  null.deviance df.null logLik   AIC   BIC deviance df.residual  nobs\n          &lt;dbl&gt;   &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt; &lt;int&gt;\n1          256.     199  -123.  252.  262.     246.         197   200\n\n\n\ndeviance = 2 * logLik\nnull.deviance corresponds to intercept-only model\nAIC = 2 * df.residual - 2 * logLik\nWe will consider these to be less important than out-of-sample/test set performances"
+  },
+  {
+    "objectID": "lectures/14-logistic.html#predictions",
+    "href": "lectures/14-logistic.html#predictions",
+    "title": "Supervised learning: logistic regression",
+    "section": "Predictions",
+    "text": "Predictions\n\nThe default output of predict() is on the log-odds scale\nTo get predicted probabilities, specify type = \"response\n\n\npima_pred_prob &lt;- predict(pima_logit, type = \"response\")\n\n\nHow do we predict the class (diabetes or not)?\nTypically if predicted probability is &gt; 0.5 then we predict Yes, else No\n\nCould also be encoded as 1 and 0\n\n\n\npima_pred_class &lt;- ifelse(pima_pred_prob &gt; 0.5, \"Yes\", \"No\")\npima_pred_binary &lt;- ifelse(pima_pred_prob &gt; 0.5, 1, 0)"
   },
   {
     "objectID": "lectures/14-logistic.html#model-assessment",
     "href": "lectures/14-logistic.html#model-assessment",
     "title": "Supervised learning: logistic regression",
     "section": "Model assessment",
-    "text": "Model assessment\nMost straight-forward way is the confusion matrix (rows are predictions, and columns are observed):\n\ntable(\"Predictions\" = pred_fg_outcome, \"Observed\" = nfl_fg_attempts$is_fg_made)\n\n           Observed\nPredictions    0    1\n       make 1662 8994\n       miss   94   61\n\n\n\nIn-sample misclassification rate:\n\nmean(ifelse(fitted(init_logit) &lt; 0.5, 0, 1) != nfl_fg_attempts$is_fg_made)\n\n[1] 0.1593747\n\n\n\n\nBrier score:\n\nmean((nfl_fg_attempts$is_fg_made - fitted(init_logit))^2)\n\n[1] 0.1197629"
+    "text": "Model assessment\n\nConfusion matrix\n\n\ntable(\"Predicted\" = pima_pred_class, \"Observed\" = pima$type)\n\n         Observed\nPredicted  No Yes\n      No  125  60\n      Yes   7   8\n\n\n\n\nIn-sample misclassification rate\n\n\nmean(pima_pred_class != pima$type)\n\n[1] 0.335\n\n\n\n\n\nBrier score\n\n\nmean((pima_pred_binary - pima_pred_prob)^2)\n\n[1] 0.1140525"
   },
   {
     "objectID": "lectures/14-logistic.html#calibration",
     "href": "lectures/14-logistic.html#calibration",
     "title": "Supervised learning: logistic regression",
     "section": "Calibration",
-    "text": "Calibration\nTODO"
+    "text": "Calibration\nTODO: revise\n\nOrigination: weather forecasting\nSuppose you look at the forecast for 6/6/2024 and see there’s a 20% chance of rain\nBut what does it mean that there’s a 20% chance of rain on 6/6/2024? It either does or does not rain.\nWeather forecasters ran into this problem of wanting to provide a probability of rain but were unsure of how to define this probability\nSolution for defining a 20% chance of rain\n\nif the model outputs 20% of rain on 6/6/2024, and\nfor previous days (years), the ratio of the number of days it actually rained to the total number of days the classifier predicted rain at 20% chance was approximately 20% percent\n\nA classifier is calibrated if in the last time period, (i.e. a year), the percentage of days it actually rained when the forecast predicted x percent chance of rain is x percent."
   },
   {
-    "objectID": "lectures/14-logistic.html#well-calibrated-if-actual-probabilities-match-predicted-probabilities",
-    "href": "lectures/14-logistic.html#well-calibrated-if-actual-probabilities-match-predicted-probabilities",
+    "objectID": "lectures/14-logistic.html#calibration-1",
+    "href": "lectures/14-logistic.html#calibration-1",
     "title": "Supervised learning: logistic regression",
-    "section": "Well-calibrated if actual probabilities match predicted probabilities",
-    "text": "Well-calibrated if actual probabilities match predicted probabilities\n\n\n\nnfl_fg_attempts %&gt;%\n  mutate(pred_prob = init_logit$fitted.values,\n         bin_pred_prob = round(pred_prob / 0.05) * .05) %&gt;%\n  # Group by bin_pred_prob:\n  group_by(bin_pred_prob) %&gt;%\n  # Calculate the calibration results:\n  summarize(n_attempts = n(),\n            bin_actual_prob = mean(is_fg_made)) %&gt;%\n  ggplot(aes(x = bin_pred_prob, y = bin_actual_prob)) +\n  geom_point(aes(size = n_attempts)) +\n  geom_smooth(method = \"loess\", se = FALSE) +\n  geom_abline(slope = 1, intercept = 0, \n              color = \"black\", linetype = \"dashed\") +\n  coord_equal() + \n  scale_x_continuous(limits = c(0,1)) + \n  scale_y_continuous(limits = c(0,1)) + \n  labs(size = \"Number of attempts\",\n       x = \"Estimated make probability\",\n       y = \"Observed make probability\") + \n  theme_bw() +\n  theme(legend.position = \"bottom\")\n\n\nIf model says the probability of rain for a group of days is 50%, it better rain on half those days… or something is incorrect about the probability!"
+    "section": "Calibration",
+    "text": "Calibration\nIf we’ve got a model which tells us that the probability of rain on a certain group of days is 50%, it had better rain on half of those days, or the model is just wrong about the probability of rain\n\nIn short, for a model to be calibrated, the actual probabilities should match the predicted probabilities\nCalibration should be used together with other model evaluation and diagnostic tools\nA model is well-calibrated does not mean it is good at making predictions"
   },
   {
-    "objectID": "lectures/14-logistic.html#data-pima",
-    "href": "lectures/14-logistic.html#data-pima",
+    "objectID": "lectures/14-logistic.html#calibration-plot-smoothing",
+    "href": "lectures/14-logistic.html#calibration-plot-smoothing",
     "title": "Supervised learning: logistic regression",
-    "section": "Data: pima",
-    "text": "Data: pima\n\nlibrary(tidyverse)\n# https://www.refsmmat.com/courses/707/lecture-notes/logistic-regression.html\n\n\n\n36-SURE.github.io"
+    "section": "Calibration plot: smoothing",
+    "text": "Calibration plot: smoothing\nPlot the observed outcome against the fitted probability, and apply a smoother\n\npima |&gt; \n  mutate(pred = predict(pima_logit, type = \"response\"),\n         obs = ifelse(type == \"Yes\", 1, 0)) |&gt; \n  ggplot(aes(pred, obs)) +\n  geom_point() +\n  geom_smooth(se = FALSE) +\n  geom_abline(slope = 1, intercept = 0, linetype = \"dashed\") \n\n\nCalibration looks good for the most part… odd behavior for predicted probabilities over 0.6, since there are only a few observations with high predicted probability"
+  },
+  {
+    "objectID": "lectures/14-logistic.html#calibration-plot-binning",
+    "href": "lectures/14-logistic.html#calibration-plot-binning",
+    "title": "Supervised learning: logistic regression",
+    "section": "Calibration plot: binning",
+    "text": "Calibration plot: binning\n\npima |&gt; \n  mutate(pred_prob = predict(pima_logit, type = \"response\"),\n         bin_pred_prob = cut(pred_prob, breaks = seq(0, 1, 0.1))) |&gt; \n  group_by(bin_pred_prob) |&gt; \n  summarize(n = n(),\n            bin_actual_prob = mean(type == \"Yes\")) |&gt; \n  mutate(mid_point = seq(0.15, 0.65, 0.1)) |&gt; \n  ggplot(aes(x = mid_point, y = bin_actual_prob)) +\n  geom_point(aes(size = n)) +\n  geom_line() +\n  geom_abline(slope = 1, intercept = 0, \n              color = \"black\", linetype = \"dashed\") +\n  # expand_limits(x = c(0, 1), y = c(0, 1)) +\n  coord_fixed()\n\n\n\n\n36-SURE.github.io"
   },
   {
     "objectID": "lectures/16-pca.html#the-big-picture",
@@ -3420,7 +3462,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"n\" \"q\" \"f\" \"s\" \"u\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 1 0 0 1 0 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"H\" \"T\" \"H\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 18"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"h\" \"e\" \"f\" \"c\" \"j\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 0 1 0 0 0 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"T\" \"T\" \"H\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 68"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -3462,21 +3504,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.04539361\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9424758"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.04932441\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.029246"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.482\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical    true\n   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 -2.96     0.001 0.00156\n 2 -2.90     0.002 0.00186\n 3 -2.82     0.003 0.00243\n 4 -2.73     0.004 0.00321\n 5 -2.50     0.005 0.00627\n 6 -2.41     0.006 0.00789\n 7 -2.41     0.007 0.00808\n 8 -2.40     0.008 0.00828\n 9 -2.33     0.009 0.00985\n10 -2.26     0.01  0.0118 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.522\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.45     0.001 0.000278\n 2 -3.14     0.002 0.000833\n 3 -2.85     0.003 0.00218 \n 4 -2.67     0.004 0.00380 \n 5 -2.46     0.005 0.00700 \n 6 -2.39     0.006 0.00852 \n 7 -2.38     0.007 0.00866 \n 8 -2.34     0.008 0.00952 \n 9 -2.34     0.009 0.00961 \n10 -2.33     0.01  0.00990 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3853491\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3829381\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -3490,14 +3532,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1684\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.162\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.2281595\n\nmean(rnorm(100))\n\n[1] 0.02355909\n\nmean(rnorm(100))\n\n[1] -0.1061711"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.01524103\n\nmean(rnorm(100))\n\n[1] 0.03375978\n\nmean(rnorm(100))\n\n[1] -0.08072277"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
@@ -3635,13 +3677,6 @@
   {
     "objectID": "lectures/02-graphics.html#previously",
     "href": "lectures/02-graphics.html#previously",
-    "title": "Data visualization: the grammar of graphics and ggplot2",
-    "section": "Previously…",
-    "text": "Previously…\nGet batting stats for each year: each row is a year with the following variables\ntotal hits, home runs, strikeouts, walks, atbats total batting average for each year = total H / total AB only keeps AL and NL leagues"
-  },
-  {
-    "objectID": "lectures/02-graphics.html#previously-1",
-    "href": "lectures/02-graphics.html#previously-1",
     "title": "Data visualization: the grammar of graphics and ggplot2",
     "section": "Previously…",
     "text": "Previously…\n\n\nYearly MLB batting statistics from Lahman with tidyverse:\n\ntotal hits, home runs, strikeouts, walks, at bats\ntotal batting average for each year= total H / total AB\nonly keeps AL and NL leagues\n\n\nlibrary(tidyverse)\nlibrary(Lahman) \nyearly_batting &lt;- Batting |&gt;\n  filter(lgID %in% c(\"AL\", \"NL\")) |&gt;\n  group_by(yearID) |&gt;\n  summarize(total_h = sum(H, na.rm = TRUE),\n            total_hr = sum(HR, na.rm = TRUE),\n            total_so = sum(SO, na.rm = TRUE),\n            total_bb = sum(BB, na.rm = TRUE),\n            total_ab = sum(AB, na.rm = TRUE)) |&gt;\n  mutate(batting_avg = total_h / total_ab)\n\n\nHow do we make data visualization?\nWhat are the steps to make this figure below?"
