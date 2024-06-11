@@ -411,7 +411,10 @@
 <section id="the-big-picture" class="slide level2">
 <h2>The big picture</h2>
 <ul>
-<li><p><span class="math inline">\(k\)</span>-means clustering: partition the observations into a pre-specified number of clusters.</p></li>
+<li><span class="math inline">\(k\)</span>-means clustering: partition the observations into a pre-specified number of clusters</li>
+</ul>
+<div class="fragment">
+<ul>
 <li><p>Hierarchical clustering: does not require commitment to a particular choice of clusters</p>
 <ul>
 <li><p>In fact, we end up with a tree-like visual representation of the observations, called a dendrogram</p></li>
@@ -420,6 +423,7 @@
 <li><p>There’s also divisive (top-down) hierarchical clustering: start with one large cluster and then break the cluster recursively into smaller and smaller pieces</p></li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="data-county-level-health-indicators-for-utah-in-2014" class="slide level2">
 <h2>Data: County-level health indicators for Utah in 2014</h2>
@@ -749,7 +753,7 @@ Statewide 1.4367342 0.7003632 0.7003632 0.0000000</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>utah_health <span class="sc">|&gt;</span> </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cluster =</span> <span class="fu">as.factor</span>(<span class="fu">cutree</span>(utah_complete, <span class="at">k =</span> <span class="dv">4</span>))</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cluster =</span> <span class="fu">as.factor</span>(<span class="fu">cutree</span>(utah_complete, <span class="at">k =</span> <span class="dv">3</span>))</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> std_pct_over65, <span class="at">y =</span> std_diabetic_rate,</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> cluster)) <span class="sc">+</span></span>
@@ -920,13 +924,14 @@ Statewide 1.4367342 0.7003632 0.7003632 0.0000000</code></pre>
 </div>
 </section>
 <section id="minimax-linkage" class="slide level2">
-<h2><a href="http://statweb.stanford.edu/~tibs/sta306bfiles/minimax-clustering.pdf">Minimax linkage</a></h2>
+<h2><a href="https://faculty.marshall.usc.edu/jacob-bien/papers/jasa2011minimax.pdf">Minimax linkage</a></h2>
+<!-- -   **Identify the point whose farthest point is closest** (hence the minimax) -->
 <ul>
-<li><p>Each cluster is defined <strong>by a prototype</strong> observation (most representative)</p></li>
-<li><p><strong>Identify the point whose farthest point is closest</strong> (hence the minimax)</p></li>
+<li><p>Each cluster is defined by a <strong>prototype</strong> observation (most representative)</p></li>
+<li><p>This prototypical observation is “minimally dissimilar” from every point in the cluster (hence the “minimax”)</p></li>
 </ul>
 
-<img data-src="https://europepmc.org/articles/PMC4527350/bin/nihms637357f2.jpg" style="width:40.0%" class="r-stretch quarto-figure-center"><ul>
+<img data-src="https://europepmc.org/articles/PMC4527350/bin/nihms637357f2.jpg" style="width:20.0%" class="r-stretch quarto-figure-center"><ul>
 <li><p>Use this minimum-maximum distance as the measure of cluster dissimilarity</p></li>
 <li><p>Dendrogram interpretation: each point is <span class="math inline">\(\leq h\)</span> in dissimilarity to the <strong>prototype</strong> of cluster</p></li>
 <li><p><strong>Cluster centers are chosen among the observations themselves - hence prototype</strong></p></li>
@@ -942,7 +947,7 @@ Statewide 1.4367342 0.7003632 0.7003632 0.0000000</code></pre>
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(protoclust)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>utah_minimax <span class="ot">&lt;-</span> <span class="fu">protoclust</span>(county_dist)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>utah_minimax <span class="ot">&lt;-</span> <span class="fu">protoclust</span>(county_dist_matrix)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>utah_minimax <span class="sc">|&gt;</span> </span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.hclust</span>() <span class="sc">|&gt;</span></span>
@@ -957,6 +962,9 @@ Statewide 1.4367342 0.7003632 0.7003632 0.0000000</code></pre>
 </div>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>converting to dist (note: ignores above diagonal)</code></pre>
+</div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -977,15 +985,15 @@ Statewide 1.4367342 0.7003632 0.7003632 0.0000000</code></pre>
 <li><p>But then access the cluster labels <code>cl</code></p></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>minimax_county_clusters <span class="ot">&lt;-</span> utah_minimax <span class="sc">|&gt;</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">protocut</span>(<span class="at">k =</span> <span class="dv">4</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>utah_health <span class="sc">|&gt;</span> </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cluster =</span> <span class="fu">as.factor</span>(minimax_county_clusters<span class="sc">$</span>cl)) <span class="sc">|&gt;</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> std_pct_over65, <span class="at">y =</span> std_diabetic_rate,</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> cluster)) <span class="sc">+</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span> </span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_color_colorblind</span>() <span class="sc">+</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>minimax_county_clusters <span class="ot">&lt;-</span> utah_minimax <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">protocut</span>(<span class="at">k =</span> <span class="dv">3</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>utah_health <span class="sc">|&gt;</span> </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cluster =</span> <span class="fu">as.factor</span>(minimax_county_clusters<span class="sc">$</span>cl)) <span class="sc">|&gt;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> std_pct_over65, <span class="at">y =</span> std_diabetic_rate,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> cluster)) <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span> </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_color_colorblind</span>() <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
@@ -1007,47 +1015,73 @@ Statewide 1.4367342 0.7003632 0.7003632 0.0000000</code></pre>
 <li><p><code>protocut</code> returns the indices of the prototypes (in order of the cluster labels)</p></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>minimax_county_clusters<span class="sc">$</span>protos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>minimax_county_clusters<span class="sc">$</span>protos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  8 13  7 24</code></pre>
+<pre><code>[1] 18 13  7</code></pre>
 </div>
 </div>
 <ul>
 <li>Subset the rows for these counties using <code>slice()</code></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>utah_health <span class="sc">|&gt;</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(County, std_pct_over65, std_diabetic_rate) <span class="sc">|&gt;</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(minimax_county_clusters<span class="sc">$</span>protos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>utah_health <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(County, std_pct_over65, std_diabetic_rate) <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(minimax_county_clusters<span class="sc">$</span>protos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 3
-  County   std_pct_over65 std_diabetic_rate
-  &lt;chr&gt;             &lt;dbl&gt;             &lt;dbl&gt;
-1 Duchesne         -0.448             0.116
-2 Davis            -0.978            -1.27 
-3 Kane              1.74              1.50 
-4 Rich              0.798             0.810</code></pre>
+<pre><code># A tibble: 3 × 3
+  County std_pct_over65 std_diabetic_rate
+  &lt;chr&gt;           &lt;dbl&gt;             &lt;dbl&gt;
+1 Emery          0.0600             0.116
+2 Davis         -0.978             -1.27 
+3 Kane           1.74               1.50 </code></pre>
 </div>
 </div>
 </section>
 <section id="post-clustering-analysis" class="slide level2">
 <h2>Post-clustering analysis</h2>
 <ul>
-<li>For context, how does median income relate to our clustering results?</li>
+<li>For context, how does population relate to our clustering results?</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>utah_health <span class="sc">|&gt;</span> </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cluster =</span> <span class="fu">as.factor</span>(minimax_county_clusters<span class="sc">$</span>cl)) <span class="sc">|&gt;</span> </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> MedianIncome, <span class="at">fill =</span> cluster)) <span class="sc">+</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkblue"</span>, <span class="st">"purple"</span>, <span class="st">"gold"</span>, <span class="st">"orange"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>utah_health <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cluster =</span> <span class="fu">as.factor</span>(minimax_county_clusters<span class="sc">$</span>cl)) <span class="sc">|&gt;</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(Population), <span class="at">fill =</span> cluster)) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkblue"</span>, <span class="st">"purple"</span>, <span class="st">"gold"</span>, <span class="st">"orange"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="06-hierarchical_files/figure-revealjs/unnamed-chunk-36-1.png" width="960" class="r-stretch quarto-figure-center"><ul>
-<li><p>Different income levels tend to fall within particular clusters…</p></li>
+<img data-src="06-hierarchical_files/figure-revealjs/unnamed-chunk-36-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="post-clustering-analysis-1" class="slide level2">
+<h2>Post-clustering analysis</h2>
+<div class="columns">
+<div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># utah_health |&gt; </span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   arrange(Population)</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dendextend)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>utah_minimax <span class="sc">|&gt;</span> </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.hclust</span>() <span class="sc">|&gt;</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.dendrogram</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set</span>(<span class="st">"branches_k_color"</span>, <span class="at">k =</span> <span class="dv">3</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set</span>(<span class="st">"labels_col"</span>, <span class="at">k =</span> <span class="dv">3</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">horiz =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Different population levels tend to fall within particular clusters…</p></li>
 <li><p>It’s easy to <strong>include more variables</strong> - just change the distance matrix</p></li>
-<li><p>But we might want to explore <strong>soft probability assignments</strong> instead…</p></li>
 </ul>
+</div><div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="06-hierarchical_files/figure-revealjs/unnamed-chunk-38-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="practical-issues" class="slide level2">
 <h2>Practical issues</h2>
@@ -1055,7 +1089,15 @@ Statewide 1.4367342 0.7003632 0.7003632 0.0000000</code></pre>
 <li><p>What dissimilarity measure should be used?</p></li>
 <li><p>What type of linkage should be used?</p></li>
 <li><p>How many clusters to choose?</p></li>
-<li><p>Which features should we use to drive the clustering?</p></li>
+<li><p>Which features should we use to drive the clustering?</p>
+<ul>
+<li>Categorical variables?</li>
+</ul></li>
+<li><p>Hard clustering vs.&nbsp;soft clustering</p>
+<ul>
+<li><p>Hard clustering (<span class="math inline">\(k\)</span>-means, hierachical): assigns each observation to exactly one cluster</p></li>
+<li><p>Soft (fuzzy) clustering: assigns each observation a probability of belonging to a cluster</p></li>
+</ul></li>
 </ul>
 <p><br></p>
 <center>
