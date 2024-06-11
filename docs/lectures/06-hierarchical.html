@@ -928,15 +928,20 @@ Statewide 1.4367342 0.7003632 0.7003632 0.0000000</code></pre>
 <!-- -   **Identify the point whose farthest point is closest** (hence the minimax) -->
 <ul>
 <li><p>Each cluster is defined by a <strong>prototype</strong> observation (most representative)</p></li>
-<li><p>This prototypical observation is “minimally dissimilar” from every point in the cluster (hence the “minimax”)</p></li>
-</ul>
-
-<img data-src="https://europepmc.org/articles/PMC4527350/bin/nihms637357f2.jpg" style="width:20.0%" class="r-stretch quarto-figure-center"><ul>
-<li><p>Use this minimum-maximum distance as the measure of cluster dissimilarity</p></li>
+<li><p>The prototype is “minimally dissimilar” from every point in the cluster (hence the “minimax”)</p></li>
 <li><p>Dendrogram interpretation: each point is <span class="math inline">\(\leq h\)</span> in dissimilarity to the <strong>prototype</strong> of cluster</p></li>
 <li><p><strong>Cluster centers are chosen among the observations themselves - hence prototype</strong></p></li>
 </ul>
 </section>
+<section id="minimax-linkage-1" class="slide level2">
+<h2>Minimax linkage</h2>
+<ul>
+<li><p>For each point belonging to either cluster, find the maximum distance between it and all the other points in the two clusters.</p></li>
+<li><p>The smallest of these maximum distances (“minimal-maximum” distance) is defined as the distance between the two clusters</p></li>
+<li><p>The distance to prototype is measured by the maximum minimax radius</p></li>
+</ul>
+
+<img data-src="https://europepmc.org/articles/PMC4527350/bin/nihms637357f2.jpg" style="width:20.0%" class="r-stretch quarto-figure-center"></section>
 <section id="minimax-linkage-example" class="slide level2">
 <h2>Minimax linkage example</h2>
 <div class="columns">
