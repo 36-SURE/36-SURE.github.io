@@ -433,8 +433,8 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <li><p><strong>Continuous</strong> / quantitative variables: <code>shot_x</code>, <code>shot_y</code>, <code>shot_distance</code>, <code>score_value</code></p></li>
 </ul>
 </section>
-<section id="back-to-histograms" class="slide level2">
-<h2>Back to <a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">histograms</a>…</h2>
+<section id="revisiting-histograms" class="slide level2">
+<h2>Revisiting <a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">histograms</a></h2>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fd_bw <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">IQR</span>(ionescu_shots<span class="sc">$</span>shot_distance) <span class="sc">/</span> <span class="fu">length</span>(ionescu_shots<span class="sc">$</span>shot_distance)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>)</span>
@@ -564,10 +564,9 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 </section>
 <section id="how-do-histograms-relate-to-the-pdf-and-cdf" class="slide level2">
 <h2>How do histograms relate to the PDF and CDF?</h2>
-<p>We use the <strong>probability density function (PDF)</strong> to provide a <strong>relative likelihood</strong></p>
 <ul>
-<li><p>PDF is the <strong>derivative</strong> of the cumulative distribution function (CDF)</p></li>
 <li><p>Histograms approximate the PDF with bins, and <strong>points are equally likely within a bin</strong></p></li>
+<li><p>PDF is the <strong>derivative</strong> of the cumulative distribution function (CDF)</p></li>
 </ul>
 <div class="columns">
 <div class="column" style="text-align: left;">
@@ -592,9 +591,6 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 </div>
 </div>
 </div>
-<div class="fragment">
-<p><strong>What can say about the relative likelihood of data we have not observed?</strong><br>We want <strong>non-zero density</strong> between our observations, e.g., just beyond 20 feet</p>
-</div>
 </section></section>
 <section>
 <section id="density-estimation" class="title-slide slide level1 center">
@@ -603,35 +599,39 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 </section>
 <section id="kernel-density-estimation" class="slide level2">
 <h2>Kernel density estimation</h2>
-<p><strong>Goal</strong>: estimate the PDF <span class="math inline">\(f(x)\)</span> for all possible values (assuming it is continuous / smooth)</p>
+<p><strong>Goal</strong>: estimate the PDF <span class="math inline">\(f(x)\)</span> for all possible values (assuming it is smooth)</p>
 <div class="fragment">
-<p><span class="math display">\[
-\text{Kernel density estimate: } \hat{f}(x) = \frac{1}{n} \sum_{i=1}^n \frac{1}{h} K_h(x - x_i)
-\]</span></p>
+<p>The kernel density estimator (KDE) is <span class="math inline">\(\displaystyle \hat{f}(x) = \frac{1}{n} \sum_{i=1}^n \frac{1}{h} K_h(x - x_i)\)</span></p>
 </div>
 <div class="fragment">
 <ul>
-<li><p><span class="math inline">\(n\)</span>: sample size, <span class="math inline">\(x\)</span>: new point to estimate <span class="math inline">\(f(x)\)</span> (does NOT have to be in dataset!)</p></li>
+<li><p><span class="math inline">\(n\)</span>: sample size</p></li>
+<li><p><span class="math inline">\(x\)</span>: new point to estimate <span class="math inline">\(f(x)\)</span> (does NOT have to be in the dataset!)</p></li>
 <li><p><span class="math inline">\(h\)</span>: <strong>bandwidth</strong>, analogous to histogram binwidth, ensures <span class="math inline">\(\hat{f}(x)\)</span> integrates to 1</p></li>
-<li><p><span class="math inline">\(x_i\)</span>: <span class="math inline">\(i\)</span>th observation in dataset</p></li>
+<li><p><span class="math inline">\(x_i\)</span>: <span class="math inline">\(i\)</span>th observation in the dataset</p></li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
 <li><span class="math inline">\(K_h(x - x_i)\)</span>: <strong>kernel</strong> function, creates <strong>weight</strong> given distance of <span class="math inline">\(i\)</span>th observation from new point
 <ul>
-<li><p>as <span class="math inline">\(|x - x_i| \rightarrow \infty\)</span> then <span class="math inline">\(K_h(x - x_i) \rightarrow 0\)</span>, i.e.&nbsp;further apart <span class="math inline">\(i\)</span>th row is from <span class="math inline">\(x\)</span>, smaller the weight</p></li>
-<li><p>as <strong>bandwidth</strong> <span class="math inline">\(h \uparrow\)</span> weights are more evenly spread out (as <span class="math inline">\(h \downarrow\)</span> more concentrated around <span class="math inline">\(x\)</span>)</p></li>
-<li><p>typically use <a href="https://en.wikipedia.org/wiki/Normal_distribution"><strong>Gaussian</strong> / Normal</a> kernel: <span class="math inline">\(\propto e^{-(x - x_i)^2 / 2h^2}\)</span></p></li>
+<li><p>as <span class="math inline">\(|x - x_i| \rightarrow \infty\)</span> then <span class="math inline">\(K_h(x - x_i) \rightarrow 0\)</span>, i.e.&nbsp;the further apart the <span class="math inline">\(i\)</span>th observation is from <span class="math inline">\(x\)</span>, the smaller the weight</p></li>
+<li><p>as <strong>bandwidth</strong> <span class="math inline">\(h\)</span> increases, weights are more evenly spread out</p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Kernel_(statistics)">Choice of kernel functions</a>: Gaussian/normal, etc.</p></li>
 <li><p><span class="math inline">\(K_h(x - x_i)\)</span> is large when <span class="math inline">\(x_i\)</span> is close to <span class="math inline">\(x\)</span></p></li>
 </ul></li>
 </ul>
 </div>
 </section>
-<section id="wikipedia-example" class="slide level2">
-<h2><a href="https://en.wikipedia.org/wiki/Kernel_density_estimation">Wikipedia example</a></h2>
+<section id="kernel-density-estimation-1" class="slide level2">
+<h2>Kernel density estimation</h2>
+<p>Intuition:</p>
+<ul>
+<li>smooth each data point into a small density bumps</li>
+<li>sum all these small bumps together to obtain the final density estimate</li>
+</ul>
 
-<img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Comparison_of_1D_histogram_and_KDE.png/1000px-Comparison_of_1D_histogram_and_KDE.png" class="r-stretch"></section>
+<img data-src="../images/kde-bumps.png" width="678" class="r-stretch quarto-figure-center"></section>
 <section id="how-do-we-compute-and-display-the-density-estimate" class="slide level2">
 <h2>How do we compute and display the density estimate?</h2>
 <div class="columns">
@@ -662,7 +662,7 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -670,8 +670,8 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 </div>
 </div>
 </section>
-<section id="what-about-the-bandwidth-see-chapter-14-for-more" class="slide level2">
-<h2>What about the bandwidth? See <a href="https://www.stat.cmu.edu/~cshalizi/ADAfaEPoV/">Chapter 14 for more…</a></h2>
+<section id="what-about-the-bandwidth" class="slide level2">
+<h2><a href="https://www.stat.cmu.edu/~cshalizi/ADAfaEPoV/">What about the bandwidth?</a></h2>
 <p>Use <strong>Gaussian reference rule</strong> (<em>rule-of-thumb</em>) <span class="math inline">\(\approx 1.06 \cdot \sigma \cdot n^{-1/5}\)</span> (<span class="math inline">\(\sigma\)</span>: observed standard deviation)</p>
 <p>Modify the bandwidth using the <code>adjust</code> argument - <strong>value to multiply default bandwidth by</strong></p>
 <div class="columns">
@@ -706,6 +706,54 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 </div>
 </div>
 </section>
+<section id="notes-on-density-estimation" class="slide level2">
+<h2>Notes on density estimation</h2>
+<ul>
+<li><p>In KDE, the bandwidth parameter is analogous to the binwidth in histograms.</p></li>
+<li><p>If the bandwidth is too small, the density estimate can become overly peaky and the main trends in the data may be obscured.</p></li>
+<li><p>If the bandwidth is too large, then smaller features in the distribution of the data may disappear</p></li>
+<li><p>The choice of the kernel can affect the shape of the density curve.</p>
+<ul>
+<li><p>A Gaussian kernel typically gives density estimates that look bell-shaped (ish)</p></li>
+<li><p>A rectangular kernel can generate the appearance of steps in the density curve</p></li>
+<li><p>Kernel choice matters less with more data points</p></li>
+</ul></li>
+</ul>
+<p><strong>Density plots are often reliable and informative for large datasets but can be misleading for smaller ones.</strong></p>
+</section>
+<section id="common-pitfall-bounded-data" class="slide level2">
+<h2>Common pitfall: bounded data</h2>
+<div class="columns">
+<div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">36</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>bounded_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">100</span>))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>bounded_data <span class="sc">|&gt;</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x)) <span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)),</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">fun =</span> dunif, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">1.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Observe density estimates for impossible values (in the tails) - ALWAYS be mindful</p></li>
+<li><p>Proposed solutions based on <a href="https://github.com/tidyverse/ggplot2/issues/3387">reflecting</a></p></li>
+<li><p>See also: <a href="https://www.jstatsoft.org/article/view/v084i05">evmix package</a></p></li>
+</ul>
+</div><div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="use-density-curves-and-ecdfs-together" class="slide level2">
 <h2>Use density curves and ECDFs together</h2>
 
@@ -714,27 +762,27 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <h2>Code interlude: easy way to arrange multiple figures</h2>
 <p>Use the <a href="https://wilkelab.org/cowplot/index.html"><code>cowplot</code></a> package to easily arrange your plots (see also <a href="https://patchwork.data-imaginist.com/"><code>patchwork</code></a>)</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>ionescu_shot_dens <span class="ot">&lt;-</span> ionescu_shots <span class="sc">|&gt;</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_distance)) <span class="sc">+</span> </span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Shot distance (in feet)"</span>,</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Number of shot attempts"</span>)</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>ionescu_shot_ecdf <span class="ot">&lt;-</span> ionescu_shots <span class="sc">|&gt;</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_distance)) <span class="sc">+</span> </span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_ecdf</span>() <span class="sc">+</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Shot distance (in feet)"</span>,</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proportion of Ionescu shot attempts"</span>)</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co"># library(patchwork)</span></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="co"># ionescu_shot_dens + ionescu_shot_ecdf</span></span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(ionescu_shot_dens, ionescu_shot_ecdf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>ionescu_shot_dens <span class="ot">&lt;-</span> ionescu_shots <span class="sc">|&gt;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_distance)) <span class="sc">+</span> </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Shot distance (in feet)"</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Number of shot attempts"</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>ionescu_shot_ecdf <span class="ot">&lt;-</span> ionescu_shots <span class="sc">|&gt;</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_distance)) <span class="sc">+</span> </span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_ecdf</span>() <span class="sc">+</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Shot distance (in feet)"</span>,</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proportion of Ionescu shot attempts"</span>)</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co"># library(patchwork)</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="co"># ionescu_shot_dens + ionescu_shot_ecdf</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(ionescu_shot_dens, ionescu_shot_ecdf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="use-density-curves-and-ecdfs-together-1" class="slide level2">
@@ -744,24 +792,24 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <section id="another-code-interlude-collect-the-legends-with-patchwork" class="slide level2">
 <h2>Another code interlude: <a href="https://patchwork.data-imaginist.com/articles/guides/layout.html#controlling-guides">collect the legends</a> with <code>patchwork</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ionescu_shot_dens_made <span class="ot">&lt;-</span> ionescu_shots <span class="sc">|&gt;</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_distance, </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> scoring_play)) <span class="sc">+</span> </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Shot distance (in feet)"</span>,</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Number of shot attempts"</span>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>ionescu_shot_ecdf_made <span class="ot">&lt;-</span> ionescu_shots <span class="sc">|&gt;</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_distance,</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> scoring_play)) <span class="sc">+</span> </span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_ecdf</span>() <span class="sc">+</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Shot distance (in feet)"</span>,</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proportion of Ionescu shot attempts"</span>)</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>ionescu_shot_dens_made <span class="sc">+</span> ionescu_shot_ecdf_made <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ionescu_shot_dens_made <span class="ot">&lt;-</span> ionescu_shots <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_distance, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> scoring_play)) <span class="sc">+</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Shot distance (in feet)"</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Number of shot attempts"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>ionescu_shot_ecdf_made <span class="ot">&lt;-</span> ionescu_shots <span class="sc">|&gt;</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_distance,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> scoring_play)) <span class="sc">+</span> </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_ecdf</span>() <span class="sc">+</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Shot distance (in feet)"</span>,</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proportion of Ionescu shot attempts"</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>ionescu_shot_dens_made <span class="sc">+</span> ionescu_shot_ecdf_made <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="ridgeline-plots" class="slide level2">
@@ -772,10 +820,10 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <li>Check out the <a href="https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html"><code>ggridges</code></a> package for a variety of customization options</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="sc">|&gt;</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_distance, <span class="at">y =</span> shot_type)) <span class="sc">+</span> </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">rel_min_height =</span> <span class="fl">0.01</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="sc">|&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_distance, <span class="at">y =</span> shot_type)) <span class="sc">+</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">rel_min_height =</span> <span class="fl">0.01</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Useful to display conditional distributions across many levels</li>
@@ -785,7 +833,7 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -801,7 +849,7 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 \]</span></p>
 <div class="fragment">
 <p>In 2D: estimate joint density <span class="math inline">\(f(x_1, x_2)\)</span></p>
-<p><span class="math display">\[\hat{f}(x_1, x_2) = \frac{1}{n} \sum_{i=1}^n \frac{1}{h_1h_2} K(\frac{x_1 - x_{i1}}{h_1}) K(\frac{x_2 - x_{i2}}{h_2})\]</span></p>
+<p><span class="math display">\[\hat{f}(x_1, x_2) = \frac{1}{n} \sum_{i=1}^n \frac{1}{h_1h_2} K\left(\frac{x_1 - x_{i1}}{h_1}\right) K\left(\frac{x_2 - x_{i2}}{h_2}\right)\]</span></p>
 </div>
 <div class="fragment">
 <p>In 1D there’s one bandwidth, now <strong>we have two bandwidths</strong></p>
@@ -827,9 +875,9 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="columns">
 <div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="sc">|&gt;</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_x, <span class="at">y =</span> shot_y)) <span class="sc">+</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_x, <span class="at">y =</span> shot_y)) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Adjust transparency with <code>alpha</code> for overlapping points</li>
@@ -839,7 +887,7 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -855,13 +903,13 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <li>Use <a href="https://ggplot2.tidyverse.org/reference/geom_density_2d.html"><code>geom_density2d()</code></a> to display contour lines</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="sc">|&gt;</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(shot_y <span class="sc">&lt;</span> <span class="dv">35</span>) <span class="sc">|&gt;</span> <span class="co"># remove outliers</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_x, <span class="at">y =</span> shot_y)) <span class="sc">+</span> </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span> </span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density2d</span>() <span class="sc">+</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(shot_y <span class="sc">&lt;</span> <span class="dv">35</span>) <span class="sc">|&gt;</span> <span class="co"># remove outliers</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_x, <span class="at">y =</span> shot_y)) <span class="sc">+</span> </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span> </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density2d</span>() <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><p>Extend KDE for joint density estimates in 2D (see <a href="https://www.stat.cmu.edu/~cshalizi/ADAfaEPoV/">section 14.4.2 for details</a>)</p></li>
@@ -873,7 +921,7 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -889,13 +937,13 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <li>We make 2D KDE <strong>contour</strong> plots using <a href="https://ggplot2.tidyverse.org/reference/geom_density_2d.html"><code>geom_density2d()</code></a></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="sc">|&gt;</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(shot_y <span class="sc">&lt;</span> <span class="dv">35</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_x, <span class="at">y =</span> shot_y)) <span class="sc">+</span> </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span> </span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density2d</span>(<span class="at">adjust =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(shot_y <span class="sc">&lt;</span> <span class="dv">35</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_x, <span class="at">y =</span> shot_y)) <span class="sc">+</span> </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span> </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density2d</span>(<span class="at">adjust =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Can use <code>adjust</code> to modify the multivariate bandwidth</li>
@@ -905,7 +953,7 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -923,15 +971,15 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <li><p>Default color scale is awful. Always change it.</p></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="sc">|&gt;</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(shot_y <span class="sc">&lt;</span> <span class="dv">35</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_x, <span class="at">y =</span> shot_y)) <span class="sc">+</span> </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">after_stat</span>(level)),</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">h =</span> <span class="fl">0.6</span>, <span class="at">bins =</span> <span class="dv">60</span>, <span class="at">geom =</span> <span class="st">"polygon"</span>) <span class="sc">+</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"midnightblue"</span>, </span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">high =</span> <span class="st">"gold"</span>) <span class="sc">+</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(shot_y <span class="sc">&lt;</span> <span class="dv">35</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_x, <span class="at">y =</span> shot_y)) <span class="sc">+</span> </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">after_stat</span>(level)),</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">h =</span> <span class="fl">0.6</span>, <span class="at">bins =</span> <span class="dv">60</span>, <span class="at">geom =</span> <span class="st">"polygon"</span>) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"midnightblue"</span>, </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">high =</span> <span class="st">"gold"</span>) <span class="sc">+</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Multivariate density estimation can be difficult</strong></p>
 </div><div class="column" style="text-align: left;">
@@ -939,7 +987,7 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -955,24 +1003,24 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <li>Divide the space into a grid and color the grid according to high/low values</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="sc">|&gt;</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(shot_y <span class="sc">&lt;</span> <span class="dv">35</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_x, <span class="at">y =</span> shot_y)) <span class="sc">+</span> </span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">after_stat</span>(density)),</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">h =</span> <span class="fl">0.6</span>, <span class="at">bins =</span> <span class="dv">60</span>, <span class="at">contour =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">geom =</span> <span class="st">"raster"</span>) <span class="sc">+</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># scale_fill_gradient(low = "white", high = "red") +</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"midnightblue"</span>, </span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">high =</span> <span class="st">"gold"</span>) <span class="sc">+</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(shot_y <span class="sc">&lt;</span> <span class="dv">35</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_x, <span class="at">y =</span> shot_y)) <span class="sc">+</span> </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">after_stat</span>(density)),</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">h =</span> <span class="fl">0.6</span>, <span class="at">bins =</span> <span class="dv">60</span>, <span class="at">contour =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">geom =</span> <span class="st">"raster"</span>) <span class="sc">+</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># scale_fill_gradient(low = "white", high = "red") +</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"midnightblue"</span>, </span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">high =</span> <span class="st">"gold"</span>) <span class="sc">+</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -990,14 +1038,14 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <li><p>2D version of histogram</p></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="sc">|&gt;</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(shot_y <span class="sc">&lt;</span> <span class="dv">35</span>) <span class="sc">|&gt;</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_x, <span class="at">y =</span> shot_y)) <span class="sc">+</span> </span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hex</span>(<span class="at">binwidth =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"midnightblue"</span>, </span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">high =</span> <span class="st">"gold"</span>) <span class="sc">+</span> </span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="sc">|&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(shot_y <span class="sc">&lt;</span> <span class="dv">35</span>) <span class="sc">|&gt;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_x, <span class="at">y =</span> shot_y)) <span class="sc">+</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hex</span>(<span class="at">binwidth =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"midnightblue"</span>, </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">high =</span> <span class="st">"gold"</span>) <span class="sc">+</span> </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Can specify <code>binwidth</code> in both directions</li>
@@ -1008,7 +1056,7 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1024,23 +1072,23 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <div class="columns">
 <div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="sc">|&gt;</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(shot_y <span class="sc">&lt;</span> <span class="dv">35</span>) <span class="sc">|&gt;</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_x, <span class="at">y =</span> shot_y, </span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">z =</span> scoring_play, <span class="at">group =</span> <span class="sc">-</span><span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary_hex</span>(<span class="at">binwidth =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">fun =</span> mean, </span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"midnightblue"</span>, </span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">high =</span> <span class="st">"gold"</span>) <span class="sc">+</span> </span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="sc">|&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(shot_y <span class="sc">&lt;</span> <span class="dv">35</span>) <span class="sc">|&gt;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_x, <span class="at">y =</span> shot_y, </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">z =</span> scoring_play, <span class="at">group =</span> <span class="sc">-</span><span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary_hex</span>(<span class="at">binwidth =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">fun =</span> mean, </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"midnightblue"</span>, </span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">high =</span> <span class="st">"gold"</span>) <span class="sc">+</span> </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
+<p><img data-src="07-density_files/figure-revealjs/unnamed-chunk-35-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1051,32 +1099,33 @@ $ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0
 <section id="appendix-making-shot-charts-and-drawing-courts-with-sportyr" class="slide level2">
 <h2>Appendix: Making shot charts and drawing courts with <a href="https://sportyr.sportsdataverse.org/"><code>sportyR</code></a></h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sportyR)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>wnba_court <span class="ot">&lt;-</span> <span class="fu">geom_basketball</span>(<span class="st">"wnba"</span>, <span class="at">display_range =</span> <span class="st">"offense"</span>, <span class="at">rotation =</span> <span class="dv">270</span>, <span class="at">x_trans =</span> <span class="sc">-</span><span class="fl">41.5</span>)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>wnba_court <span class="sc">+</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hex</span>(<span class="at">data =</span> ionescu_shots, <span class="fu">aes</span>(<span class="at">x =</span> shot_x, <span class="at">y =</span> shot_y), <span class="at">binwidth =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)) <span class="sc">+</span> </span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"midnightblue"</span>, <span class="at">high =</span> <span class="st">"gold"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sportyR)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>wnba_court <span class="ot">&lt;-</span> <span class="fu">geom_basketball</span>(<span class="st">"wnba"</span>, <span class="at">display_range =</span> <span class="st">"offense"</span>, <span class="at">rotation =</span> <span class="dv">270</span>, <span class="at">x_trans =</span> <span class="sc">-</span><span class="fl">41.5</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>wnba_court <span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hex</span>(<span class="at">data =</span> ionescu_shots, <span class="fu">aes</span>(<span class="at">x =</span> shot_x, <span class="at">y =</span> shot_y), <span class="at">binwidth =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"midnightblue"</span>, <span class="at">high =</span> <span class="st">"gold"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="07-density_files/figure-revealjs/unnamed-chunk-33-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="07-density_files/figure-revealjs/unnamed-chunk-36-1.png" width="960" class="r-stretch quarto-figure-center"></section>
 <section id="appendix-code-to-build-dataset" class="slide level2">
 <h2>Appendix: Code to build dataset</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wehoop)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>wnba_pbp <span class="ot">&lt;-</span> <span class="fu">load_wnba_pbp</span>(<span class="dv">2023</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="ot">&lt;-</span> wnba_pbp <span class="sc">|&gt;</span> </span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(shooting_play) <span class="sc">|&gt;</span> </span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(text, <span class="st">"Ionescu"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">"Ionescu assists"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">"free throw"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">shot_x =</span> coordinate_x_raw <span class="sc">-</span> <span class="dv">25</span>,</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">shot_y =</span> coordinate_y_raw,</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">shot_distance =</span> <span class="fu">sqrt</span>((<span class="fu">abs</span>(shot_x) <span class="sc">^</span> <span class="dv">2</span>) <span class="sc">+</span> shot_y <span class="sc">^</span> <span class="dv">2</span>), </span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">shot_type =</span> type_text,</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    scoring_play,</span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    score_value</span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("wehoop")</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wehoop)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>wnba_pbp <span class="ot">&lt;-</span> <span class="fu">load_wnba_pbp</span>(<span class="dv">2023</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>ionescu_shots <span class="ot">&lt;-</span> wnba_pbp <span class="sc">|&gt;</span> </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(shooting_play) <span class="sc">|&gt;</span> </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(text, <span class="st">"Ionescu"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">"Ionescu assists"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">"free throw"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">shot_x =</span> coordinate_x_raw <span class="sc">-</span> <span class="dv">25</span>,</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">shot_y =</span> coordinate_y_raw,</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">shot_distance =</span> <span class="fu">sqrt</span>((<span class="fu">abs</span>(shot_x) <span class="sc">^</span> <span class="dv">2</span>) <span class="sc">+</span> shot_y <span class="sc">^</span> <span class="dv">2</span>), </span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">shot_type =</span> type_text,</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>    scoring_play,</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    score_value</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <div class="footer footer-default">

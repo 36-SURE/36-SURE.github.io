@@ -3283,11 +3283,11 @@
     "text": "Data: Sabrina Ionescu’s shots\nShot attempts by the Sabrina Ionescu in the 2023 WNBA season using wehoop\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nionescu_shots &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/ionescu_shots.csv\")\nglimpse(ionescu_shots)\n\nRows: 617\nColumns: 6\n$ shot_x        &lt;dbl&gt; -10, 11, 2, -13, -18, 19, -1, 0, -1, -12, -1, -14, -7, -…\n$ shot_y        &lt;dbl&gt; 24, 23, 2, 21, 19, 16, 3, 2, 4, 5, 2, 21, 26, 14, 7, 6, …\n$ shot_distance &lt;dbl&gt; 26.000000, 25.495098, 2.828427, 24.698178, 26.172505, 24…\n$ shot_type     &lt;chr&gt; \"Pullup Jump Shot\", \"Running Jump Shot\", \"Cutting Layup …\n$ scoring_play  &lt;lgl&gt; FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE, FALSE, FAL…\n$ score_value   &lt;dbl&gt; 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 3, 3, 0, 0,…\n\n\n\nEach row is a shot attempt by Ionescu in the 2023 WNBA season\nCategorical / qualitative variables: scoring_play, shot_type\nContinuous / quantitative variables: shot_x, shot_y, shot_distance, score_value"
   },
   {
-    "objectID": "lectures/07-density.html#back-to-histograms",
-    "href": "lectures/07-density.html#back-to-histograms",
+    "objectID": "lectures/07-density.html#revisiting-histograms",
+    "href": "lectures/07-density.html#revisiting-histograms",
     "title": "Data visualization: density estimation",
-    "section": "Back to histograms…",
-    "text": "Back to histograms…\n\n\nfd_bw &lt;- 2 * IQR(ionescu_shots$shot_distance) / length(ionescu_shots$shot_distance)^(1/3)\nionescu_shots |&gt;\n  ggplot(aes(x = shot_distance)) +\n  geom_histogram(binwidth = fd_bw)\n\n\n\n\nSplit observed data into bins\nCount number of observations in each bin\n\nNeed to choose the number of bins, adjust with:\n\nbins: number of bins (default is 30)\nbinwidth: width of bins (overrides bins), various rules of thumb\n\ne.g., see fd_bw for Freedman–Diaconis rule\n\nbreaks: vector of bin boundaries (overrides both bins and binwidth)"
+    "section": "Revisiting histograms",
+    "text": "Revisiting histograms\n\n\nfd_bw &lt;- 2 * IQR(ionescu_shots$shot_distance) / length(ionescu_shots$shot_distance)^(1/3)\nionescu_shots |&gt;\n  ggplot(aes(x = shot_distance)) +\n  geom_histogram(binwidth = fd_bw)\n\n\n\n\nSplit observed data into bins\nCount number of observations in each bin\n\nNeed to choose the number of bins, adjust with:\n\nbins: number of bins (default is 30)\nbinwidth: width of bins (overrides bins), various rules of thumb\n\ne.g., see fd_bw for Freedman–Diaconis rule\n\nbreaks: vector of bin boundaries (overrides both bins and binwidth)"
   },
   {
     "objectID": "lectures/07-density.html#adjusting-the-binwidth",
@@ -3315,21 +3315,21 @@
     "href": "lectures/07-density.html#how-do-histograms-relate-to-the-pdf-and-cdf",
     "title": "Data visualization: density estimation",
     "section": "How do histograms relate to the PDF and CDF?",
-    "text": "How do histograms relate to the PDF and CDF?\nWe use the probability density function (PDF) to provide a relative likelihood\n\nPDF is the derivative of the cumulative distribution function (CDF)\nHistograms approximate the PDF with bins, and points are equally likely within a bin\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat can say about the relative likelihood of data we have not observed?We want non-zero density between our observations, e.g., just beyond 20 feet"
+    "text": "How do histograms relate to the PDF and CDF?\n\nHistograms approximate the PDF with bins, and points are equally likely within a bin\nPDF is the derivative of the cumulative distribution function (CDF)"
   },
   {
     "objectID": "lectures/07-density.html#kernel-density-estimation",
     "href": "lectures/07-density.html#kernel-density-estimation",
     "title": "Data visualization: density estimation",
     "section": "Kernel density estimation",
-    "text": "Kernel density estimation\nGoal: estimate the PDF \\(f(x)\\) for all possible values (assuming it is continuous / smooth)\n\n\\[\n\\text{Kernel density estimate: } \\hat{f}(x) = \\frac{1}{n} \\sum_{i=1}^n \\frac{1}{h} K_h(x - x_i)\n\\]\n\n\n\n\\(n\\): sample size, \\(x\\): new point to estimate \\(f(x)\\) (does NOT have to be in dataset!)\n\\(h\\): bandwidth, analogous to histogram binwidth, ensures \\(\\hat{f}(x)\\) integrates to 1\n\\(x_i\\): \\(i\\)th observation in dataset\n\n\n\n\n\\(K_h(x - x_i)\\): kernel function, creates weight given distance of \\(i\\)th observation from new point\n\nas \\(|x - x_i| \\rightarrow \\infty\\) then \\(K_h(x - x_i) \\rightarrow 0\\), i.e. further apart \\(i\\)th row is from \\(x\\), smaller the weight\nas bandwidth \\(h \\uparrow\\) weights are more evenly spread out (as \\(h \\downarrow\\) more concentrated around \\(x\\))\ntypically use Gaussian / Normal kernel: \\(\\propto e^{-(x - x_i)^2 / 2h^2}\\)\n\\(K_h(x - x_i)\\) is large when \\(x_i\\) is close to \\(x\\)"
+    "text": "Kernel density estimation\nGoal: estimate the PDF \\(f(x)\\) for all possible values (assuming it is smooth)\n\nThe kernel density estimator (KDE) is \\(\\displaystyle \\hat{f}(x) = \\frac{1}{n} \\sum_{i=1}^n \\frac{1}{h} K_h(x - x_i)\\)\n\n\n\n\\(n\\): sample size\n\\(x\\): new point to estimate \\(f(x)\\) (does NOT have to be in the dataset!)\n\\(h\\): bandwidth, analogous to histogram binwidth, ensures \\(\\hat{f}(x)\\) integrates to 1\n\\(x_i\\): \\(i\\)th observation in the dataset\n\n\n\n\n\\(K_h(x - x_i)\\): kernel function, creates weight given distance of \\(i\\)th observation from new point\n\nas \\(|x - x_i| \\rightarrow \\infty\\) then \\(K_h(x - x_i) \\rightarrow 0\\), i.e. the further apart the \\(i\\)th observation is from \\(x\\), the smaller the weight\nas bandwidth \\(h\\) increases, weights are more evenly spread out\nChoice of kernel functions: Gaussian/normal, etc.\n\\(K_h(x - x_i)\\) is large when \\(x_i\\) is close to \\(x\\)"
   },
   {
-    "objectID": "lectures/07-density.html#wikipedia-example",
-    "href": "lectures/07-density.html#wikipedia-example",
+    "objectID": "lectures/07-density.html#kernel-density-estimation-1",
+    "href": "lectures/07-density.html#kernel-density-estimation-1",
     "title": "Data visualization: density estimation",
-    "section": "Wikipedia example",
-    "text": "Wikipedia example"
+    "section": "Kernel density estimation",
+    "text": "Kernel density estimation\nIntuition:\n\nsmooth each data point into a small density bumps\nsum all these small bumps together to obtain the final density estimate"
   },
   {
     "objectID": "lectures/07-density.html#how-do-we-compute-and-display-the-density-estimate",
@@ -3339,11 +3339,25 @@
     "text": "How do we compute and display the density estimate?\n\n\n\nWe make kernel density estimates with geom_density()\n\n\nionescu_shots |&gt;\n  ggplot(aes(x = shot_distance)) + \n  geom_density() +\n  geom_rug(alpha = 0.3)\n\n\nPros:\n\nDisplays full shape of distribution\nCan easily layer\nAdd categorical variable with color\n\nCons:\n\nNeed to pick bandwidth and kernel…"
   },
   {
-    "objectID": "lectures/07-density.html#what-about-the-bandwidth-see-chapter-14-for-more",
-    "href": "lectures/07-density.html#what-about-the-bandwidth-see-chapter-14-for-more",
+    "objectID": "lectures/07-density.html#what-about-the-bandwidth",
+    "href": "lectures/07-density.html#what-about-the-bandwidth",
     "title": "Data visualization: density estimation",
-    "section": "What about the bandwidth? See Chapter 14 for more…",
-    "text": "What about the bandwidth? See Chapter 14 for more…\nUse Gaussian reference rule (rule-of-thumb) \\(\\approx 1.06 \\cdot \\sigma \\cdot n^{-1/5}\\) (\\(\\sigma\\): observed standard deviation)\nModify the bandwidth using the adjust argument - value to multiply default bandwidth by\n\n\n\nionescu_shots |&gt;\n  ggplot(aes(x = shot_distance)) + \n  geom_density(adjust = 0.5) +\n  geom_rug(alpha = 0.3)\n\n\n\n\n\n\n\n\n\n\nionescu_shots |&gt;\n  ggplot(aes(x = shot_distance)) + \n  geom_density(adjust = 2) +\n  geom_rug(alpha = 0.3)"
+    "section": "What about the bandwidth?",
+    "text": "What about the bandwidth?\nUse Gaussian reference rule (rule-of-thumb) \\(\\approx 1.06 \\cdot \\sigma \\cdot n^{-1/5}\\) (\\(\\sigma\\): observed standard deviation)\nModify the bandwidth using the adjust argument - value to multiply default bandwidth by\n\n\n\nionescu_shots |&gt;\n  ggplot(aes(x = shot_distance)) + \n  geom_density(adjust = 0.5) +\n  geom_rug(alpha = 0.3)\n\n\n\n\n\n\n\n\n\n\nionescu_shots |&gt;\n  ggplot(aes(x = shot_distance)) + \n  geom_density(adjust = 2) +\n  geom_rug(alpha = 0.3)"
+  },
+  {
+    "objectID": "lectures/07-density.html#notes-on-density-estimation",
+    "href": "lectures/07-density.html#notes-on-density-estimation",
+    "title": "Data visualization: density estimation",
+    "section": "Notes on density estimation",
+    "text": "Notes on density estimation\n\nIn KDE, the bandwidth parameter is analogous to the binwidth in histograms.\nIf the bandwidth is too small, the density estimate can become overly peaky and the main trends in the data may be obscured.\nIf the bandwidth is too large, then smaller features in the distribution of the data may disappear\nThe choice of the kernel can affect the shape of the density curve.\n\nA Gaussian kernel typically gives density estimates that look bell-shaped (ish)\nA rectangular kernel can generate the appearance of steps in the density curve\nKernel choice matters less with more data points\n\n\nDensity plots are often reliable and informative for large datasets but can be misleading for smaller ones."
+  },
+  {
+    "objectID": "lectures/07-density.html#common-pitfall-bounded-data",
+    "href": "lectures/07-density.html#common-pitfall-bounded-data",
+    "title": "Data visualization: density estimation",
+    "section": "Common pitfall: bounded data",
+    "text": "Common pitfall: bounded data\n\n\n\nset.seed(36)\nbounded_data &lt;- tibble(x = runif(100))\nbounded_data |&gt; \n  ggplot(aes(x)) +\n  geom_density() +\n  geom_rug(alpha = 0.5) +\n  stat_function(data = tibble(x = c(0, 1)),\n                fun = dunif, color = \"red\") +\n  scale_x_continuous(limits = c(-0.5, 1.5))\n\n\nObserve density estimates for impossible values (in the tails) - ALWAYS be mindful\nProposed solutions based on reflecting\nSee also: evmix package"
   },
   {
     "objectID": "lectures/07-density.html#use-density-curves-and-ecdfs-together",
@@ -3385,7 +3399,7 @@
     "href": "lectures/07-density.html#going-from-1d-to-2d-density-estimation",
     "title": "Data visualization: density estimation",
     "section": "Going from 1D to 2D density estimation",
-    "text": "Going from 1D to 2D density estimation\nIn 1D: estimate density \\(f(x)\\), assuming that \\(f(x)\\) is smooth:\n\\[\n\\hat{f}(x) = \\frac{1}{n} \\sum_{i=1}^n \\frac{1}{h} K_h(x - x_i)\n\\]\n\nIn 2D: estimate joint density \\(f(x_1, x_2)\\)\n\\[\\hat{f}(x_1, x_2) = \\frac{1}{n} \\sum_{i=1}^n \\frac{1}{h_1h_2} K(\\frac{x_1 - x_{i1}}{h_1}) K(\\frac{x_2 - x_{i2}}{h_2})\\]\n\n\nIn 1D there’s one bandwidth, now we have two bandwidths\n\n\\(h_1\\): controls smoothness as \\(X_1\\) changes, holding \\(X_2\\) fixed\n\\(h_2\\): controls smoothness as \\(X_2\\) changes, holding \\(X_1\\) fixed\n\nGaussian kernels are still a popular choice"
+    "text": "Going from 1D to 2D density estimation\nIn 1D: estimate density \\(f(x)\\), assuming that \\(f(x)\\) is smooth:\n\\[\n\\hat{f}(x) = \\frac{1}{n} \\sum_{i=1}^n \\frac{1}{h} K_h(x - x_i)\n\\]\n\nIn 2D: estimate joint density \\(f(x_1, x_2)\\)\n\\[\\hat{f}(x_1, x_2) = \\frac{1}{n} \\sum_{i=1}^n \\frac{1}{h_1h_2} K\\left(\\frac{x_1 - x_{i1}}{h_1}\\right) K\\left(\\frac{x_2 - x_{i2}}{h_2}\\right)\\]\n\n\nIn 1D there’s one bandwidth, now we have two bandwidths\n\n\\(h_1\\): controls smoothness as \\(X_1\\) changes, holding \\(X_2\\) fixed\n\\(h_2\\): controls smoothness as \\(X_2\\) changes, holding \\(X_1\\) fixed\n\nGaussian kernels are still a popular choice"
   },
   {
     "objectID": "lectures/07-density.html#display-densities-for-2d-data",
@@ -3462,7 +3476,7 @@
     "href": "lectures/07-density.html#appendix-code-to-build-dataset",
     "title": "Data visualization: density estimation",
     "section": "Appendix: Code to build dataset",
-    "text": "Appendix: Code to build dataset\n\nlibrary(wehoop)\nwnba_pbp &lt;- load_wnba_pbp(2023)\nionescu_shots &lt;- wnba_pbp |&gt; \n  filter(shooting_play) |&gt; \n  filter(str_detect(text, \"Ionescu\")) |&gt; \n  filter(!str_detect(text, \"Ionescu assists\")) |&gt; \n  filter(!str_detect(text, \"free throw\")) |&gt; \n  transmute(\n    shot_x = coordinate_x_raw - 25,\n    shot_y = coordinate_y_raw,\n    shot_distance = sqrt((abs(shot_x) ^ 2) + shot_y ^ 2), \n    shot_type = type_text,\n    scoring_play,\n    score_value\n  )\n\n\n\n36-SURE.github.io"
+    "text": "Appendix: Code to build dataset\n\n# install.packages(\"wehoop\")\nlibrary(wehoop)\nwnba_pbp &lt;- load_wnba_pbp(2023)\nionescu_shots &lt;- wnba_pbp |&gt; \n  filter(shooting_play) |&gt; \n  filter(str_detect(text, \"Ionescu\")) |&gt; \n  filter(!str_detect(text, \"Ionescu assists\")) |&gt; \n  filter(!str_detect(text, \"free throw\")) |&gt; \n  transmute(\n    shot_x = coordinate_x_raw - 25,\n    shot_y = coordinate_y_raw,\n    shot_distance = sqrt((abs(shot_x) ^ 2) + shot_y ^ 2), \n    shot_type = type_text,\n    scoring_play,\n    score_value\n  )\n\n\n\n36-SURE.github.io"
   },
   {
     "objectID": "lectures/08-simulation.html#why-simulation",
@@ -3476,7 +3490,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"k\" \"x\" \"c\" \"i\" \"g\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 0 1 1 1 0 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"H\" \"T\" \"H\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 1"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"g\" \"k\" \"b\" \"q\" \"m\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 0 0 1 0 1 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"H\" \"H\" \"T\" \"H\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 2"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -3518,21 +3532,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.02372571\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9968542"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.07262421\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9955501"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.492\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical    true\n   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 -3.04     0.001 0.00118\n 2 -2.98     0.002 0.00144\n 3 -2.35     0.003 0.00926\n 4 -2.32     0.004 0.0102 \n 5 -2.28     0.005 0.0113 \n 6 -2.27     0.006 0.0116 \n 7 -2.24     0.007 0.0124 \n 8 -2.19     0.008 0.0144 \n 9 -2.18     0.009 0.0145 \n10 -2.17     0.01  0.0151 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.471\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.25     0.001 0.000572\n 2 -3.04     0.002 0.00117 \n 3 -3.01     0.003 0.00129 \n 4 -2.57     0.004 0.00503 \n 5 -2.48     0.005 0.00655 \n 6 -2.47     0.006 0.00680 \n 7 -2.41     0.007 0.00791 \n 8 -2.32     0.008 0.0102  \n 9 -2.20     0.009 0.0138  \n10 -2.20     0.01  0.0139  \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3861476\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3825035\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -3546,14 +3560,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1536\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1352\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.00129027\n\nmean(rnorm(100))\n\n[1] 0.05243107\n\nmean(rnorm(100))\n\n[1] -0.05335177"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.06672757\n\nmean(rnorm(100))\n\n[1] -0.04422087\n\nmean(rnorm(100))\n\n[1] -0.06890646"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
