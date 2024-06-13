@@ -432,26 +432,25 @@
 <li>To sample from a given vector, use <code>sample()</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># base R built in English alphabet: letters</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(letters, <span class="at">size =</span> <span class="dv">5</span>) <span class="co"># sample without replacement, by default</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base R built in English alphabet</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># letters</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(letters, <span class="at">size =</span> <span class="dv">5</span>) <span class="co"># sample without replacement, by default</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "c" "k" "a" "v" "h"</code></pre>
+<pre><code>[1] "t" "e" "f" "y" "h"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">size =</span> <span class="dv">7</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="co"># sample with replacement</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 1 1 0 0 0 1</code></pre>
+<pre><code>[1] 1 1 0 0 0 0 0</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5 (independent) coin tosses</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>coin <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(coin, <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "T" "T" "H" "T" "H"</code></pre>
+<pre><code>[1] "H" "T" "T" "T" "T"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">1</span>) <span class="co"># sample a random integer between 1 and 100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 51</code></pre>
+<pre><code>[1] 8</code></pre>
 </div>
 </div>
 </section>
@@ -459,23 +458,27 @@
 <h2>Probability distributions</h2>
 <p>A distribution is a mathematical function <span class="math inline">\(f(x \mid \theta)\)</span> where</p>
 <ul>
-<li><p><span class="math inline">\(x\)</span> may take on continuous or discrete values over the domain (i.e.&nbsp;all possible inputs) of <span class="math inline">\(f(x \mid \theta)\)</span></p></li>
-<li><p><span class="math inline">\(\theta\)</span> is a set of parameters governing the shape of the distribution</p>
+<li><span class="math inline">\(x\)</span> may take on continuous or discrete values over the domain (i.e.&nbsp;all possible inputs) of <span class="math inline">\(f(x \mid \theta)\)</span></li>
+<li><span class="math inline">\(\theta\)</span> is a set of parameters governing the shape of the distribution
 <ul>
 <li>e.g.&nbsp;<span class="math inline">\(\theta = \{\mu, \sigma ^2 \}\)</span> for a normal (Gaussian) distribution</li>
 </ul></li>
-<li><p>the <span class="math inline">\(\mid\)</span> symbol means that the shape of the distribution is conditional on the values of <span class="math inline">\(\theta\)</span></p></li>
+<li>the <span class="math inline">\(\mid\)</span> symbol means that the shape of the distribution is conditional on the values of <span class="math inline">\(\theta\)</span></li>
 </ul>
-<p>We use <span class="math inline">\(f\)</span> to denote the distribution for its</p>
+<div class="fragment">
+<p>Let <span class="math inline">\(f\)</span> denote the distribution for its</p>
 <ul>
-<li><p><strong>probability density function (PDF)</strong> if <span class="math inline">\(x\)</span> is continuous</p></li>
-<li><p><strong>probability mass function (PMF)</strong> if <span class="math inline">\(x\)</span> is discrete</p></li>
+<li><strong>probability density function (PDF)</strong> if <span class="math inline">\(x\)</span> is continuous</li>
+<li><strong>probability mass function (PMF)</strong> if <span class="math inline">\(x\)</span> is discrete</li>
 </ul>
+</div>
+<div class="fragment">
 <p>Note:</p>
 <ul>
-<li><p><span class="math inline">\(f(x \mid \theta) \geq 0\)</span> for all <span class="math inline">\(x\)</span></p></li>
-<li><p><span class="math inline">\(\displaystyle \sum_x f(x \mid \theta) = 1\)</span> (discrete case) or <span class="math inline">\(\displaystyle \int_x f(x \mid \theta) = 1\)</span> (continuous case)</p></li>
+<li><span class="math inline">\(f(x \mid \theta) \geq 0\)</span> for all <span class="math inline">\(x\)</span></li>
+<li><span class="math inline">\(\displaystyle \sum_x f(x \mid \theta) = 1\)</span> (discrete case) or <span class="math inline">\(\displaystyle \int_x f(x \mid \theta) = 1\)</span> (continuous case)</li>
 </ul>
+</div>
 </section>
 <section id="normal-distribution" class="slide level2">
 <h2>Normal distribution</h2>
@@ -511,7 +514,7 @@
 <div class="column" style="text-align: left;">
 <ul>
 <li><p>PMF: <span class="math inline">\(\displaystyle f(x \mid n, p)= \binom{n}{x} p^{x}(1-p)^{n-x}\)</span>; <span class="math inline">\(x = 0, 1, \dots, n\)</span></p></li>
-<li><p>Model for the probability of <span class="math inline">\(x\)</span> successes in <span class="math inline">\(n\)</span> independent trials, each with success probability <span class="math inline">\(p\)</span>.</p></li>
+<li><p>Model for the probability of <span class="math inline">\(x\)</span> successes in <span class="math inline">\(n\)</span> independent trials, each with success probability <span class="math inline">\(p\)</span></p></li>
 <li><p>We write <span class="math inline">\(X \sim \text{Binomial}(n,p)\)</span></p></li>
 </ul>
 <div class="cell">
@@ -564,11 +567,13 @@
 <li><p><code>dnorm()</code>: normal density function</p></li>
 <li><p><code>qnorm()</code>: normal quantile function</p></li>
 </ul>
+<div class="fragment">
 <p>Note: Replace “norm” with the name of another distribution, all the same functions apply.</p>
 <ul>
-<li>E.g., “t”, “exp”, “gamma”, “chisq”, “binom”, “pois”, etc.</li>
+<li>E.g., “t”, “exp”, “gamma”, “chisq”, “binom”, “pois”, “unif”, etc.</li>
 </ul>
 <p>See <a href="https://rstudio.github.io/r-manuals/r-intro/Probability-distributions.html">this manual</a> for more details</p>
+</div>
 </section>
 <section id="random-number-generation-1" class="slide level2">
 <h2>Random number generation</h2>
@@ -578,12 +583,12 @@
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># check: the sample mean is approximately 0</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(z) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.003046947</code></pre>
+<pre><code>[1] -0.004709298</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check: the sample sd is approximately 1</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.025867</code></pre>
+<pre><code>[1] 0.9962111</code></pre>
 </div>
 </div>
 </section>
@@ -596,7 +601,7 @@
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>z_ecdf <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(z)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">z_ecdf</span>(<span class="dv">0</span>) <span class="co"># should get close to 1/2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.507</code></pre>
+<pre><code>[1] 0.522</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(z_ecdf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -608,18 +613,18 @@
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>normal_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,000 × 3
-       z empirical    true
-   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
- 1 -2.76     0.001 0.00290
- 2 -2.75     0.002 0.00296
- 3 -2.75     0.003 0.00300
- 4 -2.72     0.004 0.00324
- 5 -2.71     0.005 0.00332
- 6 -2.68     0.006 0.00364
- 7 -2.66     0.007 0.00386
- 8 -2.60     0.008 0.00471
- 9 -2.49     0.009 0.00639
-10 -2.48     0.01  0.00653
+       z empirical     true
+   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+ 1 -3.27     0.001 0.000539
+ 2 -3.01     0.002 0.00132 
+ 3 -2.94     0.003 0.00163 
+ 4 -2.73     0.004 0.00318 
+ 5 -2.64     0.005 0.00418 
+ 6 -2.60     0.006 0.00462 
+ 7 -2.55     0.007 0.00537 
+ 8 -2.52     0.008 0.00580 
+ 9 -2.44     0.009 0.00729 
+10 -2.35     0.01  0.00932 
 # ℹ 990 more rows</code></pre>
 </div>
 </div>
@@ -642,7 +647,7 @@
 <h2>Stick breaking problem</h2>
 <p>If a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?</p>
 <div class="fragment">
-<p>First… any guesses?</p>
+<p>First… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)</p>
 </div>
 <div class="fragment">
 <div class="cell">
@@ -653,7 +658,7 @@
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># hist(ratio)</span></span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(ratio) <span class="co"># exact answer: 2 * log(2) - 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3872229</code></pre>
+<pre><code>[1] 0.3869784</code></pre>
 </div>
 </div>
 </div>
@@ -672,13 +677,17 @@
 <ul>
 <li><p><a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo methods</a> rely on repeated random sampling to obtain numerical results</p></li>
 <li><p>Use randomness to solve problems that might be deterministic in principle</p></li>
+</ul>
+<div class="fragment">
+<ul>
 <li><p>Example: Estimating <span class="math inline">\(\pi\)</span></p>
 <ul>
-<li><p>Simulate random <span class="math inline">\((x, y)\)</span> points with domain as a square of side <span class="math inline">\(2r\)</span> units centered at the origin.</p></li>
+<li><p>Simulate random <span class="math inline">\((x, y)\)</span> points with domain as a square of side <span class="math inline">\(2r\)</span> units centered at the origin</p></li>
 <li><p>Consider a circle inside the same domain with same radius <span class="math inline">\(r\)</span> and inscribed into the square</p></li>
 <li><p>Calculate the ratio of number points inside the circle and total number of generated points (Why?)</p></li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="estimating-pi-using-monte-carlo-simulation-1" class="slide level2">
 <h2>Estimating <span class="math inline">\(\pi\)</span> using Monte Carlo simulation</h2>
@@ -691,7 +700,7 @@
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>inside <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span> <span class="sc">&lt;=</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="sc">*</span> <span class="fu">mean</span>(inside)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.1572</code></pre>
+<pre><code>[1] 3.1576</code></pre>
 </div>
 </div>
 </div><div class="column" style="text-align: left;">
@@ -718,15 +727,15 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.07153349</code></pre>
+<pre><code>[1] 0.005982738</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.02692738</code></pre>
+<pre><code>[1] 0.06296163</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1235104</code></pre>
+<pre><code>[1] -0.02648576</code></pre>
 </div>
 </div>
 </section>
@@ -887,6 +896,56 @@
 <span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(gapminder_kmeans) <span class="sc">|&gt;</span> </span>
 <span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="pre-allocation" class="slide level2">
+<h2>Pre-allocation</h2>
+<p>Example: When 100 coins are tossed, what is the probability that exactly 50 are heads?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tictoc)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>n_runs <span class="ot">&lt;-</span> <span class="dv">500000</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tic</span>()</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_runs) {</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  tosses <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  a[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(tosses)</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, n_runs)</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="fu">tic</span>()</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_runs) {</span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>  tosses <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>  b[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(tosses)</span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a><span class="co"># exact: (factorial(100) / (factorial(50) * factorial(50))) * (1 / 2) ^ 100</span></span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(b <span class="sc">==</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="pre-allocation-1" class="slide level2">
+<h2>Pre-allocation</h2>
+<div class="columns">
+<div class="column" style="text-align: left;">
+<ul>
+<li><p>Not only computations take time, memory allocations do too</p></li>
+<li><p>Changing the size of a vector takes just about as long as creating a new vector does</p></li>
+<li><p>Each time the size changes, R needs to reconsider its allocation of memory to the object</p></li>
+<li><p>Never reallocate a vector after each iteration</p></li>
+</ul>
+</div><div class="column" style="text-align: left;">
+<p><a href="https://privefl.github.io/advr38book/performance.html">Analogy</a></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://privefl.github.io/blog/images/stairs.jpg" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section></section>
 <section>
 <section id="exporting-and-importing-data" class="title-slide slide level1 center">
@@ -910,18 +969,18 @@
 </ul>
 <p>Note that by default, the file will be written to the working directory (i.e.&nbsp;if you just specify the file name)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>example_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>), <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>))</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(example_df, <span class="st">"INSERT PATH/example_df.csv"</span>)</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"INSERT PATH/example_df.csv"</span>)</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>example_obj <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">25</span>), <span class="dv">5</span>, <span class="dv">5</span>)</span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(example_obj, <span class="st">"INSERT PATH/example_obj.rds"</span>)</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"INSERT PATH/example_obj.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>example_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>), <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>))</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(example_df, <span class="st">"INSERT PATH/example_df.csv"</span>)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"INSERT PATH/example_df.csv"</span>)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>example_obj <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">25</span>), <span class="dv">5</span>, <span class="dv">5</span>)</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(example_obj, <span class="st">"INSERT PATH/example_obj.rds"</span>)</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"INSERT PATH/example_obj.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Example: saving <span class="math inline">\(k\)</span>-means clustering results from earlier</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># saving to a folder named "data" in the working directory</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(kmeans_search, <span class="st">"data/kmeans_search_results.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># saving to a folder named "data" in the working directory</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(kmeans_search, <span class="st">"data/kmeans_search_results.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="file-path-and-working-directory" class="slide level2">
@@ -947,8 +1006,8 @@
 <li><p>Use <code>list.files()</code> to see what files are available in the working directory (or any other directory)</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">"~"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">"~"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="resources" class="slide level2">

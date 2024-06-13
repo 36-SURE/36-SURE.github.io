@@ -1068,14 +1068,14 @@
     "href": "sports/project/description.html",
     "title": "Project Guidelines",
     "section": "",
-    "text": "Each student has been allocated into a project group (of up to 4 students). Each group has been assigned a specific project research topic. Your goal is to complete the required project deliverables, in accordance with the guidelines detailed in the remainder of this document."
+    "text": "Each student has been allocated into a project group (of up to 4 students). Each group has been assigned a specific project research topic. Your goal is to complete the required project deliverables and checkpoints, in accordance with the guidelines detailed in the remainder of this document."
   },
   {
     "objectID": "sports/project/description.html#your-task",
     "href": "sports/project/description.html#your-task",
     "title": "Project Guidelines",
     "section": "",
-    "text": "Each student has been allocated into a project group (of up to 4 students). Each group has been assigned a specific project research topic. Your goal is to complete the required project deliverables, in accordance with the guidelines detailed in the remainder of this document."
+    "text": "Each student has been allocated into a project group (of up to 4 students). Each group has been assigned a specific project research topic. Your goal is to complete the required project deliverables and checkpoints, in accordance with the guidelines detailed in the remainder of this document."
   },
   {
     "objectID": "sports/project/description.html#deliverables",
@@ -1083,6 +1083,13 @@
     "title": "Project Guidelines",
     "section": "Deliverables",
     "text": "Deliverables\nThis project has the following three key deliverables:\n\nReport [template] (right click and choose “Save Link As…” to download)\n\nDUE THURSDAY JULY 25\nYour report should be written using Quarto and submitted as a rendered .html file. We recommend using an IDMRaD (Introduction, Data, Methods, Results and Discussion) report format, with details provided in the report template.\n\nPoster [template]\n\nDUE WEDNESDAY JULY 24 (so that we have time to print the posters)\nYour poster should be submitted as a .pdf file. We will then make a printed copy for the poster session on the final day (July 26).\n\nPresentation\n\nDUE THURSDAY JULY 25\nEach group will give an 8-minute presentation on the final day (July 26). The presentation should effectively have the same structure as your report with an introduction, followed by data description, an overview of methods, followed by results and discussion. Your slides may be created in any software, but we ony accept submissions in the form of a .pdf file, a Google Slides link, or a Quarto presentation (self-contained .html file or hosted online)."
+  },
+  {
+    "objectID": "sports/project/description.html#checkpoints",
+    "href": "sports/project/description.html#checkpoints",
+    "title": "Project Guidelines",
+    "section": "Checkpoints",
+    "text": "Checkpoints\n\nJuly 1: 6-minute presentation during lab\n\nNote: It is perfectly fine if you are still exploring the data and have no results at this point\nYour first checkpoint presentation should be structured as follows.\n\nIntroduction (1 slide): Describe your project topic/question(s) and why it is important\nData (1 slide): Data description, any major data pre-processing/cleaning steps\nEDA (2 slides max): 1–2 EDA plots related to your question(s) of interest\nMethods (1 slide): Early thoughts on methods/modeling strategy\n(Optional) Results: Preliminary results if you already have some\nPlan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps. What are the next steps?\n\n\nJuly 12: 8-minute presentation during lab\n\nYour second checkpoint presentation should be structured as follows.\n\nIntroduction (1 slide): Describe your project topic/question(s) and why it is important\nData: (1 slide) Data description and any major data pre-processing/cleaning steps\nPlan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps.\nPresent the completed steps (5 slides max): methods, plots, findings, etc.\nPlan of action (1 slide, use the same one as before): what are the steps still to be completed"
   },
   {
     "objectID": "sports/project/description.html#analysis",
@@ -2217,6 +2224,13 @@
     "title": "Presentations",
     "section": "Design tips",
     "text": "Design tips\n\nLess text!\nYour plot should be big enough (font size, line width, point size, etc.)\nReformat variable names (don’t show the original names in the data)\nIf a table can be represented by a figure, turn it into a figure (e.g., comparison of model evaluation metrics)\nAdvices from Andrew Patton:\n\n\nYou don’t need 17 decimal points for anything ever.\n\n\nMake sure your figures and charts, etc. all display the correct size. If I have to zoom in 27 times to read the legends that’s not going to help your case.\n\n\nPick better colors for your charts. Your submission should look expensive."
+  },
+  {
+    "objectID": "lectures/09-presentation.html#tips",
+    "href": "lectures/09-presentation.html#tips",
+    "title": "Presentations",
+    "section": "tips",
+    "text": "tips\nMost important principles of slide design: your slides should support what you say, not create interference between speech and vision brain areas – your slides serves as a summary of what you said so someone who may have been distracted can catch up quickly – less ink, less ink, less ink – use page numbers XX/XX – No outline for this short talk – I probably forget some things.\nDo not create your talk at the last minute (it will be obvious if you do). Designing good slides takes time. Practicing a talk takes time."
   },
   {
     "objectID": "lectures/09-presentation.html#resources",
@@ -3490,14 +3504,14 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# https://benjaminleroy.github.io/documents/36350/Lectures/4.1_simulation_data.html\n# base R built in English alphabet: letters\n\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"c\" \"k\" \"a\" \"v\" \"h\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 1 1 0 0 0 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"T\" \"H\" \"T\" \"H\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 51"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"t\" \"e\" \"f\" \"y\" \"h\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 1 0 0 0 0 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"T\" \"T\" \"T\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 8"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
     "href": "lectures/08-simulation.html#probability-distributions",
     "title": "Simulation",
     "section": "Probability distributions",
-    "text": "Probability distributions\nA distribution is a mathematical function \\(f(x \\mid \\theta)\\) where\n\n\\(x\\) may take on continuous or discrete values over the domain (i.e. all possible inputs) of \\(f(x \\mid \\theta)\\)\n\\(\\theta\\) is a set of parameters governing the shape of the distribution\n\ne.g. \\(\\theta = \\{\\mu, \\sigma ^2 \\}\\) for a normal (Gaussian) distribution\n\nthe \\(\\mid\\) symbol means that the shape of the distribution is conditional on the values of \\(\\theta\\)\n\nWe use \\(f\\) to denote the distribution for its\n\nprobability density function (PDF) if \\(x\\) is continuous\nprobability mass function (PMF) if \\(x\\) is discrete\n\nNote:\n\n\\(f(x \\mid \\theta) \\geq 0\\) for all \\(x\\)\n\\(\\displaystyle \\sum_x f(x \\mid \\theta) = 1\\) (discrete case) or \\(\\displaystyle \\int_x f(x \\mid \\theta) = 1\\) (continuous case)"
+    "text": "Probability distributions\nA distribution is a mathematical function \\(f(x \\mid \\theta)\\) where\n\n\\(x\\) may take on continuous or discrete values over the domain (i.e. all possible inputs) of \\(f(x \\mid \\theta)\\)\n\\(\\theta\\) is a set of parameters governing the shape of the distribution\n\ne.g. \\(\\theta = \\{\\mu, \\sigma ^2 \\}\\) for a normal (Gaussian) distribution\n\nthe \\(\\mid\\) symbol means that the shape of the distribution is conditional on the values of \\(\\theta\\)\n\n\nLet \\(f\\) denote the distribution for its\n\nprobability density function (PDF) if \\(x\\) is continuous\nprobability mass function (PMF) if \\(x\\) is discrete\n\n\n\nNote:\n\n\\(f(x \\mid \\theta) \\geq 0\\) for all \\(x\\)\n\\(\\displaystyle \\sum_x f(x \\mid \\theta) = 1\\) (discrete case) or \\(\\displaystyle \\int_x f(x \\mid \\theta) = 1\\) (continuous case)"
   },
   {
     "objectID": "lectures/08-simulation.html#normal-distribution",
@@ -3511,7 +3525,7 @@
     "href": "lectures/08-simulation.html#binomial-distribution",
     "title": "Simulation",
     "section": "Binomial distribution",
-    "text": "Binomial distribution\n\n\n\nPMF: \\(\\displaystyle f(x \\mid n, p)= \\binom{n}{x} p^{x}(1-p)^{n-x}\\); \\(x = 0, 1, \\dots, n\\)\nModel for the probability of \\(x\\) successes in \\(n\\) independent trials, each with success probability \\(p\\).\nWe write \\(X \\sim \\text{Binomial}(n,p)\\)\n\n\ntibble(x = 0:20) |&gt;\n  mutate(binom1 = dbinom(x, size = 20, prob = 0.5),\n         binom2 = dbinom(x, size = 20, prob = 0.1)) |&gt;\n  ggplot(aes(x)) + \n  geom_point(aes(y = binom1), color = \"blue\", size = 4) +\n  geom_point(aes(y = binom2), color = \"red\", size = 4)"
+    "text": "Binomial distribution\n\n\n\nPMF: \\(\\displaystyle f(x \\mid n, p)= \\binom{n}{x} p^{x}(1-p)^{n-x}\\); \\(x = 0, 1, \\dots, n\\)\nModel for the probability of \\(x\\) successes in \\(n\\) independent trials, each with success probability \\(p\\)\nWe write \\(X \\sim \\text{Binomial}(n,p)\\)\n\n\ntibble(x = 0:20) |&gt;\n  mutate(binom1 = dbinom(x, size = 20, prob = 0.5),\n         binom2 = dbinom(x, size = 20, prob = 0.1)) |&gt;\n  ggplot(aes(x)) + \n  geom_point(aes(y = binom1), color = \"blue\", size = 4) +\n  geom_point(aes(y = binom2), color = \"red\", size = 4)"
   },
   {
     "objectID": "lectures/08-simulation.html#poisson-distribution",
@@ -3525,49 +3539,49 @@
     "href": "lectures/08-simulation.html#random-number-generation",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\nExample: Sampling from a normal distribution\n\nrnorm(): generate normal random variables\npnorm(): normal cumulative distribution function\ndnorm(): normal density function\nqnorm(): normal quantile function\n\nNote: Replace “norm” with the name of another distribution, all the same functions apply.\n\nE.g., “t”, “exp”, “gamma”, “chisq”, “binom”, “pois”, etc.\n\nSee this manual for more details"
+    "text": "Random number generation\nExample: Sampling from a normal distribution\n\nrnorm(): generate normal random variables\npnorm(): normal cumulative distribution function\ndnorm(): normal density function\nqnorm(): normal quantile function\n\n\nNote: Replace “norm” with the name of another distribution, all the same functions apply.\n\nE.g., “t”, “exp”, “gamma”, “chisq”, “binom”, “pois”, “unif”, etc.\n\nSee this manual for more details"
   },
   {
     "objectID": "lectures/08-simulation.html#random-number-generation-1",
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.003046947\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.025867"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.004709298\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9962111"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.507\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical    true\n   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 -2.76     0.001 0.00290\n 2 -2.75     0.002 0.00296\n 3 -2.75     0.003 0.00300\n 4 -2.72     0.004 0.00324\n 5 -2.71     0.005 0.00332\n 6 -2.68     0.006 0.00364\n 7 -2.66     0.007 0.00386\n 8 -2.60     0.008 0.00471\n 9 -2.49     0.009 0.00639\n10 -2.48     0.01  0.00653\n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.522\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.27     0.001 0.000539\n 2 -3.01     0.002 0.00132 \n 3 -2.94     0.003 0.00163 \n 4 -2.73     0.004 0.00318 \n 5 -2.64     0.005 0.00418 \n 6 -2.60     0.006 0.00462 \n 7 -2.55     0.007 0.00537 \n 8 -2.52     0.008 0.00580 \n 9 -2.44     0.009 0.00729 \n10 -2.35     0.01  0.00932 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses?\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3872229\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3869784\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\nMonte Carlo methods rely on repeated random sampling to obtain numerical results\nUse randomness to solve problems that might be deterministic in principle\nExample: Estimating \\(\\pi\\)\n\nSimulate random \\((x, y)\\) points with domain as a square of side \\(2r\\) units centered at the origin.\nConsider a circle inside the same domain with same radius \\(r\\) and inscribed into the square\nCalculate the ratio of number points inside the circle and total number of generated points (Why?)"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\nMonte Carlo methods rely on repeated random sampling to obtain numerical results\nUse randomness to solve problems that might be deterministic in principle\n\n\n\nExample: Estimating \\(\\pi\\)\n\nSimulate random \\((x, y)\\) points with domain as a square of side \\(2r\\) units centered at the origin\nConsider a circle inside the same domain with same radius \\(r\\) and inscribed into the square\nCalculate the ratio of number points inside the circle and total number of generated points (Why?)"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1572\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1576\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.07153349\n\nmean(rnorm(100))\n\n[1] -0.02692738\n\nmean(rnorm(100))\n\n[1] 0.1235104"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.005982738\n\nmean(rnorm(100))\n\n[1] 0.06296163\n\nmean(rnorm(100))\n\n[1] -0.02648576"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
@@ -3624,6 +3638,20 @@
     "title": "Simulation",
     "section": "Iteration and simulation",
     "text": "Iteration and simulation\nExample: Revisiting \\(k\\)-means clustering with gapminder data - compute the total within-cluster variation for different values of \\(k\\)\n\nlibrary(dslabs)\nclean_gapminder &lt;- gapminder |&gt;\n  filter(year == 2011, !is.na(gdp)) |&gt;\n  mutate(std_log_gdp = as.numeric(scale(log(gdp), center = TRUE, scale = TRUE)),\n         std_life_exp = as.numeric(scale(life_expectancy, center = TRUE, scale = TRUE)))\n\n\n# function to perform clustering for each value of k\ngapminder_kmeans &lt;- function(k) {\n  kmeans_results &lt;- clean_gapminder |&gt;\n    select(std_log_gdp, std_life_exp) |&gt;\n    kmeans(centers = k, nstart = 30)\n  \n  kmeans_out &lt;- tibble(clusters = k,\n                       total_wss = kmeans_results$tot.withinss)\n  return(kmeans_out)\n}\n\n# number of clusters to search over\nn_clusters_search &lt;- 2:12\n\n# iterate over each cluster value to compute total wss\nkmeans_search &lt;- n_clusters_search |&gt; \n  map(gapminder_kmeans) |&gt; \n  bind_rows()"
+  },
+  {
+    "objectID": "lectures/08-simulation.html#pre-allocation",
+    "href": "lectures/08-simulation.html#pre-allocation",
+    "title": "Simulation",
+    "section": "Pre-allocation",
+    "text": "Pre-allocation\nExample: When 100 coins are tossed, what is the probability that exactly 50 are heads?\n\nlibrary(tictoc)\nn_runs &lt;- 500000\na &lt;- c()\ntic()\nfor (i in 1:n_runs) {\n  tosses &lt;- sample(0:1, size = 100, replace = TRUE)\n  a[i] &lt;- sum(tosses)\n}\ntoc()\n\nb &lt;- rep(NA, n_runs)\ntic()\nfor (i in 1:n_runs) {\n  tosses &lt;- sample(0:1, size = 100, replace = TRUE)\n  b[i] &lt;- sum(tosses)\n}\ntoc()\n\n# exact: (factorial(100) / (factorial(50) * factorial(50))) * (1 / 2) ^ 100\nmean(b == 50)"
+  },
+  {
+    "objectID": "lectures/08-simulation.html#pre-allocation-1",
+    "href": "lectures/08-simulation.html#pre-allocation-1",
+    "title": "Simulation",
+    "section": "Pre-allocation",
+    "text": "Pre-allocation\n\n\n\nNot only computations take time, memory allocations do too\nChanging the size of a vector takes just about as long as creating a new vector does\nEach time the size changes, R needs to reconsider its allocation of memory to the object\nNever reallocate a vector after each iteration\n\n\nAnalogy"
   },
   {
     "objectID": "lectures/08-simulation.html#readingwriting-fromto-a-file",
