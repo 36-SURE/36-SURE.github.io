@@ -529,42 +529,49 @@
     "href": "health/project/description.html",
     "title": "Project Guidelines",
     "section": "",
-    "text": "Each student has been allocated into a project group (of up to 4 students). Each group has been assigned a specific project research topic. Your goal is to complete the required project deliverables, in accordance with the guidelines detailed in the remainder of this document."
+    "text": "Each student has been allocated into a project group (of up to 4 students). Each group has been assigned a specific project research topic. Your goal is to complete the required project deliverables and checkpoints, in accordance with the guidelines detailed in the remainder of this document."
   },
   {
     "objectID": "health/project/description.html#your-task",
     "href": "health/project/description.html#your-task",
     "title": "Project Guidelines",
     "section": "",
-    "text": "Each student has been allocated into a project group (of up to 4 students). Each group has been assigned a specific project research topic. Your goal is to complete the required project deliverables, in accordance with the guidelines detailed in the remainder of this document."
+    "text": "Each student has been allocated into a project group (of up to 4 students). Each group has been assigned a specific project research topic. Your goal is to complete the required project deliverables and checkpoints, in accordance with the guidelines detailed in the remainder of this document."
   },
   {
     "objectID": "health/project/description.html#deliverables",
     "href": "health/project/description.html#deliverables",
     "title": "Project Guidelines",
     "section": "Deliverables",
-    "text": "Deliverables\nThis project has the following three key deliverables DUE FRIDAY JULY 19, 2024.\n(NOTE: It is important to finish everything by the July 19 deadline, due to the Minneapolis trip the week of July 22.)\n\nReport [template] (right click and choose “Save Link As…” to download)\n\nDUE FRIDAY JULY 19\nYour report should be written using Quarto and submitted as a rendered .html file. We recommend using an IDMRaD (Introduction, Data, Methods, Results and Discussion) report format, with details provided in the report template.\n\nPoster [template]\n\nDUE FRIDAY JULY 19\nYour poster should be submitted as a .pdf file. We will then make a printed copy for the poster session on the final day (July 26).\n\nSlides\n\nDUE FRIDAY JULY 19\nEach group will give an 8-minute presentation on the final day (July 26). The presentation should effectively have the same structure as your report with an introduction, followed by data description, an overview of methods, followed by results and discussion. Your slides may be created in any software, but we ony accept submissions in the form of a .pdf file, a Google Slides link, or a Quarto presentation (self-contained .html file or hosted online)."
+    "text": "Deliverables\nThis project has the following three key deliverables DUE FRIDAY, JULY 19 AT 6PM ET.\n(NOTE: It is important to finish everything by the July 19 deadline, due to the Minneapolis trip the week of July 22.)\n\nReport [template] (right click and choose “Save Link As…” to download)\n\nDUE FRIDAY, JULY 19 AT 6PM ET\nYour report should be written using Quarto and submitted as a rendered .html file. We recommend using an IDMRaD (Introduction, Data, Methods, Results and Discussion) report format, with details provided in the report template.\n\nPoster [template] (Google Slides link)\n\nDUE FRIDAY, JULY 19 AT 6PM ET\nYour poster should be submitted as a .pdf file. We will then make a printed copy for the poster session on the final day (July 26).\n\nSlides\n\nDUE FRIDAY, JULY 19 AT 6PM ET\nEach group will give an 8-minute presentation on the final day (July 26). The presentation should effectively have the same structure as your report with an introduction, followed by data description, an overview of methods, followed by results and discussion. Your slides may be created in any software, but we ony accept submissions in the form of a .pdf file, a Google Slides link, or a Quarto presentation (self-contained .html file or hosted online)."
+  },
+  {
+    "objectID": "health/project/description.html#checkpoints",
+    "href": "health/project/description.html#checkpoints",
+    "title": "Project Guidelines",
+    "section": "Checkpoints",
+    "text": "Checkpoints\n\nJuly 1: 5-minute presentation during lab\n\nNote: It is perfectly fine if you don’t have any results at this point\nYour first checkpoint presentation should be structured as follows.\n\nIntroduction (1 slide): Describe your project topic/question(s) and why it is important\nData (1 slide): Data description, any preliminary data pre-processing/cleaning steps\nEDA (2 slides max): 1–2 EDA plots related to your question(s) of interest\n\nDesign the slides using the assertion-evidence model\n\nMethods (1 slide): Early thoughts on methods/modeling strategy. Justify why it might be appropriate to answer your question(s) of interest\n(Optional) Results: Preliminary results if you already have some\nPlan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps. What are the next steps?\n\n\nJuly 12: 8-minute presentation during lab\n\nYour second checkpoint presentation should be structured as follows.\n\nIntroduction (1 slide): Describe your project topic/question(s) and why it is important\nData: (1 slide) Data description and any major data pre-processing/cleaning steps\nPlan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps.\nPresent the completed steps (5 slides max): methods, plots, findings, etc.\n\nDesign the slides using the assertion-evidence model\n\nPlan of action (1 slide, use the same one as before): what are the steps still to be completed?"
   },
   {
     "objectID": "health/project/description.html#project-topics",
     "href": "health/project/description.html#project-topics",
     "title": "Project Guidelines",
     "section": "Project Topics",
-    "text": "Project Topics\n(Note: All five topics below contribute to an overall theme of “the impact of race, social and demographic factors on health, survival, and mortality.”)\nProject 1: Premature deaths\nDo income inequality, unemployment and high school completion rates affect the number of premature deaths of certain racial groups at the county level?\nProject 2: Preventable hospital stays\nDo income inequality, unemployment and high school completion rates affect the number of preventable hospital stays of certain racial groups at the county level?\nProject 3: Mental health\nDo the number of mental health professionals per county affect the number of poor mental health days?\nProject 4: Drug overdose alcohol related deaths\nAre there demographic and social factors that are predictors of drug overdose, alcohol-related incidents (e.g., driving accidents)?\nProject 5: Influences on childhood outcomes\nHow are juvenile healthcare outcomes impacted by adult health-related practices (e.g., smoking, drinking, diet)?"
+    "text": "Project Topics\n(Note: All five topics below contribute to an overall theme of “the impact of race, social and demographic factors on health, survival, and mortality.”)\nProject 1: Premature deaths (TA: Princess)\nDo income inequality, unemployment and high school completion rates affect the number of premature deaths of certain racial groups at the county level?\nProject 2: Preventable hospital stays (TA: Nick)\nDo income inequality, unemployment and high school completion rates affect the number of preventable hospital stays of certain racial groups at the county level?\nProject 3: Mental health (TA: Nick)\nDo the number of mental health professionals per county affect the number of poor mental health days?\nProject 4: Drug overdose and alcohol related deaths (TA: Princess)\nAre there demographic and social factors that are predictors of drug overdose and alcohol-related incidents (e.g., driving accidents)?\nProject 5: Influences on childhood outcomes (TA: Akshay)\nHow are juvenile healthcare outcomes impacted by adult health-related practices (e.g., smoking, drinking, diet)?"
   },
   {
     "objectID": "health/project/description.html#analysis",
     "href": "health/project/description.html#analysis",
     "title": "Project Guidelines",
     "section": "Analysis",
-    "text": "Analysis\nYour analysis should focus on both:\nExploratory data analysis: Create visualizations to explore the underlying structure of the data and gain insights about distributions and relationships between variables. These should be ideally based on reasoned hypotheses.\nStatistical modeling: Demonstrate the use of statistical and machine learning modeling techniques. This may involve explicitly writing out the assumptions of your model (i.e., any assumed distributions), a justification for your choice of model (this includes an appropriate comparison with alternative specifications such as different explanatory variables), and then any relevant interpretation of the model with regards to your project’s topic. Depending on your project, the model(s) you rely on may be used for either an inference (i.e., interpreting coefficients) or prediction task. The model you choose just needs to be motivated by your question of interest.\n\nAre there demographic and social determinants, access to care factors that are predictors of physical and emotional health? These could be the outcome of carefully applied predictive models."
+    "text": "Analysis\nYour analysis should focus on both:\nExploratory data analysis: Create visualizations to explore the underlying structure of the data and gain insights about distributions and relationships between variables. These should be ideally based on reasoned hypotheses.\nStatistical modeling: Demonstrate the use of statistical and machine learning modeling techniques. This may involve justifications for your choice of model (e.g., comparison with model specifications such as using different predictors, or with other methods), and then any relevant interpretation of the model with regards to your project’s topic. Depending on your project, the model(s) you rely on may be used for either an inference (i.e., interpreting coefficients) or prediction task. The model you choose just needs to be motivated by your question of interest."
   },
   {
     "objectID": "health/project/description.html#data",
     "href": "health/project/description.html#data",
     "title": "Project Guidelines",
     "section": "Data",
-    "text": "Data\nRequired: County Health Rankings Data\n\nThe County Health Rankings Data—collected by the University of Wisconsin Population Health Institute—ranks every county in each state on their Health Outcomes and Health Factors.\nThis dataset also contains the measurements used to calculate the rankings for each county. More information can be found here.\nYou must (at minimum) use the 2024 ranking measures which can provide more insight into the most recent health ranking outcomes priorities. This can be used to better shape your project topic and related hypotheses.\nYour analysis should mainly be done at the entire United States scale (as feasible). However, you are welcome to focus on some specific counties/states to test more granular spatial hypotheses.\nAll data used must be publicly available.\n\nOptional: additional suggestions and data sources\n\nConsider doing a temporal or trend analysis for your analyses, as the County Health Rankings Data are typically collected over time.\n\nFor predictive modeling, consider adding time-varying features or forecasting an outcome, with suitable uncertainty quantification.\n\nConsider merging the County Health Rankings Data with other publicly available datasets.\n\nExample sources include US Census data (accessed via the tidycensus R package) and COVID-19 data (can be accssed via the covidcast R package)."
+    "text": "Data\nRequired: County Health Rankings Data\n\nThe County Health Rankings Data—collected by the University of Wisconsin Population Health Institute—ranks every county in each state on their Health Outcomes and Health Factors.\nThis dataset also contains the measurements used to calculate the rankings for each county. More information can be found here.\nYou must (at minimum) use the 2024 ranking measures which can provide more insight into the most recent health ranking outcomes priorities. This can be used to better shape your project topic and related hypotheses.\nYour analysis should mainly be done at the entire United States scale (as feasible). However, you are welcome to focus on some specific counties/states to test more granular spatial hypotheses.\n\nOptional: additional suggestions and data sources\n\nConsider doing a temporal or trend analysis for your analyses, as the County Health Rankings Data are typically collected over time.\n\nFor predictive modeling, consider adding time-varying features or forecasting an outcome, with suitable uncertainty quantification.\n\nConsider merging the County Health Rankings Data with other publicly available datasets.\n\nExample sources include US Census data (accessed via the tidycensus R package) and COVID-19 data (can be accssed via the covidcast R package).\n\n\n(Note: All data used must be publicly available.)"
   },
   {
     "objectID": "health.html",
@@ -1068,35 +1075,35 @@
     "href": "sports/project/description.html",
     "title": "Project Guidelines",
     "section": "",
-    "text": "Each student has been allocated into a project group (of up to 4 students). Each group has been assigned a specific project research topic. Your goal is to complete the required project deliverables and checkpoints, in accordance with the guidelines detailed in the remainder of this document."
+    "text": "Each student has been allocated into a project group of three. Each group has been assigned a specific project research topic. Your goal is to complete the required project deliverables and checkpoints, in accordance with the guidelines detailed in the remainder of this document."
   },
   {
     "objectID": "sports/project/description.html#your-task",
     "href": "sports/project/description.html#your-task",
     "title": "Project Guidelines",
     "section": "",
-    "text": "Each student has been allocated into a project group (of up to 4 students). Each group has been assigned a specific project research topic. Your goal is to complete the required project deliverables and checkpoints, in accordance with the guidelines detailed in the remainder of this document."
+    "text": "Each student has been allocated into a project group of three. Each group has been assigned a specific project research topic. Your goal is to complete the required project deliverables and checkpoints, in accordance with the guidelines detailed in the remainder of this document."
   },
   {
     "objectID": "sports/project/description.html#deliverables",
     "href": "sports/project/description.html#deliverables",
     "title": "Project Guidelines",
     "section": "Deliverables",
-    "text": "Deliverables\nThis project has the following three key deliverables:\n\nReport [template] (right click and choose “Save Link As…” to download)\n\nDUE THURSDAY JULY 25\nYour report should be written using Quarto and submitted as a rendered .html file. We recommend using an IDMRaD (Introduction, Data, Methods, Results and Discussion) report format, with details provided in the report template.\n\nPoster [template]\n\nDUE WEDNESDAY JULY 24 (so that we have time to print the posters)\nYour poster should be submitted as a .pdf file. We will then make a printed copy for the poster session on the final day (July 26).\n\nPresentation\n\nDUE THURSDAY JULY 25\nEach group will give an 8-minute presentation on the final day (July 26). The presentation should effectively have the same structure as your report with an introduction, followed by data description, an overview of methods, followed by results and discussion. Your slides may be created in any software, but we ony accept submissions in the form of a .pdf file, a Google Slides link, or a Quarto presentation (self-contained .html file or hosted online)."
+    "text": "Deliverables\nThis project has the following three key deliverables:\n\nReport [template] (right click and choose “Save Link As…” to download)\n\nDUE THURSDAY JULY 25, 6PM\nYour report should be written using Quarto and submitted as a rendered .html file. We recommend using an IDMRaD (Introduction, Data, Methods, Results and Discussion) report format, with details provided in the report template.\n\nPoster [template] (Google Slides link)\n\nDUE TUESDAY JULY 24, 6PM (so that we have time to print the posters)\nYour poster should be submitted as a .pdf file. We will then make a printed copy for the poster session on the final day (July 26).\n\nPresentation\n\nDUE THURSDAY JULY 25, 6PM\nEach group will give an 8-minute presentation on the final day (July 26). The presentation should effectively have the same structure as your report with an introduction, followed by data description, an overview of methods, followed by results and discussion. Your slides may be created in any software, but we ony accept submissions in the form of a .pdf file, a Google Slides link, or a Quarto presentation (self-contained .html file or hosted online)."
   },
   {
     "objectID": "sports/project/description.html#checkpoints",
     "href": "sports/project/description.html#checkpoints",
     "title": "Project Guidelines",
     "section": "Checkpoints",
-    "text": "Checkpoints\n\nJuly 1: 6-minute presentation during lab\n\nNote: It is perfectly fine if you are still exploring the data and have no results at this point\nYour first checkpoint presentation should be structured as follows.\n\nIntroduction (1 slide): Describe your project topic/question(s) and why it is important\nData (1 slide): Data description, any major data pre-processing/cleaning steps\nEDA (2 slides max): 1–2 EDA plots related to your question(s) of interest\nMethods (1 slide): Early thoughts on methods/modeling strategy\n(Optional) Results: Preliminary results if you already have some\nPlan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps. What are the next steps?\n\n\nJuly 12: 8-minute presentation during lab\n\nYour second checkpoint presentation should be structured as follows.\n\nIntroduction (1 slide): Describe your project topic/question(s) and why it is important\nData: (1 slide) Data description and any major data pre-processing/cleaning steps\nPlan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps.\nPresent the completed steps (5 slides max): methods, plots, findings, etc.\nPlan of action (1 slide, use the same one as before): what are the steps still to be completed"
+    "text": "Checkpoints\n\nJuly 1: 5-minute presentation during lab\n\nNote: It is perfectly fine if you don’t have any results at this point\nYour first checkpoint presentation should be structured as follows.\n\nIntroduction (1 slide): Describe your project topic/question(s) and why it is important\nData (1 slide): Data description, any preliminary data pre-processing/cleaning steps\nEDA (2 slides max): 1–2 EDA plots related to your question(s) of interest\n\nDesign the slides using the assertion-evidence model\n\nMethods (1 slide): Early thoughts on methods/modeling strategy. Justify why it might be appropriate to answer your question(s) of interest\n(Optional) Results: Preliminary results if you already have some\nPlan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps. What are the next steps?\n\n\nJuly 12: 8-minute presentation during lab\n\nYour second checkpoint presentation should be structured as follows.\n\nIntroduction (1 slide): Describe your project topic/question(s) and why it is important\nData: (1 slide) Data description and any major data pre-processing/cleaning steps\nPlan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps.\nPresent the completed steps (5 slides max): methods, plots, findings, etc.\n\nDesign the slides using the assertion-evidence model\n\nPlan of action (1 slide, use the same one as before): what are the steps still to be completed?"
   },
   {
     "objectID": "sports/project/description.html#analysis",
     "href": "sports/project/description.html#analysis",
     "title": "Project Guidelines",
     "section": "Analysis",
-    "text": "Analysis\nYour analysis should focus on both:\nExploratory data analysis: Create visualizations to explore the underlying structure of the data and gain insights about distributions and relationships between variables. These should be ideally based on reasoned hypotheses.\nStatistical modeling: Demonstrate the use of statistical and machine learning modeling techniques. This may involve explicitly writing out the assumptions of your model (i.e., any assumed distributions), a justification for your choice of model (this includes an appropriate comparison with alternative specifications such as different explanatory variables), and then any relevant interpretation of the model with regards to your project’s topic. Depending on your project, the model(s) you rely on may be used for either an inference (i.e., interpreting coefficients) or prediction task. The model you choose just needs to be motivated by your sports question of interest."
+    "text": "Analysis\nYour analysis should focus on both:\nExploratory data analysis: Create visualizations to explore the underlying structure of the data and gain insights about distributions and relationships between variables. These should be ideally based on reasoned hypotheses.\nStatistical modeling: Demonstrate the use of statistical and machine learning modeling techniques. This may involve justifications for your choice of model (e.g., comparison with model specifications such as using different predictors, or with other methods), and then any relevant interpretation of the model with regards to your project’s topic. Depending on your project, the model(s) you rely on may be used for either an inference (i.e., interpreting coefficients) or prediction task. The model you choose just needs to be motivated by your question of interest."
   },
   {
     "objectID": "git-setup.html#step-1-create-a-github-account",
@@ -1145,14 +1152,14 @@
     "href": "lectures.html",
     "title": "Lectures",
     "section": "",
-    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides"
+    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides\n\n\nLecture 9\nJune 14\nPresentations\nslides"
   },
   {
     "objectID": "lectures.html#contents",
     "href": "lectures.html#contents",
     "title": "Lectures",
     "section": "",
-    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides"
+    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides\n\n\nLecture 9\nJune 14\nPresentations\nslides"
   },
   {
     "objectID": "lectures.html#references",
@@ -2163,6 +2170,20 @@
     "text": "Practical issues\n\nWhat dissimilarity measure should be used?\nWhat type of linkage should be used?\nHow many clusters to choose?\nWhich features should we use to drive the clustering?\n\nCategorical variables?\n\nHard clustering vs. soft clustering\n\nHard clustering (\\(k\\)-means, hierachical): assigns each observation to exactly one cluster\nSoft (fuzzy) clustering: assigns each observation a probability of belonging to a cluster\n\n\n\n\n\nIT DEPENDS…\n\n\n\n\n36-SURE.github.io"
   },
   {
+    "objectID": "lectures/09-presentation.html#eda-project-presentation",
+    "href": "lectures/09-presentation.html#eda-project-presentation",
+    "title": "Presentations",
+    "section": "EDA project presentation",
+    "text": "EDA project presentation\n\n8-min presentation on Tuesday, June 18 during lecture time\n\naim for 7 min + 1 min for Q&A\nmake sure you do not exceed 8 min (practice and time yourself)\nI’ll cut you off if you exceed 8 min\n\nSlides are due Monday, June 17 at 5pm ET"
+  },
+  {
+    "objectID": "lectures/09-presentation.html#capstone-project-presentation-a-preview",
+    "href": "lectures/09-presentation.html#capstone-project-presentation-a-preview",
+    "title": "Presentations",
+    "section": "Capstone project presentation (a preview)",
+    "text": "Capstone project presentation (a preview)\n\n2 presentation checkpoints (both during lab time)\n1 final presentation on the final day (July 26) (+ other deliverables)\nDetails will be provided next week"
+  },
+  {
     "objectID": "lectures/09-presentation.html#begin-with-background-and-motivation",
     "href": "lectures/09-presentation.html#begin-with-background-and-motivation",
     "title": "Presentations",
@@ -2209,7 +2230,7 @@
     "href": "lectures/09-presentation.html#discussion-and-ending-a-presentation",
     "title": "Presentations",
     "section": "Discussion (and ending a presentation)",
-    "text": "Discussion (and ending a presentation)\n\nConclude with a recap of the main points of your work\n\n\n\nThen point out limitations and indicate a direction for the next steps\n\n\n\n\nEither end with the Discussion slide (or Acknowledgements but this is sometimes placed at the beginning)\nNever end a presentation with lone Thank you slide!\n\nWant the audience to focus on the final points in your Discussion slide\n\n\n\n\n\nInclude back-up Appendix slides with additional info, ready for questions\n\n\n\n\nSlides for References should not be displayed during your talk\n\nTheir purpose is just for sharing with others\nAlternative option: include references directly on slides either in text or via footnotes 1\n\n\n\nLike this…"
+    "text": "Discussion (and ending a presentation)\n\nConclude with a recap of the main points of your work\n\n\n\nThen point out limitations and indicate future directions\n\n\n\n\nEither end with the Discussion slide (or Acknowledgements but this is sometimes placed at the beginning)\nNever end a presentation with lone Thank you slide!\n\nWant the audience to focus on the final points in your Discussion slide\n\n\n\n\n\nInclude back-up Appendix slides with additional info, ready for questions\n\n\n\n\nSlides for References should not be displayed during your talk\n\nTheir purpose is just for sharing with others\nAlternative option: include references directly on slides either in text or via footnotes 1\n\n\n\nLike this…"
   },
   {
     "objectID": "lectures/09-presentation.html#additional-tips-and-reminders",
@@ -2223,21 +2244,21 @@
     "href": "lectures/09-presentation.html#design-tips",
     "title": "Presentations",
     "section": "Design tips",
-    "text": "Design tips\n\nLess text!\nYour plot should be big enough (font size, line width, point size, etc.)\nReformat variable names (don’t show the original names in the data)\nIf a table can be represented by a figure, turn it into a figure (e.g., comparison of model evaluation metrics)\nAdvices from Andrew Patton:\n\n\nYou don’t need 17 decimal points for anything ever.\n\n\nMake sure your figures and charts, etc. all display the correct size. If I have to zoom in 27 times to read the legends that’s not going to help your case.\n\n\nPick better colors for your charts. Your submission should look expensive."
+    "text": "Design tips\n\nLess ink, less ink, less ink\nYour plot should be big enough (font size, line width, point size, etc.)\nReformat variable names (don’t show the original names in the data)\nIf a table can be represented by a figure, turn it into a figure (e.g., comparison of model evaluation metrics)"
   },
   {
-    "objectID": "lectures/09-presentation.html#tips",
-    "href": "lectures/09-presentation.html#tips",
+    "objectID": "lectures/09-presentation.html#more-general-tips",
+    "href": "lectures/09-presentation.html#more-general-tips",
     "title": "Presentations",
-    "section": "tips",
-    "text": "tips\nMost important principles of slide design: your slides should support what you say, not create interference between speech and vision brain areas – your slides serves as a summary of what you said so someone who may have been distracted can catch up quickly – less ink, less ink, less ink – use page numbers XX/XX – No outline for this short talk – I probably forget some things.\nDo not create your talk at the last minute (it will be obvious if you do). Designing good slides takes time. Practicing a talk takes time."
+    "section": "More general tips",
+    "text": "More general tips\n\nYour slides should support what you say, not create interference between speech and vision brain areas – your slides serves as a summary of what you said so someone who may have been distracted can catch up quickly.\n\n\nDo not create your talk at the last minute (it will be obvious if you do). Designing good slides takes time. Practicing a talk takes time.\n\n\nAdvices from Andrew Patton:\n\n\nYou don’t need 17 decimal points for anything ever.\n\n\nMake sure your figures and charts, etc. all display the correct size. If I have to zoom in 27 times to read the legends that’s not going to help your case.\n\n\nPick better colors for your charts. Your submission should look expensive."
   },
   {
-    "objectID": "lectures/09-presentation.html#resources",
-    "href": "lectures/09-presentation.html#resources",
+    "objectID": "lectures/09-presentation.html#resources-to-follow-along",
+    "href": "lectures/09-presentation.html#resources-to-follow-along",
     "title": "Presentations",
-    "section": "Resources",
-    "text": "Resources\n\n\n36-SURE.github.io"
+    "section": "Resources to follow along",
+    "text": "Resources to follow along\n\nQuarto presentation: quarto.org/docs/presentations\nrevealjs: quarto.org/docs/presentations/revealjs\n\n\n\n36-SURE.github.io"
   },
   {
     "objectID": "lectures/05-kmeans.html#statistical-learning",
@@ -3504,7 +3525,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"t\" \"e\" \"f\" \"y\" \"h\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 1 0 0 0 0 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"T\" \"T\" \"T\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 8"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"e\" \"r\" \"c\" \"i\" \"o\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 1 1 0 1 0 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"H\" \"H\" \"H\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 42"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -3546,21 +3567,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.004709298\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9962111"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.02415699\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9909414"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.522\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.27     0.001 0.000539\n 2 -3.01     0.002 0.00132 \n 3 -2.94     0.003 0.00163 \n 4 -2.73     0.004 0.00318 \n 5 -2.64     0.005 0.00418 \n 6 -2.60     0.006 0.00462 \n 7 -2.55     0.007 0.00537 \n 8 -2.52     0.008 0.00580 \n 9 -2.44     0.009 0.00729 \n10 -2.35     0.01  0.00932 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.502\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.13     0.001 0.000860\n 2 -2.87     0.002 0.00206 \n 3 -2.84     0.003 0.00225 \n 4 -2.72     0.004 0.00328 \n 5 -2.59     0.005 0.00483 \n 6 -2.53     0.006 0.00569 \n 7 -2.37     0.007 0.00880 \n 8 -2.31     0.008 0.0103  \n 9 -2.26     0.009 0.0118  \n10 -2.25     0.01  0.0124  \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3869784\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3879531\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -3574,14 +3595,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1576\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1292\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.005982738\n\nmean(rnorm(100))\n\n[1] 0.06296163\n\nmean(rnorm(100))\n\n[1] -0.02648576"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.199524\n\nmean(rnorm(100))\n\n[1] 0.02693345\n\nmean(rnorm(100))\n\n[1] -0.01761725"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
