@@ -338,57 +338,87 @@
 </div>
 
 </section>
-<section id="steve" class="slide level2">
-<h2>steve</h2>
-<p>write on board</p>
-<p>6 or whichever many comparisons</p>
-<p>sup vs unsup</p>
-<p>expl vs resp</p>
-<p>classif vs reg</p>
-<p>inference vs prediction</p>
-<p>flexib vs interp</p>
-<p>bias vs variance</p>
-<p>assessment vs selection</p>
-<p>parametric vs np</p>
-</section>
 <section>
 <section id="background" class="title-slide slide level1 center">
 <h1>Background</h1>
 
 </section>
+<section id="concepts-that-hopefully-youll-be-able-to-distinguish" class="slide level2">
+<h2>Concepts that hopefully you’ll be able to distinguish</h2>
+<ul>
+<li>Supervised vs.&nbsp;unsupervised learning</li>
+<li>Classification vs.&nbsp;regression</li>
+<li>Classification vs.&nbsp;clustering</li>
+<li>Explanatory vs.&nbsp;response variable</li>
+<li>Inference vs.&nbsp;prediction</li>
+<li>Flexibility-interpretability tradeoff</li>
+<li>Bias-variance tradeoff</li>
+<li>Model assessment vs.&nbsp;model selection</li>
+<li>Parametric vs.&nbsp;nonparametric models</li>
+</ul>
+</section>
+<section id="statistical-learning" class="slide level2">
+<h2>Statistical learning</h2>
+<blockquote>
+<p>Statistical learning refers to a set of tools for making sense of complex datasets. — <a href="https://www.statlearning.com/">Preface of ISLR</a></p>
+</blockquote>
+<div class="fragment">
+<p>General setup: Given a dataset of <span class="math inline">\(p\)</span> variables (columns) and <span class="math inline">\(n\)</span> observations (rows) <span class="math inline">\(x_1,\dots,x_n\)</span>.</p>
+<p>For observation <span class="math inline">\(i\)</span>, <span class="math display">\[x_{i1},x_{i2},\ldots,x_{ip} \sim P \,,\]</span> where <span class="math inline">\(P\)</span> is a <span class="math inline">\(p\)</span>-dimensional distribution that we might not know much about <em>a priori</em></p>
+</div>
+</section>
 <section id="supervised-learning" class="slide level2">
 <h2>Supervised learning</h2>
-<p>What is <strong>statistical learning?</strong></p>
+<ul>
+<li><p>Response variable <span class="math inline">\(Y\)</span> in one of the <span class="math inline">\(p\)</span> variables (columns)</p></li>
+<li><p>The remaining <span class="math inline">\(p-1\)</span> variables are predictor measurements <span class="math inline">\(X\)</span></p>
+<ul>
+<li><p>Regression: <span class="math inline">\(Y\)</span> is quantitative</p></li>
+<li><p>Classification: <span class="math inline">\(Y\)</span> is categorical</p></li>
+</ul></li>
+</ul>
 <div class="fragment">
-<p><a href="https://www.statlearning.com/">Preface of Introduction to Statistical Learning with Applications in R (ISLR)</a>:</p>
-<blockquote>
-<p><em>refers to a set of tools for modeling and understanding complex datasets</em></p>
-</blockquote>
+<p><strong>Goal</strong>: uncover associations between a set of <strong>predictor</strong> (<strong>independent</strong> / <strong>explanatory</strong>) variables / features and a single <strong>response</strong> (or <strong>dependent</strong>) variable</p>
+<ul>
+<li><p>Accurately predict unseen test cases</p></li>
+<li><p>Understand which features affect the response (and how)</p></li>
+<li><p>Assess the quality of our predictions and inferences</p></li>
+</ul>
 </div>
-<div class="fragment">
-<p>What is <strong>supervised learning?</strong></p>
-<p><strong>Goal</strong>: uncover associations between a set of <strong>predictor</strong> (aka <strong>independent</strong> / <strong>explanatory</strong>) variables / features and a single <strong>response</strong> (or <strong>dependent</strong>) variable</p>
+</section>
+<section id="theyre-all-the-same" class="slide level2">
+<h2>They’re all the same</h2>
+<center>
+<p><img data-src="../images/covariates.png" width="600"></p>
+</center>
 <!-- . . . -->
 <!-- * If we are using one or more variables to help us understand or predict values of another variable, -->
 <!--   * The variable that is the outcome of interest, the one we’re trying to predict, is called the response variable (also called dependent variable) -->
 <!--   *   The variable whose relationship to the response is being studied is called the explanatory variable (or independent -->
 <!-- variable) -->
 <!-- Note: each of the explanatory and response variables can either be quantitative or categorical -->
-</div>
 </section>
 <section id="supervised-learning-1" class="slide level2">
 <h2>Supervised learning</h2>
-<p>INSERT SPIDERMAN MEMES</p>
-</section>
-<section id="supervised-learning-2" class="slide level2">
-<h2>Supervised learning</h2>
 <p>Examples</p>
 <ul>
-<li><p>Identify the risk factors for prostate cancer</p></li>
-<li><p>Predict whether someone will have a heart attack based on demographic, diet, and clinical measurements</p></li>
-<li><p>Predict a player’s batting average in year <span class="math inline">\(t+1\)</span> using their batting average in year <span class="math inline">\(t\)</span> and uncover meaningful relationships between other measurements (which are <strong>predictors</strong> / <strong>features</strong>) and batting average in year <span class="math inline">\(t+1\)</span> (which is the <strong>response</strong>)</p></li>
-<li><p>Given NFL player tracking data which contain 2D coordinates of every player on the field at every tenth of the second, predict how far a ball-carrier will go at any given moment within a play</p></li>
+<li>Identify the risk factors for prostate cancer</li>
 </ul>
+<div class="fragment">
+<ul>
+<li>Predict whether someone will have a heart attack based on demographic, diet, and clinical measurements</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Predict a player’s batting average in year <span class="math inline">\(t+1\)</span> using their batting average in year <span class="math inline">\(t\)</span> and uncover meaningful relationships between other measurements and batting average in year <span class="math inline">\(t+1\)</span></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Given NFL player tracking data which contain 2D coordinates of every player on the field at every tenth of the second, predict how far a ball-carrier will go at any given moment within a play</li>
+</ul>
+</div>
 </section>
 <section id="examples-of-statistical-learning-methods-algorithms" class="slide level2">
 <h2>Examples of statistical learning methods / algorithms</h2>
@@ -398,7 +428,7 @@
 <ul>
 <li><p>Generalized linear models (GLMs) and penalized versions (lasso, ridge, elastic net)</p></li>
 <li><p>Smoothing splines, generalized additive models (GAMs)</p></li>
-<li><p>Decision trees and its variants (e.g., random forest, boosting)</p></li>
+<li><p>Decision trees and its variants (e.g., random forests, boosting)</p></li>
 <li><p>Neural networks</p></li>
 </ul>
 </div>
@@ -421,8 +451,8 @@
 </div>
 <div class="fragment">
 <ul>
-<li><p>Care about the details of <span class="math inline">\(\hat{f}(X)\)</span>? ⟶ inference</p></li>
-<li><p>Fine with treating <span class="math inline">\(\hat{f}(X)\)</span> as a obscure/mystical machine? ⟶ prediction</p></li>
+<li><p>Care about the details of <span class="math inline">\(\hat{f}(X)\)</span>? <span class="math inline">\(\longrightarrow\)</span> inference</p></li>
+<li><p>Fine with treating <span class="math inline">\(\hat{f}(X)\)</span> as a obscure/mystical machine? <span class="math inline">\(\longrightarrow\)</span> prediction</p></li>
 </ul>
 </div>
 <div class="fragment">
@@ -435,11 +465,36 @@
 <h1>The tradeoffs</h1>
 
 </section>
+<section id="some-tradeoffs" class="slide level2">
+<h2>Some tradeoffs</h2>
+<ul>
+<li><p>Prediction accuracy vs interpretability</p>
+<ul>
+<li>Linear models are easy to interpret; boosted trees are not</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li><p>Good fit vs overfit or underfit</p>
+<ul>
+<li>How do we know when the fit is just right?</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><p>Parsimony versus black-box</p>
+<ul>
+<li>We often prefer a simpler model involving fewer variables over a black-box involving more (or all) predictors</li>
+</ul></li>
+</ul>
+</div>
+</section>
 <section id="model-flexibility-vs-interpretability" class="slide level2">
 <h2>Model flexibility vs interpretability</h2>
 <p>Generally speaking: <strong>tradeoff</strong> between a model’s <em>flexibility</em> (i.e.&nbsp;how “wiggly” it is) and how <strong>interpretable</strong> it is</p>
 <ul>
-<li><p>Simpler the parametric form of the model ⟶ the easier it is to interpret</p></li>
+<li><p>The simpler parametric form of the model, the easier it is to interpret</p></li>
 <li><p>Hence why <strong>linear regression</strong> is popular in practice</p></li>
 </ul>
 <div class="cell" data-layout-align="center">
@@ -620,6 +675,8 @@ Y = f(X) + \epsilon
 <li><p>every model should be learned using <strong>the same training and test data</strong></p></li>
 <li><p>Do not resample the data between the time when you, e.g., perform linear regression and vs you perform random forest</p></li>
 </ul>
+</div>
+<div class="fragment">
 <ol start="2" type="1">
 <li><strong>An assessment metric is a random variable</strong>, i.e., if you choose different data to be in your training set, the metric will be different.</li>
 </ol>
@@ -890,7 +947,7 @@ Remember, when building predictive models, try to find the sweet spot between bi
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
