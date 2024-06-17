@@ -752,6 +752,21 @@ Remember, when building predictive models, try to find the sweet spot between bi
 </blockquote>
 <p>In short: “When faced with several methods that give roughly equivalent performance, pick the simplest.”</p>
 </section>
+<section id="the-curse-of-dimensionality" class="slide level2">
+<h2>The curse of dimensionality</h2>
+<p>The more features, the merrier?… Not quite</p>
+<ul>
+<li><p>Adding additional <strong>signal</strong> features that are truly associated with the response will improve the ftted model</p>
+<ul>
+<li>Reduction in test set error</li>
+</ul></li>
+<li><p>Adding noise features that are not truly associated with the response will lead to a deterioration in the model</p>
+<ul>
+<li>Increase in test set error</li>
+</ul></li>
+</ul>
+<p><strong>Noise features increase the dimensionality of the problem, increasing the risk of overfitting</strong></p>
+</section>
 <section id="check-out-this-song" class="slide level2">
 <h2>Check out this song</h2>
 <iframe data-external="1" src="https://www.youtube.com/embed/pZTLFu79UbY" width="800" height="600" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
