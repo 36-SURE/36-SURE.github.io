@@ -4,14 +4,21 @@
     "href": "sports.html",
     "title": "Sports",
     "section": "",
-    "text": "Note: To download a .qmd file, right click and choose “Save Link As…”.\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nJune 3\nGetting started with R\n.html   .qmd\n\n\nJune 4\nData wrangling\n.html   .qmd\n\n\nJune 5\nData visualization\n.html   .qmd\n\n\nJune 6\nUsing GitHub for project collaboration\n.html"
+    "text": "Guidelines"
+  },
+  {
+    "objectID": "sports.html#capstone-project",
+    "href": "sports.html#capstone-project",
+    "title": "Sports",
+    "section": "",
+    "text": "Guidelines"
   },
   {
     "objectID": "sports.html#labs",
     "href": "sports.html#labs",
     "title": "Sports",
-    "section": "",
-    "text": "Note: To download a .qmd file, right click and choose “Save Link As…”.\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nJune 3\nGetting started with R\n.html   .qmd\n\n\nJune 4\nData wrangling\n.html   .qmd\n\n\nJune 5\nData visualization\n.html   .qmd\n\n\nJune 6\nUsing GitHub for project collaboration\n.html"
+    "section": "Labs",
+    "text": "Labs\nNote: To download a .qmd file, right click and choose “Save Link As…”.\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nJune 3\nGetting started with R\n.html   .qmd\n\n\nJune 4\nData wrangling\n.html   .qmd\n\n\nJune 5\nData visualization\n.html   .qmd\n\n\nJune 6\nUsing GitHub for project collaboration\n.html"
   },
   {
     "objectID": "sports.html#eda-projects",
@@ -606,7 +613,7 @@
     "href": "health/project/description.html#checkpoints",
     "title": "Project Guidelines",
     "section": "Checkpoints",
-    "text": "Checkpoints\nCheckpoint 1: 5-minute presentation during lab on July 1\nNote: It is perfectly fine if you don’t have any results at this point\nYour first checkpoint presentation should be structured as follows.\n\nIntroduction (1 slide): Describe your project topic/question(s) and why it is important\nData (1 slide): Data description, any preliminary data pre-processing/cleaning steps\nEDA (2 slides max): 1–2 EDA plots related to your question(s) of interest\n\nDesign the slides using the assertion-evidence model\n\nMethods (1 slide): Early thoughts on methods/modeling strategy. Justify why it might be appropriate to answer your question(s) of interest\n\n\n\nPlan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps. What are the next steps?\n\nCheckpoint 2: 8-minute presentation during lab on July 12\nYour second checkpoint presentation should be structured as follows.\n\nIntroduction (1 slide): Describe your project topic/question(s) and why it is important\nData: (1 slide) Data description and any major data pre-processing/cleaning steps\nPlan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps.\nPresent the completed steps (5 slides max): methods, plots, findings, etc.\n\nDesign the slides using the assertion-evidence model\n\nPlan of action (1 slide, use the same one as before): what are the steps still to be completed?"
+    "text": "Checkpoints\nCheckpoint 1: 5-minute presentation during lab on July 1\nNote: It is perfectly fine if you don’t have any results at this point\nNo notes/scripts are allowed\nYour first checkpoint presentation should be structured as follows.\n\nIntroduction (1 slide): Describe your project topic/question(s) and why it is important\nData (1 slide): Data description, any preliminary data pre-processing/cleaning steps\nEDA (2 slides max): 1–2 EDA plots related to your question(s) of interest\n\nDesign the slides using the assertion-evidence model\n\nMethods (1 slide): Early thoughts on methods/modeling strategy. Justify why it might be appropriate to answer your question(s) of interest\n\n\n\nPlan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps. What are the next steps?\n\nCheckpoint 2: 8-minute presentation during lab on July 12\nNo notes/scripts are allowed\nYour second checkpoint presentation should be structured as follows.\n\nIntroduction (1 slide): Describe your project topic/question(s) and why it is important\nData: (1 slide) Data description and any major data pre-processing/cleaning steps\nPlan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps.\nPresent the completed steps (5 slides max): methods, plots, findings, etc.\n\nDesign the slides using the assertion-evidence model\n\nPlan of action (1 slide, use the same one as before): what are the steps still to be completed?"
   },
   {
     "objectID": "health/project/description.html#project-topics",
@@ -634,14 +641,21 @@
     "href": "health.html",
     "title": "Health",
     "section": "",
-    "text": "Note: To download a .qmd file, right click and choose “Save Link As…”.\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nJune 3\nGetting started with R\n.html   .qmd\n\n\nJune 4\nData wrangling\n.html   .qmd\n\n\nJune 5\nData visualization\n.html   .qmd\n\n\nJune 6\nUsing GitHub for project collaboration\n.html"
+    "text": "Guidelines"
+  },
+  {
+    "objectID": "health.html#capstone-project",
+    "href": "health.html#capstone-project",
+    "title": "Health",
+    "section": "",
+    "text": "Guidelines"
   },
   {
     "objectID": "health.html#labs",
     "href": "health.html#labs",
     "title": "Health",
-    "section": "",
-    "text": "Note: To download a .qmd file, right click and choose “Save Link As…”.\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nJune 3\nGetting started with R\n.html   .qmd\n\n\nJune 4\nData wrangling\n.html   .qmd\n\n\nJune 5\nData visualization\n.html   .qmd\n\n\nJune 6\nUsing GitHub for project collaboration\n.html"
+    "section": "Labs",
+    "text": "Labs\nNote: To download a .qmd file, right click and choose “Save Link As…”.\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nJune 3\nGetting started with R\n.html   .qmd\n\n\nJune 4\nData wrangling\n.html   .qmd\n\n\nJune 5\nData visualization\n.html   .qmd\n\n\nJune 6\nUsing GitHub for project collaboration\n.html"
   },
   {
     "objectID": "health.html#eda-projects",
@@ -1257,7 +1271,7 @@
     "href": "sports/project/description.html#checkpoints",
     "title": "Project Guidelines",
     "section": "Checkpoints",
-    "text": "Checkpoints\nCheckpoint 1: 5-minute presentation during lab on July 1\nNote: It is perfectly fine if you don’t have any results at this point\nYour first checkpoint presentation should be structured as follows.\n\nIntroduction (1 slide): Describe your project topic/question(s) and why it is important\nData (1 slide): Data description, any preliminary data pre-processing/cleaning steps\nEDA (2 slides max): 1–2 EDA plots related to your question(s) of interest\n\nDesign the slides using the assertion-evidence model\n\nMethods (1 slide): Early thoughts on methods/modeling strategy. Justify why it might be appropriate to answer your question(s) of interest\n\n\n\nPlan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps. What are the next steps?\n\nCheckpoint 2: 8-minute presentation during lab on July 16\nYour second checkpoint presentation should be structured as follows.\n\nIntroduction (1 slide): Describe your project topic/question(s) and why it is important\nData: (1 slide) Data description and any major data pre-processing/cleaning steps\nPlan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps.\nPresent the completed steps (5 slides max): methods, plots, findings, etc.\n\nDesign the slides using the assertion-evidence model\n\nPlan of action (1 slide, use the same one as before): what are the steps still to be completed?"
+    "text": "Checkpoints\nCheckpoint 1: 5-minute presentation during lab on July 1\nNote: It is perfectly fine if you don’t have any results at this point\nNo notes/scripts are allowed\nYour first checkpoint presentation should be structured as follows.\n\nIntroduction (1 slide): Describe your project topic/question(s) and why it is important\nData (1 slide): Data description, any preliminary data pre-processing/cleaning steps\nEDA (2 slides max): 1–2 EDA plots related to your question(s) of interest\n\nDesign the slides using the assertion-evidence model\n\nMethods (1 slide): Early thoughts on methods/modeling strategy. Justify why it might be appropriate to answer your question(s) of interest\n\n\n\nPlan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps. What are the next steps?\n\nCheckpoint 2: 8-minute presentation during lab on July 16\nNo notes/scripts are allowed\nYour second checkpoint presentation should be structured as follows.\n\nIntroduction (1 slide): Describe your project topic/question(s) and why it is important\nData: (1 slide) Data description and any major data pre-processing/cleaning steps\nPlan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps.\nPresent the completed steps (5 slides max): methods, plots, findings, etc.\n\nDesign the slides using the assertion-evidence model\n\nPlan of action (1 slide, use the same one as before): what are the steps still to be completed?"
   },
   {
     "objectID": "sports/project/description.html#analysis",
@@ -3707,7 +3721,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"k\" \"r\" \"o\" \"j\" \"d\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 1 0 0 1 1 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"H\" \"H\" \"T\" \"H\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 77"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"t\" \"m\" \"c\" \"q\" \"e\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 1 0 1 1 1 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"T\" \"H\" \"H\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 92"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -3749,21 +3763,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.04957282\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.00069"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.02396588\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.037245"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.477\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical        true\n   &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;\n 1 -4.88     0.001 0.000000528\n 2 -3.64     0.002 0.000135   \n 3 -3.32     0.003 0.000448   \n 4 -2.90     0.004 0.00188    \n 5 -2.80     0.005 0.00255    \n 6 -2.72     0.006 0.00325    \n 7 -2.68     0.007 0.00365    \n 8 -2.67     0.008 0.00377    \n 9 -2.50     0.009 0.00625    \n10 -2.47     0.01  0.00673    \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.493\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.51     0.001 0.000224\n 2 -3.13     0.002 0.000877\n 3 -2.96     0.003 0.00152 \n 4 -2.82     0.004 0.00242 \n 5 -2.79     0.005 0.00264 \n 6 -2.77     0.006 0.00278 \n 7 -2.76     0.007 0.00288 \n 8 -2.61     0.008 0.00447 \n 9 -2.32     0.009 0.0101  \n10 -2.32     0.01  0.0102  \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3841102\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3864612\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -3777,14 +3791,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.164\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1404\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.1365536\n\nmean(rnorm(100))\n\n[1] -0.01041544\n\nmean(rnorm(100))\n\n[1] 0.1023712"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.06948181\n\nmean(rnorm(100))\n\n[1] -0.183625\n\nmean(rnorm(100))\n\n[1] -0.170635"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
@@ -3897,6 +3911,104 @@
     "title": "Simulation",
     "section": "In reality…",
     "text": "In reality…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
+  },
+  {
+    "objectID": "lectures/15-glm.html#probability-distributions",
+    "href": "lectures/15-glm.html#probability-distributions",
+    "title": "Supervised learning: generalized linear models",
+    "section": "Probability distributions",
+    "text": "Probability distributions\nA distribution is a mathematical function \\(f(x \\mid \\theta)\\) where\n\n\\(x\\) may take on continuous or discrete values over the domain (i.e. all possible inputs) of \\(f(x \\mid \\theta)\\)\n\\(\\theta\\) is a set of parameters governing the shape of the distribution\n\ne.g. \\(\\theta = \\{\\mu, \\sigma ^2 \\}\\) for a normal (Gaussian) distribution\n\nthe \\(\\mid\\) symbol means that the shape of the distribution is conditional on the values of \\(\\theta\\)\n\n\nLet \\(f\\) denote the distribution for its\n\nprobability density function (PDF) if \\(x\\) is continuous\nprobability mass function (PMF) if \\(x\\) is discrete\n\n\n\nNote:\n\n\\(f(x \\mid \\theta) \\geq 0\\) for all \\(x\\)\n\\(\\displaystyle \\sum_x f(x \\mid \\theta) = 1\\) (discrete case) or \\(\\displaystyle \\int_x f(x \\mid \\theta) = 1\\) (continuous case)"
+  },
+  {
+    "objectID": "lectures/15-glm.html#normal-distribution",
+    "href": "lectures/15-glm.html#normal-distribution",
+    "title": "Supervised learning: generalized linear models",
+    "section": "Normal distribution",
+    "text": "Normal distribution\n\n\n\nPDF: \\(\\displaystyle f(x \\mid \\mu, \\sigma^2)=\\frac{1}{\\sigma \\sqrt{2 \\pi}} e^{-\\frac{1}{2}\\left(\\frac{x-\\mu}{\\sigma}\\right)^{2}}\\); \\(x \\in (- \\infty, \\infty)\\)\nWe write \\(X \\sim N(\\mu, \\sigma^2)\\)\nStandard normal distribution: \\(N(0, 1)\\)\n\n\nlibrary(tidyverse)\ntheme_set(theme_light())\ntibble(x = c(-5, 5)) |&gt; \n  ggplot(aes(x)) +\n  stat_function(fun = dnorm, color = \"blue\",\n                args = list(mean = 0, sd = 1)) +\n  stat_function(fun = dnorm, color = \"red\",\n                args = list(mean = -2, sd = sqrt(0.5)))"
+  },
+  {
+    "objectID": "lectures/15-glm.html#binomial-distribution",
+    "href": "lectures/15-glm.html#binomial-distribution",
+    "title": "Supervised learning: generalized linear models",
+    "section": "Binomial distribution",
+    "text": "Binomial distribution\n\n\n\nPMF: \\(\\displaystyle f(x \\mid n, p)= \\binom{n}{x} p^{x}(1-p)^{n-x}\\); \\(x = 0, 1, \\dots, n\\)\nModel for the probability of \\(x\\) successes in \\(n\\) independent trials, each with success probability \\(p\\)\nWe write \\(X \\sim \\text{Binomial}(n,p)\\)\n\n\ntibble(x = 0:20) |&gt;\n  mutate(binom1 = dbinom(x, size = 20, prob = 0.5),\n         binom2 = dbinom(x, size = 20, prob = 0.1)) |&gt;\n  ggplot(aes(x)) + \n  geom_point(aes(y = binom1), color = \"blue\", size = 4) +\n  geom_point(aes(y = binom2), color = \"red\", size = 4)"
+  },
+  {
+    "objectID": "lectures/15-glm.html#poisson-distribution",
+    "href": "lectures/15-glm.html#poisson-distribution",
+    "title": "Supervised learning: generalized linear models",
+    "section": "Poisson distribution",
+    "text": "Poisson distribution\n\n\n\nPMF: \\(\\displaystyle f(x \\mid \\lambda)= \\frac{ e^{-\\lambda} \\lambda^x}{x!}\\); \\(x = 0, 1, 2, \\dots\\) and \\(\\lambda &gt; 0\\)\nModel for the counts of an event in a fixed period of time, with a rate of occurrence parameter \\(\\lambda\\)\nWe write \\(X \\sim \\text{Poisson}(\\lambda)\\)\n\n\ntibble(x = 0:10) |&gt; \n  mutate(y = dpois(x, 1)) |&gt; \n  ggplot(aes(x, y)) +\n  geom_point(size = 4)"
+  },
+  {
+    "objectID": "lectures/15-glm.html#recap",
+    "href": "lectures/15-glm.html#recap",
+    "title": "Supervised learning: generalized linear models",
+    "section": "Recap",
+    "text": "Recap\nWhen the response is continuous, we can use normal regression.\nWhen the response is binary categorical , we can use logistic regression.\nWhat do we do if the response contains discrete count?"
+  },
+  {
+    "objectID": "lectures/15-glm.html#generalized-linear-models-glms",
+    "href": "lectures/15-glm.html#generalized-linear-models-glms",
+    "title": "Supervised learning: generalized linear models",
+    "section": "Generalized linear models (GLMs)",
+    "text": "Generalized linear models (GLMs)\nThree components of a GLM\n\nDistribution of the response\nLink function (a function of the parameter)\nLinear predictor"
+  },
+  {
+    "objectID": "lectures/15-glm.html#linear-regression",
+    "href": "lectures/15-glm.html#linear-regression",
+    "title": "Supervised learning: generalized linear models",
+    "section": "Linear regression",
+    "text": "Linear regression\n\n\\(Y \\sim N(\\mu, \\sigma ^2)\\)\nIdentity link function: \\(g(\\mu) = \\mu\\)\nLinear predictor: \\(\\beta_0 + \\beta_1 X_1 + \\dots + \\beta_p X_p\\)"
+  },
+  {
+    "objectID": "lectures/15-glm.html#logistic-regression",
+    "href": "lectures/15-glm.html#logistic-regression",
+    "title": "Supervised learning: generalized linear models",
+    "section": "Logistic regression",
+    "text": "Logistic regression\n\n\\(Y \\sim \\text{Binomial}(n,p)\\)\nLogit link function: \\(\\displaystyle g(p) = \\log\\left(\\frac{p}{1-p}\\right)\\)\nLinear predictor: \\(\\beta_0 + \\beta_1 X_1 + \\dots + \\beta_p X_p\\)"
+  },
+  {
+    "objectID": "lectures/15-glm.html#generalization-example",
+    "href": "lectures/15-glm.html#generalization-example",
+    "title": "Supervised learning: generalized linear models",
+    "section": "Generalization example",
+    "text": "Generalization example\nIn typical linear regression, the distribution is Normal and the domain of \\(Y \\mid x\\) is \\((-\\infty,\\infty)\\).\n\nWhat, however, happens if we know that\n\nthe domain of observed values of the response is actually \\([0,\\infty]\\)? and\n\n\n\n\nthe observed values are discrete, with possible values 0, 1, 2, …\n\n\n\nThe Normal distribution doesn’t hold here\n\nAny idea of what distribution could possibly govern \\(Y \\mid x\\)?\nRemember, we might not know truly how \\(Y \\mid x\\) is distributed, but any assumption we make has to fit with the limitations imposed by points 1 and 2 above"
+  },
+  {
+    "objectID": "lectures/15-glm.html#generalization-poisson-regression",
+    "href": "lectures/15-glm.html#generalization-poisson-regression",
+    "title": "Supervised learning: generalized linear models",
+    "section": "Generalization: Poisson regression",
+    "text": "Generalization: Poisson regression\nA distribution that fulfills the conditions imposed on the last slide is the Poisson distribution,\n\\[f(x \\mid \\lambda) = \\frac{\\lambda^xe^{-\\lambda}}{x!},\\text{ where }x = 0, 1, 2, \\dots\\]\n\n\nhas a single parameter \\(\\lambda\\), which is both the mean AND variance of the distribution\n\nin general the variance governs the distribution’s shape\n\n\n\n\n\ndistribution of independent event occurences in an interval, e.g. soccer goals in a match\n\\(\\lambda\\) is the average number of the events in an interval\n\n\n\nSo, when we apply generalized linear regression in this context, we would identify the family as Poisson.\nBut there’s another step in generalization…"
+  },
+  {
+    "objectID": "lectures/15-glm.html#generalization-link-function",
+    "href": "lectures/15-glm.html#generalization-link-function",
+    "title": "Supervised learning: generalized linear models",
+    "section": "Generalization: link function",
+    "text": "Generalization: link function\nStart with one predictor, linear function: \\(\\beta_0 + \\beta_1 x\\)\n\nRange of this function is \\((-\\infty,\\infty)\\) - but for Poisson regression example, we know that \\(Y\\) cannot be negative,\n\nWe need to transform the linear function to be \\([0,\\infty)\\)! (We could punt and use simple linear regression, but results may not be meaningful, e.g., we predict \\({\\hat Y}\\) to be negative!)\n\n\n\nThere is usually no unique transformation, but rather conventional ones\n\ne.g., for Poisson we use the \\(log()\\) function as the link function \\(g()\\):\n\n\\[g(\\lambda \\mid x) = \\log(\\lambda \\mid x) = \\beta_0 + \\beta_1 x\\]\n\n\nGiven \\(Y\\) with values limited to being either 0 or positive integers, with no upper bound, we\n\nassume \\(Y \\mid x \\sim \\text{Poisson}(\\lambda)\\)\nassume \\(\\lambda \\mid x = e^{\\beta_0 + \\beta_1 x}\\)\nuse optimization to estimate \\(\\beta_0\\) and \\(\\beta_1\\) by maximizing the likelihood function"
+  },
+  {
+    "objectID": "lectures/15-glm.html#more-distributions",
+    "href": "lectures/15-glm.html#more-distributions",
+    "title": "Supervised learning: generalized linear models",
+    "section": "More distributions",
+    "text": "More distributions\nGamma distribution\n\n\\(Y \\mid x\\) continuous, but bounded between 0 and \\(\\infty\\)"
+  },
+  {
+    "objectID": "lectures/15-glm.html#more-distributions-1",
+    "href": "lectures/15-glm.html#more-distributions-1",
+    "title": "Supervised learning: generalized linear models",
+    "section": "More distributions",
+    "text": "More distributions\nBeta distribution\n\n\\(Y \\mid x\\) continuous, but bounded between 0 and 1"
+  },
+  {
+    "objectID": "lectures/15-glm.html#more-distributions-2",
+    "href": "lectures/15-glm.html#more-distributions-2",
+    "title": "Supervised learning: generalized linear models",
+    "section": "More distributions",
+    "text": "More distributions\nBernoulli distribution\n\n\\(Y \\mid x\\) discrete, but can only take on the values 0 and 1\n\nknitr::include_graphics(“https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Bernoulli_Distribution.PNG/650px-Bernoulli_Distribution.PNG”)"
   },
   {
     "objectID": "lectures/02-graphics.html#goals-of-data-visualization",
