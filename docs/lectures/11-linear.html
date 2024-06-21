@@ -408,6 +408,16 @@
 <h1>Background</h1>
 
 </section>
+<section id="resources" class="slide level2">
+<h2>Resources</h2>
+<ul>
+<li><p><a href="https://www.stat.cmu.edu/~cshalizi/ADAfaEPoV/ADAfaEPoV.pdf">Advanced Data Analysis from an Elementary Point of View</a> (aka the greatest book that will never be published)</p></li>
+<li><p><a href="https://www.stat.cmu.edu/~cshalizi/TALR/TALR.pdf">The Truth about Linear Regression</a></p></li>
+</ul>
+<blockquote>
+<p>“Regression”, in statistical jargon, is the problem of guessing the average level of some quantitative response variable from various predictor variables. - <a href="http://bactra.org/notebooks/regression.html">Note GOAT</a></p>
+</blockquote>
+</section>
 <section id="simple-linear-regression" class="slide level2">
 <h2>Simple linear regression</h2>
 <p><strong>Linear regression is used when the response variable is quantitative</strong></p>
@@ -448,7 +458,7 @@
 <li>average value for <span class="math inline">\(Y\)</span> given the value for <span class="math inline">\(X\)</span></li>
 </ul>
 <div class="fragment">
-<p>How do we estimate the <strong>best fitting</strong> line?</p>
+<p>How do we estimate the <strong>best fitted</strong> line?</p>
 </div>
 <div class="fragment">
 <p><strong>Ordinary least squares (OLS)</strong> - by minimizing the <strong>residual sum of squares (RSS)</strong></p>
@@ -550,7 +560,7 @@ $ log_gdp          &lt;dbl&gt; 22.56725, 25.11948, 24.01962, 20.50235, 26.88222,
 <p>We fit linear regression models using <code>lm()</code>, formula is input as: <code>response ~ predictor</code></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>simple_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(life_expectancy <span class="sc">~</span> log_gdp, </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> clean_gapminder) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> clean_gapminder) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
@@ -600,6 +610,7 @@ F-statistic: 66.61 on 1 and 166 DF,  p-value: 7.865e-14</code></pre>
 <li><p><code>augment()</code>: adds/“augments” columns to the original data (e.g., adding predictions)</p></li>
 </ul>
 <p>Note: the output of <code>tidy()</code>, <code>augment()</code> and <code>glance()</code> are always a tibble.</p>
+<div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(simple_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -619,72 +630,41 @@ F-statistic: 66.61 on 1 and 166 DF,  p-value: 7.865e-14</code></pre>
 # ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
 </div>
 </div>
+</div>
 </section>
 <section id="inference-with-ols" class="slide level2">
 <h2>Inference with OLS</h2>
 <p>Intercept and coefficient estimates <span class="math display">\[\quad \hat{\beta}_0 = 24.174 \quad \text{and} \quad \hat{\beta}_1 = 1.975\]</span></p>
 <div class="fragment">
-<p>Estimates of uncertainty for <span class="math inline">\(\beta\)</span>s via <strong>standard errors</strong> <span class="math display">\[\quad \widehat{SE}(\hat{\beta}_0) = 5.758 \quad \text{and} \quad \widehat{SE}(\hat{\beta}_1) = 0.242\]</span></p>
+<p>Estimates of uncertainty for <span class="math inline">\(\beta\)</span>’s via <strong>standard errors</strong> <span class="math display">\[\quad \widehat{SE}(\hat{\beta}_0) = 5.758 \quad \text{and} \quad \widehat{SE}(\hat{\beta}_1) = 0.242\]</span></p>
 </div>
 <div class="fragment">
 <p><span class="math inline">\(t\)</span>-statistics: <code>Estimates</code> / <code>Std. Error</code>, i.e., number of standard deviations from 0</p>
 <ul>
-<li><p><span class="math inline">\(p\)</span>-values (i.e., <code>Pr(&gt;|t|)</code>): estimated probability observing value as extreme as |<code>t value</code>| <strong>given the null hypothesis</strong> <span class="math inline">\(\beta = 0\)</span></p></li>
+<li><p><span class="math inline">\(p\)</span>-values (i.e., <code>Pr(&gt;|t|)</code>): estimated probability observing value as extreme as |<code>t value</code>| <strong>given the null hypothesis</strong> <span class="math inline">\(\beta_1 = 0\)</span></p></li>
 <li><p><span class="math inline">\(p\)</span>-value <span class="math inline">\(&lt; \alpha = 0.05\)</span> (conventional threshold): <strong>sufficient evidence to reject the null hypothesis that the coefficient is zero</strong></p></li>
 <li><p>i.e., there is a <strong>significant</strong> association between <code>life_expectancy</code> and <code>log_gdp</code></p></li>
 </ul>
 </div>
 </section>
-<section id="be-careful" class="slide level2">
-<h2>Be careful!</h2>
-<p><strong>Caveats to keep in mind regarding p-values:</strong></p>
-<div class="fragment">
-<p>If the true value of a coefficient <span class="math inline">\(\beta = 0\)</span>, then the <span class="math inline">\(p\)</span>-value is sampled from a <a href="https://en.wikipedia.org/wiki/Continuous_uniform_distribution">Uniform(0,1) distribution</a></p>
+<section id="coefficient-of-determination" class="slide level2">
+<h2>Coefficient of determination</h2>
 <ul>
-<li>i.e., it is just as likely to have value 0.45 as 0.16 or 0.84 or 0.9999 or 0.00001…</li>
+<li>In linear regression, the square of the correlation coefficient happens to be exactly the coefficient of determination</li>
 </ul>
-</div>
-<div class="fragment">
-<p>Hence why we typically only reject for low <span class="math inline">\(\alpha\)</span> values like 0.05</p>
-<ul>
-<li><p>Controlling the Type 1 error rate at <span class="math inline">\(\alpha = 0.05\)</span>, i.e., the probability of a <strong>false positive</strong> mistake</p></li>
-<li><p>5% chance that you’ll conclude there’s a significant association between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> <strong>even when there is none</strong></p></li>
-</ul>
-</div>
-<div class="fragment">
-<p>Remember what a standard error is? <span class="math inline">\(\displaystyle \text{SE} = \frac{\sigma}{\sqrt{n}}\)</span></p>
-<ul>
-<li><p>As <span class="math inline">\(n\)</span> gets large <strong>standard error goes to zero</strong>, and <em>all</em> predictors are eventually deemed significant</p></li>
-<li><p>While the <span class="math inline">\(p\)</span>-values might be informative, we will explore other approaches to determine which subset of predictors to include (e.g., holdout performance)</p></li>
-</ul>
-</div>
-</section>
-<section id="back-to-the-model-summary-multiple-r-squared" class="slide level2">
-<h2>Back to the model summary: <code>Multiple R-squared</code></h2>
-<p>Back to the connection between the coefficient and correlation <span class="math display">\[r_{X,Y} = \widehat{\beta}_{1} \cdot \frac{s_X}{s_Y} \quad \longrightarrow \quad r^2_{X,Y} = \widehat{\beta}_{1}^2\cdot \frac{s_X^2}{s_Y^2}\]</span></p>
-<p>Compute the correlation with <code>cor()</code>:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(clean_gapminder<span class="sc">$</span>log_gdp, clean_gapminder<span class="sc">$</span>life_expectancy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5351189</code></pre>
 </div>
-</div>
-<div class="fragment">
-<p>The squared <code>cor</code> matches the reported <code>Multiple R-squared</code></p>
-<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(clean_gapminder<span class="sc">$</span>log_gdp, clean_gapminder<span class="sc">$</span>life_expectancy) <span class="sc">^</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2863522</code></pre>
 </div>
 </div>
-</div>
-</section>
-<section id="back-to-the-model-summary-multiple-r-squared-1" class="slide level2">
-<h2>Back to the model summary: <code>Multiple R-squared</code></h2>
-<p>Back to the connection between the coefficient and correlation <span class="math display">\[r_{X,Y} = \widehat{\beta}_{1} \cdot \frac{s_X}{s_Y} \quad \longrightarrow \quad r^2_{X,Y} = \widehat{\beta}_{1}^2\cdot \frac{s_X^2}{s_Y^2}\]</span></p>
-<p><span class="math inline">\(r^2\)</span> (or also <span class="math inline">\(R^2\)</span>) estimates the <strong>proportion of the variance</strong> of <span class="math inline">\(Y\)</span> explained by <span class="math inline">\(X\)</span></p>
 <ul>
-<li>More generally: variance of model predictions / variance of <span class="math inline">\(Y\)</span></li>
+<li><p><span class="math inline">\(R^2\)</span> estimates the <strong>proportion of the variance</strong> of <span class="math inline">\(Y\)</span> explained by <span class="math inline">\(X\)</span></p></li>
+<li><p>More generally: variance of model predictions / variance of <span class="math inline">\(Y\)</span></p></li>
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(<span class="fu">predict</span>(simple_lm)) <span class="sc">/</span> <span class="fu">var</span>(clean_gapminder<span class="sc">$</span>life_expectancy) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -884,7 +864,7 @@ F-statistic: 66.61 on 1 and 166 DF,  p-value: 7.865e-14</code></pre>
 </section>
 <section id="multiple-linear-regression" class="slide level2">
 <h2>Multiple linear regression</h2>
-<p>We can include as many variables as we want (assuming <span class="math inline">\(n &gt; p\)</span>!)</p>
+<p>We can include as many variables as we want (assuming <span class="math inline">\(n &gt; p\)</span>)</p>
 <p><span class="math display">\[Y=\beta_{0}+\beta_{1} X_{1}+\beta_{2} X_{2}+\cdots+\beta_{p} X_{p}+\epsilon\]</span></p>
 <p>OLS estimates in matrix notation ( <span class="math inline">\(\boldsymbol{X}\)</span> is a <span class="math inline">\(n \times p\)</span> matrix):</p>
 <p><span class="math display">\[\hat{\boldsymbol{\beta}} = (\boldsymbol{X} ^T \boldsymbol{X})^{-1}\boldsymbol{X}^T\boldsymbol{Y}\]</span></p>
@@ -894,12 +874,14 @@ F-statistic: 66.61 on 1 and 166 DF,  p-value: 7.865e-14</code></pre>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>multiple_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(life_expectancy <span class="sc">~</span> log_gdp <span class="sc">+</span> fertility, <span class="at">data =</span> clean_gapminder)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><p>Use the <code>Adjusted R-squared</code> when including multiple variables <span class="math inline">\(\displaystyle 1 - \frac{(1 - R^2)(n - 1)}{(n - p - 1)}\)</span></p>
+<li><p>Use adjusted <span class="math inline">\(R^2\)</span> when including multiple variables <span class="math inline">\(\displaystyle 1 - \frac{(1 - R^2)(n - 1)}{(n - p - 1)}\)</span></p>
 <ul>
 <li><p>Adjusts for the number of variables in the model <span class="math inline">\(p\)</span></p></li>
-<li><p>Adding more variables <strong>will always increase</strong> <code>Multiple R-squared</code></p></li>
+<li><p>Adding more variables <strong>will always increase</strong> the model’s (unadjusted) <span class="math inline">\(R^2\)</span></p></li>
 </ul></li>
 </ul>
+<p>READ THIS: <a href="https://www.stat.cmu.edu/~cshalizi/TALR/TALR.pdf#page=181"><span class="math inline">\(R^2\)</span> myths</a></p>
+<p><a href="https://www.tiktok.com/@fatgreggy/video/7186499956058950958">Get your <span class="math inline">\(R^2\)</span> out of here</a></p>
 </div>
 </section>
 <section id="what-about-the-normal-distribution-assumption" class="slide level2">
@@ -926,7 +908,7 @@ F-statistic: 66.61 on 1 and 166 DF,  p-value: 7.865e-14</code></pre>
 </div>
 <div class="fragment">
 <ul>
-<li><p><a href="https://bradleyboehmke.github.io/HOML/linear-regression.html#simple-linear-regression">Unbiased estimate</a> <span class="math inline">\(\displaystyle \hat{\sigma}^2 = \frac{\text{RSS}}{n - (p + 1)}\)</span>, its square root is the <code>Residual standard error</code></p></li>
+<li><p><a href="https://bradleyboehmke.github.io/HOML/linear-regression.html#simple-linear-regression">Unbiased estimate</a> <span class="math inline">\(\displaystyle \hat{\sigma}^2 = \frac{\text{RSS}}{n - (p + 1)}\)</span></p></li>
 <li><p><strong>Degrees of freedom</strong>: <span class="math inline">\(n - (p + 1)\)</span>, data supplies us with <span class="math inline">\(n\)</span> “degrees of freedom” and we used up <span class="math inline">\(p + 1\)</span></p></li>
 </ul>
 </div>
@@ -941,6 +923,112 @@ F-statistic: 66.61 on 1 and 166 DF,  p-value: 7.865e-14</code></pre>
 <img data-src="11-linear_files/figure-revealjs/more-resid-plots-1.png" width="1440" class="r-stretch quarto-figure-center"><ul>
 <li>Standardized residuals = residuals <code>/ sd(</code>residuals<code>)</code> (see also <code>.std.resid</code> from <code>augment</code>)</li>
 </ul>
+</section>
+<section id="regression-confidence-intervals-vs-prediction-intervals" class="slide level2">
+<h2>Regression confidence intervals vs prediction intervals</h2>
+<p>Do we want to predict the mean response for a particular value <span class="math inline">\(x^*\)</span> of the explanatory variable or do we want to predict the response for an individual case?</p>
+<p>Example:</p>
+<ul>
+<li><p>if we would like to know the average price for <strong>all</strong> Tesla with 50 thousand miles, then we would use an interval for the <strong>mean response</strong></p></li>
+<li><p>if we want an interval to contain the price of <strong>a particular</strong> Tesla with 50 thousand miles, then we need the interval for <strong>a single prediction</strong></p></li>
+</ul>
+</section>
+<section id="regression-confidence-intervals" class="slide level2">
+<h2>Regression confidence intervals</h2>
+<div class="columns">
+<div class="column" style="text-align: left;">
+<ul>
+<li><code>geom_smooth()</code> displays <strong>confidence intervals</strong> for the regression line</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># predict(simple_lm, interval = "confidence")</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>lm_plot <span class="ot">&lt;-</span> clean_gapminder <span class="sc">|&gt;</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_gdp,</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> life_expectancy)) <span class="sc">+</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log(GDP)"</span>,</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Life expectancy"</span>)</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>lm_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="11-linear_files/figure-revealjs/unnamed-chunk-15-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="regression-confidence-intervals-1" class="slide level2">
+<h2>Regression confidence intervals</h2>
+<ul>
+<li><p>Interval estimate for the MEAN response at a given observation (i.e.&nbsp;for the predicted AVERAGE <span class="math inline">\(\hat{\beta}_0 + \hat{\beta}_1 x^*\)</span>)</p></li>
+<li><p>Based on standard errors for the estimated regression line at <span class="math inline">\(x^*\)</span> <span class="math display">\[SE_{\text{line}}\left(x^{*}\right)=\hat{\sigma} \cdot \sqrt{\frac{1}{n}+\frac{\left(x^{*}-\bar{x}\right)^{2}}{\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}}}\]</span></p></li>
+<li><p>Variation only comes from uncertainty in the parameter</p></li>
+</ul>
+</section>
+<section id="regression-prediction-intervals" class="slide level2">
+<h2>Regression prediction intervals</h2>
+<ul>
+<li><p>interval estimate for an INDIVIDUAL response at a given (new) observation</p></li>
+<li><p>add the variance <span class="math inline">\(\sigma^2\)</span> of a <strong>single predicted value</strong> <span class="math display">\[SE_{\text{pred}}\left(x^{*}\right)=\hat{\sigma} \cdot \sqrt{1 + \frac{1}{n}+\frac{\left(x^{*}-\bar{x}\right)^{2}}{\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}}}\]</span></p></li>
+<li><p>variation comes from uncertainty in parameter estimates and error variance</p></li>
+</ul>
+</section>
+<section id="confidence-intervals-versus-prediction-intervals" class="slide level2">
+<h2>Confidence intervals versus prediction intervals</h2>
+<p>Generate 95% intervals</p>
+<div class="columns">
+<div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># predict(simple_lm, interval = "prediction")</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>lm_plot <span class="sc">+</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">augment</span>(simple_lm, <span class="at">interval =</span> <span class="st">"prediction"</span>),</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">ymin =</span> .lower, <span class="at">ymax =</span> .upper),</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">fill =</span> <span class="cn">NA</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>The standard error for predicting an individual response will always be larger than for predicting a mean response</p></li>
+<li><p>Prediction intervals will always be wider than confidence intervals</p></li>
+</ul>
+</div><div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="11-linear_files/figure-revealjs/unnamed-chunk-16-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="appendix-interpret-a-linear-regression-model-with-log-transformations" class="slide level2">
+<h2>Appendix: Interpret a linear regression model with log transformations</h2>
+<ul>
+<li><p>Log-transformed predictor: <span class="math inline">\(Y = \beta_0 + \beta_1 \log(X)\)</span></p>
+<ul>
+<li>A 1% increase in <span class="math inline">\(X\)</span> is associated with an average change of <span class="math inline">\(\beta_1/100\)</span> units in <span class="math inline">\(Y\)</span></li>
+</ul></li>
+<li><p>Log-transformed outcome: <span class="math inline">\(\log(Y) = \beta_0 + \beta_1 X\)</span></p>
+<ul>
+<li>A 1 unit increase in <span class="math inline">\(X\)</span> is associated with an average change of <span class="math inline">\((100 \times \beta) \%\)</span> in Y</li>
+</ul></li>
+<li><p>Log-transformed predictor and outcome: <span class="math inline">\(\log(Y) = \beta_0 + \beta_1 \log(X)\)</span></p>
+<ul>
+<li>A 1% increase in <span class="math inline">\(X\)</span> is associated with an average change of <span class="math inline">\(\beta_1 \%\)</span> in Y</li>
+</ul></li>
+</ul>
+<p><a href="https://www.stat.cmu.edu/~cshalizi/mreg/15/lectures/transf/transf.pdf">Useful reading</a></p>
 
 <div class="footer footer-default">
 <p><a href="https://36-sure.github.io">36-SURE.github.io</a></p>

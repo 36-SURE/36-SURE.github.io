@@ -3721,7 +3721,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"t\" \"m\" \"c\" \"q\" \"e\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 1 0 1 1 1 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"T\" \"H\" \"H\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 92"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"s\" \"g\" \"y\" \"o\" \"z\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 1 1 0 1 0 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"T\" \"T\" \"H\" \"H\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 58"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -3763,21 +3763,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.02396588\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.037245"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.01151664\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9639298"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.493\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.51     0.001 0.000224\n 2 -3.13     0.002 0.000877\n 3 -2.96     0.003 0.00152 \n 4 -2.82     0.004 0.00242 \n 5 -2.79     0.005 0.00264 \n 6 -2.77     0.006 0.00278 \n 7 -2.76     0.007 0.00288 \n 8 -2.61     0.008 0.00447 \n 9 -2.32     0.009 0.0101  \n10 -2.32     0.01  0.0102  \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.505\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical    true\n   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 -3.08     0.001 0.00105\n 2 -2.94     0.002 0.00162\n 3 -2.90     0.003 0.00184\n 4 -2.57     0.004 0.00511\n 5 -2.56     0.005 0.00523\n 6 -2.53     0.006 0.00569\n 7 -2.39     0.007 0.00839\n 8 -2.37     0.008 0.00882\n 9 -2.34     0.009 0.00962\n10 -2.34     0.01  0.00969\n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3864612\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3844287\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -3791,14 +3791,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1404\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1748\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.06948181\n\nmean(rnorm(100))\n\n[1] -0.183625\n\nmean(rnorm(100))\n\n[1] -0.170635"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.1626615\n\nmean(rnorm(100))\n\n[1] 0.1628776\n\nmean(rnorm(100))\n\n[1] -0.3335534"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
@@ -4193,6 +4193,13 @@
     "text": "Resources\n\nggplot2 website: cheatsheets, FAQs, extensions, and more\nTidyTuesday\nDavid Robinson’s TidyTuesday screencasts\nVizBuzz: LIVE data viz replication game show\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
   },
   {
+    "objectID": "lectures/11-linear.html#resources",
+    "href": "lectures/11-linear.html#resources",
+    "title": "Supervised learning: linear regression",
+    "section": "Resources",
+    "text": "Resources\n\nAdvanced Data Analysis from an Elementary Point of View (aka the greatest book that will never be published)\nThe Truth about Linear Regression\n\n\n“Regression”, in statistical jargon, is the problem of guessing the average level of some quantitative response variable from various predictor variables. - Note GOAT"
+  },
+  {
     "objectID": "lectures/11-linear.html#simple-linear-regression",
     "href": "lectures/11-linear.html#simple-linear-regression",
     "title": "Supervised learning: linear regression",
@@ -4204,7 +4211,7 @@
     "href": "lectures/11-linear.html#simple-linear-regression-estimation",
     "title": "Supervised learning: linear regression",
     "section": "Simple linear regression estimation",
-    "text": "Simple linear regression estimation\nWe are estimating the conditional expection (mean) for \\(Y\\):\n\\[\\mathbb{E}[Y_i \\mid X_i] = \\beta_0 + \\beta_1X_i\\]\n\naverage value for \\(Y\\) given the value for \\(X\\)\n\n\nHow do we estimate the best fitting line?\n\n\nOrdinary least squares (OLS) - by minimizing the residual sum of squares (RSS)\n\\[\\text{RSS} \\left(\\beta_{0}, \\beta_{1}\\right)=\\sum_{i=1}^{n}\\left[Y_{i}-\\left(\\beta_{0}+\\beta_{1} X_{i}\\right)\\right]^{2}=\\sum_{i=1}^{n}\\left(Y_{i}-\\beta_{0}-\\beta_{1} X_{i}\\right)^{2}\\]\n\n\n\\[\\widehat{\\beta}_{1}=\\frac{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)\\left(Y_{i}-\\bar{Y}\\right)}{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)^{2}} \\quad \\text{ and } \\quad \\widehat{\\beta}_{0}=\\bar{Y}-\\widehat{\\beta}_{1} \\bar{X}\\]\nwhere \\(\\displaystyle \\bar{X} = \\frac{1}{n}\\sum_{i=1}^n X_i\\) and \\(\\displaystyle \\bar{Y} = \\frac{1}{n}\\sum_{i=1}^n Y_i\\)"
+    "text": "Simple linear regression estimation\nWe are estimating the conditional expection (mean) for \\(Y\\):\n\\[\\mathbb{E}[Y_i \\mid X_i] = \\beta_0 + \\beta_1X_i\\]\n\naverage value for \\(Y\\) given the value for \\(X\\)\n\n\nHow do we estimate the best fitted line?\n\n\nOrdinary least squares (OLS) - by minimizing the residual sum of squares (RSS)\n\\[\\text{RSS} \\left(\\beta_{0}, \\beta_{1}\\right)=\\sum_{i=1}^{n}\\left[Y_{i}-\\left(\\beta_{0}+\\beta_{1} X_{i}\\right)\\right]^{2}=\\sum_{i=1}^{n}\\left(Y_{i}-\\beta_{0}-\\beta_{1} X_{i}\\right)^{2}\\]\n\n\n\\[\\widehat{\\beta}_{1}=\\frac{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)\\left(Y_{i}-\\bar{Y}\\right)}{\\sum_{i=1}^{n}\\left(X_{i}-\\bar{X}\\right)^{2}} \\quad \\text{ and } \\quad \\widehat{\\beta}_{0}=\\bar{Y}-\\widehat{\\beta}_{1} \\bar{X}\\]\nwhere \\(\\displaystyle \\bar{X} = \\frac{1}{n}\\sum_{i=1}^n X_i\\) and \\(\\displaystyle \\bar{Y} = \\frac{1}{n}\\sum_{i=1}^n Y_i\\)"
   },
   {
     "objectID": "lectures/11-linear.html#connection-to-covariance-and-correlation",
@@ -4246,7 +4253,7 @@
     "href": "lectures/11-linear.html#relationship-between-life-expectancy-and-log-gdp",
     "title": "Supervised learning: linear regression",
     "section": "Relationship between life expectancy and log GDP",
-    "text": "Relationship between life expectancy and log GDP\n\n\n\ngdp_plot &lt;- clean_gapminder |&gt;\n  ggplot(aes(x = log_gdp, y = life_expectancy)) +\n  geom_point(size = 3, alpha = 0.5)\ngdp_plot\n\nWe fit linear regression models using lm(), formula is input as: response ~ predictor\n\nsimple_lm &lt;- lm(life_expectancy ~ log_gdp, \n              data = clean_gapminder)"
+    "text": "Relationship between life expectancy and log GDP\n\n\n\ngdp_plot &lt;- clean_gapminder |&gt;\n  ggplot(aes(x = log_gdp, y = life_expectancy)) +\n  geom_point(size = 3, alpha = 0.5)\ngdp_plot\n\nWe fit linear regression models using lm(), formula is input as: response ~ predictor\n\nsimple_lm &lt;- lm(life_expectancy ~ log_gdp, \n                data = clean_gapminder)"
   },
   {
     "objectID": "lectures/11-linear.html#summarize-the-model-using-summary",
@@ -4260,35 +4267,21 @@
     "href": "lectures/11-linear.html#summarize-the-model-using-the-broom-package",
     "title": "Supervised learning: linear regression",
     "section": "Summarize the model using the broom package",
-    "text": "Summarize the model using the broom package\nThe 3 broom functions (Note: the output is always a tibble)\n\ntidy(): coefficients table in a tidy format\nglance(): produces summary metrics of a model fit\naugment(): adds/“augments” columns to the original data (e.g., adding predictions)\n\nNote: the output of tidy(), augment() and glance() are always a tibble.\n\nlibrary(broom)\ntidy(simple_lm)\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)    24.2      5.76       4.20 4.38e- 5\n2 log_gdp         1.97     0.242      8.16 7.87e-14\n\nglance(simple_lm)\n\n# A tibble: 1 × 12\n  r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC\n      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     0.286         0.282  7.22      66.6 7.87e-14     1  -569. 1145. 1154.\n# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;"
+    "text": "Summarize the model using the broom package\nThe 3 broom functions (Note: the output is always a tibble)\n\ntidy(): coefficients table in a tidy format\nglance(): produces summary metrics of a model fit\naugment(): adds/“augments” columns to the original data (e.g., adding predictions)\n\nNote: the output of tidy(), augment() and glance() are always a tibble.\n\n\nlibrary(broom)\ntidy(simple_lm)\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)    24.2      5.76       4.20 4.38e- 5\n2 log_gdp         1.97     0.242      8.16 7.87e-14\n\nglance(simple_lm)\n\n# A tibble: 1 × 12\n  r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC\n      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     0.286         0.282  7.22      66.6 7.87e-14     1  -569. 1145. 1154.\n# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;"
   },
   {
     "objectID": "lectures/11-linear.html#inference-with-ols",
     "href": "lectures/11-linear.html#inference-with-ols",
     "title": "Supervised learning: linear regression",
     "section": "Inference with OLS",
-    "text": "Inference with OLS\nIntercept and coefficient estimates \\[\\quad \\hat{\\beta}_0 = 24.174 \\quad \\text{and} \\quad \\hat{\\beta}_1 = 1.975\\]\n\nEstimates of uncertainty for \\(\\beta\\)s via standard errors \\[\\quad \\widehat{SE}(\\hat{\\beta}_0) = 5.758 \\quad \\text{and} \\quad \\widehat{SE}(\\hat{\\beta}_1) = 0.242\\]\n\n\n\\(t\\)-statistics: Estimates / Std. Error, i.e., number of standard deviations from 0\n\n\\(p\\)-values (i.e., Pr(&gt;|t|)): estimated probability observing value as extreme as |t value| given the null hypothesis \\(\\beta = 0\\)\n\\(p\\)-value \\(&lt; \\alpha = 0.05\\) (conventional threshold): sufficient evidence to reject the null hypothesis that the coefficient is zero\ni.e., there is a significant association between life_expectancy and log_gdp"
+    "text": "Inference with OLS\nIntercept and coefficient estimates \\[\\quad \\hat{\\beta}_0 = 24.174 \\quad \\text{and} \\quad \\hat{\\beta}_1 = 1.975\\]\n\nEstimates of uncertainty for \\(\\beta\\)’s via standard errors \\[\\quad \\widehat{SE}(\\hat{\\beta}_0) = 5.758 \\quad \\text{and} \\quad \\widehat{SE}(\\hat{\\beta}_1) = 0.242\\]\n\n\n\\(t\\)-statistics: Estimates / Std. Error, i.e., number of standard deviations from 0\n\n\\(p\\)-values (i.e., Pr(&gt;|t|)): estimated probability observing value as extreme as |t value| given the null hypothesis \\(\\beta_1 = 0\\)\n\\(p\\)-value \\(&lt; \\alpha = 0.05\\) (conventional threshold): sufficient evidence to reject the null hypothesis that the coefficient is zero\ni.e., there is a significant association between life_expectancy and log_gdp"
   },
   {
-    "objectID": "lectures/11-linear.html#be-careful",
-    "href": "lectures/11-linear.html#be-careful",
+    "objectID": "lectures/11-linear.html#coefficient-of-determination",
+    "href": "lectures/11-linear.html#coefficient-of-determination",
     "title": "Supervised learning: linear regression",
-    "section": "Be careful!",
-    "text": "Be careful!\nCaveats to keep in mind regarding p-values:\n\nIf the true value of a coefficient \\(\\beta = 0\\), then the \\(p\\)-value is sampled from a Uniform(0,1) distribution\n\ni.e., it is just as likely to have value 0.45 as 0.16 or 0.84 or 0.9999 or 0.00001…\n\n\n\nHence why we typically only reject for low \\(\\alpha\\) values like 0.05\n\nControlling the Type 1 error rate at \\(\\alpha = 0.05\\), i.e., the probability of a false positive mistake\n5% chance that you’ll conclude there’s a significant association between \\(x\\) and \\(y\\) even when there is none\n\n\n\nRemember what a standard error is? \\(\\displaystyle \\text{SE} = \\frac{\\sigma}{\\sqrt{n}}\\)\n\nAs \\(n\\) gets large standard error goes to zero, and all predictors are eventually deemed significant\nWhile the \\(p\\)-values might be informative, we will explore other approaches to determine which subset of predictors to include (e.g., holdout performance)"
-  },
-  {
-    "objectID": "lectures/11-linear.html#back-to-the-model-summary-multiple-r-squared",
-    "href": "lectures/11-linear.html#back-to-the-model-summary-multiple-r-squared",
-    "title": "Supervised learning: linear regression",
-    "section": "Back to the model summary: Multiple R-squared",
-    "text": "Back to the model summary: Multiple R-squared\nBack to the connection between the coefficient and correlation \\[r_{X,Y} = \\widehat{\\beta}_{1} \\cdot \\frac{s_X}{s_Y} \\quad \\longrightarrow \\quad r^2_{X,Y} = \\widehat{\\beta}_{1}^2\\cdot \\frac{s_X^2}{s_Y^2}\\]\nCompute the correlation with cor():\n\ncor(clean_gapminder$log_gdp, clean_gapminder$life_expectancy)\n\n[1] 0.5351189\n\n\n\nThe squared cor matches the reported Multiple R-squared\n\ncor(clean_gapminder$log_gdp, clean_gapminder$life_expectancy) ^ 2\n\n[1] 0.2863522"
-  },
-  {
-    "objectID": "lectures/11-linear.html#back-to-the-model-summary-multiple-r-squared-1",
-    "href": "lectures/11-linear.html#back-to-the-model-summary-multiple-r-squared-1",
-    "title": "Supervised learning: linear regression",
-    "section": "Back to the model summary: Multiple R-squared",
-    "text": "Back to the model summary: Multiple R-squared\nBack to the connection between the coefficient and correlation \\[r_{X,Y} = \\widehat{\\beta}_{1} \\cdot \\frac{s_X}{s_Y} \\quad \\longrightarrow \\quad r^2_{X,Y} = \\widehat{\\beta}_{1}^2\\cdot \\frac{s_X^2}{s_Y^2}\\]\n\\(r^2\\) (or also \\(R^2\\)) estimates the proportion of the variance of \\(Y\\) explained by \\(X\\)\n\nMore generally: variance of model predictions / variance of \\(Y\\)\n\n\nvar(predict(simple_lm)) / var(clean_gapminder$life_expectancy) \n\n[1] 0.2863522"
+    "section": "Coefficient of determination",
+    "text": "Coefficient of determination\n\nIn linear regression, the square of the correlation coefficient happens to be exactly the coefficient of determination\n\n\ncor(clean_gapminder$log_gdp, clean_gapminder$life_expectancy)\n\n[1] 0.5351189\n\ncor(clean_gapminder$log_gdp, clean_gapminder$life_expectancy) ^ 2\n\n[1] 0.2863522\n\n\n\n\\(R^2\\) estimates the proportion of the variance of \\(Y\\) explained by \\(X\\)\nMore generally: variance of model predictions / variance of \\(Y\\)\n\n\nvar(predict(simple_lm)) / var(clean_gapminder$life_expectancy) \n\n[1] 0.2863522"
   },
   {
     "objectID": "lectures/11-linear.html#generating-predictions",
@@ -4337,21 +4330,63 @@
     "href": "lectures/11-linear.html#multiple-linear-regression",
     "title": "Supervised learning: linear regression",
     "section": "Multiple linear regression",
-    "text": "Multiple linear regression\nWe can include as many variables as we want (assuming \\(n &gt; p\\)!)\n\\[Y=\\beta_{0}+\\beta_{1} X_{1}+\\beta_{2} X_{2}+\\cdots+\\beta_{p} X_{p}+\\epsilon\\]\nOLS estimates in matrix notation ( \\(\\boldsymbol{X}\\) is a \\(n \\times p\\) matrix):\n\\[\\hat{\\boldsymbol{\\beta}} = (\\boldsymbol{X} ^T \\boldsymbol{X})^{-1}\\boldsymbol{X}^T\\boldsymbol{Y}\\]\n\nCan just add more variables to the formula in R\n\nmultiple_lm &lt;- lm(life_expectancy ~ log_gdp + fertility, data = clean_gapminder)\n\n\nUse the Adjusted R-squared when including multiple variables \\(\\displaystyle 1 - \\frac{(1 - R^2)(n - 1)}{(n - p - 1)}\\)\n\nAdjusts for the number of variables in the model \\(p\\)\nAdding more variables will always increase Multiple R-squared"
+    "text": "Multiple linear regression\nWe can include as many variables as we want (assuming \\(n &gt; p\\))\n\\[Y=\\beta_{0}+\\beta_{1} X_{1}+\\beta_{2} X_{2}+\\cdots+\\beta_{p} X_{p}+\\epsilon\\]\nOLS estimates in matrix notation ( \\(\\boldsymbol{X}\\) is a \\(n \\times p\\) matrix):\n\\[\\hat{\\boldsymbol{\\beta}} = (\\boldsymbol{X} ^T \\boldsymbol{X})^{-1}\\boldsymbol{X}^T\\boldsymbol{Y}\\]\n\nCan just add more variables to the formula in R\n\nmultiple_lm &lt;- lm(life_expectancy ~ log_gdp + fertility, data = clean_gapminder)\n\n\nUse adjusted \\(R^2\\) when including multiple variables \\(\\displaystyle 1 - \\frac{(1 - R^2)(n - 1)}{(n - p - 1)}\\)\n\nAdjusts for the number of variables in the model \\(p\\)\nAdding more variables will always increase the model’s (unadjusted) \\(R^2\\)\n\n\nREAD THIS: \\(R^2\\) myths\nGet your \\(R^2\\) out of here"
   },
   {
     "objectID": "lectures/11-linear.html#what-about-the-normal-distribution-assumption",
     "href": "lectures/11-linear.html#what-about-the-normal-distribution-assumption",
     "title": "Supervised learning: linear regression",
     "section": "What about the Normal distribution assumption?",
-    "text": "What about the Normal distribution assumption?\n\nModel: \\(Y=\\beta_{0}+\\beta_{1} X_{1}+\\beta_{2} X_{2}+\\cdots+\\beta_{p} X_{p}+\\epsilon\\)\n\\(\\epsilon_i\\) is the random noise: assume independent and identically distributed (iid) from a Normal distribution \\(\\epsilon_i \\overset{iid}{\\sim}N(0, \\sigma^2)\\) with constant variance \\(\\sigma^2\\)\n\n\n\nOLS doesn’t care about this assumption, it’s just estimating coefficients!\n\n\n\n\nIn order to perform inference, we need to impose additional assumptions\nBy assuming \\(\\epsilon_i \\overset{iid}{\\sim}N(0, \\sigma^2)\\), what we really mean is \\(Y \\overset{iid}{\\sim}N(\\beta_{0}+\\beta_{1} X_{1}+\\beta_{2} X_{2}+\\cdots+\\beta_{p} X_{p}, \\sigma^2)\\)\n\n\n\n\nSo we’re estimating the mean \\(\\mu\\) of this conditional distribution, but what about \\(\\sigma^2\\)?\n\n\n\n\nUnbiased estimate \\(\\displaystyle \\hat{\\sigma}^2 = \\frac{\\text{RSS}}{n - (p + 1)}\\), its square root is the Residual standard error\nDegrees of freedom: \\(n - (p + 1)\\), data supplies us with \\(n\\) “degrees of freedom” and we used up \\(p + 1\\)"
+    "text": "What about the Normal distribution assumption?\n\nModel: \\(Y=\\beta_{0}+\\beta_{1} X_{1}+\\beta_{2} X_{2}+\\cdots+\\beta_{p} X_{p}+\\epsilon\\)\n\\(\\epsilon_i\\) is the random noise: assume independent and identically distributed (iid) from a Normal distribution \\(\\epsilon_i \\overset{iid}{\\sim}N(0, \\sigma^2)\\) with constant variance \\(\\sigma^2\\)\n\n\n\nOLS doesn’t care about this assumption, it’s just estimating coefficients!\n\n\n\n\nIn order to perform inference, we need to impose additional assumptions\nBy assuming \\(\\epsilon_i \\overset{iid}{\\sim}N(0, \\sigma^2)\\), what we really mean is \\(Y \\overset{iid}{\\sim}N(\\beta_{0}+\\beta_{1} X_{1}+\\beta_{2} X_{2}+\\cdots+\\beta_{p} X_{p}, \\sigma^2)\\)\n\n\n\n\nSo we’re estimating the mean \\(\\mu\\) of this conditional distribution, but what about \\(\\sigma^2\\)?\n\n\n\n\nUnbiased estimate \\(\\displaystyle \\hat{\\sigma}^2 = \\frac{\\text{RSS}}{n - (p + 1)}\\)\nDegrees of freedom: \\(n - (p + 1)\\), data supplies us with \\(n\\) “degrees of freedom” and we used up \\(p + 1\\)"
   },
   {
     "objectID": "lectures/11-linear.html#check-the-assumptions-about-normality-with-ggfortify",
     "href": "lectures/11-linear.html#check-the-assumptions-about-normality-with-ggfortify",
     "title": "Supervised learning: linear regression",
     "section": "Check the assumptions about normality with ggfortify",
-    "text": "Check the assumptions about normality with ggfortify\n\nlibrary(ggfortify)\nautoplot(multiple_lm, ncol = 4)\n\n\n\nStandardized residuals = residuals / sd(residuals) (see also .std.resid from augment)\n\n\n\n36-SURE.github.io"
+    "text": "Check the assumptions about normality with ggfortify\n\nlibrary(ggfortify)\nautoplot(multiple_lm, ncol = 4)\n\n\n\nStandardized residuals = residuals / sd(residuals) (see also .std.resid from augment)"
+  },
+  {
+    "objectID": "lectures/11-linear.html#regression-confidence-intervals-vs-prediction-intervals",
+    "href": "lectures/11-linear.html#regression-confidence-intervals-vs-prediction-intervals",
+    "title": "Supervised learning: linear regression",
+    "section": "Regression confidence intervals vs prediction intervals",
+    "text": "Regression confidence intervals vs prediction intervals\nDo we want to predict the mean response for a particular value \\(x^*\\) of the explanatory variable or do we want to predict the response for an individual case?\nExample:\n\nif we would like to know the average price for all Tesla with 50 thousand miles, then we would use an interval for the mean response\nif we want an interval to contain the price of a particular Tesla with 50 thousand miles, then we need the interval for a single prediction"
+  },
+  {
+    "objectID": "lectures/11-linear.html#regression-confidence-intervals",
+    "href": "lectures/11-linear.html#regression-confidence-intervals",
+    "title": "Supervised learning: linear regression",
+    "section": "Regression confidence intervals",
+    "text": "Regression confidence intervals\n\n\n\ngeom_smooth() displays confidence intervals for the regression line\n\n\n# predict(simple_lm, interval = \"confidence\")\nlm_plot &lt;- clean_gapminder |&gt;\n  ggplot(aes(x = log_gdp,\n             y = life_expectancy)) +\n  geom_point(alpha = 0.5) +\n  geom_smooth(method = \"lm\") +\n  theme_bw() +\n  labs(x = \"log(GDP)\",\n       y = \"Life expectancy\")\nlm_plot"
+  },
+  {
+    "objectID": "lectures/11-linear.html#regression-confidence-intervals-1",
+    "href": "lectures/11-linear.html#regression-confidence-intervals-1",
+    "title": "Supervised learning: linear regression",
+    "section": "Regression confidence intervals",
+    "text": "Regression confidence intervals\n\nInterval estimate for the MEAN response at a given observation (i.e. for the predicted AVERAGE \\(\\hat{\\beta}_0 + \\hat{\\beta}_1 x^*\\))\nBased on standard errors for the estimated regression line at \\(x^*\\) \\[SE_{\\text{line}}\\left(x^{*}\\right)=\\hat{\\sigma} \\cdot \\sqrt{\\frac{1}{n}+\\frac{\\left(x^{*}-\\bar{x}\\right)^{2}}{\\sum_{i=1}^{n}\\left(x_{i}-\\bar{x}\\right)^{2}}}\\]\nVariation only comes from uncertainty in the parameter"
+  },
+  {
+    "objectID": "lectures/11-linear.html#regression-prediction-intervals",
+    "href": "lectures/11-linear.html#regression-prediction-intervals",
+    "title": "Supervised learning: linear regression",
+    "section": "Regression prediction intervals",
+    "text": "Regression prediction intervals\n\ninterval estimate for an INDIVIDUAL response at a given (new) observation\nadd the variance \\(\\sigma^2\\) of a single predicted value \\[SE_{\\text{pred}}\\left(x^{*}\\right)=\\hat{\\sigma} \\cdot \\sqrt{1 + \\frac{1}{n}+\\frac{\\left(x^{*}-\\bar{x}\\right)^{2}}{\\sum_{i=1}^{n}\\left(x_{i}-\\bar{x}\\right)^{2}}}\\]\nvariation comes from uncertainty in parameter estimates and error variance"
+  },
+  {
+    "objectID": "lectures/11-linear.html#confidence-intervals-versus-prediction-intervals",
+    "href": "lectures/11-linear.html#confidence-intervals-versus-prediction-intervals",
+    "title": "Supervised learning: linear regression",
+    "section": "Confidence intervals versus prediction intervals",
+    "text": "Confidence intervals versus prediction intervals\nGenerate 95% intervals\n\n\n\n# predict(simple_lm, interval = \"prediction\")\nlm_plot +\n  geom_ribbon(\n    data = augment(simple_lm, interval = \"prediction\"),\n    aes(ymin = .lower, ymax = .upper),\n    color = \"red\", fill = NA\n  )\n\n\nThe standard error for predicting an individual response will always be larger than for predicting a mean response\nPrediction intervals will always be wider than confidence intervals"
+  },
+  {
+    "objectID": "lectures/11-linear.html#appendix-interpret-a-linear-regression-model-with-log-transformations",
+    "href": "lectures/11-linear.html#appendix-interpret-a-linear-regression-model-with-log-transformations",
+    "title": "Supervised learning: linear regression",
+    "section": "Appendix: Interpret a linear regression model with log transformations",
+    "text": "Appendix: Interpret a linear regression model with log transformations\n\nLog-transformed predictor: \\(Y = \\beta_0 + \\beta_1 \\log(X)\\)\n\nA 1% increase in \\(X\\) is associated with an average change of \\(\\beta_1/100\\) units in \\(Y\\)\n\nLog-transformed outcome: \\(\\log(Y) = \\beta_0 + \\beta_1 X\\)\n\nA 1 unit increase in \\(X\\) is associated with an average change of \\((100 \\times \\beta) \\%\\) in Y\n\nLog-transformed predictor and outcome: \\(\\log(Y) = \\beta_0 + \\beta_1 \\log(X)\\)\n\nA 1% increase in \\(X\\) is associated with an average change of \\(\\beta_1 \\%\\) in Y\n\n\nUseful reading\n\n\n36-SURE.github.io"
   },
   {
     "objectID": "r-setup.html#r-and-rstudio",
