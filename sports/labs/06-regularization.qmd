@@ -1,0 +1,207 @@
+---
+title: "Lab: regularization"
+subtitle: "Introduction to regularized adjusted plus-minus (RAPM)"
+format: html
+---
+
+## Introduction
+
+The purpose of this lab is to walk through the basics of a **regularized adjusted plus-minus (RAPM) model** to estimate the impact of basketball players when they are on the court, while adjusting for the quality of their teammates and opponents.
+We will use a dataset that is already in the wide design matrix form with indicator columns for every player that was observed during the regular season.
+You can find the script for building this dataset [here](https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/init_nba_rapm_data.R), which relies on the [`hoopR` package](https://hoopr.sportsdataverse.org/) to obtain the data.
+
+The following code chunk reads in the data, which is in a wide format.
+
+```{r}
+# library(tidyverse)
+# nba_rapm_data <- read_csv("https://github.com/36-SURE/36-SURE.github.io/raw/main/data/nba_2223_season_rapm_data.csv.gz")
+# nba_rapm_data
+```
+
+In this dataset, we have 32,358 unique shifts/stints with 539 players represented by the indicator variables (`1` if on court for home team, `-1` if on court for away team, and `0` if not on court).
+Additional context is captured by the following variables:
+
+* `game_id`: unique game ID 
+* `stint_id`: unique identifier within a game for a stint for particular combination of home and away lineup (in appearance of order, where 1 is the first stint in the game) 
+* `n_pos`: number of possessions (combined for both home and away) during the observed stint 
+* `home_points`: number of points scored by the home team during the stint 
+* `away_points`: number of points scored by the away team during the stint 
+* `minutes`: length of the stint in terms of minutes played 
+* `margin`: common response for RAPM models, defined as: `(home_points - away_points) / n_pos * 100`
+
+## Adjusted Plus-Minus (APM)
+
+We'll first consider the classic [Rosenbaum (2004)](https://www.82games.com/comm30.htm) **adjusted plus-minus (APM)** model, which is weighted least-squares where:
+
+*   Response variable is the score differential with respect to home team, i.e., `home_points - away_points`
+
+*   Weights are the number of posessions during the shift/stint, i.e., `n_pos`
+
+Let's go ahead and fit this initial model (this might take a bit to run).
+
+First, compute the score differential as `score_diff = home_points - away_points` using `mutate()`. Append this new column to the data `nba_rapm_data`.
+
+```{r}
+# INSERT CODE HERE
+```
+
+Next, create a new dataset named `nba_apm_model_data` that contains only the response `score_diff`, the weights `n_pos`,  and the player columns. 
+
+```{r}
+# INSERT CODE HERE
+```
+
+Now, fit the model using the code below.
+
+```{r}
+# uncomment the code below
+# rosenbaum_model <- lm(score_diff ~ 0 + . - n_pos, 
+#                       data = INSERT CODE HERE,
+#                       weights = INSERT CODE HERE)
+# notice an intercept term is not included (that's what the 0 is there for)
+# `+ .` by itself means include everything as predictors
+# `+ . - n_pos` means include everything BUT n_pos 
+```
+
+We're not going to view the summary of this model since it is a bit of a mess. 
+Instead, we'll take advantage of the [`broom` package](https://broom.tidymodels.org/index.html) to view the coefficients:
+
+```{r}
+# library(broom)
+# rosenbaum_coef <- tidy(rosenbaum_model)
+# rosenbaum_coef
+```
+
+Obviously, in this current form we have no idea, we have no idea which player is which. Fortunately for you, there is another dataset with the names of the players to join using these IDs in the `term` column: 
+
+```{r}
+# nba_player_table <- read_csv("https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/nba_2223_player_table.csv")
+# nba_player_table
+```
+
+You'll notice that this matches the number of rows as the `rosenbaum_coef` table.
+But we first need to modify the `term` column by removing the back-tick symbols and then converting the IDs to numeric values before joining:
+
+```{r}
+# rosenbaum_coef <- rosenbaum_coef |>
+#   mutate(term = as.numeric(str_remove_all(term, "`"))) |> # convert term to numeric
+#   left_join(nba_player_table, by = c("term" = "player_id")) # join to obtain player names
+```
+
+Who are the top players based on this approach? Display the top 10 (in terms of `estimate` in the `rosenbaum_coef` data).
+
+```{r}
+# INSERT CODE HERE
+```
+
+And the worst players? Display the bottom 10.
+
+```{r}
+# INSERT CODE HERE
+```
+
+These look like pretty extreme values, with the most extreme values observed by players that have limited playing time (upon searching their stats online).
+
+
+Before we think about how to address these issues, let's look at what happens if we make a slight tweak to our model by using the `margin` variable as the response instead.
+
+Repeat what we've done so far, but use `margin` in the original data `nba_rapm_data` as the response instead of `score_diff`.
+
+```{r}
+# INSERT CODE HERE
+```
+
+Do we see player names that make sense? What do you notice about the magnitude for the coefficient estimates compared to the score differential model?
+
+Let's quickly take a look at the distribution of the coefficients for the players. Display a histogram of `estimate` (for the new model with `margin` as the response). What do you notice about this distribution?
+
+```{r}
+# INSERT CODE HERE
+```
+
+## Regularized Adjusted Plus-Minus (RAPM)
+
+### Ridge RAPM
+
+In order to address the common issues facing APM models, we can fit a RAPM model using ridge regression.
+The go-to approach for fitting ridge (as well as lasso and elastic-net models) is with the [`glmnet` package](https://glmnet.stanford.edu/articles/glmnet.html). 
+We can easily fit a ridge regression model with the RAPM design matrix.
+In order to tune the penalty $\lambda$, we will use the built-in cross-validation code with the `cv.glmnet()` function.
+
+First, grab only the player columns (i.e. the indicator variables in the original data), then convert to a matrix using `as.matrix()`, and store this as a new object named `player_matrix`.
+
+```{r}
+# INSERT CODE HERE
+```
+
+Next, fit a ridge regression model with `glmnet`
+
+```{r}
+# library(glmnet)
+# help(cv.glmnet)
+
+# ridge with 10 fold cv, no intercept and no standardization
+# fit_ridge_cv <- cv.glmnet(x = INSERT CODE HERE, 
+#                           y = INSERT CODE HERE, 
+#                           alpha = INSERT CODE HERE, 
+#                           intercept = FALSE, 
+#                           standardize = FALSE)
+```
+
+We can now view the penalty selection for this model:
+
+```{r}
+# plot(fit_ridge_cv)
+```
+
+We can also easily plot the path of the ridge regression shrinkage, to see how the coefficients are pulled towards 0 as the penalty increases.
+The following code chunk shows this full path:
+
+```{r}
+# plot(fit_ridge_cv$glmnet.fit, xvar = "lambda")
+```
+
+Using the `broom` package again, we can again make a tidy table of the coefficients for each player:
+
+```{r}
+# tidy_ridge_coef <- tidy(fit_ridge_cv$glmnet.fit)
+# tidy_ridge_coef
+```
+
+If you look closely, this returns 100 rows for each player in the data - because it is returning the coefficient for each player at each value of the `lambda` penalty. 
+We can filter to the values for the optimal choice of `lambda` based on the cross-validation results, and then join our player names as before:
+
+```{r}
+# rapm_ridge_coef <- tidy_ridge_coef |>
+#   filter(lambda == fit_ridge_cv$lambda.min) |> # filter to the min lambda CV
+#   mutate(term = as.numeric(term)) |>  # convert term to numeric
+#   left_join(INSERT CODE HERE) # join to obtain player names
+```
+
+Now, display the top 10 players based on coefficient estimates. Does this list pass the eye test? (Who won the NBA MVP in 2023?)
+
+```{r}
+# INSERT CODE HERE
+```
+
+And finally, let's view the RAPM coefficient distribution (for comparison against the APM coefficients). Display a histogram of `estimate` from the model
+
+```{r}
+# INSERT CODE HERE
+```
+
+### Lasso RAPM
+
+We've just seen the benefits of using ridge regression to estimate player effects in the presence of collinearity.
+What happens if we use the lasso penalty instead of the ridge penalty?
+
+Repeat what we just did, but for a lasso regression model instead of ridge.
+(HINT: what do you need to set `alpha = ` to?)
+
+```{r}
+# INSERT CODE HERE
+```
+
+Who are the top 10 players based on lasso regression? Is this similar (player names and order) to what we got using ridge?
+Comment on how the lasso rankings and estimates compare to the ridge regression estimates.
+
