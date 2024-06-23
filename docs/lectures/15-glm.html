@@ -408,122 +408,6 @@
 <h1>Background</h1>
 
 </section>
-<section id="probability-distributions" class="slide level2">
-<h2>Probability distributions</h2>
-<p>A distribution is a mathematical function <span class="math inline">\(f(x \mid \theta)\)</span> where</p>
-<ul>
-<li><span class="math inline">\(x\)</span> may take on continuous or discrete values over the domain (i.e.&nbsp;all possible inputs) of <span class="math inline">\(f(x \mid \theta)\)</span></li>
-<li><span class="math inline">\(\theta\)</span> is a set of parameters governing the shape of the distribution
-<ul>
-<li>e.g.&nbsp;<span class="math inline">\(\theta = \{\mu, \sigma ^2 \}\)</span> for a normal (Gaussian) distribution</li>
-</ul></li>
-<li>the <span class="math inline">\(\mid\)</span> symbol means that the shape of the distribution is conditional on the values of <span class="math inline">\(\theta\)</span></li>
-</ul>
-<div class="fragment">
-<p>Let <span class="math inline">\(f\)</span> denote the distribution for its</p>
-<ul>
-<li><strong>probability density function (PDF)</strong> if <span class="math inline">\(x\)</span> is continuous</li>
-<li><strong>probability mass function (PMF)</strong> if <span class="math inline">\(x\)</span> is discrete</li>
-</ul>
-</div>
-<div class="fragment">
-<p>Note:</p>
-<ul>
-<li><span class="math inline">\(f(x \mid \theta) \geq 0\)</span> for all <span class="math inline">\(x\)</span></li>
-<li><span class="math inline">\(\displaystyle \sum_x f(x \mid \theta) = 1\)</span> (discrete case) or <span class="math inline">\(\displaystyle \int_x f(x \mid \theta) = 1\)</span> (continuous case)</li>
-</ul>
-</div>
-</section>
-<section id="normal-distribution" class="slide level2">
-<h2>Normal distribution</h2>
-<div class="columns">
-<div class="column" style="text-align: left;">
-<ul>
-<li><p>PDF: <span class="math inline">\(\displaystyle f(x \mid \mu, \sigma^2)=\frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{2}}\)</span>; <span class="math inline">\(x \in (- \infty, \infty)\)</span></p></li>
-<li><p>We write <span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span></p></li>
-<li><p>Standard normal distribution: <span class="math inline">\(N(0, 1)\)</span></p></li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_light</span>())</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x)) <span class="sc">+</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">color =</span> <span class="st">"blue"</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">color =</span> <span class="st">"red"</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="sc">-</span><span class="dv">2</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="fl">0.5</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div><div class="column" style="text-align: left;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="15-glm_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="binomial-distribution" class="slide level2">
-<h2>Binomial distribution</h2>
-<div class="columns">
-<div class="column" style="text-align: left;">
-<ul>
-<li><p>PMF: <span class="math inline">\(\displaystyle f(x \mid n, p)= \binom{n}{x} p^{x}(1-p)^{n-x}\)</span>; <span class="math inline">\(x = 0, 1, \dots, n\)</span></p></li>
-<li><p>Model for the probability of <span class="math inline">\(x\)</span> successes in <span class="math inline">\(n\)</span> independent trials, each with success probability <span class="math inline">\(p\)</span></p></li>
-<li><p>We write <span class="math inline">\(X \sim \text{Binomial}(n,p)\)</span></p></li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">20</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">binom1 =</span> <span class="fu">dbinom</span>(x, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="fl">0.5</span>),</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">binom2 =</span> <span class="fu">dbinom</span>(x, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="fl">0.1</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x)) <span class="sc">+</span> </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> binom1), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> binom2), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div><div class="column" style="text-align: left;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="15-glm_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="poisson-distribution" class="slide level2">
-<h2>Poisson distribution</h2>
-<div class="columns">
-<div class="column" style="text-align: left;">
-<ul>
-<li><p>PMF: <span class="math inline">\(\displaystyle f(x \mid \lambda)= \frac{ e^{-\lambda} \lambda^x}{x!}\)</span>; <span class="math inline">\(x = 0, 1, 2, \dots\)</span> and <span class="math inline">\(\lambda &gt; 0\)</span></p></li>
-<li><p>Model for the counts of an event in a fixed period of time, with a rate of occurrence parameter <span class="math inline">\(\lambda\)</span></p></li>
-<li><p>We write <span class="math inline">\(X \sim \text{Poisson}(\lambda)\)</span></p></li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y =</span> <span class="fu">dpois</span>(x, <span class="dv">1</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div><div class="column" style="text-align: left;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="15-glm_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
 <section id="recap" class="slide level2">
 <h2>Recap</h2>
 <p>When the response is continuous, we can use normal regression.</p>
@@ -579,10 +463,12 @@
 </section>
 <section id="generalization-poisson-regression" class="slide level2">
 <h2>Generalization: Poisson regression</h2>
-<p>A distribution that fulfills the conditions imposed on the last slide is the <a href="https://en.wikipedia.org/wiki/Poisson_distribution"><strong>Poisson</strong> distribution</a>,</p>
-<p><span class="math display">\[f(x \mid \lambda) = \frac{\lambda^xe^{-\lambda}}{x!},\text{ where }x = 0, 1, 2, \dots\]</span></p>
+<ul>
+<li>PMF of a Poisson distribution: <span class="math inline">\(\displaystyle f(x \mid \lambda)= \frac{ e^{-\lambda} \lambda^x}{x!}\)</span>; <span class="math inline">\(x = 0, 1, 2, \dots\)</span> and <span class="math inline">\(\lambda &gt; 0\)</span></li>
+</ul>
 <div class="fragment">
 <ul>
+<li><p>Model for the counts of an event in a fixed period of time, with a rate of occurrence parameter <span class="math inline">\(\lambda\)</span></p></li>
 <li><p>has a single parameter <span class="math inline">\(\lambda\)</span>, which is <strong>both</strong> the mean <strong>AND</strong> variance of the distribution</p>
 <ul>
 <li>in general the variance governs the distribution’s shape</li>
@@ -647,15 +533,293 @@
 <ul>
 <li><span class="math inline">\(Y \mid x\)</span> discrete, but can only take on the values 0 and 1</li>
 </ul>
-<p>knitr::include_graphics(“https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Bernoulli_Distribution.PNG/650px-Bernoulli_Distribution.PNG”)</p>
-</section></section>
-<section id="examples" class="title-slide slide level1 center">
-<h1>Examples</h1>
+
+<img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Bernoulli_Distribution.PNG/650px-Bernoulli_Distribution.PNG" style="width:50.0%" class="r-stretch quarto-figure-center"></section>
+<section id="modeling-count-data" class="slide level2">
+<h2>Modeling count data</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>goals <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/goals.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_light</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(worldfootballR)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>big5 <span class="ot">&lt;-</span> <span class="fu">fb_match_results</span>(<span class="at">country =</span> <span class="fu">c</span>(<span class="st">"ENG"</span>, <span class="st">"ESP"</span>, <span class="st">"ITA"</span>, <span class="st">"GER"</span>, <span class="st">"FRA"</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">gender =</span> <span class="st">"M"</span>, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">season_end_year =</span> <span class="dv">2024</span>, </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">tier =</span> <span class="st">"1st"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>big5 <span class="ot">&lt;-</span> big5 <span class="sc">|&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">match_id =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span>  <span class="co"># add unique id for each row</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Wk))</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>home_goals <span class="ot">&lt;-</span> big5 <span class="sc">|&gt;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">goals =</span> HomeGoals, <span class="at">xG =</span> Home_xG, <span class="at">off_team =</span> Home, <span class="at">def_team =</span> Away, <span class="at">league =</span> Country, match_id) <span class="sc">|&gt;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_home =</span> <span class="dv">1</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>away_goals <span class="ot">&lt;-</span> big5 <span class="sc">|&gt;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">goals =</span> AwayGoals, <span class="at">xG =</span> Away_xG, <span class="at">off_team =</span> Away, <span class="at">def_team =</span> Home, <span class="at">league =</span> Country, match_id) <span class="sc">|&gt;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_home =</span> <span class="dv">0</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>goals <span class="ot">&lt;-</span> home_goals <span class="sc">|&gt;</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(away_goals)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co"># write_csv(goals, "data/goals.csv")  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="eda-distribution-for-the-number-of-goals" class="slide level2">
+<h2>EDA: Distribution for the number of goals</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>goals <span class="sc">|&gt;</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(goals) <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(goals, n)) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="15-glm_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="eda-distribution-for-the-number-of-goals-by-league" class="slide level2">
+<h2>EDA: Distribution for the number of goals by league</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>goals <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(goals, league) <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(goals, n)) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">8</span>) <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> league)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="15-glm_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="eda-distribution-for-the-number-of-goals-by-homeaway-team" class="slide level2">
+<h2>EDA: Distribution for the number of goals by home/away team</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>goals <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(goals, is_home) <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(goals, n, <span class="at">fill =</span> <span class="fu">factor</span>(is_home), <span class="at">group =</span> is_home)) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge"</span>, <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="15-glm_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="poisson-regression" class="slide level2">
+<h2>Poisson regression</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>goals_poisson <span class="ot">&lt;-</span> <span class="fu">glm</span>(goals <span class="sc">~</span> league <span class="sc">+</span> is_home, </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">family =</span> <span class="st">"poisson"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> goals)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(goals_poisson)</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(goals_poisson)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  term        estimate std.error statistic  p.value
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)   0.385     0.0323    11.9   1.18e-32
+2 leagueESP    -0.215     0.0424    -5.07  3.98e- 7
+3 leagueFRA    -0.195     0.0449    -4.34  1.46e- 5
+4 leagueGER    -0.0185    0.0426    -0.433 6.65e- 1
+5 leagueITA    -0.228     0.0426    -5.36  8.44e- 8
+6 is_home       0.208     0.0283     7.36  1.87e-13</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(goals_poisson, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  term        estimate std.error statistic  p.value
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)    1.47     0.0323    11.9   1.18e-32
+2 leagueESP      0.807    0.0424    -5.07  3.98e- 7
+3 leagueFRA      0.823    0.0449    -4.34  1.46e- 5
+4 leagueGER      0.982    0.0426    -0.433 6.65e- 1
+5 leagueITA      0.796    0.0426    -5.36  8.44e- 8
+6 is_home        1.23     0.0283     7.36  1.87e-13</code></pre>
+</div>
+</div>
+<p>The expected number of goals changes by a factor of 1.27 if the team is home in comparison to away teams (or a 27% increase)</p>
+</section>
+<section id="overdispersion" class="slide level2">
+<h2>Overdispersion</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(goals<span class="sc">$</span>goals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.58617</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(goals<span class="sc">$</span>goals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.442352</code></pre>
+</div>
+</div>
+<ul>
+<li>Quasipoisson</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>goals_qp <span class="ot">&lt;-</span> <span class="fu">glm</span>(goals <span class="sc">~</span> league <span class="sc">+</span> is_home, </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">family =</span> <span class="st">"quasipoisson"</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> goals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Negative binomial</li>
+</ul>
+</section>
+<section id="negative-binomial-regression" class="slide level2">
+<h2>Negative binomial regression</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>goals_nb <span class="ot">&lt;-</span> MASS<span class="sc">::</span><span class="fu">glm.nb</span>(</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  goals <span class="sc">~</span> league <span class="sc">+</span> is_home, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> goals</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(goals_nb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  term        estimate std.error statistic  p.value
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)   0.385     0.0335    11.5   1.33e-30
+2 leagueESP    -0.215     0.0438    -4.91  9.22e- 7
+3 leagueFRA    -0.194     0.0464    -4.19  2.78e- 5
+4 leagueGER    -0.0186    0.0442    -0.422 6.73e- 1
+5 leagueITA    -0.228     0.0440    -5.18  2.17e- 7
+6 is_home       0.208     0.0292     7.12  1.07e-12</code></pre>
+</div>
+</div>
+</section>
+<section id="zero-inflated-poisson-regression" class="slide level2">
+<h2>Zero-inflated poisson regression</h2>
+<p>background</p>
+</section>
+<section id="zero-inflated-poisson-zip-regression" class="slide level2">
+<h2>Zero-inflated poisson (ZIP) regression</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pscl) <span class="co"># install.packages("pscl")</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>goals_zip <span class="ot">&lt;-</span> <span class="fu">zeroinfl</span>(goals <span class="sc">~</span> league <span class="sc">+</span> is_home, <span class="at">data =</span> goals)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(goals_zip)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+zeroinfl(formula = goals ~ league + is_home, data = goals)
+
+Pearson residuals:
+    Min      1Q  Median      3Q     Max 
+-1.3289 -1.0266 -0.1845  0.7004  5.2685 
+
+Count model coefficients (poisson with log link):
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)  0.41532    0.04103  10.123  &lt; 2e-16 ***
+leagueESP   -0.17010    0.05467  -3.111  0.00186 ** 
+leagueFRA   -0.18004    0.05792  -3.108  0.00188 ** 
+leagueGER   -0.01636    0.05351  -0.306  0.75985    
+leagueITA   -0.22493    0.05737  -3.921 8.82e-05 ***
+is_home      0.18472    0.03752   4.923 8.53e-07 ***
+
+Zero-inflation model coefficients (binomial with logit link):
+            Estimate Std. Error z value Pr(&gt;|z|)   
+(Intercept)  -3.6716     1.2681  -2.895  0.00379 **
+leagueESP     1.3000     1.3596   0.956  0.33902   
+leagueFRA     0.6130     1.6018   0.383  0.70195   
+leagueGER     0.1166     1.7986   0.065  0.94831   
+leagueITA     0.1689     2.0463   0.083  0.93421   
+is_home      -0.8116     0.9188  -0.883  0.37709   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+
+Number of iterations in BFGS optimization: 40 
+Log-likelihood: -5359 on 12 Df</code></pre>
+</div>
+</div>
+</section>
+<section id="model-selection-poisson-vs-zip" class="slide level2">
+<h2>Model selection: Poisson vs ZIP</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2008</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>n_folds <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>goals_folds <span class="ot">&lt;-</span> goals <span class="sc">|&gt;</span> </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(match_id) <span class="sc">|&gt;</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">match_fold =</span> <span class="fu">sample</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>n_folds, <span class="at">length.out =</span> <span class="fu">n</span>()), <span class="fu">n</span>()))</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># goals_folds |&gt; count(match_fold)</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>goals <span class="ot">&lt;-</span> goals <span class="sc">|&gt;</span> </span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(goals_folds, <span class="at">by =</span> <span class="st">"match_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="cross-validation" class="slide level2">
+<h2>Cross-validation</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>poisson_cv <span class="ot">&lt;-</span> <span class="cf">function</span>(k) {</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  train_goals <span class="ot">&lt;-</span> goals <span class="sc">|&gt;</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(match_fold <span class="sc">!=</span> k)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  test_goals <span class="ot">&lt;-</span> goals <span class="sc">|&gt;</span> </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(match_fold <span class="sc">==</span> k)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  poisson_fit <span class="ot">&lt;-</span> <span class="fu">glm</span>(goals <span class="sc">~</span> league <span class="sc">+</span> is_home, <span class="at">family =</span> <span class="st">"poisson"</span>, <span class="at">data =</span> train_goals)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  poisson_test_preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(poisson_fit, <span class="at">newdata =</span> test_goals, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># return a table with RMSE and fold id:</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  poisson_out <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">rmse =</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((test_goals<span class="sc">$</span>goals <span class="sc">-</span> poisson_test_preds) <span class="sc">^</span> <span class="dv">2</span>)), </span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>                        <span class="at">match_fold =</span> k)</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(poisson_out)</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>poisson_cv_results <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span>n_folds, poisson_cv) <span class="sc">|&gt;</span> </span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list_rbind</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="cross-validation-1" class="slide level2">
+<h2>Cross-validation</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>zip_cv <span class="ot">&lt;-</span> <span class="cf">function</span>(k) {</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  train_goals <span class="ot">&lt;-</span> goals <span class="sc">|&gt;</span> </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(match_fold <span class="sc">!=</span> k)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  test_goals <span class="ot">&lt;-</span> goals <span class="sc">|&gt;</span> </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(match_fold <span class="sc">==</span> k)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  zip_fit <span class="ot">&lt;-</span> <span class="fu">zeroinfl</span>(goals <span class="sc">~</span> league <span class="sc">+</span> is_home, <span class="at">data =</span> train_goals)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  zip_test_preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(zip_fit, <span class="at">newdata =</span> test_goals)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  zip_out <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">rmse =</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((test_goals<span class="sc">$</span>goals <span class="sc">-</span> zip_test_preds)<span class="sc">^</span><span class="dv">2</span>)),</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">match_fold =</span> k)</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(zip_out)</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>zip_cv_results <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span>n_folds, zip_cv) <span class="sc">|&gt;</span> </span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list_rbind</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="out-of-sample-comparison" class="slide level2">
+<h2>Out-of-sample comparison</h2>
+<p>Which model would you select?</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>poisson_cv_results <span class="sc">|&gt;</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_rmse =</span> <span class="fu">mean</span>(rmse))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  avg_rmse
+     &lt;dbl&gt;
+1     1.24</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>zip_cv_results <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_rmse =</span> <span class="fu">mean</span>(rmse))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  avg_rmse
+     &lt;dbl&gt;
+1     1.24</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Remember: <a href="https://en.wikipedia.org/wiki/Occam%27s_razor">Occam’s razor</a></p>
 
 <div class="footer footer-default">
 <p><a href="https://36-sure.github.io">36-SURE.github.io</a></p>
 </div>
-</section>
+</div>
+</section></section>
     </div>
   </div>
 

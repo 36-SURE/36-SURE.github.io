@@ -410,7 +410,7 @@
 </section>
 <section id="setting" class="slide level2">
 <h2>Setting</h2>
-<p>We wish to learn a linear model. Our estimate (denoted by hats) is <span class="math display">\[
+<p>Suppose we wish to learn a linear model. Our estimate (denoted by hats) is <span class="math display">\[
 \hat{Y} = \hat{\beta}_0 + \hat{\beta}_1 X_1 + \cdots + \hat{\beta}_p X_p
 \]</span></p>
 <div class="fragment">
@@ -445,8 +445,8 @@
 <ul>
 <li>For <span class="math inline">\(k = 1, 2, \dots, p\)</span> (each possible number of predictors)
 <ul>
-<li>Fit <strong>all</strong> <span class="math inline">\(\binom{p}{k} = \frac{p!}{k!(p-k)!}\)</span> with exactly <span class="math inline">\(k\)</span> predictors</li>
-<li>Pick the best among these <span class="math inline">\(\binom{p}{k}\)</span> models, call it <span class="math inline">\(\mathcal{M}_k\)</span>
+<li>Fit <strong>all</strong> <span class="math inline">\(\displaystyle \binom{p}{k} = \frac{p!}{k!(p-k)!}\)</span> with exactly <span class="math inline">\(k\)</span> predictors</li>
+<li>Pick the best among these <span class="math inline">\(\displaystyle \binom{p}{k}\)</span> models, call it <span class="math inline">\(\mathcal{M}_k\)</span>
 <ul>
 <li>“Best” can be based on cross-validation error, highest adjusted <span class="math inline">\(R^2\)</span>, etc.</li>
 <li>“It depends on your loss function”</li>
@@ -481,8 +481,9 @@
 </ul>
 </div>
 <div class="fragment">
-<p>Justify which predictors / variables used in modeling based on:</p>
+<p>Justify which predictors used in modeling based on:</p>
 <ul>
+<li><strong>domain knowledge</strong></li>
 <li><strong>context</strong></li>
 <li><strong>extensive EDA</strong></li>
 <li><strong>model assessment based on holdout predictions</strong></li>
@@ -499,6 +500,8 @@
 <ul>
 <li><p>To be <em>“uncorrelated”</em> is not the same as to be <em>“independent”</em>…</p></li>
 <li><p>Independence means <strong>there is no dependence</strong>, linear or otherwise</p></li>
+<li><p>If two variables are independent, then they are also uncorrelated. However, if two variables are uncorrelated, then they can still be dependent.</p></li>
+<li><p><a href="https://www.stat.cmu.edu/~cshalizi/uADA/13/reminders/uncorrelated-vs-independent.pdf">Recommended reading</a></p></li>
 </ul></li>
 </ul>
 <div class="fragment">
@@ -511,11 +514,6 @@
 </ul></li>
 </ul>
 </div>
-<div class="fragment">
-<ul>
-<li>We can use the <code>cov()</code> / <code>cor()</code> functions in <code>R</code> to generate the <strong>covariance</strong> / <strong>correlation</strong> matrices</li>
-</ul>
-</div>
 </section></section>
 <section>
 <section id="case-study" class="title-slide slide level1 center">
@@ -523,11 +521,11 @@
 
 </section>
 <section id="data-hollywood-movies-2012-2018" class="slide level2">
-<h2>Data: Hollywood Movies (2012-2018)</h2>
+<h2>Data: <a href="https://rdrr.io/cran/Lock5Data/man/HollywoodMovies.html">Hollywood Movies (2012-2018)</a></h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_light</span>())</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>movies <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://www.lock5stat.com/datasets3e/HollywoodMovies.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>movies <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/movies.csv"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(movies)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,295
@@ -549,8 +547,9 @@ $ OpenProfit       &lt;dbl&gt; 1.20, 86.43, NA, NA, 23.99, 204.00, NA, 9.33, 32.
 $ Year             &lt;dbl&gt; 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2012,…</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>movies <span class="ot">&lt;-</span> movies <span class="sc">|&gt;</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(AudienceScore, RottenTomatoes, TheatersOpenWeek, OpeningWeekend, Budget, DomesticGross, ForeignGross) <span class="sc">|&gt;</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(audience_score, rotten_tomatoes, theaters_open_week, opening_weekend, budget, domestic_gross, foreign_gross) <span class="sc">|&gt;</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="modeling-audience-rating" class="slide level2">
@@ -558,7 +557,7 @@ $ Year             &lt;dbl&gt; 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2
 <p>Interested in modeling the audience rating of a movie</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>movies <span class="sc">|&gt;</span> </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> AudienceScore)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> audience_score)) <span class="sc">+</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"gray"</span>, <span class="at">color =</span> <span class="st">"white"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
@@ -568,7 +567,7 @@ $ Year             &lt;dbl&gt; 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2
 <div class="columns">
 <div class="column" style="text-align: left;">
 <ul>
-<li><p>Interested in <code>AudienceScore</code> relationships with opening critics rating, weekend statistics, budget, gross income of viewers</p></li>
+<li><p>Interested in <code>audience_score</code> relationships with critics rating, opening weekend statistics, budget, gross income of viewers</p></li>
 <li><p>Plot correlation matrix with <code>ggcorrplot</code></p></li>
 </ul>
 <div class="cell" data-layout-align="center">
@@ -632,7 +631,7 @@ $ Year             &lt;dbl&gt; 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>movies_feat <span class="ot">&lt;-</span> movies <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>AudienceScore)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>audience_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -741,7 +740,7 @@ $ Year             &lt;dbl&gt; 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2
 <section id="which-variables-matter-for-modeling-audience-rating" class="slide level2">
 <h2>Which variables matter for modeling audience rating?</h2>
 <div class="fragment">
-<p>Use <strong>10-fold cross-validation</strong> to assess how well different sets of variables perform in predicting <code>AudienceScore</code>?</p>
+<p>Use <strong>10-fold cross-validation</strong> to assess how well different sets of variables perform in predicting <code>audience_score</code>?</p>
 </div>
 <div class="fragment">
 <p>Create a column of <strong>test</strong> fold assignments to our dataset with the <code>sample()</code> function:</p>
@@ -762,7 +761,7 @@ $ Year             &lt;dbl&gt; 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2
 <h2>Writing a function for <span class="math inline">\(k\)</span>-fold cross-validation</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>get_cv_pred <span class="ot">&lt;-</span> <span class="cf">function</span>(model_formula, <span class="at">data =</span> movies) {</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># generate holdout predictions for every row based season</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># generate holdout predictions for every row</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  get_test_pred <span class="ot">&lt;-</span> <span class="cf">function</span>(fold) {</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># separate test and training data</span></span>
@@ -773,7 +772,7 @@ $ Year             &lt;dbl&gt; 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># return test results</span></span>
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    test_res <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">test_pred =</span> <span class="fu">predict</span>(train_fit, <span class="at">newdata =</span> test_data),</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>                       <span class="at">test_actual =</span> test_data<span class="sc">$</span>AudienceScore,</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>                       <span class="at">test_actual =</span> test_data<span class="sc">$</span>audience_score,</span>
 <span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>                       <span class="at">test_fold =</span> fold)</span>
 <span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(test_res)</span>
 <span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  }</span>
@@ -789,15 +788,15 @@ $ Year             &lt;dbl&gt; 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2
 <h2>Function enables easy generation of holdout analysis</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>all_pred <span class="ot">&lt;-</span> <span class="fu">get_cv_pred</span>(</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"AudienceScore ~ RottenTomatoes + TheatersOpenWeek + OpeningWeekend + Budget + DomesticGross + ForeignGross"</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"audience_score ~ rotten_tomatoes + theaters_open_week + opening_weekend + budget + domestic_gross + foreign_gross"</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>all_no_critics_pred <span class="ot">&lt;-</span> <span class="fu">get_cv_pred</span>(</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"AudienceScore ~ TheatersOpenWeek + OpeningWeekend + Budget + DomesticGross + ForeignGross"</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"audience_score ~ theaters_open_week + opening_weekend + budget + domestic_gross + foreign_gross"</span></span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>critics_only_pred <span class="ot">&lt;-</span> <span class="fu">get_cv_pred</span>(<span class="st">"AudienceScore ~ RottenTomatoes"</span>)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>opening_only_pred <span class="ot">&lt;-</span> <span class="fu">get_cv_pred</span>(<span class="st">"AudienceScore ~ Budget + TheatersOpenWeek + OpeningWeekend + RottenTomatoes"</span>)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>gross_only_pred <span class="ot">&lt;-</span> <span class="fu">get_cv_pred</span>(<span class="st">"AudienceScore ~ DomesticGross + ForeignGross + RottenTomatoes"</span>)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>int_only_pred <span class="ot">&lt;-</span> <span class="fu">get_cv_pred</span>(<span class="st">"AudienceScore ~ 1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>critics_only_pred <span class="ot">&lt;-</span> <span class="fu">get_cv_pred</span>(<span class="st">"audience_score ~ rotten_tomatoes"</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>opening_only_pred <span class="ot">&lt;-</span> <span class="fu">get_cv_pred</span>(<span class="st">"audience_score ~ budget + theaters_open_week + opening_weekend + rotten_tomatoes"</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>gross_only_pred <span class="ot">&lt;-</span> <span class="fu">get_cv_pred</span>(<span class="st">"audience_score ~ domestic_gross + foreign_gross + rotten_tomatoes"</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>int_only_pred <span class="ot">&lt;-</span> <span class="fu">get_cv_pred</span>(<span class="st">"audience_score ~ 1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div class="columns">
@@ -838,7 +837,7 @@ $ Year             &lt;dbl&gt; 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2
 <h2>Fit selected model on all data and view summary</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>all_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  AudienceScore <span class="sc">~</span> RottenTomatoes <span class="sc">+</span> TheatersOpenWeek <span class="sc">+</span> OpeningWeekend <span class="sc">+</span> Budget <span class="sc">+</span> DomesticGross <span class="sc">+</span> ForeignGross, </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  audience_score <span class="sc">~</span> rotten_tomatoes <span class="sc">+</span> theaters_open_week <span class="sc">+</span> opening_weekend <span class="sc">+</span> budget <span class="sc">+</span> domestic_gross <span class="sc">+</span> foreign_gross, </span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> movies</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(all_fit)</span></span>
@@ -846,28 +845,27 @@ $ Year             &lt;dbl&gt; 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>all_fit <span class="sc">|&gt;</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 7 × 5
-  term             estimate std.error statistic   p.value
-  &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-1 (Intercept)      40.5      1.35        29.9   1.66e-142
-2 RottenTomatoes    0.395    0.0160      24.7   1.74e-106
-3 TheatersOpenWeek -0.00214  0.000393    -5.44  6.55e-  8
-4 OpeningWeekend   -0.114    0.0362      -3.16  1.62e-  3
-5 Budget            0.0168   0.0116       1.45  1.46e-  1
-6 DomesticGross     0.0690   0.0125       5.52  4.16e-  8
-7 ForeignGross      0.00415  0.00497      0.835 4.04e-  1</code></pre>
+  term               estimate std.error statistic   p.value
+  &lt;chr&gt;                 &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)        40.5      1.35        29.9   1.66e-142
+2 rotten_tomatoes     0.395    0.0160      24.7   1.74e-106
+3 theaters_open_week -0.00214  0.000393    -5.44  6.55e-  8
+4 opening_weekend    -0.114    0.0362      -3.16  1.62e-  3
+5 budget              0.0168   0.0116       1.45  1.46e-  1
+6 domestic_gross      0.0690   0.0125       5.52  4.16e-  8
+7 foreign_gross       0.00415  0.00497      0.835 4.04e-  1</code></pre>
 </div>
 </div>
 <div class="fragment">
 <ul>
 <li><p>But… do NOT show a coefficients table in a presentation (well… it depends)</p></li>
 <li><p>A nicely formatted table of the summary output is more appropriate in a written report</p></li>
-<li><p>Packages that can take a model object and produce a neat table summary: <code>texreg</code>, <code>modelsummary</code>, <code>gtsummary</code>, <code>huxtable</code>, <code>sjPlot</code></p></li>
+<li><p>Packages that can take a model object and produce a neat table summary: <code>kableExtra</code>, <code>texreg</code>, <code>modelsummary</code>, <code>gtsummary</code>, <code>huxtable</code>, <code>sjPlot</code></p></li>
 </ul>
 </div>
 </section>
-<section id="coefficient-plot-or-dot-and-whisker-plot-or-forest-plot-or-blobbogram" class="slide level2">
-<h2>Coefficient plot (or dot-and-whisker plot or forest plot or blobbogram)</h2>
-<p>Display a <strong>coefficient plot</strong> with confidence intervals based on the reported standard errors</p>
+<section id="coefficient-plot-with-uncertainty-quantification" class="slide level2">
+<h2>Coefficient plot (with uncertainty quantification)</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>all_fit <span class="sc">|&gt;</span> </span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>(<span class="at">conf.int =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
@@ -876,15 +874,1687 @@ $ Year             &lt;dbl&gt; 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> conf.low, <span class="at">xmax =</span> conf.high, <span class="at">width =</span> <span class="fl">0.2</span>)) <span class="sc">+</span></span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="12-selection_files/figure-revealjs/unnamed-chunk-16-1.png" width="1920"></p>
+</figure>
 </div>
+</div>
+</div>
+
 <!-- - Use `ggcoef()` from `GGally` package -->
 <!-- ```{r ggcoef, fig.width=18} -->
 <!-- all_fit |>  -->
 <!--   ggcoef(exclude_intercept = TRUE, vline = TRUE, vline_color = "red") -->
 <!-- ``` -->
+<aside><div>
+<p>It’s also called a dot-and-whisker plot or forest plot or blobbogram</p>
+</div></aside></section>
+<section id="interpretation" class="slide level2">
+<h2>Interpretation</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>all_fit <span class="sc">|&gt;</span> <span class="fu">tidy</span>(<span class="at">conf.int =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 7
+  term               estimate std.error statistic   p.value conf.low conf.high
+  &lt;chr&gt;                 &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)        40.5      1.35        29.9   1.66e-142 37.8      43.1    
+2 rotten_tomatoes     0.395    0.0160      24.7   1.74e-106  0.363     0.426  
+3 theaters_open_week -0.00214  0.000393    -5.44  6.55e-  8 -0.00291  -0.00137
+4 opening_weekend    -0.114    0.0362      -3.16  1.62e-  3 -0.186    -0.0434 
+5 budget              0.0168   0.0116       1.45  1.46e-  1 -0.00587   0.0395 
+6 domestic_gross      0.0690   0.0125       5.52  4.16e-  8  0.0445    0.0935 
+7 foreign_gross       0.00415  0.00497      0.835 4.04e-  1 -0.00560   0.0139 </code></pre>
+</div>
+</div>
+<p>For <code>rotten_tomatoes</code>:</p>
+<ul>
+<li><p>Slope interpretation: Among the Hollywood movies, each additional score in Rotten Tomatoes rating is associated with a 0.395 higher score in audience rating, on average ((95% CI [0.363, 0.426]))</p></li>
+<li><p>Test for the slope: With <span class="math inline">\(t=24.7\)</span> and <span class="math inline">\(p\)</span>-value <span class="math inline">\(&lt;0.001\)</span>, we have sufficient evidence that audience rating and Rotten Tomatoes critic rating are related, after accounting for other variables in the model (i.e.&nbsp;there was a statistically significant association between audience and critic ratings).</p></li>
+</ul>
+</section></section>
+<section>
+<section id="making-tables" class="title-slide slide level1 center">
+<h1>Making tables</h1>
 
-<img data-src="12-selection_files/figure-revealjs/unnamed-chunk-16-1.png" width="1920" class="r-stretch quarto-figure-center"><div class="footer footer-default">
+</section>
+<section id="broomtidyand-kable" class="slide level2">
+<h2><code>broom::tidy()</code>and <code>kable()</code></h2>
+<p>See also: <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html"><code>kableExtra</code></a></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>all_fit <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Term"</span>, <span class="st">"Estimate"</span>, <span class="st">"SE"</span>, <span class="st">"t"</span>, <span class="st">"p-value"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Term</th>
+<th style="text-align: right;">Estimate</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">40.456</td>
+<td style="text-align: right;">1.353</td>
+<td style="text-align: right;">29.890</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">rotten_tomatoes</td>
+<td style="text-align: right;">0.395</td>
+<td style="text-align: right;">0.016</td>
+<td style="text-align: right;">24.691</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">theaters_open_week</td>
+<td style="text-align: right;">-0.002</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">-5.442</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">opening_weekend</td>
+<td style="text-align: right;">-0.114</td>
+<td style="text-align: right;">0.036</td>
+<td style="text-align: right;">-3.161</td>
+<td style="text-align: right;">0.002</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">budget</td>
+<td style="text-align: right;">0.017</td>
+<td style="text-align: right;">0.012</td>
+<td style="text-align: right;">1.454</td>
+<td style="text-align: right;">0.146</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">domestic_gross</td>
+<td style="text-align: right;">0.069</td>
+<td style="text-align: right;">0.012</td>
+<td style="text-align: right;">5.525</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">foreign_gross</td>
+<td style="text-align: right;">0.004</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.835</td>
+<td style="text-align: right;">0.404</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="broomtidyand-gt" class="slide level2">
+<h2><code>broom::tidy()</code>and <code>gt()</code></h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>all_fit <span class="sc">|&gt;</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(<span class="at">columns =</span> <span class="fu">where</span>(is.numeric), <span class="at">decimals =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(<span class="at">term =</span> <span class="st">"Term"</span>,</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">estimate =</span> <span class="st">"Estimate"</span>,</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">std.error =</span> <span class="st">"SE"</span>,</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">statistic =</span> <span class="st">"t"</span>,</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">p.value =</span> <span class="fu">md</span>(<span class="st">"*p*-value"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="unqpvqmcmb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#unqpvqmcmb table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#unqpvqmcmb thead, #unqpvqmcmb tbody, #unqpvqmcmb tfoot, #unqpvqmcmb tr, #unqpvqmcmb td, #unqpvqmcmb th {
+  border-style: none;
+}
+
+#unqpvqmcmb p {
+  margin: 0;
+  padding: 0;
+}
+
+#unqpvqmcmb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#unqpvqmcmb .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#unqpvqmcmb .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#unqpvqmcmb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#unqpvqmcmb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#unqpvqmcmb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#unqpvqmcmb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#unqpvqmcmb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#unqpvqmcmb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#unqpvqmcmb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#unqpvqmcmb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#unqpvqmcmb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#unqpvqmcmb .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#unqpvqmcmb .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#unqpvqmcmb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#unqpvqmcmb .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#unqpvqmcmb .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#unqpvqmcmb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#unqpvqmcmb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#unqpvqmcmb .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#unqpvqmcmb .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#unqpvqmcmb .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#unqpvqmcmb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#unqpvqmcmb .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#unqpvqmcmb .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#unqpvqmcmb .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#unqpvqmcmb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#unqpvqmcmb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#unqpvqmcmb .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#unqpvqmcmb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#unqpvqmcmb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#unqpvqmcmb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#unqpvqmcmb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#unqpvqmcmb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#unqpvqmcmb .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#unqpvqmcmb .gt_left {
+  text-align: left;
+}
+
+#unqpvqmcmb .gt_center {
+  text-align: center;
+}
+
+#unqpvqmcmb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#unqpvqmcmb .gt_font_normal {
+  font-weight: normal;
+}
+
+#unqpvqmcmb .gt_font_bold {
+  font-weight: bold;
+}
+
+#unqpvqmcmb .gt_font_italic {
+  font-style: italic;
+}
+
+#unqpvqmcmb .gt_super {
+  font-size: 65%;
+}
+
+#unqpvqmcmb .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#unqpvqmcmb .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#unqpvqmcmb .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#unqpvqmcmb .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#unqpvqmcmb .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#unqpvqmcmb .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#unqpvqmcmb .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Term">Term</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Estimate">Estimate</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="SE">SE</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="t">t</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="<em>p</em>-value"><em>p</em>-value</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="term" class="gt_row gt_left">(Intercept)</td>
+<td headers="estimate" class="gt_row gt_right">40.46</td>
+<td headers="std.error" class="gt_row gt_right">1.35</td>
+<td headers="statistic" class="gt_row gt_right">29.89</td>
+<td headers="p.value" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="term" class="gt_row gt_left">rotten_tomatoes</td>
+<td headers="estimate" class="gt_row gt_right">0.39</td>
+<td headers="std.error" class="gt_row gt_right">0.02</td>
+<td headers="statistic" class="gt_row gt_right">24.69</td>
+<td headers="p.value" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="term" class="gt_row gt_left">theaters_open_week</td>
+<td headers="estimate" class="gt_row gt_right">0.00</td>
+<td headers="std.error" class="gt_row gt_right">0.00</td>
+<td headers="statistic" class="gt_row gt_right">−5.44</td>
+<td headers="p.value" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="term" class="gt_row gt_left">opening_weekend</td>
+<td headers="estimate" class="gt_row gt_right">−0.11</td>
+<td headers="std.error" class="gt_row gt_right">0.04</td>
+<td headers="statistic" class="gt_row gt_right">−3.16</td>
+<td headers="p.value" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="term" class="gt_row gt_left">budget</td>
+<td headers="estimate" class="gt_row gt_right">0.02</td>
+<td headers="std.error" class="gt_row gt_right">0.01</td>
+<td headers="statistic" class="gt_row gt_right">1.45</td>
+<td headers="p.value" class="gt_row gt_right">0.15</td></tr>
+    <tr><td headers="term" class="gt_row gt_left">domestic_gross</td>
+<td headers="estimate" class="gt_row gt_right">0.07</td>
+<td headers="std.error" class="gt_row gt_right">0.01</td>
+<td headers="statistic" class="gt_row gt_right">5.52</td>
+<td headers="p.value" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="term" class="gt_row gt_left">foreign_gross</td>
+<td headers="estimate" class="gt_row gt_right">0.00</td>
+<td headers="std.error" class="gt_row gt_right">0.00</td>
+<td headers="statistic" class="gt_row gt_right">0.84</td>
+<td headers="p.value" class="gt_row gt_right">0.40</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="gtsummary" class="slide level2">
+<h2><a href="https://www.danieldsjoberg.com/gtsummary/articles/tbl_regression.html"><code>gtsummary</code></a></h2>
+<p>Use <code>tbl_regression()</code> function</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>all_fit <span class="sc">|&gt;</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_regression</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_p</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_labels</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="trfxdximuq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#trfxdximuq table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#trfxdximuq thead, #trfxdximuq tbody, #trfxdximuq tfoot, #trfxdximuq tr, #trfxdximuq td, #trfxdximuq th {
+  border-style: none;
+}
+
+#trfxdximuq p {
+  margin: 0;
+  padding: 0;
+}
+
+#trfxdximuq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#trfxdximuq .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#trfxdximuq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#trfxdximuq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#trfxdximuq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#trfxdximuq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#trfxdximuq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#trfxdximuq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#trfxdximuq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#trfxdximuq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#trfxdximuq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#trfxdximuq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#trfxdximuq .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#trfxdximuq .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#trfxdximuq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#trfxdximuq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#trfxdximuq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#trfxdximuq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#trfxdximuq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#trfxdximuq .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#trfxdximuq .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#trfxdximuq .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#trfxdximuq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#trfxdximuq .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#trfxdximuq .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#trfxdximuq .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#trfxdximuq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#trfxdximuq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#trfxdximuq .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#trfxdximuq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#trfxdximuq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#trfxdximuq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#trfxdximuq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#trfxdximuq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#trfxdximuq .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#trfxdximuq .gt_left {
+  text-align: left;
+}
+
+#trfxdximuq .gt_center {
+  text-align: center;
+}
+
+#trfxdximuq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#trfxdximuq .gt_font_normal {
+  font-weight: normal;
+}
+
+#trfxdximuq .gt_font_bold {
+  font-weight: bold;
+}
+
+#trfxdximuq .gt_font_italic {
+  font-style: italic;
+}
+
+#trfxdximuq .gt_super {
+  font-size: 65%;
+}
+
+#trfxdximuq .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#trfxdximuq .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#trfxdximuq .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#trfxdximuq .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#trfxdximuq .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#trfxdximuq .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#trfxdximuq .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Characteristic</strong>"><strong>Characteristic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Beta</strong>"><strong>Beta</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>95% CI</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>95% CI</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>p-value</strong>"><strong>p-value</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">rotten_tomatoes</td>
+<td headers="estimate" class="gt_row gt_center">0.39</td>
+<td headers="ci" class="gt_row gt_center">0.36, 0.43</td>
+<td headers="p.value" class="gt_row gt_center" style="font-weight: bold;">&lt;0.001</td></tr>
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">theaters_open_week</td>
+<td headers="estimate" class="gt_row gt_center">0.00</td>
+<td headers="ci" class="gt_row gt_center">0.00, 0.00</td>
+<td headers="p.value" class="gt_row gt_center" style="font-weight: bold;">&lt;0.001</td></tr>
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">opening_weekend</td>
+<td headers="estimate" class="gt_row gt_center">-0.11</td>
+<td headers="ci" class="gt_row gt_center">-0.19, -0.04</td>
+<td headers="p.value" class="gt_row gt_center" style="font-weight: bold;">0.002</td></tr>
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">budget</td>
+<td headers="estimate" class="gt_row gt_center">0.02</td>
+<td headers="ci" class="gt_row gt_center">-0.01, 0.04</td>
+<td headers="p.value" class="gt_row gt_center">0.15</td></tr>
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">domestic_gross</td>
+<td headers="estimate" class="gt_row gt_center">0.07</td>
+<td headers="ci" class="gt_row gt_center">0.04, 0.09</td>
+<td headers="p.value" class="gt_row gt_center" style="font-weight: bold;">&lt;0.001</td></tr>
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">foreign_gross</td>
+<td headers="estimate" class="gt_row gt_center">0.00</td>
+<td headers="ci" class="gt_row gt_center">-0.01, 0.01</td>
+<td headers="p.value" class="gt_row gt_center">0.4</td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="4"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> CI = Confidence Interval</td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="gt-and-gtextras" class="slide level2">
+<h2><a href="https://gt.rstudio.com/"><code>gt</code></a> (and <a href="https://jthomasmock.github.io/gtExtras/"><code>gtExtras</code></a>)</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://gt.rstudio.com/reference/figures/gt_parts_of_a_table.svg" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+
+<aside><div>
+<p>There are also <a href="https://bookdown.org/yihui/rmarkdown-cookbook/table-other.html">other <code>R</code> packages for making tables</a></p>
+</div></aside></section>
+<section id="a-gt-example" class="slide level2">
+<h2>A <code>gt</code> example</h2>
+<p>For more in-depth tutorials, see <a href="https://themockup.blog/posts/2020-05-16-gt-a-grammar-of-tables/">here</a> and <a href="https://jthomasmock.github.io/gtExtras/articles/plotting-with-gtExtras.html">here</a></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># https://bradcongelio.com/nfl-analytics-with-r-book/04-nfl-analytics-visualization.html</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>cpoe <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://nfl-book.bradcongelio.com/pure-cpoe"</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>cpoe_gt <span class="ot">&lt;-</span> cpoe <span class="sc">|&gt;</span> </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(passer, season, total_attempts, mean_cpoe) <span class="sc">|&gt;</span> </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"passer"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(<span class="at">columns =</span> <span class="fu">c</span>(mean_cpoe), <span class="at">decimals =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_color</span>(<span class="at">columns =</span> <span class="fu">c</span>(mean_cpoe),</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">fn =</span> scales<span class="sc">::</span><span class="fu">col_numeric</span>(<span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"#FEE0D2"</span>, <span class="st">"#67000D"</span>), <span class="at">domain =</span> <span class="cn">NULL</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">"center"</span>, <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"season"</span>, <span class="st">"total_attempts"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_stubhead</span>(<span class="at">label =</span> <span class="st">"Quarterback"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(<span class="at">season =</span> <span class="st">"Season"</span>,</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">total_attempts =</span> <span class="st">"Attempts"</span>,</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">mean_cpoe =</span> <span class="st">"Mean CPOE"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="fu">md</span>(<span class="st">"**Average CPOE in Pure Passing Situations**"</span>),</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">subtitle =</span> <span class="fu">md</span>(<span class="st">"*For seasons between 2010 and 2022*"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(<span class="at">source_note =</span> <span class="fu">md</span>(<span class="st">"Example adapted from the book&lt;br&gt;*An Introduction to NFL Analytics with R*"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>  gtExtras<span class="sc">::</span><span class="fu">gt_theme_espn</span>()</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="co"># gtsave(cpoe_gt, "cpoe_gt.png")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="a-gt-example-1" class="slide level2">
+<h2>A <code>gt</code> example</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+
+<div id="lcuglbejgv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+#lcuglbejgv table {
+  font-family: Lato, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#lcuglbejgv thead, #lcuglbejgv tbody, #lcuglbejgv tfoot, #lcuglbejgv tr, #lcuglbejgv td, #lcuglbejgv th {
+  border-style: none;
+}
+
+#lcuglbejgv p {
+  margin: 0;
+  padding: 0;
+}
+
+#lcuglbejgv .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: #FFFFFF;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#lcuglbejgv .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#lcuglbejgv .gt_title {
+  color: #333333;
+  font-size: 24px;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#lcuglbejgv .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#lcuglbejgv .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lcuglbejgv .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lcuglbejgv .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lcuglbejgv .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#lcuglbejgv .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#lcuglbejgv .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#lcuglbejgv .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#lcuglbejgv .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#lcuglbejgv .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#lcuglbejgv .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#lcuglbejgv .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lcuglbejgv .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#lcuglbejgv .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#lcuglbejgv .gt_row {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #F6F7F7;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#lcuglbejgv .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lcuglbejgv .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#lcuglbejgv .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#lcuglbejgv .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#lcuglbejgv .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lcuglbejgv .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#lcuglbejgv .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#lcuglbejgv .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lcuglbejgv .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lcuglbejgv .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#lcuglbejgv .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lcuglbejgv .gt_striped {
+  background-color: #FAFAFA;
+}
+
+#lcuglbejgv .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lcuglbejgv .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lcuglbejgv .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lcuglbejgv .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lcuglbejgv .gt_sourcenote {
+  font-size: 12px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lcuglbejgv .gt_left {
+  text-align: left;
+}
+
+#lcuglbejgv .gt_center {
+  text-align: center;
+}
+
+#lcuglbejgv .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#lcuglbejgv .gt_font_normal {
+  font-weight: normal;
+}
+
+#lcuglbejgv .gt_font_bold {
+  font-weight: bold;
+}
+
+#lcuglbejgv .gt_font_italic {
+  font-style: italic;
+}
+
+#lcuglbejgv .gt_super {
+  font-size: 65%;
+}
+
+#lcuglbejgv .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#lcuglbejgv .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#lcuglbejgv .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#lcuglbejgv .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#lcuglbejgv .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#lcuglbejgv .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#lcuglbejgv .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="4" class="gt_heading gt_title gt_font_normal" style=""><strong>Average CPOE in Pure Passing Situations</strong></td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style=""><em>For seasons between 2010 and 2022</em></td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Quarterback">Quarterback</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Season">Season</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Attempts">Attempts</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean CPOE">Mean CPOE</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><th id="stub_1_1" scope="row" class="gt_row gt_left gt_stub">P.Rivers</th>
+<td headers="stub_1_1 season" class="gt_row gt_center">2013</td>
+<td headers="stub_1_1 total_attempts" class="gt_row gt_center">291</td>
+<td headers="stub_1_1 mean_cpoe" class="gt_row gt_right" style="background-color: #67000D; color: #FFFFFF;">10.89</td></tr>
+    <tr><th id="stub_1_2" scope="row" class="gt_row gt_left gt_stub">P.Mahomes</th>
+<td headers="stub_1_2 season" class="gt_row gt_center gt_striped">2018</td>
+<td headers="stub_1_2 total_attempts" class="gt_row gt_center gt_striped">261</td>
+<td headers="stub_1_2 mean_cpoe" class="gt_row gt_right gt_striped" style="background-color: #AB6459; color: #FFFFFF;">9.29</td></tr>
+    <tr><th id="stub_1_3" scope="row" class="gt_row gt_left gt_stub">A.Rodgers</th>
+<td headers="stub_1_3 season" class="gt_row gt_center">2020</td>
+<td headers="stub_1_3 total_attempts" class="gt_row gt_center">242</td>
+<td headers="stub_1_3 mean_cpoe" class="gt_row gt_right" style="background-color: #C78C7F; color: #FFFFFF;">8.57</td></tr>
+    <tr><th id="stub_1_4" scope="row" class="gt_row gt_left gt_stub">R.Wilson</th>
+<td headers="stub_1_4 season" class="gt_row gt_center gt_striped">2013</td>
+<td headers="stub_1_4 total_attempts" class="gt_row gt_center gt_striped">231</td>
+<td headers="stub_1_4 mean_cpoe" class="gt_row gt_right gt_striped" style="background-color: #CB9184; color: #FFFFFF;">8.47</td></tr>
+    <tr><th id="stub_1_5" scope="row" class="gt_row gt_left gt_stub">R.Wilson</th>
+<td headers="stub_1_5 season" class="gt_row gt_center">2018</td>
+<td headers="stub_1_5 total_attempts" class="gt_row gt_center">277</td>
+<td headers="stub_1_5 mean_cpoe" class="gt_row gt_right" style="background-color: #CC9386; color: #FFFFFF;">8.45</td></tr>
+    <tr><th id="stub_1_6" scope="row" class="gt_row gt_left gt_stub">D.Brees</th>
+<td headers="stub_1_6 season" class="gt_row gt_center gt_striped">2011</td>
+<td headers="stub_1_6 total_attempts" class="gt_row gt_center gt_striped">311</td>
+<td headers="stub_1_6 mean_cpoe" class="gt_row gt_right gt_striped" style="background-color: #D29C8F; color: #000000;">8.29</td></tr>
+    <tr><th id="stub_1_7" scope="row" class="gt_row gt_left gt_stub">M.Ryan</th>
+<td headers="stub_1_7 season" class="gt_row gt_center">2018</td>
+<td headers="stub_1_7 total_attempts" class="gt_row gt_center">315</td>
+<td headers="stub_1_7 mean_cpoe" class="gt_row gt_right" style="background-color: #D49F91; color: #000000;">8.23</td></tr>
+    <tr><th id="stub_1_8" scope="row" class="gt_row gt_left gt_stub">M.Ryan</th>
+<td headers="stub_1_8 season" class="gt_row gt_center gt_striped">2012</td>
+<td headers="stub_1_8 total_attempts" class="gt_row gt_center gt_striped">303</td>
+<td headers="stub_1_8 mean_cpoe" class="gt_row gt_right gt_striped" style="background-color: #D9A698; color: #000000;">8.11</td></tr>
+    <tr><th id="stub_1_9" scope="row" class="gt_row gt_left gt_stub">R.Wilson</th>
+<td headers="stub_1_9 season" class="gt_row gt_center">2015</td>
+<td headers="stub_1_9 total_attempts" class="gt_row gt_center">279</td>
+<td headers="stub_1_9 mean_cpoe" class="gt_row gt_right" style="background-color: #EFC8BA; color: #000000;">7.52</td></tr>
+    <tr><th id="stub_1_10" scope="row" class="gt_row gt_left gt_stub">J.Burrow</th>
+<td headers="stub_1_10 season" class="gt_row gt_center gt_striped">2021</td>
+<td headers="stub_1_10 total_attempts" class="gt_row gt_center gt_striped">343</td>
+<td headers="stub_1_10 mean_cpoe" class="gt_row gt_right gt_striped" style="background-color: #FEE0D2; color: #000000;">7.12</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="4">Example adapted from the book<br><em>An Introduction to NFL Analytics with R</em></td>
+    </tr>
+  </tfoot>
+  
+</table>
+</div>
+</div>
+</div>
+<!-- https://www.kaggle.com/code/colejacobson/surge-a-measurement-for-hidden-defensive-impact -->
+
+<div class="footer footer-default">
 <p><a href="https://36-sure.github.io">36-SURE.github.io</a></p>
 </div>
 </section></section>
@@ -1075,7 +2745,7 @@ $ Year             &lt;dbl&gt; 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
