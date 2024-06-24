@@ -1390,7 +1390,14 @@
     "href": "lectures/12-selection.html#best-subset-selection",
     "title": "Supervised learning: variable selection",
     "section": "Best subset selection",
-    "text": "Best subset selection\n\nStart with the null model \\(\\mathcal{M}_0\\) (intercept-only) that has no predictors\n\nPredict the sample mean for each observation\n\n\n\n\nFor \\(k = 1, 2, \\dots, p\\) (each possible number of predictors)\n\nFit all \\(\\displaystyle \\binom{p}{k} = \\frac{p!}{k!(p-k)!}\\) with exactly \\(k\\) predictors\nPick the best among these \\(\\displaystyle \\binom{p}{k}\\) models, call it \\(\\mathcal{M}_k\\)\n\n“Best” can be based on cross-validation error, highest adjusted \\(R^2\\), etc.\n“It depends on your loss function”\n\n\n\n\n\n\nSelect a single best model from among \\(\\mathcal{M}_0, \\dots, \\mathcal{M}_p\\)\n\n\n\nThis is not typically used in research!\n\nonly practical for a smaller number of variables\narbitrary way of defining best and ignores prior knowledge about potential predictors"
+    "text": "Best subset selection\n\nStart with the null model \\(\\mathcal{M}_0\\) (intercept-only) that has no predictors\n\nPredict the sample mean for each observation\n\n\n\n\nFor \\(k = 1, 2, \\dots, p\\) (each possible number of predictors)\n\nFit all \\(\\displaystyle \\binom{p}{k} = \\frac{p!}{k!(p-k)!}\\) with exactly \\(k\\) predictors\nPick the best among these \\(\\displaystyle \\binom{p}{k}\\) models, call it \\(\\mathcal{M}_k\\)\n\n“Best” can be based on cross-validation error, highest adjusted \\(R^2\\), etc.\n“It depends on your loss function”\n\n\n\n\n\n\nSelect a single best model from among \\(\\mathcal{M}_0, \\dots, \\mathcal{M}_p\\)"
+  },
+  {
+    "objectID": "lectures/12-selection.html#best-subset-selection-1",
+    "href": "lectures/12-selection.html#best-subset-selection-1",
+    "title": "Supervised learning: variable selection",
+    "section": "Best subset selection",
+    "text": "Best subset selection\nThis is not typically used in research!\n\nonly practical for a smaller number of variables\ncomputationally infeasible for a large number of predictors\narbitrary way of defining best and ignores prior knowledge about potential predictors"
   },
   {
     "objectID": "lectures/12-selection.html#use-the-shoe-leather-approach",
@@ -1421,11 +1428,11 @@
     "text": "Modeling audience rating\nInterested in modeling the audience rating of a movie\n\nmovies |&gt; \n  ggplot(aes(x = audience_score)) +\n  geom_histogram(fill = \"gray\", color = \"white\")"
   },
   {
-    "objectID": "lectures/12-selection.html#correlation-matrix-of-score-differential-and-candidate-predictors",
-    "href": "lectures/12-selection.html#correlation-matrix-of-score-differential-and-candidate-predictors",
+    "objectID": "lectures/12-selection.html#correlation-matrix-of-audience-score-and-candidate-predictors",
+    "href": "lectures/12-selection.html#correlation-matrix-of-audience-score-and-candidate-predictors",
     "title": "Supervised learning: variable selection",
-    "section": "Correlation matrix of score differential and candidate predictors",
-    "text": "Correlation matrix of score differential and candidate predictors\n\n\n\nInterested in audience_score relationships with critics rating, opening weekend statistics, budget, gross income of viewers\nPlot correlation matrix with ggcorrplot\n\n\n# can also use corrr package\n# library(corrr)\n# movies |&gt; \n#   correlate(diagonal = 1) |&gt; # get correlation matrix\n#   stretch() |&gt;  # similar to pivot_longer\n#   ggplot(aes(x, y, fill = r)) +\n#   geom_tile()\nlibrary(ggcorrplot)\nmovies_cor &lt;- cor(movies)\nggcorrplot(movies_cor)"
+    "section": "Correlation matrix of audience score and candidate predictors",
+    "text": "Correlation matrix of audience score and candidate predictors\n\n\n\nInterested in audience_score relationships with critics rating, opening weekend statistics, budget, gross income of viewers\nPlot correlation matrix with ggcorrplot\n\n\n# can also use corrr package\n# library(corrr)\n# movies |&gt; \n#   correlate(diagonal = 1) |&gt; # get correlation matrix\n#   stretch() |&gt;  # similar to pivot_longer\n#   ggplot(aes(x, y, fill = r)) +\n#   geom_tile()\nlibrary(ggcorrplot)\nmovies_cor &lt;- cor(movies)\nggcorrplot(movies_cor)"
   },
   {
     "objectID": "lectures/12-selection.html#customize-the-appearance-of-the-correlation-matrix",
@@ -1509,7 +1516,7 @@
     "href": "lectures/12-selection.html#interpretation",
     "title": "Supervised learning: variable selection",
     "section": "Interpretation",
-    "text": "Interpretation\n\nall_fit |&gt; tidy(conf.int = TRUE)\n\n# A tibble: 7 × 7\n  term               estimate std.error statistic   p.value conf.low conf.high\n  &lt;chr&gt;                 &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;\n1 (Intercept)        40.5      1.35        29.9   1.66e-142 37.8      43.1    \n2 rotten_tomatoes     0.395    0.0160      24.7   1.74e-106  0.363     0.426  \n3 theaters_open_week -0.00214  0.000393    -5.44  6.55e-  8 -0.00291  -0.00137\n4 opening_weekend    -0.114    0.0362      -3.16  1.62e-  3 -0.186    -0.0434 \n5 budget              0.0168   0.0116       1.45  1.46e-  1 -0.00587   0.0395 \n6 domestic_gross      0.0690   0.0125       5.52  4.16e-  8  0.0445    0.0935 \n7 foreign_gross       0.00415  0.00497      0.835 4.04e-  1 -0.00560   0.0139 \n\n\nFor rotten_tomatoes:\n\nSlope interpretation: Among the Hollywood movies, each additional score in Rotten Tomatoes rating is associated with a 0.395 higher score in audience rating, on average ((95% CI [0.363, 0.426]))\nTest for the slope: With \\(t=24.7\\) and \\(p\\)-value \\(&lt;0.001\\), we have sufficient evidence that audience rating and Rotten Tomatoes critic rating are related, after accounting for other variables in the model (i.e. there was a statistically significant association between audience and critic ratings)."
+    "text": "Interpretation\n\nall_fit |&gt; tidy(conf.int = TRUE)\n\n# A tibble: 7 × 7\n  term               estimate std.error statistic   p.value conf.low conf.high\n  &lt;chr&gt;                 &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;\n1 (Intercept)        40.5      1.35        29.9   1.66e-142 37.8      43.1    \n2 rotten_tomatoes     0.395    0.0160      24.7   1.74e-106  0.363     0.426  \n3 theaters_open_week -0.00214  0.000393    -5.44  6.55e-  8 -0.00291  -0.00137\n4 opening_weekend    -0.114    0.0362      -3.16  1.62e-  3 -0.186    -0.0434 \n5 budget              0.0168   0.0116       1.45  1.46e-  1 -0.00587   0.0395 \n6 domestic_gross      0.0690   0.0125       5.52  4.16e-  8  0.0445    0.0935 \n7 foreign_gross       0.00415  0.00497      0.835 4.04e-  1 -0.00560   0.0139 \n\n\n\nFor rotten_tomatoes:\n\nCoefficient interpretation: Among the Hollywood movies, each additional score in Rotten Tomatoes rating is associated with a 0.395 higher score in audience rating, on average ((95% CI [0.363, 0.426]))\nTest for the coefficient: With \\(t=24.7\\) and \\(p\\)-value \\(&lt;0.001\\), we have sufficient evidence that audience rating and Rotten Tomatoes critic rating are related, after accounting for other variables in the model (i.e. there was a statistically significant association between audience and critic ratings)."
   },
   {
     "objectID": "lectures/12-selection.html#broomtidyand-kable",
@@ -2086,60 +2093,81 @@
     "text": "Which players have the highest uncertainty?\n\n\n\n\nnba_stats |&gt;\n  mutate(cluster = nba_mclust$classification,\n         uncertainty = nba_mclust$uncertainty) |&gt; \n  group_by(cluster) |&gt;\n  slice_max(uncertainty, n = 5) |&gt; \n  mutate(player = fct_reorder(player, uncertainty)) |&gt; \n  ggplot(aes(x = uncertainty, y = player)) +\n  geom_point(size = 3) +\n  facet_wrap(~ cluster, scales = \"free_y\", nrow = 3)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
   },
   {
-    "objectID": "lectures/13-regularization.html#previously",
-    "href": "lectures/13-regularization.html#previously",
+    "objectID": "lectures/13-regularization.html#recap-variable-selection",
+    "href": "lectures/13-regularization.html#recap-variable-selection",
     "title": "Supervised learning: regularization",
-    "section": "Previously…",
-    "text": "Previously…\nVariable selection for a linear model  \\(\\qquad \\hat{Y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 x_1 + \\cdots + \\hat{\\beta}_p x_p\\)\nWhy would we attempt to select a subset of the \\(p\\) variables?\n\n\nTo improve prediction accuracy\n\nEliminating uninformative predictors can lead to lower variance in the test-set MSE, at the expense of a slight increase in bias\n\n\n\n\n\nTo improve model interpretability\n\nEliminating uninformative predictors is obviously a good thing when your goal is to tell the story of how your predictors are associated with your response.\n\n\n\n\nRemember the bias-variance tradeoff \\(\\qquad {\\rm MSE} = {\\rm (Bias)}^2 + {\\rm Variance}\\)\n\nIntroduce bias but decrease variance to improve predictions"
+    "section": "Recap: variable selection",
+    "text": "Recap: variable selection\nVariable selection for a linear model  \\(\\qquad \\hat{Y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 x_1 + \\cdots + \\hat{\\beta}_p x_p\\)\nWhy would we attempt to select a subset of the \\(p\\) variables?\n\n\nTo improve prediction accuracy\n\nEliminating uninformative predictors can lead to lower variance in the test-set MSE, at the expense of a slight increase in bias\n\n\n\n\n\nTo improve model interpretability\n\nEliminating uninformative predictors is obviously a good thing when your goal is to tell the story of how your predictors are associated with your response.\n\n\n\n\nRemember the bias-variance tradeoff \\(\\qquad {\\rm MSE} = {\\rm (Bias)}^2 + {\\rm Variance}\\)\n\nIntroduce bias but decrease variance to improve predictions"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#recap-linear-regression",
+    "href": "lectures/13-regularization.html#recap-linear-regression",
+    "title": "Supervised learning: regularization",
+    "section": "Recap: linear regression",
+    "text": "Recap: linear regression\nLinear regression estimates coefficients by minimizing\n\\[\\text{RSS} = \\sum_i^n \\big(Y_i - \\beta_0 -  \\sum_j^p \\hat{\\beta}_j x_{ij}\\big)^2\\]"
   },
   {
     "objectID": "lectures/13-regularization.html#shrinkage-methods-ridge-regression",
     "href": "lectures/13-regularization.html#shrinkage-methods-ridge-regression",
     "title": "Supervised learning: regularization",
-    "section": "Shrinkage methods: Ridge regression",
-    "text": "Shrinkage methods: Ridge regression\nRecall: linear regression estimates coefficients by minimizing:\n\\[\\text{RSS} = \\sum_i^n \\big(Y_i - \\beta_0 -  \\sum_j^p \\hat{\\beta}_j x_{ij}\\big)^2\\]\n\nRidge regression introduces a shrinkage penalty \\(\\lambda \\geq 0\\) by minimizing:\n\\[\\sum_i^n \\big(Y_i - \\beta_0 -  \\sum_j^p \\beta_j x_{ij}\\big)^2 + \\lambda \\sum_j^p \\beta_j^2 = \\text{RSS} + \\lambda \\sum_j^p \\beta_j^2\\]\n\n\n\nas \\(\\lambda\\) increases, flexibility of models decreases\n\nincreases bias, but decreases variance\n\n\n\n\n\nfor fixed value of \\(\\lambda\\), ridge regression fits only a single model\n\nneed to use cross-validation to tune \\(\\lambda\\)"
+    "section": "Shrinkage methods: ridge regression",
+    "text": "Shrinkage methods: ridge regression\nLinear regression estimates coefficients by minimizing\n\\[\\text{RSS} = \\sum_i^n \\big(Y_i - \\beta_0 -  \\sum_j^p \\hat{\\beta}_j x_{ij}\\big)^2\\]\n\nRidge regression introduces a shrinkage penalty \\(\\lambda \\geq 0\\) by minimizing:\n\\[\\sum_i^n \\big(Y_i - \\beta_0 -  \\sum_j^p \\beta_j x_{ij}\\big)^2 + \\lambda \\sum_j^p \\beta_j^2 = \\text{RSS} + \\lambda \\sum_j^p \\beta_j^2\\]\n\n\n\nas \\(\\lambda\\) increases, flexibility of models decreases\n\nincreases bias, but decreases variance\n\n\n\n\n\nfor fixed value of \\(\\lambda\\), ridge regression fits only a single model\n\nneed to use cross-validation to tune \\(\\lambda\\)"
   },
   {
     "objectID": "lectures/13-regularization.html#shrinkage-methods-ridge-regression-1",
     "href": "lectures/13-regularization.html#shrinkage-methods-ridge-regression-1",
     "title": "Supervised learning: regularization",
-    "section": "Shrinkage methods: Ridge regression",
-    "text": "Shrinkage methods: Ridge regression\nFor example: note how the magnitude of the coefficient for Income trends as \\(\\lambda \\rightarrow \\infty\\)\n\nThe coefficient shrinks towards zero, but never actually reaches it\n\nIncome is always a variable in the learned model, regardless of the value of \\(\\lambda\\)"
+    "section": "Shrinkage methods: ridge regression",
+    "text": "Shrinkage methods: ridge regression\nFor example: note how the magnitude of the coefficient for Income trends as \\(\\lambda \\rightarrow \\infty\\)\n\nThe coefficient shrinks towards zero, but never actually reaches it\n\nIncome is always a variable in the learned model, regardless of the value of \\(\\lambda\\)"
   },
   {
     "objectID": "lectures/13-regularization.html#shrinkage-methods-lasso-regression",
     "href": "lectures/13-regularization.html#shrinkage-methods-lasso-regression",
     "title": "Supervised learning: regularization",
-    "section": "Shrinkage methods: Lasso regression",
-    "text": "Shrinkage methods: Lasso regression\nRidge regression keeps all variables… but we may believe there is a sparse solution\n\nLasso enables variable selection with \\(\\lambda\\) by minimizing:\n\\[\\sum_i^n \\big(Y_i - \\beta_0 -  \\sum_j^p \\beta_j X_{ij}\\big)^2 + \\lambda \\sum_j^p\\vert  \\beta_j \\vert = \\text{RSS} + \\lambda \\sum_j^p \\vert \\beta_j \\vert\\]\n\nLasso uses an \\(\\ell_1\\) (“ell 1”) penalty\n\n\n\n\nas \\(\\lambda\\) increases, flexibility of models decreases\n\nincreases bias, but decreases variance\n\n\n\n\n\nCan handle the \\(p &gt; n\\) case, i.e. more variables than observations!"
+    "section": "Shrinkage methods: lasso regression",
+    "text": "Shrinkage methods: lasso regression\nRidge regression keeps all variables… but we may believe there is a sparse solution\n\nLasso (“Least Absolute Shrinkage and Selection Operator”) enables variable selection with \\(\\lambda\\) by minimizing:\n\\[\\sum_i^n \\big(Y_i - \\beta_0 -  \\sum_j^p \\beta_j X_{ij}\\big)^2 + \\lambda \\sum_j^p\\vert  \\beta_j \\vert = \\text{RSS} + \\lambda \\sum_j^p \\vert \\beta_j \\vert\\]\n\nLasso uses an \\(\\ell_1\\) (“ell 1”) penalty\n\n\n\n\nas \\(\\lambda\\) increases, flexibility of models decreases\n\nincreases bias, but decreases variance\n\n\n\n\n\nCan handle the \\(p &gt; n\\) case, i.e. more variables than observations!"
   },
   {
     "objectID": "lectures/13-regularization.html#shrinkage-methods-lasso-regression-1",
     "href": "lectures/13-regularization.html#shrinkage-methods-lasso-regression-1",
     "title": "Supervised learning: regularization",
-    "section": "Shrinkage methods: Lasso regression",
-    "text": "Shrinkage methods: Lasso regression\n“Least Absolute Shrinkage and Selection Operator”\nLasso regression performs variable selection yielding sparse models\n\nThe coefficient shrinks towards and eventually equals zero at \\(\\lambda \\approx 1000\\)\n\nif the optimum value of \\(\\lambda\\) is larger, then Income would NOT be included in the learned model"
+    "section": "Shrinkage methods: lasso regression",
+    "text": "Shrinkage methods: lasso regression\nLasso regression performs variable selection yielding sparse models (i.e. models that involve only a subset of the variables)\n\nThe coefficient shrinks towards and eventually equals zero at \\(\\lambda \\approx 1000\\)\n\nif the optimum value of \\(\\lambda\\) is larger, then Income would NOT be included in the learned model"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#lasso-and-ridge-as-optimization-problems",
+    "href": "lectures/13-regularization.html#lasso-and-ridge-as-optimization-problems",
+    "title": "Supervised learning: regularization",
+    "section": "Lasso and ridge as optimization problems",
+    "text": "Lasso and ridge as optimization problems\nWhy does the lasso, unlike ridge, result in coefficient estimates that are exactly 0?\n\nLasso\n\n\\[\n\\underset{\\beta}{\\text{minimize}} \\sum_{i=1}^n \\left(y_i - \\beta_0 - \\sum_{j=1}^p\\beta_j x_{ij} \\right)^2 \\quad \\text{subject to} \\quad \\sum_{j=1}^p|\\beta_j| \\le s\n\\]\n\nRidge\n\n\\[\n\\underset{\\beta}{\\text{minimize}} \\sum_{i=1}^n \\left(y_i - \\beta_0 - \\sum_{j=1}^p\\beta_j x_{ij} \\right)^2 \\quad \\text{subject to} \\quad \\sum_{j=1}^p \\beta_j ^2 \\le s\n\\]"
+  },
+  {
+    "objectID": "lectures/13-regularization.html#lasso-and-ridge-in-picture",
+    "href": "lectures/13-regularization.html#lasso-and-ridge-in-picture",
+    "title": "Supervised learning: regularization",
+    "section": "Lasso and ridge in picture",
+    "text": "Lasso and ridge in picture"
   },
   {
     "objectID": "lectures/13-regularization.html#best-of-both-worlds-elastic-net",
     "href": "lectures/13-regularization.html#best-of-both-worlds-elastic-net",
     "title": "Supervised learning: regularization",
-    "section": "Best of both worlds? Elastic net",
-    "text": "Best of both worlds? Elastic net\n\\[\\sum_{i}^{n}\\left(Y_{i}-\\beta_{0}-\\sum_{j}^{p} \\beta_{j} X_{i j}\\right)^{2}+\\lambda\\left[(1-\\alpha)\\|\\beta\\|_{2}^{2} / 2+\\alpha\\|\\beta\\|_{1} \\right]\\]\n\n\\(\\vert \\vert \\beta \\vert \\vert_1\\): \\(\\ell_1\\) norm: \\(\\vert \\vert \\beta \\vert \\vert_1 = \\sum_j^p \\vert \\beta_j \\vert\\)\n\\(\\vert \\vert \\beta \\vert \\vert_2\\): \\(\\ell_2\\) (Euclidean) norm: \\(\\vert \\vert \\beta \\vert \\vert_2 = \\sqrt{\\sum_j^p \\beta_j^2}\\)\n\n\n\nRidge penalty: \\(\\lambda \\cdot (1 - \\alpha) / 2\\)\nLasso penalty: \\(\\lambda \\cdot \\alpha\\)\n\n\n\n\n\\(\\alpha\\) controls the mixing between the two types, ranges from 0 to 1\n\n\\(\\alpha = 1\\) returns lasso\n\\(\\alpha = 0\\) return ridge"
+    "section": "Best of both worlds: elastic net",
+    "text": "Best of both worlds: elastic net\n\\[\\sum_{i}^{n}\\left(Y_{i}-\\beta_{0}-\\sum_{j=1}^{p} \\beta_{j} X_{i j}\\right)^{2}+\\lambda\\left(\\frac{1-\\alpha}{2}\\|\\beta\\|_{2}^{2}+\\alpha\\|\\beta\\|_{1} \\right)\\]\n\n\\(\\Vert \\beta \\Vert_1\\): \\(\\ell_1\\) norm: \\(\\Vert \\beta \\Vert_1 = \\sum_{j=1}^p \\vert \\beta_j \\vert\\)\n\\(\\Vert \\beta \\Vert_2\\): \\(\\ell_2\\) (Euclidean) norm: \\(\\Vert \\beta \\Vert_2 = \\sqrt{\\sum_{j=1}^p \\beta_j^2}\\)\n\n\n\nRidge penalty: \\(\\lambda \\cdot (1 - \\alpha) / 2\\)\nLasso penalty: \\(\\lambda \\cdot \\alpha\\)\n\n\n\n\n\\(\\alpha\\) controls the mixing between the two types, ranges from 0 to 1\n\n\\(\\alpha = 1\\) returns lasso\n\\(\\alpha = 0\\) return ridge"
   },
   {
     "objectID": "lectures/13-regularization.html#caveats-to-consider",
     "href": "lectures/13-regularization.html#caveats-to-consider",
     "title": "Supervised learning: regularization",
-    "section": "Caveats to consider…",
-    "text": "Caveats to consider…\n\nFor either ridge, lasso, or elastic net: you should standardize your data\nCommon convention: within each column, compute then subtract off the sample mean, and compute the divide off the sample standard deviation \\(\\qquad \\displaystyle \\tilde{x}_{ij} = \\frac{x_{ij} - \\bar{x}_j}{s_{x,j}}\\)\nglmnet package does this by default and reports coefficients on the original scale\n\n\n\n\\(\\lambda\\) and \\(\\alpha\\) are tuning parameters\nChoose appropriate values based on test data / cross-validation\nUse cv.glmnet() function in glmnet to perform cross-validation"
+    "section": "Caveats to consider",
+    "text": "Caveats to consider\n\nFor either ridge, lasso, or elastic net: you should standardize your data\nCommon convention: within each column, compute then subtract off the sample mean, and compute the divide off the sample standard deviation \\(\\qquad \\displaystyle \\tilde{x}_{ij} = \\frac{x_{ij} - \\bar{x}_j}{s_{x,j}}\\)\nglmnet package does this by default and reports coefficients on the original scale\n\n\n\n\\(\\lambda\\) and \\(\\alpha\\) are tuning parameters\nChoose appropriate values based on test data / cross-validation\nUse cv.glmnet() function in glmnet to perform cross-validation"
   },
   {
-    "objectID": "lectures/13-regularization.html#data-prostate-cancer-data",
-    "href": "lectures/13-regularization.html#data-prostate-cancer-data",
+    "objectID": "lectures/13-regularization.html#data-prostate-cancer",
+    "href": "lectures/13-regularization.html#data-prostate-cancer",
     "title": "Supervised learning: regularization",
-    "section": "Data: Prostate Cancer Data",
-    "text": "Data: Prostate Cancer Data\nExamine the level of a prostate specific antigen and a number of clinical measures in men who were about to receive a radical prostatectomy\n\nlibrary(tidyverse)\ntheme_set(theme_light())\n# more info: https://rdrr.io/cran/ElemStatLearn/man/prostate.html\nprostate &lt;- read_tsv(\"https://hastie.su.domains/ElemStatLearn/datasets/prostate.data\")\nglimpse(prostate)\n\nRows: 97\nColumns: 11\n$ ...1    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,…\n$ lcavol  &lt;dbl&gt; -0.5798185, -0.9942523, -0.5108256, -1.2039728, 0.7514161, -1.…\n$ lweight &lt;dbl&gt; 2.769459, 3.319626, 2.691243, 3.282789, 3.432373, 3.228826, 3.…\n$ age     &lt;dbl&gt; 50, 58, 74, 58, 62, 50, 64, 58, 47, 63, 65, 63, 63, 67, 57, 66…\n$ lbph    &lt;dbl&gt; -1.3862944, -1.3862944, -1.3862944, -1.3862944, -1.3862944, -1…\n$ svi     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…\n$ lcp     &lt;dbl&gt; -1.3862944, -1.3862944, -1.3862944, -1.3862944, -1.3862944, -1…\n$ gleason &lt;dbl&gt; 6, 6, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 6, 7, 6, 6, 6, 6,…\n$ pgg45   &lt;dbl&gt; 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 5, 5, 0, 30, 0, 0, 0,…\n$ lpsa    &lt;dbl&gt; -0.4307829, -0.1625189, -0.1625189, -0.1625189, 0.3715636, 0.7…\n$ train   &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE,…"
+    "section": "Data: prostate cancer",
+    "text": "Data: prostate cancer\nExamine the level of a prostate specific antigen and a number of clinical measures in men who were about to receive a radical prostatectomy\n\nlibrary(tidyverse)\ntheme_set(theme_light())\n# more info: https://rdrr.io/cran/ElemStatLearn/man/prostate.html\nprostate &lt;- read_tsv(\"https://hastie.su.domains/ElemStatLearn/datasets/prostate.data\")\nglimpse(prostate)\n\nRows: 97\nColumns: 11\n$ ...1    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,…\n$ lcavol  &lt;dbl&gt; -0.5798185, -0.9942523, -0.5108256, -1.2039728, 0.7514161, -1.…\n$ lweight &lt;dbl&gt; 2.769459, 3.319626, 2.691243, 3.282789, 3.432373, 3.228826, 3.…\n$ age     &lt;dbl&gt; 50, 58, 74, 58, 62, 50, 64, 58, 47, 63, 65, 63, 63, 67, 57, 66…\n$ lbph    &lt;dbl&gt; -1.3862944, -1.3862944, -1.3862944, -1.3862944, -1.3862944, -1…\n$ svi     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…\n$ lcp     &lt;dbl&gt; -1.3862944, -1.3862944, -1.3862944, -1.3862944, -1.3862944, -1…\n$ gleason &lt;dbl&gt; 6, 6, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 6, 7, 6, 6, 6, 6,…\n$ pgg45   &lt;dbl&gt; 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 5, 5, 0, 30, 0, 0, 0,…\n$ lpsa    &lt;dbl&gt; -0.4307829, -0.1625189, -0.1625189, -0.1625189, 0.3715636, 0.7…\n$ train   &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE,…"
   },
   {
     "objectID": "lectures/13-regularization.html#introduction-to-glmnet",
@@ -3805,7 +3833,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"r\" \"h\" \"l\" \"e\" \"o\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 1 1 0 0 1 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"H\" \"H\" \"H\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 62"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"v\" \"s\" \"m\" \"t\" \"a\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 0 1 1 0 1 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"T\" \"H\" \"T\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 98"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -3847,21 +3875,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.0102929\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9783783"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.01472756\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9833536"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.519\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical    true\n   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 -2.58     0.001 0.00488\n 2 -2.55     0.002 0.00539\n 3 -2.53     0.003 0.00563\n 4 -2.43     0.004 0.00759\n 5 -2.32     0.005 0.0103 \n 6 -2.30     0.006 0.0109 \n 7 -2.29     0.007 0.0109 \n 8 -2.27     0.008 0.0115 \n 9 -2.27     0.009 0.0115 \n10 -2.27     0.01  0.0116 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.505\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.28     0.001 0.000520\n 2 -3.03     0.002 0.00120 \n 3 -2.82     0.003 0.00240 \n 4 -2.78     0.004 0.00268 \n 5 -2.49     0.005 0.00641 \n 6 -2.48     0.006 0.00653 \n 7 -2.30     0.007 0.0107  \n 8 -2.29     0.008 0.0110  \n 9 -2.27     0.009 0.0116  \n10 -2.24     0.01  0.0125  \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3867678\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3832128\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -3875,14 +3903,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.136\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1224\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.0913573\n\nmean(rnorm(100))\n\n[1] -0.09341137\n\nmean(rnorm(100))\n\n[1] 0.1036274"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.2031508\n\nmean(rnorm(100))\n\n[1] -0.1056174\n\nmean(rnorm(100))\n\n[1] -0.06733923"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",

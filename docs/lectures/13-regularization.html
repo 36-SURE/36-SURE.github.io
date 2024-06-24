@@ -408,8 +408,8 @@
 <h1>Background</h1>
 
 </section>
-<section id="previously" class="slide level2">
-<h2>Previously…</h2>
+<section id="recap-variable-selection" class="slide level2">
+<h2>Recap: variable selection</h2>
 <p>Variable selection for a linear model <t> <span class="math inline">\(\qquad \hat{Y} = \hat{\beta}_0 + \hat{\beta}_1 x_1 + \cdots + \hat{\beta}_p x_p\)</span></t></p>
 <p>Why would we attempt to select a <strong>subset</strong> of the <span class="math inline">\(p\)</span> variables?</p>
 <div class="fragment">
@@ -435,9 +435,18 @@
 </ul>
 </div>
 </section>
+<section id="recap-linear-regression" class="slide level2">
+<h2>Recap: linear regression</h2>
+<p><strong>Linear regression</strong> estimates coefficients by minimizing</p>
+<p><span class="math display">\[\text{RSS} = \sum_i^n \big(Y_i - \beta_0 -  \sum_j^p \hat{\beta}_j x_{ij}\big)^2\]</span></p>
+<center>
+<!-- ![](/images/rss.png){width="700"} -->
+<p><img src="../images/rss.png" style="border: 1px solid grey;" width="600"></p>
+</center>
+</section>
 <section id="shrinkage-methods-ridge-regression" class="slide level2">
-<h2>Shrinkage methods: Ridge regression</h2>
-<p><strong>Recall</strong>: linear regression estimates coefficients by minimizing:</p>
+<h2>Shrinkage methods: ridge regression</h2>
+<p><strong>Linear regression</strong> estimates coefficients by minimizing</p>
 <p><span class="math display">\[\text{RSS} = \sum_i^n \big(Y_i - \beta_0 -  \sum_j^p \hat{\beta}_j x_{ij}\big)^2\]</span></p>
 <div class="fragment">
 <p><strong>Ridge regression</strong> introduces a <strong>shrinkage penalty</strong> <span class="math inline">\(\lambda \geq 0\)</span> by minimizing:</p>
@@ -461,7 +470,7 @@
 </div>
 </section>
 <section id="shrinkage-methods-ridge-regression-1" class="slide level2">
-<h2>Shrinkage methods: Ridge regression</h2>
+<h2>Shrinkage methods: ridge regression</h2>
 <p>For example: note how the magnitude of the coefficient for <code>Income</code> trends as <span class="math inline">\(\lambda \rightarrow \infty\)</span></p>
 
 <img data-src="http://www.stat.cmu.edu/~pfreeman/Ridge.png" style="width:20.0%" class="r-stretch quarto-figure-center"><p>The coefficient <strong>shrinks towards zero</strong>, but never actually reaches it</p>
@@ -470,10 +479,10 @@
 </ul>
 </section>
 <section id="shrinkage-methods-lasso-regression" class="slide level2">
-<h2>Shrinkage methods: Lasso regression</h2>
+<h2>Shrinkage methods: lasso regression</h2>
 <p>Ridge regression <strong>keeps all variables</strong>… but we may believe there is a <strong>sparse</strong> solution</p>
 <div class="fragment">
-<p><strong>Lasso</strong> enables variable selection with <span class="math inline">\(\lambda\)</span> by minimizing:</p>
+<p><strong>Lasso</strong> (“Least Absolute Shrinkage and Selection Operator”) enables variable selection with <span class="math inline">\(\lambda\)</span> by minimizing:</p>
 <p><span class="math display">\[\sum_i^n \big(Y_i - \beta_0 -  \sum_j^p \beta_j X_{ij}\big)^2 + \lambda \sum_j^p\vert  \beta_j \vert = \text{RSS} + \lambda \sum_j^p \vert \beta_j \vert\]</span></p>
 <ul>
 <li>Lasso uses an <span class="math inline">\(\ell_1\)</span> (“ell 1”) penalty</li>
@@ -494,21 +503,42 @@
 </div>
 </section>
 <section id="shrinkage-methods-lasso-regression-1" class="slide level2">
-<h2>Shrinkage methods: Lasso regression</h2>
-<p>“Least Absolute Shrinkage and Selection Operator”</p>
-<p>Lasso regression <strong>performs variable selection</strong> yielding <strong>sparse</strong> models</p>
+<h2>Shrinkage methods: lasso regression</h2>
+<p>Lasso regression <strong>performs variable selection</strong> yielding <strong>sparse</strong> models (i.e.&nbsp;models that involve only a subset of the variables)</p>
 
 <img data-src="http://www.stat.cmu.edu/~pfreeman/Lasso.png" style="width:40.0%" class="r-stretch quarto-figure-center"><p>The coefficient shrinks towards and <strong>eventually equals zero</strong> at <span class="math inline">\(\lambda \approx 1000\)</span></p>
 <ul>
 <li>if the optimum value of <span class="math inline">\(\lambda\)</span> is larger, then <code>Income</code> would NOT be included in the learned model</li>
 </ul>
 </section>
-<section id="best-of-both-worlds-elastic-net" class="slide level2">
-<h2>Best of both worlds? Elastic net</h2>
-<p><span class="math display">\[\sum_{i}^{n}\left(Y_{i}-\beta_{0}-\sum_{j}^{p} \beta_{j} X_{i j}\right)^{2}+\lambda\left[(1-\alpha)\|\beta\|_{2}^{2} / 2+\alpha\|\beta\|_{1} \right]\]</span></p>
+<section id="lasso-and-ridge-as-optimization-problems" class="slide level2">
+<h2>Lasso and ridge as optimization problems</h2>
+<p>Why does the lasso, unlike ridge, result in coefficient estimates that are exactly 0?</p>
 <ul>
-<li><p><span class="math inline">\(\vert \vert \beta \vert \vert_1\)</span>: <span class="math inline">\(\ell_1\)</span> norm: <span class="math inline">\(\vert \vert \beta \vert \vert_1 = \sum_j^p \vert \beta_j \vert\)</span></p></li>
-<li><p><span class="math inline">\(\vert \vert \beta \vert \vert_2\)</span>: <span class="math inline">\(\ell_2\)</span> (Euclidean) norm: <span class="math inline">\(\vert \vert \beta \vert \vert_2 = \sqrt{\sum_j^p \beta_j^2}\)</span></p></li>
+<li>Lasso</li>
+</ul>
+<p><span class="math display">\[
+\underset{\beta}{\text{minimize}} \sum_{i=1}^n \left(y_i - \beta_0 - \sum_{j=1}^p\beta_j x_{ij} \right)^2 \quad \text{subject to} \quad \sum_{j=1}^p|\beta_j| \le s
+\]</span></p>
+<ul>
+<li>Ridge</li>
+</ul>
+<p><span class="math display">\[
+\underset{\beta}{\text{minimize}} \sum_{i=1}^n \left(y_i - \beta_0 - \sum_{j=1}^p\beta_j x_{ij} \right)^2 \quad \text{subject to} \quad \sum_{j=1}^p \beta_j ^2 \le s
+\]</span></p>
+</section>
+<section id="lasso-and-ridge-in-picture" class="slide level2">
+<h2>Lasso and ridge in picture</h2>
+<center>
+<p><img data-src="../images/lasso-ridge.png" width="820"></p>
+</center>
+</section>
+<section id="best-of-both-worlds-elastic-net" class="slide level2">
+<h2>Best of both worlds: elastic net</h2>
+<p><span class="math display">\[\sum_{i}^{n}\left(Y_{i}-\beta_{0}-\sum_{j=1}^{p} \beta_{j} X_{i j}\right)^{2}+\lambda\left(\frac{1-\alpha}{2}\|\beta\|_{2}^{2}+\alpha\|\beta\|_{1} \right)\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\Vert \beta \Vert_1\)</span>: <span class="math inline">\(\ell_1\)</span> norm: <span class="math inline">\(\Vert \beta \Vert_1 = \sum_{j=1}^p \vert \beta_j \vert\)</span></p></li>
+<li><p><span class="math inline">\(\Vert \beta \Vert_2\)</span>: <span class="math inline">\(\ell_2\)</span> (Euclidean) norm: <span class="math inline">\(\Vert \beta \Vert_2 = \sqrt{\sum_{j=1}^p \beta_j^2}\)</span></p></li>
 </ul>
 <div class="fragment">
 <ul>
@@ -527,7 +557,7 @@
 </div>
 </section>
 <section id="caveats-to-consider" class="slide level2">
-<h2>Caveats to consider…</h2>
+<h2>Caveats to consider</h2>
 <ul>
 <li><p>For either ridge, lasso, or elastic net: <strong>you should standardize your data</strong></p></li>
 <li><p>Common convention: within each column, compute then subtract off the sample mean, and compute the divide off the sample standard deviation <span class="math inline">\(\qquad \displaystyle \tilde{x}_{ij} = \frac{x_{ij} - \bar{x}_j}{s_{x,j}}\)</span></p></li>
@@ -546,8 +576,8 @@
 <h1>Examples</h1>
 
 </section>
-<section id="data-prostate-cancer-data" class="slide level2">
-<h2>Data: Prostate Cancer Data</h2>
+<section id="data-prostate-cancer" class="slide level2">
+<h2>Data: prostate cancer</h2>
 <p>Examine the level of a prostate specific antigen and a number of clinical measures in men who were about to receive a radical prostatectomy</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>

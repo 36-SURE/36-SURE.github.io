@@ -459,13 +459,15 @@
 <li>Select a single best model from among <span class="math inline">\(\mathcal{M}_0, \dots, \mathcal{M}_p\)</span></li>
 </ul>
 </div>
-<div class="fragment">
+</section>
+<section id="best-subset-selection-1" class="slide level2">
+<h2>Best subset selection</h2>
 <p><strong>This is not typically used in research!</strong></p>
 <ul>
-<li>only practical for a smaller number of variables</li>
-<li>arbitrary way of defining <strong>best</strong> and ignores <strong>prior knowledge</strong> about potential predictors</li>
+<li><p>only practical for a smaller number of variables</p></li>
+<li><p>computationally infeasible for a large number of predictors</p></li>
+<li><p>arbitrary way of defining <strong>best</strong> and ignores <strong>prior knowledge</strong> about potential predictors</p></li>
 </ul>
-</div>
 </section>
 <section id="use-the-shoe-leather-approach" class="slide level2">
 <h2>Use the shoe leather approach</h2>
@@ -562,8 +564,8 @@ $ Year             &lt;dbl&gt; 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2
 
 </div>
 <img data-src="12-selection_files/figure-revealjs/score-diff-1.png" width="960" class="r-stretch quarto-figure-center"></section>
-<section id="correlation-matrix-of-score-differential-and-candidate-predictors" class="slide level2">
-<h2>Correlation matrix of score differential and candidate predictors</h2>
+<section id="correlation-matrix-of-audience-score-and-candidate-predictors" class="slide level2">
+<h2>Correlation matrix of audience score and candidate predictors</h2>
 <div class="columns">
 <div class="column" style="text-align: left;">
 <ul>
@@ -908,11 +910,13 @@ $ Year             &lt;dbl&gt; 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2012, 2
 7 foreign_gross       0.00415  0.00497      0.835 4.04e-  1 -0.00560   0.0139 </code></pre>
 </div>
 </div>
+<div class="fragment">
 <p>For <code>rotten_tomatoes</code>:</p>
 <ul>
-<li><p>Slope interpretation: Among the Hollywood movies, each additional score in Rotten Tomatoes rating is associated with a 0.395 higher score in audience rating, on average ((95% CI [0.363, 0.426]))</p></li>
-<li><p>Test for the slope: With <span class="math inline">\(t=24.7\)</span> and <span class="math inline">\(p\)</span>-value <span class="math inline">\(&lt;0.001\)</span>, we have sufficient evidence that audience rating and Rotten Tomatoes critic rating are related, after accounting for other variables in the model (i.e.&nbsp;there was a statistically significant association between audience and critic ratings).</p></li>
+<li><p>Coefficient interpretation: Among the Hollywood movies, each additional score in Rotten Tomatoes rating is associated with a 0.395 higher score in audience rating, on average ((95% CI [0.363, 0.426]))</p></li>
+<li><p>Test for the coefficient: With <span class="math inline">\(t=24.7\)</span> and <span class="math inline">\(p\)</span>-value <span class="math inline">\(&lt;0.001\)</span>, we have sufficient evidence that audience rating and Rotten Tomatoes critic rating are related, after accounting for other variables in the model (i.e.&nbsp;there was a statistically significant association between audience and critic ratings).</p></li>
 </ul>
+</div>
 </section></section>
 <section>
 <section id="making-tables" class="title-slide slide level1 center">
