@@ -236,7 +236,7 @@ Pick a single continuous variable from yesterday, use it to replace `INSERT_VARI
 x_pos_nba_lm <- lm(min_per_game ~ position + INSERT_VARIABLE, data = nba_stats)
 ```
 
-**Create scatterplots with your predictions on the y-axis, your `INSERT_VARIABLE` on the x-asis, and color by position**.
+**Create scatterplots with your predictions on the y-axis, your `INSERT_VARIABLE` on the x-axis, and color by position**.
 What do you observe?
 
 Given similarities between different types of positions, we can easily collapse the positions together into a smaller number of categories using `fct_collapse()`:

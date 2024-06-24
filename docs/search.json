@@ -144,21 +144,56 @@
     "href": "health/labs/05-regression.html#assess-the-model-summary",
     "title": "Lab: linear regression",
     "section": "4. Assess the model summary",
-    "text": "4. Assess the model summary\nNow fit the same model as before using the following code chunk. Update the following code by replacing INSERT_VARIABLE with your selected variable, and run to fit the model:\n\nlog_cost_lm &lt;- lm(log_cost ~ INSERT_VARIABLE, data = heart_disease)\n\nInterpret the results of this model using the tidy() function from the broom package (or the summary() function). Do you think there is sufficient evidence to reject the null hypothesis that the coefficient is 0? What is the interpretation of the \\(R^2\\) value? Compare the square root of the raw (unadjusted) \\(R^2\\) of your linear model to the correlation between that explanatory variable and the response using the cor() function. What do you notice?\nTo assess the fit of a linear model, we can also plot the predicted values vs the actual values, to see how closely our predictions align with reality, and to decide whether our model is making any systematic errors. Execute the following code chunk to show the actual log(Cost) against our model’s predictions:\n\nheart_disease |&gt;\n  mutate(model_preds = predict(log_cost_lm)) |&gt;\n  ggplot(aes(x = model_preds, y = log_cost)) +\n  geom_point(alpha = 0.75) +\n  geom_abline(slope = 1, intercept = 0, linetype = \"dashed\", color = \"red\") +\n  labs(x = \"Predictions\", y = \"Observed log(Cost + 1)\") +\n  theme_light()\n\n\n5. Include multiple covariates\nRepeat steps 2 and 3 above but including more than one variable in your model. You can easily do this in the lm() function by adding another variable to the formula with the + operator as so (but just replace the INSERT_VARIABLE parts):\n\nmulti_cost_lm &lt;- lm(log_cost ~ INSERT_VARIABLE_1 + INSERT_VARIABLE_2, data = heart_disease)\n\nExperiment with different sets of the continuous variables What sets of continuous variables do you think models log(Cost) best? (Remember to use the Adjusted \\(R^2\\) when comparing models that have different numbers of variables).\nBeware of collinearity! Load the car library (install it if necessary!) and use the vif() function to check for possible (multi)collinearity. The vif() function computes the variance inflation factor (VIF) for predictor \\(x_j\\) with \\(j \\in 1,\\dots, p\\) as \\[\n\\text{VIF}_j = \\frac{1}{1 - R^2_j}\n\\] where \\(R^2_j\\) is the \\(R^2\\) from a variable with variable \\(x_j\\) as the response and the other \\(p-1\\) predictors as the explanatory variables. VIF values close to 1 indicate the variable is not correlated with other predictors, while VIF values over 5 indicate strong presence of collinearity. If present, remove a variable with VIF over 5, and redo the fit. Repeat this process until the vif() outputs are all less than 5. The follow code chunk displays an example of using this function:\n\nlibrary(car) # install.packages(\"car\")\nvif(multi_cost_lm)"
+    "text": "4. Assess the model summary\nNow fit the same model as before using the following code chunk. Update the following code by replacing INSERT_VARIABLE with your selected variable, and run to fit the model:\n\nlog_cost_lm &lt;- lm(log_cost ~ INSERT_VARIABLE, data = heart_disease)\n\nInterpret the results of this model using the tidy() function from the broom package (or the summary() function). Do you think there is sufficient evidence to reject the null hypothesis that the coefficient is 0? What is the interpretation of the \\(R^2\\) value? Compare the square root of the raw (unadjusted) \\(R^2\\) of your linear model to the correlation between that explanatory variable and the response using the cor() function. What do you notice?\nTo assess the fit of a linear model, we can also plot the predicted values vs the actual values, to see how closely our predictions align with reality, and to decide whether our model is making any systematic errors. Execute the following code chunk to show the actual log(Cost) against our model’s predictions:\n\nheart_disease |&gt;\n  mutate(model_preds = predict(log_cost_lm)) |&gt;\n  ggplot(aes(x = model_preds, y = log_cost)) +\n  geom_point(alpha = 0.75) +\n  geom_abline(slope = 1, intercept = 0, linetype = \"dashed\", color = \"red\") +\n  labs(x = \"Predictions\", y = \"Observed log(Cost + 1)\") +\n  theme_light()"
+  },
+  {
+    "objectID": "health/labs/05-regression.html#include-multiple-covariates",
+    "href": "health/labs/05-regression.html#include-multiple-covariates",
+    "title": "Lab: linear regression",
+    "section": "5. Include multiple covariates",
+    "text": "5. Include multiple covariates\nRepeat steps 2 and 3 above but including more than one variable in your model. You can easily do this in the lm() function by adding another variable to the formula with the + operator as so (but just replace the INSERT_VARIABLE parts):\n\nmulti_cost_lm &lt;- lm(log_cost ~ INSERT_VARIABLE_1 + INSERT_VARIABLE_2, data = heart_disease)\n\nExperiment with different sets of the continuous variables What sets of continuous variables do you think models log(Cost) best? (Remember to use the Adjusted \\(R^2\\) when comparing models that have different numbers of variables).\nBeware of collinearity! Load the car library (install it if necessary!) and use the vif() function to check for possible (multi)collinearity. The vif() function computes the variance inflation factor (VIF) for predictor \\(x_j\\) with \\(j \\in 1,\\dots, p\\) as \\[\n\\text{VIF}_j = \\frac{1}{1 - R^2_j}\n\\] where \\(R^2_j\\) is the \\(R^2\\) from a variable with variable \\(x_j\\) as the response and the other \\(p-1\\) predictors as the explanatory variables. VIF values close to 1 indicate the variable is not correlated with other predictors, while VIF values over 5 indicate strong presence of collinearity. If present, remove a variable with VIF over 5, and redo the fit. Repeat this process until the vif() outputs are all less than 5. The follow code chunk displays an example of using this function:\n\nlibrary(car) # install.packages(\"car\")\nvif(multi_cost_lm)"
   },
   {
     "objectID": "health/labs/05-regression.html#linear-model-with-one-categorical-variable",
     "href": "health/labs/05-regression.html#linear-model-with-one-categorical-variable",
     "title": "Lab: linear regression",
     "section": "6. Linear model with one categorical variable",
-    "text": "6. Linear model with one categorical variable\nRun the following code to fit a model using only the Gender variable:\n\ngender_cost_lm &lt;- lm(log_cost ~ Gender, data = heart_disease)\n\nNext, use the following code to first create a column called model_preds containing the predictions of the model above, to display the predictions of this model against the actual log_cast, but facet by the patient’s gender:\n\nheart_disease |&gt;\n  mutate(model_preds = predict(gender_cost_lm)) |&gt;\n  ggplot(aes(x = log_cost, y = model_preds)) +\n  geom_point(alpha = 0.5) +\n  facet_wrap(~ Gender, ncol = 2) +\n  labs(x = \"Actual log(Cost + 1)\", \n       y = \"Predicted log(Cost + 1)\") +\n  theme_light()\n\nAs the figure above, we are changing the intercept of our regression line by including a categorical variable. To make this more clear, view the output of the summary:\n\nsummary(gender_cost_lm)\n\nNotice how only one coefficient is provided in addition to the intercept. This is because, by default, R turns the categorical variables of \\(m\\) levels (e.g., we have 2 genders in this dataset) into \\(m - 1\\) indicator variables (binary with values of 1 if in that level versus 0 if not that level) for different categories relative to a baseline level. In this example, R has created an indicator for one gender: Male. By default, R will use alphabetical order to determine the baseline category, which in this example is the gender Female. The values for the coefficient estimates indicate the expected change in the response variable relative to the baseline. In other words, the intercept term gives us the baseline’s average y, e.g. the average log(Cost) for male patients. This matches what you displayed in the predictions against observed log_cost scatterplots by Gender above.\nBeware the default baseline R picks for categorical variables! We typically want to choose the baseline level to be the group with the most observations. In this example, Female has the most number of observations so the default was appropriate. But in general, we can change the reference level by modifying the factor levels of the categorical variables (similar to how we reorder things in ggplot2). For example, we can use the following code to modify the Gender variable so that Male is the baseline (we use fct_relevel() to update Gender so that Male is the first factor level - and we do not need to modify the order of the remaining levels):\n\nheart_disease &lt;- heart_disease |&gt;\n  mutate(Gender = fct_relevel(Gender, \"Male\")) \n\nRefit the linear regression model using Gender above, how has the summary changed?\nAfter you refit the model above, change the reference level back to Female with the following code:\n\nheart_disease &lt;- heart_disease |&gt;\n  mutate(Gender = fct_relevel(Gender, \"Female\")) \n\n\n7. Linear model with one categorical and one continuous variable\nPick a single continuous variable from yesterday, use it to replace INSERT_VARIABLE below, then run the code to fit a model with the Gender included:\n\nx_gender_cost_lm &lt;- lm(log_cost ~ Gender + INSERT_VARIABLE, data = heart_disease)\n\nCreate scatterplots with your predictions on the y-axis, your INSERT_VARIABLE on the x-asis, and color by Gender. What do you observe?\n\n\n8. Collapsing categorical variables\nAnother categorical we have access to is the Drugs variable, which is currently coded as numeric. We can first use the fct_recode() function to modify the Drugs variable so that the integers are relabeled:\n\nheart_disease &lt;- heart_disease |&gt;\n  mutate(Drugs = fct_recode(as.factor(Drugs), \"None\" = \"0\", \"One\" = \"1\", \"&gt; One\" = \"2\"))\n\nRun the following code to fit a model using only the Drugs variable:\n\ndrugs_cost_lm &lt;- lm(log_cost ~ Drugs, data = heart_disease)\n\nRepeat the same from above that you considered for the Gender variable, viewing the predictions faceted by Drugs and examine the model summary (with broom::tidy() or summary()). Do you think an appropriate reference level was used? (HINT: Use the table() function on the Drugs variable to view the overall frequency of each level and determine if the most frequent level was used as the reference.)\nGiven the similar values, we may decide to collapse the level of One and &gt; One into a single level &gt;= One. We can easily collapse the levels together into a smaller number of categories using fct_collapse():\n\nheart_disease &lt;- heart_disease |&gt;\n  mutate(drugs_group = fct_collapse(Drugs, \"None\" = \"None\", \"&gt;= One\" = c(\"One\", \"&gt; One\"))) \n\nRefit the model with this new drugs_group variable, but assign it to a different name, e.g. drugs_group_cost_lm. What changed in the summary?"
+    "text": "6. Linear model with one categorical variable\nRun the following code to fit a model using only the Gender variable:\n\ngender_cost_lm &lt;- lm(log_cost ~ Gender, data = heart_disease)\n\nNext, use the following code to first create a column called model_preds containing the predictions of the model above, to display the predictions of this model against the actual log_cast, but facet by the patient’s gender:\n\nheart_disease |&gt;\n  mutate(model_preds = predict(gender_cost_lm)) |&gt;\n  ggplot(aes(x = log_cost, y = model_preds)) +\n  geom_point(alpha = 0.5) +\n  facet_wrap(~ Gender, ncol = 2) +\n  labs(x = \"Actual log(Cost + 1)\", \n       y = \"Predicted log(Cost + 1)\") +\n  theme_light()\n\nAs the figure above, we are changing the intercept of our regression line by including a categorical variable. To make this more clear, view the output of the summary:\n\nsummary(gender_cost_lm)\n\nNotice how only one coefficient is provided in addition to the intercept. This is because, by default, R turns the categorical variables of \\(m\\) levels (e.g., we have 2 genders in this dataset) into \\(m - 1\\) indicator variables (binary with values of 1 if in that level versus 0 if not that level) for different categories relative to a baseline level. In this example, R has created an indicator for one gender: Male. By default, R will use alphabetical order to determine the baseline category, which in this example is the gender Female. The values for the coefficient estimates indicate the expected change in the response variable relative to the baseline. In other words, the intercept term gives us the baseline’s average y, e.g. the average log(Cost) for male patients. This matches what you displayed in the predictions against observed log_cost scatterplots by Gender above.\nBeware the default baseline R picks for categorical variables! We typically want to choose the baseline level to be the group with the most observations. In this example, Female has the most number of observations so the default was appropriate. But in general, we can change the reference level by modifying the factor levels of the categorical variables (similar to how we reorder things in ggplot2). For example, we can use the following code to modify the Gender variable so that Male is the baseline (we use fct_relevel() to update Gender so that Male is the first factor level - and we do not need to modify the order of the remaining levels):\n\nheart_disease &lt;- heart_disease |&gt;\n  mutate(Gender = fct_relevel(Gender, \"Male\")) \n\nRefit the linear regression model using Gender above, how has the summary changed?\nAfter you refit the model above, change the reference level back to Female with the following code:\n\nheart_disease &lt;- heart_disease |&gt;\n  mutate(Gender = fct_relevel(Gender, \"Female\"))"
+  },
+  {
+    "objectID": "health/labs/05-regression.html#linear-model-with-one-categorical-and-one-continuous-variable",
+    "href": "health/labs/05-regression.html#linear-model-with-one-categorical-and-one-continuous-variable",
+    "title": "Lab: linear regression",
+    "section": "7. Linear model with one categorical and one continuous variable",
+    "text": "7. Linear model with one categorical and one continuous variable\nPick a single continuous variable from yesterday, use it to replace INSERT_VARIABLE below, then run the code to fit a model with the Gender included:\n\nx_gender_cost_lm &lt;- lm(log_cost ~ Gender + INSERT_VARIABLE, data = heart_disease)\n\nCreate scatterplots with your predictions on the y-axis, your INSERT_VARIABLE on the x-axis, and color by Gender. What do you observe?"
+  },
+  {
+    "objectID": "health/labs/05-regression.html#collapsing-categorical-variables",
+    "href": "health/labs/05-regression.html#collapsing-categorical-variables",
+    "title": "Lab: linear regression",
+    "section": "8. Collapsing categorical variables",
+    "text": "8. Collapsing categorical variables\nAnother categorical we have access to is the Drugs variable, which is currently coded as numeric. We can first use the fct_recode() function to modify the Drugs variable so that the integers are relabeled:\n\nheart_disease &lt;- heart_disease |&gt;\n  mutate(Drugs = fct_recode(as.factor(Drugs), \"None\" = \"0\", \"One\" = \"1\", \"&gt; One\" = \"2\"))\n\nRun the following code to fit a model using only the Drugs variable:\n\ndrugs_cost_lm &lt;- lm(log_cost ~ Drugs, data = heart_disease)\n\nRepeat the same from above that you considered for the Gender variable, viewing the predictions faceted by Drugs and examine the model summary (with broom::tidy() or summary()). Do you think an appropriate reference level was used? (HINT: Use the table() function on the Drugs variable to view the overall frequency of each level and determine if the most frequent level was used as the reference.)\nGiven the similar values, we may decide to collapse the level of One and &gt; One into a single level &gt;= One. We can easily collapse the levels together into a smaller number of categories using fct_collapse():\n\nheart_disease &lt;- heart_disease |&gt;\n  mutate(drugs_group = fct_collapse(Drugs, \"None\" = \"None\", \"&gt;= One\" = c(\"One\", \"&gt; One\"))) \n\nRefit the model with this new drugs_group variable, but assign it to a different name, e.g. drugs_group_cost_lm. What changed in the summary?"
   },
   {
     "objectID": "health/labs/05-regression.html#interactions",
     "href": "health/labs/05-regression.html#interactions",
     "title": "Lab: linear regression",
     "section": "9. Interactions",
-    "text": "9. Interactions\nRemember with ggplot2 you can directly compute and plot the results from running linear regression using geom_smooth() or stat_smooth() and specifying that method = \"lm\". Try running the following code (replace INSERT_VARIABLE) to generate the linear regression fits with geom_smooth versus your own model’s predictions (note the different y mapping for the point versus smooth layers):\n\nheart_disease |&gt;\n  mutate(model_preds = predict(x_gender_cost_lm)) |&gt;\n  ggplot(aes(x = INSERT_VARIABLE, color = Gender)) +\n  geom_point(aes(y = model_preds), alpha = 0.5) +\n  geom_smooth(aes(y = log_cost), method = \"lm\") \n  facet_wrap(~ Gender, ncol = 3) +\n  labs(x = \"INSERT YOUR LABEL HERE\", \n       y = \"Predicted log(Cost + 1)\") +\n  theme_light()\n\nThe geom_smooth() regression lines do NOT match! This is because ggplot2 is fitting separate regressions for each position, meaning the slope for the continuous variable on the x-axis is changing for each position. We can match the output of the geom_smooth() results with interactions. We can use interaction terms to build more complex models. Interaction terms allow for a different linear model to be fit for each category; that is, they allow for different slopes across different categories. If we believe relationships between continuous variables, and outcomes, differ across categories, we can use interaction terms to better model these relationships.\nTo fit a model with an interaction term between two variables, include the interaction via the * operator like so:\n\ngender_int_cost_lm &lt;- lm(log_cost ~ Gender * INSERT_VARIABLE, data = heart_disease)\n\nReplace the predictions in the previous plot’s mutate code with this interaction model’s predictions. How do they compare to the results from geom_smooth() now?\nYou can model interactions between any type of variables using the * operator, feel free to experiment on your different possible continuous variables.\n\n10. Polynomials\nAnother way to increase the explanatory power of your model is to include transformations of continuous variables. For instance you can directly create a column that is a square of a variable with mutate() and then fit the regression with the original variable and its squared term:\n\nheart_disease &lt;- heart_disease |&gt;\n  mutate(duration_squared = Duration ^ 2)\nsquared_duration_lm &lt;- lm(log_cost ~ Duration + duration_squared, data = heart_disease)\nsummary(squared_duration_lm)\n\nWhat are some difficulties with interpreting this model fit? View the predictions for this model or other covariates you squared.\n\n\n6. Training and testing\nAs we’ve seen, using transformations such as higher-order polynomials may decrease the interpretability and increase the potential for overfitting associated with our models; however, they can also dramatically improve the explanatory power.\nWe need a way for making sure our more complicated models have not overly fit to the noise present in our data. Another way of saying this is that a good model should generalize to a different sample than the one on which it was fit. This intuition motivates the idea of training/testing. We split our data into two parts, use one part – the training set – to fit our models, and the other part – the testing set – to evaluate our models. Any model which happens to fit to the noise present in our training data should perform poorly on our testing data.\nThe first thing we will need to do is split our sample. Run the following code chunk to divide our data into two halves, which we will refer to as a training set and a test set. Briefly summarize what each line in the code chunk is doing.\n\nheart_train &lt;- heart_disease |&gt; \n  slice_sample(prop = 0.5, replace = FALSE)\nheart_test &lt;- heart_disease |&gt; \n  anti_join(heart_train)\n\nWe will now compare three candidate models for predicting log_cost using Gender and Duration. We will fit these models on the training data only, ignoring the testing data for the moment. Run the below two code chunks to create two candidate models:\n\n# model with interaction term\ncandidate_model_1 &lt;- lm(log_cost ~ Gender * poly(Duration, 2, raw = TRUE), \n                        data = heart_train)\n\n\n# model with no interaction term\ncandidate_model_2 &lt;- lm(log_cost ~ Gender + poly(Duration, 2, raw = TRUE), \n                        data = heart_train)\n\n(Note: The poly() function is useful for getting higher-order polynomial transformations of variables. And here’s an explanation of the raw argument.)\nUsing broom::glance() or summary(), which of these models has more explanatory power according to the training data? Which of the models is less likely to overfit?\nFit another model to predict log_cost using a different set of variables or polynomials.\nNow that we’ve built our candidate models, we will evaluate them on our test set, using the criterion of mean squared error (MSE). Run the following code chunk to compute, on the test set, the MSE of predictions given by the first model compared to the actual log_cost.\n\nmodel_1_preds &lt;- predict(candidate_model_1, newdata = heart_test)\nmodel_1_mse &lt;- mean((model_1_preds - heart_test$log_cost) ^ 2)\n\nDo this for each of your candidate models. Compare the MSE on the test set, which model performed best (in terms of lowest test MSE)?"
+    "text": "9. Interactions\nRemember with ggplot2 you can directly compute and plot the results from running linear regression using geom_smooth() or stat_smooth() and specifying that method = \"lm\". Try running the following code (replace INSERT_VARIABLE) to generate the linear regression fits with geom_smooth versus your own model’s predictions (note the different y mapping for the point versus smooth layers):\n\nheart_disease |&gt;\n  mutate(model_preds = predict(x_gender_cost_lm)) |&gt;\n  ggplot(aes(x = INSERT_VARIABLE, color = Gender)) +\n  geom_point(aes(y = model_preds), alpha = 0.5) +\n  geom_smooth(aes(y = log_cost), method = \"lm\") \n  facet_wrap(~ Gender, ncol = 3) +\n  labs(x = \"INSERT YOUR LABEL HERE\", \n       y = \"Predicted log(Cost + 1)\") +\n  theme_light()\n\nThe geom_smooth() regression lines do NOT match! This is because ggplot2 is fitting separate regressions for each position, meaning the slope for the continuous variable on the x-axis is changing for each position. We can match the output of the geom_smooth() results with interactions. We can use interaction terms to build more complex models. Interaction terms allow for a different linear model to be fit for each category; that is, they allow for different slopes across different categories. If we believe relationships between continuous variables, and outcomes, differ across categories, we can use interaction terms to better model these relationships.\nTo fit a model with an interaction term between two variables, include the interaction via the * operator like so:\n\ngender_int_cost_lm &lt;- lm(log_cost ~ Gender * INSERT_VARIABLE, data = heart_disease)\n\nReplace the predictions in the previous plot’s mutate code with this interaction model’s predictions. How do they compare to the results from geom_smooth() now?\nYou can model interactions between any type of variables using the * operator, feel free to experiment on your different possible continuous variables."
+  },
+  {
+    "objectID": "health/labs/05-regression.html#polynomials",
+    "href": "health/labs/05-regression.html#polynomials",
+    "title": "Lab: linear regression",
+    "section": "10. Polynomials",
+    "text": "10. Polynomials\nAnother way to increase the explanatory power of your model is to include transformations of continuous variables. For instance you can directly create a column that is a square of a variable with mutate() and then fit the regression with the original variable and its squared term:\n\nheart_disease &lt;- heart_disease |&gt;\n  mutate(duration_squared = Duration ^ 2)\nsquared_duration_lm &lt;- lm(log_cost ~ Duration + duration_squared, data = heart_disease)\nsummary(squared_duration_lm)\n\nWhat are some difficulties with interpreting this model fit? View the predictions for this model or other covariates you squared."
+  },
+  {
+    "objectID": "health/labs/05-regression.html#training-and-testing",
+    "href": "health/labs/05-regression.html#training-and-testing",
+    "title": "Lab: linear regression",
+    "section": "11. Training and testing",
+    "text": "11. Training and testing\nAs we’ve seen, using transformations such as higher-order polynomials may decrease the interpretability and increase the potential for overfitting associated with our models; however, they can also dramatically improve the explanatory power.\nWe need a way for making sure our more complicated models have not overly fit to the noise present in our data. Another way of saying this is that a good model should generalize to a different sample than the one on which it was fit. This intuition motivates the idea of training/testing. We split our data into two parts, use one part – the training set – to fit our models, and the other part – the testing set – to evaluate our models. Any model which happens to fit to the noise present in our training data should perform poorly on our testing data.\nThe first thing we will need to do is split our sample. Run the following code chunk to divide our data into two halves, which we will refer to as a training set and a test set. Briefly summarize what each line in the code chunk is doing.\n\nheart_train &lt;- heart_disease |&gt; \n  slice_sample(prop = 0.5, replace = FALSE)\nheart_test &lt;- heart_disease |&gt; \n  anti_join(heart_train)\n\nWe will now compare three candidate models for predicting log_cost using Gender and Duration. We will fit these models on the training data only, ignoring the testing data for the moment. Run the below two code chunks to create two candidate models:\n\n# model with interaction term\ncandidate_model_1 &lt;- lm(log_cost ~ Gender * poly(Duration, 2, raw = TRUE), \n                        data = heart_train)\n\n\n# model with no interaction term\ncandidate_model_2 &lt;- lm(log_cost ~ Gender + poly(Duration, 2, raw = TRUE), \n                        data = heart_train)\n\n(Note: The poly() function is useful for getting higher-order polynomial transformations of variables. And here’s an explanation of the raw argument.)\nUsing broom::glance() or summary(), which of these models has more explanatory power according to the training data? Which of the models is less likely to overfit?\nFit another model to predict log_cost using a different set of variables or polynomials.\nNow that we’ve built our candidate models, we will evaluate them on our test set, using the criterion of mean squared error (MSE). Run the following code chunk to compute, on the test set, the MSE of predictions given by the first model compared to the actual log_cost.\n\nmodel_1_preds &lt;- predict(candidate_model_1, newdata = heart_test)\nmodel_1_mse &lt;- mean((model_1_preds - heart_test$log_cost) ^ 2)\n\nDo this for each of your candidate models. Compare the MSE on the test set, which model performed best (in terms of lowest test MSE)?"
   },
   {
     "objectID": "health/labs/01-intro.html",
@@ -802,7 +837,7 @@
     "href": "sports/labs/05-regression.html#linear-model-with-one-categorical-and-one-continuous-variable",
     "title": "Lab: linear regression",
     "section": "6. Linear model with one categorical and one continuous variable",
-    "text": "6. Linear model with one categorical and one continuous variable\nPick a single continuous variable from yesterday, use it to replace INSERT_VARIABLE below, then run the code to fit a model with the position included:\n\nx_pos_nba_lm &lt;- lm(min_per_game ~ position + INSERT_VARIABLE, data = nba_stats)\n\nCreate scatterplots with your predictions on the y-axis, your INSERT_VARIABLE on the x-asis, and color by position. What do you observe?\nGiven similarities between different types of positions, we can easily collapse the positions together into a smaller number of categories using fct_collapse():\n\nnba_stats &lt;- nba_stats |&gt;\n  mutate(\n    position_group = fct_collapse(position, Guard = c(\"SG\", \"PG\"), Forward = c(\"SF\", \"PF\"), Center = \"C\")\n  ) \n\nRefit the model with this new position_group variable, but assign it to a different name, e.g. x_pos_group_nba_lm. What changed in the summary?"
+    "text": "6. Linear model with one categorical and one continuous variable\nPick a single continuous variable from yesterday, use it to replace INSERT_VARIABLE below, then run the code to fit a model with the position included:\n\nx_pos_nba_lm &lt;- lm(min_per_game ~ position + INSERT_VARIABLE, data = nba_stats)\n\nCreate scatterplots with your predictions on the y-axis, your INSERT_VARIABLE on the x-axis, and color by position. What do you observe?\nGiven similarities between different types of positions, we can easily collapse the positions together into a smaller number of categories using fct_collapse():\n\nnba_stats &lt;- nba_stats |&gt;\n  mutate(\n    position_group = fct_collapse(position, Guard = c(\"SG\", \"PG\"), Forward = c(\"SF\", \"PF\"), Center = \"C\")\n  ) \n\nRefit the model with this new position_group variable, but assign it to a different name, e.g. x_pos_group_nba_lm. What changed in the summary?"
   },
   {
     "objectID": "sports/labs/05-regression.html#interactions",
@@ -2053,154 +2088,154 @@
   {
     "objectID": "lectures/13-regularization.html#previously",
     "href": "lectures/13-regularization.html#previously",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Previously…",
     "text": "Previously…\nVariable selection for a linear model  \\(\\qquad \\hat{Y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 x_1 + \\cdots + \\hat{\\beta}_p x_p\\)\nWhy would we attempt to select a subset of the \\(p\\) variables?\n\n\nTo improve prediction accuracy\n\nEliminating uninformative predictors can lead to lower variance in the test-set MSE, at the expense of a slight increase in bias\n\n\n\n\n\nTo improve model interpretability\n\nEliminating uninformative predictors is obviously a good thing when your goal is to tell the story of how your predictors are associated with your response.\n\n\n\n\nRemember the bias-variance tradeoff \\(\\qquad {\\rm MSE} = {\\rm (Bias)}^2 + {\\rm Variance}\\)\n\nIntroduce bias but decrease variance to improve predictions"
   },
   {
     "objectID": "lectures/13-regularization.html#shrinkage-methods-ridge-regression",
     "href": "lectures/13-regularization.html#shrinkage-methods-ridge-regression",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Shrinkage methods: Ridge regression",
     "text": "Shrinkage methods: Ridge regression\nRecall: linear regression estimates coefficients by minimizing:\n\\[\\text{RSS} = \\sum_i^n \\big(Y_i - \\beta_0 -  \\sum_j^p \\hat{\\beta}_j x_{ij}\\big)^2\\]\n\nRidge regression introduces a shrinkage penalty \\(\\lambda \\geq 0\\) by minimizing:\n\\[\\sum_i^n \\big(Y_i - \\beta_0 -  \\sum_j^p \\beta_j x_{ij}\\big)^2 + \\lambda \\sum_j^p \\beta_j^2 = \\text{RSS} + \\lambda \\sum_j^p \\beta_j^2\\]\n\n\n\nas \\(\\lambda\\) increases, flexibility of models decreases\n\nincreases bias, but decreases variance\n\n\n\n\n\nfor fixed value of \\(\\lambda\\), ridge regression fits only a single model\n\nneed to use cross-validation to tune \\(\\lambda\\)"
   },
   {
     "objectID": "lectures/13-regularization.html#shrinkage-methods-ridge-regression-1",
     "href": "lectures/13-regularization.html#shrinkage-methods-ridge-regression-1",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Shrinkage methods: Ridge regression",
     "text": "Shrinkage methods: Ridge regression\nFor example: note how the magnitude of the coefficient for Income trends as \\(\\lambda \\rightarrow \\infty\\)\n\nThe coefficient shrinks towards zero, but never actually reaches it\n\nIncome is always a variable in the learned model, regardless of the value of \\(\\lambda\\)"
   },
   {
     "objectID": "lectures/13-regularization.html#shrinkage-methods-lasso-regression",
     "href": "lectures/13-regularization.html#shrinkage-methods-lasso-regression",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Shrinkage methods: Lasso regression",
     "text": "Shrinkage methods: Lasso regression\nRidge regression keeps all variables… but we may believe there is a sparse solution\n\nLasso enables variable selection with \\(\\lambda\\) by minimizing:\n\\[\\sum_i^n \\big(Y_i - \\beta_0 -  \\sum_j^p \\beta_j X_{ij}\\big)^2 + \\lambda \\sum_j^p\\vert  \\beta_j \\vert = \\text{RSS} + \\lambda \\sum_j^p \\vert \\beta_j \\vert\\]\n\nLasso uses an \\(\\ell_1\\) (“ell 1”) penalty\n\n\n\n\nas \\(\\lambda\\) increases, flexibility of models decreases\n\nincreases bias, but decreases variance\n\n\n\n\n\nCan handle the \\(p &gt; n\\) case, i.e. more variables than observations!"
   },
   {
     "objectID": "lectures/13-regularization.html#shrinkage-methods-lasso-regression-1",
     "href": "lectures/13-regularization.html#shrinkage-methods-lasso-regression-1",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Shrinkage methods: Lasso regression",
-    "text": "Shrinkage methods: Lasso regression\nLasso regression performs variable selection yielding sparse models\n\nThe coefficient shrinks towards and eventually equals zero at \\(\\lambda \\approx 1000\\)\n\nif the optimum value of \\(\\lambda\\) is larger, then Income would NOT be included in the learned model"
+    "text": "Shrinkage methods: Lasso regression\n“Least Absolute Shrinkage and Selection Operator”\nLasso regression performs variable selection yielding sparse models\n\nThe coefficient shrinks towards and eventually equals zero at \\(\\lambda \\approx 1000\\)\n\nif the optimum value of \\(\\lambda\\) is larger, then Income would NOT be included in the learned model"
   },
   {
     "objectID": "lectures/13-regularization.html#best-of-both-worlds-elastic-net",
     "href": "lectures/13-regularization.html#best-of-both-worlds-elastic-net",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Best of both worlds? Elastic net",
     "text": "Best of both worlds? Elastic net\n\\[\\sum_{i}^{n}\\left(Y_{i}-\\beta_{0}-\\sum_{j}^{p} \\beta_{j} X_{i j}\\right)^{2}+\\lambda\\left[(1-\\alpha)\\|\\beta\\|_{2}^{2} / 2+\\alpha\\|\\beta\\|_{1} \\right]\\]\n\n\\(\\vert \\vert \\beta \\vert \\vert_1\\): \\(\\ell_1\\) norm: \\(\\vert \\vert \\beta \\vert \\vert_1 = \\sum_j^p \\vert \\beta_j \\vert\\)\n\\(\\vert \\vert \\beta \\vert \\vert_2\\): \\(\\ell_2\\) (Euclidean) norm: \\(\\vert \\vert \\beta \\vert \\vert_2 = \\sqrt{\\sum_j^p \\beta_j^2}\\)\n\n\n\nRidge penalty: \\(\\lambda \\cdot (1 - \\alpha) / 2\\)\nLasso penalty: \\(\\lambda \\cdot \\alpha\\)\n\n\n\n\n\\(\\alpha\\) controls the mixing between the two types, ranges from 0 to 1\n\n\\(\\alpha = 1\\) returns lasso\n\\(\\alpha = 0\\) return ridge"
   },
   {
     "objectID": "lectures/13-regularization.html#caveats-to-consider",
     "href": "lectures/13-regularization.html#caveats-to-consider",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Caveats to consider…",
     "text": "Caveats to consider…\n\nFor either ridge, lasso, or elastic net: you should standardize your data\nCommon convention: within each column, compute then subtract off the sample mean, and compute the divide off the sample standard deviation \\(\\qquad \\displaystyle \\tilde{x}_{ij} = \\frac{x_{ij} - \\bar{x}_j}{s_{x,j}}\\)\nglmnet package does this by default and reports coefficients on the original scale\n\n\n\n\\(\\lambda\\) and \\(\\alpha\\) are tuning parameters\nChoose appropriate values based on test data / cross-validation\nUse cv.glmnet() function in glmnet to perform cross-validation"
   },
   {
     "objectID": "lectures/13-regularization.html#data-prostate-cancer-data",
     "href": "lectures/13-regularization.html#data-prostate-cancer-data",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Data: Prostate Cancer Data",
     "text": "Data: Prostate Cancer Data\nExamine the level of a prostate specific antigen and a number of clinical measures in men who were about to receive a radical prostatectomy\n\nlibrary(tidyverse)\ntheme_set(theme_light())\n# more info: https://rdrr.io/cran/ElemStatLearn/man/prostate.html\nprostate &lt;- read_tsv(\"https://hastie.su.domains/ElemStatLearn/datasets/prostate.data\")\nglimpse(prostate)\n\nRows: 97\nColumns: 11\n$ ...1    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,…\n$ lcavol  &lt;dbl&gt; -0.5798185, -0.9942523, -0.5108256, -1.2039728, 0.7514161, -1.…\n$ lweight &lt;dbl&gt; 2.769459, 3.319626, 2.691243, 3.282789, 3.432373, 3.228826, 3.…\n$ age     &lt;dbl&gt; 50, 58, 74, 58, 62, 50, 64, 58, 47, 63, 65, 63, 63, 67, 57, 66…\n$ lbph    &lt;dbl&gt; -1.3862944, -1.3862944, -1.3862944, -1.3862944, -1.3862944, -1…\n$ svi     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…\n$ lcp     &lt;dbl&gt; -1.3862944, -1.3862944, -1.3862944, -1.3862944, -1.3862944, -1…\n$ gleason &lt;dbl&gt; 6, 6, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 6, 7, 6, 6, 6, 6,…\n$ pgg45   &lt;dbl&gt; 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 5, 5, 0, 30, 0, 0, 0,…\n$ lpsa    &lt;dbl&gt; -0.4307829, -0.1625189, -0.1625189, -0.1625189, 0.3715636, 0.7…\n$ train   &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE,…"
   },
   {
     "objectID": "lectures/13-regularization.html#introduction-to-glmnet",
     "href": "lectures/13-regularization.html#introduction-to-glmnet",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Introduction to glmnet",
     "text": "Introduction to glmnet\nFit ridge, lasso, and elastic net models with glmnet\n\nlibrary(glmnet)\nprostate &lt;- prostate |&gt; \n  select(lcavol:lpsa)\n\nCreate predictor matrix and response vector\n\n# predictors\n# model_x &lt;- model.matrix(lpsa ~ ., prostate)\nmodel_x &lt;- prostate |&gt; \n  select(lcavol:pgg45) |&gt; \n  as.matrix()\n\n# response\n# model_y &lt;- prostate$lpsa\nmodel_y &lt;- prostate |&gt; \n  pull(lpsa)"
   },
   {
     "objectID": "lectures/13-regularization.html#vanilla-linear-regression-model",
     "href": "lectures/13-regularization.html#vanilla-linear-regression-model",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Vanilla linear regression model",
     "text": "Vanilla linear regression model\n\n\n\nWhat do the initial regression coefficients look like?\nUse broom to tidy model output for plotting\n\n\nprostate_lm &lt;- lm(lpsa ~ ., data = prostate)\nlibrary(broom)\nprostate_lm |&gt; \n  tidy() |&gt; \n  mutate(term = fct_reorder(term, estimate)) |&gt; \n  ggplot(aes(x = estimate, y = term, \n             fill = estimate &gt; 0)) +\n  geom_col(color = \"white\", show.legend = FALSE) +\n  scale_fill_manual(values = c(\"darkred\", \"darkblue\"))"
   },
   {
     "objectID": "lectures/13-regularization.html#ridge-regression",
     "href": "lectures/13-regularization.html#ridge-regression",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Ridge regression",
     "text": "Ridge regression\nPerform ridge regression using glmnet with alpha = 0\nBy default, predictors are standardized and models are fitted across a range of \\(\\lambda\\) values (can plot these!)\n\nprostate_ridge &lt;- glmnet(model_x, model_y, alpha = 0)\nplot(prostate_ridge, xvar = \"lambda\")"
   },
   {
     "objectID": "lectures/13-regularization.html#ridge-regression-1",
     "href": "lectures/13-regularization.html#ridge-regression-1",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Ridge regression",
     "text": "Ridge regression\nUse cross-validation to select \\(\\lambda\\) with cv.glmnet() which uses 10-folds by default\nSpecify ridge regression with alpha = 0\n\nprostate_ridge_cv &lt;- cv.glmnet(model_x, model_y, alpha = 0)\nplot(prostate_ridge_cv)"
   },
   {
     "objectID": "lectures/13-regularization.html#tidy-ridge-regression",
     "href": "lectures/13-regularization.html#tidy-ridge-regression",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Tidy ridge regression",
     "text": "Tidy ridge regression\n\n\n\n# str(prostate_ridge_cv)\ntidy_ridge_coef &lt;- tidy(prostate_ridge_cv$glmnet.fit)\ntidy_ridge_coef |&gt; \n  ggplot(aes(x = lambda, y = estimate, group = term)) +\n  scale_x_log10() +\n  geom_line(alpha = 0.75) +\n  geom_vline(xintercept = prostate_ridge_cv$lambda.min) +\n  geom_vline(xintercept = prostate_ridge_cv$lambda.1se, \n             linetype = \"dashed\", color = \"red\")\n\n\nCould easily add color with legend for variables…"
   },
   {
     "objectID": "lectures/13-regularization.html#tidy-ridge-regression-1",
     "href": "lectures/13-regularization.html#tidy-ridge-regression-1",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Tidy ridge regression",
     "text": "Tidy ridge regression\n\n\n\ntidy_ridge_cv &lt;- tidy(prostate_ridge_cv)\ntidy_ridge_cv |&gt; \n  ggplot(aes(x = lambda, y = estimate)) +\n  geom_line() + \n  scale_x_log10() +\n  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), \n              alpha = 0.2) +\n  geom_vline(xintercept = prostate_ridge_cv$lambda.min) +\n  geom_vline(xintercept = prostate_ridge_cv$lambda.1se,\n             linetype = \"dashed\", color = \"red\")"
   },
   {
     "objectID": "lectures/13-regularization.html#ridge-regression-coefficients",
     "href": "lectures/13-regularization.html#ridge-regression-coefficients",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Ridge regression coefficients",
     "text": "Ridge regression coefficients\n\n\nCoefficients using the 1 standard error rule \\(\\lambda\\)\n\ntidy_ridge_coef |&gt;\n  filter(lambda == prostate_ridge_cv$lambda.1se) |&gt;\n  mutate(term = fct_reorder(term, estimate)) |&gt;\n  ggplot(aes(x = estimate, y = term, \n             fill = estimate &gt; 0)) +\n  geom_col(color = \"white\", show.legend = FALSE) +\n  scale_fill_manual(values = c(\"darkred\", \"darkblue\"))"
   },
   {
     "objectID": "lectures/13-regularization.html#lasso-regression-example",
     "href": "lectures/13-regularization.html#lasso-regression-example",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Lasso regression example",
     "text": "Lasso regression example\n\n\nSimilar syntax to ridge but specify alpha = 1:\n\nprostate_lasso_cv &lt;- cv.glmnet(model_x, model_y, \n                               alpha = 1)\ntidy_lasso_coef &lt;- tidy(prostate_lasso_cv$glmnet.fit)\ntidy_lasso_coef |&gt; \n  ggplot(aes(x = lambda, y = estimate, group = term)) +\n  scale_x_log10() +\n  geom_line(alpha = 0.75) +\n  geom_vline(xintercept = prostate_lasso_cv$lambda.min) +\n  geom_vline(xintercept = prostate_lasso_cv$lambda.1se, \n             linetype = \"dashed\", color = \"red\")"
   },
   {
     "objectID": "lectures/13-regularization.html#lasso-regression-example-1",
     "href": "lectures/13-regularization.html#lasso-regression-example-1",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Lasso regression example",
     "text": "Lasso regression example\n\n\nNumber of non-zero predictors by \\(\\lambda\\)\n\ntidy_lasso_cv &lt;- tidy(prostate_lasso_cv)\ntidy_lasso_cv |&gt;\n  ggplot(aes(x = lambda, y = nzero)) +\n  geom_line() +\n  geom_vline(xintercept = prostate_lasso_cv$lambda.min) +\n  geom_vline(xintercept = prostate_lasso_cv$lambda.1se, \n             linetype = \"dashed\", color = \"red\") +\n  scale_x_log10()\n\nReduction in variables using 1 standard error rule \\(\\lambda\\)"
   },
   {
     "objectID": "lectures/13-regularization.html#lasso-regression-example-2",
     "href": "lectures/13-regularization.html#lasso-regression-example-2",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Lasso regression example",
-    "text": "Lasso regression example\n\n\nCoefficients using the 1 standard error rule \\(\\lambda\\)\n\ntidy_lasso_coef |&gt;\n  filter(lambda == prostate_lasso_cv$lambda.1se) |&gt;\n  mutate(term = fct_reorder(term, estimate)) |&gt;\n  ggplot(aes(x = estimate, y = term, \n             fill = estimate &gt; 0)) +\n  geom_col(color = \"white\", show.legend = FALSE) +\n  scale_fill_manual(values = c(\"darkred\", \"darkblue\"))"
+    "text": "Lasso regression example\n\n\nCoefficients using the 1 standard error rule \\(\\lambda\\)\n\n# this will only print out non-zero coefficient estimates\n# tidy_lasso_coef |&gt;\n#   filter(lambda == prostate_lasso_cv$lambda.1se)\n\nlasso_final &lt;- glmnet(\n  model_x, model_y, \n  lambda = prostate_lasso_cv$lambda.1se\n)\nlibrary(vip)\nlasso_final |&gt; \n  vi() |&gt; \n  mutate(Variable = fct_reorder(Variable, Importance)) |&gt;\n  ggplot(aes(x = Importance, y = Variable, \n             fill = Importance &gt; 0)) +\n  geom_col(color = \"white\", show.legend = FALSE) +\n  scale_fill_manual(values = c(\"darkred\", \"darkblue\")) +\n  labs(x = \"estimate\", y = NULL)"
   },
   {
     "objectID": "lectures/13-regularization.html#elastic-net-example",
     "href": "lectures/13-regularization.html#elastic-net-example",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Elastic net example",
     "text": "Elastic net example\nNeed to tune both \\(\\lambda\\) and \\(\\alpha\\) - can do so manually with our own folds\n\nset.seed(100)\nfold_id &lt;- sample(rep(1:10, length.out = nrow(model_x)))\n\nThen use cross-validation with these folds for different candidate alpha values:\n\ncv_enet_25 &lt;- cv.glmnet(model_x, model_y, foldid = fold_id, alpha = 0.25)\ncv_enet_50 &lt;- cv.glmnet(model_x, model_y, foldid = fold_id, alpha = 0.5)\ncv_ridge &lt;- cv.glmnet(model_x, model_y, foldid = fold_id, alpha = 0)\ncv_lasso &lt;- cv.glmnet(model_x, model_y, foldid = fold_id, alpha = 1)\n\nCan see which one had the lowest CV error among its candidate \\(\\lambda\\) values:\n\nwhich.min(c(min(cv_enet_25$cvm), min(cv_enet_50$cvm), min(cv_ridge$cvm), min(cv_lasso$cvm)))\n\n[1] 3"
   },
   {
     "objectID": "lectures/13-regularization.html#elastic-net-example-1",
     "href": "lectures/13-regularization.html#elastic-net-example-1",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Elastic net example",
     "text": "Elastic net example\n\n\nCan view same type of summary\n\ncv_enet_50 |&gt; \n  tidy() |&gt; \n  ggplot(aes(x = lambda, y = nzero)) +\n  geom_line() +\n  geom_vline(xintercept = cv_enet_50$lambda.min) +\n  geom_vline(xintercept = cv_enet_50$lambda.1se, \n             linetype = \"dashed\", \n             color = \"red\") +\n  scale_x_log10()\n\n\nMore relaxed than lasso for variable entry"
   },
   {
     "objectID": "lectures/13-regularization.html#comparison-of-models-based-on-holdout-performance",
     "href": "lectures/13-regularization.html#comparison-of-models-based-on-holdout-performance",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Comparison of models based on holdout performance",
     "text": "Comparison of models based on holdout performance\n\nset.seed(101)\nk &lt;- 5\nprostate &lt;- prostate |&gt;\n  mutate(test_fold = sample(rep(1:k, length.out = n())))\n\n\nget_test_pred &lt;- function(k) {\n  test_data &lt;- prostate |&gt; filter(test_fold == k)                     # get test and training data\n  train_data &lt;- prostate |&gt; filter(test_fold != k)\n  test_x &lt;- as.matrix(select(test_data, -lpsa))                       # get test and training matrices\n  train_x &lt;- as.matrix(select(train_data, -lpsa))\n  \n  lm_fit &lt;- lm(lpsa ~ ., data = train_data)                           # fit models to training data\n  ridge_fit &lt;- cv.glmnet(train_x, train_data$lpsa, alpha = 0)\n  lasso_fit &lt;- cv.glmnet(train_x, train_data$lpsa, alpha = 1)\n  enet_fit &lt;- cv.glmnet(train_x, train_data$lpsa, alpha = 0.5)\n  \n  tibble(lm_pred = predict(lm_fit, newdata = test_data),              # return test results\n         ridge_pred = as.numeric(predict(ridge_fit, newx = test_x)),\n         lasso_pred = as.numeric(predict(lasso_fit, newx = test_x)),\n         enet_pred = as.numeric(predict(enet_fit, newx = test_x)),\n         test_actual = test_data$lpsa,\n         test_fold = k)\n}\n\n\ntest_pred_all &lt;- map(1:k, get_test_pred) |&gt; \n  bind_rows()"
   },
   {
     "objectID": "lectures/13-regularization.html#comparison-of-models-based-on-holdout-performance-1",
     "href": "lectures/13-regularization.html#comparison-of-models-based-on-holdout-performance-1",
-    "title": "Supervised learning: variable selection",
+    "title": "Supervised learning: regularization",
     "section": "Comparison of models based on holdout performance",
     "text": "Comparison of models based on holdout performance\n\n\nCompute RMSE across folds with standard error intervals\n\ntest_pred_all |&gt;\n  pivot_longer(lm_pred:enet_pred, \n               names_to = \"type\", \n               values_to = \"test_pred\") |&gt;\n  group_by(type, test_fold) |&gt;\n  summarize(\n    rmse = sqrt(mean((test_actual - test_pred)^2))\n  ) |&gt; \n  ggplot(aes(x = type, y = rmse)) + \n  geom_point(size = 4) +\n  stat_summary(fun = mean, geom = \"point\", \n               color = \"red\", size = 4) + \n  stat_summary(fun.data = mean_se, geom = \"errorbar\", \n               color = \"red\", width = 0.2)\n\nRegularization methods perform better than a linear model\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
   },
@@ -3770,7 +3805,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"p\" \"n\" \"g\" \"o\" \"c\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 0 0 0 0 1 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"H\" \"H\" \"T\" \"H\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 55"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"r\" \"h\" \"l\" \"e\" \"o\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 1 1 0 0 1 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"H\" \"H\" \"H\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 62"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -3812,21 +3847,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.02379562\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.000748"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.0102929\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9783783"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.484\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.25     0.001 0.000572\n 2 -3.01     0.002 0.00130 \n 3 -2.91     0.003 0.00180 \n 4 -2.64     0.004 0.00416 \n 5 -2.59     0.005 0.00480 \n 6 -2.33     0.006 0.00980 \n 7 -2.32     0.007 0.0103  \n 8 -2.26     0.008 0.0118  \n 9 -2.22     0.009 0.0133  \n10 -2.20     0.01  0.0139  \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.519\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical    true\n   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 -2.58     0.001 0.00488\n 2 -2.55     0.002 0.00539\n 3 -2.53     0.003 0.00563\n 4 -2.43     0.004 0.00759\n 5 -2.32     0.005 0.0103 \n 6 -2.30     0.006 0.0109 \n 7 -2.29     0.007 0.0109 \n 8 -2.27     0.008 0.0115 \n 9 -2.27     0.009 0.0115 \n10 -2.27     0.01  0.0116 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3846379\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3867678\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -3840,14 +3875,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.158\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.136\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.06043523\n\nmean(rnorm(100))\n\n[1] 0.044738\n\nmean(rnorm(100))\n\n[1] -0.04604505"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.0913573\n\nmean(rnorm(100))\n\n[1] -0.09341137\n\nmean(rnorm(100))\n\n[1] 0.1036274"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",

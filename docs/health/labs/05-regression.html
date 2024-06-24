@@ -247,8 +247,9 @@ h_{ii} = \frac{1}{n} + \frac{(x_i - \bar{x})^2}{\sum_i^n (x_i - \bar{x})^2}
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Predictions"</span>, <span class="at">y =</span> <span class="st">"Observed log(Cost + 1)"</span>) <span class="sc">+</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="include-multiple-covariates" class="level3">
-<h3 class="anchored" data-anchor-id="include-multiple-covariates">5. Include multiple covariates</h3>
+</section>
+<section id="include-multiple-covariates" class="level2">
+<h2 class="anchored" data-anchor-id="include-multiple-covariates">5. Include multiple covariates</h2>
 <p>Repeat steps 2 and 3 above but including more than one variable in your model. You can easily do this in the <code>lm()</code> function by adding another variable to the formula with the <code>+</code> operator as so (but just replace the <code>INSERT_VARIABLE</code> parts):</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>multi_cost_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(log_cost <span class="sc">~</span> INSERT_VARIABLE_1 <span class="sc">+</span> INSERT_VARIABLE_2, <span class="at">data =</span> heart_disease)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -261,7 +262,6 @@ h_{ii} = \frac{1}{n} + \frac{(x_i - \bar{x})^2}{\sum_i^n (x_i - \bar{x})^2}
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) <span class="co"># install.packages("car")</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(multi_cost_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
 </section>
 <section id="linear-model-with-one-categorical-variable" class="level2">
 <h2 class="anchored" data-anchor-id="linear-model-with-one-categorical-variable">6. Linear model with one categorical variable</h2>
@@ -296,16 +296,17 @@ h_{ii} = \frac{1}{n} + \frac{(x_i - \bar{x})^2}{\sum_i^n (x_i - \bar{x})^2}
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>heart_disease <span class="ot">&lt;-</span> heart_disease <span class="sc">|&gt;</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Gender =</span> <span class="fu">fct_relevel</span>(Gender, <span class="st">"Female"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="linear-model-with-one-categorical-and-one-continuous-variable" class="level3">
-<h3 class="anchored" data-anchor-id="linear-model-with-one-categorical-and-one-continuous-variable">7. Linear model with one categorical and one continuous variable</h3>
+</section>
+<section id="linear-model-with-one-categorical-and-one-continuous-variable" class="level2">
+<h2 class="anchored" data-anchor-id="linear-model-with-one-categorical-and-one-continuous-variable">7. Linear model with one categorical and one continuous variable</h2>
 <p>Pick a single continuous variable from yesterday, use it to replace <code>INSERT_VARIABLE</code> below, then run the code to fit a model with the <code>Gender</code> included:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x_gender_cost_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(log_cost <span class="sc">~</span> Gender <span class="sc">+</span> INSERT_VARIABLE, <span class="at">data =</span> heart_disease)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Create scatterplots with your predictions on the y-axis, your INSERT_VARIABLE on the x-asis, and color by <code>Gender</code></strong>. What do you observe?</p>
+<p><strong>Create scatterplots with your predictions on the y-axis, your INSERT_VARIABLE on the x-axis, and color by <code>Gender</code></strong>. What do you observe?</p>
 </section>
-<section id="collapsing-categorical-variables" class="level3">
-<h3 class="anchored" data-anchor-id="collapsing-categorical-variables">8. Collapsing categorical variables</h3>
+<section id="collapsing-categorical-variables" class="level2">
+<h2 class="anchored" data-anchor-id="collapsing-categorical-variables">8. Collapsing categorical variables</h2>
 <p>Another categorical we have access to is the <code>Drugs</code> variable, which is currently coded as numeric. We can first use the <code>fct_recode()</code> function to modify the <code>Drugs</code> variable so that the integers are relabeled:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>heart_disease <span class="ot">&lt;-</span> heart_disease <span class="sc">|&gt;</span></span>
@@ -322,7 +323,6 @@ h_{ii} = \frac{1}{n} + \frac{(x_i - \bar{x})^2}{\sum_i^n (x_i - \bar{x})^2}
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">drugs_group =</span> <span class="fu">fct_collapse</span>(Drugs, <span class="st">"None"</span> <span class="ot">=</span> <span class="st">"None"</span>, <span class="st">"&gt;= One"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"One"</span>, <span class="st">"&gt; One"</span>))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Refit the model with this new <code>drugs_group</code> variable</strong>, but assign it to a different name, e.g.&nbsp;<code>drugs_group_cost_lm</code>. What changed in the summary?</p>
-</section>
 </section>
 <section id="interactions" class="level2">
 <h2 class="anchored" data-anchor-id="interactions">9. Interactions</h2>
@@ -345,8 +345,9 @@ h_{ii} = \frac{1}{n} + \frac{(x_i - \bar{x})^2}{\sum_i^n (x_i - \bar{x})^2}
 </div>
 <p><strong>Replace the predictions in the previous plot’s <code>mutate</code> code with this interaction model’s predictions.</strong> How do they compare to the results from <code>geom_smooth()</code> now?</p>
 <p>You can model interactions between any type of variables using the <code>*</code> operator, feel free to experiment on your different possible continuous variables.</p>
-<section id="polynomials" class="level3">
-<h3 class="anchored" data-anchor-id="polynomials">10. Polynomials</h3>
+</section>
+<section id="polynomials" class="level2">
+<h2 class="anchored" data-anchor-id="polynomials">10. Polynomials</h2>
 <p>Another way to increase the explanatory power of your model is to include transformations of continuous variables. For instance you can directly create a column that is a square of a variable with <code>mutate()</code> and then fit the regression with the original variable and its squared term:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>heart_disease <span class="ot">&lt;-</span> heart_disease <span class="sc">|&gt;</span></span>
@@ -356,8 +357,8 @@ h_{ii} = \frac{1}{n} + \frac{(x_i - \bar{x})^2}{\sum_i^n (x_i - \bar{x})^2}
 </div>
 <p><strong>What are some difficulties with interpreting this model fit?</strong> View the predictions for this model or other covariates you squared.</p>
 </section>
-<section id="training-and-testing" class="level3">
-<h3 class="anchored" data-anchor-id="training-and-testing">6. Training and testing</h3>
+<section id="training-and-testing" class="level2">
+<h2 class="anchored" data-anchor-id="training-and-testing">11. Training and testing</h2>
 <p>As we’ve seen, using transformations such as higher-order polynomials may decrease the interpretability and increase the potential for overfitting associated with our models; however, they can also dramatically improve the explanatory power.</p>
 <p>We need a way for making sure our more complicated models have not overly fit to the noise present in our data. Another way of saying this is that a good model should generalize to a different sample than the one on which it was fit. This intuition motivates the idea of training/testing. We split our data into two parts, use one part – the training set – to fit our models, and the other part – the testing set – to evaluate our models. Any model which happens to fit to the noise present in our training data should perform poorly on our testing data.</p>
 <p>The first thing we will need to do is split our sample. Run the following code chunk to divide our data into two halves, which we will refer to as a training set and a test set. Briefly summarize what each line in the code chunk is doing.</p>
@@ -389,7 +390,6 @@ h_{ii} = \frac{1}{n} + \frac{(x_i - \bar{x})^2}{\sum_i^n (x_i - \bar{x})^2}
 <p><strong>Do this for each of your candidate models</strong>. Compare the MSE on the test set, which model performed best (in terms of lowest test MSE)?</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

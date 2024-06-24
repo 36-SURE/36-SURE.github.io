@@ -311,7 +311,7 @@ h_{ii} = \frac{1}{n} + \frac{(x_i - \bar{x})^2}{\sum_i^n (x_i - \bar{x})^2}
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x_pos_nba_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(min_per_game <span class="sc">~</span> position <span class="sc">+</span> INSERT_VARIABLE, <span class="at">data =</span> nba_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Create scatterplots with your predictions on the y-axis, your <code>INSERT_VARIABLE</code> on the x-asis, and color by position</strong>. What do you observe?</p>
+<p><strong>Create scatterplots with your predictions on the y-axis, your <code>INSERT_VARIABLE</code> on the x-axis, and color by position</strong>. What do you observe?</p>
 <p>Given similarities between different types of positions, we can easily collapse the positions together into a smaller number of categories using <code>fct_collapse()</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nba_stats <span class="ot">&lt;-</span> nba_stats <span class="sc">|&gt;</span></span>

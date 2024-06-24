@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.361">
 
   <meta name="author" content=" SURE 2024  Department of Statistics &amp; Data Science Carnegie Mellon University">
-  <title>SURE 2024 - Supervised learning: variable selection</title>
+  <title>SURE 2024 - Supervised learning: regularization</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -392,7 +392,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Supervised learning: variable selection</h1>
+  <h1 class="title">Supervised learning: regularization</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -495,6 +495,7 @@
 </section>
 <section id="shrinkage-methods-lasso-regression-1" class="slide level2">
 <h2>Shrinkage methods: Lasso regression</h2>
+<p>“Least Absolute Shrinkage and Selection Operator”</p>
 <p>Lasso regression <strong>performs variable selection</strong> yielding <strong>sparse</strong> models</p>
 
 <img data-src="http://www.stat.cmu.edu/~pfreeman/Lasso.png" style="width:40.0%" class="r-stretch quarto-figure-center"><p>The coefficient shrinks towards and <strong>eventually equals zero</strong> at <span class="math inline">\(\lambda \approx 1000\)</span></p>
@@ -797,13 +798,23 @@ $ train   &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FA
 <div class="column" style="text-align: left;">
 <p>Coefficients using the <strong>1 standard error rule</strong> <span class="math inline">\(\lambda\)</span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tidy_lasso_coef <span class="sc">|&gt;</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(lambda <span class="sc">==</span> prostate_lasso_cv<span class="sc">$</span>lambda<span class="fl">.1</span>se) <span class="sc">|&gt;</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">term =</span> <span class="fu">fct_reorder</span>(term, estimate)) <span class="sc">|&gt;</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> estimate, <span class="at">y =</span> term, </span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> estimate <span class="sc">&gt;</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkred"</span>, <span class="st">"darkblue"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will only print out non-zero coefficient estimates</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tidy_lasso_coef |&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(lambda == prostate_lasso_cv$lambda.1se)</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>lasso_final <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  model_x, model_y, </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">lambda =</span> prostate_lasso_cv<span class="sc">$</span>lambda<span class="fl">.1</span>se</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vip)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>lasso_final <span class="sc">|&gt;</span> </span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vi</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Variable =</span> <span class="fu">fct_reorder</span>(Variable, Importance)) <span class="sc">|&gt;</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Importance, <span class="at">y =</span> Variable, </span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> Importance <span class="sc">&gt;</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkred"</span>, <span class="st">"darkblue"</span>)) <span class="sc">+</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"estimate"</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
@@ -1131,7 +1142,7 @@ $ train   &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FA
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

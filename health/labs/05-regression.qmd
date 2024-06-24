@@ -135,7 +135,7 @@ heart_disease |>
   theme_light()
 ```
 
-### 5. Include multiple covariates
+## 5. Include multiple covariates
 
 Repeat steps 2 and 3 above but including more than one variable in your model.
 You can easily do this in the `lm()` function by adding another variable to the formula with the `+` operator as so (but just replace the `INSERT_VARIABLE` parts):
@@ -229,7 +229,7 @@ heart_disease <- heart_disease |>
   mutate(Gender = fct_relevel(Gender, "Female")) 
 ```
 
-### 7. Linear model with one categorical and one continuous variable
+## 7. Linear model with one categorical and one continuous variable
 
 Pick a single continuous variable from yesterday, use it to replace `INSERT_VARIABLE` below, then run the code to fit a model with the `Gender` included:
 
@@ -238,10 +238,10 @@ Pick a single continuous variable from yesterday, use it to replace `INSERT_VARI
 x_gender_cost_lm <- lm(log_cost ~ Gender + INSERT_VARIABLE, data = heart_disease)
 ```
 
-**Create scatterplots with your predictions on the y-axis, your INSERT_VARIABLE on the x-asis, and color by `Gender`**.
+**Create scatterplots with your predictions on the y-axis, your INSERT_VARIABLE on the x-axis, and color by `Gender`**.
 What do you observe?
 
-### 8. Collapsing categorical variables
+## 8. Collapsing categorical variables
 
 Another categorical we have access to is the `Drugs` variable, which is currently coded as numeric.
 We can first use the `fct_recode()` function to modify the `Drugs` variable so that the integers are relabeled:
@@ -312,7 +312,7 @@ How do they compare to the results from `geom_smooth()` now?
 
 You can model interactions between any type of variables using the `*` operator, feel free to experiment on your different possible continuous variables.
 
-### 10. Polynomials
+## 10. Polynomials
 
 Another way to increase the explanatory power of your model is to include transformations of continuous variables.
 For instance you can directly create a column that is a square of a variable with `mutate()` and then fit the regression with the original variable and its squared term:
@@ -328,8 +328,7 @@ summary(squared_duration_lm)
 **What are some difficulties with interpreting this model fit?**
 View the predictions for this model or other covariates you squared.
 
-
-### 6. Training and testing
+## 11. Training and testing
 
 As we've seen, using transformations such as higher-order polynomials may decrease the interpretability and increase the potential for overfitting associated with our models; however, they can also dramatically improve the explanatory power.
 
