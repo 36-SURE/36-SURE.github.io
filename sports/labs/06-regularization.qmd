@@ -8,7 +8,8 @@ format: html
 
 The purpose of this lab is to walk through the basics of a **regularized adjusted plus-minus (RAPM) model** to estimate the impact of basketball players when they are on the court, while adjusting for the quality of their teammates and opponents.
 We will use a dataset that is already in the wide design matrix form with indicator columns for every player that was observed during the regular season.
-You can find the script for building this dataset [here](https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/init_nba_rapm_data.R), which relies on the [`hoopR` package](https://hoopr.sportsdataverse.org/) to obtain the data.
+You can find the script for building this dataset [here](https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/init_nba_rapm_data.R), which relies on the [`hoopR` package](https://hoopr.sportsdataverse.org/) to obtain the data. 
+(Ron is a true hero.)
 
 The following code chunk reads in the data, which is in a wide format.
 
