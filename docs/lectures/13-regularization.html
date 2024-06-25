@@ -408,37 +408,37 @@
 <h1>Background</h1>
 
 </section>
-<section id="recap-variable-selection" class="slide level2">
-<h2>Recap: variable selection</h2>
-<p>Variable selection for a linear model <t> <span class="math inline">\(\qquad \hat{Y} = \hat{\beta}_0 + \hat{\beta}_1 x_1 + \cdots + \hat{\beta}_p x_p\)</span></t></p>
-<p>Why would we attempt to select a <strong>subset</strong> of the <span class="math inline">\(p\)</span> variables?</p>
+<section id="the-big-picture" class="slide level2">
+<h2>The big picture</h2>
+<p>Regularized/shrinkage/penalized regression</p>
+<ul>
+<li>Involves fitting a model containing all <span class="math inline">\(p\)</span> predictors</li>
+</ul>
 <div class="fragment">
 <ul>
-<li><p><em>To improve prediction accuracy</em></p>
-<ul>
-<li>Eliminating uninformative predictors can lead to lower variance in the test-set MSE, at the expense of a slight increase in bias</li>
-</ul></li>
+<li>However, the estimated coefficients are shrunken towards zero relative to the least squares estimates of vanilla linear regression</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li><p><em>To improve model interpretability</em></p>
-<ul>
-<li>Eliminating uninformative predictors is obviously a good thing when your goal is to tell the story of how your predictors are associated with your response.</li>
-</ul></li>
+<li>This “shrinkage” (also known as regularization) has the effect of reducing variance</li>
 </ul>
 </div>
 <div class="fragment">
-<p><strong>Remember the bias-variance tradeoff</strong> <span class="math inline">\(\qquad {\rm MSE} = {\rm (Bias)}^2 + {\rm Variance}\)</span></p>
 <ul>
-<li>Introduce bias but decrease variance to improve predictions</li>
+<li>Depending on what type of regularization is performed, some coefficient estimates can be exactly zero</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Thus, regularization methods can perform variable selection</li>
 </ul>
 </div>
 </section>
 <section id="recap-linear-regression" class="slide level2">
 <h2>Recap: linear regression</h2>
 <p><strong>Linear regression</strong> estimates coefficients by minimizing</p>
-<p><span class="math display">\[\text{RSS} = \sum_i^n \big(Y_i - \beta_0 -  \sum_j^p \hat{\beta}_j x_{ij}\big)^2\]</span></p>
+<p><span class="math display">\[\text{RSS} = \sum_i^n \big(Y_i - \beta_0 -  \sum_j^p \hat{\beta}_j X_{ij}\big)^2\]</span></p>
 <center>
 <!-- ![](/images/rss.png){width="700"} -->
 <p><img src="../images/rss.png" style="border: 1px solid grey;" width="600"></p>
@@ -447,10 +447,10 @@
 <section id="shrinkage-methods-ridge-regression" class="slide level2">
 <h2>Shrinkage methods: ridge regression</h2>
 <p><strong>Linear regression</strong> estimates coefficients by minimizing</p>
-<p><span class="math display">\[\text{RSS} = \sum_i^n \big(Y_i - \beta_0 -  \sum_j^p \hat{\beta}_j x_{ij}\big)^2\]</span></p>
+<p><span class="math display">\[\text{RSS} = \sum_i^n \big(Y_i - \beta_0 -  \sum_j^p \hat{\beta}_j X_{ij}\big)^2\]</span></p>
 <div class="fragment">
-<p><strong>Ridge regression</strong> introduces a <strong>shrinkage penalty</strong> <span class="math inline">\(\lambda \geq 0\)</span> by minimizing:</p>
-<p><span class="math display">\[\sum_i^n \big(Y_i - \beta_0 -  \sum_j^p \beta_j x_{ij}\big)^2 + \lambda \sum_j^p \beta_j^2 = \text{RSS} + \lambda \sum_j^p \beta_j^2\]</span></p>
+<p><strong>Ridge regression</strong> introduces a <strong>shrinkage penalty</strong> <span class="math inline">\(\lambda \geq 0\)</span> by minimizing</p>
+<p><span class="math display">\[\sum_i^n \big(Y_i - \beta_0 -  \sum_j^p \beta_j X_{ij}\big)^2 + \lambda \sum_j^p \beta_j^2 = \text{RSS} + \lambda \sum_j^p \beta_j^2\]</span></p>
 </div>
 <div class="fragment">
 <ul>
@@ -480,7 +480,7 @@
 </section>
 <section id="shrinkage-methods-lasso-regression" class="slide level2">
 <h2>Shrinkage methods: lasso regression</h2>
-<p>Ridge regression <strong>keeps all variables</strong>… but we may believe there is a <strong>sparse</strong> solution</p>
+<p>Ridge regression <strong>keeps all variables</strong>, but we may believe there is a <strong>sparse</strong> solution</p>
 <div class="fragment">
 <p><strong>Lasso</strong> (“Least Absolute Shrinkage and Selection Operator”) enables variable selection with <span class="math inline">\(\lambda\)</span> by minimizing:</p>
 <p><span class="math display">\[\sum_i^n \big(Y_i - \beta_0 -  \sum_j^p \beta_j X_{ij}\big)^2 + \lambda \sum_j^p\vert  \beta_j \vert = \text{RSS} + \lambda \sum_j^p \vert \beta_j \vert\]</span></p>
@@ -506,10 +506,13 @@
 <h2>Shrinkage methods: lasso regression</h2>
 <p>Lasso regression <strong>performs variable selection</strong> yielding <strong>sparse</strong> models (i.e.&nbsp;models that involve only a subset of the variables)</p>
 
-<img data-src="http://www.stat.cmu.edu/~pfreeman/Lasso.png" style="width:40.0%" class="r-stretch quarto-figure-center"><p>The coefficient shrinks towards and <strong>eventually equals zero</strong> at <span class="math inline">\(\lambda \approx 1000\)</span></p>
-<ul>
-<li>if the optimum value of <span class="math inline">\(\lambda\)</span> is larger, then <code>Income</code> would NOT be included in the learned model</li>
-</ul>
+<img data-src="http://www.stat.cmu.edu/~pfreeman/Lasso.png" style="width:40.0%" class="r-stretch quarto-figure-center"><p>The coefficient shrinks towards and <strong>eventually equals zero</strong></p>
+</section>
+<section id="be-lasso" class="slide level2">
+<h2>Be lasso</h2>
+<center>
+<p><img data-src="../images/lasso-costume.jpeg" width="500"></p>
+</center>
 </section>
 <section id="lasso-and-ridge-as-optimization-problems" class="slide level2">
 <h2>Lasso and ridge as optimization problems</h2>
@@ -518,13 +521,13 @@
 <li>Lasso</li>
 </ul>
 <p><span class="math display">\[
-\underset{\beta}{\text{minimize}} \sum_{i=1}^n \left(y_i - \beta_0 - \sum_{j=1}^p\beta_j x_{ij} \right)^2 \quad \text{subject to} \quad \sum_{j=1}^p|\beta_j| \le s
+\underset{\beta}{\text{minimize}} \sum_{i=1}^n \left(Y_i - \beta_0 - \sum_{j=1}^p\beta_j X_{ij} \right)^2 \quad \text{subject to} \quad \sum_{j=1}^p|\beta_j| \le s
 \]</span></p>
 <ul>
 <li>Ridge</li>
 </ul>
 <p><span class="math display">\[
-\underset{\beta}{\text{minimize}} \sum_{i=1}^n \left(y_i - \beta_0 - \sum_{j=1}^p\beta_j x_{ij} \right)^2 \quad \text{subject to} \quad \sum_{j=1}^p \beta_j ^2 \le s
+\underset{\beta}{\text{minimize}} \sum_{i=1}^n \left(Y_i - \beta_0 - \sum_{j=1}^p\beta_j X_{ij} \right)^2 \quad \text{subject to} \quad \sum_{j=1}^p \beta_j ^2 \le s
 \]</span></p>
 </section>
 <section id="lasso-and-ridge-in-picture" class="slide level2">
@@ -544,32 +547,31 @@
 <ul>
 <li><p>Ridge penalty: <span class="math inline">\(\lambda \cdot (1 - \alpha) / 2\)</span></p></li>
 <li><p>Lasso penalty: <span class="math inline">\(\lambda \cdot \alpha\)</span></p></li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
 <li><p><span class="math inline">\(\alpha\)</span> controls the <strong>mixing</strong> between the two types, ranges from 0 to 1</p>
 <ul>
-<li><p><span class="math inline">\(\alpha = 1\)</span> returns lasso</p></li>
-<li><p><span class="math inline">\(\alpha = 0\)</span> return ridge</p></li>
+<li><span class="math inline">\(\alpha = 1\)</span> returns lasso, <span class="math inline">\(\alpha = 0\)</span> return ridge</li>
 </ul></li>
-</ul>
-</div>
-</section>
-<section id="caveats-to-consider" class="slide level2">
-<h2>Caveats to consider</h2>
-<ul>
-<li><p>For either ridge, lasso, or elastic net: <strong>you should standardize your data</strong></p></li>
-<li><p>Common convention: within each column, compute then subtract off the sample mean, and compute the divide off the sample standard deviation <span class="math inline">\(\qquad \displaystyle \tilde{x}_{ij} = \frac{x_{ij} - \bar{x}_j}{s_{x,j}}\)</span></p></li>
-<li><p><a href="https://glmnet.stanford.edu/articles/glmnet.html"><code>glmnet</code></a> package does this by default and reports coefficients on the original scale</p></li>
-</ul>
-<div class="fragment">
-<ul>
 <li><p><span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\alpha\)</span> are <strong>tuning parameters</strong></p></li>
-<li><p>Choose appropriate values based on test data / cross-validation</p></li>
+<li><p>Choose appropriate values based on out-of-sample performance/cross-validation</p></li>
 <li><p>Use <code>cv.glmnet()</code> function in <code>glmnet</code> to perform cross-validation</p></li>
 </ul>
 </div>
+</section>
+<section id="scaling-of-predictors" class="slide level2">
+<h2>Scaling of predictors</h2>
+<ul>
+<li><p>In linear regression, the (least squares) coefficient estimates are scale equivariant</p>
+<ul>
+<li><p>multiplying <span class="math inline">\(X_j\)</span> by a constant c simply leads to a scaling of the least squares coefficient estimates by a factor of <span class="math inline">\(1/c\)</span></p></li>
+<li><p>i.e., regardless of how the <span class="math inline">\(j\)</span>th predictor is scaled, <span class="math inline">\(X_j \hat \beta_j\)</span> will remain the same</p></li>
+</ul></li>
+<li><p>For either ridge, lasso, or elastic net: <strong>you should standardize your data</strong></p>
+<ul>
+<li>The coefficient estimates can change substantially when multiplying a given predictor by a constant, due to the sum of squared coefficients term in the penalty</li>
+</ul></li>
+<li><p>Common convention: for each predictor column, subtract off the mean, and divide by the standard deviation <span class="math inline">\(\qquad \displaystyle \tilde{x}_{ij} = \frac{x_{ij} - \bar{x}_j}{s_{x,j}}\)</span></p></li>
+<li><p><a href="https://glmnet.stanford.edu/articles/glmnet.html"><code>glmnet</code></a> package does this by default and reports coefficients on the original scale</p></li>
+</ul>
 </section></section>
 <section>
 <section id="examples" class="title-slide slide level1 center">
@@ -659,7 +661,7 @@ $ train   &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FA
 <section id="ridge-regression" class="slide level2">
 <h2>Ridge regression</h2>
 <p>Perform ridge regression using <code>glmnet</code> with <code>alpha = 0</code></p>
-<p>By default, predictors are standardized and models are fitted across a range of <span class="math inline">\(\lambda\)</span> values (can plot these!)</p>
+<p>By default, predictors are standardized and models are fitted across a range of <span class="math inline">\(\lambda\)</span> values</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>prostate_ridge <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(model_x, model_y, <span class="at">alpha =</span> <span class="dv">0</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(prostate_ridge, <span class="at">xvar =</span> <span class="st">"lambda"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -740,15 +742,24 @@ $ train   &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FA
 <h2>Ridge regression coefficients</h2>
 <div class="columns">
 <div class="column" style="text-align: left;">
-<p>Coefficients using the <strong>1 standard error rule</strong> <span class="math inline">\(\lambda\)</span></p>
+<p>Coefficients using the <strong>one-standard-error rule</strong></p>
+<p>(select the model with estimated test error within one standard error of the minimum test error)</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tidy_ridge_coef <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(lambda <span class="sc">==</span> prostate_ridge_cv<span class="sc">$</span>lambda<span class="fl">.1</span>se) <span class="sc">|&gt;</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">term =</span> <span class="fu">fct_reorder</span>(term, estimate)) <span class="sc">|&gt;</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> estimate, <span class="at">y =</span> term, </span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> estimate <span class="sc">&gt;</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkred"</span>, <span class="st">"darkblue"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ridge_final &lt;- glmnet(</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   model_x, model_y, alpha = 0,</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   lambda = prostate_ridge_cv$lambda.1se,</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># library(vip)</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ridge_final |&gt; </span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   vip()</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>tidy_ridge_coef <span class="sc">|&gt;</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(lambda <span class="sc">==</span> prostate_ridge_cv<span class="sc">$</span>lambda<span class="fl">.1</span>se) <span class="sc">|&gt;</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">term =</span> <span class="fu">fct_reorder</span>(term, estimate)) <span class="sc">|&gt;</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> estimate, <span class="at">y =</span> term, </span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> estimate <span class="sc">&gt;</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkred"</span>, <span class="st">"darkblue"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
@@ -808,7 +819,7 @@ $ train   &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FA
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Reduction in variables using <strong>1 standard error rule</strong> <span class="math inline">\(\lambda\)</span></p>
+<p>Reduction in variables using <strong>one-standard-error rule</strong></p>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -826,7 +837,7 @@ $ train   &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FA
 <h2>Lasso regression example</h2>
 <div class="columns">
 <div class="column" style="text-align: left;">
-<p>Coefficients using the <strong>1 standard error rule</strong> <span class="math inline">\(\lambda\)</span></p>
+<p>Coefficients using the <strong>one-standard-error rule</strong></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will only print out non-zero coefficient estimates</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tidy_lasso_coef |&gt;</span></span>
@@ -834,17 +845,18 @@ $ train   &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FA
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>lasso_final <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(</span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  model_x, model_y, </span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">lambda =</span> prostate_lasso_cv<span class="sc">$</span>lambda<span class="fl">.1</span>se</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vip)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>lasso_final <span class="sc">|&gt;</span> </span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vi</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Variable =</span> <span class="fu">fct_reorder</span>(Variable, Importance)) <span class="sc">|&gt;</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Importance, <span class="at">y =</span> Variable, </span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> Importance <span class="sc">&gt;</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkred"</span>, <span class="st">"darkblue"</span>)) <span class="sc">+</span></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"estimate"</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">lambda =</span> prostate_lasso_cv<span class="sc">$</span>lambda<span class="fl">.1</span>se,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vip)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>lasso_final <span class="sc">|&gt;</span> </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vi</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Variable =</span> <span class="fu">fct_reorder</span>(Variable, Importance)) <span class="sc">|&gt;</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Importance, <span class="at">y =</span> Variable, </span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> Importance <span class="sc">&gt;</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkred"</span>, <span class="st">"darkblue"</span>)) <span class="sc">+</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"estimate"</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
@@ -967,7 +979,7 @@ $ train   &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FA
 <span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se, <span class="at">geom =</span> <span class="st">"errorbar"</span>, </span>
 <span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>               <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">width =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Regularization methods perform better than a linear model</p>
+<p>Linear regression actually performs “better” than regularization, but within intervals</p>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">

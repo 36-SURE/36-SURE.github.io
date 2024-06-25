@@ -431,6 +431,7 @@
 <li>tests for coefficients</li>
 <li>indicator variables</li>
 <li>model selection techniques</li>
+<li>regularization</li>
 </ul></li>
 <li><p>Other concepts are different</p>
 <ul>
@@ -469,10 +470,52 @@
 <p>or equivalently,</p>
 <p><span class="math display">\[
 p(x) =  \frac{e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}{1 + e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}
-\]</span> . . .</p>
+\]</span></p>
+</div>
+<div class="fragment">
 <ul>
 <li>Note: <span class="math inline">\(p(x)= P(Y = 1 \mid X = x) = \mathbb E[Y \mid X = x]\)</span></li>
 </ul>
+</div>
+</section>
+<section id="maximum-likelihood-estimation-mle" class="slide level2">
+<h2>Maximum likelihood estimation (MLE)</h2>
+<ul>
+<li>Likelihood function: how likely to observe data for given parameter values <span class="math display">\[L(\theta) = \prod_{i=1}^n f(y_i; \theta)\]</span></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Goal: find values for parameters that maximize likelihood function (i.e., MLEs)</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Why: likelihood methods can handle variety of data types and assumptions</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><p>How: typically numerical approaches and optimization techniques</p>
+<ul>
+<li>Easier to work with log-likelihood (sums compared to products)</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="example-linear-regression-mle" class="slide level2">
+<h2>Example: linear regression MLE</h2>
+<p>Reminder: probability density function (pdf) for a normal distribution <span class="math display">\[f(y \mid \mu, \sigma) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{\frac{-(y - \mu) ^ 2}{2 \sigma^2}}\]</span></p>
+<div class="fragment">
+<p>Consider a simple linear regression model (with an intercept and one predictor) <span class="math display">\[y_i = \beta_0 + \beta_1 x_i + \epsilon_i, \quad \epsilon_i \sim N(0, \sigma^2)\]</span></p>
+</div>
+<div class="fragment">
+<p>Then <span class="math inline">\(\qquad \displaystyle L(\beta_0, \beta_1, \sigma) = \prod_{i=1}^n f(y_i \mid x_i; \beta_0, \beta_1, \sigma) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi \sigma^2}} e^{\frac{-(y_i - \beta_0 - \beta_1 x_i) ^ 2}{2 \sigma^2}}\)</span></p>
+</div>
+<div class="fragment">
+<p>And <span class="math inline">\(\qquad \displaystyle \log L(\beta_0, \beta_1, \sigma) = -\frac{n}{2} \log 2\pi - \frac{n}{2} \log \sigma^2 - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i - \beta_0 - \beta_1x_1)^2\)</span></p>
+</div>
+<div class="fragment">
+<p>We can then use calculus to find the optimal parameter values. For more details, see <a href="https://www.stat.cmu.edu/~cshalizi/mreg/15/lectures/06/lecture-06.pdf">here</a></p>
 </div>
 </section>
 <section id="major-difference-between-linear-and-logistic-regression" class="slide level2">
@@ -512,38 +555,35 @@ p(x) =  \frac{e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}{1 + e^{\beta_0 +
 </ul>
 <div class="fragment">
 <ul>
-<li>For linear regression, the answer is straightforward <span class="math display">\[\mathbb{E}[Y \mid x] = \beta_0 + \beta_1 x_1\]</span></li>
+<li>For linear regression, the answer is straightforward</li>
 </ul>
+<p><span class="math display">\[\mathbb{E}[Y \mid x] = \beta_0 + \beta_1 x_1 + + \cdots + \beta_p x_p\]</span></p>
 </div>
 <div class="fragment">
 <ul>
-<li><p>For logistic regression, it is a little <em>less</em> straightforward <span class="math display">\[\mathbb E[Y \mid x] = \frac{e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}{1 + e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}\]</span></p>
+<li>For logistic regression, it is a little <em>less</em> straightforward</li>
+</ul>
+<p><span class="math display">\[\mathbb E[Y \mid x] = \frac{e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}{1 + e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}\]</span></p>
+<p>Note:</p>
 <ul>
 <li><p>The predicted response varies <strong>non-linearly</strong> with the predictor variable values</p></li>
 <li><p>Interpretation on the <strong>odds</strong> scale</p></li>
-</ul></li>
 </ul>
 </div>
 </section>
 <section id="the-odds-interpretation" class="slide level2">
 <h2>The odds interpretation</h2>
+<p>The odds of an event are the probability of the event divided by the probability of the event not occurring</p>
+<p>Suppose we fit a simple logistic regression model (with one predictor), and say the predicted probability is 0.8 for a particular predictor value</p>
 <ul>
-<li>The odds of an event are the probability of the event divided by the probability of the event not occurring</li>
-</ul>
-<p>Pretend the predicted probability is 0.8 given a particular predictor variable value</p>
-<ul>
-<li>just pretend we only have one predictor variable</li>
+<li><p>This means that if we were to repeatedly sample response values given that predictor variable value: <strong>we expect class 1 to appear 4 times as often as class 0</strong> <span class="math display">\[\text{Odds} = \frac{\mathbb{E}[Y \mid x]}{1-\mathbb{E}[Y \mid x]} = \frac{0.8}{1-0.8} = 4 = e^{\beta_0+\beta_1x}\]</span></p></li>
+<li><p>Thus we say that for the given predictor variable value, the odds are 4 (or 4-1) in favor of class 1</p></li>
 </ul>
 <div class="fragment">
-<p>This means that if we were to repeatedly sample response values given that predictor variable value: <strong>we expect class 1 to appear 4 times as often as class 0</strong></p>
-<p><span class="math display">\[Odds = \frac{\mathbb{E}[Y \mid x]}{1-\mathbb{E}[Y \mid x]} = \frac{0.8}{1-0.8} = 4 = e^{\beta_0+\beta_1x}\]</span></p>
-<p>Thus we say that for the given predictor variable value, the <span class="math inline">\(Odds\)</span> are 4 (or 4-1) in favor of class 1</p>
+<p>How does the odds change if we change the value of a predictor variable by one unit?</p>
 </div>
 <div class="fragment">
-<p>How does the odds change if I change the value of a predictor variable by one unit?</p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[Odds_{\rm new} = e^{\beta_0+\beta_1(x+1)} = e^{\beta_0+\beta_1x}e^{\beta_1} = e^{\beta_1}Odds_{\rm old}\]</span></p>
+<p><span class="math display">\[\text{Odds}_{\rm new} = e^{\beta_0+\beta_1(x+1)} = e^{\beta_0+\beta_1x}e^{\beta_1} = e^{\beta_1}\text{Odds}_{\rm old}\]</span></p>
 <p>For every unit change in <span class="math inline">\(x\)</span>, the odds change by a <strong>factor</strong> <span class="math inline">\(e^{\beta_1}\)</span></p>
 </div>
 </section></section>
@@ -571,9 +611,8 @@ p(x) =  \frac{e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}{1 + e^{\beta_0 +
 <section id="fitting-a-logistic-regression-model" class="slide level2">
 <h2>Fitting a logistic regression model</h2>
 <ul>
-<li><p>Use the <code>glm</code> function, but specify the family is <code>binomial</code></p></li>
-<li><p>Get coefficients table using the <code>tidy()</code> function in the <code>broom</code> package</p></li>
-<li><p>Could exponentiate the coefficient estimates (log-odds) to back-transform and get the odds</p></li>
+<li>Use the <code>glm</code> function, but specify the family is <code>binomial</code></li>
+<li>Get coefficients table using the <code>tidy()</code> function in the <code>broom</code> package</li>
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pima_logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(type <span class="sc">~</span> pregnancy <span class="sc">+</span> bp, <span class="at">data =</span> pima, <span class="at">family =</span> binomial)</span>
@@ -588,6 +627,12 @@ p(x) =  \frac{e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}{1 + e^{\beta_0 +
 2 pregnancyYes  -0.468     0.427      -1.10 0.273  
 3 bp             0.0403    0.0140      2.89 0.00391</code></pre>
 </div>
+</div>
+<div class="fragment">
+<ul>
+<li>Eponentiate the coefficient estimates (log-odds) to back-transform and get the odds</li>
+</ul>
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(pima_logit, <span class="at">conf.int =</span> <span class="cn">TRUE</span>, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 7
@@ -596,6 +641,7 @@ p(x) =  \frac{e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}{1 + e^{\beta_0 +
 1 (Intercept)    0.0422    1.08       -2.94 0.00329  0.00472     0.329
 2 pregnancyYes   0.626     0.427      -1.10 0.273    0.272       1.47 
 3 bp             1.04      0.0140      2.89 0.00391  1.01        1.07 </code></pre>
+</div>
 </div>
 </div>
 </section>
@@ -613,16 +659,24 @@ p(x) =  \frac{e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}{1 + e^{\beta_0 +
 </div>
 </div>
 <ul>
-<li><p>Intercept: the estimated log-odds of diabetes for a Pima woman who has never been pregnant and has a diastolic blood pressure of 0 (hmm…) are -3.16, so the odds are exp(-3.16) = 0.0422</p></li>
+<li>Intercept: the estimated log-odds of diabetes for a Pima woman who has never been pregnant and has a diastolic blood pressure of 0 (hmm…) are -3.16, so the odds are exp(-3.16) = 0.0422</li>
+</ul>
+<div class="fragment">
+<ul>
 <li><p>Pregnancy: pregnancy changes the log-odds of diabetes, relative to the baseline value, by -0.468. The odds ratio is exp(-0.47) = 0.626</p>
 <ul>
 <li>The odds of diabetes for those that has had at least one pregnancies is 0.626 times that the odds of diabetes for those with no previous pregnancies</li>
 </ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
 <li><p>Blood pressure: each unit of increase in blood pressure (in mmHg) is associated with an increase in the log-odds of diabetes of 0.0403, or an increase in the odds of diabetes by a multiplicative factor of exp(0.0403) = 1.04</p>
 <ul>
 <li>Every extra mmHg in blood pressure multiplies the odds of diabetes by 1.04</li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="view-predicted-probability-relationship" class="slide level2">
 <h2>View predicted probability relationship</h2>
@@ -635,7 +689,7 @@ p(x) =  \frac{e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}{1 + e^{\beta_0 +
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> i_type), <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">color =</span> <span class="st">"darkorange"</span>, <span class="at">size =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="14-logistic_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="14-logistic_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch quarto-figure-center"></section>
 <section id="effects-plot" class="slide level2">
 <h2>Effects plot</h2>
 <ul>
@@ -649,9 +703,9 @@ p(x) =  \frac{e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}{1 + e^{\beta_0 +
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="14-logistic_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch quarto-figure-center"></section>
-<section id="deviancehttpsen.wikipedia.orgwikideviance_statistics" class="slide level2">
-<h2>[Deviance](https://en.wikipedia.org/wiki/Deviance_(statistics)?</h2>
+<img data-src="14-logistic_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="deviance" class="slide level2">
+<h2><a href="https://en.wikipedia.org/wiki/Deviance_(statistics)">Deviance</a></h2>
 <p>For model of interest <span class="math inline">\(\mathcal{M}\)</span> the total deviance is:</p>
 <p><span class="math display">\[D_{\mathcal{M}}= -2 \log \frac{\mathcal{L}_{\mathcal{M}}}{\mathcal{L}_{\mathcal{S}}} = 2\left(\log  \mathcal{L}_{\mathcal{S}}-\log  \mathcal{L}_{\mathcal{M}}\right)\]</span></p>
 <ul>
@@ -764,31 +818,23 @@ Predicted  No Yes
 </section>
 <section id="calibration" class="slide level2">
 <h2>Calibration</h2>
-<p>TODO: revise</p>
+<p>If we have a model that tells us the probability of rain in a given time period (i.e.&nbsp;a year) is 50%, it had better rain on half of the days, or the model is just wrong about the probability of rain</p>
+<div class="fragment">
 <ul>
-<li><p>Origination: weather forecasting</p></li>
-<li><p>Suppose you look at the forecast for 6/6/2024 and see there’s a 20% chance of rain</p></li>
-<li><p>But what does it mean that there’s a 20% chance of rain on 6/6/2024? It either does or does not rain.</p></li>
-<li><p>Weather forecasters ran into this problem of wanting to provide a probability of rain but were unsure of how to define this probability</p></li>
-<li><p>Solution for defining a 20% chance of rain</p>
-<ul>
-<li><p>if the model outputs 20% of rain on 6/6/2024, and</p></li>
-<li><p>for previous days (years), the ratio of the number of days it actually rained to the total number of days the classifier predicted rain at 20% chance was approximately 20% percent</p></li>
-</ul></li>
-<li><p>A classifier is calibrated if in the last time period, (i.e.&nbsp;a year), the percentage of days it actually rained when the forecast predicted x percent chance of rain is x percent.</p></li>
-</ul>
-</section>
-<section id="calibration-1" class="slide level2">
-<h2>Calibration</h2>
-<p>If we’ve got a model which tells us that the probability of rain on a certain group of days is 50%, it had better rain on half of those days, or the model is just wrong about the probability of rain</p>
-<ul>
+<li><p>A classifier is calibrated if in the given time period, the percentage of days it actually rained when the forecast predicted <span class="math inline">\(x \%\)</span> percent chance of rain is <span class="math inline">\(x \%\)</span></p></li>
 <li><p>In short, for a model to be calibrated, the actual probabilities should match the predicted probabilities</p></li>
 <li><p>Calibration should be used together with other model evaluation and diagnostic tools</p></li>
 <li><p>A model is well-calibrated does not mean it is good at making predictions</p></li>
 </ul>
+</div>
+<div class="fragment">
+<p>See also: <a href="https://en.wikipedia.org/wiki/Hosmer-Lemeshow_test">Hosmer-Lemeshow test</a></p>
+</div>
 </section>
 <section id="calibration-plot-smoothing" class="slide level2">
 <h2>Calibration plot: smoothing</h2>
+<div class="columns">
+<div class="column" style="text-align: left;">
 <p>Plot the observed outcome against the fitted probability, and apply a smoother</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pima <span class="sc">|&gt;</span> </span>
@@ -797,32 +843,63 @@ Predicted  No Yes
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(pred, obs)) <span class="sc">+</span></span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, </span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">linetype =</span> <span class="st">"dashed"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<img data-src="14-logistic_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch quarto-figure-center"><p>Calibration looks good for the most part… odd behavior for predicted probabilities over 0.6, since there are only a few observations with high predicted probability</p>
+<p>Looks good for the most part</p>
+<ul>
+<li><p>odd behavior for high probability values</p></li>
+<li><p>since there are only a few observations with high predicted probability</p></li>
+</ul>
+</div><div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="14-logistic_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="calibration-plot-binning" class="slide level2">
 <h2>Calibration plot: binning</h2>
+<div class="columns">
+<div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>pima <span class="sc">|&gt;</span> </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_prob =</span> <span class="fu">predict</span>(pima_logit, <span class="at">type =</span> <span class="st">"response"</span>),</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">bin_pred_prob =</span> <span class="fu">cut</span>(pred_prob, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.1</span>))) <span class="sc">|&gt;</span> </span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(bin_pred_prob) <span class="sc">|&gt;</span> </span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">bin_actual_prob =</span> <span class="fu">mean</span>(type <span class="sc">==</span> <span class="st">"Yes"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mid_point =</span> <span class="fu">seq</span>(<span class="fl">0.15</span>, <span class="fl">0.65</span>, <span class="fl">0.1</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mid_point, <span class="at">y =</span> bin_actual_prob)) <span class="sc">+</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> n)) <span class="sc">+</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, </span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># expand_limits(x = c(0, 1), y = c(0, 1)) +</span></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">pred_prob =</span> <span class="fu">predict</span>(pima_logit, <span class="at">type =</span> <span class="st">"response"</span>),</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">bin_pred_prob =</span> <span class="fu">cut</span>(pred_prob, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, .<span class="dv">1</span>))</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(bin_pred_prob) <span class="sc">|&gt;</span> </span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">bin_actual_prob =</span> <span class="fu">mean</span>(type <span class="sc">==</span> <span class="st">"Yes"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mid_point =</span> <span class="fu">seq</span>(<span class="fl">0.15</span>, <span class="fl">0.65</span>, <span class="fl">0.1</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mid_point, <span class="at">y =</span> bin_actual_prob)) <span class="sc">+</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> n)) <span class="sc">+</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, </span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># expand_limits(x = c(0, 1), y = c(0, 1)) +</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="14-logistic_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </div>
 
-<img data-src="14-logistic_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch quarto-figure-center"><div class="footer footer-default">
+<div class="footer footer-default">
 <p><a href="https://36-sure.github.io">36-SURE.github.io</a></p>
 </div>
 </section></section>
