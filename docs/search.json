@@ -1362,14 +1362,14 @@
     "href": "lectures.html",
     "title": "Lectures",
     "section": "",
-    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides\n\n\nLecture 9\nJune 14\nPresentations\nslides\n\n\nLecture 10\nJune 17\nSupervised learning: the tradeoffs\nslides\n\n\nLecture 11\nJune 21\nSupervised learning: linear regression\nslides\n\n\nLecture 12\nJune 24\nSupervised learning: variable selection\nslides\n\n\nLecture 13\nJune 25\nSupervised learning: regularization\nslides"
+    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides\n\n\nLecture 9\nJune 14\nPresentations\nslides\n\n\nLecture 10\nJune 17\nSupervised learning: the tradeoffs\nslides\n\n\nLecture 11\nJune 21\nSupervised learning: linear regression\nslides\n\n\nLecture 12\nJune 24\nSupervised learning: variable selection\nslides\n\n\nLecture 13\nJune 25\nSupervised learning: regularization\nslides\n\n\nLecture 14\nJune 26\nSupervised learning: logistic regression\nslides"
   },
   {
     "objectID": "lectures.html#contents",
     "href": "lectures.html#contents",
     "title": "Lectures",
     "section": "",
-    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides\n\n\nLecture 9\nJune 14\nPresentations\nslides\n\n\nLecture 10\nJune 17\nSupervised learning: the tradeoffs\nslides\n\n\nLecture 11\nJune 21\nSupervised learning: linear regression\nslides\n\n\nLecture 12\nJune 24\nSupervised learning: variable selection\nslides\n\n\nLecture 13\nJune 25\nSupervised learning: regularization\nslides"
+    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides\n\n\nLecture 9\nJune 14\nPresentations\nslides\n\n\nLecture 10\nJune 17\nSupervised learning: the tradeoffs\nslides\n\n\nLecture 11\nJune 21\nSupervised learning: linear regression\nslides\n\n\nLecture 12\nJune 24\nSupervised learning: variable selection\nslides\n\n\nLecture 13\nJune 25\nSupervised learning: regularization\nslides\n\n\nLecture 14\nJune 26\nSupervised learning: logistic regression\nslides"
   },
   {
     "objectID": "lectures.html#references",
@@ -2093,11 +2093,11 @@
     "text": "Which players have the highest uncertainty?\n\n\n\n\nnba_stats |&gt;\n  mutate(cluster = nba_mclust$classification,\n         uncertainty = nba_mclust$uncertainty) |&gt; \n  group_by(cluster) |&gt;\n  slice_max(uncertainty, n = 5) |&gt; \n  mutate(player = fct_reorder(player, uncertainty)) |&gt; \n  ggplot(aes(x = uncertainty, y = player)) +\n  geom_point(size = 3) +\n  facet_wrap(~ cluster, scales = \"free_y\", nrow = 3)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
   },
   {
-    "objectID": "lectures/13-regularization.html#recap-variable-selection",
-    "href": "lectures/13-regularization.html#recap-variable-selection",
+    "objectID": "lectures/13-regularization.html#the-big-picture",
+    "href": "lectures/13-regularization.html#the-big-picture",
     "title": "Supervised learning: regularization",
-    "section": "Recap: variable selection",
-    "text": "Recap: variable selection\nVariable selection for a linear model  \\(\\qquad \\hat{Y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 x_1 + \\cdots + \\hat{\\beta}_p x_p\\)\nWhy would we attempt to select a subset of the \\(p\\) variables?\n\n\nTo improve prediction accuracy\n\nEliminating uninformative predictors can lead to lower variance in the test-set MSE, at the expense of a slight increase in bias\n\n\n\n\n\nTo improve model interpretability\n\nEliminating uninformative predictors is obviously a good thing when your goal is to tell the story of how your predictors are associated with your response.\n\n\n\n\nRemember the bias-variance tradeoff \\(\\qquad {\\rm MSE} = {\\rm (Bias)}^2 + {\\rm Variance}\\)\n\nIntroduce bias but decrease variance to improve predictions"
+    "section": "The big picture",
+    "text": "The big picture\nRegularized/shrinkage/penalized regression\n\nInvolves fitting a model containing all \\(p\\) predictors\n\n\n\nHowever, the estimated coefficients are shrunken towards zero relative to the least squares estimates of vanilla linear regression\n\n\n\n\nThis “shrinkage” (also known as regularization) has the effect of reducing variance\n\n\n\n\nDepending on what type of regularization is performed, some coefficient estimates can be exactly zero\n\n\n\n\nThus, regularization methods can perform variable selection"
   },
   {
     "objectID": "lectures/13-regularization.html#recap-linear-regression",
@@ -2135,6 +2135,13 @@
     "text": "Shrinkage methods: lasso regression\nLasso regression performs variable selection yielding sparse models (i.e. models that involve only a subset of the variables)\n\nThe coefficient shrinks towards and eventually equals zero"
   },
   {
+    "objectID": "lectures/13-regularization.html#be-lasso",
+    "href": "lectures/13-regularization.html#be-lasso",
+    "title": "Supervised learning: regularization",
+    "section": "Be lasso",
+    "text": "Be lasso"
+  },
+  {
     "objectID": "lectures/13-regularization.html#lasso-and-ridge-as-optimization-problems",
     "href": "lectures/13-regularization.html#lasso-and-ridge-as-optimization-problems",
     "title": "Supervised learning: regularization",
@@ -2156,11 +2163,11 @@
     "text": "Best of both worlds: elastic net\n\\[\\sum_{i}^{n}\\left(Y_{i}-\\beta_{0}-\\sum_{j=1}^{p} \\beta_{j} X_{i j}\\right)^{2}+\\lambda\\left(\\frac{1-\\alpha}{2}\\|\\beta\\|_{2}^{2}+\\alpha\\|\\beta\\|_{1} \\right)\\]\n\n\\(\\Vert \\beta \\Vert_1\\): \\(\\ell_1\\) norm: \\(\\Vert \\beta \\Vert_1 = \\sum_{j=1}^p \\vert \\beta_j \\vert\\)\n\\(\\Vert \\beta \\Vert_2\\): \\(\\ell_2\\) (Euclidean) norm: \\(\\Vert \\beta \\Vert_2 = \\sqrt{\\sum_{j=1}^p \\beta_j^2}\\)\n\n\n\nRidge penalty: \\(\\lambda \\cdot (1 - \\alpha) / 2\\)\nLasso penalty: \\(\\lambda \\cdot \\alpha\\)\n\\(\\alpha\\) controls the mixing between the two types, ranges from 0 to 1\n\n\\(\\alpha = 1\\) returns lasso, \\(\\alpha = 0\\) return ridge\n\n\\(\\lambda\\) and \\(\\alpha\\) are tuning parameters\nChoose appropriate values based on out-of-sample performance/cross-validation\nUse cv.glmnet() function in glmnet to perform cross-validation"
   },
   {
-    "objectID": "lectures/13-regularization.html#caveats-to-consider",
-    "href": "lectures/13-regularization.html#caveats-to-consider",
+    "objectID": "lectures/13-regularization.html#scaling-of-predictors",
+    "href": "lectures/13-regularization.html#scaling-of-predictors",
     "title": "Supervised learning: regularization",
-    "section": "Caveats to consider",
-    "text": "Caveats to consider\n\nIn linear regression, the (least squares) coefficient estimates are scale equivariant\n\nmultiplying \\(X_j\\) by a constant c simply leads to a scaling of the least squares coefficient estimates by a factor of \\(1/c\\)\ni.e., regardless of how the \\(j\\)th predictor is scaled, \\(X_j \\hat \\beta_j\\) will remain the same\n\nFor either ridge, lasso, or elastic net: you should standardize your data\nCommon convention: within each column, compute then subtract off the sample mean, and compute the divide off the sample standard deviation \\(\\qquad \\displaystyle \\tilde{x}_{ij} = \\frac{X_{ij} - \\bar{x}_j}{s_{x,j}}\\)\nglmnet package does this by default and reports coefficients on the original scale"
+    "section": "Scaling of predictors",
+    "text": "Scaling of predictors\n\nIn linear regression, the (least squares) coefficient estimates are scale equivariant\n\nmultiplying \\(X_j\\) by a constant c simply leads to a scaling of the least squares coefficient estimates by a factor of \\(1/c\\)\ni.e., regardless of how the \\(j\\)th predictor is scaled, \\(X_j \\hat \\beta_j\\) will remain the same\n\nFor either ridge, lasso, or elastic net: you should standardize your data\n\nThe coefficient estimates can change substantially when multiplying a given predictor by a constant, due to the sum of squared coefficients term in the penalty\n\nCommon convention: for each predictor column, subtract off the mean, and divide by the standard deviation \\(\\qquad \\displaystyle \\tilde{x}_{ij} = \\frac{x_{ij} - \\bar{x}_j}{s_{x,j}}\\)\nglmnet package does this by default and reports coefficients on the original scale"
   },
   {
     "objectID": "lectures/13-regularization.html#data-prostate-cancer",
@@ -2993,7 +3000,7 @@
     "href": "lectures/14-logistic.html#logistic-regression",
     "title": "Supervised learning: logistic regression",
     "section": "Logistic regression",
-    "text": "Logistic regression\n\nReview: in linear regression, the response variable \\(Y\\) is continuous\nLogistic regression is used to model binary outcomes (i.e. \\(Y \\in \\{0, 1\\}\\))\nMany concepts are similar to the linear regression\n\ntests for coefficients\nindicator variables\nmodel selection techniques\nregularization\n\nOther concepts are different\n\ninterpretation of coefficients\nresiduals are not normally distributed\nmodel evaluation"
+    "text": "Logistic regression\n\nReview: in linear regression, the response variable \\(Y\\) is continuous\nLogistic regression is used to model binary outcomes (i.e. \\(Y \\in \\{0, 1\\}\\))\nSimilar concepts from linear regression\n\ntests for coefficients\nindicator variables\nmodel selection techniques\nregularization\n\nOther concepts are different\n\ninterpretation of coefficients\nresiduals are not normally distributed\nmodel evaluation"
   },
   {
     "objectID": "lectures/14-logistic.html#why-not-linear-regression-for-categorical-data",
@@ -3008,6 +3015,20 @@
     "title": "Supervised learning: logistic regression",
     "section": "Logistic regression",
     "text": "Logistic regression\n\nLogistic regression models the probability of success \\(p(x)\\) of a binary response variable \\(Y \\in \\{0, 1\\}\\)\nTo limit the regression between \\([0, 1]\\), we use the logit function, or the log-odds ratio\n\n\\[\n\\log \\left( \\frac{p(x)}{1 - p(x)} \\right) = \\beta_0 + \\beta_1 x_1 + \\cdots + \\beta_p x_p\n\\]\n\nor equivalently,\n\\[\np(x) =  \\frac{e^{\\beta_0 + \\beta_1 x_1 + \\cdots + \\beta_p x_p}}{1 + e^{\\beta_0 + \\beta_1 x_1 + \\cdots + \\beta_p x_p}}\n\\]\n\n\n\nNote: \\(p(x)= P(Y = 1 \\mid X = x) = \\mathbb E[Y \\mid X = x]\\)"
+  },
+  {
+    "objectID": "lectures/14-logistic.html#maximum-likelihood-estimation-mle",
+    "href": "lectures/14-logistic.html#maximum-likelihood-estimation-mle",
+    "title": "Supervised learning: logistic regression",
+    "section": "Maximum likelihood estimation (MLE)",
+    "text": "Maximum likelihood estimation (MLE)\n\nLikelihood function: how likely to observe data for given parameter values \\[L(\\theta) = \\prod_{i=1}^n f(y_i; \\theta)\\]\n\n\n\nGoal: find values for parameters that maximize likelihood function (i.e., MLEs)\n\n\n\n\nWhy: likelihood methods can handle variety of data types and assumptions\n\n\n\n\nHow: typically numerical approaches and optimization techniques\n\nEasier to work with log-likelihood (sums compared to products)"
+  },
+  {
+    "objectID": "lectures/14-logistic.html#example-linear-regression-mle",
+    "href": "lectures/14-logistic.html#example-linear-regression-mle",
+    "title": "Supervised learning: logistic regression",
+    "section": "Example: linear regression MLE",
+    "text": "Example: linear regression MLE\nReminder: probability density function (pdf) for a normal distribution \\[f(y \\mid \\mu, \\sigma) = \\frac{1}{\\sqrt{2\\pi \\sigma^2}} e^{\\frac{-(y - \\mu) ^ 2}{2 \\sigma^2}}\\]\n\nConsider a simple linear regression model (with an intercept and one predictor) \\[y_i = \\beta_0 + \\beta_1 x_i + \\epsilon_i, \\quad \\epsilon_i \\sim N(0, \\sigma^2)\\]\n\n\nThen \\(\\qquad \\displaystyle L(\\beta_0, \\beta_1, \\sigma) = \\prod_{i=1}^n f(y_i \\mid x_i; \\beta_0, \\beta_1, \\sigma) = \\prod_{i=1}^n \\frac{1}{\\sqrt{2\\pi \\sigma^2}} e^{\\frac{-(y_i - \\beta_0 - \\beta_1 x_i) ^ 2}{2 \\sigma^2}}\\)\n\n\nAnd \\(\\qquad \\displaystyle \\log L(\\beta_0, \\beta_1, \\sigma) = -\\frac{n}{2} \\log 2\\pi - \\frac{n}{2} \\log \\sigma^2 - \\frac{1}{2 \\sigma^2} \\sum_{i=1}^n (y_i - \\beta_0 - \\beta_1x_1)^2\\)\n\n\nWe can then use calculus to find the optimal parameter values. For more details, see here"
   },
   {
     "objectID": "lectures/14-logistic.html#major-difference-between-linear-and-logistic-regression",
@@ -3028,7 +3049,14 @@
     "href": "lectures/14-logistic.html#the-odds-interpretation",
     "title": "Supervised learning: logistic regression",
     "section": "The odds interpretation",
-    "text": "The odds interpretation\nThe odds of an event are the probability of the event divided by the probability of the event not occurring\nSuppose we fit a simple logistic regression model (with one predictor), and say the predicted probability is 0.8 for a particular predictor value\n\nThis means that if we were to repeatedly sample response values given that predictor variable value: we expect class 1 to appear 4 times as often as class 0 \\[\\text{Odds} = \\frac{\\mathbb{E}[Y \\mid x]}{1-\\mathbb{E}[Y \\mid x]} = \\frac{0.8}{1-0.8} = 4 = e^{\\beta_0+\\beta_1x}\\]\nThus we say that for the given predictor variable value, the odds are 4 (or 4-1) in favor of class 1\n\n\nHow does the odds change if we change the value of a predictor variable by one unit?\n\n\n\\[\\text{Odds}_{\\rm new} = e^{\\beta_0+\\beta_1(x+1)} = e^{\\beta_0+\\beta_1x}e^{\\beta_1} = e^{\\beta_1}\\text{Odds}_{\\rm old}\\]\nFor every unit change in \\(x\\), the odds change by a factor \\(e^{\\beta_1}\\)"
+    "text": "The odds interpretation\nThe odds of an event are the probability of the event divided by the probability of the event not occurring\n\n\\(\\displaystyle \\text{odds} = \\frac{\\text{probability}}{1 - \\text{probability}}\\)\n\\(\\displaystyle \\text{probability} = \\frac{\\text{odds}}{1 + \\text{odds}}\\)\n\nExample: Rolling a fair six-sided die\n\nThe probability of rolling a 2 is 1/6\nThe odds of rolling a 2 is 1 to 5 (or 1:5)"
+  },
+  {
+    "objectID": "lectures/14-logistic.html#the-odds-interpretation-1",
+    "href": "lectures/14-logistic.html#the-odds-interpretation-1",
+    "title": "Supervised learning: logistic regression",
+    "section": "The odds interpretation",
+    "text": "The odds interpretation\nSuppose we fit a simple logistic regression model (with one predictor), and say the predicted probability is 0.8 for a particular predictor value\n\nThis means that if we were to repeatedly sample response values given that predictor variable value: we expect class 1 to appear 4 times as often as class 0 \\[\\text{odds} = \\frac{\\mathbb{E}[Y \\mid x]}{1-\\mathbb{E}[Y \\mid x]} = \\frac{0.8}{1-0.8} = 4 = e^{\\beta_0+\\beta_1x}\\]\nThus we say that for the given predictor variable value, the odds are 4 (or 4:1) in favor of class 1\n\n\nHow does the odds change if we change the value of a predictor variable by one unit?\n\n\n\\[\\text{odds}_{\\rm new} = e^{\\beta_0+\\beta_1(x+1)} = e^{\\beta_0+\\beta_1x}e^{\\beta_1} = e^{\\beta_1}\\text{odds}_{\\rm old}\\]\nFor every unit change in \\(x\\), the odds change by a factor \\(e^{\\beta_1}\\)"
   },
   {
     "objectID": "lectures/14-logistic.html#data-diabetes-in-the-pima",
@@ -3049,7 +3077,21 @@
     "href": "lectures/14-logistic.html#interpreting-a-logistic-regression-model",
     "title": "Supervised learning: logistic regression",
     "section": "Interpreting a logistic regression model",
-    "text": "Interpreting a logistic regression model\n\ntidy(pima_logit)\n\n# A tibble: 3 × 5\n  term         estimate std.error statistic p.value\n  &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 (Intercept)   -3.16      1.08       -2.94 0.00329\n2 pregnancyYes  -0.468     0.427      -1.10 0.273  \n3 bp             0.0403    0.0140      2.89 0.00391\n\n\n\nIntercept: the estimated log-odds of diabetes for a Pima woman who has never been pregnant and has a diastolic blood pressure of 0 (hmm…) are -3.16, so the odds are exp(-3.16) = 0.0422\n\n\n\nPregnancy: pregnancy changes the log-odds of diabetes, relative to the baseline value, by -0.468. The odds ratio is exp(-0.47) = 0.626\n\nThe odds of diabetes for those that has had at least one pregnancies is 0.626 times that the odds of diabetes for those with no previous pregnancies\n\n\n\n\n\nBlood pressure: each unit of increase in blood pressure (in mmHg) is associated with an increase in the log-odds of diabetes of 0.0403, or an increase in the odds of diabetes by a multiplicative factor of exp(0.0403) = 1.04\n\nEvery extra mmHg in blood pressure multiplies the odds of diabetes by 1.04"
+    "text": "Interpreting a logistic regression model\n\ntidy(pima_logit)\n\n# A tibble: 3 × 5\n  term         estimate std.error statistic p.value\n  &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 (Intercept)   -3.16      1.08       -2.94 0.00329\n2 pregnancyYes  -0.468     0.427      -1.10 0.273  \n3 bp             0.0403    0.0140      2.89 0.00391\n\n\n\nIntercept: the estimated log-odds of diabetes for a Pima woman who has never been pregnant and has a diastolic blood pressure of 0 (hmm…) are -3.16, so the odds are exp(-3.16) = 0.0422"
+  },
+  {
+    "objectID": "lectures/14-logistic.html#interpreting-a-logistic-regression-model-1",
+    "href": "lectures/14-logistic.html#interpreting-a-logistic-regression-model-1",
+    "title": "Supervised learning: logistic regression",
+    "section": "Interpreting a logistic regression model",
+    "text": "Interpreting a logistic regression model\n\ntidy(pima_logit)\n\n# A tibble: 3 × 5\n  term         estimate std.error statistic p.value\n  &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 (Intercept)   -3.16      1.08       -2.94 0.00329\n2 pregnancyYes  -0.468     0.427      -1.10 0.273  \n3 bp             0.0403    0.0140      2.89 0.00391\n\n\n\nPregnancy: pregnancy changes the log-odds of diabetes, relative to the baseline value, by -0.468. The odds ratio is exp(-0.47) = 0.626"
+  },
+  {
+    "objectID": "lectures/14-logistic.html#interpreting-a-logistic-regression-model-2",
+    "href": "lectures/14-logistic.html#interpreting-a-logistic-regression-model-2",
+    "title": "Supervised learning: logistic regression",
+    "section": "Interpreting a logistic regression model",
+    "text": "Interpreting a logistic regression model\n\ntidy(pima_logit)\n\n# A tibble: 3 × 5\n  term         estimate std.error statistic p.value\n  &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 (Intercept)   -3.16      1.08       -2.94 0.00329\n2 pregnancyYes  -0.468     0.427      -1.10 0.273  \n3 bp             0.0403    0.0140      2.89 0.00391\n\n\n\nBlood pressure: each unit of increase in blood pressure (in mmHg) is associated with an increase in the log-odds of diabetes of 0.0403, or an increase in the odds of diabetes by a multiplicative factor of exp(0.0403) = 1.04\n\nEvery extra mmHg in blood pressure multiplies the odds of diabetes by 1.04"
   },
   {
     "objectID": "lectures/14-logistic.html#view-predicted-probability-relationship",
@@ -3066,18 +3108,18 @@
     "text": "Effects plot\n\nNonlinear relationship between blood pressure and probability of diabetes\nThe gap between women who were or were not previously pregnant is different across the range\n\n\nlibrary(ggeffects)\npima_logit |&gt; \n  ggeffect(terms = c(\"bp\", \"pregnancy\")) |&gt;\n  plot()"
   },
   {
-    "objectID": "lectures/14-logistic.html#deviancehttpsen.wikipedia.orgwikideviance_statistics",
-    "href": "lectures/14-logistic.html#deviancehttpsen.wikipedia.orgwikideviance_statistics",
+    "objectID": "lectures/14-logistic.html#deviance",
+    "href": "lectures/14-logistic.html#deviance",
     "title": "Supervised learning: logistic regression",
-    "section": "[Deviance](https://en.wikipedia.org/wiki/Deviance_(statistics)",
-    "text": "[Deviance](https://en.wikipedia.org/wiki/Deviance_(statistics)\nFor model of interest \\(\\mathcal{M}\\) the total deviance is:\n\\[D_{\\mathcal{M}}= -2 \\log \\frac{\\mathcal{L}_{\\mathcal{M}}}{\\mathcal{L}_{\\mathcal{S}}} = 2\\left(\\log  \\mathcal{L}_{\\mathcal{S}}-\\log  \\mathcal{L}_{\\mathcal{M}}\\right)\\]\n\n\\(\\mathcal{L}_{\\mathcal{M}}\\) is the likelihood for model \\(\\mathcal{M}\\)\n\n\n\n\\(\\mathcal{L}_{\\mathcal{S}}\\) is the likelihood for the saturated model, with \\(n\\) parameters! (i.e., a perfect fit)\nCan think of \\(\\mathcal{L}_{\\mathcal{S}}\\) as some constant that does not change\n\n\n\nDeviance is a measure of goodness-of-fit: the smaller the deviance, the better the fit\n\nGeneralization of RSS in linear regression to any distribution family"
+    "section": "Deviance",
+    "text": "Deviance\nFor model of interest \\(\\mathcal{M}\\) the total deviance is:\n\\[D_{\\mathcal{M}}= -2 \\log \\frac{\\mathcal{L}_{\\mathcal{M}}}{\\mathcal{L}_{\\mathcal{S}}} = 2\\left(\\log  \\mathcal{L}_{\\mathcal{S}}-\\log  \\mathcal{L}_{\\mathcal{M}}\\right)\\]\n\n\\(\\mathcal{L}_{\\mathcal{M}}\\) is the likelihood for model \\(\\mathcal{M}\\)\n\n\n\n\\(\\mathcal{L}_{\\mathcal{S}}\\) is the likelihood for the saturated model, with \\(n\\) parameters\n\ni.e. the most complex model possible, with separate parameter for each observation and provides a perfect fit to the data\n\n\n\n\nDeviance is a measure of goodness-of-fit: the smaller the deviance, the better the fit\n\nGeneralization of RSS in linear regression to any distribution family"
   },
   {
     "objectID": "lectures/14-logistic.html#deviance-residuals",
     "href": "lectures/14-logistic.html#deviance-residuals",
     "title": "Supervised learning: logistic regression",
     "section": "Deviance residuals",
-    "text": "Deviance residuals\n\npima_logit |&gt; \n  residuals(type = \"deviance\") |&gt; \n  summary()\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n-1.5293 -0.9156 -0.7463 -0.0990  1.3205  1.9326 \n\n\nThe deviance residuals are contributions to total deviance (signed square roots of unit deviances)\n\\[d_i = \\mbox{sign}(y_i-\\hat{p}_i) \\sqrt{-2[y_i \\log \\hat{p}_i + (1-y_i) \\log (1 - \\hat{p}_i)]}\\]\nwhere \\(y_i\\) is the \\(i\\)-th observed response and \\(\\hat p_i\\) is the estimated probability of success\nNote: The use of the sign of the difference ensures that the deviance residuals are positive/negative when the observation is larger/smaller than predicted."
+    "text": "Deviance residuals\n\npima_logit |&gt; \n  residuals(type = \"deviance\") |&gt; \n  summary()\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n-1.5293 -0.9156 -0.7463 -0.0990  1.3205  1.9326 \n\n\n\nRemember Pearson residual?\nA deviance residual is an alternative residual for logistic regression based on the discrepancy between the observed values and those estimated using the likelihood \\[d_i = \\mbox{sign}(y_i-\\hat{p}_i) \\sqrt{-2[y_i \\log \\hat{p}_i + (1-y_i) \\log (1 - \\hat{p}_i)]}\\] where \\(y_i\\) is the \\(i\\)-th observed response and \\(\\hat p_i\\) is the estimated probability of success\n\nNote: The use of the sign of the difference ensures that the deviance residuals are positive/negative when the observation is larger/smaller than predicted.\n\nThe sum of the individual deviance residuals is the total deviance"
   },
   {
     "objectID": "lectures/14-logistic.html#model-measures",
@@ -3105,14 +3147,7 @@
     "href": "lectures/14-logistic.html#calibration",
     "title": "Supervised learning: logistic regression",
     "section": "Calibration",
-    "text": "Calibration\nIf we have a model that tells us the probability of rain in a given time period (i.e. a year) is 50%, it had better rain on half of the days, or the model is just wrong about the probability of rain\n\n\nA classifier is calibrated if in the given time period, the percentage of days it actually rained when the forecast predicted \\(x \\%\\) percent chance of rain is \\(x \\%\\)\nIn short, for a model to be calibrated, the actual probabilities should match the predicted probabilities\nCalibration should be used together with other model evaluation and diagnostic tools\nA model is well-calibrated does not mean it is good at making predictions\n\n\n\nSee also: Hosmer-Lemeshow test"
-  },
-  {
-    "objectID": "lectures/14-logistic.html#calibration-1",
-    "href": "lectures/14-logistic.html#calibration-1",
-    "title": "Supervised learning: logistic regression",
-    "section": "Calibration",
-    "text": "Calibration\nIf we’ve got a model which tells us that the probability of rain on a certain group of days is 50%, it had better rain on half of those days, or the model is just wrong about the probability of rain\n\nIn short, for a model to be calibrated, the actual probabilities should match the predicted probabilities\nCalibration should be used together with other model evaluation and diagnostic tools\nA model is well-calibrated does not mean it is good at making predictions"
+    "text": "Calibration\nIf we have a model that tells us the probability of rain in a given time period (i.e. a week) is 50%, it had better rain on half of the days, or the model is just wrong about the probability of rain\n\n\nA classifier is calibrated if in the given time period, the percentage of days it actually rained when the forecast predicted \\(x \\%\\) percent chance of rain is \\(x \\%\\)\nIn short, for a model to be calibrated, the actual probabilities should match the predicted probabilities\n\n\n\n\nCalibration should be used together with other model evaluation and diagnostic tools\n\n\n\n\nA model is well-calibrated does not mean it is good at making predictions (example: a constant classifier)\n\n\n\nSee also: Hosmer-Lemeshow test"
   },
   {
     "objectID": "lectures/14-logistic.html#calibration-plot-smoothing",
@@ -3126,7 +3161,14 @@
     "href": "lectures/14-logistic.html#calibration-plot-binning",
     "title": "Supervised learning: logistic regression",
     "section": "Calibration plot: binning",
-    "text": "Calibration plot: binning\n\n\n\npima |&gt; \n  mutate(\n    pred_prob = predict(pima_logit, type = \"response\"),\n    bin_pred_prob = cut(pred_prob, breaks = seq(0, 1, .1))\n  ) |&gt; \n  group_by(bin_pred_prob) |&gt; \n  summarize(n = n(),\n            bin_actual_prob = mean(type == \"Yes\")) |&gt; \n  mutate(mid_point = seq(0.15, 0.65, 0.1)) |&gt; \n  ggplot(aes(x = mid_point, y = bin_actual_prob)) +\n  geom_point(aes(size = n)) +\n  geom_line() +\n  geom_abline(slope = 1, intercept = 0, \n              color = \"black\", linetype = \"dashed\") +\n  # expand_limits(x = c(0, 1), y = c(0, 1)) +\n  coord_fixed()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
+    "text": "Calibration plot: binning\n\n\n\npima |&gt; \n  mutate(\n    pred_prob = predict(pima_logit, type = \"response\"),\n    bin_pred_prob = cut(pred_prob, breaks = seq(0, 1, .1))\n  ) |&gt; \n  group_by(bin_pred_prob) |&gt; \n  summarize(n = n(),\n            bin_actual_prob = mean(type == \"Yes\")) |&gt; \n  mutate(mid_point = seq(0.15, 0.65, 0.1)) |&gt; \n  ggplot(aes(x = mid_point, y = bin_actual_prob)) +\n  geom_point(aes(size = n)) +\n  geom_line() +\n  geom_abline(slope = 1, intercept = 0, \n              color = \"black\", linetype = \"dashed\") +\n  # expand_limits(x = c(0, 1), y = c(0, 1)) +\n  coord_fixed()"
+  },
+  {
+    "objectID": "lectures/14-logistic.html#other-calibration-methods",
+    "href": "lectures/14-logistic.html#other-calibration-methods",
+    "title": "Supervised learning: logistic regression",
+    "section": "Other calibration methods",
+    "text": "Other calibration methods\n\nPlatt scaling\nIsotonic regression\nBeta calibration\nprobably package in R\nFormally, a classifier is calibrated (or well-calibrated) when \\(P(Y = 1 \\mid\\hat p(X) = p) = p\\)\n\n\n\n36-SURE.github.io"
   },
   {
     "objectID": "lectures/16-pca.html#the-big-picture",
@@ -3833,7 +3875,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"v\" \"s\" \"m\" \"t\" \"a\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 0 1 1 0 1 0\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"T\" \"H\" \"T\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 98"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"u\" \"s\" \"q\" \"z\" \"v\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 0 0 1 1 0 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"T\" \"H\" \"T\" \"H\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 47"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -3875,21 +3917,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.01472756\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9833536"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.01289792\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9654895"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.505\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.28     0.001 0.000520\n 2 -3.03     0.002 0.00120 \n 3 -2.82     0.003 0.00240 \n 4 -2.78     0.004 0.00268 \n 5 -2.49     0.005 0.00641 \n 6 -2.48     0.006 0.00653 \n 7 -2.30     0.007 0.0107  \n 8 -2.29     0.008 0.0110  \n 9 -2.27     0.009 0.0116  \n10 -2.24     0.01  0.0125  \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.489\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.27     0.001 0.000541\n 2 -2.89     0.002 0.00190 \n 3 -2.78     0.003 0.00275 \n 4 -2.74     0.004 0.00306 \n 5 -2.65     0.005 0.00404 \n 6 -2.63     0.006 0.00431 \n 7 -2.48     0.007 0.00655 \n 8 -2.47     0.008 0.00680 \n 9 -2.33     0.009 0.0100  \n10 -2.22     0.01  0.0132  \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3832128\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.388244\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -3903,14 +3945,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1224\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.13\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.2031508\n\nmean(rnorm(100))\n\n[1] -0.1056174\n\nmean(rnorm(100))\n\n[1] -0.06733923"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.09059997\n\nmean(rnorm(100))\n\n[1] -0.02677578\n\nmean(rnorm(100))\n\n[1] -0.004093568"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
@@ -4604,61 +4646,5 @@
     "title": "R and RStudio Setup",
     "section": "R Primers on Posit Cloud",
     "text": "R Primers on Posit Cloud\nIn addition to following the steps above for installing R and RStudio on your computer, we recommend you make a free Posit Cloud (formerly RStudio Cloud) account at https://posit.cloud/. This is a free, browser-based version of R and RStudio that also provides access to a growing number of relevant R tutorials / primers.\nAfter you create a Posit Cloud account, navigate to the menu on the left and click on “Recipes”. This brings up a menu of tutorials, with code primers you can choose to work through. Please complete the tutorials listed under “R Basics” (you can skip the first three). Also, feel free to explore the other tutorials."
-  },
-  {
-    "objectID": "lectures/13-regularization.html#scaling-of-predictors",
-    "href": "lectures/13-regularization.html#scaling-of-predictors",
-    "title": "Supervised learning: regularization",
-    "section": "Scaling of predictors",
-    "text": "Scaling of predictors\n\nIn linear regression, the (least squares) coefficient estimates are scale equivariant\n\nmultiplying \\(X_j\\) by a constant c simply leads to a scaling of the least squares coefficient estimates by a factor of \\(1/c\\)\ni.e., regardless of how the \\(j\\)th predictor is scaled, \\(X_j \\hat \\beta_j\\) will remain the same\n\nFor either ridge, lasso, or elastic net: you should standardize your data\n\nThe coefficient estimates can change substantially when multiplying a given predictor by a constant, due to the sum of squared coefficients term in the penalty\n\nCommon convention: for each predictor column, subtract off the mean, and divide by the standard deviation \\(\\qquad \\displaystyle \\tilde{x}_{ij} = \\frac{x_{ij} - \\bar{x}_j}{s_{x,j}}\\)\nglmnet package does this by default and reports coefficients on the original scale"
-  },
-  {
-    "objectID": "lectures/13-regularization.html#be-lasso",
-    "href": "lectures/13-regularization.html#be-lasso",
-    "title": "Supervised learning: regularization",
-    "section": "Be lasso",
-    "text": "Be lasso"
-  },
-  {
-    "objectID": "lectures/14-logistic.html#deviance",
-    "href": "lectures/14-logistic.html#deviance",
-    "title": "Supervised learning: logistic regression",
-    "section": "Deviance",
-    "text": "Deviance\nFor model of interest \\(\\mathcal{M}\\) the total deviance is:\n\\[D_{\\mathcal{M}}= -2 \\log \\frac{\\mathcal{L}_{\\mathcal{M}}}{\\mathcal{L}_{\\mathcal{S}}} = 2\\left(\\log  \\mathcal{L}_{\\mathcal{S}}-\\log  \\mathcal{L}_{\\mathcal{M}}\\right)\\]\n\n\\(\\mathcal{L}_{\\mathcal{M}}\\) is the likelihood for model \\(\\mathcal{M}\\)\n\n\n\n\\(\\mathcal{L}_{\\mathcal{S}}\\) is the likelihood for the saturated model, with \\(n\\) parameters! (i.e., a perfect fit)\nCan think of \\(\\mathcal{L}_{\\mathcal{S}}\\) as some constant that does not change\n\n\n\nDeviance is a measure of goodness-of-fit: the smaller the deviance, the better the fit\n\nGeneralization of RSS in linear regression to any distribution family"
-  },
-  {
-    "objectID": "lectures/14-logistic.html#maximum-likelihood-estimation",
-    "href": "lectures/14-logistic.html#maximum-likelihood-estimation",
-    "title": "Supervised learning: logistic regression",
-    "section": "Maximum likelihood estimation",
-    "text": "Maximum likelihood estimation\n\nLikelihood function: how likely to observe data for given parameter values \\[L(\\theta) = \\prod_{i=1}^n f(y_i \\mid \\theta)\\]\n\n\n\nGoal: find values for parameters that maximize likelihood function (i.e., MLEs)\n\n\n\n\nWhy: likelihood methods can handle variety of data types and assumptions\n\n\n\n\nHow: typically numerical approaches and optimization techniques\n\nEasier to work with log-likelihood (sums compared to products)"
-  },
-  {
-    "objectID": "lectures/14-logistic.html#maximum-likelihood-estimation-mle",
-    "href": "lectures/14-logistic.html#maximum-likelihood-estimation-mle",
-    "title": "Supervised learning: logistic regression",
-    "section": "Maximum likelihood estimation (MLE)",
-    "text": "Maximum likelihood estimation (MLE)\n\nLikelihood function: how likely to observe data for given parameter values \\[L(\\theta) = \\prod_{i=1}^n f(y_i; \\theta)\\]\n\n\n\nGoal: find values for parameters that maximize likelihood function (i.e., MLEs)\n\n\n\n\nWhy: likelihood methods can handle variety of data types and assumptions\n\n\n\n\nHow: typically numerical approaches and optimization techniques\n\nEasier to work with log-likelihood (sums compared to products)"
-  },
-  {
-    "objectID": "lectures/14-logistic.html#example-linear-regression-mle",
-    "href": "lectures/14-logistic.html#example-linear-regression-mle",
-    "title": "Supervised learning: logistic regression",
-    "section": "Example: linear regression MLE",
-    "text": "Example: linear regression MLE\nReminder: probability density function (pdf) for a normal distribution \\[f(y \\mid \\mu, \\sigma) = \\frac{1}{\\sqrt{2\\pi \\sigma^2}} e^{\\frac{-(y - \\mu) ^ 2}{2 \\sigma^2}}\\]\n\nConsider a simple linear regression model (with an intercept and one predictor) \\[y_i = \\beta_0 + \\beta_1 x_i + \\epsilon_i, \\quad \\epsilon_i \\sim N(0, \\sigma^2)\\]\n\n\nThen \\(\\qquad \\displaystyle L(\\beta_0, \\beta_1, \\sigma) = \\prod_{i=1}^n f(y_i \\mid x_i; \\beta_0, \\beta_1, \\sigma) = \\prod_{i=1}^n \\frac{1}{\\sqrt{2\\pi \\sigma^2}} e^{\\frac{-(y_i - \\beta_0 - \\beta_1 x_i) ^ 2}{2 \\sigma^2}}\\)\n\n\nAnd \\(\\qquad \\displaystyle \\log L(\\beta_0, \\beta_1, \\sigma) = -\\frac{n}{2} \\log 2\\pi - \\frac{n}{2} \\log \\sigma^2 - \\frac{1}{2 \\sigma^2} \\sum_{i=1}^n (y_i - \\beta_0 - \\beta_1x_1)^2\\)\n\n\nWe can then use calculus to find the optimal parameter values. For more details, see here"
-  },
-  {
-    "objectID": "lectures/13-regularization.html#preview",
-    "href": "lectures/13-regularization.html#preview",
-    "title": "Supervised learning: regularization",
-    "section": "Preview",
-    "text": "Preview\nRegularized/shrinkage/penalized regression\n\nInvolves fitting a model containing all \\(p\\) predictors\n\n\n\nHowever, the estimated coefficients are shrunken towards zero relative to the least squares estimates of vanilla linear regression\n\n\n\n\nThis “shrinkage” (also known as regularization) has the effect of reducing variance\n\n\n\n\nDepending on what type of regularization is performed, some coefficient estimates can be exactly zero\n\n\n\n\nThus, regularization methods can perform variable selection"
-  },
-  {
-    "objectID": "lectures/13-regularization.html#the-big-picture",
-    "href": "lectures/13-regularization.html#the-big-picture",
-    "title": "Supervised learning: regularization",
-    "section": "The big picture",
-    "text": "The big picture\nRegularized/shrinkage/penalized regression\n\nInvolves fitting a model containing all \\(p\\) predictors\n\n\n\nHowever, the estimated coefficients are shrunken towards zero relative to the least squares estimates of vanilla linear regression\n\n\n\n\nThis “shrinkage” (also known as regularization) has the effect of reducing variance\n\n\n\n\nDepending on what type of regularization is performed, some coefficient estimates can be exactly zero\n\n\n\n\nThus, regularization methods can perform variable selection"
   }
 ]
