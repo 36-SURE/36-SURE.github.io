@@ -3112,7 +3112,7 @@
     "href": "lectures/14-logistic.html#deviance",
     "title": "Supervised learning: logistic regression",
     "section": "Deviance",
-    "text": "Deviance\nFor model of interest \\(\\mathcal{M}\\) the total deviance is:\n\\[D_{\\mathcal{M}}= -2 \\log \\frac{\\mathcal{L}_{\\mathcal{M}}}{\\mathcal{L}_{\\mathcal{S}}} = 2\\left(\\log  \\mathcal{L}_{\\mathcal{S}}-\\log  \\mathcal{L}_{\\mathcal{M}}\\right)\\]\n\n\\(\\mathcal{L}_{\\mathcal{M}}\\) is the likelihood for model \\(\\mathcal{M}\\)\n\n\n\n\\(\\mathcal{L}_{\\mathcal{S}}\\) is the likelihood for the saturated model, with \\(n\\) parameters\n\ni.e. the most complex model possible, with separate parameter for each observation and provides a perfect fit to the data\n\n\n\n\nDeviance is a measure of goodness-of-fit: the smaller the deviance, the better the fit\n\nGeneralization of RSS in linear regression to any distribution family"
+    "text": "Deviance\nFor model of interest \\(\\mathcal{M}\\) the total deviance is\n\\[D_{\\mathcal{M}}= -2 \\log \\frac{\\mathcal{L}_{\\mathcal{M}}}{\\mathcal{L}_{\\mathcal{S}}} = 2\\left(\\log  \\mathcal{L}_{\\mathcal{S}}-\\log  \\mathcal{L}_{\\mathcal{M}}\\right)\\]\n\n\\(\\mathcal{L}_{\\mathcal{M}}\\) is the likelihood for model \\(\\mathcal{M}\\)\n\n\n\n\\(\\mathcal{L}_{\\mathcal{S}}\\) is the likelihood for the saturated model, with \\(n\\) parameters\n\ni.e. the most complex model possible, with separate parameter for each observation and provides a perfect fit to the data\n\n\n\n\nDeviance is a measure of goodness-of-fit: the smaller the deviance, the better the fit\n\nGeneralization of RSS in linear regression to any distribution family\n\nFor more, see here"
   },
   {
     "objectID": "lectures/14-logistic.html#deviance-residuals",
