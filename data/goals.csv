@@ -1,4 +1,4 @@
-goals,xG,off_team,def_team,league,match_id,is_home
+n_goals,xG,off_team,def_team,league,match_id,is_home
 0,0.3,Burnley,Manchester City,ENG,1,1
 2,0.8,Arsenal,Nott'ham Forest,ENG,2,1
 0,2.7,Everton,Fulham,ENG,3,1
