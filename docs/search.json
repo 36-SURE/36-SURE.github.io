@@ -1362,14 +1362,14 @@
     "href": "lectures.html",
     "title": "Lectures",
     "section": "",
-    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides\n\n\nLecture 9\nJune 14\nPresentations\nslides\n\n\nLecture 10\nJune 17\nSupervised learning: the tradeoffs\nslides\n\n\nLecture 11\nJune 21\nSupervised learning: linear regression\nslides\n\n\nLecture 12\nJune 24\nSupervised learning: variable selection\nslides\n\n\nLecture 13\nJune 25\nSupervised learning: regularization\nslides\n\n\nLecture 14\nJune 26\nSupervised learning: logistic regression\nslides"
+    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides\n\n\nLecture 9\nJune 14\nPresentations\nslides\n\n\nLecture 10\nJune 17\nSupervised learning: the tradeoffs\nslides\n\n\nLecture 11\nJune 21\nSupervised learning: linear regression\nslides\n\n\nLecture 12\nJune 24\nSupervised learning: variable selection\nslides\n\n\nLecture 13\nJune 25\nSupervised learning: regularization\nslides\n\n\nLecture 14\nJune 26\nSupervised learning: logistic regression\nslides\n\n\nLecture 15\nJune 26\nSupervised learning: generalized linear models\nslides"
   },
   {
     "objectID": "lectures.html#contents",
     "href": "lectures.html#contents",
     "title": "Lectures",
     "section": "",
-    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides\n\n\nLecture 9\nJune 14\nPresentations\nslides\n\n\nLecture 10\nJune 17\nSupervised learning: the tradeoffs\nslides\n\n\nLecture 11\nJune 21\nSupervised learning: linear regression\nslides\n\n\nLecture 12\nJune 24\nSupervised learning: variable selection\nslides\n\n\nLecture 13\nJune 25\nSupervised learning: regularization\nslides\n\n\nLecture 14\nJune 26\nSupervised learning: logistic regression\nslides"
+    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides\n\n\nLecture 9\nJune 14\nPresentations\nslides\n\n\nLecture 10\nJune 17\nSupervised learning: the tradeoffs\nslides\n\n\nLecture 11\nJune 21\nSupervised learning: linear regression\nslides\n\n\nLecture 12\nJune 24\nSupervised learning: variable selection\nslides\n\n\nLecture 13\nJune 25\nSupervised learning: regularization\nslides\n\n\nLecture 14\nJune 26\nSupervised learning: logistic regression\nslides\n\n\nLecture 15\nJune 26\nSupervised learning: generalized linear models\nslides"
   },
   {
     "objectID": "lectures.html#references",
@@ -3875,7 +3875,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"u\" \"s\" \"q\" \"z\" \"v\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 0 0 1 1 0 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"H\" \"T\" \"H\" \"T\" \"H\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 47"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"m\" \"u\" \"p\" \"e\" \"x\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 1 0 0 1 0 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"T\" \"H\" \"T\" \"H\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 57"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -3917,21 +3917,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.01289792\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9654895"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.003438126\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.046575"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.489\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.27     0.001 0.000541\n 2 -2.89     0.002 0.00190 \n 3 -2.78     0.003 0.00275 \n 4 -2.74     0.004 0.00306 \n 5 -2.65     0.005 0.00404 \n 6 -2.63     0.006 0.00431 \n 7 -2.48     0.007 0.00655 \n 8 -2.47     0.008 0.00680 \n 9 -2.33     0.009 0.0100  \n10 -2.22     0.01  0.0132  \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.5\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.24     0.001 0.000599\n 2 -3.20     0.002 0.000698\n 3 -3.04     0.003 0.00116 \n 4 -3.01     0.004 0.00129 \n 5 -2.81     0.005 0.00244 \n 6 -2.64     0.006 0.00409 \n 7 -2.62     0.007 0.00445 \n 8 -2.51     0.008 0.00606 \n 9 -2.39     0.009 0.00841 \n10 -2.37     0.01  0.00899 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.388244\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3893125\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -3945,14 +3945,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.13\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1192\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.09059997\n\nmean(rnorm(100))\n\n[1] -0.02677578\n\nmean(rnorm(100))\n\n[1] -0.004093568"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.1787766\n\nmean(rnorm(100))\n\n[1] 0.148349\n\nmean(rnorm(100))\n\n[1] 0.07484466"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
@@ -4071,49 +4071,63 @@
     "href": "lectures/15-glm.html#recap",
     "title": "Supervised learning: generalized linear models",
     "section": "Recap",
-    "text": "Recap\nWhen the response is continuous, we can use normal regression.\nWhen the response is binary categorical , we can use logistic regression.\nWhat do we do if the response contains discrete count?"
+    "text": "Recap\n\nWhen the response is continuous, we can use linear regression\nWhen the response is binary categorical, we can use logistic regression\nWhich model do we use if the response contains discrete counts?"
   },
   {
     "objectID": "lectures/15-glm.html#generalized-linear-models-glms",
     "href": "lectures/15-glm.html#generalized-linear-models-glms",
     "title": "Supervised learning: generalized linear models",
     "section": "Generalized linear models (GLMs)",
-    "text": "Generalized linear models (GLMs)\nThree components of a GLM\n\nDistribution of the response\nLink function (a function of the parameter)\nLinear predictor"
+    "text": "Generalized linear models (GLMs)\nThree components of a GLM\n1. Random component (distribution of the response)\n\nIdentifies the response variable and assumes a probability distribution for it\n\n\n2. Linear predictor\n\nSpecifies the predictor variables\nLinear combination of predictors on the right-hand side of the model equation\nIn the form \\(\\beta_0 + \\beta_1 X_1 + \\dots + \\beta_p X_p\\)\n\n\n\n3. Link function (a function of the parameter)\n\nConnects the random component with the linear predictor\nVia a function of the expected value of the probability distribution of the response\n\nSee also: Exponential family"
   },
   {
     "objectID": "lectures/15-glm.html#linear-regression",
     "href": "lectures/15-glm.html#linear-regression",
     "title": "Supervised learning: generalized linear models",
     "section": "Linear regression",
-    "text": "Linear regression\n\n\\(Y \\sim N(\\mu, \\sigma ^2)\\)\nIdentity link function: \\(g(\\mu) = \\mu\\)\nLinear predictor: \\(\\beta_0 + \\beta_1 X_1 + \\dots + \\beta_p X_p\\)"
+    "text": "Linear regression\n\n\\(Y \\sim N(\\mu, \\sigma ^2)\\)\nLinear predictor: \\(\\beta_0 + \\beta_1 X_1 + \\dots + \\beta_p X_p\\)\nIdentity link function: \\(g(\\mu) = \\mu\\)"
   },
   {
     "objectID": "lectures/15-glm.html#logistic-regression",
     "href": "lectures/15-glm.html#logistic-regression",
     "title": "Supervised learning: generalized linear models",
     "section": "Logistic regression",
-    "text": "Logistic regression\n\n\\(Y \\sim \\text{Binomial}(n,p)\\)\nLogit link function: \\(\\displaystyle g(p) = \\log\\left(\\frac{p}{1-p}\\right)\\)\nLinear predictor: \\(\\beta_0 + \\beta_1 X_1 + \\dots + \\beta_p X_p\\)"
+    "text": "Logistic regression\n\n\\(Y \\sim \\text{Binomial}(n,p)\\)\nLinear predictor: \\(\\beta_0 + \\beta_1 X_1 + \\dots + \\beta_p X_p\\)\nLogit link function: \\(\\displaystyle g(p) = \\log\\left(\\frac{p}{1-p}\\right)\\)\n\n(Recall: We cannot just simply model \\(p = \\beta_0 + \\beta_1 X_1 + \\dots + \\beta_p X_p\\), since the binary response can only take on values of either 0 or 1)"
+  },
+  {
+    "objectID": "lectures/15-glm.html#poisson-regression",
+    "href": "lectures/15-glm.html#poisson-regression",
+    "title": "Supervised learning: generalized linear models",
+    "section": "Poisson regression",
+    "text": "Poisson regression\n\n\\(Y \\sim \\text{Poisson}(\\lambda)\\)\nLinear predictor: \\(\\beta_0 + \\beta_1 X_1 + \\dots + \\beta_p X_p\\)\nLog link function: \\(\\displaystyle g(\\lambda) = \\log (\\lambda)\\)\n\n(We cannot just simply model \\(\\lambda = \\beta_0 + \\beta_1 X_1 + \\dots + \\beta_p X_p\\), since the counts can only take on non-negative integers)"
   },
   {
     "objectID": "lectures/15-glm.html#generalization-example",
     "href": "lectures/15-glm.html#generalization-example",
     "title": "Supervised learning: generalized linear models",
     "section": "Generalization example",
-    "text": "Generalization example\nIn typical linear regression, the distribution is Normal and the domain of \\(Y \\mid x\\) is \\((-\\infty,\\infty)\\).\n\nWhat, however, happens if we know that\n\nthe domain of observed values of the response is actually \\([0,\\infty]\\)? and\n\n\n\n\nthe observed values are discrete, with possible values 0, 1, 2, …\n\n\n\nThe Normal distribution doesn’t hold here\n\nAny idea of what distribution could possibly govern \\(Y \\mid x\\)?\nRemember, we might not know truly how \\(Y \\mid x\\) is distributed, but any assumption we make has to fit with the limitations imposed by points 1 and 2 above"
+    "text": "Generalization example\nIn linear regression, the distribution is normal and the domain of \\(Y \\mid x\\) is \\((-\\infty,\\infty)\\)\n\nWhat, however, happens if we know that\n\nthe domain of observed values of the response is actually \\([0,\\infty]\\)\nthe observed values are discrete, with possible values \\(0, 1, 2, \\dots\\)\n\n\n\nThe normal distribution doesn’t hold here\n\nWhich distribution could possibly govern \\(Y \\mid x\\)?\nRemember, we might not know truly how \\(Y \\mid x\\) is distributed, but any assumption we make has to fit with the nature of the data"
   },
   {
     "objectID": "lectures/15-glm.html#generalization-poisson-regression",
     "href": "lectures/15-glm.html#generalization-poisson-regression",
     "title": "Supervised learning: generalized linear models",
     "section": "Generalization: Poisson regression",
-    "text": "Generalization: Poisson regression\n\nPMF of a Poisson distribution: \\(\\displaystyle f(x \\mid \\lambda)= \\frac{ e^{-\\lambda} \\lambda^x}{x!}\\); \\(x = 0, 1, 2, \\dots\\) and \\(\\lambda &gt; 0\\)\n\n\n\nModel for the counts of an event in a fixed period of time, with a rate of occurrence parameter \\(\\lambda\\)\nhas a single parameter \\(\\lambda\\), which is both the mean AND variance of the distribution\n\nin general the variance governs the distribution’s shape\n\n\n\n\n\ndistribution of independent event occurences in an interval, e.g. soccer goals in a match\n\\(\\lambda\\) is the average number of the events in an interval\n\n\n\nSo, when we apply generalized linear regression in this context, we would identify the family as Poisson.\nBut there’s another step in generalization…"
+    "text": "Generalization: Poisson regression\n\nPMF of a Poisson distribution: \\(\\displaystyle f(x \\mid \\lambda)= \\frac{ e^{-\\lambda} \\lambda^x}{x!}\\); \\(x = 0, 1, 2, \\dots\\) and \\(\\lambda &gt; 0\\)\n\n\n\nModel for the counts of an event in a fixed period of time or space, with a rate of occurrence parameter \\(\\lambda\\)\n\\(\\lambda\\) is both the mean and the variance of the distribution\n\nin general, the variance governs the distribution’s shape\n\n\n\n\n\ndistribution of independent event occurences in an interval, e.g. soccer goals in a match\n\\(\\lambda\\) is the average number of the events in an interval\n\n\n\nSo, when we apply GLM in this context, we would identify the family as Poisson\nBut there’s another step in generalization…"
   },
   {
     "objectID": "lectures/15-glm.html#generalization-link-function",
     "href": "lectures/15-glm.html#generalization-link-function",
     "title": "Supervised learning: generalized linear models",
     "section": "Generalization: link function",
-    "text": "Generalization: link function\nStart with one predictor, linear function: \\(\\beta_0 + \\beta_1 x\\)\n\nRange of this function is \\((-\\infty,\\infty)\\) - but for Poisson regression example, we know that \\(Y\\) cannot be negative,\n\nWe need to transform the linear function to be \\([0,\\infty)\\)! (We could punt and use simple linear regression, but results may not be meaningful, e.g., we predict \\({\\hat Y}\\) to be negative!)\n\n\n\nThere is usually no unique transformation, but rather conventional ones\n\ne.g., for Poisson we use the \\(log()\\) function as the link function \\(g()\\):\n\n\\[g(\\lambda \\mid x) = \\log(\\lambda \\mid x) = \\beta_0 + \\beta_1 x\\]\n\n\nGiven \\(Y\\) with values limited to being either 0 or positive integers, with no upper bound, we\n\nassume \\(Y \\mid x \\sim \\text{Poisson}(\\lambda)\\)\nassume \\(\\lambda \\mid x = e^{\\beta_0 + \\beta_1 x}\\)\nuse optimization to estimate \\(\\beta_0\\) and \\(\\beta_1\\) by maximizing the likelihood function"
+    "text": "Generalization: link function\nStart with one predictor, linear function: \\(\\beta_0 + \\beta_1 x\\)\n\nRange of this function: \\((-\\infty,\\infty)\\)\nBut for Poisson regression, \\(Y\\) cannot be negative,\n\nWe need to transform the linear function to be \\([0,\\infty)\\)\n\n(What if we use linear regression? Results may not be meaningful, e.g., we predict \\({\\hat Y}\\) to be negative!)\n\n\n\n\nThere is usually no unique transformation, but rather conventional ones"
+  },
+  {
+    "objectID": "lectures/15-glm.html#generalization-link-function-1",
+    "href": "lectures/15-glm.html#generalization-link-function-1",
+    "title": "Supervised learning: generalized linear models",
+    "section": "Generalization: link function",
+    "text": "Generalization: link function\nFor Poisson, we use the \\(\\log()\\) function as the link function \\(g()\\):\n\\[g(\\lambda \\mid x) = \\log(\\lambda \\mid x) = \\beta_0 + \\beta_1 x\\]\n(Hence we also call this a log-linear model)\n\nGiven \\(Y\\) with values limited to being either 0 or positive integers, with no upper bound, we\n\nassume \\(Y \\mid x \\sim \\text{Poisson}(\\lambda)\\)\nassume \\(\\lambda \\mid x = e^{\\beta_0 + \\beta_1 x}\\)\nuse optimization to estimate \\(\\beta_0\\) and \\(\\beta_1\\) by maximizing the likelihood function"
   },
   {
     "objectID": "lectures/15-glm.html#more-distributions",
@@ -4141,91 +4155,133 @@
     "href": "lectures/15-glm.html#modeling-count-data",
     "title": "Supervised learning: generalized linear models",
     "section": "Modeling count data",
-    "text": "Modeling count data\n\ngoals &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/goals.csv\")\ntheme_set(theme_light())\n\n\nlibrary(worldfootballR)\nlibrary(tidyverse)\nbig5 &lt;- fb_match_results(country = c(\"ENG\", \"ESP\", \"ITA\", \"GER\", \"FRA\"),\n                         gender = \"M\", \n                         season_end_year = 2024, \n                         tier = \"1st\")\nbig5 &lt;- big5 |&gt;\n  mutate(match_id = row_number()) |&gt;  # add unique id for each row\n  filter(!is.na(Wk))\n  \nhome_goals &lt;- big5 |&gt;\n  select(goals = HomeGoals, xG = Home_xG, off_team = Home, def_team = Away, league = Country, match_id) |&gt;\n  mutate(is_home = 1)\n\naway_goals &lt;- big5 |&gt;\n  select(goals = AwayGoals, xG = Away_xG, off_team = Away, def_team = Home, league = Country, match_id) |&gt;\n  mutate(is_home = 0)\n\ngoals &lt;- home_goals |&gt;\n  bind_rows(away_goals)\n  \n# write_csv(goals, \"data/goals.csv\")"
+    "text": "Modeling count data\nGoals scored across men’s soccer matches in the five biggest European leagues during the 2023-2024 season, via the worldfootballR package\n\nlibrary(tidyverse)\ntheme_set(theme_light())\ngoals &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/goals.csv\")\nglimpse(goals)\n\nRows: 3,504\nColumns: 7\n$ n_goals  &lt;dbl&gt; 0, 2, 0, 0, 4, 1, 5, 2, 1, 1, 1, 0, 2, 5, 2, 0, 3, 1, 3, 0, 0…\n$ xG       &lt;dbl&gt; 0.3, 0.8, 2.7, 0.5, 4.0, 1.3, 3.3, 2.2, 1.4, 2.2, 0.6, 1.9, 1…\n$ off_team &lt;chr&gt; \"Burnley\", \"Arsenal\", \"Everton\", \"Sheffield Utd\", \"Brighton\",…\n$ def_team &lt;chr&gt; \"Manchester City\", \"Nott'ham Forest\", \"Fulham\", \"Crystal Pala…\n$ league   &lt;chr&gt; \"ENG\", \"ENG\", \"ENG\", \"ENG\", \"ENG\", \"ENG\", \"ENG\", \"ENG\", \"ENG\"…\n$ match_id &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…\n$ is_home  &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…"
   },
   {
     "objectID": "lectures/15-glm.html#eda-distribution-for-the-number-of-goals",
     "href": "lectures/15-glm.html#eda-distribution-for-the-number-of-goals",
     "title": "Supervised learning: generalized linear models",
     "section": "EDA: Distribution for the number of goals",
-    "text": "EDA: Distribution for the number of goals\n\ngoals |&gt; \n  count(goals) |&gt; \n  ggplot(aes(goals, n)) +\n  geom_col(width = 0.5) +\n  scale_x_continuous(breaks = 0:8)"
+    "text": "EDA: Distribution for the number of goals\n\ngoals |&gt; \n  count(n_goals) |&gt; \n  ggplot(aes(n_goals, n)) +\n  geom_col(width = 0.5) +\n  scale_x_continuous(breaks = 0:8)"
   },
   {
     "objectID": "lectures/15-glm.html#eda-distribution-for-the-number-of-goals-by-league",
     "href": "lectures/15-glm.html#eda-distribution-for-the-number-of-goals-by-league",
     "title": "Supervised learning: generalized linear models",
     "section": "EDA: Distribution for the number of goals by league",
-    "text": "EDA: Distribution for the number of goals by league\n\ngoals |&gt; \n  count(goals, league) |&gt; \n  ggplot(aes(goals, n)) +\n  geom_col(width = 0.5) +\n  scale_x_continuous(breaks = 0:8) +\n  facet_wrap(~ league)"
+    "text": "EDA: Distribution for the number of goals by league\n\ngoals |&gt; \n  count(n_goals, league) |&gt; \n  ggplot(aes(n_goals, n)) +\n  geom_col(width = 0.5) +\n  scale_x_continuous(breaks = 0:8) +\n  facet_wrap(~ league, nrow = 1)"
   },
   {
     "objectID": "lectures/15-glm.html#eda-distribution-for-the-number-of-goals-by-homeaway-team",
     "href": "lectures/15-glm.html#eda-distribution-for-the-number-of-goals-by-homeaway-team",
     "title": "Supervised learning: generalized linear models",
     "section": "EDA: Distribution for the number of goals by home/away team",
-    "text": "EDA: Distribution for the number of goals by home/away team\n\ngoals |&gt; \n  count(goals, is_home) |&gt; \n  ggplot(aes(goals, n, fill = factor(is_home), group = is_home)) +\n  geom_col(position = \"dodge\", width = 0.5) +\n  scale_x_continuous(breaks = 0:8)"
+    "text": "EDA: Distribution for the number of goals by home/away team\n\ngoals |&gt; \n  count(n_goals, is_home) |&gt; \n  mutate(is_home = factor(is_home)) |&gt; \n  ggplot(aes(n_goals, n, fill = is_home, group = is_home)) +\n  geom_col(position = \"dodge\", width = 0.5) +\n  scale_x_continuous(breaks = 0:8)"
   },
   {
-    "objectID": "lectures/15-glm.html#poisson-regression",
-    "href": "lectures/15-glm.html#poisson-regression",
+    "objectID": "lectures/15-glm.html#fitting-a-poisson-regression-model",
+    "href": "lectures/15-glm.html#fitting-a-poisson-regression-model",
     "title": "Supervised learning: generalized linear models",
-    "section": "Poisson regression",
-    "text": "Poisson regression\n\ngoals_poisson &lt;- glm(goals ~ league + is_home, \n                        family = \"poisson\",\n                        data = goals)\n# summary(goals_poisson)\nlibrary(broom)\ntidy(goals_poisson)\n\n# A tibble: 6 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)   0.385     0.0323    11.9   1.18e-32\n2 leagueESP    -0.215     0.0424    -5.07  3.98e- 7\n3 leagueFRA    -0.195     0.0449    -4.34  1.46e- 5\n4 leagueGER    -0.0185    0.0426    -0.433 6.65e- 1\n5 leagueITA    -0.228     0.0426    -5.36  8.44e- 8\n6 is_home       0.208     0.0283     7.36  1.87e-13\n\n\n\ntidy(goals_poisson, exponentiate = TRUE)\n\n# A tibble: 6 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)    1.47     0.0323    11.9   1.18e-32\n2 leagueESP      0.807    0.0424    -5.07  3.98e- 7\n3 leagueFRA      0.823    0.0449    -4.34  1.46e- 5\n4 leagueGER      0.982    0.0426    -0.433 6.65e- 1\n5 leagueITA      0.796    0.0426    -5.36  8.44e- 8\n6 is_home        1.23     0.0283     7.36  1.87e-13\n\n\nThe expected number of goals changes by a factor of 1.27 if the team is home in comparison to away teams (or a 27% increase)"
+    "section": "Fitting a poisson regression model",
+    "text": "Fitting a poisson regression model\n\ngoals_poisson &lt;- glm(n_goals ~ league + is_home, \n                     family = \"poisson\",\n                     data = goals)\n# summary(goals_poisson)\nlibrary(broom)\ntidy(goals_poisson)\n\n# A tibble: 6 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)   0.385     0.0323    11.9   1.18e-32\n2 leagueESP    -0.215     0.0424    -5.07  3.98e- 7\n3 leagueFRA    -0.195     0.0449    -4.34  1.46e- 5\n4 leagueGER    -0.0185    0.0426    -0.433 6.65e- 1\n5 leagueITA    -0.228     0.0426    -5.36  8.44e- 8\n6 is_home       0.208     0.0283     7.36  1.87e-13\n\n\nWhat observations in the dataset correspond to predictions using only the intercept?"
+  },
+  {
+    "objectID": "lectures/15-glm.html#fitting-a-poisson-regression-model-1",
+    "href": "lectures/15-glm.html#fitting-a-poisson-regression-model-1",
+    "title": "Supervised learning: generalized linear models",
+    "section": "Fitting a poisson regression model",
+    "text": "Fitting a poisson regression model\n\ntidy(goals_poisson, exponentiate = TRUE)\n\n# A tibble: 6 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)    1.47     0.0323    11.9   1.18e-32\n2 leagueESP      0.807    0.0424    -5.07  3.98e- 7\n3 leagueFRA      0.823    0.0449    -4.34  1.46e- 5\n4 leagueGER      0.982    0.0426    -0.433 6.65e- 1\n5 leagueITA      0.796    0.0426    -5.36  8.44e- 8\n6 is_home        1.23     0.0283     7.36  1.87e-13\n\n\nWe have insufficient evidence to suggest the expected number of goals is different between ENG teams and each of ESP, FRA, and ITA, but not GER, after accounting for home field advantage\nThe expected number of goals changes (is multiplied) by a factor of 1.27 if the team is home in comparison to away teams, after accounting for league"
+  },
+  {
+    "objectID": "lectures/15-glm.html#model-residuals-and-goodness-of-fit-measures",
+    "href": "lectures/15-glm.html#model-residuals-and-goodness-of-fit-measures",
+    "title": "Supervised learning: generalized linear models",
+    "section": "Model residuals and goodness-of-fit measures",
+    "text": "Model residuals and goodness-of-fit measures\n\nPearson residuals: \\(\\displaystyle r_i = \\frac{y_i-\\hat{\\lambda}_i}{\\sqrt{\\hat{\\lambda}_i}}\\)\nDeviance residuals: \\(\\displaystyle d_i = \\textrm{sign}(y_i-\\hat{\\lambda}_i) \\sqrt{2 \\left[y_i log\\left(\\frac{y_i}{\\hat{\\lambda}_i}\\right) -(y_i - \\hat{\\lambda}_i) \\right]}\\)\n\n\nresiduals(goals_poisson, type = \"pearson\")\nresiduals(goals_poisson, type = \"deviance\")\n\n\nModel summaries\n\n\nglance(goals_poisson)\n\n# A tibble: 1 × 8\n  null.deviance df.null logLik    AIC    BIC deviance df.residual  nobs\n          &lt;dbl&gt;   &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt; &lt;int&gt;\n1         4379.    3503 -5363. 10738. 10775.    4272.        3498  3504\n\n\nAs before, we prefer assessment in terms of out-of-sample/test set performances over these measures"
   },
   {
     "objectID": "lectures/15-glm.html#overdispersion",
     "href": "lectures/15-glm.html#overdispersion",
     "title": "Supervised learning: generalized linear models",
     "section": "Overdispersion",
-    "text": "Overdispersion\n\nvar(goals$goals)\n\n[1] 1.58617\n\nmean(goals$goals)\n\n[1] 1.442352\n\n\n\nQuasipoisson\n\n\ngoals_qp &lt;- glm(goals ~ league + is_home, \n                family = \"quasipoisson\",\n                data = goals)\n\n\nNegative binomial"
+    "text": "Overdispersion\n\nOverdispersion is a common problem faced in Poisson regression when the variance is larger than what is assumed under the model\nRecall that a Poisson distribution assumes equidispersion (i.e. the mean and variance are equal)\n\n\nvar(goals$n_goals)\n\n[1] 1.58617\n\nmean(goals$n_goals)\n\n[1] 1.442352\n\n\n\nLooks like overdispersion is not a concern here"
+  },
+  {
+    "objectID": "lectures/15-glm.html#quasipoisson-regression",
+    "href": "lectures/15-glm.html#quasipoisson-regression",
+    "title": "Supervised learning: generalized linear models",
+    "section": "Quasipoisson regression",
+    "text": "Quasipoisson regression\nIn the case of overdispersion (the variance is larger than expected), the resulting standard errors of the model coefficients can be inflated by the dispersion parameter \\[\\displaystyle \\varphi = \\frac{\\sum_{i} r_i^2}{n - p},\\] where \\(p\\) is the number of model parameters, and \\(r_i\\) is the Pearson residual for the \\(i\\)th observation\nWe can then multiply each coefficient standard error by \\(\\varphi\\)\n\nsum(residuals(goals_poisson, type = \"pearson\") ^ 2) / df.residual(goals_poisson)\n\n[1] 1.070286\n\n\n\ngoals_qp &lt;- glm(n_goals ~ league + is_home, \n                family = \"quasipoisson\",\n                data = goals)\n# summary(goals_qp)\n# goals_qp |&gt; \n#   glance() |&gt; \n#   summarize(p_val = pchisq(null.deviance - deviance, df.null - df.residual, lower.tail = FALSE))"
   },
   {
     "objectID": "lectures/15-glm.html#negative-binomial-regression",
     "href": "lectures/15-glm.html#negative-binomial-regression",
     "title": "Supervised learning: generalized linear models",
     "section": "Negative binomial regression",
-    "text": "Negative binomial regression\n\ngoals_nb &lt;- MASS::glm.nb(\n  goals ~ league + is_home, \n  data = goals\n)\ntidy(goals_nb)\n\n# A tibble: 6 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)   0.385     0.0335    11.5   1.33e-30\n2 leagueESP    -0.215     0.0438    -4.91  9.22e- 7\n3 leagueFRA    -0.194     0.0464    -4.19  2.78e- 5\n4 leagueGER    -0.0186    0.0442    -0.422 6.73e- 1\n5 leagueITA    -0.228     0.0440    -5.18  2.17e- 7\n6 is_home       0.208     0.0292     7.12  1.07e-12"
+    "text": "Negative binomial regression\nKey idea: introduces another parameter such that the variance can exceed the mean\n\nWe have \\(E(Y) = \\lambda\\) and \\(\\text{Var}(Y)=\\lambda(1+\\alpha \\lambda)\\)\n\n\n\nThe variance is still proportional to \\(\\lambda\\), but depends on the dispersion parameter \\(\\alpha \\ge 0\\)\n\n\n\n\nThe further \\(\\alpha\\) falls above 0, the greater the overdispersion relative to Poisson variability\n\n\n\n\nAs \\(\\alpha\\) decreases toward 0, the variance decreases toward \\(\\lambda\\) , and the model converges to a Poisson distribution\n\n\n\nSee here for more information"
+  },
+  {
+    "objectID": "lectures/15-glm.html#negative-binomial-regression-1",
+    "href": "lectures/15-glm.html#negative-binomial-regression-1",
+    "title": "Supervised learning: generalized linear models",
+    "section": "Negative binomial regression",
+    "text": "Negative binomial regression\n\ngoals_nb &lt;- MASS::glm.nb(n_goals ~ league + is_home, data = goals)\nsummary(goals_nb)\n\n\nCall:\nMASS::glm.nb(formula = n_goals ~ league + is_home, data = goals, \n    init.theta = 21.53331101, link = log)\n\nCoefficients:\n            Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)  0.38498    0.03348  11.500  &lt; 2e-16 ***\nleagueESP   -0.21511    0.04383  -4.908 9.22e-07 ***\nleagueFRA   -0.19437    0.04638  -4.190 2.78e-05 ***\nleagueGER   -0.01865    0.04423  -0.422    0.673    \nleagueITA   -0.22798    0.04398  -5.184 2.17e-07 ***\nis_home      0.20807    0.02922   7.122 1.07e-12 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for Negative Binomial(21.5333) family taken to be 1)\n\n    Null deviance: 4141.0  on 3503  degrees of freedom\nResidual deviance: 4040.6  on 3498  degrees of freedom\nAIC: 10732\n\nNumber of Fisher Scoring iterations: 1\n\n              Theta:  21.53 \n          Std. Err.:  8.31 \n\n 2 x log-likelihood:  -10718.22"
   },
   {
     "objectID": "lectures/15-glm.html#zero-inflated-poisson-regression",
     "href": "lectures/15-glm.html#zero-inflated-poisson-regression",
     "title": "Supervised learning: generalized linear models",
-    "section": "Zero-inflated poisson regression",
-    "text": "Zero-inflated poisson regression\nbackground"
+    "section": "Zero-inflated Poisson regression",
+    "text": "Zero-inflated Poisson regression\n\nOne common problem in modeling count data is the prevalence of zeros\nWhile the Poisson distribution allows for zero counts, there are problems with a lot more zeros observed than expected for Poisson data\n\n\n\nA zero-inflated Poisson (ZIP) model is a mixture model with two components\n\nLogistic regression model to predict whether the response will be zero (whether 0 goals are observed) \\[P(Y = 0) = \\pi + (1 - \\pi)e^{\\lambda}\\]\nPoisson regression model for non-zero counts (non-zero goal values) \\[P(Y = y) = (1 - \\pi) \\frac{\\lambda^y e^{-\\lambda}}{y!}, \\text{\nfor } y = 1, 2, 3, \\dots\\]"
   },
   {
     "objectID": "lectures/15-glm.html#zero-inflated-poisson-zip-regression",
     "href": "lectures/15-glm.html#zero-inflated-poisson-zip-regression",
     "title": "Supervised learning: generalized linear models",
-    "section": "Zero-inflated poisson (ZIP) regression",
-    "text": "Zero-inflated poisson (ZIP) regression\n\nlibrary(pscl) # install.packages(\"pscl\")\ngoals_zip &lt;- zeroinfl(goals ~ league + is_home, data = goals)\nsummary(goals_zip)\n\n\nCall:\nzeroinfl(formula = goals ~ league + is_home, data = goals)\n\nPearson residuals:\n    Min      1Q  Median      3Q     Max \n-1.3289 -1.0266 -0.1845  0.7004  5.2685 \n\nCount model coefficients (poisson with log link):\n            Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)  0.41532    0.04103  10.123  &lt; 2e-16 ***\nleagueESP   -0.17010    0.05467  -3.111  0.00186 ** \nleagueFRA   -0.18004    0.05792  -3.108  0.00188 ** \nleagueGER   -0.01636    0.05351  -0.306  0.75985    \nleagueITA   -0.22493    0.05737  -3.921 8.82e-05 ***\nis_home      0.18472    0.03752   4.923 8.53e-07 ***\n\nZero-inflation model coefficients (binomial with logit link):\n            Estimate Std. Error z value Pr(&gt;|z|)   \n(Intercept)  -3.6716     1.2681  -2.895  0.00379 **\nleagueESP     1.3000     1.3596   0.956  0.33902   \nleagueFRA     0.6130     1.6018   0.383  0.70195   \nleagueGER     0.1166     1.7986   0.065  0.94831   \nleagueITA     0.1689     2.0463   0.083  0.93421   \nis_home      -0.8116     0.9188  -0.883  0.37709   \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 \n\nNumber of iterations in BFGS optimization: 40 \nLog-likelihood: -5359 on 12 Df"
+    "section": "Zero-inflated Poisson (ZIP) regression",
+    "text": "Zero-inflated Poisson (ZIP) regression\n\nlibrary(pscl) # install.packages(\"pscl\")\ngoals_zip &lt;- zeroinfl(n_goals ~ league + is_home, data = goals)\nsummary(goals_zip)\n\n\nCall:\nzeroinfl(formula = n_goals ~ league + is_home, data = goals)\n\nPearson residuals:\n    Min      1Q  Median      3Q     Max \n-1.3289 -1.0266 -0.1845  0.7004  5.2685 \n\nCount model coefficients (poisson with log link):\n            Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)  0.41532    0.04103  10.123  &lt; 2e-16 ***\nleagueESP   -0.17010    0.05467  -3.111  0.00186 ** \nleagueFRA   -0.18004    0.05792  -3.108  0.00188 ** \nleagueGER   -0.01636    0.05351  -0.306  0.75985    \nleagueITA   -0.22493    0.05737  -3.921 8.82e-05 ***\nis_home      0.18472    0.03752   4.923 8.53e-07 ***\n\nZero-inflation model coefficients (binomial with logit link):\n            Estimate Std. Error z value Pr(&gt;|z|)   \n(Intercept)  -3.6716     1.2681  -2.895  0.00379 **\nleagueESP     1.3000     1.3596   0.956  0.33902   \nleagueFRA     0.6130     1.6018   0.383  0.70195   \nleagueGER     0.1166     1.7986   0.065  0.94831   \nleagueITA     0.1689     2.0463   0.083  0.93421   \nis_home      -0.8116     0.9188  -0.883  0.37709   \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 \n\nNumber of iterations in BFGS optimization: 40 \nLog-likelihood: -5359 on 12 Df"
   },
   {
     "objectID": "lectures/15-glm.html#model-selection-poisson-vs-zip",
     "href": "lectures/15-glm.html#model-selection-poisson-vs-zip",
     "title": "Supervised learning: generalized linear models",
     "section": "Model selection: Poisson vs ZIP",
-    "text": "Model selection: Poisson vs ZIP\n\nset.seed(2008)\nn_folds &lt;- 5\ngoals_folds &lt;- goals |&gt; \n  distinct(match_id) |&gt;\n  mutate(match_fold = sample(rep(1:n_folds, length.out = n()), n()))\n\n# goals_folds |&gt; count(match_fold)\n\ngoals &lt;- goals |&gt; \n  left_join(goals_folds, by = \"match_id\")"
+    "text": "Model selection: Poisson vs ZIP\n\nset.seed(2008)\nn_folds &lt;- 5\ngoals_folds &lt;- goals |&gt; \n  distinct(match_id) |&gt;\n  mutate(match_fold = sample(rep(1:n_folds, length.out = n())))\n\n# goals_folds |&gt; count(match_fold)\n\ngoals &lt;- goals |&gt; \n  left_join(goals_folds, by = \"match_id\")"
   },
   {
     "objectID": "lectures/15-glm.html#cross-validation",
     "href": "lectures/15-glm.html#cross-validation",
     "title": "Supervised learning: generalized linear models",
     "section": "Cross-validation",
-    "text": "Cross-validation\n\npoisson_cv &lt;- function(k) {\n\n  train_goals &lt;- goals |&gt; \n    filter(match_fold != k)\n  test_goals &lt;- goals |&gt; \n    filter(match_fold == k)\n\n  poisson_fit &lt;- glm(goals ~ league + is_home, family = \"poisson\", data = train_goals)\n  \n  poisson_test_preds &lt;- predict(poisson_fit, newdata = test_goals, type = \"response\")\n  \n  # return a table with RMSE and fold id:\n  poisson_out &lt;- tibble(rmse = sqrt(mean((test_goals$goals - poisson_test_preds) ^ 2)), \n                        match_fold = k)\n\n  return(poisson_out)\n}\n\npoisson_cv_results &lt;- map(1:n_folds, poisson_cv) |&gt; \n  list_rbind()"
+    "text": "Cross-validation\n\npoisson_cv &lt;- function(k) {\n\n  train_goals &lt;- goals |&gt; \n    filter(match_fold != k)\n  test_goals &lt;- goals |&gt; \n    filter(match_fold == k)\n\n  poisson_fit &lt;- glm(n_goals ~ league + is_home, family = \"poisson\", data = train_goals)\n  poisson_test_preds &lt;- predict(poisson_fit, newdata = test_goals, type = \"response\")\n  \n  # return a table with RMSE and fold id\n  poisson_out &lt;- tibble(rmse = sqrt(mean((test_goals$n_goals - poisson_test_preds) ^ 2)), \n                        match_fold = k)\n  return(poisson_out)\n}\n\npoisson_cv_results &lt;- map(1:n_folds, poisson_cv) |&gt; \n  list_rbind()"
   },
   {
     "objectID": "lectures/15-glm.html#cross-validation-1",
     "href": "lectures/15-glm.html#cross-validation-1",
     "title": "Supervised learning: generalized linear models",
     "section": "Cross-validation",
-    "text": "Cross-validation\n\nzip_cv &lt;- function(k) {\n\n  train_goals &lt;- goals |&gt; \n    filter(match_fold != k)\n\n  test_goals &lt;- goals |&gt; \n    filter(match_fold == k)\n  \n  zip_fit &lt;- zeroinfl(goals ~ league + is_home, data = train_goals)\n  \n  zip_test_preds &lt;- predict(zip_fit, newdata = test_goals)\n  \n  zip_out &lt;- tibble(rmse = sqrt(mean((test_goals$goals - zip_test_preds)^2)),\n                    match_fold = k)\n\n  return(zip_out)\n}\n\nzip_cv_results &lt;- map(1:n_folds, zip_cv) |&gt; \n  list_rbind()"
+    "text": "Cross-validation\n\nzip_cv &lt;- function(k) {\n\n  train_goals &lt;- goals |&gt; \n    filter(match_fold != k)\n  test_goals &lt;- goals |&gt; \n    filter(match_fold == k)\n  \n  zip_fit &lt;- zeroinfl(n_goals ~ league + is_home, data = train_goals)\n  zip_test_preds &lt;- predict(zip_fit, newdata = test_goals)\n  \n  zip_out &lt;- tibble(rmse = sqrt(mean((test_goals$n_goals - zip_test_preds)^2)),\n                    match_fold = k)\n  return(zip_out)\n}\n\nzip_cv_results &lt;- map(1:n_folds, zip_cv) |&gt; \n  list_rbind()"
   },
   {
     "objectID": "lectures/15-glm.html#out-of-sample-comparison",
     "href": "lectures/15-glm.html#out-of-sample-comparison",
     "title": "Supervised learning: generalized linear models",
     "section": "Out-of-sample comparison",
-    "text": "Out-of-sample comparison\nWhich model would you select?\n\npoisson_cv_results |&gt; \n  summarize(avg_rmse = mean(rmse))\n\n# A tibble: 1 × 1\n  avg_rmse\n     &lt;dbl&gt;\n1     1.24\n\nzip_cv_results |&gt; \n  summarize(avg_rmse = mean(rmse))\n\n# A tibble: 1 × 1\n  avg_rmse\n     &lt;dbl&gt;\n1     1.24\n\n\n\nRemember: Occam’s razor\n\n\n36-SURE.github.io"
+    "text": "Out-of-sample comparison\nWhich model would you select?\n\npoisson_cv_results |&gt; \n  summarize(avg_rmse = mean(rmse))\n\n# A tibble: 1 × 1\n  avg_rmse\n     &lt;dbl&gt;\n1     1.24\n\nzip_cv_results |&gt; \n  summarize(avg_rmse = mean(rmse))\n\n# A tibble: 1 × 1\n  avg_rmse\n     &lt;dbl&gt;\n1     1.24\n\n\n\nRemember: Occam’s razor"
+  },
+  {
+    "objectID": "lectures/15-glm.html#resources",
+    "href": "lectures/15-glm.html#resources",
+    "title": "Supervised learning: generalized linear models",
+    "section": "Resources",
+    "text": "Resources\n\nBivariate Poisson regression\nGeneralized Poisson regression\nSkellam regression\nConway-Maxwell-Poisson regression\nPoisson–Tweedie regression"
+  },
+  {
+    "objectID": "lectures/15-glm.html#appendix-code-to-build-dataset",
+    "href": "lectures/15-glm.html#appendix-code-to-build-dataset",
+    "title": "Supervised learning: generalized linear models",
+    "section": "Appendix: Code to build dataset",
+    "text": "Appendix: Code to build dataset\n\nlibrary(worldfootballR)\nlibrary(tidyverse)\nbig5 &lt;- fb_match_results(country = c(\"ENG\", \"ESP\", \"ITA\", \"GER\", \"FRA\"),\n                         gender = \"M\", \n                         season_end_year = 2024, \n                         tier = \"1st\")\nbig5 &lt;- big5 |&gt;\n  mutate(match_id = row_number()) |&gt;  # add unique id for each row\n  filter(!is.na(Wk))\n  \nhome_goals &lt;- big5 |&gt;\n  select(n_goals = HomeGoals, xG = Home_xG, off_team = Home, def_team = Away, league = Country, match_id) |&gt;\n  mutate(is_home = 1)\n\naway_goals &lt;- big5 |&gt;\n  select(n_goals = AwayGoals, xG = Away_xG, off_team = Away, def_team = Home, league = Country, match_id) |&gt;\n  mutate(is_home = 0)\n\ngoals &lt;- home_goals |&gt;\n  bind_rows(away_goals)\n  \n# write_csv(goals, \"goals.csv\")  \n\n\n\n36-SURE.github.io"
   },
   {
     "objectID": "lectures/02-graphics.html#goals-of-data-visualization",
