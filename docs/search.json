@@ -1362,14 +1362,14 @@
     "href": "lectures.html",
     "title": "Lectures",
     "section": "",
-    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides\n\n\nLecture 9\nJune 14\nPresentations\nslides\n\n\nLecture 10\nJune 17\nSupervised learning: the tradeoffs\nslides\n\n\nLecture 11\nJune 21\nSupervised learning: linear regression\nslides\n\n\nLecture 12\nJune 24\nSupervised learning: variable selection\nslides\n\n\nLecture 13\nJune 25\nSupervised learning: regularization\nslides\n\n\nLecture 14\nJune 26\nSupervised learning: logistic regression\nslides\n\n\nLecture 15\nJune 26\nSupervised learning: generalized linear models\nslides"
+    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides\n\n\nLecture 9\nJune 14\nPresentations\nslides\n\n\nLecture 10\nJune 17\nSupervised learning: the tradeoffs\nslides\n\n\nLecture 11\nJune 21\nSupervised learning: linear regression\nslides\n\n\nLecture 12\nJune 24\nSupervised learning: variable selection\nslides\n\n\nLecture 13\nJune 25\nSupervised learning: regularization\nslides\n\n\nLecture 14\nJune 26\nSupervised learning: logistic regression\nslides\n\n\nLecture 15\nJune 26\nSupervised learning: generalized linear models\nslides\n\n\nLecture 16\nJune 27\nUnsupervised learning: principal component analysis\nslides"
   },
   {
     "objectID": "lectures.html#contents",
     "href": "lectures.html#contents",
     "title": "Lectures",
     "section": "",
-    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides\n\n\nLecture 9\nJune 14\nPresentations\nslides\n\n\nLecture 10\nJune 17\nSupervised learning: the tradeoffs\nslides\n\n\nLecture 11\nJune 21\nSupervised learning: linear regression\nslides\n\n\nLecture 12\nJune 24\nSupervised learning: variable selection\nslides\n\n\nLecture 13\nJune 25\nSupervised learning: regularization\nslides\n\n\nLecture 14\nJune 26\nSupervised learning: logistic regression\nslides\n\n\nLecture 15\nJune 26\nSupervised learning: generalized linear models\nslides"
+    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides\n\n\nLecture 9\nJune 14\nPresentations\nslides\n\n\nLecture 10\nJune 17\nSupervised learning: the tradeoffs\nslides\n\n\nLecture 11\nJune 21\nSupervised learning: linear regression\nslides\n\n\nLecture 12\nJune 24\nSupervised learning: variable selection\nslides\n\n\nLecture 13\nJune 25\nSupervised learning: regularization\nslides\n\n\nLecture 14\nJune 26\nSupervised learning: logistic regression\nslides\n\n\nLecture 15\nJune 26\nSupervised learning: generalized linear models\nslides\n\n\nLecture 16\nJune 27\nUnsupervised learning: principal component analysis\nslides"
   },
   {
     "objectID": "lectures.html#references",
@@ -3171,11 +3171,74 @@
     "text": "Other calibration methods\n\nPlatt scaling\nIsotonic regression\nBeta calibration\nprobably package in R\nFormally, a classifier is calibrated (or well-calibrated) when \\(P(Y = 1 \\mid\\hat p(X) = p) = p\\)\n\n\n\n36-SURE.github.io"
   },
   {
-    "objectID": "lectures/16-pca.html#the-big-picture",
-    "href": "lectures/16-pca.html#the-big-picture",
+    "objectID": "lectures/16-pca.html#be-aware-of-confounding-variables",
+    "href": "lectures/16-pca.html#be-aware-of-confounding-variables",
     "title": "Unsupervised learning: principal component analysis",
-    "section": "The big picture",
-    "text": "The big picture\nHow do we visualize structure of high-dimensional data?\n\nExample: What if you’re given a dataset with 50 variables, and ask you to make one visualization that best represents the data? What do you do?\n\n\nTedious task: Make a series of all \\(\\displaystyle \\binom{50}{2} = 1225\\) pairs of plots?\n\n\nIntuition: Take high-dimensional data and represent it in 2-3 dimensions, then visualize those dimensions"
+    "section": "Be aware of confounding variables",
+    "text": "Be aware of confounding variables\nA confounding variable (or lurking variable) is one that is associated with both the response and predictor variables\n\n\nIt can be tempting to immediately jump to conclusions when faced with a strong association between the variables\nHowever, it is important to stop and think about whether there are confounding variables which could be explaining the association instead"
+  },
+  {
+    "objectID": "lectures/16-pca.html#be-aware-of-confounding-variables-1",
+    "href": "lectures/16-pca.html#be-aware-of-confounding-variables-1",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Be aware of confounding variables",
+    "text": "Be aware of confounding variables\nIn studying the relationship between a predictor \\(X\\) and a response variable \\(Y\\),\n\nwe should adjust for confounding variables that can influence that relationship because they are associated both with \\(X\\) and with \\(Y\\)\nIf the variable is a potential confounder, including it in the model may help to reduce bias in estimating relevant effects of key explanatory variables"
+  },
+  {
+    "objectID": "lectures/16-pca.html#be-aware-of-confounding-variables-2",
+    "href": "lectures/16-pca.html#be-aware-of-confounding-variables-2",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Be aware of confounding variables",
+    "text": "Be aware of confounding variables\nExample: Examine the impact of fertilizer on the yield of an apple orchard\n\nSuppose researchers are studying the relationship between the amount of fertilizer used and the yield of apple orchards\n\n\n\nThey fit a model with the yield as the response and amount of fertilizer used as the single predictor\n\n\n\n\nBut, there are many possible confounding variables that might be associated with both the amount of fertilizer used and the yield (e.g., quality of soil, weather, etc.)\n\n\n\n\nThese variables, if included in the data, should also be adjusted for in the model"
+  },
+  {
+    "objectID": "lectures/16-pca.html#a-quote-from-essays-on-data-analysis",
+    "href": "lectures/16-pca.html#a-quote-from-essays-on-data-analysis",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "A quote from Essays on Data Analysis",
+    "text": "A quote from Essays on Data Analysis\n\nI have observed people who explore the data extensively, making quick plots, sketches, and summaries, and then immediately draw a conclusion like “X causes Y” or “A is associated with B” […] This is problematic because often in the exploratory process we only look at rough sketches, often just bivariate plots or 2x2 tables which reveal strong relationships. Making inferences from this kind of exploratory work can be misleading without carefully considering second order factors like confounding […]. Often, those issues are more easily dealt with when using formal models or more detailed visualization."
+  },
+  {
+    "objectID": "lectures/16-pca.html#be-aware-of-multicollinearity",
+    "href": "lectures/16-pca.html#be-aware-of-multicollinearity",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Be aware of multicollinearity",
+    "text": "Be aware of multicollinearity\nBut be careful… models can suffer from multicollinearity\n\nA set of predictors exhibits multicollinearity when one or more of the predictors is strongly correlated with some combination of the other predictors in the set\n\n\n\nCorrelations among predictors could make it seem that no one variable is important when all the others are in the model\n\n\n\n\nA variable may seem to have little effect because it overlaps considerably with others in the model, itself being predicted well by the other predictors"
+  },
+  {
+    "objectID": "lectures/16-pca.html#make-sure-to-justify-the-model-choice",
+    "href": "lectures/16-pca.html#make-sure-to-justify-the-model-choice",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Make sure to justify the model choice",
+    "text": "Make sure to justify the model choice\nWhy is the modeling technique appropriate for the problem?\n\nFor simplicity and explanability purpose? (Why do you prefer a simpler model over a black box?)\nFor complexity and flexibility purpose? (Why do you prefer a black box over a simpler model?)\n\n\nHow do you evaluate your model?\n\nDid you compare it with different approaches?\nDid you compare it with alternative specifications such as different set of predictors?\nHow do you choose the predictors?\n\ndomain knowledge\ncontext\nextensive EDA\nmodel assessment based on holdout predictions"
+  },
+  {
+    "objectID": "lectures/16-pca.html#make-sure-to-quantify-uncertainty-for-your-estimates-of-interest",
+    "href": "lectures/16-pca.html#make-sure-to-quantify-uncertainty-for-your-estimates-of-interest",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Make sure to quantify uncertainty for your estimates of interest",
+    "text": "Make sure to quantify uncertainty for your estimates of interest\nDon’t just say something like “we find an association between Y and X…”\n\nBe more specific!\nWhat do those coefficient estimates tell you?\nHow large/small is the effect size?\nWhat’s the margin off error?\nDid the model also adjust for other potential meaningful predictors?"
+  },
+  {
+    "objectID": "lectures/16-pca.html#unsupervised-learning",
+    "href": "lectures/16-pca.html#unsupervised-learning",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Unsupervised learning",
+    "text": "Unsupervised learning\n\nNo response variable (i.e. data are not labeled)\nOnly given a set of features measured on a set of observations\nObjective: understand the variation and grouping structure of a set of unlabeled data\n\ne.g., discover subgroups among the variables or among the observations\n\nDifficult to know how “good” you are doing"
+  },
+  {
+    "objectID": "lectures/16-pca.html#dimension-reduction-the-big-picture",
+    "href": "lectures/16-pca.html#dimension-reduction-the-big-picture",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Dimension reduction: the big picture",
+    "text": "Dimension reduction: the big picture\nKey question: How do we visualize the structure of high-dimensional data?\n\nExample: What if you’re given a dataset with 50 variables and are asked to make one visualization that best represents the data? What do you do?\n\n\nTedious task: Make a series of all \\(\\displaystyle \\binom{50}{2} = 1225\\) pairs of plots? Or make a giant correlation heatmap?\n\n\nIntuition: Take high-dimensional data and represent it in 2-3 dimensions, then visualize those dimensions"
+  },
+  {
+    "objectID": "lectures/16-pca.html#dimension-reduction-the-big-picture-1",
+    "href": "lectures/16-pca.html#dimension-reduction-the-big-picture-1",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Dimension reduction: the big picture",
+    "text": "Dimension reduction: the big picture\n\nIt’s usually really hard to visualize many dimensions at the same time\n\n\n\nOften, it makes a lot of sense to choose 2-3 of the “most important dimensions” and just plot those\n\n\n\n\nPCA is a very common way to define “most important dimensions”\n\n\n\n\nPCA provides the linear combinations of variables that capture the most variation in the data\n\n\n\n\nIt’s common to plot the first two principal components in a scatterplot\n\n\n\n\nIt’s very useful to plot principal components with a biplot\n\nAdds interpretability to the principal components, and helps reveal relationships among the variables"
   },
   {
     "objectID": "lectures/16-pca.html#what-is-the-goal-of-dimension-reduction",
@@ -3189,28 +3252,35 @@
     "href": "lectures/16-pca.html#principal-components-analysis-pca",
     "title": "Unsupervised learning: principal component analysis",
     "section": "Principal components analysis (PCA)",
-    "text": "Principal components analysis (PCA)"
+    "text": "Principal components analysis (PCA)\nTL;DR\nPCA replaces the original \\(p\\) explanatory variables by fewer linear combinations of them (the “principal components”) that are uncorrelated while also accounting for most of their variabillity\n\n\\[\n\\begin{pmatrix}\n& & \\text{really} & & \\\\\n& & \\text{wide} & & \\\\\n& & \\text{matrix} & &\n\\end{pmatrix}\n\\rightarrow \\text{matrix algebra razzmatazz} \\rightarrow\n\\begin{pmatrix}\n\\text{much}  \\\\\n\\text{thinner}  \\\\\n\\text{matrix}\n\\end{pmatrix}\n\\]\n\nPCA explores the covariance between variables, and combines variables into a smaller set of uncorrelated variables called principal components (PCs)\n\nTurn a \\(n \\times p\\) matrix of correlated variables into a \\(n \\times k\\) matrix of uncorrelated variables"
   },
   {
     "objectID": "lectures/16-pca.html#principal-components-analysis-pca-1",
     "href": "lectures/16-pca.html#principal-components-analysis-pca-1",
     "title": "Unsupervised learning: principal component analysis",
     "section": "Principal components analysis (PCA)",
-    "text": "Principal components analysis (PCA)\n\\[\n\\begin{pmatrix}\n& & \\text{really} & & \\\\\n& & \\text{wide} & & \\\\\n& & \\text{matrix} & &\n\\end{pmatrix}\n\\rightarrow \\text{matrix algebra razzmatazz} \\rightarrow\n\\begin{pmatrix}\n\\text{much}  \\\\\n\\text{thinner}  \\\\\n\\text{matrix}\n\\end{pmatrix}\n\\]\n\nPCA explores the covariance between variables, and combines variables into a smaller set of uncorrelated variables called principal components (PCs)\n\nTurn a \\(n \\times p\\) matrix of correlated variables into a \\(n \\times k\\) matrix of uncorrelated variables\n\nEach of the \\(k\\) columns in the right-hand matrix are principal components (PCs), all uncorrelated with each other\n\nPCs are weighted, linear combinations of the original variables\nWeights reveal how different variables are loaded into the PCs\n\nFirst column accounts for most variation in the data, second column for second-most variation, and so on\n\nIntuition: we want a small number of PCs (first few PCs) to account for most of the information/variance in the data"
+    "text": "Principal components analysis (PCA)\n\\[\n\\begin{pmatrix}\n& & \\text{really} & & \\\\\n& & \\text{wide} & & \\\\\n& & \\text{matrix} & &\n\\end{pmatrix}\n\\rightarrow \\text{matrix algebra razzmatazz} \\rightarrow\n\\begin{pmatrix}\n\\text{much}  \\\\\n\\text{thinner}  \\\\\n\\text{matrix}\n\\end{pmatrix}\n\\]\n\nEach of the \\(k\\) columns in the right-hand matrix are principal components (PCs), all uncorrelated with each other\n\nPCs are weighted, linear combinations of the original variables\nWeights reveal how different variables are loaded into the PCs\n\nFirst column accounts for most variation in the data, second column for second-most variation, and so on\n\nIntuition: we want a small number of PCs (first few PCs) to account for most of the information/variance in the data"
   },
   {
     "objectID": "lectures/16-pca.html#what-are-principal-components",
     "href": "lectures/16-pca.html#what-are-principal-components",
     "title": "Unsupervised learning: principal component analysis",
     "section": "What are principal components?",
-    "text": "What are principal components?\n\nAssume \\(\\boldsymbol{X}\\) is a \\(n \\times p\\) matrix that is centered and stardardized\nTotal variation \\(= p\\), since \\(\\text{Var}(\\boldsymbol{x}_j)\\) = 1 for all \\(j = 1, \\dots, p\\)\nPCA will give us \\(p\\) principal components that are \\(n\\)-length columns - call these \\(Z_1, \\dots, Z_p\\)\n\nFirst principal component\n\\[Z_1 = \\phi_{11} X_1 + \\phi_{21} X_2 + \\dots + \\phi_{p1} X_p\\]\n\n\n\\(\\phi_{j1}\\) are the weights indicating the contributions of each variable \\(j \\in 1, \\dots, p\\)\nWeights are normalized \\(\\sum_{j=1}^p \\phi_{j1}^2 = 1\\)\n\\(\\phi_{1} = (\\phi_{11}, \\phi_{21}, \\dots, \\phi_{p1})\\) is the loading vector for PC1\n\n\n\n\n\\(Z_1\\) is a linear combination of the \\(p\\) variables that has the largest variance"
+    "text": "What are principal components?\nAssume \\(\\boldsymbol{X}\\) is a \\(n \\times p\\) matrix that is centered and stardardized\n\nTotal variation \\(= p\\), since \\(\\text{Var}(\\boldsymbol{x}_j)\\) = 1 for all \\(j = 1, \\dots, p\\) (due to stardardization)\n\n\nPCA will give us \\(p\\) principal components that are \\(n\\)-length columns, denoted by \\(Z_1, \\dots, Z_p\\)\n\n\n\nThe first principal component is the linear combination that has the largest possible variance\nEach succeeding component has the largest possible variance under the constraint that it is uncorrelated with the preceding components\nA small number of principal components often explains a high percentage of the original variability"
   },
   {
-    "objectID": "lectures/16-pca.html#principal-components-analysis-pca-2",
-    "href": "lectures/16-pca.html#principal-components-analysis-pca-2",
+    "objectID": "lectures/16-pca.html#first-principal-component",
+    "href": "lectures/16-pca.html#first-principal-component",
     "title": "Unsupervised learning: principal component analysis",
-    "section": "Principal components analysis (PCA)",
-    "text": "Principal components analysis (PCA)\nSecond principal component\n\\[Z_2 = \\phi_{12} X_1 + \\phi_{22} X_2 + \\dots + \\phi_{p2} X_p\\]\n\n\\(\\phi_{j2}\\) are the weights indicating the contributions of each variable \\(j \\in 1, \\dots, p\\)\nWeights are normalized \\(\\sum_{j=1}^p \\phi_{j1}^2 = 1\\)\n\\(\\phi_{2} = (\\phi_{12}, \\phi_{22}, \\dots, \\phi_{p2})\\) is the loading vector for PC2\n\\(Z_2\\) is a linear combination of the \\(p\\) variables that has the largest variance\n\nSubject to constraint it is uncorrelated with \\(Z_1\\)\n\n\n\nRepeat this process to create \\(p\\) principal components\n\nUncorrelated: Each (\\(Z_j, Z_{j'}\\)) is uncorrelated with each other\nOrdered Variance: \\(\\text{Var}(Z_1) &gt; \\text{Var}(Z_2) &gt; \\dots &gt; \\text{Var}(Z_p)\\)\nTotal Variance: \\(\\sum_{j=1}^p \\text{Var}(Z_j) = p\\)"
+    "section": "First principal component",
+    "text": "First principal component\n\\[Z_1 = \\phi_{11} X_1 + \\phi_{21} X_2 + \\dots + \\phi_{p1} X_p\\]\n\n\n\\(\\phi_{j1}\\) are the weights indicating the contributions of each variable \\(j \\in 1, \\dots, p\\)\nWeights are normalized \\(\\displaystyle \\sum_{j=1}^p \\phi_{j1}^2 = 1\\)\n\\(\\phi_{1} = (\\phi_{11}, \\phi_{21}, \\dots, \\phi_{p1})\\) is the loading vector for \\(\\text{PC}_1\\)\n\n\n\n\n\\(Z_1\\) is a linear combination of the \\(p\\) variables that has the largest variance"
+  },
+  {
+    "objectID": "lectures/16-pca.html#second-principal-component",
+    "href": "lectures/16-pca.html#second-principal-component",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Second principal component",
+    "text": "Second principal component\n\\[Z_2 = \\phi_{12} X_1 + \\phi_{22} X_2 + \\dots + \\phi_{p2} X_p\\]\n\n\\(\\phi_{j2}\\) are the weights indicating the contributions of each variable \\(j \\in 1, \\dots, p\\)\nWeights are normalized \\(\\displaystyle \\sum_{j=1}^p \\phi_{j1}^2 = 1\\)\n\\(\\phi_{2} = (\\phi_{12}, \\phi_{22}, \\dots, \\phi_{p2})\\) is the loading vector for \\(\\text{PC}_2\\)\n\\(Z_2\\) is a linear combination of the \\(p\\) variables that has the largest variance\n\nSubject to constraint it is uncorrelated with \\(Z_1\\)\n\n\n\nRepeat this process to create \\(p\\) principal components\n\nUncorrelated: Each (\\(Z_j, Z_{j'}\\)) is uncorrelated with each other\nOrdered Variance: \\(\\text{Var}(Z_1) &gt; \\text{Var}(Z_2) &gt; \\dots &gt; \\text{Var}(Z_p)\\)\nTotal Variance: \\(\\displaystyle \\sum_{j=1}^p \\text{Var}(Z_j) = p\\)"
   },
   {
     "objectID": "lectures/16-pca.html#visualizing-pca-in-two-dimensions",
@@ -3245,28 +3315,7 @@
     "href": "lectures/16-pca.html#visualizing-pca-in-two-dimensions-4",
     "title": "Unsupervised learning: principal component analysis",
     "section": "Visualizing PCA in two dimensions",
-    "text": "Visualizing PCA in two dimensions"
-  },
-  {
-    "objectID": "lectures/16-pca.html#searching-for-variance-in-orthogonal-directions",
-    "href": "lectures/16-pca.html#searching-for-variance-in-orthogonal-directions",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Searching for variance in orthogonal directions",
-    "text": "Searching for variance in orthogonal directions"
-  },
-  {
-    "objectID": "lectures/16-pca.html#pca-singular-value-decomposition-svd",
-    "href": "lectures/16-pca.html#pca-singular-value-decomposition-svd",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "PCA: singular value decomposition (SVD)",
-    "text": "PCA: singular value decomposition (SVD)\n\\[\nX = U D V^T\n\\]\n\n\\(U\\) and \\(V\\): matrices containing the left and right singular vectors of scaled matrix \\(X\\)\n\\(D\\): diagonal matrix of the singular values\n\n\n\nSVD simplifies matrix-vector multiplication as rotate, scale, and rotate again\n\n\n\n\\(V\\): loading matrix for \\(X\\) with \\(\\phi_{j}\\) as columns\n\n\\(Z = X V\\): PC matrix\n\n\n\nBonus: Eigenvalue decomposition (or spectral decomposition)\n\n\\(V\\): eigenvectors of \\(X^TX\\) (covariance matrix, \\(^T\\): transpose)\n\\(U\\): eigenvectors of \\(XX^T\\)\nThe singular values (diagonal of \\(D\\)) are square roots of the eigenvalues of \\(X^TX\\) or \\(XX^T\\)\nMeaning that \\(Z = UD\\)"
-  },
-  {
-    "objectID": "lectures/16-pca.html#eigenvalues-guide-dimension-reduction",
-    "href": "lectures/16-pca.html#eigenvalues-guide-dimension-reduction",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Eigenvalues guide dimension reduction",
-    "text": "Eigenvalues guide dimension reduction\nWe want to choose \\(p^* &lt; p\\) such that we are explaining variation in the data\n\nEigenvalues \\(\\lambda_j\\) for \\(j \\in 1, \\dots, p\\) indicate the variance explained by each component\n\n\\(\\displaystyle \\sum_j^p \\lambda_j = p\\), meaning \\(\\lambda_j \\geq 1\\) indicates \\(\\text{PC}j\\) contains at least one variable’s worth in variability\n\\(\\displaystyle \\frac{\\lambda_j}{p}\\): proportion of variance explained by \\(\\text{PC}j\\)\nArranged in descending order so that \\(\\lambda_1\\) is largest eigenvalue and corresponds to PC1\n\n\n\n\nCompute the cumulative proportion of variance explained (CVE) with \\(p^*\\) components \\[\\text{CVE}_{p^*} = \\sum_j^{p*} \\frac{\\lambda_j}{p}\\] Use scree plot to plot eigenvalues and guide choice for \\(p^* &lt;p\\) by looking for “elbow” (rapid to slow change)"
+    "text": "Visualizing PCA in two dimensions\nKey idea: provide low-dimensional linear surfaces that are closest to the observations\n\n\n\nThe above is the minimizing projection residuals viewpoint of PCA\n\n\n\n\nThere’s another viewpoint: maximizing variance\n\nif we project all points onto the solid orange line, we maximize the variance of the resulting projected points across all such orange lines"
   },
   {
     "objectID": "lectures/16-pca.html#data-nutritional-information-of-starbucks-drinks",
@@ -3283,32 +3332,11 @@
     "text": "Implement PCA\nUse the prcomp() function (based on SVD) for PCA on centered and scaled data\n\nfeat &lt;- starbucks |&gt; \n  select(serv_size_m_l:caffeine_mg)\nstarbucks_pca &lt;- prcomp(feat, center = TRUE, scale. = TRUE)\nsummary(starbucks_pca)\n\nImportance of components:\n                          PC1    PC2    PC3     PC4     PC5     PC6    PC7\nStandard deviation     2.4748 1.3074 1.0571 0.97919 0.67836 0.56399 0.4413\nProportion of Variance 0.5568 0.1554 0.1016 0.08716 0.04183 0.02892 0.0177\nCumulative Proportion  0.5568 0.7122 0.8138 0.90093 0.94276 0.97168 0.9894\n                           PC8     PC9    PC10    PC11\nStandard deviation     0.28123 0.16874 0.08702 0.04048\nProportion of Variance 0.00719 0.00259 0.00069 0.00015\nCumulative Proportion  0.99657 0.99916 0.99985 1.00000"
   },
   {
-    "objectID": "lectures/16-pca.html#pca-output",
-    "href": "lectures/16-pca.html#pca-output",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "PCA output",
-    "text": "PCA output\n\n# str(starbucks_pca)\n\nExamine the output after running prcomp()\n\nstarbucks_pca$sdev: singular values (\\(\\sqrt{\\lambda_j}\\))\nstarbucks_pca$rotation: loading matrix (\\(V\\))\nstarbucks_pca$x: principal component scores matrix (\\(Z=XV\\))\n\nCan use the broom package for tidying prcomp()\n\ntidy(starbucks_pca, matrix = \"eigenvalues\") # equivalent to starbucks_pca$sdev\ntidy(starbucks_pca, matrix = \"rotation\") # equivalent to starbucks_pca$rotation\ntidy(starbucks_pca, matrix = \"scores\") # equivalent to starbucks_pca$x"
-  },
-  {
-    "objectID": "lectures/16-pca.html#proportion-of-variance-explained",
-    "href": "lectures/16-pca.html#proportion-of-variance-explained",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Proportion of variance explained",
-    "text": "Proportion of variance explained\n\nlibrary(broom)\nstarbucks_pca |&gt;\n  tidy(matrix = \"eigenvalues\") |&gt;\n  ggplot(aes(x = PC, y = percent)) +\n  geom_line() + \n  geom_point() +\n  geom_hline(yintercept = 1 / ncol(feat), color = \"darkred\", linetype = \"dashed\") +\n  scale_x_continuous(breaks = 1:ncol(starbucks_pca$x))"
-  },
-  {
-    "objectID": "lectures/16-pca.html#cumulative-proportion-of-variance-explained",
-    "href": "lectures/16-pca.html#cumulative-proportion-of-variance-explained",
-    "title": "Unsupervised learning: principal component analysis",
-    "section": "Cumulative proportion of variance explained",
-    "text": "Cumulative proportion of variance explained\n\nlibrary(broom)\nstarbucks_pca |&gt;\n  tidy(matrix = \"eigenvalues\") |&gt;\n  ggplot(aes(x = PC, y = cumulative)) +\n  geom_line() + \n  geom_point() +\n  scale_x_continuous(breaks = 1:ncol(starbucks_pca$x))"
-  },
-  {
     "objectID": "lectures/16-pca.html#computing-principal-components",
     "href": "lectures/16-pca.html#computing-principal-components",
     "title": "Unsupervised learning: principal component analysis",
     "section": "Computing principal components",
-    "text": "Computing principal components\nExtract the matrix of principal components \\(\\boldsymbol{Z} = XV\\) (dimension of \\(\\boldsymbol{Z}\\) will match original data)\n\nstarbucks_pc_matrix &lt;- starbucks_pca$x\nhead(starbucks_pc_matrix)\n\n           PC1        PC2        PC3           PC4         PC5         PC6\n[1,] -3.766852 -1.0023657  0.2482698 -0.1521871448  0.24739830 -0.11365847\n[2,] -3.633234 -0.6946439  1.2059943 -0.3720566566  0.06052789 -0.06406410\n[3,] -3.518063 -0.3981399  2.2165170 -0.5967175941 -0.13122572 -0.01937237\n[4,] -3.412061 -0.1067045  3.3741594 -0.8490378243 -0.26095965 -0.00899485\n[5,] -3.721426 -0.9868147 -1.0705094  0.0949330091 -0.27181508  0.17491809\n[6,] -3.564899 -0.6712499 -0.7779083 -0.0003019903 -0.72054963  0.37005543\n             PC7         PC8        PC9       PC10        PC11\n[1,] -0.02812472 0.006489978 0.05145094 0.06678083 0.019741873\n[2,]  0.05460952 0.021148978 0.07094211 0.08080545 0.023480029\n[3,]  0.09050806 0.031575955 0.08901403 0.09389227 0.028669251\n[4,]  0.11585507 0.037521689 0.11287190 0.11582260 0.034691142\n[5,]  0.07009414 0.037736197 0.02892317 0.03631676 0.005775410\n[6,]  0.20236484 0.068154160 0.03705252 0.03497690 0.002469611\n\n\nColumns are uncorrelated, such that \\(\\text{Var}(Z_1) &gt; \\text{Var}(Z_2) &gt; \\dots &gt; \\text{Var}(Z_p)\\)"
+    "text": "Computing principal components\nExtract the matrix of principal components (dimension will match original data)\n\nstarbucks_pc_matrix &lt;- starbucks_pca$x\nhead(starbucks_pc_matrix)\n\n           PC1        PC2        PC3           PC4         PC5         PC6\n[1,] -3.766852 -1.0023657  0.2482698 -0.1521871448  0.24739830 -0.11365847\n[2,] -3.633234 -0.6946439  1.2059943 -0.3720566566  0.06052789 -0.06406410\n[3,] -3.518063 -0.3981399  2.2165170 -0.5967175941 -0.13122572 -0.01937237\n[4,] -3.412061 -0.1067045  3.3741594 -0.8490378243 -0.26095965 -0.00899485\n[5,] -3.721426 -0.9868147 -1.0705094  0.0949330091 -0.27181508  0.17491809\n[6,] -3.564899 -0.6712499 -0.7779083 -0.0003019903 -0.72054963  0.37005543\n             PC7         PC8        PC9       PC10        PC11\n[1,] -0.02812472 0.006489978 0.05145094 0.06678083 0.019741873\n[2,]  0.05460952 0.021148978 0.07094211 0.08080545 0.023480029\n[3,]  0.09050806 0.031575955 0.08901403 0.09389227 0.028669251\n[4,]  0.11585507 0.037521689 0.11287190 0.11582260 0.034691142\n[5,]  0.07009414 0.037736197 0.02892317 0.03631676 0.005775410\n[6,]  0.20236484 0.068154160 0.03705252 0.03497690 0.002469611\n\n\nColumns are uncorrelated, such that \\(\\text{Var}(Z_1) &gt; \\text{Var}(Z_2) &gt; \\dots &gt; \\text{Var}(Z_p)\\)"
   },
   {
     "objectID": "lectures/16-pca.html#visualizing-first-two-principal-components",
@@ -3336,14 +3364,49 @@
     "href": "lectures/16-pca.html#create-a-scree-plot-or-elbow-plot",
     "title": "Unsupervised learning: principal component analysis",
     "section": "Create a scree plot (or elbow plot)",
-    "text": "Create a scree plot (or elbow plot)\n\nstarbucks_pca |&gt; \n  fviz_eig(addlabels = TRUE) +\n  geom_hline(yintercept = 100 * (1 / ncol(starbucks_pca$x)), linetype = \"dashed\", color = \"darkred\")\n\n\n\nRule of thumb: horizontal line at \\(1/p\\) (Why?)"
+    "text": "Create a scree plot (or elbow plot)\n\nstarbucks_pca |&gt; \n  fviz_eig(addlabels = TRUE) +\n  geom_hline(yintercept = 100 * (1 / ncol(starbucks_pca$x)), linetype = \"dashed\", color = \"darkred\")\n\n\n\nRule of thumb: horizontal line at \\(1/p\\)"
+  },
+  {
+    "objectID": "lectures/16-pca.html#pca-output",
+    "href": "lectures/16-pca.html#pca-output",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "PCA output",
+    "text": "PCA output\n\n# str(starbucks_pca)\n\nExamine the output after running prcomp()\n\nstarbucks_pca$sdev: singular values (\\(\\sqrt{\\lambda_j}\\))\nstarbucks_pca$rotation: loading matrix (\\(V\\))\nstarbucks_pca$x: principal component scores matrix (\\(Z=XV\\))\n\nCan use the broom package for tidying prcomp()\n\ntidy(starbucks_pca, matrix = \"eigenvalues\") # equivalent to starbucks_pca$sdev\ntidy(starbucks_pca, matrix = \"rotation\") # equivalent to starbucks_pca$rotation\ntidy(starbucks_pca, matrix = \"scores\") # equivalent to starbucks_pca$x"
+  },
+  {
+    "objectID": "lectures/16-pca.html#proportion-of-variance-explained",
+    "href": "lectures/16-pca.html#proportion-of-variance-explained",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Proportion of variance explained",
+    "text": "Proportion of variance explained\n\nlibrary(broom)\nstarbucks_pca |&gt;\n  tidy(matrix = \"eigenvalues\") |&gt;\n  ggplot(aes(x = PC, y = percent)) +\n  geom_line() + \n  geom_point() +\n  geom_hline(yintercept = 1 / ncol(feat), color = \"darkred\", linetype = \"dashed\") +\n  scale_x_continuous(breaks = 1:ncol(starbucks_pca$x))"
+  },
+  {
+    "objectID": "lectures/16-pca.html#cumulative-proportion-of-variance-explained",
+    "href": "lectures/16-pca.html#cumulative-proportion-of-variance-explained",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Cumulative proportion of variance explained",
+    "text": "Cumulative proportion of variance explained\n\nlibrary(broom)\nstarbucks_pca |&gt;\n  tidy(matrix = \"eigenvalues\") |&gt;\n  ggplot(aes(x = PC, y = cumulative)) +\n  geom_line() + \n  geom_point() +\n  scale_x_continuous(breaks = 1:ncol(starbucks_pca$x))"
   },
   {
     "objectID": "lectures/16-pca.html#remember-the-spelling",
     "href": "lectures/16-pca.html#remember-the-spelling",
     "title": "Unsupervised learning: principal component analysis",
     "section": "Remember the spelling…",
-    "text": "Remember the spelling…\n\n\nfolks. it's principal (not principle) components analysis.\n\n— Stephanie Hicks, PhD (@stephaniehicks) February 17, 2023\n\n\n\n\n36-SURE.github.io"
+    "text": "Remember the spelling…\n\n\nfolks. it's principal (not principle) components analysis.\n\n— Stephanie Hicks, PhD (@stephaniehicks) February 17, 2023"
+  },
+  {
+    "objectID": "lectures/16-pca.html#pca-singular-value-decomposition-svd",
+    "href": "lectures/16-pca.html#pca-singular-value-decomposition-svd",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "PCA: singular value decomposition (SVD)",
+    "text": "PCA: singular value decomposition (SVD)\n\\[\nX = U D V^T\n\\]\n\n\\(U\\) and \\(V\\): matrices containing the left and right singular vectors of scaled matrix \\(X\\)\n\\(D\\): diagonal matrix of the singular values\n\n\n\nSVD simplifies matrix-vector multiplication as rotate, scale, and rotate again\n\n\n\n\\(V\\): loading matrix for \\(X\\) with \\(\\phi_{j}\\) as columns\n\n\\(Z = X V\\): PC matrix\n\n\n\nBonus: Eigenvalue decomposition (or spectral decomposition)\n\n\\(V\\): eigenvectors of \\(X^TX\\) (covariance matrix, \\(^T\\): transpose)\n\\(U\\): eigenvectors of \\(XX^T\\)\nThe singular values (diagonal of \\(D\\)) are square roots of the eigenvalues of \\(X^TX\\) or \\(XX^T\\)\nMeaning that \\(Z = UD\\)"
+  },
+  {
+    "objectID": "lectures/16-pca.html#eigenvalues-guide-dimension-reduction",
+    "href": "lectures/16-pca.html#eigenvalues-guide-dimension-reduction",
+    "title": "Unsupervised learning: principal component analysis",
+    "section": "Eigenvalues guide dimension reduction",
+    "text": "Eigenvalues guide dimension reduction\nWe want to choose \\(p^* &lt; p\\) such that we are explaining variation in the data\n\nEigenvalues \\(\\lambda_j\\) for \\(j \\in 1, \\dots, p\\) indicate the variance explained by each component\n\n\\(\\displaystyle \\sum_j^p \\lambda_j = p\\), meaning \\(\\lambda_j \\geq 1\\) indicates \\(\\text{PC}j\\) contains at least one variable’s worth in variability\n\\(\\displaystyle \\frac{\\lambda_j}{p}\\): proportion of variance explained by \\(\\text{PC}j\\)\nArranged in descending order so that \\(\\lambda_1\\) is largest eigenvalue and corresponds to PC1\n\n\n\n\nCompute the cumulative proportion of variance explained (CVE) with \\(p^*\\) components \\[\\text{CVE}_{p^*} = \\sum_j^{p*} \\frac{\\lambda_j}{p}\\] Use scree plot to plot eigenvalues and guide choice for \\(p^* &lt;p\\) by looking for “elbow” (rapid to slow change)\n\n\n\n36-SURE.github.io"
   },
   {
     "objectID": "lectures/00-welcome.html#plan-for-today",
@@ -3875,7 +3938,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"m\" \"u\" \"p\" \"e\" \"x\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 1 0 0 1 0 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"T\" \"H\" \"T\" \"H\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 57"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"v\" \"m\" \"a\" \"b\" \"z\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 1 0 0 1 1 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"H\" \"T\" \"T\" \"H\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 51"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -3917,21 +3980,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.003438126\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.046575"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.01726366\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.05403"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.5\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.24     0.001 0.000599\n 2 -3.20     0.002 0.000698\n 3 -3.04     0.003 0.00116 \n 4 -3.01     0.004 0.00129 \n 5 -2.81     0.005 0.00244 \n 6 -2.64     0.006 0.00409 \n 7 -2.62     0.007 0.00445 \n 8 -2.51     0.008 0.00606 \n 9 -2.39     0.009 0.00841 \n10 -2.37     0.01  0.00899 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.485\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical    true\n   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 -3.09     0.001 0.00101\n 2 -2.93     0.002 0.00168\n 3 -2.79     0.003 0.00265\n 4 -2.75     0.004 0.00302\n 5 -2.60     0.005 0.00462\n 6 -2.59     0.006 0.00481\n 7 -2.49     0.007 0.00632\n 8 -2.46     0.008 0.00704\n 9 -2.40     0.009 0.00829\n10 -2.38     0.01  0.00873\n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3893125\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3854591\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -3945,14 +4008,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1192\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.156\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.1787766\n\nmean(rnorm(100))\n\n[1] 0.148349\n\nmean(rnorm(100))\n\n[1] 0.07484466"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.04641997\n\nmean(rnorm(100))\n\n[1] 0.2894372\n\nmean(rnorm(100))\n\n[1] -0.06086451"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
