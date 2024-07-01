@@ -411,119 +411,247 @@
 <section id="previously-clustering" class="slide level2">
 <h2>Previously: clustering</h2>
 <ul>
+<li><p>Goal: partition <span class="math inline">\(n\)</span> data points into <span class="math inline">\(K\)</span> subgroups, where roughly points within group are more “similar” than points between groups</p></li>
+<li><p>Previous methods: <strong><span class="math inline">\(k\)</span>-means clustering </strong> and <strong>hierarchical clustering</strong></p></li>
+</ul>
+<div class="fragment">
+<ul>
+<li><strong>Classification vs clustering</strong></li>
+</ul>
+<p><strong>Classification</strong></p>
+<ul>
+<li><p>We are given labeled (categorical) data</p></li>
+<li><p>Focus on generalization (i.e.&nbsp;we want to have a classifier that performs well on predicting new (test) data)</p></li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>Clustering</strong></p>
+<ul>
+<li><p>We are only given the points (with no labels)</p></li>
+<li><p>We want to find interesting subgroups/structure in the data</p></li>
+</ul>
+</div>
+</section>
+<section id="previously-clustering-1" class="slide level2">
+<h2>Previously: clustering</h2>
+<ul>
 <li><p>Previous methods: <strong><span class="math inline">\(k\)</span>-means clustering </strong> and <strong>hierarchical clustering</strong></p></li>
 <li><p>Output <strong>hard</strong> assignments, strictly assigning observations to only one cluster</p></li>
 </ul>
 <div class="fragment">
 <ul>
-<li>What about <strong>soft</strong> assignments and <strong>uncertainty</strong> in the clustering results?</li>
+<li><p>What about <strong>soft</strong> assignments and <strong>uncertainty</strong> in the clustering results?</p>
+<ul>
+<li><p>Assigns each observation a probability of belonging to a cluster</p></li>
+<li><p>Incorporate statistical modeling into clustering</p></li>
+</ul></li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li>Entering <strong>mixture models</strong></li>
+<li>We want to estimate the density of the observations in some way that allows us to extract clusters</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="https://imgs.xkcd.com/comics/t_distribution_2x.png" style="width:60.0%"></p>
-</figure>
 </div>
-</div>
-</div>
+</section>
+<section id="motivating-figure" class="slide level2">
+<h2>Motivating figure</h2>
+<p><br></p>
+
+<img data-src="https://miro.medium.com/v2/resize:fit:1100/format:webp/0*uQTamSp8hAcnJPl0." class="r-stretch quarto-figure-center"></section>
+<section id="model-based-clustering" class="slide level2">
+<h2>Model-based clustering</h2>
+<p>Key idea: data are considered as coming from a mixture of underlying probability distributions</p>
+<div class="fragment">
+<p>Most popular method: Gaussian mixture model (GMM)</p>
+<ul>
+<li><p>Each observation is assumed to be distributed as one of <span class="math inline">\(k\)</span> multivariate normal distributions</p></li>
+<li><p><span class="math inline">\(k\)</span> is the number of clusters (components)</p></li>
+</ul>
 </div>
 </section>
 <section id="previously-kernel-density-estimation" class="slide level2">
 <h2>Previously: kernel density estimation</h2>
-<p>Kernel density estimator: <span class="math inline">\(\quad \displaystyle \hat{f}(x) = \frac{1}{n} \sum_{i=1}^n \frac{1}{h} K_h(x - x_i)\)</span></p>
+<p>Kernel density estimator: <span class="math inline">\(\displaystyle \hat{f}(x) = \frac{1}{n} \sum_{i=1}^n \frac{1}{h} K_h(x - x_i)\)</span></p>
 <div class="fragment">
-<p>We have to use <strong>every observation</strong> when estimating the density for new points</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Comparison_of_1D_histogram_and_KDE.png/1000px-Comparison_of_1D_histogram_and_KDE.png" style="width:60.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="fragment">
-<p>Instead we can make some <strong>simplifying assumptions</strong></p>
-</div>
-</section>
-<section id="mixture-models" class="slide level2">
-<h2>Mixture models</h2>
-<p>Assume <span class="math inline">\(f(x)\)</span> is a <strong>mixture</strong> of <span class="math inline">\(K\)</span> <strong>component</strong> distributions <span class="math inline">\(\displaystyle f(x) = \sum_{k=1}^K \pi_k f_k(x)\)</span></p>
-<div class="fragment">
-<p>where <span class="math inline">\(\pi_k =\)</span> <strong>mixing proportions (or weights)</strong>, with <span class="math inline">\(\pi_k &gt; 0\)</span>, and <span class="math inline">\(\sum_k \pi_k = 1\)</span></p>
-</div>
-<div class="fragment">
-<p>This is a <strong>data generating process</strong>, meaning to generate a new point:</p>
-<ol type="1">
-<li><strong>pick a distribution/component</strong> among our <span class="math inline">\(K\)</span> options by introducing a new variable <span class="math inline">\(z \sim \text{Multinomial} (\pi_1, \pi_2, \dots, \pi_k)\)</span> (categorical variable for which group the new point is from)</li>
-</ol>
-</div>
-<div class="fragment">
-<ol start="2" type="1">
-<li><strong>generate an observation with that distribution / component</strong>, i.e.&nbsp;<span class="math inline">\(x \mid z \sim f_{z}\)</span></li>
-</ol>
-</div>
-<div class="fragment">
-<p><em>So what do we use for each <span class="math inline">\(f_k\)</span>?</em></p>
-</div>
-</section>
-<section id="gaussian-mixture-models-gmms" class="slide level2">
-<h2>Gaussian mixture models (GMMs)</h2>
-<p>Assume a <strong>parametric mixture model</strong>, with <strong>parameters</strong> <span class="math inline">\(\theta_k\)</span> for the <span class="math inline">\(k\)</span>th component <span class="math display">\[f(x) = \sum_{k=1}^K \pi_k f_k(x; \theta_k)\]</span></p>
-<div class="fragment">
-<p>Assume each component is <a href="https://en.wikipedia.org/wiki/Normal_distribution">Gaussian/normal</a>, where the 1D case is</p>
-<p><span class="math display">\[f_k(x; \theta_k) = N(x; \mu_k, \sigma_k^2) = \frac{1}{\sqrt{2\pi \sigma_k^2}}\text{exp} \Big( -\frac{(x - \mu_k)^2}{2 \sigma_k^2} \Big)\]</span></p>
-</div>
-<div class="fragment">
-<p>We need to estimate each <span class="math inline">\(\pi_1, \dots, \pi_k\)</span>, <span class="math inline">\(\mu_1, \dots, \mu_k\)</span>, <span class="math inline">\(\sigma_1, \dots, \sigma_k\)</span></p>
-</div>
-</section>
-<section id="lets-pretend-we-only-have-one-component" class="slide level2">
-<h2>Let’s pretend we only have one component…</h2>
-<p>Given <span class="math inline">\(n\)</span> observations from a single Normal distribution, we estimate the distribution parameters using the <strong>likelihood function</strong>, the probability/density of observing the data given the parameters</p>
-<p><span class="math display">\[\mathcal{L}(\mu, \sigma \mid x_1, \dots, x_n) = f( x_1, \dots, x_n \mid \mu, \sigma) =  \prod_i^n \frac{1}{\sqrt{2\pi \sigma^2}}\text{exp } \left\{-\frac{(x_i - \mu)^2}{2 \sigma^2}\right\}\]</span></p>
-<div class="fragment">
-<p>We can compute the <strong>maximum likelihood estimates (MLEs)</strong> for <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span></p>
-<p><strong>You already know these values!</strong></p>
-<ul>
-<li><p><span class="math inline">\(\displaystyle \hat{\mu}_{\rm MLE} = \frac{1}{n} \sum_i^n x_i\)</span>, sample mean</p></li>
-<li><p><span class="math inline">\(\displaystyle \hat{\sigma}_{\rm MLE} = \sqrt{\frac{1}{n}\sum_i^n (x_i - \mu)^2}\)</span>, sample standard deviation (plug in <span class="math inline">\(\hat{\mu}_{\rm MLE}\)</span>)</p></li>
-</ul>
-</div>
-</section>
-<section id="the-problem-with-more-than-one-component" class="slide level2">
-<h2>The problem with more than one component</h2>
 <div class="columns">
 <div class="column" style="text-align: left;">
 <ul>
-<li><p><strong>We don’t know which component an observation belongs to</strong></p></li>
-<li><p><strong>IF WE DID KNOW</strong>, then we could compute each component’s MLEs as before</p></li>
-<li><p>But we don’t know because <span class="math inline">\(z\)</span> is a <strong>latent variable</strong>! So what about its distribution given the data?</p></li>
+<li><p>Smooth each data point into a small density bumps</p></li>
+<li><p>Sum all these small bumps together to obtain the final density estimate</p></li>
 </ul>
-<p><span class="math inline">\(\displaystyle P(z_i = k \mid x_i) = \frac{P(x_i \mid z_i = k) P(z_i = k)}{P(x_i)}\)</span></p>
-<p><span class="math inline">\(\displaystyle =\frac{\pi_{k} N\left(\mu_{k}, \sigma_{k}^{2}\right)}{\sum_{k=1}^{K} \pi_{k} N\left(\mu_{k}, \sigma_{k}\right)}\)</span></p>
-<ul>
-<li><strong>But we do NOT know these parameters!</strong></li>
-</ul>
+<p>Use <strong>every observation</strong> when estimating the density for new points</p>
+<p>We want to estimate the density of the points in some way that allows us to extract clusters</p>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="17-mixture_files/figure-revealjs/init-sim-data-1.png" width="960"></p>
+<p><img data-src="../images/kde-bumps.png" width="678"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 </div>
+</div>
+</section>
+<section id="mixture-models" class="slide level2">
+<h2>Mixture models</h2>
+<ul>
+<li>Model the density as a mixture of distributions</li>
+</ul>
+
+<img data-src="https://angusturner.github.io/assets/images/mixture.png" class="r-stretch quarto-figure-center"></section>
+<section id="mixture-models-1" class="slide level2">
+<h2>Mixture models</h2>
+<p>Formally, <span class="math display">\[\displaystyle f(x) = \sum_{k=1}^K \tau_k f_k(x)\]</span></p>
+<p>where</p>
+<ul>
+<li><p><span class="math inline">\(f_k\)</span> are some distributions</p></li>
+<li><p><span class="math inline">\(\tau_k \ge 0\)</span> and <span class="math inline">\(\sum_{k=1}^K \tau_k = 1\)</span> are the mixture weights</p></li>
+<li><p><span class="math inline">\(K\)</span> is the number of mixture components (i.e.&nbsp;the number of clusters)</p></li>
+</ul>
+</section>
+<section id="mixture-models-2" class="slide level2">
+<h2>Mixture models</h2>
+<p>This is a <strong>data generating process</strong></p>
+<p>Imagine that each cluster (component) has a different distribution</p>
+<div class="fragment">
+<p>Task: Generate a new observation (i.e.&nbsp;sample) from a mixture model</p>
+</div>
+<div class="fragment">
+<ul>
+<li><p>Choose a cluster by drawing <span class="math inline">\(Z \in \{1, \dots, K\}\)</span>, where <span class="math inline">\(P(Z = k) = \tau_k\)</span></p>
+<ul>
+<li>i.e.&nbsp;<span class="math inline">\(Z\)</span> is a categorical latent variable indicating which cluster the new observation is from</li>
+</ul></li>
+<li><p>Generate an observation from the distribution <span class="math inline">\(f_Z\)</span> (corresponding to cluster <span class="math inline">\(Z\)</span>)</p></li>
+</ul>
+</div>
+<div class="fragment">
+<p>Hence <span class="math inline">\(\displaystyle f(x) = \sum_{k=1}^K P(Z = k) p (x \mid Z = k) = \sum_{k=1}^K \tau_k f_Z(x)\)</span></p>
+<!-- . . . -->
+<!-- 1. __Pick a distribution/component__ among our $K$ options by introducing a new variable $$z \sim \text{Multinomial} (\tau_1, \tau_2, \dots, \tau_k)$$ i.e. $z$ is a categorical latent variable indicating which component the new point is from -->
+<!-- . . . -->
+<!-- 2. __Generate an observation with that distribution/component__, i.e. $x \mid z \sim f_{z}$ -->
+<!-- . . . -->
+<!-- _So what do we use for each $f_k$?_ -->
+</div>
+</section>
+<section id="gaussian-mixture-models-gmms" class="slide level2">
+<h2>Gaussian mixture models (GMMs)</h2>
+<ul>
+<li><p>Assume a <strong>parametric mixture model</strong>, with <strong>parameters</strong> <span class="math inline">\(\theta_k\)</span> for the <span class="math inline">\(k\)</span>th component <span class="math display">\[f(x) = \sum_{k=1}^K \tau_k f_k(x; \theta_k)\]</span></p></li>
+<li><p>Gaussian mixture models (GMMs) are perhaps the most popular mixture models</p></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Assume each component is <a href="https://en.wikipedia.org/wiki/Normal_distribution">Gaussian (normal)</a>, where the 1D case is</li>
+</ul>
+<p><span class="math display">\[f_k(x; \theta_k) = N(x; \mu_k, \sigma_k^2) = \frac{1}{\sqrt{2 \pi \sigma_k^2}}\text{exp} \left( -\frac{(x - \mu_k)^2}{2 \sigma_k^2} \right)\]</span></p>
+<p>with mean <span class="math inline">\(\mu_k\)</span> and variance <span class="math inline">\(\sigma_k ^2\)</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li>We need to estimate each <span class="math inline">\(\{\tau_1, \dots, \tau_k\}\)</span>, <span class="math inline">\(\{\mu_1, \dots, \mu_k\}\)</span>, <span class="math inline">\(\{\sigma_1, \dots, \sigma_k\}\)</span></li>
+</ul>
+</div>
+</section>
+<section id="gaussian-mixture-models-gmms-1" class="slide level2">
+<h2>Gaussian mixture models (GMMs)</h2>
+
+<img data-src="https://miro.medium.com/v2/resize:fit:1100/format:webp/0*uQTamSp8hAcnJPl0." style="width:60.0%" class="r-stretch quarto-figure-center"><p>Model <span class="math inline">\(\tau_1, \tau_2, \tau_3\)</span> and</p>
+<p><span class="math inline">\(f_{\text{red}}(x) = N(\mu_{\text{red}}, \sigma^2_{\text{red}})\)</span></p>
+<p><span class="math inline">\(f_{\text{blue}}(x) = N(\mu_{\text{blue}}, \sigma^2_{\text{blue}})\)</span></p>
+<p><span class="math inline">\(f_{\text{green}}(x) = N(\mu_{\text{green}}, \sigma^2_{\text{green}})\)</span></p>
+</section>
+<section id="estimating-a-mixture-model" class="slide level2">
+<h2>Estimating a mixture model</h2>
+<p>What can we do to soft-cluster our data?</p>
+<div class="fragment">
+<p>For an observation <span class="math inline">\(x\)</span>, compute the weight for <span class="math inline">\(x\)</span> to belong to cluster <span class="math inline">\(k\)</span> for <span class="math inline">\(k \in \{1, \dots, K\}\)</span> <span class="math display">\[ P(Z = k \mid X = x) = \frac{P(X = x \mid Z = k) P(Z = k)}{\sum_{j}P(X = x \mid Z = j) P(Z = j)} =\frac{\tau_{k} \ N(\mu_{k}, \sigma_{k}^{2})}{\sum_{j=1}^{K} \tau_{j} \ N(\mu_{j}, \sigma^2_{j})}\]</span></p>
+<p>(recall that <span class="math inline">\(\displaystyle f(x) = \sum_{k=1}^K \tau_k \ N(\mu_k, \sigma^2_k)\)</span>)</p>
+</div>
+<div class="fragment">
+<p>How do we estimate the parameters of the mixture model (i.e.&nbsp;the <span class="math inline">\(\tau_k, \mu_k, \sigma_k\)</span>)?</p>
+</div>
+<div class="fragment">
+<ul>
+<li><p>We don’t know which component (i.e.&nbsp;the true labels) an observation actually belongs to</p></li>
+<li><p><span class="math inline">\(Z\)</span> is a latent variable (since the true cluster labels are not observed)</p></li>
+<li><p>This is known as the missing data or latent variable problems</p></li>
+</ul>
+</div>
+</section>
+<section id="estimating-a-mixture-model-maximum-likelihood" class="slide level2">
+<h2>Estimating a mixture model: maximum likelihood</h2>
+<p>Likelihood function: how likely to observe data for given parameter values</p>
+<div class="fragment">
+<p>Setup: Given observations <span class="math inline">\(X_1, \dots, X_n\)</span></p>
+<p>Task: Estimate the parameters of a mixture model</p>
+</div>
+<div class="fragment">
+<ul>
+<li>What if we know the true cluster labels <span class="math inline">\(Z_1, \dots, Z_n\)</span>? We can just use maximum likelihood estimation and maximize <span class="math display">\[L\{\left(\tau_k, \mu_k, \sigma^2_k \right)_{k=1}^K\} = \sum_{i=1}^n \log f(X_i, Z_i)\]</span> (just take data from each group, compute the fraction of points <span class="math inline">\(\tau_k\)</span>, the mean <span class="math inline">\(\mu_k\)</span>, and the variance <span class="math inline">\(\sigma^2\)</span>)</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>In our case, since we do not know the cluster labels <span class="math inline">\(Z_i\)</span>, we should try to maximize the (marginal) likelihood of the observed data</li>
+</ul>
+<p><span class="math display">\[\mathcal L\{\left(\tau_k, \mu_k, \sigma^2_k \right)_{k=1}^K\} = \sum_{i=1}^n \log f(X_i) = \sum_{i=1}^n \log \left[\sum_{k=1}^K f(X_i, k)\right]\]</span></p>
+</div>
+</section>
+<section id="estimating-a-mixture-model-em-algorithm" class="slide level2">
+<h2>Estimating a mixture model: EM algorithm</h2>
+<p><a href="https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm">Expectation–maximization (EM) algorithm</a> is a method for (approximately) maximizing the (marginal) likelihood in the presence of missing data</p>
+<p>For a GMM:</p>
+<ul>
+<li><p>First, initialize the model parameters randomly</p></li>
+<li><p>Then, alternate between the following two steps (keep repeating until nothing changes)</p>
+<ul>
+<li><p><strong>E-step</strong>: compute the cluster memberships for each point</p></li>
+<li><p><strong>M-step</strong>: recompute/update the parameters</p></li>
+</ul></li>
+</ul>
+<!-- ## Let's pretend we only have one component... -->
+<!-- Set up: Given $n$ observations from a single normal distribution -->
+<!-- Task: Estimate the distribution parameters using the __likelihood function__ - the probability/density of observing the data given the parameters $$\mathcal{L}(\mu, \sigma \mid x_1, \dots, x_n) = f( x_1, \dots, x_n \mid \mu, \sigma) =  \prod_{i=1}^n \frac{1}{\sqrt{2\tau \sigma^2}}\text{exp } \left\{-\frac{(x_i - \mu)^2}{2 \sigma^2}\right\}$$ -->
+<!-- . . . -->
+<!-- Compute the __maximum likelihood estimates (MLEs)__ for $\mu$ and $\sigma$ -->
+<!-- - $\displaystyle \hat{\mu}_{\rm MLE} = \frac{1}{n} \sum_i^n x_i$, sample mean -->
+<!-- - $\displaystyle \hat{\sigma}_{\rm MLE} = \sqrt{\frac{1}{n}\sum_i^n (x_i - \mu)^2}$, sample standard deviation (plug in $\hat{\mu}_{\rm MLE}$) -->
+<!-- ## The problem with more than one component -->
+<!-- ::: columns -->
+<!-- ::: {.column width="50%" style="text-align: left;"} -->
+<!-- - __We don't know which component an observation belongs to__ -->
+<!-- - __IF WE DID KNOW__, then we could compute each component's MLEs as before -->
+<!-- - But we don't know because $z$ is a __latent variable__! So what about its distribution given the data? -->
+<!-- $\displaystyle P(z_i = k \mid x_i) = \frac{P(x_i \mid z_i = k) P(z_i = k)}{P(x_i)}$ -->
+<!-- $\displaystyle =\frac{\tau_{k} N\left(\mu_{k}, \sigma_{k}^{2}\right)}{\sum_{k=1}^{K} \tau_{k} N\left(\mu_{k}, \sigma_{k}\right)}$ -->
+<!-- - __But we do NOT know these parameters!__ -->
+<!-- ::: -->
+<!-- ::: {.column width="50%" style="text-align: left;"} -->
+<!-- ```{r init-sim-data, echo = FALSE, fig.align='center', fig.height=9} -->
+<!-- library(tidyverse) -->
+<!-- # mixture components -->
+<!-- mu_true <- c(5, 13) -->
+<!-- sigma_true <- c(1.5, 2) -->
+<!-- # determine Z_i -->
+<!-- z <- rbinom(500, 1, 0.75) -->
+<!-- # sample from mixture model -->
+<!-- x <- rnorm(10000, mean = mu_true[z + 1],  -->
+<!--            sd = sigma_true[z + 1]) -->
+<!-- tibble(xvar = x) |> -->
+<!--   ggplot(aes(x = xvar)) + -->
+<!--   geom_histogram(color = "black", -->
+<!--                  fill = "darkblue", -->
+<!--                  alpha = 0.3) + -->
+<!--   labs(x = "Simulated variable", -->
+<!--        y = "Count") -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ::: -->
 </section>
 <section id="expectation-maximization-em-algorithm" class="slide level2">
 <h2>Expectation-maximization (EM) algorithm</h2>
@@ -537,28 +665,53 @@
 </ul>
 </div>
 <div class="fragment">
-<p><strong>Where have we seen this before?</strong></p>
-</div>
-<div class="fragment">
-<p><span class="math inline">\(k\)</span>-means algorithm!</p>
-</div>
-<div class="fragment">
 <ol type="1">
-<li><p>Start with initial guesses about <span class="math inline">\(\pi_1, \dots, \pi_k\)</span>, <span class="math inline">\(\mu_1, \dots, \mu_k\)</span>, <span class="math inline">\(\sigma_1, \dots, \sigma_k\)</span></p></li>
+<li><p>Start with initial guesses about <span class="math inline">\(\tau_1, \dots, \tau_k\)</span>, <span class="math inline">\(\mu_1, \dots, \mu_k\)</span>, <span class="math inline">\(\sigma_1, \dots, \sigma_k\)</span></p></li>
 <li><p>Repeat until nothing changes:</p></li>
 </ol>
 </div>
 <div class="fragment">
 <ul>
-<li><p><strong>Expectation</strong> step: calculate <span class="math inline">\(\hat{z}_{ik}\)</span> = expected membership of observation <span class="math inline">\(i\)</span> in cluster <span class="math inline">\(k\)</span></p></li>
-<li><p><strong>Maximization</strong> step: update parameter estimates with <strong>weighted</strong> MLE using <span class="math inline">\(\hat{z}_{ik}\)</span></p></li>
+<li><p><strong>E-step</strong>: calculate <span class="math inline">\(\hat{z}_{ik}\)</span>, the weight for observation <span class="math inline">\(i\)</span> belonging to cluster <span class="math inline">\(k\)</span></p></li>
+<li><p><strong>M-step</strong>: update parameter estimates with <strong>weighted</strong> MLE using <span class="math inline">\(\hat{z}_{ik}\)</span></p></li>
+</ul>
+</div>
+</section>
+<section id="is-this-familiar" class="slide level2">
+<h2>Is this familiar?</h2>
+<div class="fragment">
+<ul>
+<li>In GMMs, we’re essentially guessing the latent variables <span class="math inline">\(Z_i\)</span> and pretending to know the parameters to perform maximum likelihood estimation</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="text-align: left;">
+<ul>
+<li><p>This resembles the <span class="math inline">\(k\)</span>-means algorithm!</p>
+<ul>
+<li><p>The cluster centroids are chosen at random, and then recomputed/updated</p></li>
+<li><p>This is repeated until the cluster assignments stop changing</p></li>
+</ul></li>
+</ul>
+</div><div class="column" style="text-align: left;">
+<center>
+<iframe src="https://giphy.com/embed/kd9BlRovbPOykLBMqX" width="270" height="270" frameborder="0" class="giphy-embed" allowfullscreen="">
+</iframe>
+</center>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>Instead of assigning each point to a single cluster, we “softly” assign them so they contribute fractionally to each cluster</li>
 </ul>
 </div>
 </section>
 <section id="how-does-this-relate-back-to-clustering" class="slide level2">
 <h2>How does this relate back to clustering?</h2>
 <div class="fragment">
-<p>From the EM algorithm: <span class="math inline">\(\hat{z}_{ik}\)</span> is a <strong>soft membership</strong> of observation <span class="math inline">\(i\)</span> in cluster <span class="math inline">\(k\)</span></p>
+<p>From the EM algorithm: <span class="math inline">\(\hat{z}_{ik}\)</span> is the estimated weight for observation <span class="math inline">\(i\)</span> belonging to cluster <span class="math inline">\(k\)</span> (i.e.&nbsp;soft membership)</p>
 </div>
 <div class="fragment">
 <ul>
@@ -588,7 +741,7 @@
 </section>
 <section id="multivariate-gmms" class="slide level2">
 <h2>Multivariate GMMs</h2>
-<p><span class="math display">\[f(x) = \sum_{k=1}^K \pi_k f_k(x; \theta_k) \qquad \text{where }f_k(x; \theta_k) \sim N(\boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)\]</span></p>
+<p><span class="math display">\[f(x) = \sum_{k=1}^K \tau_k f_k(x; \theta_k) \qquad \text{where }f_k(x; \theta_k) \sim N(\boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)\]</span></p>
 <p>Each component is a <strong>multivariate normal distribution</strong>:</p>
 <div class="fragment">
 <ul>
@@ -633,16 +786,18 @@
 <h2>Covariance constraints</h2>
 
 <img data-src="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5096736/bin/nihms793803f2.jpg" style="width:70.0%" class="r-stretch quarto-figure-center"><ul>
-<li><p>Control volume, shape, orientation</p></li>
-<li><p><strong>E</strong>: equal and <strong>V</strong>: variable (<strong>VVV</strong> is the most flexible, but has the most parameters)</p></li>
+<li><p>The three letters in the model name denote, in order, the volume, shape, and orientation across clusters</p></li>
+<li><p><strong>E</strong>: equal and <strong>V</strong>: varying (<strong>VVV</strong> is the most flexible, but has the most parameters)</p></li>
 <li><p>Two II: <strong>spherical</strong>, one I: <strong>diagonal</strong>, the remaining are <strong>general</strong></p></li>
 </ul>
+<div class="fragment">
 <p>How do we know which one to choose?</p>
+</div>
 </section>
 <section id="bayesian-information-criterion-bic" class="slide level2">
 <h2>Bayesian information criterion (BIC)</h2>
 <p><strong>This is a statistical model</strong></p>
-<p><span class="math display">\[f(x) = \sum_{k=1}^K \pi_k f_k(x; \theta_k) \qquad \text{where }f_k(x; \theta_k) \sim N(\boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)\]</span></p>
+<p><span class="math display">\[f(x) = \sum_{k=1}^K \tau_k f_k(x; \theta_k) \qquad \text{where }f_k(x; \theta_k) \sim N(\boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)\]</span></p>
 <div class="fragment">
 <p>Use a <strong>model selection</strong> procedure for determining which best characterizes the data</p>
 </div>
@@ -668,33 +823,28 @@
 <h1>Example</h1>
 
 </section>
-<section id="data-nba-player-statistics-per-100-possessions" class="slide level2">
-<h2>Data: NBA player statistics per 100 possessions</h2>
+<section id="data-nba-player-statistics-per-100-possessions-2023-24-regular-season" class="slide level2">
+<h2>Data: NBA player statistics per 100 possessions (2023-24 regular season)</h2>
+<p>Obtained via <a href="https://github.com/rtelmore/ballr"><code>ballr</code> package</a></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_light</span>())</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ballr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>nba_stats <span class="ot">&lt;-</span> <span class="fu">NBAPerGameStatisticsPer100Poss</span>(<span class="at">season =</span> <span class="dv">2024</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>nba_stats <span class="ot">&lt;-</span> nba_stats <span class="sc">|&gt;</span> </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(player) <span class="sc">|&gt;</span> </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(g) <span class="sc">|&gt;</span> </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(mp <span class="sc">&gt;=</span> <span class="dv">150</span>) <span class="co"># keep players with at least 150 minutes played</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(nba_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>nba_players <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/nba_players.csv"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(nba_players)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 33
      rk player   pos     age tm        g    gs    mp    fg   fga fgpercent   x3p
   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
-1   183 A.J. Gr… SG       24 MIL      56     0   614   6.5  15.3     0.423   5.4
-2   290 A.J. La… SG       23 DAL      42     0   311   8.3  18.7     0.446   2  
-3   190 AJ Grif… SF       20 ATL      20     0   171   5    17.4     0.29    2.8
-4   178 Aaron G… PF       28 DEN      73    73  2297   8.6  15.5     0.556   0.9
-5   221 Aaron H… PG       27 HOU      78     1  1269   7.1  15.9     0.446   3.2
-6   372 Aaron N… SF       24 IND      72    47  1995   7.4  15       0.496   3.3
+1     1 Preciou… PF-C     24 TOT      74    18  1624   7.2  14.4     0.501   0.8
+2     2 Bam Ade… C        26 MIA      71    71  2416  10.9  21       0.521   0.3
+3     3 Ochai A… SG       23 TOT      78    28  1641   5.2  12.7     0.411   1.8
+4     4 Santi A… PF       23 MEM      61    35  1618   7.5  17.2     0.435   3.2
+5     5 Nickeil… SG       25 MIN      82    20  1921   6.1  13.8     0.439   3.4
+6     6 Grayson… SG       28 PHO      75    74  2513   6.6  13.3     0.499   4  
 # ℹ 21 more variables: x3pa &lt;dbl&gt;, x3ppercent &lt;dbl&gt;, x2p &lt;dbl&gt;, x2pa &lt;dbl&gt;,
 #   x2ppercent &lt;dbl&gt;, ft &lt;dbl&gt;, fta &lt;dbl&gt;, ftpercent &lt;dbl&gt;, orb &lt;dbl&gt;,
 #   drb &lt;dbl&gt;, trb &lt;dbl&gt;, ast &lt;dbl&gt;, stl &lt;dbl&gt;, blk &lt;dbl&gt;, tov &lt;dbl&gt;, pf &lt;dbl&gt;,
-#   pts &lt;dbl&gt;, x &lt;dbl&gt;, ortg &lt;dbl&gt;, drtg &lt;dbl&gt;, link &lt;chr&gt;</code></pre>
+#   pts &lt;dbl&gt;, x &lt;lgl&gt;, ortg &lt;dbl&gt;, drtg &lt;dbl&gt;, link &lt;chr&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -706,7 +856,7 @@
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mclust)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># x3pa: 3pt attempts per 100 possessions</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># trb: total rebounds per 100 possessions</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>nba_mclust <span class="ot">&lt;-</span> nba_stats <span class="sc">|&gt;</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>nba_mclust <span class="ot">&lt;-</span> nba_players <span class="sc">|&gt;</span> </span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(x3pa, trb) <span class="sc">|&gt;</span> </span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Mclust</span>()</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(nba_mclust)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -718,23 +868,50 @@ Gaussian finite mixture model fitted by EM algorithm
 Mclust VVV (ellipsoidal, varying volume, shape, and orientation) model with 3
 components: 
 
- log-likelihood   n df     BIC       ICL
-      -2246.434 452 17 -4596.8 -4749.605
+ log-likelihood   n df      BIC       ICL
+      -2246.359 452 17 -4596.65 -4739.919
 
 Clustering table:
   1   2   3 
-138  40 274 </code></pre>
+ 40 280 132 </code></pre>
 </div>
 </div>
 </section>
+<section id="view-clustering-summary" class="slide level2">
+<h2>View clustering summary</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>nba_mclust <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+  component  size proportion mean.x3pa mean.trb
+      &lt;int&gt; &lt;int&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1         1    40     0.0822     0.101    15.5 
+2         2   280     0.535      8.12      6.38
+3         3   132     0.382      6.04     11.0 </code></pre>
+</div>
+</div>
+</section>
+<section id="view-clustering-assignments" class="slide level2">
+<h2>View clustering assignments</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nba_mclust <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x3pa, <span class="at">y =</span> trb, <span class="at">color =</span> .class, <span class="at">size =</span> .uncertainty)) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_color_colorblind</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="17-mixture_files/figure-revealjs/unnamed-chunk-9-1.png" width="1152" class="r-stretch quarto-figure-center"></section>
 <section id="display-the-bic-for-each-model-and-number-of-clusters" class="slide level2">
 <h2>Display the BIC for each model and number of clusters</h2>
 <div class="columns">
 <div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>nba_mclust <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">what =</span> <span class="st">"BIC"</span>, </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">legendArgs =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"bottomright"</span>, <span class="at">ncol =</span> <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>nba_mclust <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">what =</span> <span class="st">"BIC"</span>, </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">legendArgs =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"bottomright"</span>, <span class="at">ncol =</span> <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -745,8 +922,8 @@ Clustering table:
 </div>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>nba_mclust <span class="sc">|&gt;</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">what =</span> <span class="st">"classification"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nba_mclust <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">what =</span> <span class="st">"classification"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -763,13 +940,13 @@ Clustering table:
 <p>Two-way table to compare the clustering assignments with player positions</p>
 <p>(What’s the way to visually compare the two labels?)</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="st">"Clusters"</span> <span class="ot">=</span> nba_mclust<span class="sc">$</span>classification, <span class="st">"Positions"</span> <span class="ot">=</span> nba_stats<span class="sc">$</span>pos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="st">"Clusters"</span> <span class="ot">=</span> nba_mclust<span class="sc">$</span>classification, <span class="st">"Positions"</span> <span class="ot">=</span> nba_players<span class="sc">$</span>pos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        Positions
 Clusters  C C-PF PF PF-C PF-SF PG PG-SG SF SF-PF SF-SG SG SG-PG
-       1 43    1 56    1     0  4     0 24     1     0  8     0
-       2 34    2  3    0     0  1     0  0     0     0  0     0
-       3  3    0 30    0     1 77     4 68     1     1 88     1</code></pre>
+       1 34    2  3    0     0  1     0  0     0     0  0     0
+       2  3    0 33    0     1 78     4 70     1     1 88     1
+       3 43    1 53    1     0  3     0 22     1     0  8     0</code></pre>
 </div>
 </div>
 <p>Takeaway: positions tend to fall within particular clusters</p>
@@ -777,18 +954,18 @@ Clusters  C C-PF PF PF-C PF-SF PG PG-SG SF SF-PF SF-SG SG SG-PG
 <section id="what-about-the-cluster-probabilities" class="slide level2">
 <h2>What about the cluster probabilities?</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nba_player_probs <span class="ot">&lt;-</span> nba_mclust<span class="sc">$</span>z</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(nba_player_probs) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"cluster1"</span>, <span class="st">"cluster2"</span>, <span class="st">"cluster3"</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>nba_player_probs <span class="ot">&lt;-</span> nba_player_probs <span class="sc">|&gt;</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">player =</span> nba_stats<span class="sc">$</span>player) <span class="sc">|&gt;</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span>player, <span class="at">names_to =</span> <span class="st">"cluster"</span>, <span class="at">values_to =</span> <span class="st">"prob"</span>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>nba_player_probs <span class="sc">|&gt;</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(prob)) <span class="sc">+</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> cluster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nba_player_probs <span class="ot">&lt;-</span> nba_mclust<span class="sc">$</span>z</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(nba_player_probs) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"cluster1"</span>, <span class="st">"cluster2"</span>, <span class="st">"cluster3"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>nba_player_probs <span class="ot">&lt;-</span> nba_player_probs <span class="sc">|&gt;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">player =</span> nba_players<span class="sc">$</span>player) <span class="sc">|&gt;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span>player, <span class="at">names_to =</span> <span class="st">"cluster"</span>, <span class="at">values_to =</span> <span class="st">"prob"</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>nba_player_probs <span class="sc">|&gt;</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(prob)) <span class="sc">+</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> cluster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="17-mixture_files/figure-revealjs/nba-probs-1.png" width="1728" class="r-stretch quarto-figure-center"></section>
@@ -798,27 +975,54 @@ Clusters  C C-PF PF PF-C PF-SF PG PG-SG SF SF-PF SF-SG SG SG-PG
 <div class="column" style="text-align: left;">
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>nba_stats <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cluster =</span> nba_mclust<span class="sc">$</span>classification,</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">uncertainty =</span> nba_mclust<span class="sc">$</span>uncertainty) <span class="sc">|&gt;</span> </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cluster) <span class="sc">|&gt;</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(uncertainty, <span class="at">n =</span> <span class="dv">5</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">player =</span> <span class="fu">fct_reorder</span>(player, uncertainty)) <span class="sc">|&gt;</span> </span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> uncertainty, <span class="at">y =</span> player)) <span class="sc">+</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> cluster, <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>nba_players <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cluster =</span> nba_mclust<span class="sc">$</span>classification,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">uncertainty =</span> nba_mclust<span class="sc">$</span>uncertainty) <span class="sc">|&gt;</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cluster) <span class="sc">|&gt;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(uncertainty, <span class="at">n =</span> <span class="dv">5</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">player =</span> <span class="fu">fct_reorder</span>(player, uncertainty)) <span class="sc">|&gt;</span> </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> uncertainty, <span class="at">y =</span> player)) <span class="sc">+</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> cluster, <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="17-mixture_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+<p><img data-src="17-mixture_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
+</div>
+</section>
+<section id="challenges-and-resources" class="slide level2">
+<h2>Challenges and resources</h2>
+<ul>
+<li><p>What if the data are not normal (ish) and instead are skewed?</p>
+<ul>
+<li><p>Apply a transformation, then perform GMM</p></li>
+<li><p>GMM on principal components of data</p></li>
+<li><p><a href="https://link.springer.com/article/10.1007/s11222-011-9272-x">Multivariate <span class="math inline">\(t\)</span> mixture model</a></p></li>
+</ul></li>
+<li><p><a href="https://www.annualreviews.org/content/journals/10.1146/annurev-statistics-033121-115326">Review paper</a>: Model-Based Clustering</p></li>
+<li><p><a href="https://math.univ-cotedazur.fr/~cbouveyr/MBCbook/">Book</a>: Model-Based Clustering and Classification for Data Science</p></li>
+<li><p><a href="https://sites.stat.washington.edu/raftery/Research/mbc.html">Adrian Raftery’s website</a></p></li>
+</ul>
+</section>
+<section id="appendix-code-to-build-dataset" class="slide level2">
+<h2>Appendix: code to build dataset</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ballr)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>nba_players <span class="ot">&lt;-</span> <span class="fu">NBAPerGameStatisticsPer100Poss</span>(<span class="at">season =</span> <span class="dv">2024</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>nba_players <span class="ot">&lt;-</span> nba_players <span class="sc">|&gt;</span> </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(player) <span class="sc">|&gt;</span> </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(g) <span class="sc">|&gt;</span> </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(mp <span class="sc">&gt;=</span> <span class="dv">150</span>) <span class="co"># keep players with at least 150 minutes played</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <div class="footer footer-default">

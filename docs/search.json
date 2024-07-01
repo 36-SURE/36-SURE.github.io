@@ -1362,14 +1362,14 @@
     "href": "lectures.html",
     "title": "Lectures",
     "section": "",
-    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides\n\n\nLecture 9\nJune 14\nPresentations\nslides\n\n\nLecture 10\nJune 17\nSupervised learning: the tradeoffs\nslides\n\n\nLecture 11\nJune 21\nSupervised learning: linear regression\nslides\n\n\nLecture 12\nJune 24\nSupervised learning: variable selection\nslides\n\n\nLecture 13\nJune 25\nSupervised learning: regularization\nslides\n\n\nLecture 14\nJune 26\nSupervised learning: logistic regression\nslides\n\n\nLecture 15\nJune 26\nSupervised learning: generalized linear models\nslides\n\n\nLecture 16\nJune 27\nUnsupervised learning: principal component analysis\nslides"
+    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides\n\n\nLecture 9\nJune 14\nPresentations\nslides\n\n\nLecture 10\nJune 17\nSupervised learning: the tradeoffs\nslides\n\n\nLecture 11\nJune 21\nSupervised learning: linear regression\nslides\n\n\nLecture 12\nJune 24\nSupervised learning: variable selection\nslides\n\n\nLecture 13\nJune 25\nSupervised learning: regularization\nslides\n\n\nLecture 14\nJune 26\nSupervised learning: logistic regression\nslides\n\n\nLecture 15\nJune 26\nSupervised learning: generalized linear models\nslides\n\n\nLecture 16\nJune 27\nUnsupervised learning: principal component analysis\nslides\n\n\nLecture 17\nJuly 1\nUnsupervised learning: Gaussian mixture models\nslides\n\n\nLecture 18\nJuly 2\nSupervised learning: nonparametric regression\nslides"
   },
   {
     "objectID": "lectures.html#contents",
     "href": "lectures.html#contents",
     "title": "Lectures",
     "section": "",
-    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides\n\n\nLecture 9\nJune 14\nPresentations\nslides\n\n\nLecture 10\nJune 17\nSupervised learning: the tradeoffs\nslides\n\n\nLecture 11\nJune 21\nSupervised learning: linear regression\nslides\n\n\nLecture 12\nJune 24\nSupervised learning: variable selection\nslides\n\n\nLecture 13\nJune 25\nSupervised learning: regularization\nslides\n\n\nLecture 14\nJune 26\nSupervised learning: logistic regression\nslides\n\n\nLecture 15\nJune 26\nSupervised learning: generalized linear models\nslides\n\n\nLecture 16\nJune 27\nUnsupervised learning: principal component analysis\nslides"
+    "text": "Date\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 3\nWelcome to SURE 2024\nslides\n\n\nLecture 1\nJune 4\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 5\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 6\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 7\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 10\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 6\nJune 11\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 7\nJune 12\nData visualization: density estimation\nslides\n\n\nLecture 8\nJune 13\nSimulation\nslides\n\n\nLecture 9\nJune 14\nPresentations\nslides\n\n\nLecture 10\nJune 17\nSupervised learning: the tradeoffs\nslides\n\n\nLecture 11\nJune 21\nSupervised learning: linear regression\nslides\n\n\nLecture 12\nJune 24\nSupervised learning: variable selection\nslides\n\n\nLecture 13\nJune 25\nSupervised learning: regularization\nslides\n\n\nLecture 14\nJune 26\nSupervised learning: logistic regression\nslides\n\n\nLecture 15\nJune 26\nSupervised learning: generalized linear models\nslides\n\n\nLecture 16\nJune 27\nUnsupervised learning: principal component analysis\nslides\n\n\nLecture 17\nJuly 1\nUnsupervised learning: Gaussian mixture models\nslides\n\n\nLecture 18\nJuly 2\nSupervised learning: nonparametric regression\nslides"
   },
   {
     "objectID": "lectures.html#references",
@@ -1971,63 +1971,119 @@
     "href": "lectures/17-mixture.html#previously-clustering",
     "title": "Unsupervised learning: Gaussian mixture models",
     "section": "Previously: clustering",
-    "text": "Previously: clustering\n\nPrevious methods: \\(k\\)-means clustering  and hierarchical clustering\nOutput hard assignments, strictly assigning observations to only one cluster\n\n\n\nWhat about soft assignments and uncertainty in the clustering results?\n\n\n\n\nEntering mixture models"
+    "text": "Previously: clustering\n\nGoal: partition \\(n\\) data points into \\(K\\) subgroups, where roughly points within group are more “similar” than points between groups\nPrevious methods: \\(k\\)-means clustering  and hierarchical clustering\n\n\n\nClassification vs clustering\n\nClassification\n\nWe are given labeled (categorical) data\nFocus on generalization (i.e. we want to have a classifier that performs well on predicting new (test) data)\n\n\n\nClustering\n\nWe are only given the points (with no labels)\nWe want to find interesting subgroups/structure in the data"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#previously-clustering-1",
+    "href": "lectures/17-mixture.html#previously-clustering-1",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Previously: clustering",
+    "text": "Previously: clustering\n\nPrevious methods: \\(k\\)-means clustering  and hierarchical clustering\nOutput hard assignments, strictly assigning observations to only one cluster\n\n\n\nWhat about soft assignments and uncertainty in the clustering results?\n\nAssigns each observation a probability of belonging to a cluster\nIncorporate statistical modeling into clustering\n\n\n\n\n\nWe want to estimate the density of the observations in some way that allows us to extract clusters"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#motivating-figure",
+    "href": "lectures/17-mixture.html#motivating-figure",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Motivating figure",
+    "text": "Motivating figure"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#model-based-clustering",
+    "href": "lectures/17-mixture.html#model-based-clustering",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Model-based clustering",
+    "text": "Model-based clustering\nKey idea: data are considered as coming from a mixture of underlying probability distributions\n\nMost popular method: Gaussian mixture model (GMM)\n\nEach observation is assumed to be distributed as one of \\(k\\) multivariate normal distributions\n\\(k\\) is the number of clusters (components)"
   },
   {
     "objectID": "lectures/17-mixture.html#previously-kernel-density-estimation",
     "href": "lectures/17-mixture.html#previously-kernel-density-estimation",
     "title": "Unsupervised learning: Gaussian mixture models",
     "section": "Previously: kernel density estimation",
-    "text": "Previously: kernel density estimation\nKernel density estimator: \\(\\quad \\displaystyle \\hat{f}(x) = \\frac{1}{n} \\sum_{i=1}^n \\frac{1}{h} K_h(x - x_i)\\)\n\nWe have to use every observation when estimating the density for new points\n\n\n\n\n\n\n\n\n\n\n\nInstead we can make some simplifying assumptions"
+    "text": "Previously: kernel density estimation\nKernel density estimator: \\(\\displaystyle \\hat{f}(x) = \\frac{1}{n} \\sum_{i=1}^n \\frac{1}{h} K_h(x - x_i)\\)\n\n\n\n\nSmooth each data point into a small density bumps\nSum all these small bumps together to obtain the final density estimate\n\nUse every observation when estimating the density for new points\nWe want to estimate the density of the points in some way that allows us to extract clusters"
   },
   {
     "objectID": "lectures/17-mixture.html#mixture-models",
     "href": "lectures/17-mixture.html#mixture-models",
     "title": "Unsupervised learning: Gaussian mixture models",
     "section": "Mixture models",
-    "text": "Mixture models\nAssume \\(f(x)\\) is a mixture of \\(K\\) component distributions \\(\\displaystyle f(x) = \\sum_{k=1}^K \\pi_k f_k(x)\\)\n\nwhere \\(\\pi_k =\\) mixing proportions (or weights), with \\(\\pi_k &gt; 0\\), and \\(\\sum_k \\pi_k = 1\\)\n\n\nThis is a data generating process, meaning to generate a new point:\n\npick a distribution/component among our \\(K\\) options by introducing a new variable \\(z \\sim \\text{Multinomial} (\\pi_1, \\pi_2, \\dots, \\pi_k)\\) (categorical variable for which group the new point is from)\n\n\n\n\ngenerate an observation with that distribution / component, i.e. \\(x \\mid z \\sim f_{z}\\)\n\n\n\nSo what do we use for each \\(f_k\\)?"
+    "text": "Mixture models\n\nModel the density as a mixture of distributions"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#mixture-models-1",
+    "href": "lectures/17-mixture.html#mixture-models-1",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Mixture models",
+    "text": "Mixture models\nFormally, \\[\\displaystyle f(x) = \\sum_{k=1}^K \\tau_k f_k(x)\\]\nwhere\n\n\\(f_k\\) are some distributions\n\\(\\tau_k \\ge 0\\) and \\(\\sum_{k=1}^K \\tau_k = 1\\) are the mixture weights\n\\(K\\) is the number of mixture components (i.e. the number of clusters)"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#mixture-models-2",
+    "href": "lectures/17-mixture.html#mixture-models-2",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Mixture models",
+    "text": "Mixture models\nThis is a data generating process\nImagine that each cluster (component) has a different distribution\n\nTask: Generate a new observation (i.e. sample) from a mixture model\n\n\n\nChoose a cluster by drawing \\(Z \\in \\{1, \\dots, K\\}\\), where \\(P(Z = k) = \\tau_k\\)\n\ni.e. \\(Z\\) is a categorical latent variable indicating which cluster the new observation is from\n\nGenerate an observation from the distribution \\(f_Z\\) (corresponding to cluster \\(Z\\))\n\n\n\nHence \\(\\displaystyle f(x) = \\sum_{k=1}^K P(Z = k) p (x \\mid Z = k) = \\sum_{k=1}^K \\tau_k f_Z(x)\\)"
   },
   {
     "objectID": "lectures/17-mixture.html#gaussian-mixture-models-gmms",
     "href": "lectures/17-mixture.html#gaussian-mixture-models-gmms",
     "title": "Unsupervised learning: Gaussian mixture models",
     "section": "Gaussian mixture models (GMMs)",
-    "text": "Gaussian mixture models (GMMs)\nAssume a parametric mixture model, with parameters \\(\\theta_k\\) for the \\(k\\)th component \\[f(x) = \\sum_{k=1}^K \\pi_k f_k(x; \\theta_k)\\]\n\nAssume each component is Gaussian/normal, where the 1D case is\n\\[f_k(x; \\theta_k) = N(x; \\mu_k, \\sigma_k^2) = \\frac{1}{\\sqrt{2\\pi \\sigma_k^2}}\\text{exp} \\Big( -\\frac{(x - \\mu_k)^2}{2 \\sigma_k^2} \\Big)\\]\n\n\nWe need to estimate each \\(\\pi_1, \\dots, \\pi_k\\), \\(\\mu_1, \\dots, \\mu_k\\), \\(\\sigma_1, \\dots, \\sigma_k\\)"
+    "text": "Gaussian mixture models (GMMs)\n\nAssume a parametric mixture model, with parameters \\(\\theta_k\\) for the \\(k\\)th component \\[f(x) = \\sum_{k=1}^K \\tau_k f_k(x; \\theta_k)\\]\nGaussian mixture models (GMMs) are perhaps the most popular mixture models\n\n\n\nAssume each component is Gaussian (normal), where the 1D case is\n\n\\[f_k(x; \\theta_k) = N(x; \\mu_k, \\sigma_k^2) = \\frac{1}{\\sqrt{2 \\pi \\sigma_k^2}}\\text{exp} \\left( -\\frac{(x - \\mu_k)^2}{2 \\sigma_k^2} \\right)\\]\nwith mean \\(\\mu_k\\) and variance \\(\\sigma_k ^2\\)\n\n\n\nWe need to estimate each \\(\\{\\tau_1, \\dots, \\tau_k\\}\\), \\(\\{\\mu_1, \\dots, \\mu_k\\}\\), \\(\\{\\sigma_1, \\dots, \\sigma_k\\}\\)"
   },
   {
-    "objectID": "lectures/17-mixture.html#lets-pretend-we-only-have-one-component",
-    "href": "lectures/17-mixture.html#lets-pretend-we-only-have-one-component",
+    "objectID": "lectures/17-mixture.html#gaussian-mixture-models-gmms-1",
+    "href": "lectures/17-mixture.html#gaussian-mixture-models-gmms-1",
     "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "Let’s pretend we only have one component…",
-    "text": "Let’s pretend we only have one component…\nGiven \\(n\\) observations from a single Normal distribution, we estimate the distribution parameters using the likelihood function, the probability/density of observing the data given the parameters\n\\[\\mathcal{L}(\\mu, \\sigma \\mid x_1, \\dots, x_n) = f( x_1, \\dots, x_n \\mid \\mu, \\sigma) =  \\prod_i^n \\frac{1}{\\sqrt{2\\pi \\sigma^2}}\\text{exp } \\left\\{-\\frac{(x_i - \\mu)^2}{2 \\sigma^2}\\right\\}\\]\n\nWe can compute the maximum likelihood estimates (MLEs) for \\(\\mu\\) and \\(\\sigma\\)\nYou already know these values!\n\n\\(\\displaystyle \\hat{\\mu}_{\\rm MLE} = \\frac{1}{n} \\sum_i^n x_i\\), sample mean\n\\(\\displaystyle \\hat{\\sigma}_{\\rm MLE} = \\sqrt{\\frac{1}{n}\\sum_i^n (x_i - \\mu)^2}\\), sample standard deviation (plug in \\(\\hat{\\mu}_{\\rm MLE}\\))"
+    "section": "Gaussian mixture models (GMMs)",
+    "text": "Gaussian mixture models (GMMs)\n\nModel \\(\\tau_1, \\tau_2, \\tau_3\\) and\n\\(f_{\\text{red}}(x) = N(\\mu_{\\text{red}}, \\sigma^2_{\\text{red}})\\)\n\\(f_{\\text{blue}}(x) = N(\\mu_{\\text{blue}}, \\sigma^2_{\\text{blue}})\\)\n\\(f_{\\text{green}}(x) = N(\\mu_{\\text{green}}, \\sigma^2_{\\text{green}})\\)"
   },
   {
-    "objectID": "lectures/17-mixture.html#the-problem-with-more-than-one-component",
-    "href": "lectures/17-mixture.html#the-problem-with-more-than-one-component",
+    "objectID": "lectures/17-mixture.html#estimating-a-mixture-model",
+    "href": "lectures/17-mixture.html#estimating-a-mixture-model",
     "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "The problem with more than one component",
-    "text": "The problem with more than one component\n\n\n\nWe don’t know which component an observation belongs to\nIF WE DID KNOW, then we could compute each component’s MLEs as before\nBut we don’t know because \\(z\\) is a latent variable! So what about its distribution given the data?\n\n\\(\\displaystyle P(z_i = k \\mid x_i) = \\frac{P(x_i \\mid z_i = k) P(z_i = k)}{P(x_i)}\\)\n\\(\\displaystyle =\\frac{\\pi_{k} N\\left(\\mu_{k}, \\sigma_{k}^{2}\\right)}{\\sum_{k=1}^{K} \\pi_{k} N\\left(\\mu_{k}, \\sigma_{k}\\right)}\\)\n\nBut we do NOT know these parameters!"
+    "section": "Estimating a mixture model",
+    "text": "Estimating a mixture model\nWhat can we do to soft-cluster our data?\n\nFor an observation \\(x\\), compute the weight for \\(x\\) to belong to cluster \\(k\\) for \\(k \\in \\{1, \\dots, K\\}\\) \\[ P(Z = k \\mid X = x) = \\frac{P(X = x \\mid Z = k) P(Z = k)}{\\sum_{j}P(X = x \\mid Z = j) P(Z = j)} =\\frac{\\tau_{k} \\ N(\\mu_{k}, \\sigma_{k}^{2})}{\\sum_{j=1}^{K} \\tau_{j} \\ N(\\mu_{j}, \\sigma^2_{j})}\\]\n(recall that \\(\\displaystyle f(x) = \\sum_{k=1}^K \\tau_k \\ N(\\mu_k, \\sigma^2_k)\\))\n\n\nHow do we estimate the parameters of the mixture model (i.e. the \\(\\tau_k, \\mu_k, \\sigma_k\\))?\n\n\n\nWe don’t know which component (i.e. the true labels) an observation actually belongs to\n\\(Z\\) is a latent variable (since the true cluster labels are not observed)\nThis is known as the missing data or latent variable problems"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#estimating-a-mixture-model-maximum-likelihood",
+    "href": "lectures/17-mixture.html#estimating-a-mixture-model-maximum-likelihood",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Estimating a mixture model: maximum likelihood",
+    "text": "Estimating a mixture model: maximum likelihood\nLikelihood function: how likely to observe data for given parameter values\n\nSetup: Given observations \\(X_1, \\dots, X_n\\)\nTask: Estimate the parameters of a mixture model\n\n\n\nWhat if we know the true cluster labels \\(Z_1, \\dots, Z_n\\)? We can just use maximum likelihood estimation and maximize \\[L\\{\\left(\\tau_k, \\mu_k, \\sigma^2_k \\right)_{k=1}^K\\} = \\sum_{i=1}^n \\log f(X_i, Z_i)\\] (just take data from each group, compute the fraction of points \\(\\tau_k\\), the mean \\(\\mu_k\\), and the variance \\(\\sigma^2\\))\n\n\n\n\nIn our case, since we do not know the cluster labels \\(Z_i\\), we should try to maximize the (marginal) likelihood of the observed data\n\n\\[\\mathcal L\\{\\left(\\tau_k, \\mu_k, \\sigma^2_k \\right)_{k=1}^K\\} = \\sum_{i=1}^n \\log f(X_i) = \\sum_{i=1}^n \\log \\left[\\sum_{k=1}^K f(X_i, k)\\right]\\]"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#estimating-a-mixture-model-em-algorithm",
+    "href": "lectures/17-mixture.html#estimating-a-mixture-model-em-algorithm",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Estimating a mixture model: EM algorithm",
+    "text": "Estimating a mixture model: EM algorithm\nExpectation–maximization (EM) algorithm is a method for (approximately) maximizing the (marginal) likelihood in the presence of missing data\nFor a GMM:\n\nFirst, initialize the model parameters randomly\nThen, alternate between the following two steps (keep repeating until nothing changes)\n\nE-step: compute the cluster memberships for each point\nM-step: recompute/update the parameters"
   },
   {
     "objectID": "lectures/17-mixture.html#expectation-maximization-em-algorithm",
     "href": "lectures/17-mixture.html#expectation-maximization-em-algorithm",
     "title": "Unsupervised learning: Gaussian mixture models",
     "section": "Expectation-maximization (EM) algorithm",
-    "text": "Expectation-maximization (EM) algorithm\nAlternate between the following:\n\npretend to know the probability each observation belongs to each group, to estimate the parameters of the components\n\n\n\npretend to know the parameters of the components, to estimate the probability each observation belong to each group\n\n\n\nWhere have we seen this before?\n\n\n\\(k\\)-means algorithm!\n\n\n\nStart with initial guesses about \\(\\pi_1, \\dots, \\pi_k\\), \\(\\mu_1, \\dots, \\mu_k\\), \\(\\sigma_1, \\dots, \\sigma_k\\)\nRepeat until nothing changes:\n\n\n\n\nExpectation step: calculate \\(\\hat{z}_{ik}\\) = expected membership of observation \\(i\\) in cluster \\(k\\)\nMaximization step: update parameter estimates with weighted MLE using \\(\\hat{z}_{ik}\\)"
+    "text": "Expectation-maximization (EM) algorithm\nAlternate between the following:\n\npretend to know the probability each observation belongs to each group, to estimate the parameters of the components\n\n\n\npretend to know the parameters of the components, to estimate the probability each observation belong to each group\n\n\n\n\nStart with initial guesses about \\(\\tau_1, \\dots, \\tau_k\\), \\(\\mu_1, \\dots, \\mu_k\\), \\(\\sigma_1, \\dots, \\sigma_k\\)\nRepeat until nothing changes:\n\n\n\n\nE-step: calculate \\(\\hat{z}_{ik}\\), the weight for observation \\(i\\) belonging to cluster \\(k\\)\nM-step: update parameter estimates with weighted MLE using \\(\\hat{z}_{ik}\\)"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#is-this-familiar",
+    "href": "lectures/17-mixture.html#is-this-familiar",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Is this familiar?",
+    "text": "Is this familiar?\n\n\nIn GMMs, we’re essentially guessing the latent variables \\(Z_i\\) and pretending to know the parameters to perform maximum likelihood estimation\n\n\n\n\n\n\nThis resembles the \\(k\\)-means algorithm!\n\nThe cluster centroids are chosen at random, and then recomputed/updated\nThis is repeated until the cluster assignments stop changing\n\n\n\n\n\n\n\n\n\n\n\n\nInstead of assigning each point to a single cluster, we “softly” assign them so they contribute fractionally to each cluster"
   },
   {
     "objectID": "lectures/17-mixture.html#how-does-this-relate-back-to-clustering",
     "href": "lectures/17-mixture.html#how-does-this-relate-back-to-clustering",
     "title": "Unsupervised learning: Gaussian mixture models",
     "section": "How does this relate back to clustering?",
-    "text": "How does this relate back to clustering?\n\nFrom the EM algorithm: \\(\\hat{z}_{ik}\\) is a soft membership of observation \\(i\\) in cluster \\(k\\)\n\n\n\nassign observation \\(i\\) to a cluster with the largest \\(\\hat{z}_{ik}\\)\nmeasure cluster assignment uncertainty of \\(\\displaystyle 1 - \\max_k \\hat{z}_{ik}\\)\n\n\n\nOur parameters determine the type of clusters\n\n\nIn the 1D case, there are two options:\n\n\n\neach cluster is assumed to have equal variance (spread): \\(\\sigma_1^2 = \\sigma_2^2 = \\dots = \\sigma_k^2\\)\n\n\n\n\neach cluster is allowed to have a different variance\n\n\n\nBut that is only 1D… what happens in multiple dimensions?"
+    "text": "How does this relate back to clustering?\n\nFrom the EM algorithm: \\(\\hat{z}_{ik}\\) is the estimated weight for observation \\(i\\) belonging to cluster \\(k\\) (i.e. soft membership)\n\n\n\nassign observation \\(i\\) to a cluster with the largest \\(\\hat{z}_{ik}\\)\nmeasure cluster assignment uncertainty of \\(\\displaystyle 1 - \\max_k \\hat{z}_{ik}\\)\n\n\n\nOur parameters determine the type of clusters\n\n\nIn the 1D case, there are two options:\n\n\n\neach cluster is assumed to have equal variance (spread): \\(\\sigma_1^2 = \\sigma_2^2 = \\dots = \\sigma_k^2\\)\n\n\n\n\neach cluster is allowed to have a different variance\n\n\n\nBut that is only 1D… what happens in multiple dimensions?"
   },
   {
     "objectID": "lectures/17-mixture.html#multivariate-gmms",
     "href": "lectures/17-mixture.html#multivariate-gmms",
     "title": "Unsupervised learning: Gaussian mixture models",
     "section": "Multivariate GMMs",
-    "text": "Multivariate GMMs\n\\[f(x) = \\sum_{k=1}^K \\pi_k f_k(x; \\theta_k) \\qquad \\text{where }f_k(x; \\theta_k) \\sim N(\\boldsymbol{\\mu}_k, \\boldsymbol{\\Sigma}_k)\\]\nEach component is a multivariate normal distribution:\n\n\n\\(\\boldsymbol{\\mu}_k\\) is a vector of means in \\(p\\) dimensions\n\n\n\n\n\\(\\boldsymbol{\\Sigma}_k\\) is the \\(p \\times p\\) covariance matrix - describes the joint variability between pairs of variables\n\n\\[\\sum=\\left[\\begin{array}{cccc}\n\\sigma_{1}^{2} & \\sigma_{1,2} & \\cdots & \\sigma_{1, p} \\\\\n\\sigma_{2,1} & \\sigma_{2}^{2} & \\cdots & \\sigma_{2, p} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n\\sigma_{p, 1} & \\sigma_{p, 2}^{2} & \\cdots & \\sigma_{p}^{2}\n\\end{array}\\right]\\]"
+    "text": "Multivariate GMMs\n\\[f(x) = \\sum_{k=1}^K \\tau_k f_k(x; \\theta_k) \\qquad \\text{where }f_k(x; \\theta_k) \\sim N(\\boldsymbol{\\mu}_k, \\boldsymbol{\\Sigma}_k)\\]\nEach component is a multivariate normal distribution:\n\n\n\\(\\boldsymbol{\\mu}_k\\) is a vector of means in \\(p\\) dimensions\n\n\n\n\n\\(\\boldsymbol{\\Sigma}_k\\) is the \\(p \\times p\\) covariance matrix - describes the joint variability between pairs of variables\n\n\\[\\sum=\\left[\\begin{array}{cccc}\n\\sigma_{1}^{2} & \\sigma_{1,2} & \\cdots & \\sigma_{1, p} \\\\\n\\sigma_{2,1} & \\sigma_{2}^{2} & \\cdots & \\sigma_{2, p} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n\\sigma_{p, 1} & \\sigma_{p, 2}^{2} & \\cdots & \\sigma_{p}^{2}\n\\end{array}\\right]\\]"
   },
   {
     "objectID": "lectures/17-mixture.html#covariance-constraints",
@@ -2041,28 +2097,42 @@
     "href": "lectures/17-mixture.html#covariance-constraints-1",
     "title": "Unsupervised learning: Gaussian mixture models",
     "section": "Covariance constraints",
-    "text": "Covariance constraints\n\n\nControl volume, shape, orientation\nE: equal and V: variable (VVV is the most flexible, but has the most parameters)\nTwo II: spherical, one I: diagonal, the remaining are general\n\nHow do we know which one to choose?"
+    "text": "Covariance constraints\n\n\nThe three letters in the model name denote, in order, the volume, shape, and orientation across clusters\nE: equal and V: varying (VVV is the most flexible, but has the most parameters)\nTwo II: spherical, one I: diagonal, the remaining are general\n\n\nHow do we know which one to choose?"
   },
   {
     "objectID": "lectures/17-mixture.html#bayesian-information-criterion-bic",
     "href": "lectures/17-mixture.html#bayesian-information-criterion-bic",
     "title": "Unsupervised learning: Gaussian mixture models",
     "section": "Bayesian information criterion (BIC)",
-    "text": "Bayesian information criterion (BIC)\nThis is a statistical model\n\\[f(x) = \\sum_{k=1}^K \\pi_k f_k(x; \\theta_k) \\qquad \\text{where }f_k(x; \\theta_k) \\sim N(\\boldsymbol{\\mu}_k, \\boldsymbol{\\Sigma}_k)\\]\n\nUse a model selection procedure for determining which best characterizes the data\n\n\nSpecifically, use a penalized likelihood measure \\[\\text{BIC} = 2\\log \\mathcal{L} - m\\log n\\]\n\n\\(\\log \\mathcal{L}\\): log-likelihood of the considered model\nwith \\(m\\) parameters (VVV has the most parameters) and \\(n\\) observations\n\n\n\n\npenalizes large models with many clusters without constraints\nuse BIC to choose the covariance constraints AND number of clusters\n\n\n\n\nThe above \\(\\text{BIC}\\) is really the \\(- \\text{BIC}\\) of what you typically see, this sign flip is just for ease"
+    "text": "Bayesian information criterion (BIC)\nThis is a statistical model\n\\[f(x) = \\sum_{k=1}^K \\tau_k f_k(x; \\theta_k) \\qquad \\text{where }f_k(x; \\theta_k) \\sim N(\\boldsymbol{\\mu}_k, \\boldsymbol{\\Sigma}_k)\\]\n\nUse a model selection procedure for determining which best characterizes the data\n\n\nSpecifically, use a penalized likelihood measure \\[\\text{BIC} = 2\\log \\mathcal{L} - m\\log n\\]\n\n\\(\\log \\mathcal{L}\\): log-likelihood of the considered model\nwith \\(m\\) parameters (VVV has the most parameters) and \\(n\\) observations\n\n\n\n\npenalizes large models with many clusters without constraints\nuse BIC to choose the covariance constraints AND number of clusters\n\n\n\n\nThe above \\(\\text{BIC}\\) is really the \\(- \\text{BIC}\\) of what you typically see, this sign flip is just for ease"
   },
   {
-    "objectID": "lectures/17-mixture.html#data-nba-player-statistics-per-100-possessions",
-    "href": "lectures/17-mixture.html#data-nba-player-statistics-per-100-possessions",
+    "objectID": "lectures/17-mixture.html#data-nba-player-statistics-per-100-possessions-2023-24-regular-season",
+    "href": "lectures/17-mixture.html#data-nba-player-statistics-per-100-possessions-2023-24-regular-season",
     "title": "Unsupervised learning: Gaussian mixture models",
-    "section": "Data: NBA player statistics per 100 possessions",
-    "text": "Data: NBA player statistics per 100 possessions\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nlibrary(ballr)\nnba_stats &lt;- NBAPerGameStatisticsPer100Poss(season = 2024)\nnba_stats &lt;- nba_stats |&gt; \n  group_by(player) |&gt; \n  slice_max(g) |&gt; \n  ungroup() |&gt; \n  filter(mp &gt;= 150) # keep players with at least 150 minutes played\nhead(nba_stats)\n\n# A tibble: 6 × 33\n     rk player   pos     age tm        g    gs    mp    fg   fga fgpercent   x3p\n  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1   183 A.J. Gr… SG       24 MIL      56     0   614   6.5  15.3     0.423   5.4\n2   290 A.J. La… SG       23 DAL      42     0   311   8.3  18.7     0.446   2  \n3   190 AJ Grif… SF       20 ATL      20     0   171   5    17.4     0.29    2.8\n4   178 Aaron G… PF       28 DEN      73    73  2297   8.6  15.5     0.556   0.9\n5   221 Aaron H… PG       27 HOU      78     1  1269   7.1  15.9     0.446   3.2\n6   372 Aaron N… SF       24 IND      72    47  1995   7.4  15       0.496   3.3\n# ℹ 21 more variables: x3pa &lt;dbl&gt;, x3ppercent &lt;dbl&gt;, x2p &lt;dbl&gt;, x2pa &lt;dbl&gt;,\n#   x2ppercent &lt;dbl&gt;, ft &lt;dbl&gt;, fta &lt;dbl&gt;, ftpercent &lt;dbl&gt;, orb &lt;dbl&gt;,\n#   drb &lt;dbl&gt;, trb &lt;dbl&gt;, ast &lt;dbl&gt;, stl &lt;dbl&gt;, blk &lt;dbl&gt;, tov &lt;dbl&gt;, pf &lt;dbl&gt;,\n#   pts &lt;dbl&gt;, x &lt;dbl&gt;, ortg &lt;dbl&gt;, drtg &lt;dbl&gt;, link &lt;chr&gt;"
+    "section": "Data: NBA player statistics per 100 possessions (2023-24 regular season)",
+    "text": "Data: NBA player statistics per 100 possessions (2023-24 regular season)\nObtained via ballr package\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nnba_players &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/nba_players.csv\")\nhead(nba_players)\n\n# A tibble: 6 × 33\n     rk player   pos     age tm        g    gs    mp    fg   fga fgpercent   x3p\n  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1     1 Preciou… PF-C     24 TOT      74    18  1624   7.2  14.4     0.501   0.8\n2     2 Bam Ade… C        26 MIA      71    71  2416  10.9  21       0.521   0.3\n3     3 Ochai A… SG       23 TOT      78    28  1641   5.2  12.7     0.411   1.8\n4     4 Santi A… PF       23 MEM      61    35  1618   7.5  17.2     0.435   3.2\n5     5 Nickeil… SG       25 MIN      82    20  1921   6.1  13.8     0.439   3.4\n6     6 Grayson… SG       28 PHO      75    74  2513   6.6  13.3     0.499   4  \n# ℹ 21 more variables: x3pa &lt;dbl&gt;, x3ppercent &lt;dbl&gt;, x2p &lt;dbl&gt;, x2pa &lt;dbl&gt;,\n#   x2ppercent &lt;dbl&gt;, ft &lt;dbl&gt;, fta &lt;dbl&gt;, ftpercent &lt;dbl&gt;, orb &lt;dbl&gt;,\n#   drb &lt;dbl&gt;, trb &lt;dbl&gt;, ast &lt;dbl&gt;, stl &lt;dbl&gt;, blk &lt;dbl&gt;, tov &lt;dbl&gt;, pf &lt;dbl&gt;,\n#   pts &lt;dbl&gt;, x &lt;lgl&gt;, ortg &lt;dbl&gt;, drtg &lt;dbl&gt;, link &lt;chr&gt;"
   },
   {
     "objectID": "lectures/17-mixture.html#implementation-with-mclust-package",
     "href": "lectures/17-mixture.html#implementation-with-mclust-package",
     "title": "Unsupervised learning: Gaussian mixture models",
     "section": "Implementation with mclust package",
-    "text": "Implementation with mclust package\nSelect the model and number of clusters\nUse Mclust() function to search over 1 to 9 clusters (default) and the different covariance constraints (i.e. models)\n\nlibrary(mclust)\n# x3pa: 3pt attempts per 100 possessions\n# trb: total rebounds per 100 possessions\nnba_mclust &lt;- nba_stats |&gt; \n  select(x3pa, trb) |&gt; \n  Mclust()\nsummary(nba_mclust)\n\n---------------------------------------------------- \nGaussian finite mixture model fitted by EM algorithm \n---------------------------------------------------- \n\nMclust VVV (ellipsoidal, varying volume, shape, and orientation) model with 3\ncomponents: \n\n log-likelihood   n df     BIC       ICL\n      -2246.434 452 17 -4596.8 -4749.605\n\nClustering table:\n  1   2   3 \n138  40 274"
+    "text": "Implementation with mclust package\nSelect the model and number of clusters\nUse Mclust() function to search over 1 to 9 clusters (default) and the different covariance constraints (i.e. models)\n\nlibrary(mclust)\n# x3pa: 3pt attempts per 100 possessions\n# trb: total rebounds per 100 possessions\nnba_mclust &lt;- nba_players |&gt; \n  select(x3pa, trb) |&gt; \n  Mclust()\nsummary(nba_mclust)\n\n---------------------------------------------------- \nGaussian finite mixture model fitted by EM algorithm \n---------------------------------------------------- \n\nMclust VVV (ellipsoidal, varying volume, shape, and orientation) model with 3\ncomponents: \n\n log-likelihood   n df      BIC       ICL\n      -2246.359 452 17 -4596.65 -4739.919\n\nClustering table:\n  1   2   3 \n 40 280 132"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#view-clustering-summary",
+    "href": "lectures/17-mixture.html#view-clustering-summary",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "View clustering summary",
+    "text": "View clustering summary\n\nlibrary(broom)\nnba_mclust |&gt; \n  tidy()  \n\n# A tibble: 3 × 5\n  component  size proportion mean.x3pa mean.trb\n      &lt;int&gt; &lt;int&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1         1    40     0.0822     0.101    15.5 \n2         2   280     0.535      8.12      6.38\n3         3   132     0.382      6.04     11.0"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#view-clustering-assignments",
+    "href": "lectures/17-mixture.html#view-clustering-assignments",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "View clustering assignments",
+    "text": "View clustering assignments\n\nnba_mclust |&gt; \n  augment() |&gt; \n  ggplot(aes(x = x3pa, y = trb, color = .class, size = .uncertainty)) +\n  geom_point(alpha = 0.6) +\n  ggthemes::scale_color_colorblind()"
   },
   {
     "objectID": "lectures/17-mixture.html#display-the-bic-for-each-model-and-number-of-clusters",
@@ -2076,21 +2146,35 @@
     "href": "lectures/17-mixture.html#how-do-the-cluster-assignments-compare-to-the-positions",
     "title": "Unsupervised learning: Gaussian mixture models",
     "section": "How do the cluster assignments compare to the positions?",
-    "text": "How do the cluster assignments compare to the positions?\nTwo-way table to compare the clustering assignments with player positions\n(What’s the way to visually compare the two labels?)\n\ntable(\"Clusters\" = nba_mclust$classification, \"Positions\" = nba_stats$pos)\n\n        Positions\nClusters  C C-PF PF PF-C PF-SF PG PG-SG SF SF-PF SF-SG SG SG-PG\n       1 43    1 56    1     0  4     0 24     1     0  8     0\n       2 34    2  3    0     0  1     0  0     0     0  0     0\n       3  3    0 30    0     1 77     4 68     1     1 88     1\n\n\nTakeaway: positions tend to fall within particular clusters"
+    "text": "How do the cluster assignments compare to the positions?\nTwo-way table to compare the clustering assignments with player positions\n(What’s the way to visually compare the two labels?)\n\ntable(\"Clusters\" = nba_mclust$classification, \"Positions\" = nba_players$pos)\n\n        Positions\nClusters  C C-PF PF PF-C PF-SF PG PG-SG SF SF-PF SF-SG SG SG-PG\n       1 34    2  3    0     0  1     0  0     0     0  0     0\n       2  3    0 33    0     1 78     4 70     1     1 88     1\n       3 43    1 53    1     0  3     0 22     1     0  8     0\n\n\nTakeaway: positions tend to fall within particular clusters"
   },
   {
     "objectID": "lectures/17-mixture.html#what-about-the-cluster-probabilities",
     "href": "lectures/17-mixture.html#what-about-the-cluster-probabilities",
     "title": "Unsupervised learning: Gaussian mixture models",
     "section": "What about the cluster probabilities?",
-    "text": "What about the cluster probabilities?\n\nnba_player_probs &lt;- nba_mclust$z\ncolnames(nba_player_probs) &lt;- c(\"cluster1\", \"cluster2\", \"cluster3\")\n\nnba_player_probs &lt;- nba_player_probs |&gt;\n  as_tibble() |&gt;\n  mutate(player = nba_stats$player) |&gt;\n  pivot_longer(!player, names_to = \"cluster\", values_to = \"prob\")\n\nnba_player_probs |&gt;\n  ggplot(aes(prob)) +\n  geom_histogram() +\n  facet_wrap(~ cluster)"
+    "text": "What about the cluster probabilities?\n\nnba_player_probs &lt;- nba_mclust$z\ncolnames(nba_player_probs) &lt;- c(\"cluster1\", \"cluster2\", \"cluster3\")\n\nnba_player_probs &lt;- nba_player_probs |&gt;\n  as_tibble() |&gt;\n  mutate(player = nba_players$player) |&gt;\n  pivot_longer(!player, names_to = \"cluster\", values_to = \"prob\")\n\nnba_player_probs |&gt;\n  ggplot(aes(prob)) +\n  geom_histogram() +\n  facet_wrap(~ cluster)"
   },
   {
     "objectID": "lectures/17-mixture.html#which-players-have-the-highest-uncertainty",
     "href": "lectures/17-mixture.html#which-players-have-the-highest-uncertainty",
     "title": "Unsupervised learning: Gaussian mixture models",
     "section": "Which players have the highest uncertainty?",
-    "text": "Which players have the highest uncertainty?\n\n\n\n\nnba_stats |&gt;\n  mutate(cluster = nba_mclust$classification,\n         uncertainty = nba_mclust$uncertainty) |&gt; \n  group_by(cluster) |&gt;\n  slice_max(uncertainty, n = 5) |&gt; \n  mutate(player = fct_reorder(player, uncertainty)) |&gt; \n  ggplot(aes(x = uncertainty, y = player)) +\n  geom_point(size = 3) +\n  facet_wrap(~ cluster, scales = \"free_y\", nrow = 3)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n36-SURE.github.io"
+    "text": "Which players have the highest uncertainty?\n\n\n\n\nnba_players |&gt;\n  mutate(cluster = nba_mclust$classification,\n         uncertainty = nba_mclust$uncertainty) |&gt; \n  group_by(cluster) |&gt;\n  slice_max(uncertainty, n = 5) |&gt; \n  mutate(player = fct_reorder(player, uncertainty)) |&gt; \n  ggplot(aes(x = uncertainty, y = player)) +\n  geom_point(size = 3) +\n  facet_wrap(~ cluster, scales = \"free_y\", nrow = 3)"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#challenges-and-resources",
+    "href": "lectures/17-mixture.html#challenges-and-resources",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Challenges and resources",
+    "text": "Challenges and resources\n\nWhat if the data are not normal (ish) and instead are skewed?\n\nApply a transformation, then perform GMM\nGMM on principal components of data\nMultivariate \\(t\\) mixture model\n\nReview paper: Model-Based Clustering\nBook: Model-Based Clustering and Classification for Data Science\nAdrian Raftery’s website"
+  },
+  {
+    "objectID": "lectures/17-mixture.html#appendix-code-to-build-dataset",
+    "href": "lectures/17-mixture.html#appendix-code-to-build-dataset",
+    "title": "Unsupervised learning: Gaussian mixture models",
+    "section": "Appendix: code to build dataset",
+    "text": "Appendix: code to build dataset\n\nlibrary(tidyverse)\nlibrary(ballr)\nnba_players &lt;- NBAPerGameStatisticsPer100Poss(season = 2024)\nnba_players &lt;- nba_players |&gt; \n  group_by(player) |&gt; \n  slice_max(g) |&gt; \n  ungroup() |&gt; \n  filter(mp &gt;= 150) # keep players with at least 150 minutes played\n\n\n\n36-SURE.github.io"
   },
   {
     "objectID": "lectures/13-regularization.html#the-big-picture",
@@ -3938,7 +4022,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"v\" \"m\" \"a\" \"b\" \"z\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 1 0 0 1 1 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"H\" \"T\" \"T\" \"H\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 51"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"c\" \"f\" \"h\" \"t\" \"l\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 0 0 1 1 1 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"T\" \"T\" \"H\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 71"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -3980,21 +4064,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.01726366\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.05403"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.03223102\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9746103"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.485\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical    true\n   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 -3.09     0.001 0.00101\n 2 -2.93     0.002 0.00168\n 3 -2.79     0.003 0.00265\n 4 -2.75     0.004 0.00302\n 5 -2.60     0.005 0.00462\n 6 -2.59     0.006 0.00481\n 7 -2.49     0.007 0.00632\n 8 -2.46     0.008 0.00704\n 9 -2.40     0.009 0.00829\n10 -2.38     0.01  0.00873\n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.475\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.35     0.001 0.000400\n 2 -3.02     0.002 0.00128 \n 3 -2.78     0.003 0.00269 \n 4 -2.49     0.004 0.00636 \n 5 -2.46     0.005 0.00695 \n 6 -2.38     0.006 0.00859 \n 7 -2.28     0.007 0.0114  \n 8 -2.26     0.008 0.0120  \n 9 -2.25     0.009 0.0121  \n10 -2.22     0.01  0.0132  \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3854591\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3814024\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -4008,14 +4092,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.156\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1392\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.04641997\n\nmean(rnorm(100))\n\n[1] 0.2894372\n\nmean(rnorm(100))\n\n[1] -0.06086451"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.04894731\n\nmean(rnorm(100))\n\n[1] -0.1495873\n\nmean(rnorm(100))\n\n[1] 0.02352013"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
@@ -4345,6 +4429,188 @@
     "title": "Supervised learning: generalized linear models",
     "section": "Appendix: Code to build dataset",
     "text": "Appendix: Code to build dataset\n\nlibrary(worldfootballR)\nlibrary(tidyverse)\nbig5 &lt;- fb_match_results(country = c(\"ENG\", \"ESP\", \"ITA\", \"GER\", \"FRA\"),\n                         gender = \"M\", \n                         season_end_year = 2024, \n                         tier = \"1st\")\nbig5 &lt;- big5 |&gt;\n  mutate(match_id = row_number()) |&gt;  # add unique id for each row\n  filter(!is.na(Wk))\n  \nhome_goals &lt;- big5 |&gt;\n  select(n_goals = HomeGoals, xG = Home_xG, off_team = Home, def_team = Away, league = Country, match_id) |&gt;\n  mutate(is_home = 1)\n\naway_goals &lt;- big5 |&gt;\n  select(n_goals = AwayGoals, xG = Away_xG, off_team = Away, def_team = Home, league = Country, match_id) |&gt;\n  mutate(is_home = 0)\n\ngoals &lt;- home_goals |&gt;\n  bind_rows(away_goals)\n  \n# write_csv(goals, \"goals.csv\")  \n\n\n\n36-SURE.github.io"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#model-flexibility-vs-interpretability",
+    "href": "lectures/18-nonparametric.html#model-flexibility-vs-interpretability",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Model flexibility vs interpretability",
+    "text": "Model flexibility vs interpretability\nFrom ISLR"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#model-flexibility-vs-interpretability-1",
+    "href": "lectures/18-nonparametric.html#model-flexibility-vs-interpretability-1",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Model flexibility vs interpretability",
+    "text": "Model flexibility vs interpretability\n\nTradeoff between model’s flexibility (i.e. how wiggly/curvy it is) and its interpretability\nThe simpler, parametric form of the model, the the easier it is to interpret\n\n\n\nParametric models, for which we can write down a mathematical expression for \\(f(X)\\) before observing the data, a priori (e.g. linear regression), are inherently less flexible\nNonparametric models, in which \\(f(X)\\) is estimated from the data, are more flexible, but harder to interpret"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#moving-beyond-linearity",
+    "href": "lectures/18-nonparametric.html#moving-beyond-linearity",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Moving beyond linearity",
+    "text": "Moving beyond linearity\n\nThe truth is (almost) never linear\n\n\n\nBut often the linearity assumption is good enough\n\n\n\n\nWhat if it’s not linear?\n\nsplines\nlocal regression\ngeneralized additive models\n\n\n\n\n\nThe above methods can offer a lot of flexibility, without losing the ease and interpretability of linear models"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#generalized-additive-models-gams",
+    "href": "lectures/18-nonparametric.html#generalized-additive-models-gams",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Generalized additive models (GAMs)",
+    "text": "Generalized additive models (GAMs)\n\nPreviously: generalized linear models (GLMs) (e.g., linear regression, logistic regression, Poisson regression)\n\n\n\nGLM generalizes linear regression to permit non-normal distributions and link functions of the mean \\[g(E(Y)) = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\]\n\n\n\n\nWhat if we replace the linear predictor by additive smooth functions of the explanatory variables?\nEntering generalized additive models (GAMs)\n\nrelax the restriction that the relationship must be a simple weighted sum\ninstead assume that the response can be modeled by a sum of arbitrary functions of each predictor"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#generalized-additive-models-gams-1",
+    "href": "lectures/18-nonparametric.html#generalized-additive-models-gams-1",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Generalized additive models (GAMs)",
+    "text": "Generalized additive models (GAMs)\n\nAllows for flexible nonlinearities in several variables\nBut retains the additive structure of linear models\n\n\n\\[g(E(Y)) = \\beta_0 + s_1(x_1) + s_2(x_2) + \\dots + s_p(x_p)\\]\n\nLike GLMs, a GAM specifies a link function \\(g()\\) and a probability distribution for the response \\(Y\\)\n\\(s_j\\) is some smooth function of predictor \\(j\\)\nGLM is the special case of GAM in which each \\(s_j\\) is a linear function"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#generalized-additive-models-gams-2",
+    "href": "lectures/18-nonparametric.html#generalized-additive-models-gams-2",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Generalized additive models (GAMs)",
+    "text": "Generalized additive models (GAMs)\n\nRelationships between individual predictors and the response are smooth\n\n\n\nEstimate the smooth relationships simultaneously to predict the response by adding them up\n\n\n\n\nGAMs have the advantage over GLMs of greater flexibility\n\n\n\n\nA disadvantage of GAMs and other smoothing methods, compared with GLMs, is the loss of simple interpretability\n\nHow do we interpret the effect of a predictor on the response?\nHow do we obtain confidence intervals for those effects?"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#splines",
+    "href": "lectures/18-nonparametric.html#splines",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Splines",
+    "text": "Splines\n\nA common way to smooth and learn nonlinear functions is to use splines\nSplines are functions that are constructed from simpler basis functions\nSplines can be used to approximate other, more complex functions"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#smoothing-splines",
+    "href": "lectures/18-nonparametric.html#smoothing-splines",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Smoothing splines",
+    "text": "Smoothing splines\nUse smooth function \\(s(x)\\) to predict \\(y\\), control smoothness directly by minimizing the spline objective function\n\\[\\sum_{i=1}^n (y_i - s(x_i))^2 + \\lambda \\int s''(x)^2dx\\]\n\n\\[= \\text{fit data} + \\text{impose smoothness}\\]\n\n\n\\[\\longrightarrow \\text{model fit} = \\text{likelihood} - \\lambda \\cdot \\text{wiggliness}\\]"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#smoothing-splines-1",
+    "href": "lectures/18-nonparametric.html#smoothing-splines-1",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Smoothing splines",
+    "text": "Smoothing splines\n\\[\\text{minimize }\\sum_{i=1}^n (y_i - s(x_i))^2 + \\lambda \\int s''(x)^2dx\\]\n\nFirst term: RSS, tries to make \\(s(x)\\) fit the data at each \\(x_i\\)\nSecond term: roughness penalty, controls how wiggly \\(s(x)\\) is via tuning parameter \\(\\lambda \\ge 0\\)\n\nThe smaller \\(\\lambda\\), the more wiggly the function\nAs \\(\\lambda \\rightarrow \\infty\\), \\(s(x)\\) becomes linear"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#smoothing-splines-2",
+    "href": "lectures/18-nonparametric.html#smoothing-splines-2",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Smoothing splines",
+    "text": "Smoothing splines\nGoal: Estimate the smoothing spline \\(\\hat{s}(x)\\) that balances the tradeoff between the model fit and wiggliness"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#basis-functions",
+    "href": "lectures/18-nonparametric.html#basis-functions",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Basis functions",
+    "text": "Basis functions\n\nSplines are piecewise cubic polynomials with knots (boundary points for functions) at every point\n\n\n\nPractical alternative: linear combination of set of basis functions\n\n\n\n\nExample: cubic polynomial\n\n4 basis functions: \\(B_1(x) = 1\\), \\(B_2(x) = x\\), \\(B_3(x) = x^2\\), \\(B_4(x) = x^3\\)\n\\(\\displaystyle r(x) = \\sum_j^4 \\beta_j B_j(x)\\) is the regression function\nlinear in the transformed variables \\(B_1(x), \\dots, B_4(x)\\) but it is nonlinear in \\(x\\)\n\n\n\n\n\nExtend this idea for splines piecewise using indicator functions so the spline is a weighted sum \\[s(x) = \\sum_j^m \\beta_j B_j(x)\\]"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#number-of-basis-functions",
+    "href": "lectures/18-nonparametric.html#number-of-basis-functions",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Number of basis functions",
+    "text": "Number of basis functions\n\n\nThink of this as a tuning parameter"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#predicting-mlb-hr-probability",
+    "href": "lectures/18-nonparametric.html#predicting-mlb-hr-probability",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Predicting MLB HR probability",
+    "text": "Predicting MLB HR probability\nData from baseball savant, obtained via pybaseball\n\nlibrary(tidyverse)\nsavant &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/savant.csv\")\nbatted_balls &lt;- savant |&gt; \n  filter(type == \"X\") |&gt; \n  mutate(is_hr = as.numeric(events == \"home_run\")) |&gt; \n  filter(!is.na(launch_angle), !is.na(launch_speed), !is.na(is_hr))"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#predicting-hrs-with-launch-angle-and-exit-velocity",
+    "href": "lectures/18-nonparametric.html#predicting-hrs-with-launch-angle-and-exit-velocity",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Predicting HRs with launch angle and exit velocity",
+    "text": "Predicting HRs with launch angle and exit velocity\nHRs are relatively rare and confined to one area of this plot\n\nbatted_balls |&gt; \n  ggplot(aes(x = launch_speed, \n             y = launch_angle,\n             color = as.factor(is_hr))) +\n  geom_point(alpha = 0.2)"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#fitting-gams-with-mgcv",
+    "href": "lectures/18-nonparametric.html#fitting-gams-with-mgcv",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Fitting GAMs with mgcv",
+    "text": "Fitting GAMs with mgcv\n\nSet up training data\n\n\nset.seed(123)\ntrain &lt;- batted_balls |&gt; \n  slice_sample(prop = 0.5)\ntest &lt;- batted_balls |&gt; \n  anti_join(train)\n\n\n\nModeling the log odds of a home run using non-linear functions of launch_speed and launch_angle \\[\n\\log \\left( \\frac{p_{\\texttt{is_hr}}}{1 - p_\\texttt{is_hr}} \\right) = \\beta_0 + s_1 (\\texttt{launch_speed}) + s_2 (\\texttt{launch_angle})\\] where \\(p_\\texttt{is_hr}\\) is the probability of a home run\n\n\n\n\nFit the model with smoothing spline functions s()\n\n\nlibrary(mgcv)\nhr_gam &lt;- gam(is_hr ~ s(launch_speed) + s(launch_angle),\n              family = binomial,\n              method = \"REML\", # more stable solution than default\n              data = train)"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#view-model-summary",
+    "href": "lectures/18-nonparametric.html#view-model-summary",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "View model summary",
+    "text": "View model summary\n\n# summary(hr_gam)\nlibrary(broom)\ntidy(hr_gam)\n\n# A tibble: 2 × 5\n  term              edf ref.df statistic p.value\n  &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 s(launch_speed)  1.00   1.00      388.       0\n2 s(launch_angle)  3.92   4.24      251.       0\n\ntidy(hr_gam, parametric = TRUE)\n\n# A tibble: 1 × 5\n  term        estimate std.error statistic p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 (Intercept)    -34.8      11.8     -2.94 0.00329\n\nglance(hr_gam)\n\n# A tibble: 1 × 9\n     df logLik   AIC   BIC deviance df.residual  nobs adj.r.squared  npar\n  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;int&gt;         &lt;dbl&gt; &lt;int&gt;\n1  5.92  -619. 1250. 1294.    1237.      10464. 10470         0.526    19"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#visualize-partial-response-functions",
+    "href": "lectures/18-nonparametric.html#visualize-partial-response-functions",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Visualize partial response functions",
+    "text": "Visualize partial response functions\nDisplay the partial effect of each term in the model \\(\\longrightarrow\\) add up to the overall prediction\n\nlibrary(gratia)\ndraw(hr_gam)"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#convert-to-probability-scale",
+    "href": "lectures/18-nonparametric.html#convert-to-probability-scale",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Convert to probability scale",
+    "text": "Convert to probability scale\nCentered on average value of 0.5 because it’s the partial effect without the intercept\n\ndraw(hr_gam, fun = plogis)"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#include-intercept-in-plot",
+    "href": "lectures/18-nonparametric.html#include-intercept-in-plot",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Include intercept in plot",
+    "text": "Include intercept in plot\nIntercept reflects relatively rare occurence of HRs\n\ndraw(hr_gam, fun = plogis, constant = coef(hr_gam)[1])"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#model-checking-for-the-number-of-basis-functions",
+    "href": "lectures/18-nonparametric.html#model-checking-for-the-number-of-basis-functions",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Model checking for the number of basis functions",
+    "text": "Model checking for the number of basis functions\nCheck whether more basis functions are needed with gam.check() based on an approximate test\n\ngam.check(hr_gam)\n\n\n\nMethod: REML   Optimizer: outer newton\nfull convergence after 9 iterations.\nGradient range [-1.611342e-05,4.419327e-06]\n(score 627.7034 & scale 1).\nHessian positive definite, eigenvalue range [1.611218e-05,1.116216].\nModel rank =  19 / 19 \n\nBasis dimension (k) checking results. Low p-value (k-index&lt;1) may\nindicate that k is too low, especially if edf is close to k'.\n\n                  k'  edf k-index p-value   \ns(launch_speed) 9.00 1.00    0.96   0.010 **\ns(launch_angle) 9.00 3.92    0.96   0.005 **\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#evaluate-prediction-accuracy",
+    "href": "lectures/18-nonparametric.html#evaluate-prediction-accuracy",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Evaluate prediction accuracy",
+    "text": "Evaluate prediction accuracy\n\nIn-sample performance (training set)\n\n\nhr_gam |&gt; \n  augment(type.predict = \"response\") |&gt; \n  mutate(newdata = train, pred_class = round(.fitted)) |&gt; \n  summarize(correct = mean(is_hr == pred_class))\n\n# A tibble: 1 × 1\n  correct\n    &lt;dbl&gt;\n1   0.974\n\n\n\nOut-of-sample performance (test set)\n\n\nhr_gam |&gt; \n  augment(newdata = test, type.predict = \"response\") |&gt; \n  mutate(pred_class = round(.fitted)) |&gt; \n  summarize(correct = mean(is_hr == pred_class))\n\n# A tibble: 1 × 1\n  correct\n    &lt;dbl&gt;\n1   0.974"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#comparison-with-a-glm",
+    "href": "lectures/18-nonparametric.html#comparison-with-a-glm",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Comparison with a GLM",
+    "text": "Comparison with a GLM\n\nVery few situations in reality where GLMs (with a linear predictor) perform better than an additive model using smooth functions\nEspecially since smooth functions can just capture linear models\n\n\n# note the warning\nhr_logit &lt;- glm(is_hr ~ launch_speed + launch_angle, family = binomial, data = train)\n\n\nhr_logit |&gt; \n  augment(newdata = train, type.predict = \"response\") |&gt; \n  mutate(pred_class = round(.fitted)) |&gt; \n  summarize(correct = mean(is_hr == pred_class))\n\n# A tibble: 1 × 1\n  correct\n    &lt;dbl&gt;\n1   0.958\n\n\n\nhr_logit |&gt; \n  augment(newdata = test, type.predict = \"response\") |&gt; \n  mutate(pred_class = round(.fitted)) |&gt; \n  summarize(correct = mean(is_hr == pred_class))\n\n# A tibble: 1 × 1\n  correct\n    &lt;dbl&gt;\n1   0.960"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#continuous-interactions-as-a-smooth-surface",
+    "href": "lectures/18-nonparametric.html#continuous-interactions-as-a-smooth-surface",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Continuous interactions as a smooth surface",
+    "text": "Continuous interactions as a smooth surface\n\nhr_gam_mult &lt;- gam(is_hr ~ s(launch_speed, launch_angle), \n                   family = binomial,\n                   data = train)\n\nPlot the predicted heatmap\n\ndraw(hr_gam_mult)"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#evaluate-predictions",
+    "href": "lectures/18-nonparametric.html#evaluate-predictions",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Evaluate predictions",
+    "text": "Evaluate predictions\n\nThis has one smoothing parameter for the 2D smooth\nBut prediction accuracy does not improve\n\n\nhr_gam_mult |&gt; \n  augment(newdata = train, type.predict = \"response\") |&gt; \n  mutate(pred_class = round(.fitted)) |&gt; \n  summarize(correct = mean(is_hr == pred_class))\n\n# A tibble: 1 × 1\n  correct\n    &lt;dbl&gt;\n1   0.974\n\nhr_gam_mult |&gt; \n  augment(newdata = test, type.predict = \"response\") |&gt; \n  mutate(pred_class = round(.fitted)) |&gt; \n  summarize(correct = mean(is_hr == pred_class))\n\n# A tibble: 1 × 1\n  correct\n    &lt;dbl&gt;\n1   0.974"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#separate-interactions-from-individual-terms-with-tensor-smooths",
+    "href": "lectures/18-nonparametric.html#separate-interactions-from-individual-terms-with-tensor-smooths",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Separate interactions from individual terms with tensor smooths",
+    "text": "Separate interactions from individual terms with tensor smooths\n\nDecompose the smooth into main effects and an interaction with ti()\nAnother option: te(), representing a tensor product smooth\n\nMore complicated model but yet does not improve prediction accuracy\n\nhr_gam_tensor &lt;- gam(is_hr ~ s(launch_speed) + s(launch_angle) + ti(launch_speed, launch_angle),\n                     family = binomial,\n                     data = train)\n\n\n\n\nhr_gam_tensor |&gt; \n  augment(newdata = train, type.predict = \"response\") |&gt; \n  mutate(pred_class = round(.fitted)) |&gt; \n  summarize(correct = mean(is_hr == pred_class))\n\n# A tibble: 1 × 1\n  correct\n    &lt;dbl&gt;\n1   0.974\n\n\n\n\nhr_gam_tensor |&gt; \n  augment(newdata = test, type.predict = \"response\") |&gt; \n  mutate(pred_class = round(.fitted)) |&gt; \n  summarize(correct = mean(is_hr == pred_class))\n\n# A tibble: 1 × 1\n  correct\n    &lt;dbl&gt;\n1   0.974"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#appendix-code-to-build-dataset",
+    "href": "lectures/18-nonparametric.html#appendix-code-to-build-dataset",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Appendix: code to build dataset",
+    "text": "Appendix: code to build dataset\n\n# pip install pybaseball\n# dictionary: https://baseballsavant.mlb.com/csv-docs\nfrom pybaseball import statcast\nsavant = statcast(start_dt='2024-05-01', end_dt='2024-05-31')\nsavant.to_csv('savant.csv', index=False)\n\n\n\n36-SURE.github.io"
   },
   {
     "objectID": "lectures/02-graphics.html#goals-of-data-visualization",
