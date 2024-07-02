@@ -4022,7 +4022,7 @@
     "href": "lectures/08-simulation.html#sampling-from-a-given-vector",
     "title": "Simulation",
     "section": "Sampling from a given vector",
-    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"c\" \"f\" \"h\" \"t\" \"l\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 1 0 0 1 1 1 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"T\" \"T\" \"H\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 71"
+    "text": "Sampling from a given vector\n\nTo sample from a given vector, use sample()\n\n\n# base R built in English alphabet\n# letters\nsample(letters, size = 5) # sample without replacement, by default\n\n[1] \"t\" \"k\" \"e\" \"o\" \"y\"\n\nsample(c(0, 1), size = 7, replace = TRUE) # sample with replacement\n\n[1] 0 0 1 0 0 1 1\n\n# 5 (independent) coin tosses\ncoin &lt;- c(\"H\", \"T\")\nsample(coin, 5, replace = TRUE)\n\n[1] \"T\" \"H\" \"H\" \"T\" \"T\"\n\nsample(1:100, 1) # sample a random integer between 1 and 100\n\n[1] 69"
   },
   {
     "objectID": "lectures/08-simulation.html#probability-distributions",
@@ -4064,21 +4064,21 @@
     "href": "lectures/08-simulation.html#random-number-generation-1",
     "title": "Simulation",
     "section": "Random number generation",
-    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] 0.03223102\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 0.9746103"
+    "text": "Random number generation\n\n# these are the defaults for mean and sd\nz &lt;- rnorm(1000, mean = 0, sd = 1)\n# check: the sample mean is approximately 0\nmean(z) \n\n[1] -0.05814859\n\n# check: the sample sd is approximately 1\nsd(z)\n\n[1] 1.006973"
   },
   {
     "objectID": "lectures/08-simulation.html#revisiting-ecdf",
     "href": "lectures/08-simulation.html#revisiting-ecdf",
     "title": "Simulation",
     "section": "Revisiting ECDF",
-    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.475\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical     true\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 -3.35     0.001 0.000400\n 2 -3.02     0.002 0.00128 \n 3 -2.78     0.003 0.00269 \n 4 -2.49     0.004 0.00636 \n 5 -2.46     0.005 0.00695 \n 6 -2.38     0.006 0.00859 \n 7 -2.28     0.007 0.0114  \n 8 -2.26     0.008 0.0120  \n 9 -2.25     0.009 0.0121  \n10 -2.22     0.01  0.0132  \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
+    "text": "Revisiting ECDF\nRecall that we can use the ECDF to estimate the true cumulative distribution function\n\n\n\nz_ecdf &lt;- ecdf(z)\nz_ecdf(0) # should get close to 1/2\n\n[1] 0.509\n\nclass(z_ecdf)\n\n[1] \"ecdf\"     \"stepfun\"  \"function\"\n\nnormal_tbl &lt;- tibble(z = sort(z)) |&gt; \n  mutate(empirical = z_ecdf(z),\n         true = pnorm(z))\nnormal_tbl\n\n# A tibble: 1,000 × 3\n       z empirical    true\n   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 -2.81     0.001 0.00249\n 2 -2.76     0.002 0.00291\n 3 -2.54     0.003 0.00555\n 4 -2.52     0.004 0.00583\n 5 -2.46     0.005 0.00687\n 6 -2.45     0.006 0.00709\n 7 -2.43     0.007 0.00750\n 8 -2.30     0.008 0.0107 \n 9 -2.27     0.009 0.0117 \n10 -2.23     0.01  0.0128 \n# ℹ 990 more rows\n\n\n\n\nnormal_tbl |&gt; \n  pivot_longer(!z, \n               names_to = \"method\", \n               values_to = \"val\") |&gt; \n  ggplot(aes(x = z, y = val, color = method)) +\n  geom_line()"
   },
   {
     "objectID": "lectures/08-simulation.html#stick-breaking-problem",
     "href": "lectures/08-simulation.html#stick-breaking-problem",
     "title": "Simulation",
     "section": "Stick breaking problem",
-    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3814024\n\n\n\n\nHow would you do this by hand…?"
+    "text": "Stick breaking problem\nIf a stick of unit length is broken in two at random, what is the average ratio of the smaller length to the larger?\n\nFirst… any guesses? (Also, any guess on what the average length of the smaller (or larger) piece is?)\n\n\n\nx &lt;- runif(10000)\nsmaller &lt;- ifelse(x &lt; 0.5, x, 1 - x)\nratio &lt;- smaller / (1 - smaller)\n# get a distribution\n# hist(ratio)\nmean(ratio) # exact answer: 2 * log(2) - 1\n\n[1] 0.3822063\n\n\n\n\nHow would you do this by hand…?"
   },
   {
     "objectID": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation",
@@ -4092,14 +4092,14 @@
     "href": "lectures/08-simulation.html#estimating-pi-using-monte-carlo-simulation-1",
     "title": "Simulation",
     "section": "Estimating \\(\\pi\\) using Monte Carlo simulation",
-    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.1392\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
+    "text": "Estimating \\(\\pi\\) using Monte Carlo simulation\n\n\n\nn_points &lt;- 10000\nx &lt;- runif(n_points, -1, 1)\ny &lt;- runif(n_points, -1, 1)\ninside &lt;- ifelse(x^2 + y^2 &lt;= 1, 1, 0)\n4 * mean(inside)\n\n[1] 3.134\n\n\n\n\ntibble(x, y, inside) |&gt; \n  ggplot(aes(x, y, color = factor(inside))) +\n  geom_point(show.legend = FALSE) +\n  coord_equal()"
   },
   {
     "objectID": "lectures/08-simulation.html#same-command-different-results",
     "href": "lectures/08-simulation.html#same-command-different-results",
     "title": "Simulation",
     "section": "Same command, different results?",
-    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] 0.04894731\n\nmean(rnorm(100))\n\n[1] -0.1495873\n\nmean(rnorm(100))\n\n[1] 0.02352013"
+    "text": "Same command, different results?\nNot surprisingly, we get different sample draws each time we call rnorm()\n\nmean(rnorm(100))\n\n[1] -0.1424265\n\nmean(rnorm(100))\n\n[1] -0.05267028\n\nmean(rnorm(100))\n\n[1] -0.153793"
   },
   {
     "objectID": "lectures/08-simulation.html#is-it-really-random",
@@ -4470,14 +4470,28 @@
     "href": "lectures/18-nonparametric.html#generalized-additive-models-gams-2",
     "title": "Supervised learning: nonparametric regression",
     "section": "Generalized additive models (GAMs)",
-    "text": "Generalized additive models (GAMs)\n\nRelationships between individual predictors and the response are smooth\n\n\n\nEstimate the smooth relationships simultaneously to predict the response by adding them up\n\n\n\n\nGAMs have the advantage over GLMs of greater flexibility\n\n\n\n\nA disadvantage of GAMs and other smoothing methods, compared with GLMs, is the loss of simple interpretability\n\nHow do we interpret the effect of a predictor on the response?\nHow do we obtain confidence intervals for those effects?"
+    "text": "Generalized additive models (GAMs)\n\nRelationships between individual predictors and the response are smooth\n\n\n\nEstimate the smooth relationships simultaneously to predict the response by adding them up\n\n\n\n\n\n\n\n\n\n\n\n\n\nGAMs have the advantage over GLMs of greater flexibility\n\n\n\n\nA disadvantage of GAMs and other smoothing methods, compared with GLMs, is the loss of simple interpretability\n\nHow do we interpret the effect of a predictor on the response?\nHow do we obtain confidence intervals for those effects?"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#generalized-additive-models-gams-3",
+    "href": "lectures/18-nonparametric.html#generalized-additive-models-gams-3",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Generalized additive models (GAMs)",
+    "text": "Generalized additive models (GAMs)"
   },
   {
     "objectID": "lectures/18-nonparametric.html#splines",
     "href": "lectures/18-nonparametric.html#splines",
     "title": "Supervised learning: nonparametric regression",
     "section": "Splines",
-    "text": "Splines\n\nA common way to smooth and learn nonlinear functions is to use splines\nSplines are functions that are constructed from simpler basis functions\nSplines can be used to approximate other, more complex functions"
+    "text": "Splines\n\nA common way to smooth and learn nonlinear functions is to use splines\nA spline is a piecewise polynomial having continuous derivatives of all orders lower than the degree of the polynomial\nThere are knots (boundary points for functions) placed at every point\nSplines are functions that are constructed from simpler basis functions\nSplines can be used to approximate other, more complex functions"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#splines-1",
+    "href": "lectures/18-nonparametric.html#splines-1",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Splines",
+    "text": "Splines\n\nA \\(d^{\\text{th}}\\)-order spline is a piecewise polynomial function of degree \\(d\\) that is continuous and has continuous derivatives of orders \\(1, \\dots, d − 1\\) at its knot points\n\n\n\n\n\nThis requires us to choose the knots (fixed points between which the function is polynomial)\n\n\n\n\nWe can eliminate the need to choose knots by using a smoothing spline"
   },
   {
     "objectID": "lectures/18-nonparametric.html#smoothing-splines",
@@ -4491,56 +4505,49 @@
     "href": "lectures/18-nonparametric.html#smoothing-splines-1",
     "title": "Supervised learning: nonparametric regression",
     "section": "Smoothing splines",
-    "text": "Smoothing splines\n\\[\\text{minimize }\\sum_{i=1}^n (y_i - s(x_i))^2 + \\lambda \\int s''(x)^2dx\\]\n\nFirst term: RSS, tries to make \\(s(x)\\) fit the data at each \\(x_i\\)\nSecond term: roughness penalty, controls how wiggly \\(s(x)\\) is via tuning parameter \\(\\lambda \\ge 0\\)\n\nThe smaller \\(\\lambda\\), the more wiggly the function\nAs \\(\\lambda \\rightarrow \\infty\\), \\(s(x)\\) becomes linear"
+    "text": "Smoothing splines\nThe most commonly considered case: cubic smoothing splines\n\\[\\text{minimize }\\sum_{i=1}^n (y_i - s(x_i))^2 + \\lambda \\int s''(x)^2dx\\]\n\nFirst term: RSS, tries to make \\(s(x)\\) fit the data at each \\(x_i\\)\n\n\n\nSecond term: roughness penalty, controls how wiggly \\(s(x)\\) is via tuning parameter \\(\\lambda \\ge 0\\)\n\n\n\nBalances the accuracy of the fit and the flexibility of the function\n\n\n\n\nThe smaller \\(\\lambda\\), the more wiggly the function\n\n\n\n\nAs \\(\\lambda \\rightarrow \\infty\\), \\(s(x)\\) becomes linear"
   },
   {
     "objectID": "lectures/18-nonparametric.html#smoothing-splines-2",
     "href": "lectures/18-nonparametric.html#smoothing-splines-2",
     "title": "Supervised learning: nonparametric regression",
     "section": "Smoothing splines",
-    "text": "Smoothing splines\nGoal: Estimate the smoothing spline \\(\\hat{s}(x)\\) that balances the tradeoff between the model fit and wiggliness"
-  },
-  {
-    "objectID": "lectures/18-nonparametric.html#basis-functions",
-    "href": "lectures/18-nonparametric.html#basis-functions",
-    "title": "Supervised learning: nonparametric regression",
-    "section": "Basis functions",
-    "text": "Basis functions\n\nSplines are piecewise cubic polynomials with knots (boundary points for functions) at every point\n\n\n\nPractical alternative: linear combination of set of basis functions\n\n\n\n\nExample: cubic polynomial\n\n4 basis functions: \\(B_1(x) = 1\\), \\(B_2(x) = x\\), \\(B_3(x) = x^2\\), \\(B_4(x) = x^3\\)\n\\(\\displaystyle r(x) = \\sum_j^4 \\beta_j B_j(x)\\) is the regression function\nlinear in the transformed variables \\(B_1(x), \\dots, B_4(x)\\) but it is nonlinear in \\(x\\)\n\n\n\n\n\nExtend this idea for splines piecewise using indicator functions so the spline is a weighted sum \\[s(x) = \\sum_j^m \\beta_j B_j(x)\\]"
-  },
-  {
-    "objectID": "lectures/18-nonparametric.html#number-of-basis-functions",
-    "href": "lectures/18-nonparametric.html#number-of-basis-functions",
-    "title": "Supervised learning: nonparametric regression",
-    "section": "Number of basis functions",
-    "text": "Number of basis functions\n\n\nThink of this as a tuning parameter"
+    "text": "Smoothing splines\nGoal: Estimate the smoothing spline \\(\\hat{s}(x)\\) that balances the tradeoff between the model fit and wiggliness\n\nRemember: Goldilocks principle"
   },
   {
     "objectID": "lectures/18-nonparametric.html#predicting-mlb-hr-probability",
     "href": "lectures/18-nonparametric.html#predicting-mlb-hr-probability",
     "title": "Supervised learning: nonparametric regression",
     "section": "Predicting MLB HR probability",
-    "text": "Predicting MLB HR probability\nData from baseball savant, obtained via pybaseball\n\nlibrary(tidyverse)\nsavant &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/savant.csv\")\nbatted_balls &lt;- savant |&gt; \n  filter(type == \"X\") |&gt; \n  mutate(is_hr = as.numeric(events == \"home_run\")) |&gt; \n  filter(!is.na(launch_angle), !is.na(launch_speed), !is.na(is_hr))"
+    "text": "Predicting MLB HR probability\n\nData available via the pybaseball library in python\nStatcast data include pitch-level information, pulled from baseballsavant.com\nExample data collected for the entire month of May 2024\n\n\nlibrary(tidyverse)\nsavant &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/savant.csv\")\nbatted_balls &lt;- savant |&gt; \n  filter(type == \"X\") |&gt; \n  mutate(is_hr = as.numeric(events == \"home_run\")) |&gt; \n  filter(!is.na(launch_angle), !is.na(launch_speed), !is.na(is_hr))\n# head(batted_balls)"
   },
   {
     "objectID": "lectures/18-nonparametric.html#predicting-hrs-with-launch-angle-and-exit-velocity",
     "href": "lectures/18-nonparametric.html#predicting-hrs-with-launch-angle-and-exit-velocity",
     "title": "Supervised learning: nonparametric regression",
     "section": "Predicting HRs with launch angle and exit velocity",
-    "text": "Predicting HRs with launch angle and exit velocity\nHRs are relatively rare and confined to one area of this plot\n\nbatted_balls |&gt; \n  ggplot(aes(x = launch_speed, \n             y = launch_angle,\n             color = as.factor(is_hr))) +\n  geom_point(alpha = 0.2)"
+    "text": "Predicting HRs with launch angle and exit velocity\nHRs are relatively rare and confined to one area of this plot\n\n\n\nbatted_balls |&gt; \n  ggplot(aes(x = launch_speed, \n             y = launch_angle, \n             color = as.factor(is_hr))) +\n  geom_point(alpha = 0.2)"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#predicting-hrs-with-launch-angle-and-exit-velocity-1",
+    "href": "lectures/18-nonparametric.html#predicting-hrs-with-launch-angle-and-exit-velocity-1",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Predicting HRs with launch angle and exit velocity",
+    "text": "Predicting HRs with launch angle and exit velocity\nThere is a sweet spot of launch_angle (mid-way ish) and launch_speed (relatively high) where almost all HRs occur\n\n\n\nbatted_balls |&gt; \n  group_by(\n    launch_angle_bucket = round(launch_angle * 2, -1) / 2,\n    launch_speed_bucket = round(launch_speed * 2, -1) / 2\n  ) |&gt; \n  summarize(hr = sum(is_hr == 1),\n            n = n()) |&gt; \n  ungroup() |&gt; \n  mutate(pct_hr = hr / n) |&gt; \n  ggplot(aes(x = launch_speed_bucket, \n             y = launch_angle_bucket, \n             fill = pct_hr)) +\n  geom_tile() +\n  scale_fill_gradient2(labels = scales::percent_format(),\n                       low = \"blue\", \n                       high = \"red\", \n                       midpoint = 0.2)"
   },
   {
     "objectID": "lectures/18-nonparametric.html#fitting-gams-with-mgcv",
     "href": "lectures/18-nonparametric.html#fitting-gams-with-mgcv",
     "title": "Supervised learning: nonparametric regression",
     "section": "Fitting GAMs with mgcv",
-    "text": "Fitting GAMs with mgcv\n\nSet up training data\n\n\nset.seed(123)\ntrain &lt;- batted_balls |&gt; \n  slice_sample(prop = 0.5)\ntest &lt;- batted_balls |&gt; \n  anti_join(train)\n\n\n\nModeling the log odds of a home run using non-linear functions of launch_speed and launch_angle \\[\n\\log \\left( \\frac{p_{\\texttt{is_hr}}}{1 - p_\\texttt{is_hr}} \\right) = \\beta_0 + s_1 (\\texttt{launch_speed}) + s_2 (\\texttt{launch_angle})\\] where \\(p_\\texttt{is_hr}\\) is the probability of a home run\n\n\n\n\nFit the model with smoothing spline functions s()\n\n\nlibrary(mgcv)\nhr_gam &lt;- gam(is_hr ~ s(launch_speed) + s(launch_angle),\n              family = binomial,\n              method = \"REML\", # more stable solution than default\n              data = train)"
+    "text": "Fitting GAMs with mgcv\n\nSet up training data\n\n\nset.seed(123)\ntrain &lt;- batted_balls |&gt; \n  slice_sample(prop = 0.5)\ntest &lt;- batted_balls |&gt; \n  anti_join(train)\n\n\n\nModeling the log-odds of a home run using non-linear functions of launch_speed and launch_angle \\[\n\\log \\left( \\frac{p_{\\texttt{is_hr}}}{1 - p_\\texttt{is_hr}} \\right) = \\beta_0 + s_1 (\\texttt{launch_speed}) + s_2 (\\texttt{launch_angle})\\] where \\(p_\\texttt{is_hr}\\) is the probability of a home run\n\n\n\n\nFit the model with smoothing spline functions s()\n\n\nlibrary(mgcv)\nhr_gam &lt;- gam(is_hr ~ s(launch_speed) + s(launch_angle),\n              family = binomial,\n              method = \"REML\", # more stable solution than default\n              data = train)"
   },
   {
     "objectID": "lectures/18-nonparametric.html#view-model-summary",
     "href": "lectures/18-nonparametric.html#view-model-summary",
     "title": "Supervised learning: nonparametric regression",
     "section": "View model summary",
-    "text": "View model summary\n\n# summary(hr_gam)\nlibrary(broom)\ntidy(hr_gam)\n\n# A tibble: 2 × 5\n  term              edf ref.df statistic p.value\n  &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 s(launch_speed)  1.00   1.00      388.       0\n2 s(launch_angle)  3.92   4.24      251.       0\n\ntidy(hr_gam, parametric = TRUE)\n\n# A tibble: 1 × 5\n  term        estimate std.error statistic p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 (Intercept)    -34.8      11.8     -2.94 0.00329\n\nglance(hr_gam)\n\n# A tibble: 1 × 9\n     df logLik   AIC   BIC deviance df.residual  nobs adj.r.squared  npar\n  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;int&gt;         &lt;dbl&gt; &lt;int&gt;\n1  5.92  -619. 1250. 1294.    1237.      10464. 10470         0.526    19"
+    "text": "View model summary\nNotice that mgcv has calculated hypothesis tests for the smooth terms; these are roughly the equivalent of an \\(F\\)-test for dropping each term\n\n# summary(hr_gam)\nlibrary(broom)\ntidy(hr_gam)\n\n# A tibble: 2 × 5\n  term              edf ref.df statistic p.value\n  &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 s(launch_speed)  1.00   1.00      388.       0\n2 s(launch_angle)  3.92   4.24      251.       0\n\ntidy(hr_gam, parametric = TRUE)\n\n# A tibble: 1 × 5\n  term        estimate std.error statistic p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 (Intercept)    -34.8      11.8     -2.94 0.00329\n\nglance(hr_gam)\n\n# A tibble: 1 × 9\n     df logLik   AIC   BIC deviance df.residual  nobs adj.r.squared  npar\n  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;int&gt;         &lt;dbl&gt; &lt;int&gt;\n1  5.92  -619. 1250. 1294.    1237.      10464. 10470         0.526    19"
   },
   {
     "objectID": "lectures/18-nonparametric.html#visualize-partial-response-functions",
@@ -4564,11 +4571,18 @@
     "text": "Include intercept in plot\nIntercept reflects relatively rare occurence of HRs\n\ndraw(hr_gam, fun = plogis, constant = coef(hr_gam)[1])"
   },
   {
-    "objectID": "lectures/18-nonparametric.html#model-checking-for-the-number-of-basis-functions",
-    "href": "lectures/18-nonparametric.html#model-checking-for-the-number-of-basis-functions",
+    "objectID": "lectures/18-nonparametric.html#model-diagnostics",
+    "href": "lectures/18-nonparametric.html#model-diagnostics",
     "title": "Supervised learning: nonparametric regression",
-    "section": "Model checking for the number of basis functions",
-    "text": "Model checking for the number of basis functions\nCheck whether more basis functions are needed with gam.check() based on an approximate test\n\ngam.check(hr_gam)\n\n\n\nMethod: REML   Optimizer: outer newton\nfull convergence after 9 iterations.\nGradient range [-1.611342e-05,4.419327e-06]\n(score 627.7034 & scale 1).\nHessian positive definite, eigenvalue range [1.611218e-05,1.116216].\nModel rank =  19 / 19 \n\nBasis dimension (k) checking results. Low p-value (k-index&lt;1) may\nindicate that k is too low, especially if edf is close to k'.\n\n                  k'  edf k-index p-value   \ns(launch_speed) 9.00 1.00    0.96   0.010 **\ns(launch_angle) 9.00 3.92    0.96   0.005 **\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+    "section": "Model diagnostics",
+    "text": "Model diagnostics\n\nappraise(hr_gam)"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#model-checking",
+    "href": "lectures/18-nonparametric.html#model-checking",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Model checking",
+    "text": "Model checking\nCheck whether more basis functions are needed with gam.check() based on an approximate test\n\ngam.check(hr_gam)\n\n\n\nMethod: REML   Optimizer: outer newton\nfull convergence after 9 iterations.\nGradient range [-1.611342e-05,4.419327e-06]\n(score 627.7034 & scale 1).\nHessian positive definite, eigenvalue range [1.611218e-05,1.116216].\nModel rank =  19 / 19 \n\nBasis dimension (k) checking results. Low p-value (k-index&lt;1) may\nindicate that k is too low, especially if edf is close to k'.\n\n                  k'  edf k-index p-value  \ns(launch_speed) 9.00 1.00    0.97   0.095 .\ns(launch_angle) 9.00 3.92    0.99   0.590  \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
   },
   {
     "objectID": "lectures/18-nonparametric.html#evaluate-prediction-accuracy",
@@ -4589,7 +4603,7 @@
     "href": "lectures/18-nonparametric.html#continuous-interactions-as-a-smooth-surface",
     "title": "Supervised learning: nonparametric regression",
     "section": "Continuous interactions as a smooth surface",
-    "text": "Continuous interactions as a smooth surface\n\nhr_gam_mult &lt;- gam(is_hr ~ s(launch_speed, launch_angle), \n                   family = binomial,\n                   data = train)\n\nPlot the predicted heatmap\n\ndraw(hr_gam_mult)"
+    "text": "Continuous interactions as a smooth surface\n\nhr_gam_mult &lt;- gam(is_hr ~ s(launch_speed, launch_angle), family = binomial, data = train)\n\nPlot the predicted heatmap\n\n# draw(hr_gam_mult)\nhr_gam_mult |&gt; \n  smooth_estimates() |&gt; \n  ggplot(aes(launch_speed, launch_angle, z = .estimate)) +\n  geom_contour_filled()"
   },
   {
     "objectID": "lectures/18-nonparametric.html#evaluate-predictions",
@@ -4604,6 +4618,13 @@
     "title": "Supervised learning: nonparametric regression",
     "section": "Separate interactions from individual terms with tensor smooths",
     "text": "Separate interactions from individual terms with tensor smooths\n\nDecompose the smooth into main effects and an interaction with ti()\nAnother option: te(), representing a tensor product smooth\n\nMore complicated model but yet does not improve prediction accuracy\n\nhr_gam_tensor &lt;- gam(is_hr ~ s(launch_speed) + s(launch_angle) + ti(launch_speed, launch_angle),\n                     family = binomial,\n                     data = train)\n\n\n\n\nhr_gam_tensor |&gt; \n  augment(newdata = train, type.predict = \"response\") |&gt; \n  mutate(pred_class = round(.fitted)) |&gt; \n  summarize(correct = mean(is_hr == pred_class))\n\n# A tibble: 1 × 1\n  correct\n    &lt;dbl&gt;\n1   0.974\n\n\n\n\nhr_gam_tensor |&gt; \n  augment(newdata = test, type.predict = \"response\") |&gt; \n  mutate(pred_class = round(.fitted)) |&gt; \n  summarize(correct = mean(is_hr == pred_class))\n\n# A tibble: 1 × 1\n  correct\n    &lt;dbl&gt;\n1   0.974"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#resources",
+    "href": "lectures/18-nonparametric.html#resources",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Resources",
+    "text": "Resources\n\n\n140 char vrsn1 GAMs are just GLMs2 GAMs fit wiggly terms3 use + s(foo) not foo in frmla4 use method = \"REML\"5 gam.check()\n\n— 🇺🇦 Dr Gavin Simpson 😷🇪🇺🇩🇰 (@ucfagls) March 16, 2017\n\n\n\nBook: Generalized Additive Models\nGAMs in R by Noam Ross\nmgcv course\nGAM: The Predictive Modeling Silver Bullet\nChapters 7 & 8 of Advanced Data Analysis from an Elementary Point of View by Cosma Shalizi"
   },
   {
     "objectID": "lectures/18-nonparametric.html#appendix-code-to-build-dataset",
@@ -5031,5 +5052,33 @@
     "title": "R and RStudio Setup",
     "section": "R Primers on Posit Cloud",
     "text": "R Primers on Posit Cloud\nIn addition to following the steps above for installing R and RStudio on your computer, we recommend you make a free Posit Cloud (formerly RStudio Cloud) account at https://posit.cloud/. This is a free, browser-based version of R and RStudio that also provides access to a growing number of relevant R tutorials / primers.\nAfter you create a Posit Cloud account, navigate to the menu on the left and click on “Recipes”. This brings up a menu of tutorials, with code primers you can choose to work through. Please complete the tutorials listed under “R Basics” (you can skip the first three). Also, feel free to explore the other tutorials."
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#k-nearest-neighbors-knn",
+    "href": "lectures/18-nonparametric.html#k-nearest-neighbors-knn",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "\\(k\\)-nearest neighbors (KNN)",
+    "text": "\\(k\\)-nearest neighbors (KNN)\n\nFind the \\(k\\) data points closest to an observation \\(x\\), use these to make predictions\n\nNeed to use some measure of distance, e.g., Euclidean distance\n\n\n\n\nTake the average value of the response over the \\(k\\) nearest neighbors\n\n\n\n\nThe number of neighbors \\(k\\) is a tuning parameter (like \\(\\lambda\\) is for ridge/lasso)"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#finding-the-optimal-number-of-neighbors-k",
+    "href": "lectures/18-nonparametric.html#finding-the-optimal-number-of-neighbors-k",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Finding the optimal number of neighbors \\(k\\)",
+    "text": "Finding the optimal number of neighbors \\(k\\)\nRecall: bias-variance tradeoff\n\n\nIf \\(k\\) is too small, the resulting model is too flexible: low bias, high variance\n\n\n\n\nIf \\(k\\) is too large, the resulting model is not flexible enough: high bias, low variance"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#finding-the-optimal-number-of-neighbors-k-1",
+    "href": "lectures/18-nonparametric.html#finding-the-optimal-number-of-neighbors-k-1",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Finding the optimal number of neighbors \\(k\\)",
+    "text": "Finding the optimal number of neighbors \\(k\\)"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#k-nearest-neighbors-k-nn",
+    "href": "lectures/18-nonparametric.html#k-nearest-neighbors-k-nn",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "\\(k\\)-nearest neighbors (\\(k\\)-NN)",
+    "text": "\\(k\\)-nearest neighbors (\\(k\\)-NN)\n\nFind the \\(k\\) data points closest to an observation \\(x\\), use these to make predictions\n\nNeed to use some measure of distance, e.g., Euclidean distance\n\n\n\n\nTake the average value of the response over the \\(k\\) nearest neighbors\n\n\\(k\\)-NN classification: most common class among the \\(k\\) nearest neighbors (“majority vote”)\n\\(k\\)-NN regression: average of the values of \\(k\\) nearest neighbors\n\n\n\n\n\nThe number of neighbors \\(k\\) is a tuning parameter (like \\(\\lambda\\) is for ridge/lasso)"
   }
 ]

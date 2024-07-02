@@ -426,6 +426,54 @@
 </ul>
 </div>
 </section>
+<section id="k-nearest-neighbors-k-nn" class="slide level2">
+<h2><span class="math inline">\(k\)</span>-nearest neighbors (<span class="math inline">\(k\)</span>-NN)</h2>
+<ul>
+<li><p>Find the <span class="math inline">\(k\)</span> data points <strong>closest</strong> to an observation <span class="math inline">\(x\)</span>, use these to make predictions</p>
+<ul>
+<li>Need to use some measure of distance, e.g., Euclidean distance</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li><p>Take the average value of the response over the <span class="math inline">\(k\)</span> nearest neighbors</p>
+<ul>
+<li><p><span class="math inline">\(k\)</span>-NN classification: most common class among the <span class="math inline">\(k\)</span> nearest neighbors (“majority vote”)</p></li>
+<li><p><span class="math inline">\(k\)</span>-NN regression: average of the values of <span class="math inline">\(k\)</span> nearest neighbors</p></li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>The number of neighbors <span class="math inline">\(k\)</span> is a tuning parameter</strong> (like <span class="math inline">\(\lambda\)</span> is for ridge/lasso)</li>
+</ul>
+</div>
+</section>
+<section id="finding-the-optimal-number-of-neighbors-k" class="slide level2">
+<h2>Finding the optimal number of neighbors <span class="math inline">\(k\)</span></h2>
+<p>Recall: <strong>bias-variance tradeoff</strong></p>
+<div class="fragment">
+<ul>
+<li>If <span class="math inline">\(k\)</span> is too small, the resulting model is too flexible: low bias, high variance</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>If <span class="math inline">\(k\)</span> is too large, the resulting model is <em>not flexible enough</em>: high bias, low variance</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="http://www.stat.cmu.edu/~pfreeman/Fig_2.16.png" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="moving-beyond-linearity" class="slide level2">
 <h2>Moving beyond linearity</h2>
 <ul>
@@ -487,17 +535,6 @@
 <li><p>GLM is the special case of GAM in which each <span class="math inline">\(s_j\)</span> is a linear function</p></li>
 </ul>
 </div>
-<div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="https://multithreaded.stitchfix.com/assets/images/blog/fig1.svg" style="width:80.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
 </section>
 <section id="generalized-additive-models-gams-2" class="slide level2">
 <h2>Generalized additive models (GAMs)</h2>
@@ -508,6 +545,15 @@
 <ul>
 <li>Estimate the smooth relationships simultaneously to predict the response by adding them up</li>
 </ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://multithreaded.stitchfix.com/assets/images/blog/fig1.svg" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 <div class="fragment">
 <ul>
@@ -524,13 +570,39 @@
 </ul>
 </div>
 </section>
+<section id="generalized-additive-models-gams-3" class="slide level2">
+<h2>Generalized additive models (GAMs)</h2>
+<center>
+<p><img data-src="../images/gam.png" width="750"></p>
+</center>
+</section>
 <section id="splines" class="slide level2">
 <h2>Splines</h2>
 <ul>
 <li><p>A common way to smooth and learn nonlinear functions is to use <strong>splines</strong></p></li>
+<li><p>A spline is a piecewise polynomial having continuous derivatives of all orders lower than the degree of the polynomial</p></li>
+<li><p>There are <strong>knots</strong> (boundary points for functions) placed at every point</p></li>
 <li><p>Splines are functions that are constructed from simpler basis functions</p></li>
 <li><p>Splines can be used to approximate other, more complex functions</p></li>
 </ul>
+</section>
+<section id="splines-1" class="slide level2">
+<h2>Splines</h2>
+<ul>
+<li>A <span class="math inline">\(d^{\text{th}}\)</span>-order spline is a piecewise polynomial function of degree <span class="math inline">\(d\)</span> that is continuous and has continuous derivatives of orders <span class="math inline">\(1, \dots, d − 1\)</span> at its knot points</li>
+</ul>
+<!-- . . . -->
+<!-- * There are $t_1 < \dots <t_p$ such that $f$ is a polynomial of degree $k$ on each of the intervals $(-\infty, t_1], [t_1, t_2], \dots, [t_p, \infty)$ and $f^{(j)}$ is continuous at knots $t_1, \dots, t_p$ for each $j=0,1,\dots,k-1$ -->
+<div class="fragment">
+<ul>
+<li>This requires us to choose the knots (fixed points between which the function is polynomial)</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>We can eliminate the need to choose knots by using a <strong>smoothing spline</strong></li>
+</ul>
+</div>
 </section>
 <section id="smoothing-splines" class="slide level2">
 <h2>Smoothing splines</h2>
@@ -545,19 +617,37 @@
 </section>
 <section id="smoothing-splines-1" class="slide level2">
 <h2>Smoothing splines</h2>
+<p>The most commonly considered case: cubic smoothing splines</p>
 <p><span class="math display">\[\text{minimize }\sum_{i=1}^n (y_i - s(x_i))^2 + \lambda \int s''(x)^2dx\]</span></p>
+<div class="fragment">
+<p>First term: RSS, tries to make <span class="math inline">\(s(x)\)</span> fit the data at each <span class="math inline">\(x_i\)</span></p>
+</div>
+<div class="fragment">
+<p><br></p>
+<p>Second term: roughness penalty, controls how wiggly <span class="math inline">\(s(x)\)</span> is via tuning parameter <span class="math inline">\(\lambda \ge 0\)</span></p>
+</div>
+<div class="fragment">
 <ul>
-<li><p>First term: RSS, tries to make <span class="math inline">\(s(x)\)</span> fit the data at each <span class="math inline">\(x_i\)</span></p></li>
-<li><p>Second term: roughness penalty, controls how wiggly <span class="math inline">\(s(x)\)</span> is via tuning parameter <span class="math inline">\(\lambda \ge 0\)</span></p>
-<ul>
-<li><p>The smaller <span class="math inline">\(\lambda\)</span>, the more wiggly the function</p></li>
-<li><p>As <span class="math inline">\(\lambda \rightarrow \infty\)</span>, <span class="math inline">\(s(x)\)</span> becomes linear</p></li>
-</ul></li>
+<li>Balances the accuracy of the fit and the flexibility of the function</li>
 </ul>
+</div>
+<div class="fragment">
+<ul>
+<li>The smaller <span class="math inline">\(\lambda\)</span>, the more wiggly the function</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>As <span class="math inline">\(\lambda \rightarrow \infty\)</span>, <span class="math inline">\(s(x)\)</span> becomes linear</li>
+</ul>
+</div>
 </section>
 <section id="smoothing-splines-2" class="slide level2">
 <h2>Smoothing splines</h2>
 <p>Goal: Estimate the <strong>smoothing spline</strong> <span class="math inline">\(\hat{s}(x)\)</span> that <strong>balances the tradeoff between the model fit and wiggliness</strong></p>
+<div class="fragment">
+<p>Remember: <a href="https://en.wikipedia.org/wiki/Goldilocks_principle">Goldilocks principle</a></p>
+</div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -568,39 +658,25 @@
 </div>
 </div>
 </div>
+<!-- --- -->
+<!-- ## Basis functions -->
+<!-- * Splines are _piecewise cubic polynomials_ with __knots__ (boundary points for functions) at every point -->
+<!-- . . . -->
+<!-- * Practical alternative: linear combination of set of __basis functions__ -->
+<!-- . . . -->
+<!-- * Example: cubic polynomial  -->
+<!--   * 4 basis functions: $B_1(x) = 1$, $B_2(x) = x$, $B_3(x) = x^2$, $B_4(x) = x^3$ -->
+<!--   * $\displaystyle r(x) = \sum_j^4 \beta_j B_j(x)$ is the regression function -->
+<!--   *  __linear in the transformed variables__ $B_1(x), \dots, B_4(x)$ but it is __nonlinear in $x$__ -->
+<!-- . . . -->
+<!-- *   Extend this idea for splines _piecewise_ using indicator functions so the spline is a weighted sum $$s(x) = \sum_j^m \beta_j B_j(x)$$ -->
+<!-- ## Number of basis functions -->
+<!-- <br> -->
+<!-- ```{r out.width='60%', echo = FALSE, fig.align='center'} -->
+<!-- knitr::include_graphics("https://github.com/noamross/gams-in-r-course/blob/master/images/diffbasis-1.png?raw=true") -->
+<!-- ``` -->
+<!-- Think of this as a tuning parameter -->
 </div>
-</section>
-<section id="basis-functions" class="slide level2">
-<h2>Basis functions</h2>
-<ul>
-<li>Splines are <em>piecewise cubic polynomials</em> with <strong>knots</strong> (boundary points for functions) at every point</li>
-</ul>
-<div class="fragment">
-<ul>
-<li>Practical alternative: linear combination of set of <strong>basis functions</strong></li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li><p>Example: cubic polynomial</p>
-<ul>
-<li><p>4 basis functions: <span class="math inline">\(B_1(x) = 1\)</span>, <span class="math inline">\(B_2(x) = x\)</span>, <span class="math inline">\(B_3(x) = x^2\)</span>, <span class="math inline">\(B_4(x) = x^3\)</span></p></li>
-<li><p><span class="math inline">\(\displaystyle r(x) = \sum_j^4 \beta_j B_j(x)\)</span> is the regression function</p></li>
-<li><p><strong>linear in the transformed variables</strong> <span class="math inline">\(B_1(x), \dots, B_4(x)\)</span> but it is <strong>nonlinear in <span class="math inline">\(x\)</span></strong></p></li>
-</ul></li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>Extend this idea for splines <em>piecewise</em> using indicator functions so the spline is a weighted sum <span class="math display">\[s(x) = \sum_j^m \beta_j B_j(x)\]</span></li>
-</ul>
-</div>
-</section>
-<section id="number-of-basis-functions" class="slide level2">
-<h2>Number of basis functions</h2>
-<p><br></p>
-
-<img data-src="https://github.com/noamross/gams-in-r-course/blob/master/images/diffbasis-1.png?raw=true" style="width:60.0%" class="r-stretch quarto-figure-center"><p>Think of this as a tuning parameter</p>
 </section></section>
 <section>
 <section id="examples" class="title-slide slide level1 center">
@@ -609,43 +685,98 @@
 </section>
 <section id="predicting-mlb-hr-probability" class="slide level2">
 <h2>Predicting MLB HR probability</h2>
-<p>Data from baseball savant, obtained via <code>pybaseball</code></p>
+<ul>
+<li><p>Data available via the <a href="https://github.com/jldbc/pybaseball"><code>pybaseball</code></a> library in <code>python</code></p></li>
+<li><p><a href="https://baseballsavant.mlb.com/csv-docs">Statcast data</a> include pitch-level information, pulled from <a href="https://baseballsavant.mlb.com/">baseballsavant.com</a></p></li>
+<li><p>Example data collected for the entire month of May 2024</p></li>
+</ul>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>savant <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/36-SURE/36-SURE.github.io/main/data/savant.csv"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>batted_balls <span class="ot">&lt;-</span> savant <span class="sc">|&gt;</span> </span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">"X"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_hr =</span> <span class="fu">as.numeric</span>(events <span class="sc">==</span> <span class="st">"home_run"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(launch_angle), <span class="sc">!</span><span class="fu">is.na</span>(launch_speed), <span class="sc">!</span><span class="fu">is.na</span>(is_hr))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(launch_angle), <span class="sc">!</span><span class="fu">is.na</span>(launch_speed), <span class="sc">!</span><span class="fu">is.na</span>(is_hr))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># head(batted_balls)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="predicting-hrs-with-launch-angle-and-exit-velocity" class="slide level2">
 <h2>Predicting HRs with launch angle and exit velocity</h2>
 <p>HRs are relatively rare and confined to one area of this plot</p>
+<div class="columns">
+<div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>batted_balls <span class="sc">|&gt;</span> </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> launch_speed, </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> launch_angle,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> launch_angle, </span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="fu">as.factor</span>(is_hr))) <span class="sc">+</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
 </div>
-<img data-src="18-nonparametric_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+</div><div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="18-nonparametric_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="predicting-hrs-with-launch-angle-and-exit-velocity-1" class="slide level2">
+<h2>Predicting HRs with launch angle and exit velocity</h2>
+<p>There is a sweet spot of <code>launch_angle</code> (mid-way ish) and <code>launch_speed</code> (relatively high) where almost all HRs occur</p>
+<div class="columns">
+<div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>batted_balls <span class="sc">|&gt;</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">launch_angle_bucket =</span> <span class="fu">round</span>(launch_angle <span class="sc">*</span> <span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">launch_speed_bucket =</span> <span class="fu">round</span>(launch_speed <span class="sc">*</span> <span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">hr =</span> <span class="fu">sum</span>(is_hr <span class="sc">==</span> <span class="dv">1</span>),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct_hr =</span> hr <span class="sc">/</span> n) <span class="sc">|&gt;</span> </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> launch_speed_bucket, </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> launch_angle_bucket, </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> pct_hr)) <span class="sc">+</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(),</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                       <span class="at">low =</span> <span class="st">"blue"</span>, </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                       <span class="at">high =</span> <span class="st">"red"</span>, </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>                       <span class="at">midpoint =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="18-nonparametric_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="fitting-gams-with-mgcv" class="slide level2">
-<h2>Fitting GAMs with mgcv</h2>
+<h2>Fitting GAMs with <a href="https://cran.r-project.org/web/packages/mgcv/index.html">mgcv</a></h2>
 <ul>
 <li>Set up training data</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> batted_balls <span class="sc">|&gt;</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="fl">0.5</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> batted_balls <span class="sc">|&gt;</span> </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> batted_balls <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="fl">0.5</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> batted_balls <span class="sc">|&gt;</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <ul>
-<li>Modeling the log odds of a home run using non-linear functions of <code>launch_speed</code> and <code>launch_angle</code> <span class="math display">\[
+<li>Modeling the log-odds of a home run using non-linear functions of <code>launch_speed</code> and <code>launch_angle</code> <span class="math display">\[
 \log \left( \frac{p_{\texttt{is_hr}}}{1 - p_\texttt{is_hr}} \right) = \beta_0 + s_1 (\texttt{launch_speed}) + s_2 (\texttt{launch_angle})\]</span> where <span class="math inline">\(p_\texttt{is_hr}\)</span> is the probability of a home run</li>
 </ul>
 </div>
@@ -654,20 +785,21 @@
 <li>Fit the model with smoothing spline functions <code>s()</code></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mgcv)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>hr_gam <span class="ot">&lt;-</span> <span class="fu">gam</span>(is_hr <span class="sc">~</span> <span class="fu">s</span>(launch_speed) <span class="sc">+</span> <span class="fu">s</span>(launch_angle),</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">family =</span> binomial,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">method =</span> <span class="st">"REML"</span>, <span class="co"># more stable solution than default</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mgcv)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>hr_gam <span class="ot">&lt;-</span> <span class="fu">gam</span>(is_hr <span class="sc">~</span> <span class="fu">s</span>(launch_speed) <span class="sc">+</span> <span class="fu">s</span>(launch_angle),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">family =</span> binomial,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">method =</span> <span class="st">"REML"</span>, <span class="co"># more stable solution than default</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="view-model-summary" class="slide level2">
 <h2>View model summary</h2>
+<p>Notice that <code>mgcv</code> has calculated hypothesis tests for the smooth terms; these are roughly the equivalent of an <span class="math inline">\(F\)</span>-test for dropping each term</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(hr_gam)</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(hr_gam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(hr_gam)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(hr_gam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   term              edf ref.df statistic p.value
@@ -675,14 +807,14 @@
 1 s(launch_speed)  1.00   1.00      388.       0
 2 s(launch_angle)  3.92   4.24      251.       0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(hr_gam, <span class="at">parametric =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(hr_gam, <span class="at">parametric =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 5
   term        estimate std.error statistic p.value
   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
 1 (Intercept)    -34.8      11.8     -2.94 0.00329</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(hr_gam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(hr_gam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 9
      df logLik   AIC   BIC deviance df.residual  nobs adj.r.squared  npar
@@ -695,32 +827,39 @@
 <h2>Visualize partial response functions</h2>
 <p>Display the partial effect of each term in the model <span class="math inline">\(\longrightarrow\)</span> add up to the overall prediction</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gratia)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span>(hr_gam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gratia)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span>(hr_gam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="18-nonparametric_files/figure-revealjs/unnamed-chunk-11-1.png" width="1440" class="r-stretch quarto-figure-center"></section>
+<img data-src="18-nonparametric_files/figure-revealjs/unnamed-chunk-14-1.png" width="1440" class="r-stretch quarto-figure-center"></section>
 <section id="convert-to-probability-scale" class="slide level2">
 <h2>Convert to probability scale</h2>
 <p>Centered on average value of 0.5 because it’s the partial effect without the intercept</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span>(hr_gam, <span class="at">fun =</span> plogis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span>(hr_gam, <span class="at">fun =</span> plogis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="18-nonparametric_files/figure-revealjs/unnamed-chunk-12-1.png" width="1440" class="r-stretch quarto-figure-center"></section>
+<img data-src="18-nonparametric_files/figure-revealjs/unnamed-chunk-15-1.png" width="1440" class="r-stretch quarto-figure-center"></section>
 <section id="include-intercept-in-plot" class="slide level2">
 <h2>Include intercept in plot</h2>
 <p>Intercept reflects relatively rare occurence of HRs</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span>(hr_gam, <span class="at">fun =</span> plogis, <span class="at">constant =</span> <span class="fu">coef</span>(hr_gam)[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span>(hr_gam, <span class="at">fun =</span> plogis, <span class="at">constant =</span> <span class="fu">coef</span>(hr_gam)[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="18-nonparametric_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch quarto-figure-center"></section>
-<section id="model-checking-for-the-number-of-basis-functions" class="slide level2">
-<h2>Model checking for the number of basis functions</h2>
+<img data-src="18-nonparametric_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="model-diagnostics" class="slide level2">
+<h2>Model diagnostics</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">appraise</span>(hr_gam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="18-nonparametric_files/figure-revealjs/unnamed-chunk-17-1.png" width="1152" class="r-stretch quarto-figure-center"></section>
+<section id="model-checking" class="slide level2">
+<h2>Model checking</h2>
 <p>Check whether more basis functions are needed with <code>gam.check()</code> based on an approximate test</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gam.check</span>(hr_gam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gam.check</span>(hr_gam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -734,24 +873,24 @@ Model rank =  19 / 19
 Basis dimension (k) checking results. Low p-value (k-index&lt;1) may
 indicate that k is too low, especially if edf is close to k'.
 
-                  k'  edf k-index p-value   
-s(launch_speed) 9.00 1.00    0.96   0.010 **
-s(launch_angle) 9.00 3.92    0.96   0.005 **
+                  k'  edf k-index p-value  
+s(launch_speed) 9.00 1.00    0.97   0.095 .
+s(launch_angle) 9.00 3.92    0.99   0.590  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
-<img data-src="18-nonparametric_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="18-nonparametric_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch quarto-figure-center"></section>
 <section id="evaluate-prediction-accuracy" class="slide level2">
 <h2>Evaluate prediction accuracy</h2>
 <ul>
 <li>In-sample performance (training set)</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>hr_gam <span class="sc">|&gt;</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(<span class="at">type.predict =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">newdata =</span> train, <span class="at">pred_class =</span> <span class="fu">round</span>(.fitted)) <span class="sc">|&gt;</span> </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correct =</span> <span class="fu">mean</span>(is_hr <span class="sc">==</span> pred_class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>hr_gam <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(<span class="at">type.predict =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">newdata =</span> train, <span class="at">pred_class =</span> <span class="fu">round</span>(.fitted)) <span class="sc">|&gt;</span> </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correct =</span> <span class="fu">mean</span>(is_hr <span class="sc">==</span> pred_class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   correct
@@ -763,10 +902,10 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>Out-of-sample performance (test set)</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>hr_gam <span class="sc">|&gt;</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(<span class="at">newdata =</span> test, <span class="at">type.predict =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_class =</span> <span class="fu">round</span>(.fitted)) <span class="sc">|&gt;</span> </span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correct =</span> <span class="fu">mean</span>(is_hr <span class="sc">==</span> pred_class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>hr_gam <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(<span class="at">newdata =</span> test, <span class="at">type.predict =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_class =</span> <span class="fu">round</span>(.fitted)) <span class="sc">|&gt;</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correct =</span> <span class="fu">mean</span>(is_hr <span class="sc">==</span> pred_class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   correct
@@ -782,14 +921,14 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li><p>Especially since smooth functions can just capture linear models</p></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note the warning</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>hr_logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(is_hr <span class="sc">~</span> launch_speed <span class="sc">+</span> launch_angle, <span class="at">family =</span> binomial, <span class="at">data =</span> train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note the warning</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>hr_logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(is_hr <span class="sc">~</span> launch_speed <span class="sc">+</span> launch_angle, <span class="at">family =</span> binomial, <span class="at">data =</span> train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>hr_logit <span class="sc">|&gt;</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(<span class="at">newdata =</span> train, <span class="at">type.predict =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_class =</span> <span class="fu">round</span>(.fitted)) <span class="sc">|&gt;</span> </span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correct =</span> <span class="fu">mean</span>(is_hr <span class="sc">==</span> pred_class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>hr_logit <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(<span class="at">newdata =</span> train, <span class="at">type.predict =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_class =</span> <span class="fu">round</span>(.fitted)) <span class="sc">|&gt;</span> </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correct =</span> <span class="fu">mean</span>(is_hr <span class="sc">==</span> pred_class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   correct
@@ -798,10 +937,10 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>hr_logit <span class="sc">|&gt;</span> </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(<span class="at">newdata =</span> test, <span class="at">type.predict =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_class =</span> <span class="fu">round</span>(.fitted)) <span class="sc">|&gt;</span> </span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correct =</span> <span class="fu">mean</span>(is_hr <span class="sc">==</span> pred_class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>hr_logit <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(<span class="at">newdata =</span> test, <span class="at">type.predict =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_class =</span> <span class="fu">round</span>(.fitted)) <span class="sc">|&gt;</span> </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correct =</span> <span class="fu">mean</span>(is_hr <span class="sc">==</span> pred_class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   correct
@@ -813,16 +952,18 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <section id="continuous-interactions-as-a-smooth-surface" class="slide level2">
 <h2>Continuous interactions as a smooth surface</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>hr_gam_mult <span class="ot">&lt;-</span> <span class="fu">gam</span>(is_hr <span class="sc">~</span> <span class="fu">s</span>(launch_speed, launch_angle), </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">family =</span> binomial,</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>hr_gam_mult <span class="ot">&lt;-</span> <span class="fu">gam</span>(is_hr <span class="sc">~</span> <span class="fu">s</span>(launch_speed, launch_angle), <span class="at">family =</span> binomial, <span class="at">data =</span> train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Plot the predicted heatmap</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span>(hr_gam_mult)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># draw(hr_gam_mult)</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>hr_gam_mult <span class="sc">|&gt;</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">smooth_estimates</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(launch_speed, launch_angle, <span class="at">z =</span> .estimate)) <span class="sc">+</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_contour_filled</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="18-nonparametric_files/figure-revealjs/unnamed-chunk-21-1.png" width="1440" class="r-stretch quarto-figure-center"></section>
+<img data-src="18-nonparametric_files/figure-revealjs/unnamed-chunk-25-1.png" width="1440" class="r-stretch quarto-figure-center"></section>
 <section id="evaluate-predictions" class="slide level2">
 <h2>Evaluate predictions</h2>
 <ul>
@@ -830,20 +971,20 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li><p>But prediction accuracy does not improve</p></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>hr_gam_mult <span class="sc">|&gt;</span> </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(<span class="at">newdata =</span> train, <span class="at">type.predict =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_class =</span> <span class="fu">round</span>(.fitted)) <span class="sc">|&gt;</span> </span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correct =</span> <span class="fu">mean</span>(is_hr <span class="sc">==</span> pred_class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>hr_gam_mult <span class="sc">|&gt;</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(<span class="at">newdata =</span> train, <span class="at">type.predict =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_class =</span> <span class="fu">round</span>(.fitted)) <span class="sc">|&gt;</span> </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correct =</span> <span class="fu">mean</span>(is_hr <span class="sc">==</span> pred_class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   correct
     &lt;dbl&gt;
 1   0.974</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>hr_gam_mult <span class="sc">|&gt;</span> </span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(<span class="at">newdata =</span> test, <span class="at">type.predict =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_class =</span> <span class="fu">round</span>(.fitted)) <span class="sc">|&gt;</span> </span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correct =</span> <span class="fu">mean</span>(is_hr <span class="sc">==</span> pred_class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>hr_gam_mult <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(<span class="at">newdata =</span> test, <span class="at">type.predict =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_class =</span> <span class="fu">round</span>(.fitted)) <span class="sc">|&gt;</span> </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correct =</span> <span class="fu">mean</span>(is_hr <span class="sc">==</span> pred_class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   correct
@@ -860,17 +1001,17 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </ul>
 <p>More complicated model but yet does not improve prediction accuracy</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>hr_gam_tensor <span class="ot">&lt;-</span> <span class="fu">gam</span>(is_hr <span class="sc">~</span> <span class="fu">s</span>(launch_speed) <span class="sc">+</span> <span class="fu">s</span>(launch_angle) <span class="sc">+</span> <span class="fu">ti</span>(launch_speed, launch_angle),</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">family =</span> binomial,</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">data =</span> train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>hr_gam_tensor <span class="ot">&lt;-</span> <span class="fu">gam</span>(is_hr <span class="sc">~</span> <span class="fu">s</span>(launch_speed) <span class="sc">+</span> <span class="fu">s</span>(launch_angle) <span class="sc">+</span> <span class="fu">ti</span>(launch_speed, launch_angle),</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">family =</span> binomial,</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">data =</span> train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>hr_gam_tensor <span class="sc">|&gt;</span> </span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(<span class="at">newdata =</span> train, <span class="at">type.predict =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_class =</span> <span class="fu">round</span>(.fitted)) <span class="sc">|&gt;</span> </span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correct =</span> <span class="fu">mean</span>(is_hr <span class="sc">==</span> pred_class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>hr_gam_tensor <span class="sc">|&gt;</span> </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(<span class="at">newdata =</span> train, <span class="at">type.predict =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_class =</span> <span class="fu">round</span>(.fitted)) <span class="sc">|&gt;</span> </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correct =</span> <span class="fu">mean</span>(is_hr <span class="sc">==</span> pred_class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   correct
@@ -880,10 +1021,10 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>hr_gam_tensor <span class="sc">|&gt;</span> </span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(<span class="at">newdata =</span> test, <span class="at">type.predict =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_class =</span> <span class="fu">round</span>(.fitted)) <span class="sc">|&gt;</span> </span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correct =</span> <span class="fu">mean</span>(is_hr <span class="sc">==</span> pred_class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>hr_gam_tensor <span class="sc">|&gt;</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(<span class="at">newdata =</span> test, <span class="at">type.predict =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_class =</span> <span class="fu">round</span>(.fitted)) <span class="sc">|&gt;</span> </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correct =</span> <span class="fu">mean</span>(is_hr <span class="sc">==</span> pred_class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   correct
@@ -894,14 +1035,31 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 </section>
+<section id="resources" class="slide level2">
+<h2>Resources</h2>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+140 char vrsn<br><br>1 GAMs are just GLMs<br>2 GAMs fit wiggly terms<br>3 use + s(foo) not foo in frmla<br>4 use method = "REML"<br>5 gam.check()
+</p>
+— 🇺🇦 Dr Gavin Simpson 😷🇪🇺🇩🇰 (<span class="citation" data-cites="ucfagls">@ucfagls</span>) <a href="https://twitter.com/ucfagls/status/842444686513991680?ref_src=twsrc%5Etfw">March 16, 2017</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<ul>
+<li><p>Book: <a href="https://reseau-mexico.fr/sites/reseau-mexico.fr/files/igam.pdf">Generalized Additive Models</a></p></li>
+<li><p><a href="https://noamross.github.io/gams-in-r-course/">GAMs in R by Noam Ross</a></p></li>
+<li><p><a href="https://eric-pedersen.github.io/mgcv-esa-workshop/"><code>mgcv</code> course</a></p></li>
+<li><p><a href="https://multithreaded.stitchfix.com/blog/2015/07/30/gam/">GAM: The Predictive Modeling Silver Bullet</a></p></li>
+<li><p>Chapters 7 &amp; 8 of <a href="https://www.stat.cmu.edu/~cshalizi/ADAfaEPoV/ADAfaEPoV.pdf">Advanced Data Analysis from an Elementary Point of View by Cosma Shalizi</a></p></li>
+</ul>
+</section>
 <section id="appendix-code-to-build-dataset" class="slide level2">
 <h2>Appendix: code to build dataset</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pip install pybaseball</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># dictionary: https://baseballsavant.mlb.com/csv-docs</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pybaseball <span class="im">import</span> statcast</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>savant <span class="op">=</span> statcast(start_dt<span class="op">=</span><span class="st">'2024-05-01'</span>, end_dt<span class="op">=</span><span class="st">'2024-05-31'</span>)</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>savant.to_csv(<span class="st">'savant.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pip install pybaseball</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># dictionary: https://baseballsavant.mlb.com/csv-docs</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pybaseball <span class="im">import</span> statcast</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>savant <span class="op">=</span> statcast(start_dt<span class="op">=</span><span class="st">'2024-05-01'</span>, end_dt<span class="op">=</span><span class="st">'2024-05-31'</span>)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>savant.to_csv(<span class="st">'savant.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <div class="footer footer-default">
