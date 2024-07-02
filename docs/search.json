@@ -4547,7 +4547,7 @@
     "href": "lectures/18-nonparametric.html#view-model-summary",
     "title": "Supervised learning: nonparametric regression",
     "section": "View model summary",
-    "text": "View model summary\nNotice that mgcv has calculated hypothesis tests for the smooth terms; these are roughly the equivalent of an \\(F\\)-test for dropping each term\n\n# summary(hr_gam)\nlibrary(broom)\ntidy(hr_gam)\n\n# A tibble: 2 × 5\n  term              edf ref.df statistic p.value\n  &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 s(launch_speed)  1.00   1.00      388.       0\n2 s(launch_angle)  3.92   4.24      251.       0\n\ntidy(hr_gam, parametric = TRUE)\n\n# A tibble: 1 × 5\n  term        estimate std.error statistic p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 (Intercept)    -34.8      11.8     -2.94 0.00329\n\nglance(hr_gam)\n\n# A tibble: 1 × 9\n     df logLik   AIC   BIC deviance df.residual  nobs adj.r.squared  npar\n  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;int&gt;         &lt;dbl&gt; &lt;int&gt;\n1  5.92  -619. 1250. 1294.    1237.      10464. 10470         0.526    19"
+    "text": "View model summary\n\nmgcv performs hypothesis tests for the smooth terms — these are roughly the equivalent of an \\(F\\)-test for dropping each term\nEffective degrees of freedom (edf): basically the number of free parameters required to represent the function\nIn a smoothing spline, different choices of \\(\\lambda\\) correspond to different values of the edf, representing different amounts of smoothness\n\n\n# summary(hr_gam)\nlibrary(broom)\n# glance(hr_gam)\ntidy(hr_gam)\n\n# A tibble: 2 × 5\n  term              edf ref.df statistic p.value\n  &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 s(launch_speed)  1.00   1.00      388.       0\n2 s(launch_angle)  3.92   4.24      251.       0\n\ntidy(hr_gam, parametric = TRUE)\n\n# A tibble: 1 × 5\n  term        estimate std.error statistic p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 (Intercept)    -34.8      11.8     -2.94 0.00329"
   },
   {
     "objectID": "lectures/18-nonparametric.html#visualize-partial-response-functions",
@@ -4603,7 +4603,7 @@
     "href": "lectures/18-nonparametric.html#continuous-interactions-as-a-smooth-surface",
     "title": "Supervised learning: nonparametric regression",
     "section": "Continuous interactions as a smooth surface",
-    "text": "Continuous interactions as a smooth surface\n\nhr_gam_mult &lt;- gam(is_hr ~ s(launch_speed, launch_angle), family = binomial, data = train)\n\nPlot the predicted heatmap\n\n# draw(hr_gam_mult)\nhr_gam_mult |&gt; \n  smooth_estimates() |&gt; \n  ggplot(aes(launch_speed, launch_angle, z = .estimate)) +\n  geom_contour_filled()"
+    "text": "Continuous interactions as a smooth surface\n\nhr_gam_mult &lt;- gam(is_hr ~ s(launch_speed, launch_angle), family = binomial, data = train)\n\nPlot the predicted heatmap (response on the log-odds scale)\n\n# draw(hr_gam_mult)\nhr_gam_mult |&gt; \n  smooth_estimates() |&gt; \n  ggplot(aes(launch_speed, launch_angle, z = .estimate)) +\n  geom_contour_filled()"
   },
   {
     "objectID": "lectures/18-nonparametric.html#evaluate-predictions",
@@ -5080,5 +5080,12 @@
     "title": "Supervised learning: nonparametric regression",
     "section": "\\(k\\)-nearest neighbors (\\(k\\)-NN)",
     "text": "\\(k\\)-nearest neighbors (\\(k\\)-NN)\n\nFind the \\(k\\) data points closest to an observation \\(x\\), use these to make predictions\n\nNeed to use some measure of distance, e.g., Euclidean distance\n\n\n\n\nTake the average value of the response over the \\(k\\) nearest neighbors\n\n\\(k\\)-NN classification: most common class among the \\(k\\) nearest neighbors (“majority vote”)\n\\(k\\)-NN regression: average of the values of \\(k\\) nearest neighbors\n\n\n\n\n\nThe number of neighbors \\(k\\) is a tuning parameter (like \\(\\lambda\\) is for ridge/lasso)"
+  },
+  {
+    "objectID": "lectures/18-nonparametric.html#continuous-interactions-as-a-smooth-surface-1",
+    "href": "lectures/18-nonparametric.html#continuous-interactions-as-a-smooth-surface-1",
+    "title": "Supervised learning: nonparametric regression",
+    "section": "Continuous interactions as a smooth surface",
+    "text": "Continuous interactions as a smooth surface\nPlot the predicted heatmap (response on the probability scale)\n\nhr_gam_mult |&gt; \n  smooth_estimates() |&gt; \n  mutate(prob = plogis(.estimate)) |&gt; \n  ggplot(aes(launch_speed, launch_angle, z = prob)) +\n  geom_contour_filled()"
   }
 ]
