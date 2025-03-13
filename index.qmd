@@ -1,0 +1,23 @@
+---
+title: "Summer Undergraduate Research Experience in Statistics"
+subtitle: "<br>Department of Statistics & Data Science<br>Carnegie Mellon University"
+about:
+  template: solana
+  image: icon.png
+---
+
+---
+
+## Websites
+
+[2025](https://36-sure.github.io/2025)
+
+[2024](https://36-sure.github.io/2024)
+
+[2023](https://cmu-sure-2023.netlify.app/)
+
+[2022](https://www.stat.cmu.edu/cmsac/sure/2022/materials/)
+
+[2021](https://www.stat.cmu.edu/cmsac/sure/2021/materials/)
+
+[2020](https://www.stat.cmu.edu/cmsac/sure/2020/materials/)

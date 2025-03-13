@@ -1,0 +1,15 @@
+project:
+  type: website
+
+website:
+  title: "SURE (CMU Statistics & Data Science)"
+  navbar:
+    background: "#C41230"
+      
+format:
+  html:
+    theme:
+      - custom.scss
+
+execute:
+  freeze: auto
